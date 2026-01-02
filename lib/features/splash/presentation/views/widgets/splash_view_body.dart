@@ -1,9 +1,21 @@
 import 'package:ecommerce_clean_architecture/core/assets.dart';
+import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class OnBoardingViewBody extends StatelessWidget {
-  const OnBoardingViewBody({super.key});
+class SplashViewBody extends StatefulWidget {
+  const SplashViewBody({super.key});
+
+  @override
+  State<SplashViewBody> createState() => _SplashViewBodyState();
+}
+
+class _SplashViewBodyState extends State<SplashViewBody> {
+  @override
+  void initState() {
+    navigateToNextScreen();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,5 +31,11 @@ class OnBoardingViewBody extends StatelessWidget {
         SvgPicture.asset(Assets.imagesOnBoardingFooterLogo, fit: BoxFit.cover),
       ],
     );
+  }
+
+  Future<void> navigateToNextScreen() async {
+    await Future.delayed(Duration(seconds: 1), () {
+      Navigator.of(context).pushNamed(OnboardingView.routeName);
+    });
   }
 }

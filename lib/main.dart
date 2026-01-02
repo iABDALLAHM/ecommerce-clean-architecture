@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/functions/on_generate_route.dart';
-import 'package:ecommerce_clean_architecture/features/on_boarding/presentation/views/on_boarding_view.dart';
+import 'package:ecommerce_clean_architecture/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class ECommerceApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "Cairo", colorSchemeSeed: Colors.white),
       onGenerateRoute: onGenetateRoute,
-      initialRoute: OnBoardingView.routeName,
+      initialRoute: SplashView.routeName,
     );
   }
 }
