@@ -13,7 +13,7 @@ class ECommerceApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: "Cairo"),
+      theme: ThemeData(fontFamily: "Cairo", colorSchemeSeed: Colors.white),
       onGenerateRoute: onGenetateRoute,
       initialRoute: OnBoardingView.routeName,
     );
