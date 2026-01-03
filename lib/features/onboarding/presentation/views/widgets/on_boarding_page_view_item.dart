@@ -1,3 +1,4 @@
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -46,8 +47,11 @@ class OnBoardingPageViewItem extends StatelessWidget {
                   ),
           ],
         ),
-        SizedBox(height: height * 0.18),
-        widget,
+        SizedBox(height: height * 0.15),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+          child: widget,
+        ),
         const SizedBox(height: 24),
         Text(
           subTitle,
