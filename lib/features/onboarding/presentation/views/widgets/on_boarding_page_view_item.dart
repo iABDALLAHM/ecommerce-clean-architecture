@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/views/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -41,7 +42,9 @@ class OnBoardingPageViewItem extends StatelessWidget {
                       horizontal: 30,
                     ),
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).pushNamed(LoginView.routeName);
+                      },
                       child: Text("تخط", style: AppStyles.textStyle13Regular),
                     ),
                   ),

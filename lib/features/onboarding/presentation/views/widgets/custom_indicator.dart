@@ -3,8 +3,8 @@ import 'package:ecommerce_clean_architecture/features/onboarding/presentation/vi
 import 'package:flutter/material.dart';
 
 class CustomIndicator extends StatelessWidget {
-  const CustomIndicator({super.key});
-
+  const CustomIndicator({super.key, required this.currentPage});
+  final int currentPage;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -13,7 +13,11 @@ class CustomIndicator extends StatelessWidget {
         Padding(padding: const EdgeInsets.only(left: 10), child: CustomDot()),
         Padding(
           padding: const EdgeInsets.only(left: 10),
-          child: CustomDot(color: AppColors.lightPrimaryColor),
+          child: CustomDot(
+            color: currentPage == 1
+                ? AppColors.primaryColor
+                : AppColors.lightPrimaryColor,
+          ),
         ),
       ],
     );
