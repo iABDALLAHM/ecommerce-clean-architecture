@@ -16,10 +16,15 @@ class LoginRichText extends StatelessWidget {
             color: Color(0xff949D9E),
           ),
         ),
-        Text(
-          "قم بإنشاء حساب",
-          style: AppStyles.textStyle16SemiBold.copyWith(
-            color: AppColors.primaryColor,
+        GestureDetector(
+          onTap: () {
+            // Navigator.of(context).pushNamed();
+          },
+          child: Text(
+            "قم بإنشاء حساب",
+            style: AppStyles.textStyle16SemiBold.copyWith(
+              color: AppColors.primaryColor,
+            ),
           ),
         ),
       ],
