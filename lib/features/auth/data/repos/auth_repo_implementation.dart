@@ -34,9 +34,19 @@ class AuthRepoImplementation implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, UserEntity>> signIn() {
-    // TODO: implement signIn
-    throw UnimplementedError();
+  Future<Either<Failure, UserEntity>> signIn({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      var user =
+          await authService.signIn(email: email, password: password) as User;
+      UserEntity userEntity = UserEntity(name: "", email: email, uId: user.uid);
+      return Right(userEntity);
+    } on CustomException catch (e) {
+      log("error happend in AuthRepoImplementation in signIn the error : $e");
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
   }
 
   @override

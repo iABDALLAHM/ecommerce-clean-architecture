@@ -8,6 +8,9 @@ abstract class AuthRepo {
     required String password,
     required String name,
   });
-  Future<Either<Failure, UserEntity>> signIn();
+  Future<Either<Failure, UserEntity>> signIn({
+    required String email,
+    required String password,
+  });
   Future<void> deleteUser();
 }
