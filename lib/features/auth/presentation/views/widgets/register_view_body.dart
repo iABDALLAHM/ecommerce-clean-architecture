@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/widgets/custom_password_field.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_text_form_field.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/terms_and_conditions_section.dart';
 import 'package:flutter/material.dart';
 
 class RegisterViewBody extends StatelessWidget {
@@ -16,6 +17,7 @@ class RegisterViewBody extends StatelessWidget {
         const SizedBox(height: 16),
         CustomPasswordField(),
         const SizedBox(height: 16),
+        TermsAndConditionsSection(),
       ],
     );
   }
