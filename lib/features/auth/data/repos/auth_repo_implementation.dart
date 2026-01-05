@@ -1,0 +1,47 @@
+import 'dart:developer';
+import 'package:dartz/dartz.dart';
+import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
+import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
+import 'package:ecommerce_clean_architecture/core/services/auth_service.dart';
+import 'package:ecommerce_clean_architecture/features/auth/domain/entities/user_entity.dart';
+import 'package:ecommerce_clean_architecture/features/auth/domain/repo/auth_repo.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+class AuthRepoImplementation implements AuthRepo {
+  AuthService authService;
+  AuthRepoImplementation({required this.authService});
+  @override
+  Future<Either<Failure, UserEntity>> createNewAccount({
+    required String email,
+    required String password,
+    required String name,
+  }) async {
+    try {
+      final user =
+          await authService.register(email: email, password: password) as User;
+      UserEntity userEntity = UserEntity(
+        name: name,
+        email: email,
+        uId: user.uid,
+      );
+      return Right(userEntity);
+    } on CustomException catch (e) {
+      log(
+        "error happend in AuthRepoImplementation in createNewAccount the error : $e",
+      );
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> signIn() {
+    // TODO: implement signIn
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> deleteUser() {
+    // TODO: implement deleteUser
+    throw UnimplementedError();
+  }
+}
