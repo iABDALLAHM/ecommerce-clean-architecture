@@ -1,4 +1,5 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/services/shared_prefs_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/login_view.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +45,10 @@ class OnBoardingPageViewItem extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         Navigator.of(context).pushNamed(LoginView.routeName);
+                        SharedPrefsService.setBool(
+                          key: kOnBoardingSeen,
+                          value: true,
+                        );
                       },
                       child: Text("تخط", style: AppStyles.textStyle13Regular),
                     ),

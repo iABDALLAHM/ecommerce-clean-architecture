@@ -28,12 +28,13 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  flutter_localizations:
-    sdk: flutter
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_svg: ^2.2.3
+  shared_preferences: ^2.5.4
 
 dev_dependencies:
   flutter_lints: ^6.0.0
@@ -87,4 +88,3 @@ flutter_assets:
   classname: Assets
 flutter_intl:
   enabled: true
-
