@@ -21,7 +21,7 @@ class LoginViewBody extends StatelessWidget {
           const SizedBox(height: 24),
           CustomTextFormField(hintText: "البريد الإلكتروني"),
           const SizedBox(height: 16),
-          CustomPasswordField(hintText: "كلمة المرور"),
+          CustomPasswordField(),
           const SizedBox(height: 16),
           ForgetPasswordSection(),
           const SizedBox(height: 33),

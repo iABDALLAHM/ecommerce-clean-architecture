@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/views/register_view.dart';
 import 'package:flutter/material.dart';
 
 class LoginRichText extends StatelessWidget {
@@ -18,7 +19,7 @@ class LoginRichText extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            // Navigator.of(context).pushNamed();
+            Navigator.of(context).pushNamed(RegisterView.routeName);
           },
           child: Text(
             "قم بإنشاء حساب",

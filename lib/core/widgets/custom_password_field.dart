@@ -2,8 +2,7 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomPasswordField extends StatefulWidget {
-  const CustomPasswordField({super.key, required this.hintText});
-  final String hintText;
+  const CustomPasswordField({super.key});
 
   @override
   State<CustomPasswordField> createState() => _CustomPasswordFieldState();
@@ -35,7 +34,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
               ? Icon(Icons.visibility_off, color: Color(0xffC9CECF))
               : Icon(Icons.remove_red_eye, color: Color(0xffC9CECF)),
         ),
-        hintText: widget.hintText,
+        hintText:"كلمة المرور",
         hintStyle: AppStyles.textStyle13Bold.copyWith(color: Color(0xff949D9E)),
         border: buildOutlineInputBorder(),
         enabledBorder: buildOutlineInputBorder(),
