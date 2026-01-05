@@ -16,43 +16,45 @@ class LoginViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-      child: Column(
-        children: [
-          const SizedBox(height: 24),
-          CustomTextFormField(hintText: "البريد الإلكتروني"),
-          const SizedBox(height: 16),
-          CustomPasswordField(),
-          const SizedBox(height: 16),
-          ForgetPasswordSection(),
-          const SizedBox(height: 33),
-          SizedBox(
-            width: double.infinity,
-            height: 54,
-            child: CustomButton(text: "تسجيل دخول", onPressed: () {}),
-          ),
-          const SizedBox(height: 33),
-          LoginRichText(),
-          const SizedBox(height: 33),
-          OrDividerSection(),
-          const SizedBox(height: 16),
-          SocialCustomButton(
-            onPressed: () {},
-            text: "تسجيل بواسطة فيسبوك",
-            icon: Assets.imagesFacebookSocialIcon,
-          ),
-          const SizedBox(height: 16),
-          SocialCustomButton(
-            onPressed: () {},
-            text: "تسجيل بواسطة جوجل",
-            icon: Assets.imagesGoogleSocialIcon,
-          ),
-          const SizedBox(height: 16),
-          SocialCustomButton(
-            onPressed: () {},
-            text: "تسجيل بواسطة أبل",
-            icon: Assets.imagesAppleSocialIcon,
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 24),
+            CustomTextFormField(hintText: "البريد الإلكتروني"),
+            const SizedBox(height: 16),
+            CustomPasswordField(),
+            const SizedBox(height: 16),
+            ForgetPasswordSection(),
+            const SizedBox(height: 33),
+            SizedBox(
+              width: double.infinity,
+              height: 54,
+              child: CustomButton(text: "تسجيل دخول", onPressed: () {}),
+            ),
+            const SizedBox(height: 33),
+            LoginRichText(),
+            const SizedBox(height: 33),
+            OrDividerSection(),
+            const SizedBox(height: 16),
+            SocialCustomButton(
+              onPressed: () {},
+              text: "تسجيل بواسطة فيسبوك",
+              icon: Assets.imagesFacebookSocialIcon,
+            ),
+            const SizedBox(height: 16),
+            SocialCustomButton(
+              onPressed: () {},
+              text: "تسجيل بواسطة جوجل",
+              icon: Assets.imagesGoogleSocialIcon,
+            ),
+            const SizedBox(height: 16),
+            SocialCustomButton(
+              onPressed: () {},
+              text: "تسجيل بواسطة أبل",
+              icon: Assets.imagesAppleSocialIcon,
+            ),
+          ],
+        ),
       ),
     );
   }
