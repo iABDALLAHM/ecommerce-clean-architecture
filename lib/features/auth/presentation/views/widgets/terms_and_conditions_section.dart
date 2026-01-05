@@ -4,15 +4,19 @@ import 'package:ecommerce_clean_architecture/features/auth/presentation/views/wi
 import 'package:flutter/material.dart';
 
 class TermsAndConditionsSection extends StatelessWidget {
-  const TermsAndConditionsSection({super.key});
-
+  const TermsAndConditionsSection({super.key, required this.onChange});
+  final ValueChanged<bool> onChange;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 16),
-          child: CustomTermsAndConditionsButton(),
+          child: CustomTermsAndConditionsButton(
+            onChange: (value) {
+              onChange(value);
+            },
+          ),
         ),
         Expanded(
           child: Text.rich(

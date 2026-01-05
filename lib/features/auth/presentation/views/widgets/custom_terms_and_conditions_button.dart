@@ -2,8 +2,8 @@ import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomTermsAndConditionsButton extends StatefulWidget {
-  const CustomTermsAndConditionsButton({super.key});
-
+  const CustomTermsAndConditionsButton({super.key, required this.onChange});
+  final ValueChanged<bool> onChange;
   @override
   State<CustomTermsAndConditionsButton> createState() =>
       _CustomTermsAndConditionsButtonState();
@@ -11,12 +11,13 @@ class CustomTermsAndConditionsButton extends StatefulWidget {
 
 class _CustomTermsAndConditionsButtonState
     extends State<CustomTermsAndConditionsButton> {
-  bool isSelected = true;
+  bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         isSelected = !isSelected;
+        widget.onChange(isSelected);
         setState(() {});
       },
       child: Container(

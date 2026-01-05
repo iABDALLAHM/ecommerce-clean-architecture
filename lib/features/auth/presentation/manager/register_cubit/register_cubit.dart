@@ -4,14 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterCubit extends Cubit<RegisterStates> {
   RegisterCubit({required this.authRepo}) : super(InitialRegisterState());
-
-  AuthRepo authRepo;
-
+  final AuthRepo authRepo;
   Future register({
     required String email,
     required String name,
     required String password,
   }) async {
+    emit(LoadingRegisterState());
     var result = await authRepo.createNewAccount(
       email: email,
       password: password,

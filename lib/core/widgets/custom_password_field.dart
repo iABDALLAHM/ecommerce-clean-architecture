@@ -2,8 +2,8 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomPasswordField extends StatefulWidget {
-  const CustomPasswordField({super.key});
-
+  const CustomPasswordField({super.key, this.onSaved});
+  final Function(String?)? onSaved;
   @override
   State<CustomPasswordField> createState() => _CustomPasswordFieldState();
 }
@@ -13,9 +13,10 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onSaved:widget.onSaved,
       obscureText: isVisible,
       validator: (value) {
-        if (value == null || value.isEmpty) {
+        if (value != null && value.isEmpty) {
           return "";
         } else {
           return null;

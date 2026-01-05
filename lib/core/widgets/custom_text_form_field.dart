@@ -2,13 +2,19 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({super.key, required this.hintText});
+  const CustomTextFormField({
+    super.key,
+    required this.hintText,
+    required this.onSaved,
+  });
   final String hintText;
+  final Function(String?) onSaved;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onSaved: onSaved,
       validator: (value) {
-        if (value == null || value.isEmpty) {
+        if (value != null && value.isEmpty) {
           return "";
         } else {
           return null;
