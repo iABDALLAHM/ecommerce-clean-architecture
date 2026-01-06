@@ -28,6 +28,8 @@ class FirebaseAuthService implements AuthService {
           exceptionMeassge:
               "الايميل او الباسورد غير صحيح برجاء المحاولة مرة آخرى",
         );
+      } else if (e.code == "network-request-failed") {
+        throw CustomException(exceptionMeassge: "لا يوجد اتصال بالإنترنت");
       } else {
         throw CustomException(
           exceptionMeassge: "حدث خطأ ما برجاء المحاولة مرة آخرى",
@@ -64,6 +66,8 @@ class FirebaseAuthService implements AuthService {
           exceptionMeassge:
               "الايميل او الباسورد غير صحيح برجاء المحاولة مرة اخرى",
         );
+      } else if (e.code == "network-request-failed") {
+        throw CustomException(exceptionMeassge: "لا يوجد اتصال بالإنترنت");
       } else {
         throw CustomException(
           exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
