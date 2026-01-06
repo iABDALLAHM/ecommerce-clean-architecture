@@ -1,5 +1,8 @@
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/cart_body.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_button_navigaton_bar.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/home_products_body.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/home_body.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_body.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/profile_body.dart';
 import 'package:flutter/material.dart';
 
 class MainView extends StatefulWidget {
@@ -26,9 +29,4 @@ class _MainViewState extends State<MainView> {
   }
 }
 
-List<Widget> homeBody = [
-  HomeProductsBody(),
-  Placeholder(),
-  Placeholder(),
-  Placeholder(),
-];
+List<Widget> homeBody = [HomeBody(), ProductsBody(), CartBody(), ProfileBody()];
