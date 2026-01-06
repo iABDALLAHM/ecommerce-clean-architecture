@@ -5,6 +5,10 @@ abstract class AppStyles {
     fontSize: 13,
     fontWeight: FontWeight.w600,
   );
+  static TextStyle textStyle11SemiBold = TextStyle(
+    fontSize: 11,
+    fontWeight: FontWeight.w600,
+  );
   static TextStyle textStyle13Regular = TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.w400,
