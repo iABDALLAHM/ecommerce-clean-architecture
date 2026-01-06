@@ -1,6 +1,5 @@
-import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/featured_item_button.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/sale_and_shipping_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -11,10 +10,10 @@ class CustomFeaturedItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var width = MediaQuery.sizeOf(context).width;
     return Container(
-      color: Colors.red,
+      color: Colors.amber,
       width: width,
       child: AspectRatio(
-        aspectRatio: 342 / 158,
+        aspectRatio: 330 / 158,
         child: Stack(
           children: [
             Positioned(
@@ -42,32 +41,9 @@ class CustomFeaturedItem extends StatelessWidget {
                 ),
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 25),
-                  Text(
-                    "عروض العيد",
-                    style: AppStyles.textStyle13Regular.copyWith(
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  const Spacer(),
-                  Text(
-                    "خصم 25%",
-                    style: AppStyles.textStyle19Bold.copyWith(
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 25),
-                  FeaturedItemButton(),
-                  const SizedBox(height: 25),
-                ],
-              ),
+              child: SaleAndShippingSection(),
             ),
           ],
         ),
