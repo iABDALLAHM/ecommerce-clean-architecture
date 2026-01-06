@@ -54,4 +54,10 @@ class AuthRepoImplementation implements AuthRepo {
     // TODO: implement deleteUser
     throw UnimplementedError();
   }
+  
+  @override
+  Future<void> addUserData() {
+    // TODO: implement addUserData
+    throw UnimplementedError();
+  }
 }
