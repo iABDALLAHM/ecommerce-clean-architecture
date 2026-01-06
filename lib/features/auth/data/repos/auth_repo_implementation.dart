@@ -61,7 +61,8 @@ class AuthRepoImplementation implements AuthRepo {
     try {
       var user =
           await authService.signIn(email: email, password: password) as User;
-      UserEntity userEntity = UserEntity(name: "", email: email, uId: user.uid);
+      UserEntity userEntity = await getUserData(uId: user.uid);
+      // saveUserData
       return Right(userEntity);
     } on CustomException catch (e) {
       log("error happend in AuthRepoImplementation in signIn the error : $e");
@@ -76,5 +77,15 @@ class AuthRepoImplementation implements AuthRepo {
       data: UserModel.fromEntity(userEntity).toMap(),
       documentId: userEntity.uId,
     );
+  }
+
+  @override
+  Future<UserEntity> getUserData({required String uId}) async {
+    var userMap = await firestoreService.getData(
+      path: BackendEndPoints.getUserData,
+      documentId: uId,
+    );
+    UserEntity user = UserModel.fromJson(userMap).toEntity();
+    return user;
   }
 }

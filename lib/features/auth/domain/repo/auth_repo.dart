@@ -13,4 +13,5 @@ abstract class AuthRepo {
     required String password,
   });
   Future<void> addUserData({required UserEntity userEntity});
+  Future<UserEntity> getUserData({required String uId});
 }
