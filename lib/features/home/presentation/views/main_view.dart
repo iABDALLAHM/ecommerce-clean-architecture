@@ -24,7 +24,7 @@ class _MainViewState extends State<MainView> {
           setState(() {});
         },
       ),
-      body: homeBody[currentBody],
+      body: SafeArea(child: homeBody[currentBody]),
     );
   }
 }
