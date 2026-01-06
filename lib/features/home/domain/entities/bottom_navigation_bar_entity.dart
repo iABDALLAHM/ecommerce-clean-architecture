@@ -9,27 +9,27 @@ class BottomNavigationBarEntity {
     required this.inActiveIcon,
     required this.iconName,
   });
-  
 }
+
 List<BottomNavigationBarEntity> bottomNavigationList = [
-    BottomNavigationBarEntity(
-      activeIcon: Assets.imagesActiveHomeIcon,
-      inActiveIcon: Assets.imagesInActiveHomeIcon,
-      iconName: "الرئيسية",
-    ),
-    BottomNavigationBarEntity(
-      activeIcon: Assets.imagesActiveProductsIcon,
-      inActiveIcon: Assets.imagesInActiveProductsIcon,
-      iconName: "المنتجات",
-    ),
-    BottomNavigationBarEntity(
-      activeIcon: Assets.imagesActiveCartIcon,
-      inActiveIcon: Assets.imagesInActiveCartIcon,
-      iconName: "سلة التسوق",
-    ),
-    BottomNavigationBarEntity(
-      activeIcon: Assets.imagesActiveAccountIcon,
-      inActiveIcon: Assets.imagesInActiveAccountIcon,
-      iconName: "حسابي",
-    ),
-  ];
+  BottomNavigationBarEntity(
+    activeIcon: Assets.imagesActiveHomeIcon,
+    inActiveIcon: Assets.imagesInActiveHomeIcon,
+    iconName: "الرئيسية",
+  ),
+  BottomNavigationBarEntity(
+    activeIcon: Assets.imagesActiveProductsIcon,
+    inActiveIcon: Assets.imagesInActiveProductsIcon,
+    iconName: "المنتجات",
+  ),
+  BottomNavigationBarEntity(
+    activeIcon: Assets.imagesActiveCartIcon,
+    inActiveIcon: Assets.imagesInActiveCartIcon,
+    iconName: "سلة التسوق",
+  ),
+  BottomNavigationBarEntity(
+    activeIcon: Assets.imagesActiveAccountIcon,
+    inActiveIcon: Assets.imagesInActiveAccountIcon,
+    iconName: "حسابي",
+  ),
+];
