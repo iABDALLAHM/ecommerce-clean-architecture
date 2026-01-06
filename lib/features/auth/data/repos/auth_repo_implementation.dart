@@ -1,9 +1,12 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/services/auth_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service.dart';
+import 'package:ecommerce_clean_architecture/core/services/shared_prefs_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
 import 'package:ecommerce_clean_architecture/features/auth/data/models/user_model.dart';
 import 'package:ecommerce_clean_architecture/features/auth/domain/entities/user_entity.dart';
@@ -62,7 +65,7 @@ class AuthRepoImplementation implements AuthRepo {
       var user =
           await authService.signIn(email: email, password: password) as User;
       UserEntity userEntity = await getUserData(uId: user.uid);
-      // saveUserData
+      saveUserData(userEntity: userEntity);
       return Right(userEntity);
     } on CustomException catch (e) {
       log("error happend in AuthRepoImplementation in signIn the error : $e");
@@ -87,5 +90,14 @@ class AuthRepoImplementation implements AuthRepo {
     );
     UserEntity user = UserModel.fromJson(userMap).toEntity();
     return user;
+  }
+
+  @override
+  Future<void> saveUserData({required UserEntity userEntity}) async {
+    var jsonStringData = jsonEncode(UserModel.fromEntity(userEntity).toMap());
+    await SharedPrefsService.saveData(
+      key: kSaveUserData,
+      value: jsonStringData,
+    );
   }
 }
