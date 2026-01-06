@@ -3,13 +3,20 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/services/auth_service.dart';
+import 'package:ecommerce_clean_architecture/core/services/database_service.dart';
+import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
+import 'package:ecommerce_clean_architecture/features/auth/data/models/user_model.dart';
 import 'package:ecommerce_clean_architecture/features/auth/domain/entities/user_entity.dart';
 import 'package:ecommerce_clean_architecture/features/auth/domain/repo/auth_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepoImplementation implements AuthRepo {
-  AuthService authService;
-  AuthRepoImplementation({required this.authService});
+  final AuthService authService;
+  final DatabaseService firestoreService;
+  AuthRepoImplementation({
+    required this.authService,
+    required this.firestoreService,
+  });
   @override
   Future<Either<Failure, UserEntity>> createNewAccount({
     required String email,
@@ -24,7 +31,20 @@ class AuthRepoImplementation implements AuthRepo {
         email: email,
         uId: user.uid,
       );
-      return Right(userEntity);
+      try {
+        await addUserData(userEntity: userEntity);
+        return Right(userEntity);
+      } catch (e) {
+        authService.delete();
+        log(
+          "error happend in AuthRepoImplementation in createNewAccount in addUserData the error : $e",
+        );
+        return Left(
+          ServerFailure(
+            message: "حدث خطأ اثناء تسجيل البيانات برجاء المحاولة مرة آخرى",
+          ),
+        );
+      }
     } on CustomException catch (e) {
       log(
         "error happend in AuthRepoImplementation in createNewAccount the error : $e",
@@ -50,14 +70,11 @@ class AuthRepoImplementation implements AuthRepo {
   }
 
   @override
-  Future<void> deleteUser() {
-    // TODO: implement deleteUser
-    throw UnimplementedError();
-  }
-  
-  @override
-  Future<void> addUserData() {
-    // TODO: implement addUserData
-    throw UnimplementedError();
+  Future<void> addUserData({required UserEntity userEntity}) async {
+    await firestoreService.addData(
+      path: BackendEndPoints.addUserData,
+      data: UserModel.fromEntity(userEntity).toMap(),
+      documentId: userEntity.uId,
+    );
   }
 }

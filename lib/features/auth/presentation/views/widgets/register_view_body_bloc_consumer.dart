@@ -1,6 +1,7 @@
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/register_cubit/register_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/register_cubit/register_states.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/custom_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/register_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +21,10 @@ class RegisterViewBodyBlocConsumer extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return RegisterViewBody();
+        return CustomProgressWidget(
+          state: state is LoadingRegisterState ? true : false,
+          child: RegisterViewBody(),
+        );
       },
     );
   }

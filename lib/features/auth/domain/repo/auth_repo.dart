@@ -12,6 +12,5 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
-  Future<void> deleteUser();
-  Future<void> addUserData();
+  Future<void> addUserData({required UserEntity userEntity});
 }
