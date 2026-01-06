@@ -65,7 +65,8 @@ class AuthRepoImplementation implements AuthRepo {
       var user =
           await authService.signIn(email: email, password: password) as User;
       UserEntity userEntity = await getUserData(uId: user.uid);
-      saveUserData(userEntity: userEntity);
+      await saveUserData(userEntity: userEntity);
+      await SharedPrefsService.setBool(key: kIsUserSignIn, value: true);
       return Right(userEntity);
     } on CustomException catch (e) {
       log("error happend in AuthRepoImplementation in signIn the error : $e");

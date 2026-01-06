@@ -2,6 +2,7 @@ import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/services/shared_prefs_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/login_view.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/main_view.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -38,12 +39,25 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
   Future<void> navigateToNextScreen(BuildContext context) async {
     await Future.delayed(Duration(seconds: 1), () {
-      var onBoardingSeen = SharedPrefsService.getBool(key: kOnBoardingSeen);
-      if (onBoardingSeen) {
-        Navigator.of(context).pushNamed(LoginView.routeName);
-      } else {
-        Navigator.of(context).pushNamed(OnboardingView.routeName);
-      }
+      handleIfOnBoardingSeen(context);
     });
+  }
+
+  void handleIfOnBoardingSeen(BuildContext context) {
+    var onBoardingSeen = SharedPrefsService.getBool(key: kOnBoardingSeen);
+    if (onBoardingSeen) {
+      handleIfUserLoggedIn(context);
+    } else {
+      Navigator.of(context).pushNamed(OnboardingView.routeName);
+    }
+  }
+
+  void handleIfUserLoggedIn(BuildContext context) {
+    var isUserLoggedIn = SharedPrefsService.getBool(key: kIsUserSignIn);
+    if (isUserLoggedIn) {
+      Navigator.of(context).pushNamed(MainView.routeName);
+    } else {
+      Navigator.of(context).pushNamed(LoginView.routeName);
+    }
   }
 }
