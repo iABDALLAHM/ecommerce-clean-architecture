@@ -32,7 +32,10 @@ class ECommerceApp extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       locale: const Locale("ar"),
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: kFontFamily, colorSchemeSeed: Colors.white),
+      theme: ThemeData(
+        fontFamily: kFontFamily,
+        colorSchemeSeed: Color(0xffFFFFFF),
+      ),
       onGenerateRoute: onGenetateRoute,
       initialRoute: SplashView.routeName,
     );

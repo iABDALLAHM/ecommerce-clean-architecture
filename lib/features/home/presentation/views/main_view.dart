@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/cart_body.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_button_navigaton_bar.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/home_body.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/home_navigator.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_body.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/profile_body.dart';
 import 'package:flutter/material.dart';
@@ -24,9 +24,17 @@ class _MainViewState extends State<MainView> {
           setState(() {});
         },
       ),
-      body: SafeArea(child: homeBody[currentBody]),
+      body: SafeArea(
+        child: IndexedStack(index: currentBody, children: tabs),
+      ),
     );
   }
 }
 
-List<Widget> homeBody = [HomeBody(), ProductsBody(), CartBody(), ProfileBody()];
+List<Widget> tabs = [
+  HomeNavigator(),
+  ProductsBody(),
+  CartBody(),
+  ProfileBody(),
+];
+

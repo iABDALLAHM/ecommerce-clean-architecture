@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/best_selling_view_header.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_fruit_items_grid_view.dart';
 import 'package:flutter/material.dart';
 
 class BestSellingViewBody extends StatelessWidget {
@@ -21,6 +22,7 @@ class BestSellingViewBody extends StatelessWidget {
             ),
           ),
         ),
+        CustomFruitItemsGridView(),
       ],
     );
   }

@@ -2,6 +2,7 @@ import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_search_field.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/best_selling_header.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_featured_list.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_fruit_items_grid_view.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_home_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -25,10 +26,12 @@ class HomeBody extends StatelessWidget {
                 CustomFeaturedList(),
                 const SizedBox(height: 12),
                 BestSellingHeader(),
+                const SizedBox(height: 8),
               ],
             ),
           ),
         ),
+        CustomFruitItemsGridView(),
       ],
     );
   }
