@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/login_view.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/register_view.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/best_selling_view.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/main_view.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:ecommerce_clean_architecture/features/splash/presentation/views/splash_view.dart';
@@ -17,6 +18,8 @@ Route onGenetateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => RegisterView());
     case MainView.routeName:
       return MaterialPageRoute(builder: (context) => MainView());
+    case BestSellingView.routeName:
+      return MaterialPageRoute(builder: (context) => BestSellingView());
     default:
       return MaterialPageRoute(builder: (context) => Scaffold());
   }

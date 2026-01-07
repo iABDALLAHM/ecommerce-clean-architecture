@@ -1,4 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/best_selling_view.dart';
 import 'package:flutter/material.dart';
 
 class BestSellingHeader extends StatelessWidget {
@@ -11,7 +12,9 @@ class BestSellingHeader extends StatelessWidget {
       children: [
         Text("الأكثر مبيعًا", style: AppStyles.textStyle16Bold),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(BestSellingView.routeName);
+          },
           child: Text(
             "المزيد",
             style: AppStyles.textStyle13Regular.copyWith(
