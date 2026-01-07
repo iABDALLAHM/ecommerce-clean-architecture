@@ -1,6 +1,7 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_search_field.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_app_bar.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_grid_view.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_header.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +28,7 @@ class ProductsBody extends StatelessWidget {
             ),
           ),
         ),
+        ProductsGridView(),
       ],
     );
   }

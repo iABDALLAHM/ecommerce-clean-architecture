@@ -1,3 +1,4 @@
+import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,7 +11,7 @@ class ProductsHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text("$productsLength نتائج"),
+        Text("$productsLength نتائج", style: AppStyles.textStyle16Bold),
         Container(
           padding: EdgeInsets.symmetric(vertical: 5, horizontal: 12),
           decoration: BoxDecoration(
