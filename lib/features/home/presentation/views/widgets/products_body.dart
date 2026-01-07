@@ -1,3 +1,7 @@
+import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/widgets/custom_search_field.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_app_bar.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_header.dart';
 import 'package:flutter/material.dart';
 
 class ProductsBody extends StatelessWidget {
@@ -5,6 +9,25 @@ class ProductsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("Products");
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+            child: Column(
+              children: [
+                const SizedBox(height: 20),
+                ProductsAppBar(),
+                const SizedBox(height: 16),
+                CustomSearchField(),
+                const SizedBox(height: 16),
+                ProductsHeader(productsLength: 3),
+                const SizedBox(height: 16),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
