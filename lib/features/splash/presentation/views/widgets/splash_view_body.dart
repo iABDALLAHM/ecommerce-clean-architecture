@@ -55,7 +55,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   void handleIfUserLoggedIn(BuildContext context) {
     var isUserLoggedIn = SharedPrefsService.getBool(key: kIsUserSignIn);
     if (isUserLoggedIn) {
-      Navigator.of(context).pushNamed(MainView.routeName);
+      Navigator.of(context).pushReplacementNamed(MainView.routeName);
     } else {
       Navigator.of(context).pushNamed(LoginView.routeName);
     }

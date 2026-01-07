@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/best_selling_view.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/best_selling_view_body.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/home_body.dart';
 import 'package:flutter/material.dart';
 
@@ -9,10 +9,12 @@ class HomeNavigator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Navigator(
       onGenerateRoute: (settings) {
-        if (settings.name == BestSellingView.routeName) {
-          return MaterialPageRoute(builder: (context) => BestSellingView());
+        switch (settings.name) {
+          case BestSellingBody.routeName:
+            return MaterialPageRoute(builder: (context) => BestSellingBody());
+          default:
+            return MaterialPageRoute(builder: (context) => HomeBody());
         }
-        return MaterialPageRoute(builder: (context) => HomeBody());
       },
     );
   }
