@@ -1,4 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/check_out_view.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/cart_app_bar.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/cart_header.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/cart_item.dart';
@@ -24,7 +25,12 @@ class CartBody extends StatelessWidget {
               SizedBox(
                 height: 54,
                 width: double.infinity,
-                child: CustomButton(text: "الدفع  120جنيه", onPressed: () {}),
+                child: CustomButton(
+                  text: "الدفع  120جنيه",
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(CheckOutView.routeName);
+                  },
+                ),
               ),
             ],
           ),
