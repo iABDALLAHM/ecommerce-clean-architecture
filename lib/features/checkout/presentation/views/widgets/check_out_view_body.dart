@@ -29,18 +29,14 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-      child: Column(
-        children: [
-          const SizedBox(height: 16),
-          CheckOutSteps(
-            currentPage: currentPage,
-            pageController: pageController,
-          ),
-          Expanded(child: CheckOutPageView(pageController: pageController)),
-          SizedBox(
+    return Column(
+      children: [
+        const SizedBox(height: 16),
+        CheckOutSteps(currentPage: currentPage, pageController: pageController),
+        Expanded(child: CheckOutPageView(pageController: pageController)),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+          child: SizedBox(
             width: double.infinity,
             height: 54,
             child: CustomButton(
@@ -53,9 +49,9 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
               },
             ),
           ),
-          SizedBox(height: height * 0.4),
-        ],
-      ),
+        ),
+        const SizedBox(height: 100),
+      ],
     );
   }
 }

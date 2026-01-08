@@ -1,3 +1,5 @@
+import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 class AddressSection extends StatelessWidget {
@@ -6,8 +8,29 @@ class AddressSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: [const SizedBox(height: 24), Text("AddressSection")],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+        child: Column(
+          children: [
+            const SizedBox(height: 24),
+            CustomTextFormField(hintText: "الاسم كامل", onSaved: (value) {}),
+            const SizedBox(height: 8),
+            CustomTextFormField(
+              hintText: "البريد الإلكتروني",
+              onSaved: (value) {},
+            ),
+            const SizedBox(height: 8),
+            CustomTextFormField(hintText: "العنوان", onSaved: (value) {}),
+            const SizedBox(height: 8),
+            CustomTextFormField(hintText: "المدينه", onSaved: (value) {}),
+            const SizedBox(height: 8),
+            CustomTextFormField(
+              hintText: "رقم الطابق , رقم الشقه ..",
+              onSaved: (value) {},
+            ),
+            const SizedBox(height: 8),
+          ],
+        ),
       ),
     );
   }

@@ -4,5 +4,9 @@ import 'package:ecommerce_clean_architecture/features/checkout/presentation/view
 import 'package:flutter/material.dart';
 
 List<Widget> getPages() {
-  return [ShippingSection(), AddressSection(), PaymentSection()];
+  return [
+    ShippingSection(),
+    AddressSection(),
+    PaymentSection(),
+  ];
 }

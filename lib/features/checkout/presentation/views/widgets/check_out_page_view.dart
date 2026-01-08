@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class CheckOutPageView extends StatelessWidget {
   const CheckOutPageView({super.key, required this.pageController});
   final PageController pageController;
+
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
