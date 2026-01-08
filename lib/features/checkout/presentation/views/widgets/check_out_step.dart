@@ -3,9 +3,10 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class CheckOutStep extends StatelessWidget {
-  const CheckOutStep({super.key, required this.isSelected, required this.text});
+  const CheckOutStep({super.key, required this.isSelected, required this.text, required this.stepIndex});
   final bool isSelected;
   final String text;
+  final int stepIndex;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -24,7 +25,7 @@ class CheckOutStep extends StatelessWidget {
                       horizontal: 6,
                       vertical: 1,
                     ),
-                    child: Text("3", style: AppStyles.textStyle13SemiBold),
+                    child: Text("$stepIndex", style: AppStyles.textStyle13SemiBold),
                   ),
           ),
         ),

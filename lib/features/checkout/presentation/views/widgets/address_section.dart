@@ -5,8 +5,10 @@ class AddressSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(child: Column(children: [
-      const SizedBox(height: 24,)
-    ],),);
+    return SingleChildScrollView(
+      child: Column(
+        children: [const SizedBox(height: 24), Text("AddressSection")],
+      ),
+    );
   }
 }

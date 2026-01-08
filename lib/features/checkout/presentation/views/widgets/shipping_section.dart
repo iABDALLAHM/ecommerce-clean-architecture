@@ -7,9 +7,7 @@ class ShippingSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-        children: [
-          const SizedBox(height: 32,)
-        ],
+        children: [const SizedBox(height: 32), Text("ShippingSection")],
       ),
     );
   }
