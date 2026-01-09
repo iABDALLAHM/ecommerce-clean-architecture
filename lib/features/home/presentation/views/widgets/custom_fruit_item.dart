@@ -1,11 +1,11 @@
+import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 class CustomFruitItem extends StatelessWidget {
-  const CustomFruitItem({super.key});
-
+  const CustomFruitItem({super.key, required this.productEntity});
+  final ProductEntity productEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,23 +18,23 @@ class CustomFruitItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(Icons.favorite_outline),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [Image.asset(Assets.imagesWatermelonForTest)],
-          ),
+          // Flexible(child: Image.network(productEntity.imageUrl)),
           const SizedBox(height: 24),
           Row(
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("بطيخ"),
+                  Text(
+                    productEntity.name,
+                    style: AppStyles.textStyle13SemiBold,
+                  ),
                   const SizedBox(height: 4),
                   Text.rich(
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: "20جنية",
+                          text: "${productEntity.price}جنية",
                           style: AppStyles.textStyle13Bold.copyWith(
                             color: AppColors.secondryColor,
                           ),

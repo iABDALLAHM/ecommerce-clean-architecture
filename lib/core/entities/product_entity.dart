@@ -6,7 +6,7 @@ class ProductEntity {
   final String code;
   final String discription;
   final bool isFeatured;
-  final String? imageUrl;
+  final String imageUrl;
   final bool isOrganic;
   final int expirationMonths;
   final int numberOfCalories;
