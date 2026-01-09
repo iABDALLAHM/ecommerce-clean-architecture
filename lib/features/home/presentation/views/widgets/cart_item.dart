@@ -1,3 +1,4 @@
+import 'package:ecommerce_clean_architecture/core/entities/cart_item_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_item_image.dart';
@@ -6,8 +7,8 @@ import 'package:ecommerce_clean_architecture/features/home/presentation/views/wi
 import 'package:flutter/material.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key});
-
+  const CartItem({super.key, required this.cartItemEntity});
+  final CartItemEntity cartItemEntity;
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
