@@ -22,10 +22,13 @@ class CartItem extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("بطيخ", style: AppStyles.textStyle13Bold),
+                Text(
+                  cartItemEntity.productEntity.name,
+                  style: AppStyles.textStyle13Bold,
+                ),
                 const SizedBox(height: 4),
                 Text(
-                  "3 كم",
+                  "${cartItemEntity.calculateTotalWeight()} كم",
                   style: AppStyles.textStyle13Regular.copyWith(
                     color: AppColors.secondryColor,
                   ),
@@ -49,7 +52,7 @@ class CartItem extends StatelessWidget {
               children: [
                 Icon(Icons.delete_outline, color: Color(0xff949D9E)),
                 Text(
-                  "60 جنيه ",
+                  "${cartItemEntity.calculateTotalPrice()} جنيه ",
                   style: AppStyles.textStyle16Bold.copyWith(
                     color: AppColors.secondryColor,
                   ),
