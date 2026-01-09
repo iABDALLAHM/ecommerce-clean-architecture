@@ -3,6 +3,7 @@ import 'package:ecommerce_clean_architecture/features/home/presentation/views/wi
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/home_body_bloc_provider.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/home_navigator.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_body.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_body_bloc_provider.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/profile_body.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +35,7 @@ class _MainViewState extends State<MainView> {
 
 List<Widget> tabs = [
   HomeBodyBlocProvider(child: HomeNavigator()),
-  ProductsBody(),
+  ProductsBodyBlocProvider(child: ProductsBody()),
   CartBody(),
   ProfileBody(),
 ];
