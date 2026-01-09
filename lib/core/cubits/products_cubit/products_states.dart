@@ -1,15 +1,15 @@
 import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
 
-abstract class GetProductsStates {}
+abstract class ProductsStates {}
 
-final class InitialGetProductsState extends GetProductsStates {}
+final class InitialProductsState extends ProductsStates {}
 
-final class LoadingGetProductsState extends GetProductsStates {}
-final class SuccessGetProductsState extends GetProductsStates {
+final class LoadingProductsState extends ProductsStates {}
+final class SuccessProductsState extends ProductsStates {
   final List<ProductEntity> products;
 
-  SuccessGetProductsState({required this.products});
+  SuccessProductsState({required this.products});
   
 }
-final class FailureGetProductsState extends GetProductsStates {}
+final class FailureProductsState extends ProductsStates {}
 

@@ -5,11 +5,14 @@ import 'package:ecommerce_clean_architecture/core/services/shared_prefs_service.
 import 'package:ecommerce_clean_architecture/features/splash/presentation/views/splash_view.dart';
 import 'package:ecommerce_clean_architecture/firebase_options.dart';
 import 'package:ecommerce_clean_architecture/generated/l10n.dart';
+import 'package:ecommerce_clean_architecture/simple_bloc_observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
+  Bloc.observer = SimpleBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await SharedPrefsService.init();
