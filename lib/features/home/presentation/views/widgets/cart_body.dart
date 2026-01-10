@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 class CartBody extends StatelessWidget {
   const CartBody({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -32,6 +32,7 @@ class CartBody extends StatelessWidget {
             child: CustomButton(
               text: "الدفع  120جنيه",
               onPressed: () {
+             
                 Navigator.of(context).pushNamed(CheckOutView.routeName);
               },
             ),

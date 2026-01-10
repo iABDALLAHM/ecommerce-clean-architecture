@@ -1,11 +1,8 @@
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/cart_body.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/cart_cubit.dart/cart_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_button_navigaton_bar.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/home_body_bloc_provider.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/home_navigator.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_body.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_body_bloc_provider.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/profile_body.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/main_view_body_bloc_consumer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -19,23 +16,19 @@ class _MainViewState extends State<MainView> {
   int currentBody = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(
-        onChange: (value) {
-          currentBody = value;
-          setState(() {});
-        },
-      ),
-      body: SafeArea(
-        child: IndexedStack(index: currentBody, children: tabs),
+    return BlocProvider(
+      create: (context) => CartCubit(),
+      child: Scaffold(
+        bottomNavigationBar: CustomBottomNavigationBar(
+          onChange: (value) {
+            currentBody = value;
+            setState(() {});
+          },
+        ),
+        body: SafeArea(
+          child: MainViewBodyBlocConsumer(currentBody: currentBody),
+        ),
       ),
     );
   }
 }
-
-List<Widget> tabs = [
-  HomeBodyBlocProvider(child: HomeNavigator()),
-  ProductsBodyBlocProvider(child: ProductsBody()),
-  CartBody(),
-  ProfileBody(),
-];

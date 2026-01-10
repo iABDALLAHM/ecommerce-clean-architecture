@@ -1,7 +1,9 @@
 import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/cart_cubit.dart/cart_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomFruitItem extends StatelessWidget {
   const CustomFruitItem({super.key, required this.productEntity});
@@ -51,13 +53,20 @@ class CustomFruitItem extends StatelessWidget {
                 ],
               ),
               Spacer(),
-              Container(
-                padding: EdgeInsets.all(10),
-                decoration: ShapeDecoration(
-                  color: AppColors.primaryColor,
-                  shape: OvalBorder(),
+              GestureDetector(
+                onTap: () {
+                  context.read<CartCubit>().addProduct(
+                    productEntity: productEntity,
+                  );
+                },
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: ShapeDecoration(
+                    color: AppColors.primaryColor,
+                    shape: OvalBorder(),
+                  ),
+                  child: Icon(Icons.add, color: Colors.white),
                 ),
-                child: Icon(Icons.add, color: Colors.white),
               ),
             ],
           ),
