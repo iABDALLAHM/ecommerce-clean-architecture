@@ -13,7 +13,8 @@ class CartCubit extends Cubit<CartStates> {
       productEntity: productEntity,
     );
     if (isExist) {
-      cartItemEntity.increaseCount();
+      // emit state that tell the user the product is exist or increase a product count
+      // cartItemEntity.increaseCount();
       emit(ProductExistState());
     } else {
       cartEntity.addCartItem(cartItem: cartItemEntity);
