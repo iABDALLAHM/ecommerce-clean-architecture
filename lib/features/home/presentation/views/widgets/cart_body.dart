@@ -7,9 +7,14 @@ import 'package:ecommerce_clean_architecture/features/home/presentation/views/wi
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CartBody extends StatelessWidget {
+class CartBody extends StatefulWidget {
   const CartBody({super.key});
 
+  @override
+  State<CartBody> createState() => _CartBodyState();
+}
+
+class _CartBodyState extends State<CartBody> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -25,7 +30,9 @@ class CartBody extends StatelessWidget {
             ],
           ),
         ),
-        CartItemsListView(cartItems: []),
+        CartItemsListView(
+          cartItems: context.watch<CartCubit>().cartEntity.cartItems,
+        ),
         SliverToBoxAdapter(child: const SizedBox(height: 24)),
         SliverToBoxAdapter(
           child: SizedBox(

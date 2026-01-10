@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class DecrementButton extends StatelessWidget {
-  const DecrementButton({super.key});
-
+  const DecrementButton({super.key, required this.onPressed});
+  final Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onPressed,
       child: Container(
         padding: EdgeInsets.all(6),
         decoration: ShapeDecoration(

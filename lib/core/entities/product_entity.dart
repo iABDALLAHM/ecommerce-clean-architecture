@@ -1,6 +1,7 @@
 import 'package:ecommerce_clean_architecture/core/entities/review_entity.dart';
+import 'package:equatable/equatable.dart';
 
-class ProductEntity {
+class ProductEntity extends Equatable {
   final String name;
   final num price;
   final String code;
@@ -15,7 +16,7 @@ class ProductEntity {
   final List<ReviewEntity> reviews;
   final int sellingCount;
 
-  ProductEntity({
+  const ProductEntity({
     required this.name,
     required this.price,
     required this.code,
@@ -31,4 +32,7 @@ class ProductEntity {
     required this.reviews,
     required this.sellingCount,
   });
+  
+  @override
+  List<Object?> get props => [code];
 }
