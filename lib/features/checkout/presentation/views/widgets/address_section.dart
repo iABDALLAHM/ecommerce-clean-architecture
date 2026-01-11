@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AddressSection extends StatelessWidget {
+class AddressSection extends StatefulWidget {
   const AddressSection({
     super.key,
     required this.formKey,
@@ -13,15 +13,23 @@ class AddressSection extends StatelessWidget {
   });
   final GlobalKey<FormState> formKey;
   final ValueListenable<AutovalidateMode> valueListenable;
+
+  @override
+  State<AddressSection> createState() => _AddressSectionState();
+}
+
+class _AddressSectionState extends State<AddressSection>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
         child: ValueListenableBuilder<AutovalidateMode>(
-          valueListenable: valueListenable,
+          valueListenable: widget.valueListenable,
           builder: (context, value, child) => Form(
-            key: formKey,
+            key: widget.formKey,
             autovalidateMode: value,
             child: Column(
               children: [
@@ -29,7 +37,7 @@ class AddressSection extends StatelessWidget {
                 CustomTextFormField(
                   hintText: "الاسم كامل",
                   onSaved: (value) {
-                    context.read<OrderEntity>().shippingAddressEntity!.name =
+                    context.read<OrderEntity>().shippingAddressEntity.name =
                         value;
                   },
                 ),
@@ -37,7 +45,7 @@ class AddressSection extends StatelessWidget {
                 CustomTextFormField(
                   hintText: "البريد الإلكتروني",
                   onSaved: (value) {
-                    context.read<OrderEntity>().shippingAddressEntity!.email =
+                    context.read<OrderEntity>().shippingAddressEntity.email =
                         value;
                   },
                 ),
@@ -45,7 +53,7 @@ class AddressSection extends StatelessWidget {
                 CustomTextFormField(
                   hintText: "العنوان",
                   onSaved: (value) {
-                    context.read<OrderEntity>().shippingAddressEntity!.address =
+                    context.read<OrderEntity>().shippingAddressEntity.address =
                         value;
                   },
                 ),
@@ -53,7 +61,7 @@ class AddressSection extends StatelessWidget {
                 CustomTextFormField(
                   hintText: "المدينه",
                   onSaved: (value) {
-                    context.read<OrderEntity>().shippingAddressEntity!.city =
+                    context.read<OrderEntity>().shippingAddressEntity.city =
                         value;
                   },
                 ),
@@ -64,7 +72,7 @@ class AddressSection extends StatelessWidget {
                   onSaved: (value) {
                     context
                             .read<OrderEntity>()
-                            .shippingAddressEntity!
+                            .shippingAddressEntity
                             .addressDetails =
                         value;
                   },
@@ -73,7 +81,7 @@ class AddressSection extends StatelessWidget {
                 CustomTextFormField(
                   hintText: "رقم الهاتف",
                   onSaved: (value) {
-                    context.read<OrderEntity>().shippingAddressEntity!.phone =
+                    context.read<OrderEntity>().shippingAddressEntity.phone =
                         value;
                   },
                   textInputType: TextInputType.number,
@@ -86,4 +94,7 @@ class AddressSection extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

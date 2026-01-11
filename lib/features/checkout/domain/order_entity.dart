@@ -4,11 +4,7 @@ import 'package:ecommerce_clean_architecture/features/checkout/domain/shipping_a
 class OrderEntity {
   final CartEntity cartEntity;
   bool? payWithCash;
-  ShippingAddressEntity? shippingAddressEntity = ShippingAddressEntity();
+  ShippingAddressEntity shippingAddressEntity = ShippingAddressEntity();
 
-  OrderEntity({
-    required this.cartEntity,
-    this.payWithCash,
-    this.shippingAddressEntity,
-  });
+  OrderEntity({required this.cartEntity, this.payWithCash});
 }
