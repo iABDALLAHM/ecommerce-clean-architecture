@@ -1,3 +1,4 @@
+import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/check_out_view.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/manager/cart_cubit/cart_cubit.dart';
@@ -16,7 +17,13 @@ class CustomCartButton extends StatelessWidget {
         text:
             "دفع ${context.watch<CartCubit>().cartEntity.calculateTotalPrice().round()} جنيه مصري",
         onPressed: () {
-          Navigator.of(context).pushNamed(CheckOutView.routeName);
+          if (context.read<CartCubit>().cartEntity.cartItems.isNotEmpty) {
+            Navigator.of(context).pushNamed(
+              CheckOutView.routeName,
+              arguments: context.read<CartCubit>().cartEntity.cartItems,
+            );
+          }
+          showSnackBar(context, message: "العربة فارغة");
         },
       ),
     );
