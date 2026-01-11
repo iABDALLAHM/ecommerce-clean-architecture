@@ -1,10 +1,15 @@
 import 'package:ecommerce_clean_architecture/core/entities/cart_entity.dart';
 import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
+import 'package:ecommerce_clean_architecture/core/repos/order_repo/orders_repo.dart';
+import 'package:ecommerce_clean_architecture/core/services/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/shipping_address_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/function/build_checkout_app_bar.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/widgets/add_order_cubit_bloc_consumer.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/widgets/check_out_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 class CheckOutView extends StatefulWidget {
@@ -30,15 +35,20 @@ class _CheckOutViewState extends State<CheckOutView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildCheckOutAppBar(context, currentStep: currentStep),
-      body: Provider.value(
-        value: orderEntity,
-        child: CheckOutViewBody(
-          onChange: (value) {
-            currentStep = value;
-            setState(() {});
-          },
+    return BlocProvider(
+      create: (context) => AddOrderCubit(orderRepo: getIt.get<OrdersRepo>()),
+      child: Scaffold(
+        appBar: buildCheckOutAppBar(context, currentStep: currentStep),
+        body: Provider.value(
+          value: orderEntity,
+          child: AddOrderCubitBlocConsumer(
+            child: CheckOutViewBody(
+              onChange: (value) {
+                currentStep = value;
+                setState(() {});
+              },
+            ),
+          ),
         ),
       ),
     );

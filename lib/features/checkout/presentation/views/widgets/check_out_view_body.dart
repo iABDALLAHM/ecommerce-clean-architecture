@@ -3,6 +3,7 @@ import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart'
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/function/change_button_text.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/widgets/check_out_steps.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/widgets/check_out_page_view.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +69,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
                 } else if (currentPage == 1) {
                   _handleAddressSection(context);
                 } else if (currentPage == 2) {
-                  _handlePaymentSection(context);
+                  _triggerAddOrderCubit(context);
                 }
               },
             ),
@@ -103,10 +104,8 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     }
   }
 
-  void _handlePaymentSection(BuildContext context) {
-
-
-
-
+  void _triggerAddOrderCubit(BuildContext context) {
+    OrderEntity orderEntity = context.read<OrderEntity>();
+    context.read<AddOrderCubit>().addOrder(orderEntity: orderEntity);
   }
 }

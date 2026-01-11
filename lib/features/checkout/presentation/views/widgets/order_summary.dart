@@ -45,7 +45,7 @@ class OrderSummary extends StatelessWidget {
                 children: [
                   Text("التوصيل  :", style: AppStyles.textStyle13Regular),
                   Text(
-                    "40 جنية",
+                    "50 جنية",
                     style: AppStyles.textStyle13SemiBold.copyWith(
                       color: Color(0xff4E5556),
                     ),
@@ -60,7 +60,7 @@ class OrderSummary extends StatelessWidget {
                 children: [
                   Text("الكلي", style: AppStyles.textStyle16Bold),
                   Text(
-                    "${context.read<OrderEntity>().cartEntity.calculateTotalPrice().round() + 40} جنيه",
+                    "${context.read<OrderEntity>().cartEntity.calculateTotalPrice().round() + 50} جنيه",
                     style: AppStyles.textStyle16Bold,
                   ),
                 ],
