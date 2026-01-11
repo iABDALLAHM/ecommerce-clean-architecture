@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:ecommerce_clean_architecture/core/entities/cart_item_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
@@ -27,7 +25,6 @@ class CartItem extends StatelessWidget {
         return false;
       },
       builder: (context, state) {
-        log("message");
         return IntrinsicHeight(
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 16),
