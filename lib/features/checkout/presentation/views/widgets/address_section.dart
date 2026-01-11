@@ -26,7 +26,14 @@ class AddressSection extends StatelessWidget {
             const SizedBox(height: 8),
             CustomTextFormField(
               hintText: "رقم الطابق , رقم الشقه ..",
+              textInputType: TextInputType.number,
               onSaved: (value) {},
+            ),
+            const SizedBox(height: 8),
+            CustomTextFormField(
+              hintText: "رقم الهاتف",
+              onSaved: (value) {},
+              textInputType: TextInputType.number,
             ),
             const SizedBox(height: 8),
           ],

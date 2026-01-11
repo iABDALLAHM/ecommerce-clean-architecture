@@ -5,13 +5,15 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     required this.hintText,
-    required this.onSaved,
+    required this.onSaved,  this.textInputType=TextInputType.text,
   });
   final String hintText;
   final Function(String?) onSaved;
+  final TextInputType textInputType;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: textInputType,
       onSaved: onSaved,
       validator: (value) {
         if (value != null && value.isEmpty) {
