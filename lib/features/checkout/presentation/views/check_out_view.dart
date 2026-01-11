@@ -1,7 +1,7 @@
 import 'package:ecommerce_clean_architecture/core/entities/cart_entity.dart';
 import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/domain/order_entity.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/domain/shipping_address_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/shipping_address_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/function/build_checkout_app_bar.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/widgets/check_out_view_body.dart';
 import 'package:flutter/material.dart';

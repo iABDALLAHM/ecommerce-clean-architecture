@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_text_form_field.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/domain/order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

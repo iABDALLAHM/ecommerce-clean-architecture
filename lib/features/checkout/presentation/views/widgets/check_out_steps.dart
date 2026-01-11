@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/domain/order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/function/get_text_steps.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/widgets/check_out_step.dart';
 import 'package:flutter/material.dart';

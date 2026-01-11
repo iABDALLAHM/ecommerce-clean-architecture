@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/features/checkout/data/order_product_model.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/data/shipping_address_model.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/domain/order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
 
 class OrderModel {
   final double totalPrice;

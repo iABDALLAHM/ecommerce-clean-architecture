@@ -1,7 +1,7 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/domain/order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/function/change_button_text.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/widgets/check_out_steps.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/widgets/check_out_page_view.dart';
@@ -107,6 +107,6 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
 
 
 
-    
+
   }
 }
