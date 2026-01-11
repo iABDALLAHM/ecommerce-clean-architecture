@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/manager/cart_cubit.dart/cart_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/manager/cart_cubit.dart/cart_states.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/cart_cubit/cart_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/cart_cubit/cart_states.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/main_view_body.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/features/home/presentation/manager/cart_cubit.dart/cart_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_button_navigaton_bar.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/main_view_body_bloc_consumer.dart';
 import 'package:flutter/material.dart';
