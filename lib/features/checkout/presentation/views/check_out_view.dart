@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/entities/cart_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/shipping_address_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/function/build_checkout_app_bar.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/widgets/check_out_view_body.dart';
 import 'package:flutter/material.dart';
@@ -15,12 +16,22 @@ class CheckOutView extends StatefulWidget {
 
 class _CheckOutViewState extends State<CheckOutView> {
   int currentStep = 0;
+  late OrderEntity orderEntity;
+  @override
+  void initState() {
+    orderEntity = OrderEntity(
+      cartEntity: widget.cartEntity,
+      shippingAddressEntity: ShippingAddressEntity(),
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildCheckOutAppBar(context, currentStep: currentStep),
       body: Provider.value(
-        value: OrderEntity(cartEntity: widget.cartEntity),
+        value: orderEntity,
         child: CheckOutViewBody(
           onChange: (value) {
             currentStep = value;

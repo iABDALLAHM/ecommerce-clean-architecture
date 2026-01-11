@@ -1,5 +1,7 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/order_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddressSummary extends StatelessWidget {
   const AddressSummary({super.key});
@@ -34,7 +36,7 @@ class AddressSummary extends StatelessWidget {
             children: [
               Icon(Icons.location_on_outlined),
               Text(
-                "شارع النيل، مبنى رقم ١٢٣",
+                "${context.read<OrderEntity>().shippingAddressEntity}",
                 style: AppStyles.textStyle16Regular.copyWith(
                   color: Color(0xff4E5556),
                 ),
