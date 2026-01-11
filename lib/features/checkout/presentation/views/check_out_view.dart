@@ -1,4 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/entities/cart_entity.dart';
+import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/shipping_address_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/function/build_checkout_app_bar.dart';
@@ -20,6 +21,7 @@ class _CheckOutViewState extends State<CheckOutView> {
   @override
   void initState() {
     orderEntity = OrderEntity(
+      uId: getUserData().uId,
       cartEntity: widget.cartEntity,
       shippingAddressEntity: ShippingAddressEntity(),
     );
