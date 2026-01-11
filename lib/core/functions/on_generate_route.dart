@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/core/entities/cart_item_entity.dart';
+import 'package:ecommerce_clean_architecture/core/entities/cart_entity.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/login_view.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/register_view.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/check_out_view.dart';
@@ -22,7 +22,7 @@ Route onGenetateRoute(RouteSettings settings) {
     case CheckOutView.routeName:
       return MaterialPageRoute(
         builder: (context) =>
-            CheckOutView(cartItems: settings.arguments as List<CartItemEntity>),
+            CheckOutView(cartEntity: settings.arguments as CartEntity),
       );
     default:
       return MaterialPageRoute(builder: (context) => Scaffold());

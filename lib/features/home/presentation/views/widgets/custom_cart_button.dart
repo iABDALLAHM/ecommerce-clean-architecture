@@ -20,10 +20,11 @@ class CustomCartButton extends StatelessWidget {
           if (context.read<CartCubit>().cartEntity.cartItems.isNotEmpty) {
             Navigator.of(context).pushNamed(
               CheckOutView.routeName,
-              arguments: context.read<CartCubit>().cartEntity.cartItems,
+              arguments: context.read<CartCubit>().cartEntity,
             );
+          } else {
+            showSnackBar(context, message: "العربة فارغة");
           }
-          showSnackBar(context, message: "العربة فارغة");
         },
       ),
     );

@@ -1,7 +1,10 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/function/get_text_steps.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/widgets/check_out_step.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CheckOutSteps extends StatelessWidget {
   const CheckOutSteps({
@@ -20,11 +23,15 @@ class CheckOutSteps extends StatelessWidget {
         children: List.generate(getTextSteps().length, (index) {
           return GestureDetector(
             onTap: () {
-              pageController.animateToPage(
-                index,
-                duration: Duration(milliseconds: 300),
-                curve: Curves.easeIn,
-              );
+              if (context.read<OrderEntity>().payWithCash != null) {
+                pageController.animateToPage(
+                  currentPage,
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.easeIn,
+                );
+              } else {
+                showSnackBar(context, message: "من فضلك اختر طريقة الدفع");
+              }
             },
             child: CheckOutStep(
               stepIndex: index + 1,
