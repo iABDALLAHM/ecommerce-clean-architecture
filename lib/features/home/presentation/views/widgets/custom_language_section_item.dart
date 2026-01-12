@@ -1,11 +1,10 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/custom_divider.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CustomSwitchProfileItem extends StatelessWidget {
-  const CustomSwitchProfileItem({
+class CustomLanguageSectionItem extends StatelessWidget {
+  const CustomLanguageSectionItem({
     super.key,
     required this.icon,
     required this.name,
@@ -28,7 +27,15 @@ class CustomSwitchProfileItem extends StatelessWidget {
               ),
             ),
             Spacer(),
-            CustomSwitch(),
+            Text("العربية", style: AppStyles.textStyle13Regular),
+            const SizedBox(width: 8),
+            GestureDetector(
+              onTap: onPressed,
+              child: RotatedBox(
+                quarterTurns: 2,
+                child: Icon(Icons.arrow_back_ios_new, size: 20),
+              ),
+            ),
           ],
         ),
         const SizedBox(height: 8),
@@ -37,4 +44,3 @@ class CustomSwitchProfileItem extends StatelessWidget {
     );
   }
 }
-
