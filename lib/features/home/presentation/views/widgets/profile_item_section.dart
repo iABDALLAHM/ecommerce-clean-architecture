@@ -1,4 +1,3 @@
-
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/custom_divider.dart';
 import 'package:flutter/material.dart';

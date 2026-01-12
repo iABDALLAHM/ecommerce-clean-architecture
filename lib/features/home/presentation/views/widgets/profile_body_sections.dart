@@ -2,6 +2,7 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_language_section_item.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_notification_profile_item.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/private_profile.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/profile_item_section.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,9 @@ class ProfileBodySections extends StatelessWidget {
         Text("عام", style: AppStyles.textStyle13SemiBold),
         const SizedBox(height: 16),
         ProfileSectionItem(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed(PrivateProfile.routeName);
+          },
           icon: Assets.imagesPresonIcon,
           name: "الملف الشخصي",
         ),

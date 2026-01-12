@@ -1,4 +1,4 @@
-
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/private_profile.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/profile_body.dart';
 import 'package:flutter/material.dart';
 
@@ -9,11 +9,11 @@ class ProfileBodyNavigator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Navigator(
       onGenerateRoute: (settings) {
-        switch(settings.name){
-          case "":
-          return MaterialPageRoute(builder: (context)=> Placeholder());
+        switch (settings.name) {
+          case PrivateProfile.routeName:
+            return MaterialPageRoute(builder: (context) => PrivateProfile());
           default:
-            return MaterialPageRoute(builder: (context)=> ProfileBody());
+            return MaterialPageRoute(builder: (context) => ProfileBody());
         }
       },
     );
