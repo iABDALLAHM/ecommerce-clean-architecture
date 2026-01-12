@@ -3,7 +3,7 @@ import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/repos/order_repo/orders_repo.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/data/order_model.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/data/models/order_model.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
 
 class OrderRepoImplementation implements OrdersRepo {

@@ -1,5 +1,5 @@
-import 'package:ecommerce_clean_architecture/features/checkout/data/order_product_model.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/data/shipping_address_model.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/data/models/order_product_model.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/data/models/shipping_address_model.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
 
 class OrderModel {
