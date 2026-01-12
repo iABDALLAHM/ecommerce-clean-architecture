@@ -8,15 +8,20 @@ class OrdersSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildOrderSectionAppBar(),
+      appBar: buildOrderSectionAppBar(context),
       body: OrdersSectionBody(),
     );
   }
 
-  AppBar buildOrderSectionAppBar() {
+  AppBar buildOrderSectionAppBar(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      leading: Icon(Icons.arrow_back_ios_new),
+      leading: GestureDetector(
+        onTap: () {
+          Navigator.of(context).pop();
+        },
+        child: Icon(Icons.arrow_back_ios_new),
+      ),
       title: Text("طلباتي", style: AppStyles.textStyle19Bold),
     );
   }

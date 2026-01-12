@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/about_us_page.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_language_section_item.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_notification_profile_item.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/orders_section.dart';
@@ -69,7 +70,9 @@ class ProfileBodySections extends StatelessWidget {
         ProfileSectionItem(
           icon: Assets.imagesHelpIcon,
           name: "من نحن",
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed(AboutUsPage.routeName);
+          },
         ),
       ],
     );
