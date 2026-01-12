@@ -1,3 +1,4 @@
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/order_item.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,15 @@ class OrdersSectionBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [const SizedBox(height: 16), OrderItem()]);
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+            child: Column(children: [const SizedBox(height: 16), OrderItem()]),
+          ),
+        ),
+      ],
+    );
   }
 }

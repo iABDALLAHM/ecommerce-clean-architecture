@@ -9,6 +9,10 @@ abstract class AppStyles {
     fontSize: 11,
     fontWeight: FontWeight.w600,
   );
+    static TextStyle textStyle11Regular = TextStyle(
+    fontSize: 11,
+    fontWeight: FontWeight.w400,
+  );
   static TextStyle textStyle13Regular = TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.w400,
