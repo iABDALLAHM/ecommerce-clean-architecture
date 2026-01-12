@@ -11,6 +11,7 @@ class ProfileBodySections extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 16),
         Text("عام", style: AppStyles.textStyle13SemiBold),

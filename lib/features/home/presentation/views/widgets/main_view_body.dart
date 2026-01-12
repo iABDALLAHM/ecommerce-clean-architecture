@@ -3,8 +3,8 @@ import 'package:ecommerce_clean_architecture/features/home/presentation/views/wi
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/home_navigator.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_body.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_body_bloc_provider.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/profile_body.dart';
-import 'package:flutter/widgets.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/profile_body_navigator.dart';
+import 'package:flutter/material.dart';
 
 class MainViewBody extends StatelessWidget {
   const MainViewBody({super.key, required this.currentBody});
@@ -21,5 +21,5 @@ List<Widget> tabs = [
   HomeBodyBlocProvider(child: HomeNavigator()),
   ProductsBodyBlocProvider(child: ProductsBody()),
   CartBodyBlocProvider(),
-  ProfileBody(),
+  ProfileBodyNavigator(),
 ];
