@@ -1,3 +1,4 @@
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/orders_section.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/private_profile.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/profile_body.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,8 @@ class ProfileBodyNavigator extends StatelessWidget {
         switch (settings.name) {
           case PrivateProfile.routeName:
             return MaterialPageRoute(builder: (context) => PrivateProfile());
+          case OrdersSection.routeName:
+            return MaterialPageRoute(builder: (context) => OrdersSection());
           default:
             return MaterialPageRoute(builder: (context) => ProfileBody());
         }

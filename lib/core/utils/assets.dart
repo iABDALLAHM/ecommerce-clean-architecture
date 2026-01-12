@@ -14,6 +14,8 @@ class Assets {
 
   static const String imagesArrowSwapHorizontal = "assets/images/arrowSwapHorizontal.svg";
 
+  static const String imagesBoxIcon = "assets/images/BoxIcon.svg";
+
   static const String imagesCameraIcon = "assets/images/cameraIcon.svg";
 
   static const String imagesFacebookSocialIcon = "assets/images/facebookSocialIcon.svg";
