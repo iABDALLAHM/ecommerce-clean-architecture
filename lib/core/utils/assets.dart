@@ -18,6 +18,8 @@ class Assets {
 
   static const String imagesFacebookSocialIcon = "assets/images/facebookSocialIcon.svg";
 
+  static const String imagesFavoriteIcon = "assets/images/favoriteIcon.svg";
+
   static const String imagesFeaturedItemBackground = "assets/images/featuredItemBackground.svg";
 
   static const String imagesFilterSearchIcon = "assets/images/filterSearchIcon.svg";
@@ -27,6 +29,8 @@ class Assets {
   static const String imagesFirstSplashViewLogo = "assets/images/firstSplashViewLogo.svg";
 
   static const String imagesGoogleSocialIcon = "assets/images/googleSocialIcon.svg";
+
+  static const String imagesHelpIcon = "assets/images/helpIcon.svg";
 
   static const String imagesInActiveAccountIcon = "assets/images/inActiveAccountIcon.svg";
 
@@ -38,11 +42,21 @@ class Assets {
 
   static const String imagesInfoProfileimage = "assets/images/infoProfileimage.svg";
 
+  static const String imagesLanguageIcon = "assets/images/languageIcon.svg";
+
+  static const String imagesModeIcon = "assets/images/modeIcon.svg";
+
+  static const String imagesNotificationIcon = "assets/images/notificationIcon.svg";
+
   static const String imagesOnBoardingFooterLogo = "assets/images/onBoardingFooterLogo.svg";
 
   static const String imagesOnBoardingGrassLogo = "assets/images/onBoardingGrassLogo.svg";
 
   static const String imagesOnBoardingLogo = "assets/images/onBoardingLogo.svg";
+
+  static const String imagesOrdersIcon = "assets/images/ordersIcon.svg";
+
+  static const String imagesPresonIcon = "assets/images/presonIcon.svg";
 
   static const String imagesProfileImage = "assets/images/profileImage.png";
 
@@ -55,6 +69,8 @@ class Assets {
   static const String imagesSecondSplashViewLogo = "assets/images/secondSplashViewLogo.svg";
 
   static const String imagesStrawberryForTest = "assets/images/strawberryForTest.svg";
+
+  static const String imagesWalletIcon = "assets/images/walletIcon.svg";
 
   static const String imagesWatermelonForTest = "assets/images/watermelonForTest.png";
 }
