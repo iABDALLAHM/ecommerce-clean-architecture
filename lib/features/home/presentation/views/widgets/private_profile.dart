@@ -1,5 +1,5 @@
-import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/private_profile_body.dart';
 import 'package:flutter/material.dart';
 
 class PrivateProfile extends StatelessWidget {
@@ -9,28 +9,7 @@ class PrivateProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildPrivateProfileAppBar(context),
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: kHorizontalPadding,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 24),
-                  Text(
-                    "المعلومات الشخصيه",
-                    style: AppStyles.textStyle13SemiBold,
-                  ),
-                  const SizedBox(height: 8),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+      body: PrivateProfileBody(),
     );
   }
 
