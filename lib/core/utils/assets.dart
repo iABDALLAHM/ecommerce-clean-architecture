@@ -14,6 +14,8 @@ class Assets {
 
   static const String imagesArrowSwapHorizontal = "assets/images/arrowSwapHorizontal.svg";
 
+  static const String imagesCameraIcon = "assets/images/cameraIcon.svg";
+
   static const String imagesFacebookSocialIcon = "assets/images/facebookSocialIcon.svg";
 
   static const String imagesFeaturedItemBackground = "assets/images/featuredItemBackground.svg";
@@ -34,11 +36,15 @@ class Assets {
 
   static const String imagesInActiveProductsIcon = "assets/images/inActiveProductsIcon.svg";
 
+  static const String imagesInfoProfileimage = "assets/images/infoProfileimage.svg";
+
   static const String imagesOnBoardingFooterLogo = "assets/images/onBoardingFooterLogo.svg";
 
   static const String imagesOnBoardingGrassLogo = "assets/images/onBoardingGrassLogo.svg";
 
   static const String imagesOnBoardingLogo = "assets/images/onBoardingLogo.svg";
+
+  static const String imagesProfileImage = "assets/images/profileImage.png";
 
   static const String imagesProfilePhoto = "assets/images/profilePhoto.svg";
 
