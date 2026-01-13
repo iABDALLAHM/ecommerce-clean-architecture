@@ -1,6 +1,7 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/views/reset_your_password_view.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/custom_otp_box.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/resend_otp.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,14 @@ class PasswordRecoveryViewBody extends StatelessWidget {
           SizedBox(
             height: 54,
             width: double.infinity,
-            child: CustomButton(text: "تحقق من الرمز", onPressed: () {}),
+            child: CustomButton(
+              text: "تحقق من الرمز",
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).pushNamed(ResetYourPasswordView.routeName);
+              },
+            ),
           ),
           const SizedBox(height: 24),
           ResendOtp(),

@@ -3,6 +3,7 @@ import 'package:ecommerce_clean_architecture/features/auth/presentation/views/fo
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/login_view.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/password_recovery_view.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/register_view.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/views/reset_your_password_view.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/check_out_view.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/main_view.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/onboarding_view.dart';
@@ -30,6 +31,8 @@ Route onGenetateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => ForgetPasswordView());
     case PasswordRecoveryView.routeName:
       return MaterialPageRoute(builder: (context) => PasswordRecoveryView());
+    case ResetYourPasswordView.routeName:
+      return MaterialPageRoute(builder: (context) => ResetYourPasswordView());
     default:
       return MaterialPageRoute(builder: (context) => Scaffold());
   }
