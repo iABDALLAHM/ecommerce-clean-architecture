@@ -72,4 +72,47 @@ class ProductModel {
       sellingCount: sellingCount,
     );
   }
+
+  factory ProductModel.fromEntity({required ProductEntity productEntity}) {
+    return ProductModel(
+      sellingCount: productEntity.sellingCount,
+      reviews: productEntity.reviews
+          .map(
+            (reviewEntity) =>
+                ReviewModel.fromEntity(reviewEntity: reviewEntity),
+          )
+          .toList(),
+      isOrganic: productEntity.isOrganic,
+      name: productEntity.name,
+      price: productEntity.price,
+      code: productEntity.code,
+      discription: productEntity.discription,
+      isFeatured: productEntity.isFeatured,
+      imageUrl: productEntity.imageUrl,
+      expirationMonths: productEntity.expirationMonths,
+      numberOfCalories: productEntity.numberOfCalories,
+      unitAmount: productEntity.unitAmount,
+      averageRating: productEntity.averageRating,
+      ratingCount: productEntity.ratingCount,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      "sellingCount": sellingCount,
+      "reviews": reviews.map((reviewModel) => reviewModel.toMap()).toList(),
+      "ratingCount": ratingCount,
+      "averageRating": averageRating,
+      "unitAmount": unitAmount,
+      "numberOfCalories": numberOfCalories,
+      "expirationMonths": expirationMonths,
+      "name": name,
+      "price": price,
+      "code": code,
+      "description": discription,
+      "isFeatured": isFeatured,
+      "imageUrl": imageUrl,
+      "isOrganic": isOrganic,
+    };
+  }
 }

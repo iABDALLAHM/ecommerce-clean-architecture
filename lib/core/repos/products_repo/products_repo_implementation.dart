@@ -24,4 +24,26 @@ class ProductsRepoImplementation implements ProductsRepo {
       return Left(ServerFailure(message: "فشل إرجاع البيانات"));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> addFavoriteProducts({
+    required ProductEntity product,
+  }) async {
+    try {
+      await databaseService.addData(
+        path: BackendEndPoints.addUserData,
+        secondPath: BackendEndPoints.addFavoriteProducts,
+        data: ProductModel.fromEntity(productEntity: product).toMap(),
+      );
+      return Right(null);
+    } catch (e) {
+      return Left(ServerFailure(message: "فشل إضافة المنتج"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getFavoriteProducts() {
+    // TODO: implement getFavoriteProducts
+    throw UnimplementedError();
+  }
 }

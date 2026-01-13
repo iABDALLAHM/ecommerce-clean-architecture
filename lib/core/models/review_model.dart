@@ -33,4 +33,24 @@ class ReviewModel {
       reviewDescription: reviewDescription,
     );
   }
+
+  factory ReviewModel.fromEntity({required ReviewEntity reviewEntity}) {
+    return ReviewModel(
+      name: reviewEntity.name,
+      image: reviewEntity.image,
+      rating: reviewEntity.rating,
+      date: reviewEntity.date,
+      reviewDescription: reviewEntity.reviewDescription,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      "name": name,
+      "image": image,
+      "rating": rating,
+      "date": date,
+      "reviewDescription": reviewDescription,
+    };
+  }
 }
