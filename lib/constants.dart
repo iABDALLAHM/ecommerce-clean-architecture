@@ -7,3 +7,5 @@ const String kOnBoardingSeen = "SeenOnBoarding";
 const String kIsUserSignIn = "isUserSignIn";
 
 const String kSaveUserData = "SaveUserData";
+
+const String kRemoveUserData = "RemoveUserData";

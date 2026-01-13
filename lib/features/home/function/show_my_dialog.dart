@@ -1,6 +1,7 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_dialog_button.dart';
+import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:flutter/material.dart';
 
 Future<void> showMyDialog({required BuildContext context}) {
@@ -36,7 +37,12 @@ Future<void> showMyDialog({required BuildContext context}) {
                   Expanded(
                     child: CustomDialogButton(
                       hintText: "تأكيد",
-                      onPressed: () {},
+                      onPressed: () {
+                        // triger cubit
+                        Navigator.of(
+                          context,
+                        ).pushNamed(OnboardingView.routeName);
+                      },
                       isPrimary: true,
                     ),
                   ),
@@ -44,7 +50,9 @@ Future<void> showMyDialog({required BuildContext context}) {
                   Expanded(
                     child: CustomDialogButton(
                       hintText: "لا ارغب",
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                       isPrimary: false,
                     ),
                   ),

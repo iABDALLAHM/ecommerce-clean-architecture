@@ -101,4 +101,15 @@ class AuthRepoImplementation implements AuthRepo {
       value: jsonStringData,
     );
   }
+
+  @override
+  Future<void> removeUserData() async {
+    SharedPrefsService.removeData(key: kRemoveUserData);
+  }
+
+  @override
+  Future<void> signOut() async {
+    await authService.signOut();
+    await removeUserData();
+  }
 }

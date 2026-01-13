@@ -87,4 +87,9 @@ class FirebaseAuthService implements AuthService {
   Future<void> delete() async {
     await firebaseAuth.currentUser!.delete();
   }
+
+  @override
+  Future<void> signOut() async {
+    await firebaseAuth.signOut();
+  }
 }
