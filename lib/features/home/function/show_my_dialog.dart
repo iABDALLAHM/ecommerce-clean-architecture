@@ -5,8 +5,8 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/auth/domain/repo/auth_repo.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/sign_out_cubit/sign_out_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/sign_out_cubit/sign_out_states.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/views/login_view.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_dialog_button.dart';
+import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -90,5 +90,7 @@ Future<void> showMyDialog({required BuildContext context}) {
 void handleSuccessSignOut(BuildContext context) {
   showSnackBar(context, message: "تم تسجيل الخروج بنجاح");
   Navigator.of(context).pop();
-  Navigator.of(context).pushReplacementNamed(LoginView.routeName);
+  Navigator.of(
+    context,
+  ).pushNamedAndRemoveUntil(OnboardingView.routeName, (route) => false);
 }
