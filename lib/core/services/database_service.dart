@@ -6,5 +6,10 @@ abstract class DatabaseService {
     bool? isNestedData,
     String? subCollection,
   });
-  Future<dynamic> getData({required String path, String? documentId});
+  Future<dynamic> getData({
+    required String path,
+    String? documentId,
+    bool? isNestedData,
+    String? subCollection,
+  });
 }

@@ -45,8 +45,20 @@ class ProductsRepoImplementation implements ProductsRepo {
   }
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> getFavoriteProducts() {
-    // TODO: implement getFavoriteProducts
-    throw UnimplementedError();
+  Future<Either<Failure, List<ProductEntity>>> getFavoriteProducts() async {
+    try {
+      var result = await databaseService.getData(
+        path: BackendEndPoints.addUserData,
+        isNestedData: true,
+        subCollection: BackendEndPoints.getFavoriteProducts,
+        documentId: getUserData().uId,
+      );
+      List<ProductEntity> favProducts = (result as List)
+          .map((ele) => ProductModel.fromJson(ele).toEntity())
+          .toList();
+      return Right(favProducts);
+    } catch (e) {
+      return Left(ServerFailure(message: "fetch products failed"));
+    }
   }
 }
