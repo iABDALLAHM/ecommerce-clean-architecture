@@ -26,7 +26,9 @@ class ProfileBodyNavigator extends StatelessWidget {
           case WalletBody.routeName:
             return MaterialPageRoute(builder: (context) => WalletBody());
           case AddNewWalletMethodView.routeName:
-            return MaterialPageRoute(builder: (context) => AddNewWalletMethodView());
+            return MaterialPageRoute(
+              builder: (context) => AddNewWalletMethodView(),
+            );
           default:
             return MaterialPageRoute(builder: (context) => ProfileBody());
         }
@@ -34,4 +36,3 @@ class ProfileBodyNavigator extends StatelessWidget {
     );
   }
 }
-

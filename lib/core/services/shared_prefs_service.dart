@@ -24,11 +24,15 @@ class SharedPrefsService {
     await sharedPreferences.setString(key, value);
   }
 
+  static String? getData({required String key}) {
+    return sharedPreferences.getString(key);
+  }
+
   static Future<void> removeData({required String key}) async {
     await sharedPreferences.remove(key);
   }
 
-  static String? getData({required String key}) {
-    return sharedPreferences.getString(key);
+  static Future<void> removeBool({required String key}) async {
+    await sharedPreferences.remove(key);
   }
 }
