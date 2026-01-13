@@ -1,4 +1,5 @@
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/about_us_page.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/add_new_wallet_method_view.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/favorite_page.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/orders_section.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/private_profile.dart';
@@ -24,6 +25,8 @@ class ProfileBodyNavigator extends StatelessWidget {
             return MaterialPageRoute(builder: (context) => FavoritePage());
           case WalletBody.routeName:
             return MaterialPageRoute(builder: (context) => WalletBody());
+          case AddNewWalletMethodView.routeName:
+            return MaterialPageRoute(builder: (context) => AddNewWalletMethodView());
           default:
             return MaterialPageRoute(builder: (context) => ProfileBody());
         }
@@ -31,3 +34,4 @@ class ProfileBodyNavigator extends StatelessWidget {
     );
   }
 }
+
