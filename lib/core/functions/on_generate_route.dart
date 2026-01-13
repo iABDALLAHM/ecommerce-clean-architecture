@@ -1,6 +1,7 @@
 import 'package:ecommerce_clean_architecture/core/entities/cart_entity.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/forget_password_view.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/login_view.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/views/password_recovery_view.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/register_view.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/check_out_view.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/main_view.dart';
@@ -27,6 +28,8 @@ Route onGenetateRoute(RouteSettings settings) {
       );
     case ForgetPasswordView.routeName:
       return MaterialPageRoute(builder: (context) => ForgetPasswordView());
+    case PasswordRecoveryView.routeName:
+      return MaterialPageRoute(builder: (context) => PasswordRecoveryView());
     default:
       return MaterialPageRoute(builder: (context) => Scaffold());
   }
