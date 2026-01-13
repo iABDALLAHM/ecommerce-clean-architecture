@@ -1,10 +1,10 @@
-import 'package:ecommerce_clean_architecture/core/functions/get_dummy_products.dart';
+import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_fruit_item.dart';
 import 'package:flutter/widgets.dart';
 
 class SliverListItems extends StatelessWidget {
-  const SliverListItems({super.key});
-
+  const SliverListItems({super.key, required this.products});
+  final List<ProductEntity> products;
   @override
   Widget build(BuildContext context) {
     return SliverGrid.builder(
@@ -14,9 +14,9 @@ class SliverListItems extends StatelessWidget {
         crossAxisSpacing: 16,
         crossAxisCount: 2,
       ),
-      itemCount: 10,
+      itemCount: products.length,
       itemBuilder: (context, index) {
-        return CustomFruitItem(productEntity: dummyProduct());
+        return CustomFruitItem(productEntity: products[index]);
       },
     );
   }
