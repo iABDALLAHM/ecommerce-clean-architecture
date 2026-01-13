@@ -1,4 +1,5 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/services/shared_prefs_service.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/login_view.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/widgets/custom_indicator.dart';
@@ -47,6 +48,10 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                     child: CustomButton(
                       text: "ابدأ الان",
                       onPressed: () {
+                        SharedPrefsService.setBool(
+                          key: kOnBoardingSeen,
+                          value: true,
+                        );
                         Navigator.of(context).pushNamed(LoginView.routeName);
                       },
                     ),
