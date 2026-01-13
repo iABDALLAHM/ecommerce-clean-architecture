@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
+import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
 import 'package:ecommerce_clean_architecture/core/models/product_model.dart';
 import 'package:ecommerce_clean_architecture/core/repos/products_repo/products_repo.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service.dart';
@@ -31,9 +32,11 @@ class ProductsRepoImplementation implements ProductsRepo {
   }) async {
     try {
       await databaseService.addData(
+        isNestedData: true,
         path: BackendEndPoints.addUserData,
-        secondPath: BackendEndPoints.addFavoriteProducts,
+        subCollection: BackendEndPoints.addFavoriteProducts,
         data: ProductModel.fromEntity(productEntity: product).toMap(),
+        documentId: getUserData().uId,
       );
       return Right(null);
     } catch (e) {

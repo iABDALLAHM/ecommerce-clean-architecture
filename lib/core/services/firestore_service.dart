@@ -10,16 +10,17 @@ class FirestoreService implements DatabaseService {
     required Map<String, dynamic> data,
     String? documentId,
     bool? isNestedData,
-    String? secondPath,
+    String? subCollection,
   }) async {
-    if (documentId != null) {
-      await firestore.collection(path).doc(documentId).set(data);
-    } else if (isNestedData == true) {
+    if (isNestedData == true) {
       await firestore
           .collection(path)
           .doc(documentId)
-          .collection(secondPath!)
-          .add(data);
+          .collection(subCollection!)
+          .doc(data["code"])
+          .set(data);
+    } else if (documentId != null) {
+      await firestore.collection(path).doc(documentId).set(data);
     } else {
       await firestore.collection(path).add(data);
     }

@@ -1,3 +1,4 @@
+import 'package:ecommerce_clean_architecture/core/cubits/add_favorite_product_cubit/add_favorite_product_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
@@ -29,6 +30,7 @@ class _CustomFruitItemState extends State<CustomFruitItem> {
           GestureDetector(
             onTap: () {
               isActive = !isActive;
+              triggerAddFavoriteProductCubit(context);
               setState(() {});
             },
             child: isActive
@@ -88,5 +90,13 @@ class _CustomFruitItemState extends State<CustomFruitItem> {
         ],
       ),
     );
+  }
+
+  void triggerAddFavoriteProductCubit(BuildContext context) {
+    if (isActive) {
+      context.read<AddFavoriteProductCubit>().addFavoriteProduct(
+        product: widget.productEntity,
+      );
+    }
   }
 }

@@ -4,7 +4,7 @@ abstract class DatabaseService {
     required Map<String, dynamic> data,
     String? documentId,
     bool? isNestedData,
-    String? secondPath,
+    String? subCollection,
   });
   Future<dynamic> getData({required String path, String? documentId});
 }
