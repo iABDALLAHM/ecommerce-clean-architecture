@@ -7,6 +7,7 @@ import 'package:ecommerce_clean_architecture/features/home/presentation/views/wi
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/orders_section.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/private_profile.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/profile_item_section.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/wallet_body.dart';
 import 'package:flutter/material.dart';
 
 class ProfileBodySections extends StatelessWidget {
@@ -37,7 +38,9 @@ class ProfileBodySections extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         ProfileSectionItem(
-          onPressed: () {},
+          onPressed: () {
+             Navigator.of(context).pushNamed(WalletBody.routeName);
+          },
           icon: Assets.imagesWalletIcon,
           name: "المدفوعات",
         ),
@@ -81,3 +84,6 @@ class ProfileBodySections extends StatelessWidget {
     );
   }
 }
+
+
+

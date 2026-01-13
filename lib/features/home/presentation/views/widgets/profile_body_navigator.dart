@@ -3,6 +3,7 @@ import 'package:ecommerce_clean_architecture/features/home/presentation/views/wi
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/orders_section.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/private_profile.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/profile_body.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/wallet_body.dart';
 import 'package:flutter/material.dart';
 
 class ProfileBodyNavigator extends StatelessWidget {
@@ -21,6 +22,8 @@ class ProfileBodyNavigator extends StatelessWidget {
             return MaterialPageRoute(builder: (context) => AboutUsPage());
           case FavoritePage.routeName:
             return MaterialPageRoute(builder: (context) => FavoritePage());
+          case WalletBody.routeName:
+            return MaterialPageRoute(builder: (context) => WalletBody());
           default:
             return MaterialPageRoute(builder: (context) => ProfileBody());
         }

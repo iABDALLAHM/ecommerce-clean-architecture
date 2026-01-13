@@ -46,6 +46,8 @@ class Assets {
 
   static const String imagesLanguageIcon = "assets/images/languageIcon.svg";
 
+  static const String imagesMasterCardIcon = "assets/images/masterCardIcon.svg";
+
   static const String imagesModeIcon = "assets/images/modeIcon.svg";
 
   static const String imagesNotificationIcon = "assets/images/notificationIcon.svg";
@@ -71,6 +73,8 @@ class Assets {
   static const String imagesSecondSplashViewLogo = "assets/images/secondSplashViewLogo.svg";
 
   static const String imagesStrawberryForTest = "assets/images/strawberryForTest.svg";
+
+  static const String imagesVisaIcon = "assets/images/visaIcon.svg";
 
   static const String imagesWalletIcon = "assets/images/walletIcon.svg";
 
