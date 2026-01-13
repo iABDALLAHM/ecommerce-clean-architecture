@@ -1,4 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/entities/cart_entity.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/views/forget_password_view.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/login_view.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/register_view.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/check_out_view.dart';
@@ -24,6 +25,8 @@ Route onGenetateRoute(RouteSettings settings) {
         builder: (context) =>
             CheckOutView(cartEntity: settings.arguments as CartEntity),
       );
+    case ForgetPasswordView.routeName:
+      return MaterialPageRoute(builder: (context) => ForgetPasswordView());
     default:
       return MaterialPageRoute(builder: (context) => Scaffold());
   }

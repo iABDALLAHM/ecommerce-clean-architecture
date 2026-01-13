@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/views/forget_password_view.dart';
 import 'package:flutter/material.dart';
 
 class ForgetPasswordSection extends StatelessWidget {
@@ -10,10 +11,15 @@ class ForgetPasswordSection extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Text(
-          "نسيت كلمة المرور؟",
-          style: AppStyles.textStyle13SemiBold.copyWith(
-            color: AppColors.lightPrimaryColor,
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed(ForgetPasswordView.routeName);
+          },
+          child: Text(
+            "نسيت كلمة المرور؟",
+            style: AppStyles.textStyle13SemiBold.copyWith(
+              color: AppColors.lightPrimaryColor,
+            ),
           ),
         ),
       ],
