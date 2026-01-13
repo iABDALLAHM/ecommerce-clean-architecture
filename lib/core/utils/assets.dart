@@ -18,6 +18,8 @@ class Assets {
 
   static const String imagesCameraIcon = "assets/images/cameraIcon.svg";
 
+  static const String imagesCheckMarkIcon = "assets/images/checkMarkIcon.svg";
+
   static const String imagesFacebookSocialIcon = "assets/images/facebookSocialIcon.svg";
 
   static const String imagesFavoriteIcon = "assets/images/favoriteIcon.svg";
