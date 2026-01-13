@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/features/home/function/show_my_dialog.dart';
 import 'package:flutter/material.dart';
 
 class SignOutBadge extends StatelessWidget {
@@ -21,7 +22,9 @@ class SignOutBadge extends StatelessWidget {
           ),
           Spacer(),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              showMyDialog(context: context);
+            },
             child: RotatedBox(
               quarterTurns: 2,
               child: Icon(Icons.logout, color: AppColors.lightPrimaryColor),
