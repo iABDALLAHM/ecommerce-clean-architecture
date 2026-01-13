@@ -5,9 +5,16 @@ import 'package:ecommerce_clean_architecture/features/home/presentation/manager/
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomFruitItem extends StatelessWidget {
+class CustomFruitItem extends StatefulWidget {
   const CustomFruitItem({super.key, required this.productEntity});
   final ProductEntity productEntity;
+
+  @override
+  State<CustomFruitItem> createState() => _CustomFruitItemState();
+}
+
+class _CustomFruitItemState extends State<CustomFruitItem> {
+  bool isActive = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +26,15 @@ class CustomFruitItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.favorite_outline),
+          GestureDetector(
+            onTap: () {
+              isActive = !isActive;
+              setState(() {});
+            },
+            child: isActive
+                ? Icon(Icons.favorite, color: Colors.red)
+                : Icon(Icons.favorite_outline),
+          ),
           // Flexible(child: Image.network(productEntity.imageUrl)),
           const SizedBox(height: 24),
           Row(
@@ -28,7 +43,7 @@ class CustomFruitItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    productEntity.name,
+                    widget.productEntity.name,
                     style: AppStyles.textStyle13SemiBold,
                   ),
                   const SizedBox(height: 4),
@@ -36,7 +51,7 @@ class CustomFruitItem extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: "${productEntity.price}جنية",
+                          text: "${widget.productEntity.price}جنية",
                           style: AppStyles.textStyle13Bold.copyWith(
                             color: AppColors.secondryColor,
                           ),
@@ -56,7 +71,7 @@ class CustomFruitItem extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   context.read<CartCubit>().addProduct(
-                    productEntity: productEntity,
+                    productEntity: widget.productEntity,
                   );
                 },
                 child: Container(

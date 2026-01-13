@@ -3,7 +3,7 @@ import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
 ProductEntity dummyProduct() {
   return ProductEntity(
     name: "بطيخ",
-    price: 60.0,
+    price: 60,
     code: "FRU-WM-001",
     discription: "بطيخ طازج عالي الجودة، مزروع محليًا وخالي من المواد الحافظة.",
     isFeatured: true,

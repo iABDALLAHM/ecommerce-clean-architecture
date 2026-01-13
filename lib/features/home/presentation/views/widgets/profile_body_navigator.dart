@@ -1,4 +1,5 @@
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/about_us_page.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/favorite_page.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/orders_section.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/private_profile.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/profile_body.dart';
@@ -18,6 +19,8 @@ class ProfileBodyNavigator extends StatelessWidget {
             return MaterialPageRoute(builder: (context) => OrdersSection());
           case AboutUsPage.routeName:
             return MaterialPageRoute(builder: (context) => AboutUsPage());
+          case FavoritePage.routeName:
+            return MaterialPageRoute(builder: (context) => FavoritePage());
           default:
             return MaterialPageRoute(builder: (context) => ProfileBody());
         }
@@ -25,4 +28,3 @@ class ProfileBodyNavigator extends StatelessWidget {
     );
   }
 }
-

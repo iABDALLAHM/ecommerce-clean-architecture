@@ -3,6 +3,7 @@ import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/about_us_page.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_language_section_item.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_notification_profile_item.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/favorite_page.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/orders_section.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/private_profile.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/profile_item_section.dart';
@@ -42,7 +43,9 @@ class ProfileBodySections extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         ProfileSectionItem(
-          onPressed: () {},
+          onPressed: () {
+             Navigator.of(context).pushNamed(FavoritePage.routeName);
+          },
           icon: Assets.imagesFavoriteIcon,
           name: "المفضلة",
         ),
