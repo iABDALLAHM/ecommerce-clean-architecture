@@ -2,14 +2,21 @@ import 'package:ecommerce_clean_architecture/features/auth/domain/entities/user_
 
 class UserModel {
   final String name, email, uId;
+  final String userImage;
 
-  UserModel({required this.name, required this.email, required this.uId});
+  UserModel({
+    required this.name,
+    required this.email,
+    required this.uId,
+    required this.userImage,
+  });
 
   factory UserModel.fromEntity(UserEntity userEntity) {
     return UserModel(
       name: userEntity.name,
       email: userEntity.email,
       uId: userEntity.uId,
+      userImage: userEntity.userImage,
     );
   }
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -17,13 +24,14 @@ class UserModel {
       name: json["name"],
       email: json["email"],
       uId: json["uId"],
+      userImage: json["userImage"],
     );
   }
-  toMap() {
-    return {"name": name, "email": email, "uId": uId};
+  Map<String, dynamic> toMap() {
+    return {"name": name, "email": email, "uId": uId, "userImage": userImage};
   }
 
-  toEntity() {
-    return UserEntity(name: name, email: email, uId: uId);
+  UserEntity toEntity() {
+    return UserEntity(name: name, email: email, uId: uId, userImage: userImage);
   }
 }

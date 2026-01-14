@@ -3,14 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomProfileImage extends StatelessWidget {
-  const CustomProfileImage({super.key});
-
+  const CustomProfileImage({super.key, required this.imageUrl});
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        Image.asset(Assets.imagesProfileImage),
+        CircleAvatar(
+          backgroundColor: Colors.transparent,
+          radius: 35,
+          child: Image.network(imageUrl),
+        ),
         Positioned(
           top: 59,
           left: 0,

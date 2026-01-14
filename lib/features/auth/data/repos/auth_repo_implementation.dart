@@ -24,12 +24,14 @@ class AuthRepoImplementation implements AuthRepo {
   Future<Either<Failure, UserEntity>> createNewAccount({
     required String email,
     required String password,
+   required String userImage,
     required String name,
   }) async {
     try {
       final user =
           await authService.register(email: email, password: password) as User;
       UserEntity userEntity = UserEntity(
+        userImage: userImage,
         name: name,
         email: email,
         uId: user.uid,

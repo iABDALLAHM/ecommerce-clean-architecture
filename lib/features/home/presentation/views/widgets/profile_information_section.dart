@@ -10,7 +10,7 @@ class ProfileInformationSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomProfileImage(),
+        CustomProfileImage(imageUrl: imageUrl),
         const SizedBox(width: 24),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
