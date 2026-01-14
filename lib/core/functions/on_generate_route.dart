@@ -35,8 +35,12 @@ Route onGenetateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => PasswordRecoveryView());
     case ResetYourPasswordView.routeName:
       return MaterialPageRoute(builder: (context) => ResetYourPasswordView());
-          case FruitItemDetails.routeName:
-      return MaterialPageRoute(builder: (context) => FruitItemDetails(productEntity: settings.arguments as ProductEntity,));
+    case FruitItemDetailsView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => FruitItemDetailsView(
+          productEntity: settings.arguments as ProductEntity,
+        ),
+      );
     default:
       return MaterialPageRoute(builder: (context) => Scaffold());
   }

@@ -1,5 +1,4 @@
 import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/fruit_item_details_view_body.dart';
 import 'package:flutter/material.dart';
 
 class FruitItemDetailsView extends StatelessWidget {
@@ -9,7 +8,8 @@ class FruitItemDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FruitItemDetailsViewBody(),
+      appBar: AppBar(title: Text("Abdallah")),
+      // body: FruitItemDetailsViewBody(),
     );
   }
 }

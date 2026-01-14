@@ -21,8 +21,7 @@ class _CustomFruitItemState extends State<CustomFruitItem> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(
-          context,
+        Navigator.of(context, rootNavigator: true).pushNamed(
           FruitItemDetailsView.routeName,
           arguments: widget.productEntity,
         );
@@ -31,7 +30,7 @@ class _CustomFruitItemState extends State<CustomFruitItem> {
         padding: EdgeInsets.symmetric(horizontal: 8, vertical: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4),
-          color: Color(0xffF3F5F7),
+          color: const Color(0xffF3F5F7),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

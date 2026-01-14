@@ -46,6 +46,8 @@ class Assets {
 
   static const String imagesInfoProfileimage = "assets/images/infoProfileimage.svg";
 
+  static const String imagesItemDetailsbackground = "assets/images/itemDetailsbackground.svg";
+
   static const String imagesLanguageIcon = "assets/images/languageIcon.svg";
 
   static const String imagesMasterCardIcon = "assets/images/masterCardIcon.svg";
