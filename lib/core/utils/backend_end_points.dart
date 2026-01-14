@@ -5,4 +5,5 @@ class BackendEndPoints {
   static const String getProducts = "products";
   static const String addFavoriteProducts = "favorite_prodcts";
   static const String getFavoriteProducts = "favorite_prodcts";
+  static const String usersImages = "users_images";
 }
