@@ -103,7 +103,7 @@ class AuthRepoImplementation implements AuthRepo {
   }
 
   @override
-  Future<void> removeUserData() async {
+  Future<void> removeAllUserData() async {
     await SharedPrefsService.removeData(key: kRemoveUserData);
     await SharedPrefsService.removeBool(key: kRemoveOnBoardingSeen);
     await SharedPrefsService.removeBool(key: kRemoveUserSignIn);
@@ -112,6 +112,6 @@ class AuthRepoImplementation implements AuthRepo {
   @override
   Future<void> signOut() async {
     await authService.signOut();
-    await removeUserData();
+    await removeAllUserData();
   }
 }
