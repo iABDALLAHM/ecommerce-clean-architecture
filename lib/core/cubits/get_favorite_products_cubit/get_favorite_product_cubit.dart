@@ -8,13 +8,18 @@ class GetFavoriteProductCubit extends Cubit<GetFavoriteProductStates> {
   final ProductsRepo productsRepo;
 
   Future getFavoriteProduct() async {
+    emit(LoadingGetFavoriteProductState());
     var result = await productsRepo.getFavoriteProducts();
     result.fold(
       (failure) {
         emit(FailureGetFavoriteProductState(errMessage: failure.message));
       },
       (products) {
-        emit(SuccessGetFavoriteProductState(productsList: products));
+        if (products.isEmpty) {
+          emit(EmptyFavoriteProductState());
+        } else {
+          emit(SuccessGetFavoriteProductState(productsList: products));
+        }
       },
     );
   }

@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/cubits/get_favorite_products_cubit/get_favorite_product_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_favorite_products_cubit/get_favorite_product_states.dart';
+import 'package:ecommerce_clean_architecture/core/widgets/custom_text_message.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/sliver_list_items.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,8 +30,14 @@ class _FavoritePageBodyState extends State<FavoritePageBody> {
               SliverListItems(products: state.productsList),
             ],
           );
+        } else if (state is LoadingGetFavoriteProductState) {
+          return CustomTextMessage(message: "جاري تحميل المنتجات المفضلة");
+        } else if (state is FailureGetFavoriteProductState) {
+          return CustomTextMessage(message: "فشل التحميل");
+        } else if (state is EmptyFavoriteProductState) {
+          return CustomTextMessage(message: "لا يوجد منتجات مفضلة لديك");
         } else {
-          return Center(child: Text("لا يوجد منتجات مفضلة لديك"));
+          return CustomTextMessage(message: "");
         }
       },
     );

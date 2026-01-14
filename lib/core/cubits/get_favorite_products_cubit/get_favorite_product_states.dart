@@ -4,9 +4,12 @@ abstract class GetFavoriteProductStates {}
 
 final class InitialGetFavoriteProductState extends GetFavoriteProductStates {}
 
+final class LoadingGetFavoriteProductState extends GetFavoriteProductStates {}
+
+final class EmptyFavoriteProductState extends GetFavoriteProductStates {}
+
 final class SuccessGetFavoriteProductState extends GetFavoriteProductStates {
   final List<ProductEntity> productsList;
-
   SuccessGetFavoriteProductState({required this.productsList});
 }
 
