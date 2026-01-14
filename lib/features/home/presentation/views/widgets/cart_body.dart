@@ -28,13 +28,15 @@ class CartBody extends StatelessWidget {
           cartItems: context.watch<CartCubit>().cartEntity.cartItems,
         ),
         SliverToBoxAdapter(child: const SizedBox(height: 24)),
-        SliverToBoxAdapter(
-          child: SizedBox(
-            height: 54,
-            width: double.infinity,
-            child: CustomCartButton(),
-          ),
-        ),
+        context.watch<CartCubit>().cartEntity.cartItems.isEmpty
+            ? SliverToBoxAdapter(child: SizedBox())
+            : SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 54,
+                  width: double.infinity,
+                  child: CustomCartButton(),
+                ),
+              ),
       ],
     );
   }

@@ -9,16 +9,28 @@ class CartHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cartItemsLenght = context
+        .watch<CartCubit>()
+        .cartEntity
+        .cartItems
+        .length;
     return Container(
       color: Color(0xffEBF9F1),
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Center(
-        child: Text(
-          "لديك ${context.watch<CartCubit>().cartEntity.cartItems.length} منتجات في سله التسوق",
-          style: AppStyles.textStyle13Regular.copyWith(
-            color: AppColors.primaryColor,
-          ),
-        ),
+        child: cartItemsLenght == 0
+            ? Text(
+                "ليس لديك منتجات في السلة",
+                style: AppStyles.textStyle13Regular.copyWith(
+                  color: AppColors.primaryColor,
+                ),
+              )
+            : Text(
+                "لديك $cartItemsLenght منتجات في سله التسوق",
+                style: AppStyles.textStyle13Regular.copyWith(
+                  color: AppColors.primaryColor,
+                ),
+              ),
       ),
     );
   }
