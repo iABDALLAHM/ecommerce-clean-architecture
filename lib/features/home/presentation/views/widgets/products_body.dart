@@ -18,7 +18,6 @@ class _ProductsBodyState extends State<ProductsBody> {
   @override
   void initState() {
     context.read<ProductsCubit>().getProducts();
-
     super.initState();
   }
 
@@ -37,7 +36,7 @@ class _ProductsBodyState extends State<ProductsBody> {
                 CustomSearchField(),
                 const SizedBox(height: 16),
                 ProductsHeader(
-                  productsLength: context.read<ProductsCubit>().productsLength,
+                  productsLength: context.watch<ProductsCubit>().productsLength,
                 ),
                 const SizedBox(height: 16),
               ],

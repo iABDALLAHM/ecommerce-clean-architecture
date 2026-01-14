@@ -1,3 +1,4 @@
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/cart_body.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/cart_body_bloc_provider.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/home_body_bloc_provider.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/home_navigator.dart';
@@ -20,6 +21,6 @@ class MainViewBody extends StatelessWidget {
 List<Widget> tabs = [
   HomeBodyBlocProvider(child: HomeNavigator()),
   ProductsBodyBlocProvider(child: ProductsBody()),
-  CartBodyBlocProvider(),
+  CartBodyBlocProvider(child: CartBody()),
   ProfileBodyNavigator(),
 ];
