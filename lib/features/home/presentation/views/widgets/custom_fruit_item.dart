@@ -45,7 +45,16 @@ class _CustomFruitItemState extends State<CustomFruitItem> {
                   ? Icon(Icons.favorite, color: Colors.red)
                   : Icon(Icons.favorite_outline),
             ),
-            // Flexible(child: Image.network(productEntity.imageUrl)),
+            Center(
+              child: SizedBox(
+                height: 80,
+                width: 80,
+                child: Image.network(
+                  widget.productEntity.imageUrl,
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
             const SizedBox(height: 24),
             Row(
               children: [
