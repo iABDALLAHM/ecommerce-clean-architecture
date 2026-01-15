@@ -3,7 +3,7 @@ import 'package:ecommerce_clean_architecture/core/entities/review_entity.dart';
 class ReviewModel {
   final String name;
   final String image;
-  final String rating;
+  final double rating;
   final String date;
   final String reviewDescription;
 
