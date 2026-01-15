@@ -24,12 +24,30 @@ class ReviewAndRatingViewBody extends StatelessWidget {
                 Text("324 مراجعه", style: AppStyles.textStyle13Bold),
                 const SizedBox(height: 5),
                 ReviewsSummarySection(),
-                ReviewItem(),
+                const SizedBox(height: 16),
               ],
             ),
           ),
         ),
+        ReviewsListView(),
       ],
+    );
+  }
+}
+
+class ReviewsListView extends StatelessWidget {
+  const ReviewsListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverList.builder(
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 16, right: 16, left: 16),
+          child: ReviewItem(),
+        );
+      },
     );
   }
 }

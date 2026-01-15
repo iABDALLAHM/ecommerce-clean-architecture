@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_image_review_item.dart';
 import 'package:flutter/material.dart';
 
 class ReviewItem extends StatelessWidget {
@@ -27,7 +27,7 @@ class ReviewItem extends StatelessWidget {
                 ],
               ),
               const SizedBox(width: 15),
-              Image.asset(Assets.imagesProfileImage),
+              CustomImageReviewItem(),
             ],
           ),
           const SizedBox(height: 10),
