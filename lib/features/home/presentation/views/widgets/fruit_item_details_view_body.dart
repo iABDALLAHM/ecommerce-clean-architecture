@@ -18,7 +18,7 @@ class FruitItemDetailsViewBody extends StatelessWidget {
           child: SizedBox(
             height: height * 0.5,
             width: width,
-            child: FruitItemDetailsHeader(imageUrl: productEntity.imageUrl),
+            child: FruitItemDetailsHeader(imageUrl: productEntity.productImageUrl),
           ),
         ),
         SliverToBoxAdapter(

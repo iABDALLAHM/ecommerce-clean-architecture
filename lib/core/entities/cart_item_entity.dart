@@ -9,7 +9,7 @@ class CartItemEntity extends Equatable {
   CartItemEntity({required this.productEntity, this.count = 0});
   // اي حاجة هنا خاصة بال cartItemEntity
   num calculateTotalPrice() {
-    return productEntity.price * count;
+    return productEntity.productPrice * count;
   }
 
   num calculateTotalWeight() {

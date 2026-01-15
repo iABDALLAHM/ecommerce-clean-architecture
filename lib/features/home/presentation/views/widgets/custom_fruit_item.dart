@@ -50,7 +50,7 @@ class _CustomFruitItemState extends State<CustomFruitItem> {
                 height: 80,
                 width: 80,
                 child: Image.network(
-                  widget.productEntity.imageUrl,
+                  widget.productEntity.productImageUrl,
                   fit: BoxFit.contain,
                 ),
               ),
@@ -62,7 +62,7 @@ class _CustomFruitItemState extends State<CustomFruitItem> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.productEntity.name,
+                      widget.productEntity.productName,
                       style: AppStyles.textStyle13SemiBold,
                     ),
                     const SizedBox(height: 4),
@@ -70,7 +70,7 @@ class _CustomFruitItemState extends State<CustomFruitItem> {
                       TextSpan(
                         children: [
                           TextSpan(
-                            text: "${widget.productEntity.price}جنية",
+                            text: "${widget.productEntity.productPrice}جنية",
                             style: AppStyles.textStyle13Bold.copyWith(
                               color: AppColors.secondryColor,
                             ),

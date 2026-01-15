@@ -32,14 +32,14 @@ class CartItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomItemImage(
-                  imageUrl: cartItemEntity.productEntity.imageUrl,
+                  imageUrl: cartItemEntity.productEntity.productImageUrl,
                 ),
                 const SizedBox(width: 17),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      cartItemEntity.productEntity.name,
+                      cartItemEntity.productEntity.productName,
                       style: AppStyles.textStyle13Bold,
                     ),
                     const SizedBox(height: 4),

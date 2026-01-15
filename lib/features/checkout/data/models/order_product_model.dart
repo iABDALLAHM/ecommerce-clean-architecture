@@ -19,10 +19,10 @@ class OrderProductModel {
     required CartItemEntity cartItemEntity,
   }) {
     return OrderProductModel(
-      name: cartItemEntity.productEntity.name,
-      code: cartItemEntity.productEntity.code,
-      imageUrl: cartItemEntity.productEntity.imageUrl,
-      price: cartItemEntity.productEntity.price,
+      name: cartItemEntity.productEntity.productName,
+      code: cartItemEntity.productEntity.productCode,
+      imageUrl: cartItemEntity.productEntity.productImageUrl,
+      price: cartItemEntity.productEntity.productPrice,
       quantity: cartItemEntity.productEntity.unitAmount,
     );
   }

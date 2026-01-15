@@ -25,13 +25,13 @@ class ProductInfo extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(productEntity.name, style: AppStyles.textStyle13SemiBold),
+                Text(productEntity.productName, style: AppStyles.textStyle13SemiBold),
                 const SizedBox(height: 4),
                 Text.rich(
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: "${productEntity.price}جنية",
+                        text: "${productEntity.productPrice}جنية",
                         style: AppStyles.textStyle13Bold.copyWith(
                           color: AppColors.secondryColor,
                         ),
@@ -95,7 +95,7 @@ class ProductInfo extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          productEntity.discription,
+          productEntity.productDiscription,
           style: AppStyles.textStyle13Regular.copyWith(
             color: Color(0xff979899),
           ),
@@ -114,7 +114,7 @@ class ProductInfo extends StatelessWidget {
             Expanded(
               child: InfoDetailsBox(
                 icon: Assets.imagesIsOrganicIcon,
-                title: productEntity.isOrganic == false ? "0%" : "100%",
+                title: productEntity.isOrganicProduct == false ? "0%" : "100%",
                 subTitle: "اورجانيك",
               ),
             ),
