@@ -1,15 +1,17 @@
+import 'package:ecommerce_clean_architecture/core/entities/review_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_image_review_item.dart';
 import 'package:flutter/material.dart';
 
 class ReviewItem extends StatelessWidget {
-  const ReviewItem({super.key});
-
+  const ReviewItem({super.key, required this.reviewEntity});
+  final ReviewEntity reviewEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.transparent,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -17,9 +19,9 @@ class ReviewItem extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text("Ahmed Amr", style: AppStyles.textStyle16SemiBold),
+                  Text(reviewEntity.name, style: AppStyles.textStyle16SemiBold),
                   Text(
-                    "25/06/2020",
+                    reviewEntity.date.split(" ")[0],
                     style: AppStyles.textStyle13Regular.copyWith(
                       color: Color(0xff949D9E),
                     ),
@@ -32,7 +34,7 @@ class ReviewItem extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            "هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها",
+            reviewEntity.reviewDescription,
             style: AppStyles.textStyle13Regular.copyWith(
               color: Color(0xff949D9E),
             ),

@@ -37,7 +37,11 @@ Route onGenetateRoute(RouteSettings settings) {
     case ResetYourPasswordView.routeName:
       return MaterialPageRoute(builder: (context) => ResetYourPasswordView());
     case ReviewAndRatingView.routeName:
-      return MaterialPageRoute(builder: (context) => ReviewAndRatingView());
+      return MaterialPageRoute(
+        builder: (context) => ReviewAndRatingView(
+          productEntity: settings.arguments as ProductEntity,
+        ),
+      );
     case FruitItemDetailsView.routeName:
       return MaterialPageRoute(
         builder: (context) => FruitItemDetailsView(

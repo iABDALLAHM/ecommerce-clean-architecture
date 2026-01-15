@@ -105,14 +105,14 @@ class ProductModel {
       "averageRating": averageRating,
       "unitAmount": unitAmount,
       "numberOfCalories": numberOfCalories,
-      "expirationMonths": expirationYears,
-      "name": productName,
-      "price": productPrice,
-      "code": productCode,
-      "description": productDiscription,
-      "isFeatured": isFeaturedProduct,
-      "imageUrl": productImageUrl,
-      "isOrganic": isOrganicProduct,
+      "expirationYears": expirationYears,
+      "productName": productName,
+      "productPrice": productPrice,
+      "productCode": productCode,
+      "productDiscription": productDiscription,
+      "isFeaturedProduct": isFeaturedProduct,
+      "productImageUrl": productImageUrl,
+      "isOrganicProduct": isOrganicProduct,
     };
   }
 }

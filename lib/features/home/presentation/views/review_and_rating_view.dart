@@ -1,15 +1,17 @@
+import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/review_and_rating_view_body.dart';
 import 'package:flutter/material.dart';
 
 class ReviewAndRatingView extends StatelessWidget {
-  const ReviewAndRatingView({super.key});
+  const ReviewAndRatingView({super.key, required this.productEntity});
   static const String routeName = "ReviewAndRatingView";
+  final ProductEntity productEntity;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildReviewAndRatingAppBar(context),
-      body: ReviewAndRatingViewBody(),
+      body: ReviewAndRatingViewBody(productEntity: productEntity),
     );
   }
 

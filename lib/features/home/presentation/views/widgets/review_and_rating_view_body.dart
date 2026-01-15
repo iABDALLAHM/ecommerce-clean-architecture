@@ -1,4 +1,5 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/add_review_text_field.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/review_summary_section.dart';
@@ -6,8 +7,8 @@ import 'package:ecommerce_clean_architecture/features/home/presentation/views/wi
 import 'package:flutter/material.dart';
 
 class ReviewAndRatingViewBody extends StatelessWidget {
-  const ReviewAndRatingViewBody({super.key});
-
+  const ReviewAndRatingViewBody({super.key, required this.productEntity});
+  final ProductEntity productEntity;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -21,7 +22,10 @@ class ReviewAndRatingViewBody extends StatelessWidget {
                 const SizedBox(height: 16),
                 AddReviewTextField(),
                 const SizedBox(height: 16),
-                Text("324 مراجعه", style: AppStyles.textStyle13Bold),
+                Text(
+                  "${productEntity.ratingCount} مراجعه",
+                  style: AppStyles.textStyle13Bold,
+                ),
                 const SizedBox(height: 5),
                 ReviewsSummarySection(),
                 const SizedBox(height: 16),
@@ -29,7 +33,7 @@ class ReviewAndRatingViewBody extends StatelessWidget {
             ),
           ),
         ),
-        ReviewsListView(),
+        ReviewsListView(reviewsList: productEntity.reviews),
       ],
     );
   }

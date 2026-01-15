@@ -37,9 +37,9 @@ class _CustomFruitItemState extends State<CustomFruitItem> {
           children: [
             GestureDetector(
               onTap: () {
-                isActive = !isActive;
-                triggerAddFavoriteProductCubit(context);
+                isActive = true;
                 setState(() {});
+                triggerAddFavoriteProductCubit(context);
               },
               child: isActive
                   ? Icon(Icons.favorite, color: Colors.red)

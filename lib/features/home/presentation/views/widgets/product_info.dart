@@ -83,7 +83,10 @@ class ProductInfo extends StatelessWidget {
             const SizedBox(width: 9),
             GestureDetector(
               onTap: () {
-                Navigator.of(context).pushNamed(ReviewAndRatingView.routeName);
+                Navigator.of(context).pushNamed(
+                  ReviewAndRatingView.routeName,
+                  arguments: productEntity,
+                );
               },
               child: Text(
                 "المراجعه",
