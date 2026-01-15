@@ -3,6 +3,7 @@ import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/review_and_rating_view.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/decreent_button.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/increment_button.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/info_details_box.dart';
@@ -77,12 +78,17 @@ class ProductInfo extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 9),
-            Text(
-              "المراجعه",
-              style: AppStyles.textStyle13Bold.copyWith(
-                color: AppColors.primaryColor,
-                decoration: TextDecoration.underline,
-                decorationThickness: 2,
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(ReviewAndRatingView.routeName);
+              },
+              child: Text(
+                "المراجعه",
+                style: AppStyles.textStyle13Bold.copyWith(
+                  color: AppColors.primaryColor,
+                  decoration: TextDecoration.underline,
+                  decorationThickness: 2,
+                ),
               ),
             ),
           ],
@@ -137,7 +143,7 @@ class ProductInfo extends StatelessWidget {
         ),
 
         const SizedBox(height: 24),
-        
+
         SizedBox(
           height: 54,
           width: double.infinity,
