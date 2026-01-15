@@ -25,7 +25,10 @@ class ProductInfo extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(productEntity.productName, style: AppStyles.textStyle13SemiBold),
+                Text(
+                  productEntity.productName,
+                  style: AppStyles.textStyle13SemiBold,
+                ),
                 const SizedBox(height: 4),
                 Text.rich(
                   TextSpan(
@@ -72,7 +75,7 @@ class ProductInfo extends StatelessWidget {
             ),
             const SizedBox(width: 9),
             Text(
-              "(30+)",
+              "(${productEntity.reviews.length}+)",
               style: AppStyles.textStyle13Regular.copyWith(
                 color: Color(0xff9796A1),
               ),
@@ -106,7 +109,9 @@ class ProductInfo extends StatelessWidget {
             Expanded(
               child: InfoDetailsBox(
                 icon: Assets.imagesCalenderIcon,
-                title: "عام",
+                title: expirationYearsText(
+                  numOfYears: productEntity.expirationYears,
+                ),
                 subTitle: "الصلاحيه",
               ),
             ),
@@ -127,7 +132,7 @@ class ProductInfo extends StatelessWidget {
               child: InfoDetailsBox(
                 icon: Assets.imagesCaloryIcon,
                 title: "${productEntity.numberOfCalories} كالوري",
-                subTitle: "100 جرام",
+                subTitle: "1 كج",
               ),
             ),
             const SizedBox(width: 16),
@@ -151,5 +156,20 @@ class ProductInfo extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  String expirationYearsText({required int numOfYears}) {
+    switch (numOfYears) {
+      case 1:
+        return "عام";
+      case 2:
+        return "عامين";
+      case 3:
+        return "3 اعوام";
+      case 4:
+        return "4 اعوام";
+      default:
+        return "";
+    }
   }
 }
