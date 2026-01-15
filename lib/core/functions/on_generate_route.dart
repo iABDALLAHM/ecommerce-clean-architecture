@@ -8,6 +8,7 @@ import 'package:ecommerce_clean_architecture/features/auth/presentation/views/re
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/check_out_view.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/fruit_item_details_view.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/main_view.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/review_and_rating_view.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:ecommerce_clean_architecture/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,8 @@ Route onGenetateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => PasswordRecoveryView());
     case ResetYourPasswordView.routeName:
       return MaterialPageRoute(builder: (context) => ResetYourPasswordView());
+    case ReviewAndRatingView.routeName:
+      return MaterialPageRoute(builder: (context) => ReviewAndRatingView());
     case FruitItemDetailsView.routeName:
       return MaterialPageRoute(
         builder: (context) => FruitItemDetailsView(
