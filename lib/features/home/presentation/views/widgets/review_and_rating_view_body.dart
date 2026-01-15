@@ -1,8 +1,8 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/add_review_text_field.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/review_item.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/review_summary_section.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/reviews_list_view.dart';
 import 'package:flutter/material.dart';
 
 class ReviewAndRatingViewBody extends StatelessWidget {
@@ -31,23 +31,6 @@ class ReviewAndRatingViewBody extends StatelessWidget {
         ),
         ReviewsListView(),
       ],
-    );
-  }
-}
-
-class ReviewsListView extends StatelessWidget {
-  const ReviewsListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverList.builder(
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 16, right: 16, left: 16),
-          child: ReviewItem(),
-        );
-      },
     );
   }
 }

@@ -8,15 +8,20 @@ class ReviewAndRatingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildReviewAndRatingAppBar(),
+      appBar: buildReviewAndRatingAppBar(context),
       body: ReviewAndRatingViewBody(),
     );
   }
 
-  AppBar buildReviewAndRatingAppBar() {
+  AppBar buildReviewAndRatingAppBar(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      leading: Icon(Icons.arrow_back_ios_new),
+      leading: GestureDetector(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Icon(Icons.arrow_back_ios_new),
+      ),
       title: Text("المراجعه", style: AppStyles.textStyle19Bold),
     );
   }
