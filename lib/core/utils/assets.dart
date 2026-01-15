@@ -16,6 +16,10 @@ class Assets {
 
   static const String imagesBoxIcon = "assets/images/BoxIcon.svg";
 
+  static const String imagesCalenderIcon = "assets/images/calenderIcon.svg";
+
+  static const String imagesCaloryIcon = "assets/images/CaloryIcon.svg";
+
   static const String imagesCameraIcon = "assets/images/cameraIcon.svg";
 
   static const String imagesCheckMarkIcon = "assets/images/checkMarkIcon.svg";
@@ -46,6 +50,8 @@ class Assets {
 
   static const String imagesInfoProfileimage = "assets/images/infoProfileimage.svg";
 
+  static const String imagesIsOrganicIcon = "assets/images/isOrganicIcon.svg";
+
   static const String imagesItemDetailsbackground = "assets/images/itemDetailsbackground.svg";
 
   static const String imagesLanguageIcon = "assets/images/languageIcon.svg";
@@ -75,6 +81,8 @@ class Assets {
   static const String imagesSecondSplashViewBackground = "assets/images/secondSplashViewBackground.svg";
 
   static const String imagesSecondSplashViewLogo = "assets/images/secondSplashViewLogo.svg";
+
+  static const String imagesStarIcon = "assets/images/StarIcon.svg";
 
   static const String imagesStrawberryForTest = "assets/images/strawberryForTest.svg";
 
