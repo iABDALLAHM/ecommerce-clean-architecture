@@ -52,7 +52,9 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                           key: kOnBoardingSeen,
                           value: true,
                         );
-                        Navigator.of(context).pushNamed(LoginView.routeName);
+                        Navigator.of(
+                          context,
+                        ).pushReplacementNamed(LoginView.routeName);
                       },
                     ),
                   ),

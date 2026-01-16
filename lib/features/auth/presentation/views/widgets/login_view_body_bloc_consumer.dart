@@ -16,7 +16,7 @@ class LoginViewBodyBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is SuccessLoginState) {
           showSnackBar(context, message: "تم تسجيل الدخول بنجاح");
-          Navigator.of(context).pushNamed(MainView.routeName);
+          Navigator.of(context).pushReplacementNamed(MainView.routeName);
         } else if (state is FailureLoginState) {
           showSnackBar(context, message: state.errMessage);
         }
