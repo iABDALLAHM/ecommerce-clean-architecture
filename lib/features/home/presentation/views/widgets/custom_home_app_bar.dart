@@ -14,9 +14,8 @@ class CustomHomeAppBar extends StatelessWidget {
         CircleAvatar(
           radius: 25,
           backgroundColor: AppColors.lightPrimaryColor,
-          child: CircleAvatar(
-            radius: 20,
-            backgroundColor: Colors.transparent,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(25),
             child: Image.network(getUserData().userImage),
           ),
         ),

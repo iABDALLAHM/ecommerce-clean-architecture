@@ -9,8 +9,7 @@ class CustomFeaturedItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.sizeOf(context).width;
-    return Container(
-      color: Colors.amber,
+    return SizedBox(
       width: width,
       child: AspectRatio(
         aspectRatio: 330 / 158,

@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 
 class MainViewBody extends StatelessWidget {
   const MainViewBody({super.key, required this.currentBody});
-
   final int currentBody;
 
   @override
