@@ -7,7 +7,7 @@ class CustomNotificationIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(7),
+      padding: EdgeInsets.all(9),
       decoration: ShapeDecoration(
         color: Color(0xffEEF8ED),
         shape: OvalBorder(),
