@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_notification_app_bar.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/notification_body_header.dart';
 import 'package:flutter/widgets.dart';
 
 class NotificationBody extends StatelessWidget {
@@ -16,10 +17,9 @@ class NotificationBody extends StatelessWidget {
               children: [
                 const SizedBox(height: 16),
                 CustomNotificationAppBar(),
-                   const SizedBox(height: 16),
-
-
-                   
+                const SizedBox(height: 16),
+                NotificationBodyHeader(),
+                const SizedBox(height: 16),
               ],
             ),
           ),
