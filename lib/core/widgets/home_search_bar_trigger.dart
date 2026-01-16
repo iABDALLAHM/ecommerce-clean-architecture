@@ -1,18 +1,24 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/search_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CustomSearchField extends StatelessWidget {
-  const CustomSearchField({super.key});
+class HomeSearchBarTrigger extends StatelessWidget {
+  const HomeSearchBarTrigger({super.key});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onTap: () {
+        Navigator.of(context).pushNamed(SearchBody.routeName);
+      },
+      readOnly: true,
       decoration: InputDecoration(
         fillColor: Colors.white,
         filled: true,
         contentPadding: EdgeInsets.zero,
+        focusedBorder: buildOutlineInputBorder(),
         enabledBorder: buildOutlineInputBorder(),
         border: buildOutlineInputBorder(),
         hintText: "ابحث عن.......",

@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/products_cubit/products_cubit.dart';
-import 'package:ecommerce_clean_architecture/core/widgets/custom_search_field.dart';
+import 'package:ecommerce_clean_architecture/core/widgets/home_search_bar_trigger.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/best_selling_header.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_featured_list.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_home_app_bar.dart';
@@ -34,7 +34,7 @@ class _HomeBodyState extends State<HomeBody> {
                 const SizedBox(height: 16),
                 CustomHomeAppBar(),
                 const SizedBox(height: 16),
-                CustomSearchField(),
+                HomeSearchBarTrigger(),
                 const SizedBox(height: 12),
                 CustomFeaturedList(),
                 const SizedBox(height: 12),

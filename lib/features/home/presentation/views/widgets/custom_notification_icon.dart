@@ -8,11 +8,11 @@ class CustomNotificationIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(7),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+      decoration: ShapeDecoration(
         color: Color(0xffEEF8ED),
+        shape: OvalBorder(),
       ),
-      child: Icon(Icons.notifications_active, color: AppColors.primaryColor),
+      child: Icon(Icons.notifications_outlined, color: AppColors.primaryColor),
     );
   }
 }

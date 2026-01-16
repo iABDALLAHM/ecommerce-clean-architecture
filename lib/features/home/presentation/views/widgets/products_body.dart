@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/products_cubit/products_cubit.dart';
-import 'package:ecommerce_clean_architecture/core/widgets/custom_search_field.dart';
+import 'package:ecommerce_clean_architecture/core/widgets/home_search_bar_trigger.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_app_bar.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_grid_view_bloc_builder.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_header.dart';
@@ -33,7 +33,7 @@ class _ProductsBodyState extends State<ProductsBody> {
                 const SizedBox(height: 20),
                 ProductsAppBar(),
                 const SizedBox(height: 16),
-                CustomSearchField(),
+                HomeSearchBarTrigger(),
                 const SizedBox(height: 16),
                 ProductsHeader(
                   productsLength: context.watch<ProductsCubit>().productsLength,
