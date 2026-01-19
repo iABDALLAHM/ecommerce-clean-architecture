@@ -63,7 +63,7 @@ class ProductsRepoImplementation implements ProductsRepo {
   }
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> searchProducts({
+  Future<Either<Failure, ProductEntity>> searchProducts({
     required String searchName,
   }) async {
     try {
@@ -71,11 +71,8 @@ class ProductsRepoImplementation implements ProductsRepo {
         path: BackendEndPoints.getProducts,
         query: {"productName": searchName},
       );
-      List<ProductEntity> productsList = [];
-      for (var productEntity in data) {
-        productsList.add(ProductModel.fromJson(productEntity).toEntity());
-      }
-      return Right(productsList);
+      ProductEntity productEntity = ProductModel.fromJson(data).toEntity();
+      return Right(productEntity);
     } catch (e) {
       return Left(ServerFailure(message: "فشل إرجاع البيانات"));
     }

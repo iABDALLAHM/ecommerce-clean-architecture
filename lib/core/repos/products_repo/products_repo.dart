@@ -8,5 +8,5 @@ abstract class ProductsRepo {
     required ProductEntity product,
   });
   Future<Either<Failure, List<ProductEntity>>> getFavoriteProducts();
-  Future<Either<Failure,List<ProductEntity>>> searchProducts({required String searchName});
+  Future<Either<Failure,ProductEntity>> searchProducts({required String searchName});
 }
