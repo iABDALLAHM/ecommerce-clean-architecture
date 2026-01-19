@@ -8,7 +8,9 @@ class SearchBody extends StatelessWidget {
   static const String routeName = "SearchBody";
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
+    return 
+
+    CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
           child: Padding(
@@ -18,7 +20,7 @@ class SearchBody extends StatelessWidget {
                 const SizedBox(height: 16),
                 SearchBodyAppBar(),
                 const SizedBox(height: 16),
-                CustomSearchTextField(),
+                CustomSearchTextField()
               ],
             ),
           ),
