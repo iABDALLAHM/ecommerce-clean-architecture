@@ -1,9 +1,10 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_notifications_cubit/get_notifications_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_notification_app_bar.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/in_active_notification_item.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/notification_body_header.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/active_notification_item.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/newest_notification_body_header.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/newest_notifications_list_view.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/past_notification_body_header.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/past_notifications_list_view.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,6 +25,7 @@ class _NotificationBodyState extends State<NotificationBody> {
 
   @override
   Widget build(BuildContext context) {
+
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
@@ -34,10 +36,14 @@ class _NotificationBodyState extends State<NotificationBody> {
                 const SizedBox(height: 16),
                 CustomNotificationAppBar(),
                 const SizedBox(height: 16),
-                NotificationBodyHeader(),
+                NewestNotificationBodyHeader(),
                 const SizedBox(height: 16),
-                InActiveNotificationItem(),
-                ActiveNotificationItem(),
+                NewestNotificationsListView(),
+                const SizedBox(height: 11),
+                PastNotificationBodyHeader(),
+                const SizedBox(height: 16),
+                PastNotificationsListView(),
+                const SizedBox(height: 16),
               ],
             ),
           ),
@@ -46,3 +52,8 @@ class _NotificationBodyState extends State<NotificationBody> {
     );
   }
 }
+
+
+
+
+

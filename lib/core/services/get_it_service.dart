@@ -1,5 +1,7 @@
 import 'package:ecommerce_clean_architecture/core/repos/images_repo/images_repo.dart';
 import 'package:ecommerce_clean_architecture/core/repos/images_repo/images_repo_implementation.dart';
+import 'package:ecommerce_clean_architecture/core/repos/notification_repo/notification_repo.dart';
+import 'package:ecommerce_clean_architecture/core/repos/notification_repo/notification_repo_implementation.dart';
 import 'package:ecommerce_clean_architecture/core/repos/order_repo/order_repo_implementation.dart';
 import 'package:ecommerce_clean_architecture/core/repos/order_repo/orders_repo.dart';
 import 'package:ecommerce_clean_architecture/core/repos/products_repo/products_repo.dart';
@@ -22,6 +24,9 @@ void setupGetIt() {
 
   getIt.registerSingleton<ImagesRepo>(
     ImagesRepoImplementation(storageService: getIt<StorageService>()),
+  );
+  getIt.registerSingleton<NotificationRepo>(
+    NotificationRepoImplementation(databaseService: getIt<DatabaseService>()),
   );
   getIt.registerSingleton<OrdersRepo>(
     OrderRepoImplementation(databaseService: getIt<DatabaseService>()),

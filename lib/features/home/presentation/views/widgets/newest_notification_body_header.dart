@@ -2,8 +2,8 @@ import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/widgets.dart';
 
-class NotificationBodyHeader extends StatelessWidget {
-  const NotificationBodyHeader({super.key});
+class NewestNotificationBodyHeader extends StatelessWidget {
+  const NewestNotificationBodyHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
