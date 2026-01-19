@@ -61,4 +61,10 @@ class ProductsRepoImplementation implements ProductsRepo {
       return Left(ServerFailure(message: "fetch products failed"));
     }
   }
+
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getBestSellingProducts() {
+    // ooooooooooooooooooooooo
+    throw UnimplementedError();
+  }
 }

@@ -8,4 +8,5 @@ abstract class ProductsRepo {
     required ProductEntity product,
   });
   Future<Either<Failure, List<ProductEntity>>> getFavoriteProducts();
+    Future<Either<Failure, List<ProductEntity>>> getBestSellingProducts();
 }

@@ -31,6 +31,7 @@ class FirestoreService implements DatabaseService {
     required String path,
     String? documentId,
     bool? isNestedData,
+    Map<String, dynamic>? query,
     String? subCollection,
   }) async {
     if (isNestedData == true) {

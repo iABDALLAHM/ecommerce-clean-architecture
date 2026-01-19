@@ -11,5 +11,6 @@ abstract class DatabaseService {
     String? documentId,
     bool? isNestedData,
     String? subCollection,
+    Map<String, dynamic>? query,
   });
 }
