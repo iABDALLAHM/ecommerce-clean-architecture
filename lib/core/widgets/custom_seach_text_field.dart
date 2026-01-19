@@ -20,7 +20,7 @@ class _CustomSearchTextFieldState extends State<CustomSearchTextField> {
     'Strawberry',
     'Mango',
   ];
-  List<String> suggestions = [];
+  List<String> suggestions = ["لاتوجد نتائج بحث"];
 
   void updateSuggestions(String input) {
     setState(() {
@@ -58,32 +58,35 @@ class _CustomSearchTextFieldState extends State<CustomSearchTextField> {
             ),
           ),
         ),
-        suggestions.isEmpty
-            ? SizedBox()
-            : SizedBox(
-                height: MediaQuery.sizeOf(context).height * .18,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
+        SizedBox(
+          height: MediaQuery.sizeOf(context).height * .18,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: suggestions.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(
+                    suggestions[index],
+                    style: AppStyles.textStyle13Regular.copyWith(
+                      color: Color(0xff949D9E),
+                    ),
                   ),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: suggestions.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(suggestions[index]),
-                        onTap: () {
-                          controller.text = suggestions[index];
-                          setState(() {
-                            suggestions = [];
-                          });
-                        },
-                      );
-                    },
-                  ),
-                ),
-              ),
+                  onTap: () {
+                    controller.text = suggestions[index];
+                    setState(() {
+                      suggestions = [];
+                    });
+                  },
+                );
+              },
+            ),
+          ),
+        ),
       ],
     );
   }
