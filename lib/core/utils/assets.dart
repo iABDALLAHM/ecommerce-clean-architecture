@@ -82,6 +82,8 @@ class Assets {
 
   static const String imagesSearchIconSvg = "assets/images/searchIconSvg.svg";
 
+  static const String imagesSearchillstrationIcon = "assets/images/searchillstrationIcon.svg";
+
   static const String imagesSecondSplashViewBackground = "assets/images/secondSplashViewBackground.svg";
 
   static const String imagesSecondSplashViewLogo = "assets/images/secondSplashViewLogo.svg";

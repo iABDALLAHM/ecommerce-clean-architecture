@@ -6,9 +6,11 @@ final class InitialSearchState extends SearchStates {}
 
 final class LoadingSearchState extends SearchStates {}
 
+final class EmptySearchState extends SearchStates {}
+
 final class SuccessSearchState extends SearchStates {
-  final ProductEntity productEntity;
-  SuccessSearchState({required this.productEntity});
+  final List<ProductEntity> productsList;
+  SuccessSearchState({required this.productsList});
 }
 
 final class FailureSearchState extends SearchStates {

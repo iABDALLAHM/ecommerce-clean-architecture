@@ -44,14 +44,19 @@ class FirestoreService implements DatabaseService {
     } else if (documentId != null) {
       var data = await firestore.collection(path).doc(documentId).get();
       return data.data();
-    } else {
+    } else if (query != null) {
       Query<Map<String, dynamic>> data = firestore.collection(path);
-      if (query != null) {
+
+      if (query["productName"] != null) {
         var productName = query["productName"];
-        data = data.where("productName", isEqualTo: productName);
+        data = data.where("productName", isGreaterThanOrEqualTo: productName);
       }
+
       var result = await data.get();
       return result.docs.map((doc) => doc.data()).toList();
+    } else {
+      var data = await firestore.collection(path).get();
+      return data.docs.map((doc) => doc.data()).toList();
     }
   }
 }

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
@@ -63,7 +64,7 @@ class ProductsRepoImplementation implements ProductsRepo {
   }
 
   @override
-  Future<Either<Failure, ProductEntity>> searchProducts({
+  Future<Either<Failure, List<ProductEntity>>> searchProducts({
     required String searchName,
   }) async {
     try {
@@ -71,9 +72,13 @@ class ProductsRepoImplementation implements ProductsRepo {
         path: BackendEndPoints.getProducts,
         query: {"productName": searchName},
       );
-      ProductEntity productEntity = ProductModel.fromJson(data).toEntity();
-      return Right(productEntity);
+      List<ProductEntity> productsList = [];
+      for (var productModel in data) {
+        productsList.add(ProductModel.fromJson(productModel).toEntity());
+      }
+      return Right(productsList);
     } catch (e) {
+      log("error in ProductsRepoImplementation in searchProducts $e");
       return Left(ServerFailure(message: "فشل إرجاع البيانات"));
     }
   }

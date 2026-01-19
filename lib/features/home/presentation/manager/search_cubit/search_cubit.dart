@@ -13,8 +13,12 @@ class SearchCubit extends Cubit<SearchStates> {
       (failure) {
         emit(FailureSearchState(errMessage: failure.message));
       },
-      (productEntity) {
-        emit(SuccessSearchState(productEntity: productEntity));
+      (productsList) {
+        if (productsList.isEmpty) {
+          emit(EmptySearchState());
+        } else {
+          emit(SuccessSearchState(productsList: productsList));
+        }
       },
     );
   }

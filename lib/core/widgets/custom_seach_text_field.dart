@@ -1,42 +1,24 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/search_cubit/search_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/search_cubit/search_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_svg/svg.dart';
 
-class CustomSearchTextField extends StatefulWidget {
+class CustomSearchTextField extends StatelessWidget {
   const CustomSearchTextField({super.key});
-
-  @override
-  State<CustomSearchTextField> createState() => _CustomSearchTextFieldState();
-}
-
-class _CustomSearchTextFieldState extends State<CustomSearchTextField> {
-  TextEditingController controller = TextEditingController();
-  List<String> allItems = [
-    'Apple',
-    'Banana',
-    'Orange',
-    'Pineapple',
-    'Strawberry',
-    'Mango',
-  ];
-  List<String> suggestions = ["لاتوجد نتائج بحث"];
-
-  void updateSuggestions(String input) {
-    setState(() {
-      suggestions = allItems
-          .where((item) => item.toLowerCase().contains(input.toLowerCase()))
-          .toList();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         TextField(
-          onChanged: updateSuggestions,
-          controller: controller,
+          onChanged: (value) {
+            context.read<SearchCubit>().searchProducts(searchName: value);
+          },
           decoration: InputDecoration(
             fillColor: Colors.white,
             filled: true,
@@ -58,34 +40,31 @@ class _CustomSearchTextFieldState extends State<CustomSearchTextField> {
             ),
           ),
         ),
-        SizedBox(
-          height: MediaQuery.sizeOf(context).height * .18,
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: suggestions.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                    suggestions[index],
-                    style: AppStyles.textStyle13Regular.copyWith(
-                      color: Color(0xff949D9E),
+        BlocBuilder<SearchCubit, SearchStates>(
+          builder: (context, state) {
+            if (state is EmptySearchState) {
+              return SizedBox(
+                height: MediaQuery.sizeOf(context).height * .1,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 22, top: 8),
+                    child: Text(
+                      "لاتوجد نتائج بحث",
+                      style: AppStyles.textStyle13Regular.copyWith(
+                        color: Color(0xff949D9E),
+                      ),
                     ),
                   ),
-                  onTap: () {
-                    controller.text = suggestions[index];
-                    setState(() {
-                      suggestions = [];
-                    });
-                  },
-                );
-              },
-            ),
-          ),
+                ),
+              );
+            } else {
+              return SizedBox();
+            }
+          },
         ),
       ],
     );
