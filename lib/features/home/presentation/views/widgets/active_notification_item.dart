@@ -22,7 +22,7 @@ class ActiveNotificationItem extends StatelessWidget {
               children: [
                 const SizedBox(height: 8),
                 Text(
-                  "${handleDateTime(date: notificationEntity.date)} صباحا",
+                  handleDateTime(date: notificationEntity.date),
                   style: AppStyles.textStyle13Regular.copyWith(
                     color: Color(0xff949D9E),
                   ),
