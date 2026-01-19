@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_clean_architecture/core/entities/notification_entity.dart';
 
 class NotificationModel {
@@ -16,7 +17,7 @@ class NotificationModel {
 
   factory NotificationModel.fromJson({required Map<String, dynamic> json}) {
     return NotificationModel(
-      date: json["date"],
+      date: (json["date"] as Timestamp).toDate(),
       notificationImageUrl: json["notificationimageUrl"],
       notificationTitle: json["notificationTitle"],
       notificationBody: json["notificationBody"],

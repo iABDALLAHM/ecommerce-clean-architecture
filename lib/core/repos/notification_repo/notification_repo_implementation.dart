@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/entities/notification_entity.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
@@ -23,6 +25,7 @@ class NotificationRepoImplementation implements NotificationRepo {
       }
       return Right(notificationList);
     } catch (e) {
+      log("error in NotificationRepoImplementation in getNotifications $e");
       return Left(ServerFailure(message: "فشل إستعادة الرسائل"));
     }
   }

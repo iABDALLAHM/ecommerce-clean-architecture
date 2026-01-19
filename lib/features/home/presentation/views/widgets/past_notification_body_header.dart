@@ -3,8 +3,8 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/widgets.dart';
 
 class PastNotificationBodyHeader extends StatelessWidget {
-  const PastNotificationBodyHeader({super.key});
-
+  const PastNotificationBodyHeader({super.key, required this.notificationLength});
+  final int notificationLength;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -20,7 +20,7 @@ class PastNotificationBodyHeader extends StatelessWidget {
             shape: OvalBorder(),
           ),
           child: Text(
-            "2",
+            "$notificationLength",
             style: AppStyles.textStyle13Bold.copyWith(
               color: AppColors.primaryColor,
             ),
@@ -35,6 +35,5 @@ class PastNotificationBodyHeader extends StatelessWidget {
         ),
       ],
     );
-    
   }
 }

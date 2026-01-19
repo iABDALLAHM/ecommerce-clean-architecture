@@ -1,11 +1,13 @@
+import 'package:ecommerce_clean_architecture/core/entities/notification_entity.dart';
+import 'package:ecommerce_clean_architecture/core/functions/handle_date_time.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class InActiveNotificationItem extends StatelessWidget {
-  const InActiveNotificationItem({super.key});
-
+  const InActiveNotificationItem({super.key, required this.notificationEntity});
+  final NotificationEntity notificationEntity;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -14,7 +16,7 @@ class InActiveNotificationItem extends StatelessWidget {
         children: [
           const SizedBox(height: 8),
           Text(
-            "9 صباحا",
+            "${handleDateTime(date: notificationEntity.date)} صباحا",
             style: AppStyles.textStyle13Regular.copyWith(
               color: Color(0xff949D9E),
             ),
@@ -28,15 +30,18 @@ class InActiveNotificationItem extends StatelessWidget {
           Text.rich(
             TextSpan(
               children: [
-                TextSpan(text: "خصم ", style: AppStyles.textStyle13SemiBold),
                 TextSpan(
-                  text: "50% ",
+                  text: "${notificationEntity.notificationTitle} ",
+                  style: AppStyles.textStyle13SemiBold,
+                ),
+                TextSpan(
+                  text: "${notificationEntity.discountPercentage}% ",
                   style: AppStyles.textStyle16SemiBold.copyWith(
                     color: Color(0xffEB5757),
                   ),
                 ),
                 TextSpan(
-                  text: "علي اسعار الفواكه بمناسبه العيد",
+                  text: "${notificationEntity.notificationBody}",
                   style: AppStyles.textStyle13SemiBold,
                 ),
               ],
