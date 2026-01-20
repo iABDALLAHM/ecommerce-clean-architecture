@@ -10,10 +10,13 @@ class CustomProfileImage extends StatelessWidget {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        CircleAvatar(
-          backgroundColor: Colors.transparent,
-          radius: 35,
-          child: Image.network(imageUrl),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(35),
+          child: CircleAvatar(
+            backgroundColor: Colors.transparent,
+            radius: 35,
+            child: Image.network(imageUrl),
+          ),
         ),
         Positioned(
           top: 59,

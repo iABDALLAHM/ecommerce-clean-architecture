@@ -15,7 +15,12 @@ class WalletBody extends StatelessWidget {
   }
 
   AppBar buildWalletBodyAppBar(BuildContext context) => AppBar(
-    actions: [Icon(Icons.edit, color: Color(0xff949D9E))],
+    actions: [
+      Padding(
+        padding: const EdgeInsets.only(left: 16),
+        child: Icon(Icons.edit, color: Color(0xff949D9E)),
+      ),
+    ],
     leading: CustomArrowBack(),
     centerTitle: true,
     title: Text("المدفوعات", style: AppStyles.textStyle19Bold),

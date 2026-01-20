@@ -15,6 +15,7 @@ class WalletViewBody extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
         child: Column(
           children: [
+            const SizedBox(height: 16),
             WalletItem(
               walletCode: "**** 1234 ",
               walletIcon: Assets.imagesMasterCardIcon,
