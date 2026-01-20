@@ -124,7 +124,7 @@ class AuthRepoImplementation implements AuthRepo {
     try {
       await authService.updatePassword(newPassword: newPassword);
       return Right(null);
-    } catch (e) {
+    } on CustomException catch (e) {
       return Left(
         ServerFailure(message: "the error happend in updatePassword method $e"),
       );

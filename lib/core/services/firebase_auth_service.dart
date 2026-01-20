@@ -94,10 +94,12 @@ class FirebaseAuthService implements AuthService {
   }
 
   @override
-  Future<void> updatePassword({required String newPassword}) async {
+  Future<void> updatePassword({
+    required String newPassword,
+  }) async {
     try {
-      final user = firebaseAuth.currentUser;
-      await user!.updatePassword(newPassword);
+      final user = firebaseAuth.currentUser!;
+      await user.updatePassword(newPassword);
     } on FirebaseAuthException catch (e) {
       log(
         "error happend in FirebaseAuthService in updatePassword method please check it, the error: $e",

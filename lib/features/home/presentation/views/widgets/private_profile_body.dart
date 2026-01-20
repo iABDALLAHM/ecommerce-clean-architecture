@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
+import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_password_field.dart';
@@ -18,7 +19,7 @@ class PrivateProfileBody extends StatefulWidget {
 class _PrivateProfileBodyState extends State<PrivateProfileBody> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  String? oldPassword, newPassword;
+  String? oldPassword, newPassword, confirmationNewPassord;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -61,7 +62,12 @@ class _PrivateProfileBodyState extends State<PrivateProfileBody> {
                     },
                   ),
                   const SizedBox(height: 8),
-                  CustomPasswordField(hintText: "تأكيد كلمة المرور الجديده"),
+                  CustomPasswordField(
+                    hintText: "تأكيد كلمة المرور الجديده",
+                    onSaved: (value) {
+                      confirmationNewPassord = value;
+                    },
+                  ),
                   const SizedBox(height: 60),
                   SizedBox(
                     height: 54,
@@ -71,9 +77,16 @@ class _PrivateProfileBodyState extends State<PrivateProfileBody> {
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
-                          context
-                              .read<UpdateUserPasswordCubit>()
-                              .updateUserPassword(newPassword: newPassword!);
+                          if (newPassword != confirmationNewPassord) {
+                            showSnackBar(
+                              context,
+                              message: "برجاء تأكيد الباسورد",
+                            );
+                          } else {
+                            context
+                                .read<UpdateUserPasswordCubit>()
+                                .updateUserPassword(newPassword: newPassword!);
+                          }
                         } else {
                           autovalidateMode = AutovalidateMode.always;
                           setState(() {});
