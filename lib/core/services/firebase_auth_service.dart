@@ -92,4 +92,18 @@ class FirebaseAuthService implements AuthService {
   Future<void> signOut() async {
     await firebaseAuth.signOut();
   }
+
+  @override
+  Future<void> updatePassword({
+    required String newPassword,
+    required String oldPassword,
+  }) async {
+    final user = firebaseAuth.currentUser;
+    final credential = EmailAuthProvider.credential(
+      email: user!.email!,
+      password: oldPassword,
+    );
+    await user.reauthenticateWithCredential(credential);
+    await user.updatePassword(newPassword);
+  }
 }
