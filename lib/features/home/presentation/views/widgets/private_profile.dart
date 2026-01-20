@@ -1,6 +1,7 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_arrow_back.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/private_profile_body.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/private_profile_body_bloc_consumer.dart';
 import 'package:flutter/material.dart';
 
 class PrivateProfile extends StatelessWidget {
@@ -10,7 +11,7 @@ class PrivateProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildPrivateProfileAppBar(context),
-      body: PrivateProfileBody(),
+      body: PrivateProfileBodyBlocConsumer(child: PrivateProfileBody()),
     );
   }
 

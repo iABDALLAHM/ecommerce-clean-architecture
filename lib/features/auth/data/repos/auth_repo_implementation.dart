@@ -24,7 +24,7 @@ class AuthRepoImplementation implements AuthRepo {
   Future<Either<Failure, UserEntity>> createNewAccount({
     required String email,
     required String password,
-   required String userImage,
+    required String userImage,
     required String name,
   }) async {
     try {
@@ -115,5 +115,19 @@ class AuthRepoImplementation implements AuthRepo {
   Future<void> signOut() async {
     await authService.signOut();
     await removeAllUserData();
+  }
+
+  @override
+  Future<Either<Failure, void>> updatePassword({
+    required String newPassword,
+  }) async {
+    try {
+      await authService.updatePassword(newPassword: newPassword);
+      return Right(null);
+    } catch (e) {
+      return Left(
+        ServerFailure(message: "the error happend in updatePassword method $e"),
+      );
+    }
   }
 }

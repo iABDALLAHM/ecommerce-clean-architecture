@@ -94,16 +94,26 @@ class FirebaseAuthService implements AuthService {
   }
 
   @override
-  Future<void> updatePassword({
-    required String newPassword,
-    required String oldPassword,
-  }) async {
-    final user = firebaseAuth.currentUser;
-    final credential = EmailAuthProvider.credential(
-      email: user!.email!,
-      password: oldPassword,
-    );
-    await user.reauthenticateWithCredential(credential);
-    await user.updatePassword(newPassword);
+  Future<void> updatePassword({required String newPassword}) async {
+    try {
+      final user = firebaseAuth.currentUser;
+      await user!.updatePassword(newPassword);
+    } on FirebaseAuthException catch (e) {
+      log(
+        "error happend in FirebaseAuthService in updatePassword method please check it, the error: $e",
+      );
+      if (e.code == "invalid-credential") {
+        throw CustomException(
+          exceptionMeassge: "حدث خطأ ما برجاء المحاولة مرة آخرى",
+        );
+      }
+    } catch (e) {
+      log(
+        "error happend in FirebaseAuthService in updatePassword method please check it, the error: $e",
+      );
+      throw CustomException(
+        exceptionMeassge: "حدث خطأ ما برجاء المحاولة مرة آخرى",
+      );
+    }
   }
 }

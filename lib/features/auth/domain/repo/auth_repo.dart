@@ -15,6 +15,7 @@ abstract class AuthRepo {
     required String password,
   });
   Future<void> signOut();
+  Future<Either<Failure, void>> updatePassword({required String newPassword});
 
   // database methods
   Future<void> addUserData({required UserEntity userEntity});
