@@ -1,9 +1,7 @@
 import 'package:ecommerce_clean_architecture/core/entities/notification_entity.dart';
 import 'package:ecommerce_clean_architecture/core/functions/handle_date_time.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class InActiveNotificationItem extends StatelessWidget {
   const InActiveNotificationItem({super.key, required this.notificationEntity});
@@ -23,7 +21,11 @@ class InActiveNotificationItem extends StatelessWidget {
           ),
         ],
       ),
-      leading: SvgPicture.asset(Assets.imagesNotificationImage),
+      leading: CircleAvatar(
+        backgroundColor: Colors.white,
+        radius: 30,
+        backgroundImage: NetworkImage(notificationEntity.notificationImageUrl!),
+      ),
       title: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

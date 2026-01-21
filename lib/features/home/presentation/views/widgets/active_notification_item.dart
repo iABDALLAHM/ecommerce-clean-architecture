@@ -2,9 +2,7 @@ import 'package:ecommerce_clean_architecture/core/entities/notification_entity.d
 import 'package:ecommerce_clean_architecture/core/functions/handle_date_time.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ActiveNotificationItem extends StatelessWidget {
   const ActiveNotificationItem({super.key, required this.notificationEntity});
@@ -29,7 +27,13 @@ class ActiveNotificationItem extends StatelessWidget {
                 ),
               ],
             ),
-            leading: SvgPicture.asset(Assets.imagesNotificationImage),
+            leading: CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: 30,
+              backgroundImage: NetworkImage(
+                notificationEntity.notificationImageUrl!,
+              ),
+            ),
             title: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
