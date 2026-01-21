@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/order_item.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/orders_item_list_view.dart';
 import 'package:flutter/material.dart';
 
 class OrdersSectionBody extends StatelessWidget {
@@ -12,7 +12,9 @@ class OrdersSectionBody extends StatelessWidget {
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-            child: Column(children: [const SizedBox(height: 16), OrderItem()]),
+            child: Column(
+              children: [const SizedBox(height: 16), OrdersItemListView()],
+            ),
           ),
         ),
       ],

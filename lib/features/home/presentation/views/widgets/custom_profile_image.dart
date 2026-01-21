@@ -1,25 +1,22 @@
+import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomProfileImage extends StatelessWidget {
-  const CustomProfileImage({super.key, required this.imageUrl});
-  final String imageUrl;
+  const CustomProfileImage({super.key});
   @override
   Widget build(BuildContext context) {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(35),
-          child: CircleAvatar(
-            backgroundColor: Colors.transparent,
-            radius: 35,
-            child: Image.network(imageUrl),
-          ),
+        CircleAvatar(
+          backgroundColor: Colors.white,
+          radius: 30,
+          backgroundImage: NetworkImage(getUserData().userImage),
         ),
         Positioned(
-          top: 59,
+          top: 50,
           left: 0,
           right: 0,
           child: Container(

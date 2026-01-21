@@ -10,7 +10,7 @@ class OrdersSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildOrderSectionAppBar(context),
-      body: OrdersSectionBody(),
+      body: SafeArea(bottom: false, child: OrdersSectionBody()),
     );
   }
 

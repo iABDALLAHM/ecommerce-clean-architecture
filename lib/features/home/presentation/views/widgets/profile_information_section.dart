@@ -5,8 +5,7 @@ import 'package:ecommerce_clean_architecture/features/home/presentation/views/wi
 import 'package:flutter/material.dart';
 
 class ProfileInformationSection extends StatefulWidget {
-  const ProfileInformationSection({super.key, required this.imageUrl});
-  final String imageUrl;
+  const ProfileInformationSection({super.key});
 
   @override
   State<ProfileInformationSection> createState() =>
@@ -22,7 +21,7 @@ class _ProfileInformationSectionState extends State<ProfileInformationSection> {
           onTap: () {
             showEditImageBottomSheet(context: context);
           },
-          child: CustomProfileImage(imageUrl: widget.imageUrl),
+          child: CustomProfileImage(),
         ),
         const SizedBox(width: 24),
         Column(
