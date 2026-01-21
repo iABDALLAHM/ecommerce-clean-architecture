@@ -6,6 +6,7 @@ import 'package:ecommerce_clean_architecture/features/auth/presentation/views/pa
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/register_view.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/reset_your_password_view.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/check_out_view.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/review_order_view.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/fruit_item_details_view.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/main_view.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/review_and_rating_view.dart';
@@ -36,6 +37,8 @@ Route onGenetateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => PasswordRecoveryView());
     case ResetYourPasswordView.routeName:
       return MaterialPageRoute(builder: (context) => ResetYourPasswordView());
+    case ReviewOrderView.routeName:
+      return MaterialPageRoute(builder: (context) => ReviewOrderView());
     case ReviewAndRatingView.routeName:
       return MaterialPageRoute(
         builder: (context) => ReviewAndRatingView(
