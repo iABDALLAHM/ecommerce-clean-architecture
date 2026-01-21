@@ -12,8 +12,10 @@ class FirebaseAuthService implements AuthService {
     required String password,
   }) async {
     try {
-      final credential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
+      final credential = await firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       log(
@@ -48,7 +50,7 @@ class FirebaseAuthService implements AuthService {
   @override
   Future<User> signIn({required String email, required String password}) async {
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      final credential = await firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -94,9 +96,7 @@ class FirebaseAuthService implements AuthService {
   }
 
   @override
-  Future<void> updatePassword({
-    required String newPassword,
-  }) async {
+  Future<void> updatePassword({required String newPassword}) async {
     try {
       final user = firebaseAuth.currentUser!;
       await user.updatePassword(newPassword);
@@ -108,13 +108,17 @@ class FirebaseAuthService implements AuthService {
         throw CustomException(
           exceptionMeassge: "حدث خطأ ما برجاء المحاولة مرة آخرى",
         );
+      } else {
+        throw CustomException(
+          exceptionMeassge: "حدث خطأ ما برجاء المحاولة مرة آخرى",
+        );
       }
     } catch (e) {
       log(
         "error happend in FirebaseAuthService in updatePassword method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: "حدث خطأ ما برجاء المحاولة مرة آخرى",
+        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
       );
     }
   }
