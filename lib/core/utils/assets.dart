@@ -16,6 +16,8 @@ class Assets {
 
   static const String imagesBoxIcon = "assets/images/BoxIcon.svg";
 
+  static const String imagesBoxTrackIcon = "assets/images/BoxTrackIcon.svg";
+
   static const String imagesCalenderIcon = "assets/images/calenderIcon.svg";
 
   static const String imagesCaloryIcon = "assets/images/CaloryIcon.svg";
@@ -37,6 +39,8 @@ class Assets {
   static const String imagesFirstSplashViewBackground = "assets/images/firstSplashViewBackground.svg";
 
   static const String imagesFirstSplashViewLogo = "assets/images/firstSplashViewLogo.svg";
+
+  static const String imagesGoodsCarIcon = "assets/images/GoodsCarIcon.svg";
 
   static const String imagesGoogleSocialIcon = "assets/images/googleSocialIcon.svg";
 
@@ -72,6 +76,10 @@ class Assets {
 
   static const String imagesOnBoardingLogo = "assets/images/onBoardingLogo.svg";
 
+  static const String imagesOrderCheckIcon = "assets/images/orderCheckIcon.svg";
+
+  static const String imagesOrderTrackIcon = "assets/images/orderTrackIcon.svg";
+
   static const String imagesOrdersIcon = "assets/images/ordersIcon.svg";
 
   static const String imagesPresonIcon = "assets/images/presonIcon.svg";
@@ -91,6 +99,8 @@ class Assets {
   static const String imagesStarIcon = "assets/images/StarIcon.svg";
 
   static const String imagesStrawberryForTest = "assets/images/strawberryForTest.svg";
+
+  static const String imagesVanCarIcon = "assets/images/vanCarIcon.svg";
 
   static const String imagesVisaIcon = "assets/images/visaIcon.svg";
 
