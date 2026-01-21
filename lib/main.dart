@@ -38,8 +38,8 @@ class ECommerceApp extends StatelessWidget {
       locale: const Locale("ar"),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        scaffoldBackgroundColor: Color(0xffFFFFFF),
         fontFamily: kFontFamily,
-        colorSchemeSeed: Color(0xffFFFFFF),
       ),
       onGenerateRoute: onGenetateRoute,
       initialRoute: SplashView.routeName,

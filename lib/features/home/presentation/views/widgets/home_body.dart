@@ -45,6 +45,7 @@ class _HomeBodyState extends State<HomeBody> {
           ),
         ),
         FruitItemsGridViewBlocBuilder(),
+        SliverToBoxAdapter(child: const SizedBox(height: 32)),
       ],
     );
   }

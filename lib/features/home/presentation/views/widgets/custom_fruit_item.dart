@@ -27,6 +27,7 @@ class _CustomFruitItemState extends State<CustomFruitItem> {
         );
       },
       child: Container(
+        margin: EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
         padding: EdgeInsets.symmetric(horizontal: 8, vertical: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4),

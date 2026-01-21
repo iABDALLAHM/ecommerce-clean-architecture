@@ -9,29 +9,40 @@ class HomeSearchBarTrigger extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      onTap: () {
-        Navigator.of(context).pushNamed(SearchBody.routeName);
-      },
-      readOnly: true,
-      decoration: InputDecoration(
-        fillColor: Colors.white,
-        filled: true,
-        contentPadding: EdgeInsets.zero,
-        focusedBorder: buildOutlineInputBorder(),
-        enabledBorder: buildOutlineInputBorder(),
-        border: buildOutlineInputBorder(),
-        hintText: "ابحث عن.......",
-        hintStyle: AppStyles.textStyle13Regular.copyWith(
-          color: Color(0xff949D9E),
-        ),
-        prefixIcon: SvgPicture.asset(
-          fit: BoxFit.scaleDown,
-          Assets.imagesSearchIconSvg,
-        ),
-        suffixIcon: SvgPicture.asset(
-          Assets.imagesFilterSearchIcon,
-          fit: BoxFit.scaleDown,
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: const Color.fromARGB(20, 0, 0, 0),
+            spreadRadius: 4,
+            blurRadius: 10,
+          ),
+        ],
+      ),
+      child: TextField(
+        onTap: () {
+          Navigator.of(context).pushNamed(SearchBody.routeName);
+        },
+        readOnly: true,
+        decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
+          contentPadding: EdgeInsets.zero,
+          focusedBorder: buildOutlineInputBorder(),
+          enabledBorder: buildOutlineInputBorder(),
+          border: buildOutlineInputBorder(),
+          hintText: "ابحث عن.......",
+          hintStyle: AppStyles.textStyle13Regular.copyWith(
+            color: Color(0xff949D9E),
+          ),
+          prefixIcon: SvgPicture.asset(
+            fit: BoxFit.scaleDown,
+            Assets.imagesSearchIconSvg,
+          ),
+          suffixIcon: SvgPicture.asset(
+            Assets.imagesFilterSearchIcon,
+            fit: BoxFit.scaleDown,
+          ),
         ),
       ),
     );

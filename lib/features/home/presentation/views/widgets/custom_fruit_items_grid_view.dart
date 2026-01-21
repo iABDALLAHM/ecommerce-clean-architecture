@@ -11,15 +11,10 @@ class CustomFruitItemsGridView extends StatelessWidget {
       itemCount: products.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         childAspectRatio: 163 / 214,
-        mainAxisSpacing: 8,
         crossAxisCount: 2,
       ),
-      itemBuilder: (context, index) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: SizedBox(
-          child: CustomFruitItem(productEntity: products[index]),
-        ),
-      ),
+      itemBuilder: (context, index) =>
+          SizedBox(child: CustomFruitItem(productEntity: products[index])),
     );
   }
 }
