@@ -20,9 +20,7 @@ class ImagesRepoImplementation implements ImagesRepo {
     } catch (e) {
       log("error happend in ImagesRepoImplementation in uploadImage $e");
       return Left(
-        ServerFailure(
-          message: "لقد حدث خطأ مااثناء رفع الصورة حاول مرة آخرى",
-        ),
+        ServerFailure(message: "لقد حدث خطأ مااثناء رفع الصورة حاول مرة آخرى"),
       );
     }
   }

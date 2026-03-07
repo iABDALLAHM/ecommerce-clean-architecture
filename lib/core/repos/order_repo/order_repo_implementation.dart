@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/repos/order_repo/orders_repo.dart';
@@ -21,6 +23,9 @@ class OrderRepoImplementation implements OrdersRepo {
       );
       return Right(null);
     } catch (e) {
+      log(
+        "This Error in OrderRepoImplementation in add Order method ${e.toString()}",
+      );
       return Left(ServerFailure(message: e.toString()));
     }
   }

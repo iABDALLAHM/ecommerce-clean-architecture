@@ -24,6 +24,9 @@ class ProductsRepoImplementation implements ProductsRepo {
       }
       return Right(productsList);
     } catch (e) {
+      log(
+        "this error happend in ProductsRepoImplementation in getProducts method ${e.toString()}",
+      );
       return Left(ServerFailure(message: "فشل إرجاع البيانات"));
     }
   }
@@ -41,6 +44,9 @@ class ProductsRepoImplementation implements ProductsRepo {
       );
       return Right(null);
     } catch (e) {
+      log(
+        "this error happend in ProductsRepoImplementation in addFavoriteProducts method ${e.toString()}",
+      );
       return Left(ServerFailure(message: "فشل إضافة المنتج"));
     }
   }
@@ -58,6 +64,9 @@ class ProductsRepoImplementation implements ProductsRepo {
           .toList();
       return Right(favProducts);
     } catch (e) {
+      log(
+        "this error happend in ProductsRepoImplementation in getFavoriteProducts method ${e.toString()}",
+      );
       return Left(ServerFailure(message: "fetch products failed"));
     }
   }
@@ -82,7 +91,9 @@ class ProductsRepoImplementation implements ProductsRepo {
       }
       return Right(productsList);
     } catch (e) {
-      log("error in ProductsRepoImplementation in searchProducts $e");
+      log(
+        "this error happend in ProductsRepoImplementation in searchProducts method ${e.toString()}",
+      );
       return Left(ServerFailure(message: "فشل إرجاع البيانات"));
     }
   }
