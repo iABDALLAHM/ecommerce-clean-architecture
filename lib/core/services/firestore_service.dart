@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service.dart';
 
 class FirestoreService implements DatabaseService {
@@ -8,55 +9,89 @@ class FirestoreService implements DatabaseService {
   Future<void> addData({
     required String path,
     required Map<String, dynamic> data,
-    String? documentId,
-    bool? isNestedData,
-    String? subCollection,
   }) async {
-    if (isNestedData == true) {
-      await firestore
-          .collection(path)
-          .doc(documentId)
-          .collection(subCollection!)
-          .doc(data["code"])
-          .set(data);
-    } else if (documentId != null) {
-      await firestore.collection(path).doc(documentId).set(data);
-    } else {
-      await firestore.collection(path).add(data);
-    }
+    await firestore.collection(path).add(data);
   }
 
   @override
-  Future<dynamic> getData({
+  Future<dynamic> getData({required String path}) async {
+    var data = await firestore.collection(path).get();
+    return data.docs.map((doc) => doc.data()).toList();
+  }
+
+  @override
+  Future<void> addSingleData({
     required String path,
-    String? documentId,
-    bool? isNestedData,
-    Map<String, dynamic>? query,
-    String? subCollection,
+    required String documentId,
+    required Map<String, dynamic> data,
   }) async {
-    if (isNestedData == true) {
-      var data = await firestore
-          .collection(path)
-          .doc(documentId)
-          .collection(subCollection!)
-          .get();
-      return data.docs.map((doc) => doc.data()).toList();
-    } else if (documentId != null) {
-      var data = await firestore.collection(path).doc(documentId).get();
-      return data.data();
-    } else if (query != null) {
-      Query<Map<String, dynamic>> data = firestore.collection(path);
+    await firestore.collection(path).doc(documentId).set(data);
+  }
 
-      if (query["productName"] != null) {
-        var productName = query["productName"];
-        data = data.where("productName", isGreaterThanOrEqualTo: productName);
+  @override
+  Future<void> addNestedData({
+    required String path,
+    required String subCollection,
+    required String documentId,
+    required Map<String, dynamic> data,
+  }) async {
+    await firestore
+        .collection(path)
+        .doc(documentId)
+        .collection(subCollection)
+        .doc(data["code"])
+        .set(data);
+  }
+
+  @override
+  Future<dynamic> getSingleData({
+    required String path,
+    required String documentId,
+  }) async {
+    var data = await firestore.collection(path).doc(documentId).get();
+    return data.data();
+  }
+
+  @override
+  Future<dynamic> getNestedData({
+    required String path,
+    required String subCollection,
+    required String documentId,
+  }) async {
+    var data = await firestore
+        .collection(path)
+        .doc(documentId)
+        .collection(subCollection)
+        .get();
+    return data.docs.map((doc) => doc.data()).toList();
+  }
+
+  @override
+  Future<dynamic> getQueryData({
+    required String path,
+    required QueryParams query,
+  }) async {
+    Query<Map<String, dynamic>> data = firestore.collection(path);
+
+    for (var condition in query.conditions) {
+      if (condition.isEqualTo != null) {
+        data = data.where(condition.field, isEqualTo: condition.isEqualTo);
       }
-
-      var result = await data.get();
-      return result.docs.map((doc) => doc.data()).toList();
-    } else {
-      var data = await firestore.collection(path).get();
-      return data.docs.map((doc) => doc.data()).toList();
+      if (condition.whereIn != null) {
+        data = data.where(condition.field, whereIn: condition.whereIn);
+      }
+      if (condition.arrayContains != null) {
+        data = data.where(
+          condition.field,
+          arrayContains: condition.arrayContains,
+        );
+      }
     }
+
+    for (var condition in query.orders) {
+      data = data.orderBy(condition.field, descending: condition.descending);
+    }
+    var result = data.get();
+    return result;
   }
 }

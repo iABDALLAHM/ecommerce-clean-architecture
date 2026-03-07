@@ -14,7 +14,7 @@ class OrderRepoImplementation implements OrdersRepo {
     required OrderEntity orderEntity,
   }) async {
     try {
-      await databaseService.addData(
+      await databaseService.addSingleData(
         path: BackendEndPoints.addOrders,
         data: OrderModel.fromEntity(orderEntity: orderEntity).toMap(),
         documentId: orderEntity.uId,

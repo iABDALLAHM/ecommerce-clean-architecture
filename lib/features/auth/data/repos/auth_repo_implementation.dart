@@ -78,7 +78,7 @@ class AuthRepoImplementation implements AuthRepo {
 
   @override
   Future<void> addUserData({required UserEntity userEntity}) async {
-    await firestoreService.addData(
+    await firestoreService.addSingleData(
       path: BackendEndPoints.addUserData,
       data: UserModel.fromEntity(userEntity).toMap(),
       documentId: userEntity.uId,
@@ -87,7 +87,7 @@ class AuthRepoImplementation implements AuthRepo {
 
   @override
   Future<UserEntity> getUserData({required String uId}) async {
-    var userMap = await firestoreService.getData(
+    var userMap = await firestoreService.getSingleData(
       path: BackendEndPoints.getUserData,
       documentId: uId,
     );

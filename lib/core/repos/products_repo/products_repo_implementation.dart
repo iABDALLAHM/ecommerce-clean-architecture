@@ -4,6 +4,7 @@ import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
 import 'package:ecommerce_clean_architecture/core/models/product_model.dart';
+import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
 import 'package:ecommerce_clean_architecture/core/repos/products_repo/products_repo.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
@@ -32,8 +33,7 @@ class ProductsRepoImplementation implements ProductsRepo {
     required ProductEntity product,
   }) async {
     try {
-      await databaseService.addData(
-        isNestedData: true,
+      await databaseService.addNestedData(
         path: BackendEndPoints.addUserData,
         subCollection: BackendEndPoints.addFavoriteProducts,
         data: ProductModel.fromEntity(productEntity: product).toMap(),
@@ -48,9 +48,8 @@ class ProductsRepoImplementation implements ProductsRepo {
   @override
   Future<Either<Failure, List<ProductEntity>>> getFavoriteProducts() async {
     try {
-      var result = await databaseService.getData(
+      var result = await databaseService.getNestedData(
         path: BackendEndPoints.addUserData,
-        isNestedData: true,
         subCollection: BackendEndPoints.getFavoriteProducts,
         documentId: getUserData().uId,
       );
@@ -68,9 +67,14 @@ class ProductsRepoImplementation implements ProductsRepo {
     required String searchName,
   }) async {
     try {
-      var data = await databaseService.getData(
+      var data = await databaseService.getQueryData(
         path: BackendEndPoints.getProducts,
-        query: {"productName": searchName},
+        query: QueryParams(
+          conditions: [
+            QueryCondition(field: "productName", isEqualTo: searchName),
+          ],
+          orders: [],
+        ),
       );
       List<ProductEntity> productsList = [];
       for (var productModel in data) {
