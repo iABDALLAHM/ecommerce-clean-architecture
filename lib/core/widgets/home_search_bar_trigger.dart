@@ -14,8 +14,9 @@ class HomeSearchBarTrigger extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: const Color.fromARGB(20, 0, 0, 0),
-            spreadRadius: 4,
-            blurRadius: 10,
+            offset: Offset(0, 3),
+            spreadRadius: 0,
+            blurRadius: 5,
           ),
         ],
       ),

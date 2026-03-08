@@ -22,7 +22,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             color: const Color.fromARGB(17, 0, 0, 0),
             blurRadius: 10,
             offset: Offset(0, -1),
-            spreadRadius: 10,
+            spreadRadius: 5,
           ),
         ],
         color: Colors.white,
