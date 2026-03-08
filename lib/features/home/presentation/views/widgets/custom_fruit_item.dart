@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ecommerce_clean_architecture/core/cubits/add_favorite_product_cubit/add_favorite_product_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
@@ -51,6 +53,10 @@ class _CustomFruitItemState extends State<CustomFruitItem> {
                 height: 80,
                 width: 80,
                 child: Image.network(
+                  errorBuilder: (context, error, stackTrace) {
+                    log("The Error is: ${error.toString()}");
+                    return Icon(Icons.broken_image);
+                  },
                   widget.productEntity.productImageUrl,
                   fit: BoxFit.contain,
                 ),
