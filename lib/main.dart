@@ -40,6 +40,7 @@ class ECommerceApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xffFFFFFF),
         appBarTheme: AppBarTheme(backgroundColor: Color(0xffFFFFFF)),
+
         fontFamily: kFontFamily,
       ),
       onGenerateRoute: onGenetateRoute,
