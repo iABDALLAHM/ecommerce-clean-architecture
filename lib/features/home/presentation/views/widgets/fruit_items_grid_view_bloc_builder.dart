@@ -16,7 +16,7 @@ class FruitItemsGridViewBlocBuilder extends StatelessWidget {
         if (state is SuccessProductsState) {
           return CustomFruitItemsGridView(products: state.products);
         } else if (state is FailureProductsState) {
-          return SliverToBoxAdapter(child: Text(state.toString()));
+          return SliverToBoxAdapter(child: Text(state.errorMessage));
         } else {
           return Skeletonizer.sliver(
             enabled: true,
