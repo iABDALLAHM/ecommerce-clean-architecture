@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
+import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
 import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
@@ -24,11 +25,11 @@ class ProductsRepoImplementation implements ProductsRepo {
         productsList.add(ProductModel.fromJson(productEntity).toEntity());
       }
       return Right(productsList);
-    } catch (e) {
+    } on CustomException catch (e) {
       log(
         "this error happend in ProductsRepoImplementation in getProducts method ${e.toString()}",
       );
-      return Left(ServerFailure(message: "فشل إرجاع البيانات"));
+      return Left(ServerFailure(message: e.exceptionMeassge));
     }
   }
 
@@ -44,11 +45,11 @@ class ProductsRepoImplementation implements ProductsRepo {
         documentId: getUserData().uId,
       );
       return Right(null);
-    } catch (e) {
+    } on CustomException catch (e) {
       log(
         "this error happend in ProductsRepoImplementation in addFavoriteProducts method ${e.toString()}",
       );
-      return Left(ServerFailure(message: "فشل إضافة المنتج"));
+      return Left(ServerFailure(message: e.exceptionMeassge));
     }
   }
 
@@ -64,11 +65,11 @@ class ProductsRepoImplementation implements ProductsRepo {
           .map((ele) => ProductModel.fromJson(ele).toEntity())
           .toList();
       return Right(favProducts);
-    } catch (e) {
+    } on CustomException catch (e) {
       log(
         "this error happend in ProductsRepoImplementation in getFavoriteProducts method ${e.toString()}",
       );
-      return Left(ServerFailure(message: "fetch products failed"));
+      return Left(ServerFailure(message: e.exceptionMeassge));
     }
   }
 
@@ -91,11 +92,11 @@ class ProductsRepoImplementation implements ProductsRepo {
         productsList.add(ProductModel.fromJson(productModel).toEntity());
       }
       return Right(productsList);
-    } catch (e) {
+    } on CustomException catch (e) {
       log(
         "this error happend in ProductsRepoImplementation in searchProducts method ${e.toString()}",
       );
-      return Left(ServerFailure(message: "فشل إرجاع البيانات"));
+      return Left(ServerFailure(message: e.exceptionMeassge));
     }
   }
 }

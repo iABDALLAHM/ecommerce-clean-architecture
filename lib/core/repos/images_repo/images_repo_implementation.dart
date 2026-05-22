@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
 import 'package:ecommerce_clean_architecture/core/repos/images_repo/images_repo.dart';
@@ -18,10 +19,10 @@ class ImagesRepoImplementation implements ImagesRepo {
         path: BackendEndPoints.usersImages,
       );
       return Right(imageUrl);
-    } catch (e) {
+    } on CustomException catch (e) {
       log("error happend in ImagesRepoImplementation in uploadImage $e");
       return Left(
-        ServerFailure(message: "لقد حدث خطأ مااثناء رفع الصورة حاول مرة آخرى"),
+        ServerFailure(message: e.exceptionMeassge),
       );
     }
   }

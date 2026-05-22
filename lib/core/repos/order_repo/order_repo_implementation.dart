@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
 import 'package:ecommerce_clean_architecture/core/repos/order_repo/orders_repo.dart';
@@ -22,11 +23,11 @@ class OrderRepoImplementation implements OrdersRepo {
         documentId: orderEntity.uId,
       );
       return Right(null);
-    } catch (e) {
+    } on CustomException catch (e) {
       log(
         "This Error in OrderRepoImplementation in add Order method ${e.toString()}",
       );
-      return Left(ServerFailure(message: e.toString()));
+      return Left(ServerFailure(message: e.exceptionMeassge));
     }
   }
 }
