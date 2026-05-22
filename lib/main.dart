@@ -1,7 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/on_generate_route.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service.dart';
-import 'package:ecommerce_clean_architecture/core/services/shared_prefs_service.dart';
 import 'package:ecommerce_clean_architecture/features/splash/presentation/views/splash_view.dart';
 import 'package:ecommerce_clean_architecture/firebase_options.dart';
 import 'package:ecommerce_clean_architecture/generated/l10n.dart';
@@ -13,11 +12,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = SimpleBlocObserver();
   await Supabase.initialize(url: kSupabaseUrl, anonKey: kSupabaseApiKey);
-  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await SharedPrefsService.init();
   setupGetIt();
   runApp(const ECommerceApp());
 }

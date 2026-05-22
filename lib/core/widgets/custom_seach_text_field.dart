@@ -71,9 +71,8 @@ class CustomSearchTextField extends StatelessWidget {
                     ),
                   ),
                 );
-              } else {
-                return SizedBox();
               }
+              return SizedBox();
             },
           ),
         ],

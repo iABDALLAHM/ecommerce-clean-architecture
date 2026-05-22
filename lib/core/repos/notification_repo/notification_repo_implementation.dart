@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/entities/notification_entity.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
+import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
 import 'package:ecommerce_clean_architecture/core/models/notification_model.dart';
 import 'package:ecommerce_clean_architecture/core/repos/notification_repo/notification_repo.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service.dart';

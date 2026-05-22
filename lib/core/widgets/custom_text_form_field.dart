@@ -5,7 +5,8 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     required this.hintText,
-    required this.onSaved,  this.textInputType=TextInputType.text,
+    required this.onSaved,
+    this.textInputType = TextInputType.text,
   });
   final String hintText;
   final Function(String?) onSaved;
@@ -16,11 +17,10 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: textInputType,
       onSaved: onSaved,
       validator: (value) {
-        if (value != null && value.isEmpty) {
-          return "";
-        } else {
-          return null;
+        if (value == null || value.isEmpty) {
+          return "هذا الحقل مطلوب";
         }
+        return null;
       },
       decoration: InputDecoration(
         errorStyle: TextStyle(fontSize: 0),

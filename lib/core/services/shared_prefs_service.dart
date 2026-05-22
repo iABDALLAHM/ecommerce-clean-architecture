@@ -1,38 +1,31 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedPrefsService {
-  static late SharedPreferences sharedPreferences;
-  static Future<void> init() async {
-    sharedPreferences = await SharedPreferences.getInstance();
-  }
+class SharedPrefService {
+  final SharedPreferences sharedPreferences;
 
-  static Future<void> setBool({
-    required String key,
-    required bool value,
-  }) async {
+  SharedPrefService({required this.sharedPreferences});
+
+  Future<void> setBool({required String key, required bool value}) async {
     await sharedPreferences.setBool(key, value);
   }
 
-  static bool getBool({required String key}) {
+  bool getBool({required String key}) {
     return sharedPreferences.getBool(key) ?? false;
   }
 
-  static Future<void> saveData({
-    required String key,
-    required String value,
-  }) async {
+  Future<void> saveData({required String key, required String value}) async {
     await sharedPreferences.setString(key, value);
   }
 
-  static String? getData({required String key}) {
+  String? getData({required String key}) {
     return sharedPreferences.getString(key);
   }
 
-  static Future<void> removeData({required String key}) async {
+  Future<void> removeData({required String key}) async {
     await sharedPreferences.remove(key);
   }
 
-  static Future<void> removeBool({required String key}) async {
+  Future<void> removeBool({required String key}) async {
     await sharedPreferences.remove(key);
   }
 }

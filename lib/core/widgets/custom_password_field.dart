@@ -23,9 +23,8 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
       validator: (value) {
         if (value != null && value.isEmpty) {
           return "";
-        } else {
-          return null;
         }
+        return null;
       },
       decoration: InputDecoration(
         errorStyle: TextStyle(fontSize: 0),

@@ -14,10 +14,9 @@ class RegisterViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<RegisterCubit, RegisterStates>(
       listener: (context, state) {
         if (state is SuccessRegisterState) {
-          showSnackBar(context, message: "تم تسجيل الدخول بنجاح");
-          Navigator.pop(context);
+          _handleSuccess(context);
         } else if (state is FailureRegisterState) {
-          showSnackBar(context, message: state.errMessage);
+          _handleFailure(context, message: state.errMessage);
         }
       },
       builder: (context, state) {
@@ -27,5 +26,14 @@ class RegisterViewBodyBlocConsumer extends StatelessWidget {
         );
       },
     );
+  }
+
+  void _handleFailure(BuildContext context, {required String message}) {
+    showSnackBar(context, message: message);
+  }
+
+  void _handleSuccess(BuildContext context) {
+    showSnackBar(context, message: "تم تسجيل الدخول بنجاح");
+    Navigator.pop(context);
   }
 }

@@ -15,10 +15,9 @@ class LoginViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<LoginCubit, LoginStates>(
       listener: (context, state) {
         if (state is SuccessLoginState) {
-          showSnackBar(context, message: "تم تسجيل الدخول بنجاح");
-          Navigator.of(context).pushReplacementNamed(MainView.routeName);
+          _handleSuccess(context);
         } else if (state is FailureLoginState) {
-          showSnackBar(context, message: state.errMessage);
+          _handleFailure(context, message: state.errMessage);
         }
       },
       builder: (context, state) {
@@ -28,5 +27,14 @@ class LoginViewBodyBlocConsumer extends StatelessWidget {
         );
       },
     );
+  }
+
+  void _handleFailure(BuildContext context, {required String message}) {
+    showSnackBar(context, message: message);
+  }
+
+  void _handleSuccess(BuildContext context) {
+    showSnackBar(context, message: "تم تسجيل الدخول بنجاح");
+    Navigator.of(context).pushReplacementNamed(MainView.routeName);
   }
 }

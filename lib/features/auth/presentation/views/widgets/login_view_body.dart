@@ -19,7 +19,8 @@ class LoginViewBody extends StatefulWidget {
 }
 
 class _LoginViewBodyState extends State<LoginViewBody> {
-  late String email, password;
+  String email = "";
+  String password = "";
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -37,13 +38,13 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               CustomTextFormField(
                 hintText: "البريد الإلكتروني",
                 onSaved: (value) {
-                  email = value!;
+                  email = value ?? "";
                 },
               ),
               const SizedBox(height: 16),
               CustomPasswordField(
                 onSaved: (value) {
-                  password = value!;
+                  password = value ?? "";
                 },
               ),
               const SizedBox(height: 16),

@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
+import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
 import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
 import 'package:ecommerce_clean_architecture/core/models/product_model.dart';
 import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';

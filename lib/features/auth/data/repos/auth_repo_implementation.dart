@@ -4,8 +4,10 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
+import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
 import 'package:ecommerce_clean_architecture/core/services/auth_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service.dart';
+import 'package:ecommerce_clean_architecture/core/services/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/shared_prefs_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
 import 'package:ecommerce_clean_architecture/features/auth/data/models/user_model.dart';
@@ -68,7 +70,10 @@ class AuthRepoImplementation implements AuthRepo {
           await authService.signIn(email: email, password: password) as User;
       UserEntity userEntity = await getUserData(uId: user.uid);
       await saveUserData(userEntity: userEntity);
-      await SharedPrefsService.setBool(key: kIsUserSignIn, value: true);
+      await getIt.get<SharedPrefService>().setBool(
+        key: kIsUserSignIn,
+        value: true,
+      );
       return Right(userEntity);
     } on CustomException catch (e) {
       log("error happend in AuthRepoImplementation in signIn the error : $e");
@@ -98,7 +103,7 @@ class AuthRepoImplementation implements AuthRepo {
   @override
   Future<void> saveUserData({required UserEntity userEntity}) async {
     var jsonStringData = jsonEncode(UserModel.fromEntity(userEntity).toMap());
-    await SharedPrefsService.saveData(
+    await getIt.get<SharedPrefService>().saveData(
       key: kSaveUserData,
       value: jsonStringData,
     );
@@ -106,9 +111,11 @@ class AuthRepoImplementation implements AuthRepo {
 
   @override
   Future<void> removeAllUserData() async {
-    await SharedPrefsService.removeData(key: kRemoveUserData);
-    await SharedPrefsService.removeBool(key: kRemoveOnBoardingSeen);
-    await SharedPrefsService.removeBool(key: kRemoveUserSignIn);
+    await getIt.get<SharedPrefService>().removeData(key: kRemoveUserData);
+    await getIt.get<SharedPrefService>().removeBool(
+      key: kRemoveOnBoardingSeen,
+    );
+    await getIt.get<SharedPrefService>().removeBool(key: kRemoveUserSignIn);
   }
 
   @override

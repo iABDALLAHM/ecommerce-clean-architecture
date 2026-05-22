@@ -1,10 +1,12 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/services/shared_prefs_service.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/login_view.dart';
+import 'package:ecommerce_clean_architecture/features/onboarding/presentation/manager/onboarding_cubit/onboarding_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/onboarding/presentation/manager/onboarding_cubit/onboarding_state.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/widgets/custom_indicator.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/widgets/on_boarding_page_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OnboardingViewBody extends StatefulWidget {
   const OnboardingViewBody({super.key});
@@ -45,17 +47,22 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                     maintainAnimation: true,
                     maintainSize: true,
                     maintainState: true,
-                    child: CustomButton(
-                      text: "ابدأ الان",
-                      onPressed: () {
-                        SharedPrefsService.setBool(
-                          key: kOnBoardingSeen,
-                          value: true,
-                        );
-                        Navigator.of(
-                          context,
-                        ).pushReplacementNamed(LoginView.routeName);
+                    child: BlocListener<OnboardingCubit, OnboardingState>(
+                      listener: (context, state) {
+                        if (state is SuccessSkipOnBoarding) {
+                          Navigator.of(
+                            context,
+                          ).pushReplacementNamed(LoginView.routeName);
+                        }
                       },
+                      child: CustomButton(
+                        text: "ابدأ الان",
+                        onPressed: () {
+                          context
+                              .read<OnboardingCubit>()
+                              .handleSkipOnboarding();
+                        },
+                      ),
                     ),
                   ),
                 ),
