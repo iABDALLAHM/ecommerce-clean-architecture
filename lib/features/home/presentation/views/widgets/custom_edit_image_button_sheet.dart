@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:ecommerce_clean_architecture/core/cubits/update_user_image_cubit/update_user_image_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/update_user_image_cubit/update_user_image_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/image_field.dart';
 

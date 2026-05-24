@@ -101,7 +101,7 @@ class ProductInfo extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          productEntity.productDiscription,
+          productEntity.description,
           style: AppStyles.textStyle13Regular.copyWith(
             color: Color(0xff979899),
           ),

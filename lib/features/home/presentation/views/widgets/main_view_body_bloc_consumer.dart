@@ -1,5 +1,5 @@
-import 'package:ecommerce_clean_architecture/core/cubits/add_favorite_product_cubit/add_favorite_product_cubit.dart';
-import 'package:ecommerce_clean_architecture/core/cubits/add_favorite_product_cubit/add_favorite_product_states.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/add_favorite_product_cubit/add_favorite_product_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/add_favorite_product_cubit/add_favorite_product_states.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/manager/cart_cubit/cart_states.dart';

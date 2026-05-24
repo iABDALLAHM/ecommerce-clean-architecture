@@ -17,7 +17,7 @@ class ImagesRepoImplementation implements ImagesRepo {
       String imageUrl = await storageService.uploadFile(
         file: file,
         path: BackendEndPoints.usersImages,
-      );
+      ).timeout(const Duration(seconds: 3));
       return Right(imageUrl);
     } on CustomException catch (e) {
       log("error happend in ImagesRepoImplementation in uploadImage $e");

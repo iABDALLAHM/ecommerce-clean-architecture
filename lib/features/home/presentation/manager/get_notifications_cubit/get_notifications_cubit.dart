@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/core/cubits/get_notifications_cubit/get_notifications_states.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/get_notifications_cubit/get_notifications_states.dart';
 import 'package:ecommerce_clean_architecture/core/repos/notification_repo/notification_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

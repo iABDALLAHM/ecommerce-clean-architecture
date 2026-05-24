@@ -1,5 +1,5 @@
-import 'package:ecommerce_clean_architecture/core/cubits/products_cubit/products_cubit.dart';
-import 'package:ecommerce_clean_architecture/core/cubits/products_cubit/products_states.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/products_cubit/products_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/products_cubit/products_states.dart';
 import 'package:ecommerce_clean_architecture/core/functions/get_dummy_products.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_grid_view.dart';
 import 'package:flutter/material.dart';

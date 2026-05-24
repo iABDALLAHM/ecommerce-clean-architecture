@@ -6,7 +6,7 @@ ProductEntity dummyProduct() {
     productName: "بطيخ",
     productPrice: 60,
     productCode: "FRU-WM-001",
-    productDiscription: "بطيخ طازج عالي الجودة، مزروع محليًا وخالي من المواد الحافظة.",
+    description: "بطيخ طازج عالي الجودة، مزروع محليًا وخالي من المواد الحافظة.",
     isFeaturedProduct: true,
     productImageUrl: kDefaultUserImageUrl,
     isOrganicProduct: true,

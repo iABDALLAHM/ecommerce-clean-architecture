@@ -5,7 +5,7 @@ class ProductModel {
   final String productName;
   final num productPrice;
   final String productCode;
-  final String productDiscription;
+  final String description;
   final bool isFeaturedProduct;
   final String productImageUrl;
   final bool isOrganicProduct;
@@ -20,7 +20,7 @@ class ProductModel {
     required this.productName,
     required this.productPrice,
     required this.productCode,
-    required this.productDiscription,
+    required this.description,
     required this.isFeaturedProduct,
     required this.productImageUrl,
     required this.isOrganicProduct,
@@ -38,7 +38,7 @@ class ProductModel {
       productName: json["productName"],
       productPrice: json["productPrice"],
       productCode: json["productCode"],
-      productDiscription: json["productDiscription"],
+      description: json["productDiscription"],
       isFeaturedProduct: json["isFeaturedProduct"],
       isOrganicProduct: json["isOrganicProduct"],
       expirationYears: json["expirationYears"],
@@ -60,7 +60,7 @@ class ProductModel {
       productName: productName,
       productPrice: productPrice,
       productCode: productCode,
-      productDiscription: productDiscription,
+      description: description,
       isFeaturedProduct: isFeaturedProduct,
       isOrganicProduct: isOrganicProduct,
       expirationYears: expirationYears,
@@ -86,7 +86,7 @@ class ProductModel {
       productName: productEntity.productName,
       productPrice: productEntity.productPrice,
       productCode: productEntity.productCode,
-      productDiscription: productEntity.productDiscription,
+      description: productEntity.description,
       isFeaturedProduct: productEntity.isFeaturedProduct,
       productImageUrl: productEntity.productImageUrl,
       expirationYears: productEntity.expirationYears,
@@ -109,7 +109,7 @@ class ProductModel {
       "productName": productName,
       "productPrice": productPrice,
       "productCode": productCode,
-      "productDiscription": productDiscription,
+      "productDiscription": description,
       "isFeaturedProduct": isFeaturedProduct,
       "productImageUrl": productImageUrl,
       "isOrganicProduct": isOrganicProduct,

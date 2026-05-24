@@ -17,9 +17,9 @@ class ProductsRepoImplementation implements ProductsRepo {
   @override
   Future<Either<Failure, List<ProductEntity>>> getProducts() async {
     try {
-      var data = await databaseService.getData(
-        path: BackendEndPoints.getProducts,
-      );
+      var data = await databaseService
+          .getData(path: BackendEndPoints.getProducts)
+          .timeout(const Duration(seconds: 3));
       List<ProductEntity> productsList = [];
       for (var productEntity in data) {
         productsList.add(ProductModel.fromJson(productEntity).toEntity());
@@ -38,12 +38,14 @@ class ProductsRepoImplementation implements ProductsRepo {
     required ProductEntity product,
   }) async {
     try {
-      await databaseService.addNestedData(
-        path: BackendEndPoints.addUserData,
-        subCollection: BackendEndPoints.addFavoriteProducts,
-        data: ProductModel.fromEntity(productEntity: product).toMap(),
-        documentId: getUserData().uId,
-      );
+      await databaseService
+          .addNestedData(
+            path: BackendEndPoints.addUserData,
+            subCollection: BackendEndPoints.addFavoriteProducts,
+            data: ProductModel.fromEntity(productEntity: product).toMap(),
+            documentId: getUserData().uId,
+          )
+          .timeout(const Duration(seconds: 3));
       return Right(null);
     } on CustomException catch (e) {
       log(
@@ -60,7 +62,7 @@ class ProductsRepoImplementation implements ProductsRepo {
         path: BackendEndPoints.addUserData,
         subCollection: BackendEndPoints.getFavoriteProducts,
         documentId: getUserData().uId,
-      );
+      ).timeout(const Duration(seconds: 3));
       List<ProductEntity> favProducts = (result as List)
           .map((ele) => ProductModel.fromJson(ele).toEntity())
           .toList();
@@ -86,7 +88,7 @@ class ProductsRepoImplementation implements ProductsRepo {
           ],
           orders: [],
         ),
-      );
+      ).timeout(const Duration(seconds: 3));
       List<ProductEntity> productsList = [];
       for (var productModel in data) {
         productsList.add(ProductModel.fromJson(productModel).toEntity());

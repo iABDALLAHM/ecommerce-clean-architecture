@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:ecommerce_clean_architecture/core/cubits/update_user_image_cubit/update_user_image_states.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/update_user_image_cubit/update_user_image_states.dart';
 import 'package:ecommerce_clean_architecture/core/repos/images_repo/images_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

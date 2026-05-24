@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/core/cubits/products_cubit/products_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/products_cubit/products_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/repos/products_repo/products_repo.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service.dart';
 import 'package:flutter/material.dart';

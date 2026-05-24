@@ -21,7 +21,7 @@ class OrderRepoImplementation implements OrdersRepo {
         path: BackendEndPoints.addOrders,
         data: OrderModel.fromEntity(orderEntity: orderEntity).toMap(),
         documentId: orderEntity.uId,
-      );
+      ).timeout(const Duration(seconds: 3));
       return Right(null);
     } on CustomException catch (e) {
       log(

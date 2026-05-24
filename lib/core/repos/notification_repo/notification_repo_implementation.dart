@@ -18,7 +18,7 @@ class NotificationRepoImplementation implements NotificationRepo {
     try {
       var response = await databaseService.getData(
         path: BackendEndPoints.notification,
-      );
+      ).timeout(const Duration(seconds: 3));
       List<NotificationEntity> notificationList = [];
       for (var notificationModel in response) {
         notificationList.add(

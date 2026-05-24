@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/cubits/products_cubit/products_cubit.dart';
-import 'package:ecommerce_clean_architecture/core/cubits/products_cubit/products_states.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/products_cubit/products_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/products_cubit/products_states.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/home_search_bar_trigger.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_app_bar.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/products_grid_view_bloc_builder.dart';

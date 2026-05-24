@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/cubits/get_notifications_cubit/get_notifications_cubit.dart';
-import 'package:ecommerce_clean_architecture/core/cubits/get_notifications_cubit/get_notifications_states.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/get_notifications_cubit/get_notifications_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/get_notifications_cubit/get_notifications_states.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_text_message.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_notification_app_bar.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/newest_notification_body_header.dart';

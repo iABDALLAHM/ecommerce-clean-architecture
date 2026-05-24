@@ -1,6 +1,6 @@
-import 'package:ecommerce_clean_architecture/core/cubits/add_favorite_product_cubit/add_favorite_product_cubit.dart';
-import 'package:ecommerce_clean_architecture/core/cubits/get_notifications_cubit/get_notifications_cubit.dart';
-import 'package:ecommerce_clean_architecture/core/cubits/update_user_image_cubit/update_user_image_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/add_favorite_product_cubit/add_favorite_product_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/get_notifications_cubit/get_notifications_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/update_user_image_cubit/update_user_image_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/repos/images_repo/images_repo.dart';
 import 'package:ecommerce_clean_architecture/core/repos/notification_repo/notification_repo.dart';
 import 'package:ecommerce_clean_architecture/core/repos/products_repo/products_repo.dart';
