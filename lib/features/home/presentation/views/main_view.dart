@@ -13,20 +13,20 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  int currentBody = 0;
+  int _currentBody = 0;
   @override
   Widget build(BuildContext context) {
     return MultiMainViewBlocProvider(
       child: Scaffold(
         bottomNavigationBar: CustomBottomNavigationBar(
           onChange: (value) {
-            currentBody = value;
+            _currentBody = value;
             setState(() {});
           },
         ),
         body: SafeArea(
           child: MainViewBodyBlocListener(
-            child: MainViewBody(currentBody: currentBody),
+            child: MainViewBody(currentBody: _currentBody),
           ),
         ),
       ),

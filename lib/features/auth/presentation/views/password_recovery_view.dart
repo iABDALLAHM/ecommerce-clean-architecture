@@ -8,8 +8,8 @@ class PasswordRecoveryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PasswordRecoveryViewBody(),
       appBar: buildPasswordRecoveryAppBar(context),
+      body: PasswordRecoveryViewBody(),
     );
   }
 }

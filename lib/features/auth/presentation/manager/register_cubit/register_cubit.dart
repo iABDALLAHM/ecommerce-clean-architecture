@@ -12,7 +12,6 @@ class RegisterCubit extends Cubit<RegisterStates> {
     required String name,
     required String password,
   }) async {
-
     emit(LoadingRegisterState());
 
     var result = await authRepo.createNewAccount(

@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:ecommerce_clean_architecture/core/entities/cart_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/shipping_address_entity.dart';
 
@@ -11,8 +10,7 @@ class OrderEntity {
   OrderEntity({
     required this.cartEntity,
     this.payWithCash,
-    required this.shippingAddressEntity, required this.uId,
-  }) {
-    log("Initaliz OrderEnitiy one time");
-  }
+    required this.shippingAddressEntity,
+    required this.uId,
+  });
 }

@@ -1,4 +1,4 @@
- import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 AppBar buildResetYourPasswordAppBar(BuildContext context) {

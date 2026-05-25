@@ -9,20 +9,23 @@ class SplashCubit extends Cubit<SplashState> {
   final SharedPrefService sharedPrefsService;
 
   Future<void> checkUserStatus() async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(Duration(seconds: 3));
 
     var isOnBoardingSeen = sharedPrefsService.getBool(key: kOnBoardingSeen);
 
     if (isOnBoardingSeen) {
-      var isUserLogin = sharedPrefsService.getBool(key: kIsUserSignIn);
-      if (isUserLogin) {
-        emit(NavigateToMainScreenState());
-      } else {
-        emit(NavigateToLoginScreenState());
-      }
-    }
-    else {
+      handleIfOnboardingSeen();
+    } else {
       emit(NavigateToOnboardingScreenState());
+    }
+  }
+
+  void handleIfOnboardingSeen() {
+    var isUserLogin = sharedPrefsService.getBool(key: kIsUserSignIn);
+    if (isUserLogin) {
+      emit(NavigateToMainScreenState());
+    } else {
+      emit(NavigateToLoginScreenState());
     }
   }
 }

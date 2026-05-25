@@ -31,7 +31,7 @@ class ActiveNotificationItem extends StatelessWidget {
               backgroundColor: Colors.white,
               radius: 30,
               backgroundImage: NetworkImage(
-                notificationEntity.notificationImageUrl!,
+                notificationEntity.notificationImageUrl,
               ),
             ),
             title: Column(
@@ -51,7 +51,7 @@ class ActiveNotificationItem extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                        text: "${notificationEntity.notificationBody}",
+                        text: notificationEntity.notificationBody,
                         style: AppStyles.textStyle13SemiBold,
                       ),
                     ],

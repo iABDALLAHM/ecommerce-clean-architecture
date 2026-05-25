@@ -1,9 +1,12 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
+
 import 'package:ecommerce_clean_architecture/core/widgets/custom_password_field.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/register_cubit/register_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/terms_and_conditions_cubit/terms_and_conditions_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/terms_and_conditions_cubit/terms_and_conditions_state.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/rigister_rich_text.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/terms_and_conditions_section.dart';
 import 'package:flutter/material.dart';
@@ -17,10 +20,12 @@ class RegisterViewBody extends StatefulWidget {
 }
 
 class _RegisterViewBodyState extends State<RegisterViewBody> {
-  late String email, name, password;
-  bool termsAndConditions = false;
+  String email = "";
+  String name = "";
+  String password = "";
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,45 +40,55 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
               CustomTextFormField(
                 hintText: "الاسم كامل",
                 onSaved: (value) {
-                  name = value!;
+                  name = value ?? "";
                 },
               ),
               const SizedBox(height: 16),
               CustomTextFormField(
                 hintText: "البريد الإلكتروني",
                 onSaved: (value) {
-                  email = value!;
+                  email = value ?? "";
                 },
               ),
               const SizedBox(height: 16),
               CustomPasswordField(
                 onSaved: (value) {
-                  password = value!;
+                  password = value ?? "";
                 },
               ),
               const SizedBox(height: 16),
               TermsAndConditionsSection(
                 onChange: (value) {
-                  termsAndConditions = value;
+                  context.read<TermsAndConditionsCubit>().checkButton(
+                    value: value,
+                  );
                 },
               ),
               const SizedBox(height: 30),
               SizedBox(
                 height: 54,
                 width: double.infinity,
-                child: CustomButton(
-                  text: "إنشاء حساب جديد",
-                  onPressed: () {
-                    if (termsAndConditions == false) {
-                      showSnackBar(
-                        context,
-                        message: "من فضلك وافق على الشروط والأحكام",
-                      );
-                    } else {
-                      validateTextField(context);
-                    }
-                  },
-                ),
+                child:
+                    BlocBuilder<
+                      TermsAndConditionsCubit,
+                      TermsAndConditionsState
+                    >(
+                      builder: (context, state) {
+                        return CustomButton(
+                          text: "إنشاء حساب جديد",
+                          onPressed: () {
+                            if (!state.isChecked) {
+                              showSnackBar(
+                                context,
+                                message: "من فضلك وافق على الشروط والأحكام",
+                              );
+                              return;
+                            }
+                            validateTextField(context);
+                          },
+                        );
+                      },
+                    ),
               ),
               const SizedBox(height: 26),
               RegisterRichText(),

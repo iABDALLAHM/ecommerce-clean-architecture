@@ -15,6 +15,7 @@ import 'package:ecommerce_clean_architecture/features/auth/domain/entities/user_
 import 'package:ecommerce_clean_architecture/features/auth/domain/repo/auth_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+
 class AuthRepoImplementation implements AuthRepo {
   final AuthService authService;
   final DatabaseService firestoreService;
@@ -112,9 +113,7 @@ class AuthRepoImplementation implements AuthRepo {
   @override
   Future<void> removeAllUserData() async {
     await getIt.get<SharedPrefService>().removeData(key: kRemoveUserData);
-    await getIt.get<SharedPrefService>().removeBool(
-      key: kRemoveOnBoardingSeen,
-    );
+    await getIt.get<SharedPrefService>().removeBool(key: kRemoveOnBoardingSeen);
     await getIt.get<SharedPrefService>().removeBool(key: kRemoveUserSignIn);
   }
 

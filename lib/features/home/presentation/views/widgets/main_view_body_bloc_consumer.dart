@@ -8,8 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainViewBodyBlocListener extends StatelessWidget {
   const MainViewBodyBlocListener({super.key, required this.child});
-
   final Widget child;
+  
   @override
   Widget build(BuildContext context) {
     return MultiBlocListener(

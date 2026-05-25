@@ -1,8 +1,8 @@
 class NotificationEntity {
-  final String? notificationTitle;
-  final String? notificationBody;
-  final int? discountPercentage;
-  final String? notificationImageUrl;
+  final String notificationTitle;
+  final String notificationBody;
+  final int discountPercentage;
+  final String notificationImageUrl;
   final DateTime date;
 
   NotificationEntity({

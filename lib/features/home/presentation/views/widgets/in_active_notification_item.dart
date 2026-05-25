@@ -24,7 +24,7 @@ class InActiveNotificationItem extends StatelessWidget {
       leading: CircleAvatar(
         backgroundColor: Colors.white,
         radius: 30,
-        backgroundImage: NetworkImage(notificationEntity.notificationImageUrl!),
+        backgroundImage: NetworkImage(notificationEntity.notificationImageUrl),
       ),
       title: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -43,7 +43,7 @@ class InActiveNotificationItem extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: "${notificationEntity.notificationBody}",
+                  text: notificationEntity.notificationBody,
                   style: AppStyles.textStyle13SemiBold,
                 ),
               ],
