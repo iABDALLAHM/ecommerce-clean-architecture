@@ -1,9 +1,12 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/custom_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/function/change_button_text.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/manager/add_order_cubit/add_order_states.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/review_order_view.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/widgets/check_out_steps.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/widgets/check_out_page_view.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +26,8 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   );
   late PageController pageController;
   int currentPage = 0;
-
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     pageController = PageController();
@@ -45,38 +48,58 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 16),
-        CheckOutSteps(currentPage: currentPage, pageController: pageController),
-        Expanded(
-          child: CheckOutPageView(
-            valueListenable: valueNotifier,
-            pageController: pageController,
-            globalKey: formKey,
+    return BlocConsumer<AddOrderCubit, AddOrderStates>(
+      listener: (context, state) {
+        if (state is SuccessAddOrderState) {
+          showSnackBar(context, message: "تم إضافة المنتج بنجاح");
+          Navigator.of(context).pushReplacementNamed(ReviewOrderView.routeName);
+        } else if (state is FailureAddOrderState) {
+          showSnackBar(context, message: "فشل اضافة المنتج حاول مرة آخرى");
+        }
+      },
+      builder: (context, state) {
+        return CustomProgressWidget(
+          state: state is LoadingAddOrderState,
+          child: Column(
+            children: [
+              const SizedBox(height: 16),
+              CheckOutSteps(
+                currentPage: currentPage,
+                pageController: pageController,
+              ),
+              Expanded(
+                child: CheckOutPageView(
+                  valueListenable: valueNotifier,
+                  pageController: pageController,
+                  globalKey: formKey,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: kHorizontalPadding,
+                ),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 54,
+                  child: CustomButton(
+                    text: changeButtonText(currentPage: currentPage),
+                    onPressed: () {
+                      if (currentPage == 0) {
+                        _handleShippingSectionValidation(context);
+                      } else if (currentPage == 1) {
+                        _handleAddressSection(context);
+                      } else if (currentPage == 2) {
+                        _triggerAddOrderCubit(context);
+                      }
+                    },
+                  ),
+                ),
+              ),
+              const SizedBox(height: 100),
+            ],
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-          child: SizedBox(
-            width: double.infinity,
-            height: 54,
-            child: CustomButton(
-              text: changeButtonText(currentPage: currentPage),
-              onPressed: () {
-                if (currentPage == 0) {
-                  _handleShippingSectionValidation(context);
-                } else if (currentPage == 1) {
-                  _handleAddressSection(context);
-                } else if (currentPage == 2) {
-                  _triggerAddOrderCubit(context);
-                }
-              },
-            ),
-          ),
-        ),
-        const SizedBox(height: 100),
-      ],
+        );
+      },
     );
   }
 

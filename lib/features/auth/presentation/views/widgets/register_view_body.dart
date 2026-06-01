@@ -5,8 +5,10 @@ import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_password_field.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/register_cubit/register_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/register_cubit/register_states.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/terms_and_conditions_cubit/terms_and_conditions_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/terms_and_conditions_cubit/terms_and_conditions_state.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/custom_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/rigister_rich_text.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/terms_and_conditions_section.dart';
 import 'package:flutter/material.dart';
@@ -28,74 +30,90 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-      child: SingleChildScrollView(
-        child: Form(
-          autovalidateMode: autovalidateMode,
-          key: formKey,
-          child: Column(
-            children: [
-              const SizedBox(height: 24),
-              CustomTextFormField(
-                hintText: "الاسم كامل",
-                onSaved: (value) {
-                  name = value ?? "";
-                },
-              ),
-              const SizedBox(height: 16),
-              CustomTextFormField(
-                hintText: "البريد الإلكتروني",
-                onSaved: (value) {
-                  email = value ?? "";
-                },
-              ),
-              const SizedBox(height: 16),
-              CustomPasswordField(
-                onSaved: (value) {
-                  password = value ?? "";
-                },
-              ),
-              const SizedBox(height: 16),
-              TermsAndConditionsSection(
-                onChange: (value) {
-                  context.read<TermsAndConditionsCubit>().checkButton(
-                    value: value,
-                  );
-                },
-              ),
-              const SizedBox(height: 30),
-              SizedBox(
-                height: 54,
-                width: double.infinity,
-                child:
-                    BlocBuilder<
-                      TermsAndConditionsCubit,
-                      TermsAndConditionsState
-                    >(
-                      builder: (context, state) {
-                        return CustomButton(
-                          text: "إنشاء حساب جديد",
-                          onPressed: () {
-                            if (!state.isChecked) {
-                              showSnackBar(
-                                context,
-                                message: "من فضلك وافق على الشروط والأحكام",
-                              );
-                              return;
-                            }
-                            validateTextField(context);
-                          },
-                        );
-                      },
-                    ),
-              ),
-              const SizedBox(height: 26),
-              RegisterRichText(),
-            ],
+    return BlocConsumer<RegisterCubit, RegisterStates>(
+      listener: (context, state) {
+        if (state is SuccessRegisterState) {
+          _handleSuccess(context);
+        } else if (state is FailureRegisterState) {
+          _handleFailure(context, message: state.errMessage);
+        }
+      },
+      builder: (context, state) {
+        return CustomProgressWidget(
+          state: state is LoadingRegisterState ? true : false,
+          child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+        child: SingleChildScrollView(
+          child: Form(
+            autovalidateMode: autovalidateMode,
+            key: formKey,
+            child: Column(
+              children: [
+                const SizedBox(height: 24),
+                CustomTextFormField(
+                  hintText: "الاسم كامل",
+                  onSaved: (value) {
+                    name = value ?? "";
+                  },
+                ),
+                const SizedBox(height: 16),
+                CustomTextFormField(
+                  hintText: "البريد الإلكتروني",
+                  onSaved: (value) {
+                    email = value ?? "";
+                  },
+                ),
+                const SizedBox(height: 16),
+                CustomPasswordField(
+                  onSaved: (value) {
+                    password = value ?? "";
+                  },
+                ),
+                const SizedBox(height: 16),
+                TermsAndConditionsSection(
+                  onChange: (value) {
+                    context.read<TermsAndConditionsCubit>().checkButton(
+                      value: value,
+                    );
+                  },
+                ),
+                const SizedBox(height: 30),
+                SizedBox(
+                  height: 54,
+                  width: double.infinity,
+                  child:
+                      BlocBuilder<
+                        TermsAndConditionsCubit,
+                        TermsAndConditionsState
+                      >(
+                        builder: (context, state) {
+                          return CustomButton(
+                            text: "إنشاء حساب جديد",
+                            onPressed: () {
+                              if (!state.isChecked) {
+                                showSnackBar(
+                                  context,
+                                  message: "من فضلك وافق على الشروط والأحكام",
+                                );
+                                return;
+                              }
+                              validateTextField(context);
+                            },
+                          );
+                        },
+                      ),
+                ),
+                const SizedBox(height: 26),
+                RegisterRichText(),
+              ],
+            ),
           ),
         ),
       ),
+        );
+      },
+    
+  
     );
   }
 
@@ -116,4 +134,16 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
       password: password,
     );
   }
+
+
+  void _handleFailure(BuildContext context, {required String message}) {
+    showSnackBar(context, message: message);
+  }
+
+  void _handleSuccess(BuildContext context) {
+    showSnackBar(context, message: "تم تسجيل الدخول بنجاح");
+    Navigator.pop(context);
+  }
+
+  
 }
