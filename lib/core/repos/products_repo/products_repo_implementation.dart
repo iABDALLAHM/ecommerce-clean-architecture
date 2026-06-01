@@ -17,9 +17,9 @@ class ProductsRepoImplementation implements ProductsRepo {
   @override
   Future<Either<Failure, List<ProductEntity>>> getProducts() async {
     try {
-      var data = await databaseService
-          .getData(path: BackendEndPoints.getProducts)
-          .timeout(const Duration(seconds: 3));
+      var data = await databaseService.getData(
+        path: BackendEndPoints.getProducts,
+      );
       List<ProductEntity> productsList = [];
       for (var productEntity in data) {
         productsList.add(ProductModel.fromJson(productEntity).toEntity());
@@ -58,11 +58,13 @@ class ProductsRepoImplementation implements ProductsRepo {
   @override
   Future<Either<Failure, List<ProductEntity>>> getFavoriteProducts() async {
     try {
-      var result = await databaseService.getNestedData(
-        path: BackendEndPoints.addUserData,
-        subCollection: BackendEndPoints.getFavoriteProducts,
-        documentId: getUserData().uId,
-      ).timeout(const Duration(seconds: 3));
+      var result = await databaseService
+          .getNestedData(
+            path: BackendEndPoints.addUserData,
+            subCollection: BackendEndPoints.getFavoriteProducts,
+            documentId: getUserData().uId,
+          )
+          .timeout(const Duration(seconds: 3));
       List<ProductEntity> favProducts = (result as List)
           .map((ele) => ProductModel.fromJson(ele).toEntity())
           .toList();
@@ -80,15 +82,17 @@ class ProductsRepoImplementation implements ProductsRepo {
     required String searchName,
   }) async {
     try {
-      var data = await databaseService.getQueryData(
-        path: BackendEndPoints.getProducts,
-        query: QueryParams(
-          conditions: [
-            QueryCondition(field: "productName", isEqualTo: searchName),
-          ],
-          orders: [],
-        ),
-      ).timeout(const Duration(seconds: 3));
+      var data = await databaseService
+          .getQueryData(
+            path: BackendEndPoints.getProducts,
+            query: QueryParams(
+              conditions: [
+                QueryCondition(field: "productName", isEqualTo: searchName),
+              ],
+              orders: [],
+            ),
+          )
+          .timeout(const Duration(seconds: 3));
       List<ProductEntity> productsList = [];
       for (var productModel in data) {
         productsList.add(ProductModel.fromJson(productModel).toEntity());
