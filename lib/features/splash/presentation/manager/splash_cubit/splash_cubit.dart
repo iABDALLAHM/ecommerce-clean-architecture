@@ -14,14 +14,15 @@ class SplashCubit extends Cubit<SplashState> {
     var isOnBoardingSeen = sharedPrefsService.getBool(key: kOnBoardingSeen);
 
     if (isOnBoardingSeen) {
-      handleIfOnboardingSeen();
+      _handleIfOnboardingSeen();
     } else {
       emit(NavigateToOnboardingScreenState());
     }
   }
 
-  void handleIfOnboardingSeen() {
+  void _handleIfOnboardingSeen() {
     var isUserLogin = sharedPrefsService.getBool(key: kIsUserSignIn);
+
     if (isUserLogin) {
       emit(NavigateToMainScreenState());
     } else {

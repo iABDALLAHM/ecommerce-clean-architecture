@@ -46,7 +46,7 @@ class OnBoardingPageViewItem extends StatelessWidget {
                     ),
                     child: BlocListener<OnboardingCubit, OnboardingState>(
                       listener: (context, state) {
-                        if (state is SuccessSkipOnBoarding) {
+                        if (state is SuccessSkipOnBoardingState) {
                           Navigator.of(
                             context,
                           ).pushReplacementNamed(LoginView.routeName);

@@ -49,7 +49,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                     maintainState: true,
                     child: BlocListener<OnboardingCubit, OnboardingState>(
                       listener: (context, state) {
-                        if (state is SuccessSkipOnBoarding) {
+                        if (state is SuccessSkipOnBoardingState) {
                           Navigator.of(
                             context,
                           ).pushReplacementNamed(LoginView.routeName);

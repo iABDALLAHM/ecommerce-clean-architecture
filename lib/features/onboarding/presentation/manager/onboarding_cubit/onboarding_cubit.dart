@@ -5,12 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OnboardingCubit extends Cubit<OnboardingState> {
   OnboardingCubit({required this.sharedPrefsService})
-    : super(OnboardingInitial());
+    : super(InitialOnBoardingState());
 
   final SharedPrefService sharedPrefsService;
 
   void handleSkipOnboarding() {
+    emit(LoadingOnBoardingState());
     sharedPrefsService.setBool(key: kOnBoardingSeen, value: true);
-    emit(SuccessSkipOnBoarding());
+    emit(SuccessSkipOnBoardingState());
   }
 }
