@@ -21,7 +21,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
       onSaved: widget.onSaved,
       obscureText: isVisible,
       validator: (value) {
-        if (value != null && value.isEmpty) {
+        if (value == null || value.isEmpty) {
           return "";
         }
         return null;

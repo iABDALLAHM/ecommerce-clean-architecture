@@ -1,24 +1,17 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/terms_and_conditions_cubit/terms_and_conditions_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomTermsAndConditionsButton extends StatefulWidget {
+class CustomTermsAndConditionsButton extends StatelessWidget {
   const CustomTermsAndConditionsButton({super.key, required this.onChange});
   final ValueChanged<bool> onChange;
   @override
-  State<CustomTermsAndConditionsButton> createState() =>
-      _CustomTermsAndConditionsButtonState();
-}
-
-class _CustomTermsAndConditionsButtonState
-    extends State<CustomTermsAndConditionsButton> {
-  bool isSelected = false;
-  @override
   Widget build(BuildContext context) {
+    bool isSelected = context.watch<TermsAndConditionsCubit>().state.isChecked;
     return GestureDetector(
       onTap: () {
-        isSelected = !isSelected;
-        widget.onChange(isSelected);
-        setState(() {});
+        onChange(!isSelected);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -32,7 +25,7 @@ class _CustomTermsAndConditionsButtonState
           padding: const EdgeInsets.all(2),
           child: isSelected
               ? Icon(Icons.check, size: 20, color: Colors.white)
-              : Icon(null, size: 20),
+              : const SizedBox(height: 20, width: 20),
         ),
       ),
     );

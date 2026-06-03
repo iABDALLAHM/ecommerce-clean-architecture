@@ -30,12 +30,18 @@ void setupGetIt() async {
   getIt.registerSingleton<SharedPrefService>(
     SharedPrefService(sharedPreferences: await SharedPreferences.getInstance()),
   );
+
   getIt.registerSingleton<DatabaseService>(
     FirestoreService(firestore: FirebaseFirestore.instance),
   );
+
+  getIt.registerSingleton<UserLocalDataSource>(
+    UserLocalDataSourceImplementation(),
+  );
+
   getIt.registerSingleton<UserRepo>(
     UserRepoImplementation(
-      databaseService: getIt<DatabaseService>(),
+      databaseService: getIt.get<DatabaseService>(),
       localDataSource: getIt.get<UserLocalDataSource>(),
     ),
   );
@@ -44,27 +50,25 @@ void setupGetIt() async {
     FirebaseAuthService(firebaseAuth: FirebaseAuth.instance),
   );
 
-  getIt.registerSingleton<UserLocalDataSource>(
-    UserLocalDataSourceImplementation(),
-  );
-
   getIt.registerSingleton<StorageService>(SupabaseStorageService());
 
   getIt.registerSingleton<ImagesRepo>(
-    ImagesRepoImplementation(storageService: getIt<StorageService>()),
+    ImagesRepoImplementation(storageService: getIt.get<StorageService>()),
   );
   getIt.registerSingleton<NotificationRepo>(
-    NotificationRepoImplementation(databaseService: getIt<DatabaseService>()),
+    NotificationRepoImplementation(
+      databaseService: getIt.get<DatabaseService>(),
+    ),
   );
   getIt.registerSingleton<OrdersRepo>(
-    OrderRepoImplementation(databaseService: getIt<DatabaseService>()),
+    OrderRepoImplementation(databaseService: getIt.get<DatabaseService>()),
   );
   getIt.registerSingleton<ProductsRepo>(
-    ProductsRepoImplementation(databaseService: getIt<DatabaseService>()),
+    ProductsRepoImplementation(databaseService: getIt.get<DatabaseService>()),
   );
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImplementation(
-      authService: getIt<AuthService>(),
+      authService: getIt.get<AuthService>(),
       userLocalDataSource: getIt.get<UserLocalDataSource>(),
     ),
   );

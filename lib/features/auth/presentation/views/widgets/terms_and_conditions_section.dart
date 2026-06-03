@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 class TermsAndConditionsSection extends StatelessWidget {
   const TermsAndConditionsSection({super.key, required this.onChange});
   final ValueChanged<bool> onChange;
+  
   @override
   Widget build(BuildContext context) {
     return Row(

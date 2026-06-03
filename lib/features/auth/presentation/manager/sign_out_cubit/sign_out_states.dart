@@ -4,6 +4,10 @@ final class InitialSignOutState extends SignOutStates {}
 
 final class SuccessSignOutState extends SignOutStates {}
 
-final class FailureSignOutState extends SignOutStates {}
+final class FailureSignOutState extends SignOutStates {
+  final String errMessage;
+
+  FailureSignOutState({required this.errMessage});
+}
 
 final class LoadingSignOutState extends SignOutStates {}

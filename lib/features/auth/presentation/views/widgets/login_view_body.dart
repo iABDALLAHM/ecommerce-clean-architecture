@@ -71,7 +71,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                       child: CustomButton(
                         text: "تسجيل دخول",
                         onPressed: () {
-                          validateLoginTextFields();
+                          _validateLoginTextFields();
                         },
                       ),
                     ),
@@ -107,16 +107,16 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     );
   }
 
-  void validateLoginTextFields() {
+  void _validateLoginTextFields() {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      triggerLoginCubit();
+      _triggerLoginCubit();
     } else {
       autovalidateMode = AutovalidateMode.always;
     }
   }
 
-  void triggerLoginCubit() {
+  void _triggerLoginCubit() {
     context.read<LoginCubit>().signIn(email: email, password: password);
   }
 

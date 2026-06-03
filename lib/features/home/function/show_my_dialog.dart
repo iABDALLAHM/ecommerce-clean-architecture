@@ -23,7 +23,7 @@ Future<void> showMyDialog({required BuildContext context}) {
                 if (state is SuccessSignOutState) {
                   handleSuccessSignOut(context);
                 } else if (state is FailureSignOutState) {
-                  showSnackBar(context, message: "فشل تسجيل الخروج");
+                  showSnackBar(context, message: state.errMessage);
                 }
               },
               child: AlertDialog(

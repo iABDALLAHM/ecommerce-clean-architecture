@@ -11,6 +11,7 @@ class CustomTextFormField extends StatelessWidget {
   final String hintText;
   final Function(String?) onSaved;
   final TextInputType textInputType;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -18,7 +19,10 @@ class CustomTextFormField extends StatelessWidget {
       onSaved: onSaved,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return "هذا الحقل مطلوب";
+          return "";
+        }
+        if (!value.contains("@")) {
+          return "";
         }
         return null;
       },

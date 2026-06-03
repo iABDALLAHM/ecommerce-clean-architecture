@@ -12,7 +12,7 @@ abstract class AuthRepo {
     required String password,
   });
 
-  Future<void> signOut();
+  Future<Either<Failure, void>> signOut();
 
   Future<Either<Failure, void>> deleteCurrentUser();
 

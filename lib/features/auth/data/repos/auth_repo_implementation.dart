@@ -26,8 +26,7 @@ class AuthRepoImplementation implements AuthRepo {
       final user =
           await authService.register(email: email, password: password) as User;
 
-
-      return Right( user.uid);
+      return Right(user.uid);
     } on CustomException catch (e) {
       log(
         "error happend in AuthRepoImplementation in createNewAccount the error : $e",
@@ -53,14 +52,16 @@ class AuthRepoImplementation implements AuthRepo {
   }
 
   @override
-  Future<void> signOut() async {
+  Future<Either<Failure, void>> signOut() async {
     try {
       await authService.signOut();
       await userLocalDataSource.removeAllUserData();
+      return Right(null);
     } on CustomException catch (e) {
       log(
-        "error happend in AuthRepoImplementation in updatePassword the error : ${e.exceptionMeassge}",
+        "error happend in AuthRepoImplementation in signOut the error : ${e.exceptionMeassge}",
       );
+      return Left(ServerFailure(message: e.exceptionMeassge));
     }
   }
 
