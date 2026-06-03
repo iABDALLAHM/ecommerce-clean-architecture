@@ -1,19 +1,14 @@
 import 'package:ecommerce_clean_architecture/features/home/domain/entities/bottom_navigation_bar_entity.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/bottom_navigation_cubit/bottom_navigation_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/bottom_navigation_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomBottomNavigationBar extends StatefulWidget {
-  const CustomBottomNavigationBar({super.key, required this.onChange});
-  final ValueChanged<int> onChange;
-  @override
-  State<CustomBottomNavigationBar> createState() =>
-      _CustomBottomNavigationBarState();
-}
-
-class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
-  int currentItem = 0;
+class CustomBottomNavigationBar extends StatelessWidget {
+  const CustomBottomNavigationBar({super.key});
   @override
   Widget build(BuildContext context) {
+    int currentItem = context.watch<BottomNavigationCubit>().state.currentPage;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 27),
       decoration: BoxDecoration(
@@ -40,9 +35,9 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           var value = map.value;
           return GestureDetector(
             onTap: () {
-              currentItem = key;
-              widget.onChange(currentItem);
-              setState(() {});
+              context.read<BottomNavigationCubit>().changePage(
+                currentPage: key,
+              );
             },
             child: BottomNavigationItem(
               isActive: currentItem == key ? true : false,

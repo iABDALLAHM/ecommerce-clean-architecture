@@ -1,6 +1,7 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/on_generate_route.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/bottom_navigation_cubit/bottom_navigation_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/splash/presentation/views/splash_view.dart';
 import 'package:ecommerce_clean_architecture/firebase_options.dart';
 import 'package:ecommerce_clean_architecture/generated/l10n.dart';
@@ -25,23 +26,26 @@ class ECommerceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      locale: const Locale("ar"),
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: Color(0xffFFFFFF),
-        appBarTheme: AppBarTheme(backgroundColor: Color(0xffFFFFFF)),
-        fontFamily: kFontFamily,
+    return BlocProvider(
+      create: (context) => BottomNavigationCubit(),
+      child: MaterialApp(
+        localizationsDelegates: [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        locale: const Locale("ar"),
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          scaffoldBackgroundColor: Color(0xffFFFFFF),
+          appBarTheme: AppBarTheme(backgroundColor: Color(0xffFFFFFF)),
+          fontFamily: kFontFamily,
+        ),
+        onGenerateRoute: onGenetateRoute,
+        initialRoute: SplashView.routeName,
       ),
-      onGenerateRoute: onGenetateRoute,
-      initialRoute: SplashView.routeName,
     );
   }
 }

@@ -1,32 +1,24 @@
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/bottom_navigation_cubit/bottom_navigation_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_button_navigaton_bar.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/main_view_body.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/main_view_body_bloc_consumer.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/multi_main_view_bloc_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MainView extends StatefulWidget {
+class MainView extends StatelessWidget {
   const MainView({super.key});
   static const String routeName = "Main";
 
   @override
-  State<MainView> createState() => _MainViewState();
-}
-
-class _MainViewState extends State<MainView> {
-  int _currentBody = 0;
-  @override
   Widget build(BuildContext context) {
+    int currentBody = context.watch<BottomNavigationCubit>().state.currentPage;
     return MultiMainViewBlocProvider(
       child: Scaffold(
-        bottomNavigationBar: CustomBottomNavigationBar(
-          onChange: (value) {
-            _currentBody = value;
-            setState(() {});
-          },
-        ),
+        bottomNavigationBar: CustomBottomNavigationBar(),
         body: SafeArea(
           child: MainViewBodyBlocListener(
-            child: MainViewBody(currentBody: _currentBody),
+            child: MainViewBody(currentBody: currentBody),
           ),
         ),
       ),
