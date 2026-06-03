@@ -1,11 +1,16 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/repos/user_repo/user_repo.dart';
+import 'package:ecommerce_clean_architecture/features/auth/domain/entities/user_entity.dart';
 import 'package:ecommerce_clean_architecture/features/auth/domain/repo/auth_repo.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/register_cubit/register_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterCubit extends Cubit<RegisterStates> {
-  RegisterCubit({required this.authRepo}) : super(InitialRegisterState());
+  RegisterCubit({required this.authRepo, required this.userRepo})
+    : super(InitialRegisterState());
+
   final AuthRepo authRepo;
+  final UserRepo userRepo;
 
   Future register({
     required String email,
@@ -14,17 +19,35 @@ class RegisterCubit extends Cubit<RegisterStates> {
   }) async {
     emit(LoadingRegisterState());
 
-    var result = await authRepo.createNewAccount(
+    var user = await authRepo.createNewAccount(
       email: email,
       password: password,
-      // this is a default photo for each user have an account
-      userImage: kDefaultUserImageUrl,
-      name: name,
     );
 
-    result.fold(
-      (failure) => emit(FailureRegisterState(errMessage: failure.message)),
-      (success) => emit(SuccessRegisterState()),
+    user.fold(
+      (failure) {
+        emit(FailureRegisterState(errMessage: failure.message));
+      },
+      (userId) async {
+        final UserEntity userEntity = UserEntity(
+          email: email,
+          userImage: kDefaultUserImageUrl,
+          uId: userId,
+          name: name,
+        );
+
+        var result = await userRepo.addUserData(userEntity: userEntity);
+
+        result.fold(
+          (failure) {
+            authRepo.deleteCurrentUser();
+            emit(FailureRegisterState(errMessage: failure.message));
+          },
+          (success) {
+            emit(SuccessRegisterState());
+          },
+        );
+      },
     );
   }
 }

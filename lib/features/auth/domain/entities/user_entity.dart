@@ -1,5 +1,7 @@
 class UserEntity {
-  final String name, email, uId;
+  final String name;
+  final String email;
+  final String uId;
   final String userImage;
 
   UserEntity({

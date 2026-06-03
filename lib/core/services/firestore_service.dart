@@ -4,8 +4,8 @@ import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service.dart';
 
 class FirestoreService implements DatabaseService {
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-
+  final FirebaseFirestore firestore;
+  FirestoreService({required this.firestore});
   @override
   Future<void> addData({
     required String path,

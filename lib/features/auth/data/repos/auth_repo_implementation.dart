@@ -1,58 +1,33 @@
-import 'dart:convert';
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
-import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
 import 'package:ecommerce_clean_architecture/core/services/auth_service.dart';
-import 'package:ecommerce_clean_architecture/core/services/database_service.dart';
-import 'package:ecommerce_clean_architecture/core/services/get_it_service.dart';
-import 'package:ecommerce_clean_architecture/core/services/shared_prefs_service.dart';
-import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
-import 'package:ecommerce_clean_architecture/features/auth/data/models/user_model.dart';
-import 'package:ecommerce_clean_architecture/features/auth/domain/entities/user_entity.dart';
+import 'package:ecommerce_clean_architecture/features/auth/data/datasources/local/user_local_data_source.dart';
 import 'package:ecommerce_clean_architecture/features/auth/domain/repo/auth_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-
 class AuthRepoImplementation implements AuthRepo {
   final AuthService authService;
-  final DatabaseService firestoreService;
+  final UserLocalDataSource userLocalDataSource;
+
   AuthRepoImplementation({
     required this.authService,
-    required this.firestoreService,
+    required this.userLocalDataSource,
   });
+
   @override
-  Future<Either<Failure, UserEntity>> createNewAccount({
+  Future<Either<Failure, String>> createNewAccount({
     required String email,
     required String password,
-    required String userImage,
-    required String name,
   }) async {
     try {
       final user =
           await authService.register(email: email, password: password) as User;
-      UserEntity userEntity = UserEntity(
-        userImage: userImage,
-        name: name,
-        email: email,
-        uId: user.uid,
-      );
-      try {
-        await addUserData(userEntity: userEntity);
-        return Right(userEntity);
-      } catch (e) {
-        authService.delete();
-        log(
-          "error happend in AuthRepoImplementation in createNewAccount in addUserData the error : $e",
-        );
-        return Left(
-          ServerFailure(
-            message: "حدث خطأ اثناء تسجيل البيانات برجاء المحاولة مرة آخرى",
-          ),
-        );
-      }
+
+
+      return Right( user.uid);
     } on CustomException catch (e) {
       log(
         "error happend in AuthRepoImplementation in createNewAccount the error : $e",
@@ -62,20 +37,15 @@ class AuthRepoImplementation implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, UserEntity>> signIn({
+  Future<Either<Failure, String>> signIn({
     required String email,
     required String password,
   }) async {
     try {
       var user =
           await authService.signIn(email: email, password: password) as User;
-      UserEntity userEntity = await getUserData(uId: user.uid);
-      await saveUserData(userEntity: userEntity);
-      await getIt.get<SharedPrefService>().setBool(
-        key: kIsUserSignIn,
-        value: true,
-      );
-      return Right(userEntity);
+
+      return Right(user.uid);
     } on CustomException catch (e) {
       log("error happend in AuthRepoImplementation in signIn the error : $e");
       return Left(ServerFailure(message: e.exceptionMeassge));
@@ -83,44 +53,15 @@ class AuthRepoImplementation implements AuthRepo {
   }
 
   @override
-  Future<void> addUserData({required UserEntity userEntity}) async {
-    await firestoreService.addSingleData(
-      path: BackendEndPoints.addUserData,
-      data: UserModel.fromEntity(userEntity).toMap(),
-      documentId: userEntity.uId,
-    );
-  }
-
-  @override
-  Future<UserEntity> getUserData({required String uId}) async {
-    var userMap = await firestoreService.getSingleData(
-      path: BackendEndPoints.getUserData,
-      documentId: uId,
-    );
-    UserEntity user = UserModel.fromJson(userMap).toEntity();
-    return user;
-  }
-
-  @override
-  Future<void> saveUserData({required UserEntity userEntity}) async {
-    var jsonStringData = jsonEncode(UserModel.fromEntity(userEntity).toMap());
-    await getIt.get<SharedPrefService>().saveData(
-      key: kSaveUserData,
-      value: jsonStringData,
-    );
-  }
-
-  @override
-  Future<void> removeAllUserData() async {
-    await getIt.get<SharedPrefService>().removeData(key: kRemoveUserData);
-    await getIt.get<SharedPrefService>().removeBool(key: kRemoveOnBoardingSeen);
-    await getIt.get<SharedPrefService>().removeBool(key: kRemoveUserSignIn);
-  }
-
-  @override
   Future<void> signOut() async {
-    await authService.signOut();
-    await removeAllUserData();
+    try {
+      await authService.signOut();
+      await userLocalDataSource.removeAllUserData();
+    } on CustomException catch (e) {
+      log(
+        "error happend in AuthRepoImplementation in updatePassword the error : ${e.exceptionMeassge}",
+      );
+    }
   }
 
   @override
@@ -131,9 +72,25 @@ class AuthRepoImplementation implements AuthRepo {
       await authService.updatePassword(newPassword: newPassword);
       return Right(null);
     } on CustomException catch (e) {
+      log(
+        "error happend in AuthRepoImplementation in updatePassword the error : $e",
+      );
       return Left(
         ServerFailure(message: "the error happend in updatePassword method $e"),
       );
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteCurrentUser() async {
+    try {
+      await authService.delete();
+      return Right(null);
+    } on CustomException catch (e) {
+      log(
+        "error happend in AuthRepoImplementation in deleteCurrentUser the error : $e",
+      );
+      return Left(ServerFailure(message: e.exceptionMeassge));
     }
   }
 }

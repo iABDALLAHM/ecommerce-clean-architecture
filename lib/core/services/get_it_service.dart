@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_clean_architecture/core/repos/images_repo/images_repo.dart';
 import 'package:ecommerce_clean_architecture/core/repos/images_repo/images_repo_implementation.dart';
 import 'package:ecommerce_clean_architecture/core/repos/notification_repo/notification_repo.dart';
@@ -6,6 +7,8 @@ import 'package:ecommerce_clean_architecture/core/repos/order_repo/order_repo_im
 import 'package:ecommerce_clean_architecture/core/repos/order_repo/orders_repo.dart';
 import 'package:ecommerce_clean_architecture/core/repos/products_repo/products_repo.dart';
 import 'package:ecommerce_clean_architecture/core/repos/products_repo/products_repo_implementation.dart';
+import 'package:ecommerce_clean_architecture/core/repos/user_repo/user_repo.dart';
+import 'package:ecommerce_clean_architecture/core/repos/user_repo/user_repo_implementation.dart';
 import 'package:ecommerce_clean_architecture/core/services/auth_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/firebase_auth_service.dart';
@@ -13,8 +16,11 @@ import 'package:ecommerce_clean_architecture/core/services/firestore_service.dar
 import 'package:ecommerce_clean_architecture/core/services/shared_prefs_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/storage_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/supabase_storage_service.dart';
+import 'package:ecommerce_clean_architecture/features/auth/data/datasources/local/user_local_data_source.dart';
+import 'package:ecommerce_clean_architecture/features/auth/data/datasources/local/user_local_data_source_implementation.dart';
 import 'package:ecommerce_clean_architecture/features/auth/data/repos/auth_repo_implementation.dart';
 import 'package:ecommerce_clean_architecture/features/auth/domain/repo/auth_repo.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -22,12 +28,26 @@ GetIt getIt = GetIt.instance;
 
 void setupGetIt() async {
   getIt.registerSingleton<SharedPrefService>(
-    SharedPrefService(
-      sharedPreferences: await SharedPreferences.getInstance(),
+    SharedPrefService(sharedPreferences: await SharedPreferences.getInstance()),
+  );
+  getIt.registerSingleton<DatabaseService>(
+    FirestoreService(firestore: FirebaseFirestore.instance),
+  );
+  getIt.registerSingleton<UserRepo>(
+    UserRepoImplementation(
+      databaseService: getIt<DatabaseService>(),
+      localDataSource: getIt.get<UserLocalDataSource>(),
     ),
   );
-  getIt.registerSingleton<AuthService>(FirebaseAuthService());
-  getIt.registerSingleton<DatabaseService>(FirestoreService());
+
+  getIt.registerSingleton<AuthService>(
+    FirebaseAuthService(firebaseAuth: FirebaseAuth.instance),
+  );
+
+  getIt.registerSingleton<UserLocalDataSource>(
+    UserLocalDataSourceImplementation(),
+  );
+
   getIt.registerSingleton<StorageService>(SupabaseStorageService());
 
   getIt.registerSingleton<ImagesRepo>(
@@ -45,7 +65,7 @@ void setupGetIt() async {
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImplementation(
       authService: getIt<AuthService>(),
-      firestoreService: getIt<DatabaseService>(),
+      userLocalDataSource: getIt.get<UserLocalDataSource>(),
     ),
   );
 }

@@ -1,7 +1,9 @@
 import 'package:ecommerce_clean_architecture/features/auth/domain/entities/user_entity.dart';
 
 class UserModel {
-  final String name, email, uId;
+  final String name;
+  final String email;
+  final String uId;
   final String userImage;
 
   UserModel({
@@ -19,6 +21,7 @@ class UserModel {
       userImage: userEntity.userImage,
     );
   }
+
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       name: json["name"],
@@ -27,6 +30,7 @@ class UserModel {
       userImage: json["userImage"],
     );
   }
+
   Map<String, dynamic> toMap() {
     return {"name": name, "email": email, "uId": uId, "userImage": userImage};
   }

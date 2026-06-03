@@ -4,7 +4,9 @@ import 'package:ecommerce_clean_architecture/core/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthService implements AuthService {
-  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  final FirebaseAuth firebaseAuth;
+
+  FirebaseAuthService({required this.firebaseAuth});
 
   @override
   Future<User> register({
@@ -87,12 +89,30 @@ class FirebaseAuthService implements AuthService {
 
   @override
   Future<void> delete() async {
-    await firebaseAuth.currentUser!.delete();
+    try {
+      await firebaseAuth.currentUser!.delete();
+    } catch (e) {
+      log(
+        "error happend in FirebaseAuthService in delete method please check it, the error: $e",
+      );
+      throw CustomException(
+        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+      );
+    }
   }
 
   @override
   Future<void> signOut() async {
-    await firebaseAuth.signOut();
+    try {
+      await firebaseAuth.signOut();
+    } catch (e) {
+      log(
+        "error happend in FirebaseAuthService in signOut method please check it, the error: $e",
+      );
+      throw CustomException(
+        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+      );
+    }
   }
 
   @override

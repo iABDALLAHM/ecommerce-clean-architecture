@@ -7,6 +7,6 @@ import 'package:ecommerce_clean_architecture/features/auth/domain/entities/user_
 
 UserEntity getUserData() {
   var data = getIt.get<SharedPrefService>().getData(key: kSaveUserData);
-  UserEntity userEntity = UserModel.fromJson(jsonDecode(data!)).toEntity();
+  UserEntity userEntity = UserModel.fromJson(jsonDecode(data!)).toEntity(); //هنا فيه عكاية
   return userEntity;
 }
