@@ -1,17 +1,14 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/switch_button_cubit/switch_button_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomSwitch extends StatefulWidget {
+class CustomSwitch extends StatelessWidget {
   const CustomSwitch({super.key});
 
   @override
-  State<CustomSwitch> createState() => _CustomSwitchState();
-}
-
-class _CustomSwitchState extends State<CustomSwitch> {
-  bool isActive = false;
-  @override
   Widget build(BuildContext context) {
+    bool isActive = context.watch<SwitchButtonCubit>().state.currentState;
     return SizedBox(
       height: 20,
       child: Switch(
@@ -23,9 +20,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
         inactiveTrackColor: Color(0xff888FA0),
         value: isActive,
         onChanged: (change) {
-          setState(() {
-            isActive = !isActive;
-          });
+          context.read<SwitchButtonCubit>().changeState(!isActive);
         },
       ),
     );

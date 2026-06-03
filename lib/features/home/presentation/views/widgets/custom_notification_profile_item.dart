@@ -1,7 +1,9 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/custom_divider.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/switch_button_cubit/switch_button_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_switch.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomSwitchProfileItem extends StatelessWidget {
@@ -15,26 +17,28 @@ class CustomSwitchProfileItem extends StatelessWidget {
   final Function() onPressed;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            SvgPicture.asset(icon),
-            const SizedBox(width: 7),
-            Text(
-              name,
-              style: AppStyles.textStyle13SemiBold.copyWith(
-                color: Color(0xff949D9E),
+    return BlocProvider(
+      create: (context) => SwitchButtonCubit(),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              SvgPicture.asset(icon),
+              const SizedBox(width: 7),
+              Text(
+                name,
+                style: AppStyles.textStyle13SemiBold.copyWith(
+                  color: Color(0xff949D9E),
+                ),
               ),
-            ),
-            Spacer(),
-            CustomSwitch(),
-          ],
-        ),
-        const SizedBox(height: 8),
-        CustomDivider(),
-      ],
+              Spacer(),
+              CustomSwitch(),
+            ],
+          ),
+          const SizedBox(height: 8),
+          CustomDivider(),
+        ],
+      ),
     );
   }
 }
-
