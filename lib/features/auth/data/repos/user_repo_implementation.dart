@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
-import 'package:ecommerce_clean_architecture/core/repos/user_repo/user_repo.dart';
+import 'package:ecommerce_clean_architecture/features/auth/domain/repo/user_repo.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
 import 'package:ecommerce_clean_architecture/features/auth/data/datasources/local/user_local_data_source.dart';
@@ -12,10 +12,12 @@ import 'package:ecommerce_clean_architecture/features/auth/data/models/user_mode
 import 'package:ecommerce_clean_architecture/features/auth/domain/entities/user_entity.dart';
 
 class UserRepoImplementation implements UserRepo {
-
   final DatabaseService databaseService;
   final UserLocalDataSource localDataSource;
-  UserRepoImplementation({required this.databaseService, required this.localDataSource});
+  UserRepoImplementation({
+    required this.databaseService,
+    required this.localDataSource,
+  });
 
   @override
   Future<Either<Failure, void>> addUserData({
@@ -30,7 +32,7 @@ class UserRepoImplementation implements UserRepo {
       return Right(null);
     } on CustomException catch (e) {
       log(
-        "error happend in AuthRepoImplementation in addUserData the error : $e",
+        "error happend in UserRepoImplementation in addUserData the error : $e",
       );
       return Left(ServerFailure(message: e.exceptionMeassge));
     }
@@ -49,7 +51,7 @@ class UserRepoImplementation implements UserRepo {
       return Right(user);
     } on CustomException catch (e) {
       log(
-        "error happend in AuthRepoImplementation in getUserData the error : $e",
+        "error happend in UserRepoImplementation in getUserData the error : $e",
       );
       return Left(ServerFailure(message: e.exceptionMeassge));
     }

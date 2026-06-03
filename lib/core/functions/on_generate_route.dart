@@ -1,5 +1,5 @@
-import 'package:ecommerce_clean_architecture/core/entities/cart_entity.dart';
-import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
+import 'package:ecommerce_clean_architecture/features/home/domain/entities/cart_entity.dart';
+import 'package:ecommerce_clean_architecture/features/home/domain/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/forget_password_view.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/login_view.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/password_recovery_view.dart';

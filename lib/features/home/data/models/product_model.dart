@@ -1,5 +1,5 @@
-import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
-import 'package:ecommerce_clean_architecture/core/models/review_model.dart';
+import 'package:ecommerce_clean_architecture/features/home/domain/entities/product_entity.dart';
+import 'package:ecommerce_clean_architecture/features/home/data/models/review_model.dart';
 
 class ProductModel {
   final String productName;

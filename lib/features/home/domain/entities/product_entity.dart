@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/core/entities/review_entity.dart';
+import 'package:ecommerce_clean_architecture/features/home/domain/entities/review_entity.dart';
 import 'package:equatable/equatable.dart';
 
 class ProductEntity extends Equatable {

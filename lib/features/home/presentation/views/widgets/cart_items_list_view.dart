@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/core/entities/cart_item_entity.dart';
+import 'package:ecommerce_clean_architecture/features/home/domain/entities/cart_item_entity.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/custom_divider.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/cart_item.dart';
 import 'package:flutter/material.dart';

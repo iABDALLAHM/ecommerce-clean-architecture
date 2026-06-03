@@ -1,13 +1,13 @@
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
-import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
+import 'package:ecommerce_clean_architecture/features/home/domain/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
 import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
-import 'package:ecommerce_clean_architecture/core/models/product_model.dart';
+import 'package:ecommerce_clean_architecture/features/home/data/models/product_model.dart';
 import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
-import 'package:ecommerce_clean_architecture/core/repos/products_repo/products_repo.dart';
+import 'package:ecommerce_clean_architecture/features/home/domain/repos/products_repo.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
 

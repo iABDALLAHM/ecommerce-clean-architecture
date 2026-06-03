@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/repos/user_repo/user_repo.dart';
+import 'package:ecommerce_clean_architecture/features/auth/domain/repo/user_repo.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/shared_prefs_service.dart';
 import 'package:ecommerce_clean_architecture/features/auth/domain/repo/auth_repo.dart';

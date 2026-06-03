@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
+import 'package:ecommerce_clean_architecture/features/home/domain/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/fruit_item_details_view_body.dart';
 import 'package:flutter/material.dart';
 

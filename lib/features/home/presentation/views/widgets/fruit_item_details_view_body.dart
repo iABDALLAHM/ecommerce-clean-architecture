@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
+import 'package:ecommerce_clean_architecture/features/home/domain/entities/product_entity.dart';
 
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/fruit_item_details_header.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/product_info.dart';

@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:ecommerce_clean_architecture/features/home/presentation/manager/add_favorite_product_cubit/add_favorite_product_cubit.dart';
-import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
+import 'package:ecommerce_clean_architecture/features/home/domain/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/manager/cart_cubit/cart_cubit.dart';

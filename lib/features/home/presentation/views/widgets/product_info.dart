@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
+import 'package:ecommerce_clean_architecture/features/home/domain/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';

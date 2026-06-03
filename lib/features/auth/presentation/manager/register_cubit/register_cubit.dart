@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/repos/user_repo/user_repo.dart';
+import 'package:ecommerce_clean_architecture/features/auth/domain/repo/user_repo.dart';
 import 'package:ecommerce_clean_architecture/features/auth/domain/entities/user_entity.dart';
 import 'package:ecommerce_clean_architecture/features/auth/domain/repo/auth_repo.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/register_cubit/register_states.dart';

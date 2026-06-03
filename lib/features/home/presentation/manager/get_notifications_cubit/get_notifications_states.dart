@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/core/entities/notification_entity.dart';
+import 'package:ecommerce_clean_architecture/features/home/domain/entities/notification_entity.dart';
 
 abstract class GetNotificationsStates {}
 

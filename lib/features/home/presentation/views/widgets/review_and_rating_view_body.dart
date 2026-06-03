@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
+import 'package:ecommerce_clean_architecture/features/home/domain/entities/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/add_review_text_field.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/review_summary_section.dart';

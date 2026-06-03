@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/entities/product_entity.dart';
+import 'package:ecommerce_clean_architecture/features/home/domain/entities/product_entity.dart';
 
 ProductEntity dummyProduct() {
   return ProductEntity(
