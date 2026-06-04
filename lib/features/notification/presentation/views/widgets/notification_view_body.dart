@@ -1,25 +1,24 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/manager/get_notifications_cubit/get_notifications_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/manager/get_notifications_cubit/get_notifications_states.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_text_message.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_notification_app_bar.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/newest_notification_body_header.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/newest_notifications_list_view.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/past_notification_body_header.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/past_notifications_list_view.dart';
-import 'package:flutter/widgets.dart';
+import 'package:ecommerce_clean_architecture/features/notification/presentation/manager/get_notifications_cubit/get_notifications_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/notification/presentation/manager/get_notifications_cubit/get_notifications_states.dart';
+import 'package:ecommerce_clean_architecture/features/notification/presentation/views/widgets/custom_notification_app_bar.dart';
+import 'package:ecommerce_clean_architecture/features/notification/presentation/views/widgets/newest_notification_body_header.dart';
+import 'package:ecommerce_clean_architecture/features/notification/presentation/views/widgets/newest_notifications_list_view.dart';
+import 'package:ecommerce_clean_architecture/features/notification/presentation/views/widgets/past_notification_body_header.dart';
+import 'package:ecommerce_clean_architecture/features/notification/presentation/views/widgets/past_notifications_list_view.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class NotificationBody extends StatefulWidget {
-  const NotificationBody({super.key});
-  static const String routeName = "NotificationView";
+class NotificationViewBody extends StatefulWidget {
+  const NotificationViewBody({super.key});
 
   @override
-  State<NotificationBody> createState() => _NotificationBodyState();
+  State<NotificationViewBody> createState() => _NotificationViewBodyState();
 }
 
-class _NotificationBodyState extends State<NotificationBody> {
+class _NotificationViewBodyState extends State<NotificationViewBody> {
   @override
   void initState() {
     context.read<GetNotificationsCubit>().getNotification();

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_clean_architecture/features/home/domain/repos/images_repo.dart';
 import 'package:ecommerce_clean_architecture/features/home/data/repos/images_repo_implementation.dart';
-import 'package:ecommerce_clean_architecture/features/home/domain/repos/notification_repo.dart';
-import 'package:ecommerce_clean_architecture/features/home/data/repos/notification_repo_implementation.dart';
+import 'package:ecommerce_clean_architecture/features/notification/domain/repos/notification_repo.dart';
+import 'package:ecommerce_clean_architecture/features/notification/data/repos/notification_repo_implementation.dart';
 import 'package:ecommerce_clean_architecture/features/home/data/repos/order_repo_implementation.dart';
 import 'package:ecommerce_clean_architecture/features/home/domain/repos/orders_repo.dart';
 import 'package:ecommerce_clean_architecture/features/home/domain/repos/products_repo.dart';

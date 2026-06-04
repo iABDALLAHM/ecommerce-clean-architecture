@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/features/home/domain/entities/notification_entity.dart';
+import 'package:ecommerce_clean_architecture/features/notification/domain/entities/notification_entity.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/active_notification_item.dart';
 import 'package:flutter/widgets.dart';
 

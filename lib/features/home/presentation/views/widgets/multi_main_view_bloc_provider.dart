@@ -1,8 +1,6 @@
 import 'package:ecommerce_clean_architecture/features/home/presentation/manager/add_favorite_product_cubit/add_favorite_product_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/manager/get_notifications_cubit/get_notifications_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/manager/update_user_image_cubit/update_user_image_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/home/domain/repos/images_repo.dart';
-import 'package:ecommerce_clean_architecture/features/home/domain/repos/notification_repo.dart';
 import 'package:ecommerce_clean_architecture/features/home/domain/repos/products_repo.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/features/auth/domain/repo/auth_repo.dart';
@@ -28,11 +26,7 @@ class MultiMainViewBlocProvider extends StatelessWidget {
           create: (context) =>
               SearchCubit(productsRepo: getIt.get<ProductsRepo>()),
         ),
-        BlocProvider(
-          create: (context) => GetNotificationsCubit(
-            notificationRepo: getIt.get<NotificationRepo>(),
-          ),
-        ),
+
         BlocProvider(
           create: (context) =>
               UpdateUserImageCubit(imagesRepo: getIt.get<ImagesRepo>()),

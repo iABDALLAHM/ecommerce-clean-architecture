@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/notification_body.dart';
+import 'package:ecommerce_clean_architecture/features/notification/presentation/views/notification_view.dart';
 import 'package:flutter/material.dart';
 
 class CustomNotificationIcon extends StatelessWidget {
@@ -9,7 +9,7 @@ class CustomNotificationIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(NotificationBody.routeName);
+        Navigator.of(context).pushNamed(NotificationView.routeName);
       },
       child: Container(
         padding: EdgeInsets.all(9),

@@ -17,9 +17,15 @@ class PrivateProfileBody extends StatefulWidget {
 }
 
 class _PrivateProfileBodyState extends State<PrivateProfileBody> {
+  
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  String? oldPassword, newPassword, confirmationNewPassord;
+
+  String oldPassword = "";
+  String newPassword = "";
+  String confirmationNewPassord = "";
+
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -51,21 +57,21 @@ class _PrivateProfileBodyState extends State<PrivateProfileBody> {
                   CustomPasswordField(
                     hintText: "كلمة المرور الحالي",
                     onSaved: (value) {
-                      oldPassword = value!;
+                      oldPassword = value ?? "";
                     },
                   ),
                   const SizedBox(height: 8),
                   CustomPasswordField(
                     hintText: "كلمة المرور الجديده",
                     onSaved: (value) {
-                      newPassword = value!;
+                      newPassword = value ?? "";
                     },
                   ),
                   const SizedBox(height: 8),
                   CustomPasswordField(
                     hintText: "تأكيد كلمة المرور الجديده",
                     onSaved: (value) {
-                      confirmationNewPassord = value;
+                      confirmationNewPassord = value ?? "";
                     },
                   ),
                   const SizedBox(height: 60),
@@ -85,7 +91,7 @@ class _PrivateProfileBodyState extends State<PrivateProfileBody> {
                           } else {
                             context
                                 .read<UpdateUserPasswordCubit>()
-                                .updateUserPassword(newPassword: newPassword!);
+                                .updateUserPassword(newPassword: newPassword);
                           }
                         } else {
                           autovalidateMode = AutovalidateMode.always;

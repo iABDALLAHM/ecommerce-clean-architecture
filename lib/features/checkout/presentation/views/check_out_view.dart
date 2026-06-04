@@ -19,6 +19,7 @@ class CheckOutView extends StatefulWidget {
 class _CheckOutViewState extends State<CheckOutView> {
   int currentStep = 0;
   late OrderEntity orderEntity;
+  
   @override
   void initState() {
     orderEntity = OrderEntity(

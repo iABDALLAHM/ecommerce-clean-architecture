@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/features/home/domain/entities/notification_entity.dart';
+import 'package:ecommerce_clean_architecture/features/notification/domain/entities/notification_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/functions/handle_date_time.dart';
 import 'package:flutter/material.dart';

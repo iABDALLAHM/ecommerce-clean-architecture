@@ -1,12 +1,12 @@
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
-import 'package:ecommerce_clean_architecture/features/home/domain/entities/notification_entity.dart';
+import 'package:ecommerce_clean_architecture/features/notification/domain/entities/notification_entity.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
-import 'package:ecommerce_clean_architecture/features/home/data/models/notification_model.dart';
-import 'package:ecommerce_clean_architecture/features/home/domain/repos/notification_repo.dart';
+import 'package:ecommerce_clean_architecture/features/notification/data/models/notification_model.dart';
+import 'package:ecommerce_clean_architecture/features/notification/domain/repos/notification_repo.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
 
