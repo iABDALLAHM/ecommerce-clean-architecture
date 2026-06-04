@@ -11,7 +11,7 @@ class ImageField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isLoading = context.watch<GetImageCubit>().state.isLoading;
-    String imageFile = context.watch<GetImageCubit>().state.image ?? "";
+    String imageFile = context.watch<GetImageCubit>().state.image;
 
     var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;

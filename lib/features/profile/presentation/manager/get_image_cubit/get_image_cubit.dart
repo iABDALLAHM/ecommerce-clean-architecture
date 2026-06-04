@@ -19,6 +19,6 @@ class GetImageCubit extends Cubit<GetImageState> {
   }
 
   Future<void> removeImage() async {
-    emit(state.copyWith(image: ""));
+    emit(state.copyWith(image: "", isLoading: false));
   }
 }

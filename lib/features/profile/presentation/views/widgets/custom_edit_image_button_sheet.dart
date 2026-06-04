@@ -42,7 +42,7 @@ class CustomEditImageButtonSheet extends StatelessWidget {
                       text: "تعديل الصورة",
                       onPressed: () {
                         String imagePath =
-                            context.read<GetImageCubit>().state.image ?? "";
+                            context.read<GetImageCubit>().state.image;
                         if (imagePath.isNotEmpty) {
                           _triggerUpdateUserImageCubit(
                             context,
