@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/custom_notification_icon.dart';
+import 'package:ecommerce_clean_architecture/features/notification/presentation/views/widgets/custom_notification_icon.dart';
 import 'package:flutter/material.dart';
 
 class ProductsAppBar extends StatelessWidget {

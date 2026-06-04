@@ -4,7 +4,7 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/review_and_rating_view.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/decreent_button.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/decrement_button.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/increment_button.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/info_details_box.dart';
 import 'package:flutter/material.dart';

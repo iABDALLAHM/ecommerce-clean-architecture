@@ -1,0 +1,89 @@
+import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/about_us_page.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/custom_language_section_item.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/custom_notification_profile_item.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/favorite_page.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/orders_section.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/private_profile.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/profile_item_section.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/wallet_body.dart';
+import 'package:flutter/material.dart';
+
+class ProfileBodySections extends StatelessWidget {
+  const ProfileBodySections({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 16),
+        Text("عام", style: AppStyles.textStyle13SemiBold),
+        const SizedBox(height: 16),
+        ProfileSectionItem(
+          onPressed: () {
+            Navigator.of(context).pushNamed(PrivateProfile.routeName);
+          },
+          icon: Assets.imagesPresonIcon,
+          name: "الملف الشخصي",
+        ),
+        const SizedBox(height: 4),
+        ProfileSectionItem(
+          icon: Assets.imagesOrdersIcon,
+          name: "طلباتي",
+          onPressed: () {
+            Navigator.of(context).pushNamed(OrdersSection.routeName);
+          },
+        ),
+        const SizedBox(height: 4),
+        ProfileSectionItem(
+          onPressed: () {
+             Navigator.of(context).pushNamed(WalletBody.routeName);
+          },
+          icon: Assets.imagesWalletIcon,
+          name: "المدفوعات",
+        ),
+        const SizedBox(height: 4),
+        ProfileSectionItem(
+          onPressed: () {
+             Navigator.of(context).pushNamed(FavoritePage.routeName);
+          },
+          icon: Assets.imagesFavoriteIcon,
+          name: "المفضلة",
+        ),
+        const SizedBox(height: 4),
+        CustomSwitchProfileItem(
+          icon: Assets.imagesNotificationIcon,
+          name: 'الاشعارات',
+          onPressed: () {},
+        ),
+        const SizedBox(height: 4),
+        CustomLanguageSectionItem(
+          onPressed: () {},
+          icon: Assets.imagesLanguageIcon,
+          name: "اللغة",
+        ),
+        const SizedBox(height: 4),
+        CustomSwitchProfileItem(
+          icon: Assets.imagesModeIcon,
+          name: "الوضع",
+          onPressed: () {},
+        ),
+        const SizedBox(height: 22),
+        Text("المساعده", style: AppStyles.textStyle13SemiBold),
+        const SizedBox(height: 16),
+        ProfileSectionItem(
+          icon: Assets.imagesHelpIcon,
+          name: "من نحن",
+          onPressed: () {
+            Navigator.of(context).pushNamed(AboutUsPage.routeName);
+          },
+        ),
+      ],
+    );
+  }
+}
+
+
+

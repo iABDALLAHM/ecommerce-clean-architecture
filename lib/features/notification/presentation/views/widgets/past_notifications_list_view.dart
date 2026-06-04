@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/features/notification/domain/entities/notification_entity.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/widgets/in_active_notification_item.dart';
+import 'package:ecommerce_clean_architecture/features/notification/presentation/views/widgets/in_active_notification_item.dart';
 import 'package:flutter/widgets.dart';
 
 class PastNotificationsListView extends StatelessWidget {
