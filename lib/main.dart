@@ -2,6 +2,7 @@ import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/on_generate_route.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/manager/bottom_navigation_cubit/bottom_navigation_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/home/presentation/manager/get_image_cubit/get_image_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/splash/presentation/views/splash_view.dart';
 import 'package:ecommerce_clean_architecture/firebase_options.dart';
 import 'package:ecommerce_clean_architecture/generated/l10n.dart';
@@ -26,8 +27,11 @@ class ECommerceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => BottomNavigationCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => BottomNavigationCubit()),
+        BlocProvider(create: (context) => GetImageCubit()),
+      ],
       child: MaterialApp(
         localizationsDelegates: [
           S.delegate,

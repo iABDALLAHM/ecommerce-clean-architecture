@@ -7,9 +7,9 @@ class UpdateUserImageCubit extends Cubit<UpdateUserImageStates> {
   UpdateUserImageCubit({required this.imagesRepo})
     : super(InitialUpdateUserImageState());
   final ImagesRepo imagesRepo;
-  Future<void> updateUserImage({required File image}) async {
+  Future<void> updateUserImage({required String image}) async {
     emit(LoadingUpdateUserImageState());
-    var result = await imagesRepo.uploadImage(file: image);
+    var result = await imagesRepo.uploadImage(file: File(image));
     result.fold(
       (failure) =>
           emit(FailureUpdateUserImageState(errMessage: failure.message)),

@@ -20,7 +20,7 @@ class SupabaseStorageService implements StorageService {
           .getPublicUrl("$path/$fileName");
       return imageUrl;
     } catch (e) {
-      throw CustomException(exceptionMeassge: "فشل تحميل الصورة");
+      throw CustomException(exceptionMeassge: "فشل تحميل الصورة إلي قاعدة البيانات");
     }
   }
 }
