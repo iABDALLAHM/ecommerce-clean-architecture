@@ -5,7 +5,7 @@ import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
 import 'package:ecommerce_clean_architecture/core/services/auth_service.dart';
 import 'package:ecommerce_clean_architecture/features/auth/data/datasources/local/user_local_data_source.dart';
-import 'package:ecommerce_clean_architecture/features/auth/domain/repo/auth_repo.dart';
+import 'package:ecommerce_clean_architecture/features/auth/data/repos/auth_repository/auth_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepoImplementation implements AuthRepo {

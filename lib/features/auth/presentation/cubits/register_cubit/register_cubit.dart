@@ -1,8 +1,8 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/features/auth/domain/repo/user_repo.dart';
-import 'package:ecommerce_clean_architecture/features/auth/domain/entities/user_entity.dart';
-import 'package:ecommerce_clean_architecture/features/auth/domain/repo/auth_repo.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/register_cubit/register_states.dart';
+import 'package:ecommerce_clean_architecture/features/auth/data/repos/user_repository/user_repo.dart';
+import 'package:ecommerce_clean_architecture/features/auth/domain/entities/user_entities/user_entity.dart';
+import 'package:ecommerce_clean_architecture/features/auth/data/repos/auth_repository/auth_repo.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/cubits/register_cubit/register_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterCubit extends Cubit<RegisterStates> {

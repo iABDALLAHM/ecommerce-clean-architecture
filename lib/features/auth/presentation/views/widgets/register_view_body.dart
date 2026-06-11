@@ -3,9 +3,9 @@ import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart'
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_password_field.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_text_form_field.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/register_cubit/register_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/register_cubit/register_states.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/manager/terms_and_conditions_cubit/terms_and_conditions_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/cubits/register_cubit/register_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/cubits/register_cubit/register_states.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/cubits/terms_and_conditions_cubit/terms_and_conditions_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/custom_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/rigister_rich_text.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/terms_and_conditions_section.dart';

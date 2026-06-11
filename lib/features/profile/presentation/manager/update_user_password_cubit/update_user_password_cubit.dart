@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/features/auth/domain/repo/auth_repo.dart';
+import 'package:ecommerce_clean_architecture/features/auth/data/repos/auth_repository/auth_repo.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/manager/update_user_password_cubit/update_user_password_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
