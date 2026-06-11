@@ -7,7 +7,7 @@ import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
 import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
 import 'package:ecommerce_clean_architecture/features/home/data/models/product_model.dart';
 import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
-import 'package:ecommerce_clean_architecture/features/home/domain/repos/products_repo.dart';
+import 'package:ecommerce_clean_architecture/features/home/data/repos/products_repository/products_repo.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
 

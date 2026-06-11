@@ -1,6 +1,6 @@
-import 'package:ecommerce_clean_architecture/features/home/domain/repos/orders_repo.dart';
+import 'package:ecommerce_clean_architecture/features/home/data/repos/order_repository/orders_repo.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/presentation/manager/add_order_cubit/add_order_states.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/cubits/add_order_cubit/add_order_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddOrderCubit extends Cubit<AddOrderStates> {

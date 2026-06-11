@@ -1,7 +1,7 @@
 import 'package:ecommerce_clean_architecture/features/auth/data/repos/auth_repository/auth_repo.dart';
-import 'package:ecommerce_clean_architecture/features/home/domain/repos/images_repo.dart';
+import 'package:ecommerce_clean_architecture/features/home/data/repos/images_repository/images_repo.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/manager/add_favorite_product_cubit/add_favorite_product_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/home/domain/repos/products_repo.dart';
+import 'package:ecommerce_clean_architecture/features/home/data/repos/products_repository/products_repo.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/home/presentation/manager/search_cubit/search_cubit.dart';

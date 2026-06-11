@@ -1,6 +1,6 @@
-import 'package:ecommerce_clean_architecture/features/home/domain/repos/orders_repo.dart';
+import 'package:ecommerce_clean_architecture/features/home/data/repos/order_repository/orders_repo.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/cubits/add_order_cubit/add_order_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
