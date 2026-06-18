@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/custom_featured_item.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/views/widgets/custom_featured_item.dart';
 import 'package:flutter/material.dart';
 
 class CustomFeaturedList extends StatelessWidget {

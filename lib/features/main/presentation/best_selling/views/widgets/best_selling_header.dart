@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/best_selling_view_body.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/best_selling/views/widgets/best_selling_view_body.dart';
 import 'package:flutter/material.dart';
 
 class BestSellingHeader extends StatelessWidget {

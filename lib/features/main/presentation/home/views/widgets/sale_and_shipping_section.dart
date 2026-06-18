@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/featured_item_button.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/views/widgets/featured_item_button.dart';
 import 'package:flutter/material.dart';
 
 class SaleAndShippingSection extends StatelessWidget {

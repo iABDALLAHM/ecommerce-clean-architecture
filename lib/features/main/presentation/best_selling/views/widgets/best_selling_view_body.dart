@@ -1,7 +1,7 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/best_selling_app_bar.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/best_selling_view_header.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/fruit_items_grid_view_bloc_builder.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/best_selling/views/widgets/best_selling_app_bar.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/best_selling/views/widgets/best_selling_view_header.dart';
+import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/widgets/fruit_items_grid_view_bloc_builder.dart';
 import 'package:flutter/material.dart';
 
 class BestSellingBody extends StatelessWidget {

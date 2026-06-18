@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/bottom_navigation_bar_entitiy/bottom_navigation_bar_entity.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/active_icon.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/in_active_icon.dart';
+import 'package:ecommerce_clean_architecture/core/widgets/active_icon.dart';
+import 'package:ecommerce_clean_architecture/core/widgets/in_active_icon.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationItem extends StatelessWidget {

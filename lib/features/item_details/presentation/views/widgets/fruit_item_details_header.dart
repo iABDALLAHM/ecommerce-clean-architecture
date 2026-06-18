@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/fruit_item_details_app_bar.dart';
+import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/widgets/fruit_item_details_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

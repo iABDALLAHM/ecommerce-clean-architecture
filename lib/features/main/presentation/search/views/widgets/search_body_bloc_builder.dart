@@ -1,7 +1,7 @@
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_state.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/empty_search_widget.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/recent_search_widget.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/search/views/widgets/empty_search_widget.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/search/views/widgets/recent_search_widget.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/views/widgets/search_success_widget.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

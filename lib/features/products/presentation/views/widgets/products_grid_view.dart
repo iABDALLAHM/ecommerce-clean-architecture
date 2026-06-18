@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/custom_fruit_item.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/views/widgets/custom_fruit_item.dart';
 import 'package:flutter/material.dart';
 
 class ProductsGridView extends StatelessWidget {

@@ -5,7 +5,7 @@ import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/c
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_item_cubit/cart_item_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_item_cubit/cart_item_state.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/views/widgets/cart_item_action_buttons.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/custom_item_image.dart';
+import 'package:ecommerce_clean_architecture/features/cart/presentation/views/widgets/custom_item_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

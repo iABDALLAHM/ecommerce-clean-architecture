@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/features/main/presentation/core/cubits/bottom_navigation_cubit/bottom_navigation_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/custom_button_navigaton_bar.dart';
+import 'package:ecommerce_clean_architecture/core/widgets/custom_button_navigaton_bar.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/main_view_body.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/main_view_body_bloc_consumer.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/multi_main_view_bloc_provider.dart';

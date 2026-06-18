@@ -1,5 +1,5 @@
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/best_selling_view_body.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/home_body.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/best_selling/views/widgets/best_selling_view_body.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/views/widgets/home_body.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/views/widgets/search_body.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/views/notification_view.dart';

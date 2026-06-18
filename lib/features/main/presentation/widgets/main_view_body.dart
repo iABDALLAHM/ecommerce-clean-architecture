@@ -1,9 +1,9 @@
 import 'package:ecommerce_clean_architecture/features/cart/presentation/views/widgets/cart_body.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/views/widgets/cart_body_bloc_provider.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/home_body_bloc_provider.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/views/widgets/home_body_bloc_provider.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/home_navigator.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/products_body.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/products_body_bloc_provider.dart';
+import 'package:ecommerce_clean_architecture/features/products/presentation/views/widgets/products_body.dart';
+import 'package:ecommerce_clean_architecture/features/products/presentation/views/widgets/products_body_bloc_provider.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/profile_body_navigator.dart';
 import 'package:flutter/material.dart';
 

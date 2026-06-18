@@ -1,10 +1,10 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/products_cubit/products_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/home_search_bar_trigger.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/best_selling_header.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/custom_featured_list.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/custom_home_app_bar.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/fruit_items_grid_view_bloc_builder.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/best_selling/views/widgets/best_selling_header.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/views/widgets/custom_featured_list.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/views/widgets/custom_home_app_bar.dart';
+import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/widgets/fruit_items_grid_view_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

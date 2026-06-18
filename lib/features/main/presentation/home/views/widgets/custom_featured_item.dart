@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/sale_and_shipping_section.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/views/widgets/sale_and_shipping_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
