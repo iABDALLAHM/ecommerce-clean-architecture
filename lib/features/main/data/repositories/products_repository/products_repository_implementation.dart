@@ -1,0 +1,108 @@
+import 'dart:developer';
+import 'package:dartz/dartz.dart';
+import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
+import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
+import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
+import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
+import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
+import 'package:ecommerce_clean_architecture/features/main/data/models/product_model/product_model.dart';
+import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
+import 'package:ecommerce_clean_architecture/features/main/data/repositories/products_repository/products_repository.dart';
+import 'package:ecommerce_clean_architecture/core/services/database_service/database_service.dart';
+import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
+
+class ProductsRepositoryImplementation implements ProductsRepository {
+  final DatabaseService databaseService;
+  ProductsRepositoryImplementation({required this.databaseService});
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getProducts() async {
+    try {
+      var data = await databaseService.getData(
+        path: BackendEndPoints.getProducts,
+      );
+      List<ProductEntity> productsList = [];
+      for (var productEntity in data) {
+        productsList.add(ProductModel.fromJson(productEntity).toEntity());
+      }
+      return Right(productsList);
+    } on CustomException catch (e) {
+      log(
+        "this error happend in ProductsRepoImplementation in getProducts method ${e.toString()}",
+      );
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> addFavoriteProducts({
+    required ProductEntity product,
+  }) async {
+    try {
+      await databaseService
+          .addNestedData(
+            path: BackendEndPoints.addUserData,
+            subCollection: BackendEndPoints.addFavoriteProducts,
+            data: ProductModel.fromEntity(productEntity: product).toMap(),
+            documentId: getUserData().uId,
+          )
+          .timeout(const Duration(seconds: 3));
+      return Right(null);
+    } on CustomException catch (e) {
+      log(
+        "this error happend in ProductsRepoImplementation in addFavoriteProducts method ${e.toString()}",
+      );
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getFavoriteProducts() async {
+    try {
+      var result = await databaseService
+          .getNestedData(
+            path: BackendEndPoints.addUserData,
+            subCollection: BackendEndPoints.getFavoriteProducts,
+            documentId: getUserData().uId,
+          )
+          .timeout(const Duration(seconds: 3));
+      List<ProductEntity> favProducts = (result as List)
+          .map((ele) => ProductModel.fromJson(ele).toEntity())
+          .toList();
+      return Right(favProducts);
+    } on CustomException catch (e) {
+      log(
+        "this error happend in ProductsRepoImplementation in getFavoriteProducts method ${e.toString()}",
+      );
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ProductEntity>>> searchProducts({
+    required String searchName,
+  }) async {
+    try {
+      var data = await databaseService
+          .getQueryData(
+            path: BackendEndPoints.getProducts,
+            query: QueryParams(
+              conditions: [
+                QueryCondition(field: "productName", isEqualTo: searchName),
+              ],
+              orders: [],
+            ),
+          )
+          .timeout(const Duration(seconds: 3));
+      List<ProductEntity> productsList = [];
+      for (var productModel in data) {
+        productsList.add(ProductModel.fromJson(productModel).toEntity());
+      }
+      return Right(productsList);
+    } on CustomException catch (e) {
+      log(
+        "this error happend in ProductsRepoImplementation in searchProducts method ${e.toString()}",
+      );
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+}

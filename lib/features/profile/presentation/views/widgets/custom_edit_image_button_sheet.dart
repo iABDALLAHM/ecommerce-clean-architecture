@@ -1,9 +1,9 @@
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/views/widgets/custom_progress_widget.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/manager/get_image_cubit/get_image_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/manager/update_user_image_cubit/update_user_image_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/custom_progress_widget.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/cubits/get_image_cubit/get_image_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/cubits/update_user_image_cubit/update_user_image_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/manager/update_user_image_cubit/update_user_image_states.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/cubits/update_user_image_cubit/update_user_image_states.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/image_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

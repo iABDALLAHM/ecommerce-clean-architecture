@@ -4,7 +4,7 @@ import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart'
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_password_field.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/manager/update_user_password_cubit/update_user_password_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/cubits/update_user_password_cubit/update_user_password_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/custom_edit_data_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

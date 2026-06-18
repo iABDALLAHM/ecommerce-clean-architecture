@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/manager/switch_button_cubit/switch_button_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/cubits/switch_button_cubit/switch_button_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

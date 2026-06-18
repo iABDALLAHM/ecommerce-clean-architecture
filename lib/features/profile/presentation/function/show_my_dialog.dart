@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
-import 'package:ecommerce_clean_architecture/core/services/get_it_service.dart';
+import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/custom_dialog_button.dart';
@@ -13,7 +13,7 @@ Future<void> showMyDialog({required BuildContext context}) {
     context: context,
     builder: (BuildContext context) {
       return BlocProvider(
-        create: (context) => SignOutCubit(authRepo: getIt.get<AuthRepo>()),
+        create: (context) => SignOutCubit(authRepo: getIt.get<AuthRepository>()),
         child: Builder(
           builder: (context) {
             return BlocListener<SignOutCubit, SignOutStates>(

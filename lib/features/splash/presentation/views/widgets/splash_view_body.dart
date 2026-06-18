@@ -1,9 +1,9 @@
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/views/login_view.dart';
-import 'package:ecommerce_clean_architecture/features/home/presentation/views/main_view.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/login/views/login_view.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/views/home_view.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/onboarding_view.dart';
-import 'package:ecommerce_clean_architecture/features/splash/presentation/manager/splash_cubit/splash_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/splash/presentation/manager/splash_cubit/splash_state.dart';
+import 'package:ecommerce_clean_architecture/features/splash/presentation/cubits/splash_cubit/splash_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/splash/presentation/cubits/splash_cubit/splash_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';

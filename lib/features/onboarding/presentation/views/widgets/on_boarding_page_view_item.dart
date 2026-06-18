@@ -1,8 +1,8 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/views/login_view.dart';
-import 'package:ecommerce_clean_architecture/features/onboarding/presentation/manager/onboarding_cubit/onboarding_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/onboarding/presentation/manager/onboarding_cubit/onboarding_state.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/login/views/login_view.dart';
+import 'package:ecommerce_clean_architecture/features/onboarding/presentation/cubits/onboarding_cubit/onboarding_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/onboarding/presentation/cubits/onboarding_cubit/onboarding_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';

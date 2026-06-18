@@ -1,5 +1,5 @@
-import 'package:ecommerce_clean_architecture/features/profile/presentation/manager/get_favorite_products_cubit/get_favorite_product_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/manager/get_favorite_products_cubit/get_favorite_product_states.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/cubits/get_favorite_products_cubit/get_favorite_product_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/cubits/get_favorite_products_cubit/get_favorite_product_states.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_text_message.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/sliver_list_items.dart';
 import 'package:flutter/widgets.dart';

@@ -10,4 +10,8 @@ class UserEntity {
     required this.uId,
     required this.userImage,
   });
+
+  UserEntity toEntity() {
+    return UserEntity(name: name, email: email, uId: uId, userImage: userImage);
+  }
 }

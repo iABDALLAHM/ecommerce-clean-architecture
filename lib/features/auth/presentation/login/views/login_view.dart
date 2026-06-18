@@ -1,0 +1,18 @@
+import 'package:ecommerce_clean_architecture/features/auth/presentation/core/functions/build_auth_app_bar.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/login/views/widgets/login_view_bloc_provider.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/login/views/widgets/login_view_body.dart';
+import 'package:flutter/material.dart';
+
+class LoginView extends StatelessWidget {
+  const LoginView({super.key});
+  static const String routeName = "Login";
+  @override
+  Widget build(BuildContext context) {
+    return LoginViewBlocProvider(
+      child: Scaffold(
+        appBar: buildAuthAppBar(title: "تسجيل دخول"),
+        body: LoginViewBody(),
+      ),
+    );
+  }
+}
