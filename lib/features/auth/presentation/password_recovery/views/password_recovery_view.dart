@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 class PasswordRecoveryView extends StatelessWidget {
   const PasswordRecoveryView({super.key});
-  static const String routeName = "PasswordRecovery";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

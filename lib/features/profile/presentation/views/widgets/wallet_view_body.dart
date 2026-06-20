@@ -1,9 +1,10 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/add_new_wallet_method_view.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/custom_wallet_button.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/wallet_item.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class WalletViewBody extends StatelessWidget {
   const WalletViewBody({super.key});
@@ -31,9 +32,7 @@ class WalletViewBody extends StatelessWidget {
               width: double.infinity,
               child: CustomWalletButton(
                 onPressed: () {
-                  Navigator.of(
-                    context,
-                  ).pushNamed(AddNewWalletMethodView.routeName);
+                  context.go("${AppRoutes.profile}${AppRoutes.myPayments}${AppRoutes.addNewPayment}");
                 },
                 text: "أضف وسيلة دفع جديده",
               ),

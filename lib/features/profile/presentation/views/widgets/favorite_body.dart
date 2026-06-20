@@ -4,9 +4,8 @@ import 'package:ecommerce_clean_architecture/features/profile/presentation/views
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/favorite_page_body.dart';
 import 'package:flutter/material.dart';
 
-class FavoritePage extends StatelessWidget {
-  const FavoritePage({super.key});
-  static const String routeName = "FavoritePage";
+class FavoriteBody extends StatelessWidget {
+  const FavoriteBody({super.key});
   @override
   Widget build(BuildContext context) {
     return FavoritePageBlocProvider(

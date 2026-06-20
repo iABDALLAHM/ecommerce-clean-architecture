@@ -1,60 +1,58 @@
-import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_entity/cart_entity.dart';
-import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/forget_password/views/forget_password_view.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/login/views/login_view.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/password_recovery/views/password_recovery_view.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/register/views/register_view.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/reset_password/views/reset_your_password_view.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/check_out_view.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/review_order_view.dart';
-import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/fruit_item_details_view.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/home/views/home_view.dart';
-import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/review_and_rating_view.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/track_order_view.dart';
-import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/onboarding_view.dart';
-import 'package:ecommerce_clean_architecture/features/splash/presentation/views/splash_view.dart';
-import 'package:flutter/material.dart';
+// import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_entity/cart_entity.dart';
+// import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
+// import 'package:ecommerce_clean_architecture/features/auth/presentation/forget_password/views/forget_password_view.dart';
+// import 'package:ecommerce_clean_architecture/features/auth/presentation/login/views/login_view.dart';
+// import 'package:ecommerce_clean_architecture/features/auth/presentation/password_recovery/views/password_recovery_view.dart';
+// import 'package:ecommerce_clean_architecture/features/auth/presentation/register/views/register_view.dart';
+// import 'package:ecommerce_clean_architecture/features/auth/presentation/reset_password/views/reset_your_password_view.dart';
+// import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/check_out_view.dart';
+// import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/review_order_view.dart';
+// import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/fruit_item_details_view.dart';
+// import 'package:ecommerce_clean_architecture/features/main/presentation/home/views/home_view.dart';
+// import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/review_and_rating_view.dart';
+// import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/track_order_view.dart';
+// import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/onboarding_view.dart';
+// import 'package:ecommerce_clean_architecture/features/splash/presentation/views/splash_view.dart';
+// import 'package:flutter/material.dart';
 
-Route onGenetateRoute(RouteSettings settings) {
-  switch (settings.name) {
-    case SplashView.routeName:
-      return MaterialPageRoute(builder: (context) => SplashView());
-    case OnboardingView.routeName:
-      return MaterialPageRoute(builder: (context) => OnboardingView());
-    case LoginView.routeName:
-      return MaterialPageRoute(builder: (context) => LoginView());
-    case RegisterView.routeName:
-      return MaterialPageRoute(builder: (context) => RegisterView());
-    case MainView.routeName:
-      return MaterialPageRoute(builder: (context) => MainView());
-    case CheckOutView.routeName:
-      return MaterialPageRoute(
-        builder: (context) =>
-            CheckOutView(cartEntity: settings.arguments as CartEntity),
-      );
-    case ForgetPasswordView.routeName:
-      return MaterialPageRoute(builder: (context) => ForgetPasswordView());
-    case PasswordRecoveryView.routeName:
-      return MaterialPageRoute(builder: (context) => PasswordRecoveryView());
-    case ResetYourPasswordView.routeName:
-      return MaterialPageRoute(builder: (context) => ResetYourPasswordView());
-    case ReviewOrderView.routeName:
-      return MaterialPageRoute(builder: (context) => ReviewOrderView());
-    case TrackOrderView.routeName:
-      return MaterialPageRoute(builder: (context) => TrackOrderView());
-    case ReviewAndRatingView.routeName:
-      return MaterialPageRoute(
-        builder: (context) => ReviewAndRatingView(
-          productEntity: settings.arguments as ProductEntity,
-        ),
-      );
-    case FruitItemDetailsView.routeName:
-      return MaterialPageRoute(
-        builder: (context) => FruitItemDetailsView(
-          productEntity: settings.arguments as ProductEntity,
-        ),
-      );
-    default:
-      return MaterialPageRoute(builder: (context) => Scaffold());
-  }
-}
+// Route onGenetateRoute(RouteSettings settings) {
+//   switch (settings.name) {
+//     case SplashView.routeName:
+//       return MaterialPageRoute(builder: (context) => SplashView());
+//     case LoginView.routeName:
+//       return MaterialPageRoute(builder: (context) => LoginView());
+//     case RegisterView.routeName:
+//       return MaterialPageRoute(builder: (context) => RegisterView());
+//     case MainView.routeName:
+//       return MaterialPageRoute(builder: (context) => MainView());
+//     case CheckOutView.routeName:
+//       return MaterialPageRoute(
+//         builder: (context) =>
+//             CheckOutView(cartEntity: settings.arguments as CartEntity),
+//       );
+//     case ForgetPasswordView.routeName:
+//       return MaterialPageRoute(builder: (context) => ForgetPasswordView());
+//     case PasswordRecoveryView.routeName:
+//       return MaterialPageRoute(builder: (context) => PasswordRecoveryView());
+//     case ResetYourPasswordView.routeName:
+//       return MaterialPageRoute(builder: (context) => ResetYourPasswordView());
+//     case ReviewOrderView.routeName:
+//       return MaterialPageRoute(builder: (context) => ReviewOrderView());
+//     case TrackOrderView.routeName:
+//       return MaterialPageRoute(builder: (context) => TrackOrderView());
+//     case ReviewAndRatingView.routeName:
+//       return MaterialPageRoute(
+//         builder: (context) => ReviewAndRatingView(
+//           productEntity: settings.arguments as ProductEntity,
+//         ),
+//       );
+//     case FruitItemDetailsView.routeName:
+//       return MaterialPageRoute(
+//         builder: (context) => FruitItemDetailsView(
+//           productEntity: settings.arguments as ProductEntity,
+//         ),
+//       );
+//     default:
+//       return MaterialPageRoute(builder: (context) => Scaffold());
+//   }
+// }

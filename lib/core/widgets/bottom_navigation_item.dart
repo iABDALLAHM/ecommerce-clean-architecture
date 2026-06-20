@@ -8,16 +8,24 @@ class BottomNavigationItem extends StatelessWidget {
     super.key,
     required this.isActive,
     required this.barEntity,
+    required this.onPressed,
   });
+  final VoidCallback onPressed;
   final bool isActive;
   final BottomNavigationBarEntity barEntity;
   @override
   Widget build(BuildContext context) {
     return isActive
-        ? ActiveIcon(
-            activeIcon: barEntity.activeIcon,
-            iconName: barEntity.iconName,
+        ? GestureDetector(
+            onTap: onPressed,
+            child: ActiveIcon(
+              activeIcon: barEntity.activeIcon,
+              iconName: barEntity.iconName,
+            ),
           )
-        : InActiveIcon(inActiveIcon: barEntity.inActiveIcon);
+        : GestureDetector(
+            onTap: onPressed,
+            child: InActiveIcon(inActiveIcon: barEntity.inActiveIcon),
+          );
   }
 }

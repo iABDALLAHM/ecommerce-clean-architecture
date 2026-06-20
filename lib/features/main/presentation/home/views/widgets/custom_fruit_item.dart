@@ -1,13 +1,13 @@
 import 'dart:developer';
-
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/add_favorite_product_cubit/add_favorite_product_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/fruit_item_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomFruitItem extends StatefulWidget {
   const CustomFruitItem({super.key, required this.productEntity});
@@ -23,10 +23,7 @@ class _CustomFruitItemState extends State<CustomFruitItem> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context, rootNavigator: true).pushNamed(
-          FruitItemDetailsView.routeName,
-          arguments: widget.productEntity,
-        );
+        context.push(AppRoutes.itemDetails, extra: widget.productEntity);
       },
       child: Container(
         margin: EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),

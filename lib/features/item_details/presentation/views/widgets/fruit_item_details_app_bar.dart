@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class FruitItemDetailsAppBar extends StatelessWidget {
   const FruitItemDetailsAppBar({super.key});
@@ -7,7 +8,7 @@ class FruitItemDetailsAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pop();
+        context.pop();
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),

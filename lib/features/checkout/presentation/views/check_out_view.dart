@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 
 class CheckOutView extends StatefulWidget {
   const CheckOutView({super.key, required this.cartEntity});
-  static const String routeName = "checkout";
+  
   final CartEntity cartEntity;
   @override
   State<CheckOutView> createState() => _CheckOutViewState();

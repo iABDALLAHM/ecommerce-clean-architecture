@@ -1,16 +1,17 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/custom_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/function/change_button_text.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/cubits/add_order_cubit/add_order_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/cubits/add_order_cubit/add_order_states.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/review_order_view.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/widgets/check_out_steps.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/widgets/check_out_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class CheckOutViewBody extends StatefulWidget {
   const CheckOutViewBody({super.key, required this.onChange});
@@ -52,7 +53,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
       listener: (context, state) {
         if (state is SuccessAddOrderState) {
           showSnackBar(context, message: "تم إضافة المنتج بنجاح");
-          Navigator.of(context).pushReplacementNamed(ReviewOrderView.routeName);
+          context.push(AppRoutes.reviewOrder);
         } else if (state is FailureAddOrderState) {
           showSnackBar(context, message: "فشل اضافة المنتج حاول مرة آخرى");
         }

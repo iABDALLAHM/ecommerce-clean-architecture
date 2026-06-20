@@ -2,7 +2,7 @@ import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/widgets/fruit_item_details_header.dart';
-import 'package:ecommerce_clean_architecture/features/products/presentation/views/widgets/product_info.dart';
+import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/widgets/product_info.dart';
 import 'package:flutter/material.dart';
 
 class FruitItemDetailsViewBody extends StatelessWidget {

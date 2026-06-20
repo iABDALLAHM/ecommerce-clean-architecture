@@ -7,6 +7,7 @@ import 'package:ecommerce_clean_architecture/features/profile/presentation/cubit
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/image_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomEditImageButtonSheet extends StatelessWidget {
   const CustomEditImageButtonSheet({super.key});
@@ -17,7 +18,7 @@ class CustomEditImageButtonSheet extends StatelessWidget {
       listener: (context, state) {
         if (state is SuccessUpdateUserImageState) {
           showSnackBar(context, message: "تم رفع الصورة بنجاح");
-          Navigator.pop(context);
+          context.pop();
         } else if (state is FailureUpdateUserImageState) {
           showSnackBar(context, message: state.errMessage);
         } else if (state is LoadingUpdateUserImageState) {
@@ -41,8 +42,10 @@ class CustomEditImageButtonSheet extends StatelessWidget {
                     child: CustomButton(
                       text: "تعديل الصورة",
                       onPressed: () {
-                        String imagePath =
-                            context.read<GetImageCubit>().state.image;
+                        String imagePath = context
+                            .read<GetImageCubit>()
+                            .state
+                            .image;
                         if (imagePath.isNotEmpty) {
                           _triggerUpdateUserImageCubit(
                             context,

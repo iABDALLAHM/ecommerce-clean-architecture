@@ -1,9 +1,10 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_text_form_field.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/password_recovery/views/password_recovery_view.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ForgetPasswordViewBody extends StatelessWidget {
   const ForgetPasswordViewBody({super.key});
@@ -33,7 +34,7 @@ class ForgetPasswordViewBody extends StatelessWidget {
             child: CustomButton(
               text: "نسيت كلمة المرور",
               onPressed: () {
-                Navigator.of(context).pushNamed(PasswordRecoveryView.routeName);
+                context.go(AppRoutes.passwordRecovery);
               },
             ),
           ),

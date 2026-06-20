@@ -18,4 +18,3 @@ class SearchBodyAppBar extends StatelessWidget {
     );
   }
 }
-

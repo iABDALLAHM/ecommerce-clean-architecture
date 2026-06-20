@@ -1,12 +1,13 @@
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/search/views/widgets/search_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
-class HomeSearchBarTrigger extends StatelessWidget {
-  const HomeSearchBarTrigger({super.key});
-
+class SearchBarTrigger extends StatelessWidget {
+  const SearchBarTrigger({super.key, required this.fromRoute});
+  final String fromRoute;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +23,7 @@ class HomeSearchBarTrigger extends StatelessWidget {
       ),
       child: TextField(
         onTap: () {
-          Navigator.of(context).pushNamed(SearchBody.routeName);
+          context.go("$fromRoute${AppRoutes.search}");
         },
         readOnly: true,
         decoration: InputDecoration(

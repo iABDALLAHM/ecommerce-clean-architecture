@@ -1,12 +1,11 @@
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/login/views/login_view.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/home/views/home_view.dart';
-import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:ecommerce_clean_architecture/features/splash/presentation/cubits/splash_cubit/splash_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/splash/presentation/cubits/splash_cubit/splash_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -27,11 +26,11 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     return BlocListener<SplashCubit, SplashState>(
       listener: (context, state) {
         if (state is NavigateToOnboardingScreenState) {
-          Navigator.of(context).pushNamed(OnboardingView.routeName);
+          context.go(AppRoutes.onboarding);
         } else if (state is NavigateToLoginScreenState) {
-          Navigator.of(context).pushNamed(LoginView.routeName);
+          context.go(AppRoutes.login);
         } else if (state is NavigateToMainScreenState) {
-          Navigator.of(context).pushReplacementNamed(MainView.routeName);
+          context.go(AppRoutes.home);
         }
       },
       child: Column(

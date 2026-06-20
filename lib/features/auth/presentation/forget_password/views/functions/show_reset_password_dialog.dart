@@ -2,6 +2,7 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 Future<void> showResetPasswordDialog(BuildContext context) async {
   return showDialog(
@@ -11,7 +12,7 @@ Future<void> showResetPasswordDialog(BuildContext context) async {
         alignment: AlignmentGeometry.centerRight,
         child: GestureDetector(
           onTap: () {
-            Navigator.of(context).pop();
+            context.pop();
           },
           child: Icon(Icons.close, color: Colors.black, size: 30),
         ),

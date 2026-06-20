@@ -1,9 +1,7 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/functions/on_generate_route.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/core/cubits/bottom_navigation_cubit/bottom_navigation_cubit.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/cubits/get_image_cubit/get_image_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/splash/presentation/views/splash_view.dart';
 import 'package:ecommerce_clean_architecture/firebase_options.dart';
 import 'package:ecommerce_clean_architecture/generated/l10n.dart';
 import 'package:ecommerce_clean_architecture/simple_bloc_observer.dart';
@@ -28,11 +26,9 @@ class ECommerceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => BottomNavigationCubit()),
-        BlocProvider(create: (context) => GetImageCubit()),
-      ],
-      child: MaterialApp(
+      providers: [BlocProvider(create: (context) => GetImageCubit())],
+      child: MaterialApp.router(
+        routerConfig: AppRoutes.router,
         localizationsDelegates: [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -47,8 +43,6 @@ class ECommerceApp extends StatelessWidget {
           appBarTheme: AppBarTheme(backgroundColor: Color(0xffFFFFFF)),
           fontFamily: kFontFamily,
         ),
-        onGenerateRoute: onGenetateRoute,
-        initialRoute: SplashView.routeName,
       ),
     );
   }

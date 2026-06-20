@@ -6,8 +6,8 @@ import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/c
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MainViewBodyBlocListener extends StatelessWidget {
-  const MainViewBodyBlocListener({super.key, required this.child});
+class HomeBodyBlocListener extends StatelessWidget {
+  const HomeBodyBlocListener({super.key, required this.child});
   final Widget child;
 
   @override

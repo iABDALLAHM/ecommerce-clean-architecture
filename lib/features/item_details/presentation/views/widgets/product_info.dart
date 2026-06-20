@@ -1,13 +1,14 @@
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
-import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/review_and_rating_view.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/views/widgets/decrement_button.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/views/widgets/increment_button.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/views/widgets/info_details_box.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductInfo extends StatelessWidget {
   const ProductInfo({super.key, required this.productEntity});
@@ -83,10 +84,7 @@ class ProductInfo extends StatelessWidget {
             const SizedBox(width: 9),
             GestureDetector(
               onTap: () {
-                Navigator.of(context).pushNamed(
-                  ReviewAndRatingView.routeName,
-                  arguments: productEntity,
-                );
+                context.push(AppRoutes.reviewAndRating, extra: productEntity);
               },
               child: Text(
                 "المراجعه",

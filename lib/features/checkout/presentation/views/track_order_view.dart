@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 class TrackOrderView extends StatelessWidget {
   const TrackOrderView({super.key});
-  static const String routeName = "trackOrder";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

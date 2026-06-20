@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 class WalletBody extends StatelessWidget {
   const WalletBody({super.key});
-  static const String routeName = "WalletBody";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,8 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../auth/presentation/register/views/widgets/custom_terms_and_conditions_button.dart';
-
 class MakeCardDefault extends StatelessWidget {
   const MakeCardDefault({super.key});
 
@@ -10,7 +8,7 @@ class MakeCardDefault extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomTermsAndConditionsButton(onChange: (value) {}),
+        // CustomTermsAndConditionsButton(onChange: (value) {}),
         const SizedBox(width: 16),
         Text(
           "جعل البطاقة افتراضية",

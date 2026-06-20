@@ -9,31 +9,34 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchBody extends StatelessWidget {
   const SearchBody({super.key});
-  static const String routeName = "SearchBody";
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-            child: BlocBuilder<SearchCubit, SearchStates>(
-              builder: (context, state) {
-                return Column(
-                  children: [
-                    const SizedBox(height: 16),
-                    SearchBodyAppBar(),
-                    const SizedBox(height: 16),
-                    CustomSearchTextField(),
-                    const SizedBox(height: 16),
-                    SearchBodyBlocBuilder(states: state),
-                  ],
-                );
-              },
+    return SafeArea(
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: kHorizontalPadding,
+              ),
+              child: BlocBuilder<SearchCubit, SearchStates>(
+                builder: (context, state) {
+                  return Column(
+                    children: [
+                      const SizedBox(height: 16),
+                      SearchBodyAppBar(),
+                      const SizedBox(height: 16),
+                      CustomSearchTextField(),
+                      const SizedBox(height: 16),
+                      SearchBodyBlocBuilder(states: state),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

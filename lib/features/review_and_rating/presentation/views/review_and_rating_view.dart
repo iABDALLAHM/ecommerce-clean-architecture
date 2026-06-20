@@ -2,10 +2,10 @@ import 'package:ecommerce_clean_architecture/features/main/domain/entities/produ
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/review_and_rating_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ReviewAndRatingView extends StatelessWidget {
   const ReviewAndRatingView({super.key, required this.productEntity});
-  static const String routeName = "ReviewAndRatingView";
   final ProductEntity productEntity;
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class ReviewAndRatingView extends StatelessWidget {
       centerTitle: true,
       leading: GestureDetector(
         onTap: () {
-          Navigator.pop(context);
+          context.pop();
         },
         child: Icon(Icons.arrow_back_ios_new),
       ),

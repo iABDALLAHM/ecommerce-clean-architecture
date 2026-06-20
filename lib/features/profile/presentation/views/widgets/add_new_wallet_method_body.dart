@@ -1,10 +1,10 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/add_new_wallet_method_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class AddNewWalletMethodView extends StatelessWidget {
-  const AddNewWalletMethodView({super.key});
-  static const String routeName = "AddNewWalletMethodView";
+class AddNewWalletMethodBody extends StatelessWidget {
+  const AddNewWalletMethodBody({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +16,7 @@ class AddNewWalletMethodView extends StatelessWidget {
   AppBar buildAddNewWalletMethodAppBar(BuildContext context) => AppBar(
     leading: GestureDetector(
       onTap: () {
-        Navigator.of(context).pop();
+        context.pop();
       },
       child: Icon(Icons.arrow_back_ios_new),
     ),

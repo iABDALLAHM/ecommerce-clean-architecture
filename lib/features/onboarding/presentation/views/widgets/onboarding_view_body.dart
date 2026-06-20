@@ -1,12 +1,13 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/login/views/login_view.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/cubits/onboarding_cubit/onboarding_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/cubits/onboarding_cubit/onboarding_state.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/widgets/custom_indicator.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/widgets/on_boarding_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class OnboardingViewBody extends StatefulWidget {
   const OnboardingViewBody({super.key});
@@ -50,9 +51,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                     child: BlocListener<OnboardingCubit, OnboardingState>(
                       listener: (context, state) {
                         if (state is SuccessSkipOnBoardingState) {
-                          Navigator.of(
-                            context,
-                          ).pushReplacementNamed(LoginView.routeName);
+                          context.go(AppRoutes.login);
                         }
                       },
                       child: CustomButton(

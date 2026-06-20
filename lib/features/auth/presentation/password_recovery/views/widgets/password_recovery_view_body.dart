@@ -1,10 +1,11 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/reset_password/views/reset_your_password_view.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/password_recovery/views/widgets/custom_otp_box.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/password_recovery/views/widgets/resend_otp.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class PasswordRecoveryViewBody extends StatelessWidget {
   const PasswordRecoveryViewBody({super.key});
@@ -42,9 +43,7 @@ class PasswordRecoveryViewBody extends StatelessWidget {
             child: CustomButton(
               text: "تحقق من الرمز",
               onPressed: () {
-                Navigator.of(
-                  context,
-                ).pushNamed(ResetYourPasswordView.routeName);
+                context.go(AppRoutes.resetYourPassword);
               },
             ),
           ),

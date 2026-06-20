@@ -11,33 +11,38 @@ class CartBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: Column(
-            children: [
-              const SizedBox(height: 16),
-              CartAppBar(),
-              const SizedBox(height: 16),
-              CartHeader(),
-              const SizedBox(height: 24),
-            ],
+    return SafeArea(
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              children: [
+                const SizedBox(height: 16),
+                CartAppBar(),
+                const SizedBox(height: 16),
+                CartHeader(),
+                const SizedBox(height: 24),
+              ],
+            ),
           ),
-        ),
-        CartItemsListView(
-          cartItems: context.watch<CartCubit>().cartEntity.cartItems,
-        ),
-        SliverToBoxAdapter(child: const SizedBox(height: 24)),
-        context.watch<CartCubit>().cartEntity.cartItems.isEmpty
-            ? SliverToBoxAdapter(child: SizedBox())
-            : SliverToBoxAdapter(
-                child: SizedBox(
-                  height: 54,
-                  width: double.infinity,
-                  child: CustomCartButton(),
+
+          CartItemsListView(
+            cartItems: context.watch<CartCubit>().cartEntity.cartItems,
+          ),
+
+          SliverToBoxAdapter(child: const SizedBox(height: 24)),
+
+          context.watch<CartCubit>().cartEntity.cartItems.isEmpty
+              ? SliverToBoxAdapter(child: SizedBox())
+              : SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: 54,
+                    width: double.infinity,
+                    child: CustomCartButton(),
+                  ),
                 ),
-              ),
-      ],
+        ],
+      ),
     );
   }
 }

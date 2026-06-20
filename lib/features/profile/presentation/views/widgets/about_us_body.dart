@@ -1,10 +1,10 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/about_us_page_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class AboutUsPage extends StatelessWidget {
-  const AboutUsPage({super.key});
-  static const String routeName = "AboutUsPage";
+class AboutUsBody extends StatelessWidget {
+  const AboutUsBody({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +17,7 @@ class AboutUsPage extends StatelessWidget {
     return AppBar(
       leading: GestureDetector(
         onTap: () {
-          Navigator.of(context).pop();
+          context.pop();
         },
         child: Icon(Icons.arrow_back_ios_new),
       ),

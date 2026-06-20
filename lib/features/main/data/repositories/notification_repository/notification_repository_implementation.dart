@@ -16,9 +16,9 @@ class NotificationRepositoryImplementation implements NotificationRepository {
   @override
   Future<Either<Failure, List<NotificationEntity>>> getNotifications() async {
     try {
-      var response = await databaseService
-          .getData(path: BackendEndPoints.notification)
-          .timeout(const Duration(seconds: 3));
+      var response = await databaseService.getData(
+        path: BackendEndPoints.notification,
+      );
       List<NotificationEntity> notificationList = [];
       for (var notificationModel in response) {
         notificationList.add(

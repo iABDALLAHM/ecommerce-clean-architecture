@@ -6,27 +6,30 @@ import 'package:flutter/material.dart';
 
 class BestSellingBody extends StatelessWidget {
   const BestSellingBody({super.key});
-  static const String routeName = "bestSelling";
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-            child: Column(
-              children: [
-                const SizedBox(height: 20),
-                BestSellingAppBar(),
-                const SizedBox(height: 24),
-                BestSellingViewHeader(),
-                const SizedBox(height: 8),
-              ],
+    return SafeArea(
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: kHorizontalPadding,
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(height: 20),
+                  BestSellingAppBar(),
+                  const SizedBox(height: 24),
+                  BestSellingViewHeader(),
+                  const SizedBox(height: 8),
+                ],
+              ),
             ),
           ),
-        ),
-        FruitItemsGridViewBlocBuilder(),
-      ],
+          FruitItemsGridViewBlocBuilder(),
+        ],
+      ),
     );
   }
 }

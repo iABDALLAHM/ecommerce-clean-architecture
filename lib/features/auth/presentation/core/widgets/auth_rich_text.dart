@@ -1,6 +1,7 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 
 class AuthRichText extends StatelessWidget {
   const AuthRichText({super.key, required this.title, required this.subTitle});
@@ -19,7 +20,7 @@ class AuthRichText extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.of(context).pop();
+            context.pop();
           },
           child: Text(
             subTitle,

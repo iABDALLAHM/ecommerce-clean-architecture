@@ -1,12 +1,14 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/home/views/home_view.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/core/widgets/main_view.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/views/track_order_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class ReviewOrderViewBody extends StatelessWidget {
   const ReviewOrderViewBody({super.key});
@@ -37,14 +39,14 @@ class ReviewOrderViewBody extends StatelessWidget {
               child: CustomButton(
                 text: "تتبع الطلب",
                 onPressed: () {
-                  Navigator.of(context).pushNamed(TrackOrderView.routeName);
+                  context.go(AppRoutes.trackOrder);
                 },
               ),
             ),
             const SizedBox(height: 16),
             GestureDetector(
               onTap: () {
-                Navigator.of(context).pushReplacementNamed(MainView.routeName);
+                context.go(AppRoutes.home);
               },
               child: Text(
                 "الرئيسية",

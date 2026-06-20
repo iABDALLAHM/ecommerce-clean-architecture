@@ -3,7 +3,6 @@ import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 class BottomNavigationBarEntity {
   final String activeIcon, inActiveIcon;
   final String iconName;
-
   BottomNavigationBarEntity({
     required this.activeIcon,
     required this.inActiveIcon,

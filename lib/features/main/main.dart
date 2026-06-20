@@ -1,5 +1,5 @@
 export 'package:ecommerce_clean_architecture/features/item_details/presentation/views/fruit_item_details_view.dart';
-export 'package:ecommerce_clean_architecture/features/main/presentation/home/views/home_view.dart';
+export 'package:ecommerce_clean_architecture/features/main/presentation/core/widgets/main_view.dart';
 export 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/review_and_rating_view.dart';
 
 export 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/add_favorite_product_cubit/add_favorite_product_cubit.dart';
@@ -17,7 +17,7 @@ export 'package:ecommerce_clean_architecture/features/main/domain/entities/notif
 
 
 
-export 'package:ecommerce_clean_architecture/features/main/presentation/notification/views/notification_view.dart';
+export 'package:ecommerce_clean_architecture/features/main/presentation/notification/views/notification_body.dart';
 
 export 'package:ecommerce_clean_architecture/features/main/presentation/notification/cubits/get_notifications_cubit/get_notifications_states.dart';
 

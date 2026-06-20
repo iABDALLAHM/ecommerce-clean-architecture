@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_password_field.dart';
@@ -11,9 +12,9 @@ import 'package:ecommerce_clean_architecture/features/auth/presentation/forget_p
 import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/or_divider_section.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/auth_rich_text.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/social_custom_button.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/home/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
@@ -129,6 +130,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
 
   void _handleSuccess(BuildContext context) {
     showSnackBar(context, message: "تم تسجيل الدخول بنجاح");
-    Navigator.of(context).pushReplacementNamed(MainView.routeName);
+    context.go(AppRoutes.home);
   }
 }

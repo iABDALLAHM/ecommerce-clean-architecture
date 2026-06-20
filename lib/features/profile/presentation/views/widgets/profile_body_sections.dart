@@ -1,14 +1,11 @@
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/about_us_page.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/custom_language_section_item.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/custom_notification_profile_item.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/favorite_page.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/orders_section.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/private_profile.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/profile_item_section.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/wallet_body.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileBodySections extends StatelessWidget {
   const ProfileBodySections({super.key});
@@ -23,7 +20,7 @@ class ProfileBodySections extends StatelessWidget {
         const SizedBox(height: 16),
         ProfileSectionItem(
           onPressed: () {
-            Navigator.of(context).pushNamed(PrivateProfile.routeName);
+            context.go("${AppRoutes.profile}${AppRoutes.privateProfile}");
           },
           icon: Assets.imagesPresonIcon,
           name: "الملف الشخصي",
@@ -33,13 +30,13 @@ class ProfileBodySections extends StatelessWidget {
           icon: Assets.imagesOrdersIcon,
           name: "طلباتي",
           onPressed: () {
-            Navigator.of(context).pushNamed(OrdersSection.routeName);
+            context.go("${AppRoutes.profile}${AppRoutes.myOrders}");
           },
         ),
         const SizedBox(height: 4),
         ProfileSectionItem(
           onPressed: () {
-             Navigator.of(context).pushNamed(WalletBody.routeName);
+            context.go("${AppRoutes.profile}${AppRoutes.myPayments}");
           },
           icon: Assets.imagesWalletIcon,
           name: "المدفوعات",
@@ -47,7 +44,7 @@ class ProfileBodySections extends StatelessWidget {
         const SizedBox(height: 4),
         ProfileSectionItem(
           onPressed: () {
-             Navigator.of(context).pushNamed(FavoritePage.routeName);
+            context.go("${AppRoutes.profile}${AppRoutes.favorite}");
           },
           icon: Assets.imagesFavoriteIcon,
           name: "المفضلة",
@@ -56,7 +53,9 @@ class ProfileBodySections extends StatelessWidget {
         CustomSwitchProfileItem(
           icon: Assets.imagesNotificationIcon,
           name: 'الاشعارات',
-          onPressed: () {},
+          onPressed: () {
+            
+          },
         ),
         const SizedBox(height: 4),
         CustomLanguageSectionItem(
@@ -77,13 +76,10 @@ class ProfileBodySections extends StatelessWidget {
           icon: Assets.imagesHelpIcon,
           name: "من نحن",
           onPressed: () {
-            Navigator.of(context).pushNamed(AboutUsPage.routeName);
+            context.go("${AppRoutes.profile}${AppRoutes.about}");
           },
         ),
       ],
     );
   }
 }
-
-
-

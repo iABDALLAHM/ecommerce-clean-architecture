@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomArrowBack extends StatelessWidget {
-  const CustomArrowBack({
-    super.key,
-  });
+  const CustomArrowBack({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pop();
+        context.pop();
       },
       child: Container(
         padding: EdgeInsets.all(10),

@@ -11,6 +11,7 @@ import 'package:ecommerce_clean_architecture/features/auth/presentation/core/wid
 import 'package:ecommerce_clean_architecture/features/auth/presentation/register/views/widgets/terms_and_conditions_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class RegisterViewBody extends StatefulWidget {
   const RegisterViewBody({super.key});
@@ -136,6 +137,6 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
 
   void _handleSuccess(BuildContext context) {
     showSnackBar(context, message: "تم تسجيل الدخول بنجاح");
-    Navigator.pop(context);
+    context.pop();
   }
 }

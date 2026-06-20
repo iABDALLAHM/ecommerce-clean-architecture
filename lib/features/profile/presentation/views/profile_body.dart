@@ -1,8 +1,8 @@
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/profile_view_body.dart';
 import 'package:flutter/material.dart';
 
-class ProfileView extends StatelessWidget {
-  const ProfileView({super.key});
+class ProfileBody extends StatelessWidget {
+  const ProfileBody({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 
 class PrivateProfile extends StatelessWidget {
   const PrivateProfile({super.key});
-  static const String routeName = "privateProfile";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

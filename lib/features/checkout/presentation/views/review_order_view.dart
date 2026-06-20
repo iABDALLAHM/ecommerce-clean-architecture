@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class ReviewOrderView extends StatelessWidget {
   const ReviewOrderView({super.key});
-  static const String routeName = "ReviewOrderView";
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

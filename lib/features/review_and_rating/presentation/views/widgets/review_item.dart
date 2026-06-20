@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/review_entity/review_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/widgets/custom_image_review_item.dart';
+import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/custom_image_review_item.dart';
 import 'package:flutter/material.dart';
 
 class ReviewItem extends StatelessWidget {

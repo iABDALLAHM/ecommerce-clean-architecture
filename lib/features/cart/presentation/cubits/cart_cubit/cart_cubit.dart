@@ -6,7 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartCubit extends Cubit<CartStates> {
   CartCubit() : super(InitialCartState());
-  CartEntity cartEntity = CartEntity(cartItems: []);
+
+  final CartEntity cartEntity = CartEntity(cartItems: []);
+
   void addProduct({required ProductEntity productEntity}) {
     bool isExist = cartEntity.isExist(productEntity: productEntity);
     CartItemEntity cartItemEntity = cartEntity.getCartItem(

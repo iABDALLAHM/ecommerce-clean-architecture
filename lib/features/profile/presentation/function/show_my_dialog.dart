@@ -1,19 +1,21 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/custom_dialog_button.dart';
-import 'package:ecommerce_clean_architecture/features/onboarding/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 Future<void> showMyDialog({required BuildContext context}) {
   return showDialog(
     context: context,
     builder: (BuildContext context) {
       return BlocProvider(
-        create: (context) => SignOutCubit(authRepo: getIt.get<AuthRepository>()),
+        create: (context) =>
+            SignOutCubit(authRepo: getIt.get<AuthRepository>()),
         child: Builder(
           builder: (context) {
             return BlocListener<SignOutCubit, SignOutStates>(
@@ -35,7 +37,7 @@ Future<void> showMyDialog({required BuildContext context}) {
                 backgroundColor: Colors.white,
                 icon: GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pop();
+                    context.pop();
                   },
                   child: Align(
                     alignment: Alignment.centerRight,
@@ -66,7 +68,7 @@ Future<void> showMyDialog({required BuildContext context}) {
                             child: CustomDialogButton(
                               hintText: "لا ارغب",
                               onPressed: () {
-                                Navigator.of(context).pop();
+                                context.pop();
                               },
                               isPrimary: false,
                             ),
@@ -87,8 +89,6 @@ Future<void> showMyDialog({required BuildContext context}) {
 
 void handleSuccessSignOut(BuildContext context) {
   showSnackBar(context, message: "تم تسجيل الخروج بنجاح");
-  Navigator.of(context).pop();
-  Navigator.of(
-    context,
-  ).pushNamedAndRemoveUntil(OnboardingView.routeName, (route) => false);
+  context.pop();
+  context.go(AppRoutes.onboarding);
 }

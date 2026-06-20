@@ -3,9 +3,9 @@ import 'package:ecommerce_clean_architecture/core/widgets/custom_arrow_back.dart
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/orders_section_body.dart';
 import 'package:flutter/material.dart';
 
-class OrdersSection extends StatelessWidget {
-  const OrdersSection({super.key});
-  static const String routeName = "orders";
+class OrdersBody extends StatelessWidget {
+  const OrdersBody({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

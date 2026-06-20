@@ -1,4 +1,3 @@
-
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/profile_body_app_bar.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/profile_body_sections.dart';
@@ -11,26 +10,30 @@ class ProfileViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 16),
-                ProfileBodyAppBar(),
-                const SizedBox(height: 16),
-                ProfileInformationSection(),
-                ProfileBodySections(),
-                const SizedBox(height: 63),
-              ],
+    return SafeArea(
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: kHorizontalPadding,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 16),
+                  ProfileBodyAppBar(),
+                  const SizedBox(height: 16),
+                  ProfileInformationSection(),
+                  ProfileBodySections(),
+                  const SizedBox(height: 63),
+                ],
+              ),
             ),
           ),
-        ),
-        SliverToBoxAdapter(child: SignOutBadge()),
-      ],
+          SliverToBoxAdapter(child: SignOutBadge()),
+        ],
+      ),
     );
   }
 }
