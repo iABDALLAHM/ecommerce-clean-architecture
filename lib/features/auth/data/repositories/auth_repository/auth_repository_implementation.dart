@@ -3,9 +3,8 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
-import 'package:ecommerce_clean_architecture/core/services/auth_service/auth_service.dart';
-import 'package:ecommerce_clean_architecture/features/auth/data/datasources/local/user_local_data_source.dart';
-import 'package:ecommerce_clean_architecture/features/auth/data/repositories/auth_repository/auth_repository.dart';
+import 'package:ecommerce_clean_architecture/features/auth/data/services/auth_service/auth_service.dart';
+import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepositoryImplementation implements AuthRepository {

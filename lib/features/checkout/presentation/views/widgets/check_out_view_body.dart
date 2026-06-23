@@ -2,7 +2,7 @@ import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/custom_progress_widget.dart';
+import 'package:ecommerce_clean_architecture/core/widgets/custom_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/function/change_button_text.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/cubits/add_order_cubit/add_order_cubit.dart';
@@ -123,6 +123,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         curve: Curves.easeIn,
       );
     } else {
+      showSnackBar(context, message: "املا بيانات التوصيل");
       valueNotifier.value = AutovalidateMode.always;
       setState(() {});
     }

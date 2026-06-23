@@ -14,7 +14,7 @@ class ForgetPasswordSection extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            context.go(AppRoutes.forgetPassword);
+            context.push(AppRoutes.forgetPassword);
           },
           child: Text(
             "نسيت كلمة المرور؟",

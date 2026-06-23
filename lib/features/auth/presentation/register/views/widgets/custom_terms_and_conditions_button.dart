@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/register/cubits/terms_and_conditions_cubit/terms_and_conditions_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

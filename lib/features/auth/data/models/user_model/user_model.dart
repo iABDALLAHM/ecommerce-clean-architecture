@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/features/auth/domain/entities/user_entities/user_entity.dart';
+import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 
 class UserModel {
   final String name;

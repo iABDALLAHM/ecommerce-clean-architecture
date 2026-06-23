@@ -1,4 +1,5 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
@@ -19,7 +20,7 @@ class ForgetPasswordViewBody extends StatelessWidget {
           Text(
             "لا تقلق ، ما عليك سوى كتابة رقم هاتفك وسنرسل رمز التحقق.",
             style: AppStyles.textStyle16SemiBold.copyWith(
-              color: Color(0xff616A6B),
+              color: AppColors.forgetPasswordTextColor,
             ),
           ),
           const SizedBox(height: 30),
@@ -34,7 +35,7 @@ class ForgetPasswordViewBody extends StatelessWidget {
             child: CustomButton(
               text: "نسيت كلمة المرور",
               onPressed: () {
-                context.go(AppRoutes.passwordRecovery);
+                context.push(AppRoutes.passwordRecovery);
               },
             ),
           ),

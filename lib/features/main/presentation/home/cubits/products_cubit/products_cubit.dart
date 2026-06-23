@@ -11,7 +11,12 @@ class ProductsCubit extends Cubit<ProductsStates> {
     result.fold(
       (failure) => emit(FailureProductsState(errorMessage: failure.message)),
       (products) {
-        return emit(SuccessProductsState(products: products,productsLength: products.length));
+        return emit(
+          SuccessProductsState(
+            products: products,
+
+          ),
+        );
       },
     );
   }

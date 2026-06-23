@@ -1,22 +1,56 @@
+import 'package:ecommerce_clean_architecture/features/main/data/repositories/products_repository/products_repository.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/add_favorite_product_cubit/add_favorite_product_states.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
-import 'package:ecommerce_clean_architecture/features/main/data/repositories/products_repository/products_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AddFavoriteProductCubit extends Cubit<AddFavoriteProductStates> {
-  AddFavoriteProductCubit({required this.productsRepo})
-    : super(InitialAddFavoriteProductState());
-  final ProductsRepository productsRepo;
+class AddFavoriteProductCubit extends Cubit<FavoriteProductStates> {
+  AddFavoriteProductCubit({required this.productsRepository})
+    : super(InitialFavoriteProductState());
 
-  Future addFavoriteProduct({required ProductEntity product}) async {
-    var result = await productsRepo.addFavoriteProducts(product: product);
+  final ProductsRepository productsRepository;
+  final List<ProductEntity> favoriteProducts = [];
+
+  Future<void> toggleFavorite({required ProductEntity product}) async {
+    if (favoriteProducts.contains(product)) {
+      await handleIfProductIsFavorite(product: product);
+    } else {
+      await handleIfProductIsNotFavorite(product: product);
+    }
+  }
+
+  Future<void> handleIfProductIsNotFavorite({
+    required ProductEntity product,
+  }) async {
+    var result = await productsRepository.addFavoriteProduct(product: product);
     result.fold(
-      (failure) {
-        emit(FailureAddFavoriteProductState(errMessage: failure.message));
+      (l) {
+        emit(FailureAddFavoriteProduct(errorMessage: l.message));
       },
       (success) {
-        emit(SuccessAddFavoriteProductState());
+        favoriteProducts.add(product);
+        emit(SuccessAddFavoriteProduct(productEntity: product));
       },
     );
+  }
+
+  Future<void> handleIfProductIsFavorite({
+    required ProductEntity product,
+  }) async {
+    var result = await productsRepository.removeFavoriteProduct(
+      product: product,
+    );
+    result.fold(
+      (failure) {
+        emit(FailureRemoveFavoriteProduct(errorMessage: failure.message));
+      },
+      (success) {
+        favoriteProducts.remove(product);
+        emit(SuccessRemoveFavoriteProduct(productEntity: product));
+      },
+    );
+  }
+
+  bool isFavorited({required ProductEntity product}) {
+    return favoriteProducts.contains(product);
   }
 }

@@ -1,9 +1,7 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/features/auth/data/repositories/user_repository/user_repository.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/local_database_service/shared_prefs_service.dart';
-import 'package:ecommerce_clean_architecture/features/auth/data/repositories/auth_repository/auth_repository.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/login/cubits/login_cubit/login_states.dart';
+import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginCubit extends Cubit<LoginStates> {

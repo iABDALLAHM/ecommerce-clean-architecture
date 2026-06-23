@@ -2,7 +2,7 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
-import 'package:ecommerce_clean_architecture/core/widgets/custom_password_field.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/custom_password_field.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/forget_password/views/functions/show_reset_password_dialog.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +32,7 @@ class ResetYourPasswordViewBody extends StatelessWidget {
             child: CustomButton(
               text: "إنشاء كلمة مرور جديدة",
               onPressed: () {
-                showResetPasswordDialog(context);
+                showResetPasswordDialog(context: context);
               },
             ),
           ),

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/main/data/repositories/images_repository/images_repository.dart';
 import 'package:ecommerce_clean_architecture/features/main/data/repositories/images_repository/images_repository_implementation.dart';
 import 'package:ecommerce_clean_architecture/features/main/data/repositories/notification_repository/notification_repository.dart';
@@ -7,19 +8,13 @@ import 'package:ecommerce_clean_architecture/features/main/data/repositories/ord
 import 'package:ecommerce_clean_architecture/features/main/data/repositories/order_repository/orders_repository.dart';
 import 'package:ecommerce_clean_architecture/features/main/data/repositories/products_repository/products_repository.dart';
 import 'package:ecommerce_clean_architecture/features/main/data/repositories/products_repository/products_repository_implementation.dart';
-import 'package:ecommerce_clean_architecture/features/auth/data/repositories/user_repository/user_repository.dart';
-import 'package:ecommerce_clean_architecture/features/auth/data/repositories/user_repository/user_repository_implementation.dart';
-import 'package:ecommerce_clean_architecture/core/services/auth_service/auth_service.dart';
+import 'package:ecommerce_clean_architecture/features/auth/data/services/auth_service/auth_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service/database_service.dart';
-import 'package:ecommerce_clean_architecture/core/services/auth_service/firebase_auth_service.dart';
+import 'package:ecommerce_clean_architecture/features/auth/data/services/auth_service/firebase_auth_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service/firestore_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/local_database_service/shared_prefs_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/storage_service/storage_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/storage_service/supabase_storage_service.dart';
-import 'package:ecommerce_clean_architecture/features/auth/data/datasources/local/user_local_data_source.dart';
-import 'package:ecommerce_clean_architecture/features/auth/data/datasources/local/user_local_data_source_implementation.dart';
-import 'package:ecommerce_clean_architecture/features/auth/data/repositories/auth_repository/auth_repository_implementation.dart';
-import 'package:ecommerce_clean_architecture/features/auth/data/repositories/auth_repository/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -61,10 +56,14 @@ void setupGetIt() async {
     ),
   );
   getIt.registerSingleton<OrdersRepository>(
-    OrderRepositoryImplementation(databaseService: getIt.get<DatabaseService>()),
+    OrderRepositoryImplementation(
+      databaseService: getIt.get<DatabaseService>(),
+    ),
   );
   getIt.registerSingleton<ProductsRepository>(
-    ProductsRepositoryImplementation(databaseService: getIt.get<DatabaseService>()),
+    ProductsRepositoryImplementation(
+      databaseService: getIt.get<DatabaseService>(),
+    ),
   );
   getIt.registerSingleton<AuthRepository>(
     AuthRepositoryImplementation(

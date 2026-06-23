@@ -4,9 +4,14 @@ import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 
 abstract class ProductsRepository {
   Future<Either<Failure, List<ProductEntity>>> getProducts();
-  Future<Either<Failure, void>> addFavoriteProducts({
+  Future<Either<Failure, void>> addFavoriteProduct({
+    required ProductEntity product,
+  });
+  Future<Either<Failure, void>> removeFavoriteProduct({
     required ProductEntity product,
   });
   Future<Either<Failure, List<ProductEntity>>> getFavoriteProducts();
-  Future<Either<Failure, List<ProductEntity>>> searchProducts({required String searchName});
+  Future<Either<Failure, List<ProductEntity>>> searchProducts({
+    required String searchName,
+  });
 }

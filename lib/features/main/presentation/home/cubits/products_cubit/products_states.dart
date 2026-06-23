@@ -8,13 +8,10 @@ final class LoadingProductsState extends ProductsStates {}
 
 final class SuccessProductsState extends ProductsStates {
   final List<ProductEntity> products;
-  final int productsLength;
-
-  SuccessProductsState({required this.products, required this.productsLength});
+  SuccessProductsState({required this.products});
 }
 
 final class FailureProductsState extends ProductsStates {
   final String errorMessage;
-
   FailureProductsState({required this.errorMessage});
 }

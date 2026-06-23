@@ -1,63 +1,27 @@
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_entity/cart_entity.dart';
-import 'package:ecommerce_clean_architecture/features/cart/presentation/views/widgets/cart_body.dart';
+import 'package:ecommerce_clean_architecture/features/cart/presentation/widgets/cart_body.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
+import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/fruit_item_details_view.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 import 'package:ecommerce_clean_architecture/features/main/main.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/best_selling/views/widgets/best_selling_body.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/home/views/widgets/home_body.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/search/views/widgets/search_body.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/best_selling/widgets/best_selling_body.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/home_body.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/search/widgets/search_body.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/onboarding.dart';
-import 'package:ecommerce_clean_architecture/features/products/presentation/views/widgets/products_body.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/profile_body.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/about_us_body.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/add_new_wallet_method_body.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/favorite_body.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/orders_body.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/private_profile_body.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/wallet_body.dart';
+import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/products_body.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/profile_body.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/about_us_body.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/add_new_wallet_method_body.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/favorite_body.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/orders_body.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/private_profile_body.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/wallet_body.dart';
+import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/review_and_rating_view.dart';
 import 'package:ecommerce_clean_architecture/features/splash/splash.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRoutes {
-  // should create a shell route as a parent for :
-  // home.
-  // products.
-  // profile.
-  // cart.
-
-  // and each section has a nested route from it with shellRoute
-
-  // home:
-  // 1- bestSelling
-  // 2- search
-  // 3- notifications
-
-  // products => dont have nested screens
-
-  // cart => dont have nested screens
-
-  // profile:
-  // 1- private Profile
-  // 2- myOrders
-  // 3- myPayments
-  // 4- addNewPayment
-  // 5- favorite
-  // 6- about
-
-  // separate Screens:
-  // splash 1
-  // splash 2
-  // onboarding
-  // login
-  // register
-  // forgetPass
-  // passRecovery
-  // resetYourPass
-  // itemDetails
-  // reviewAndRating
-  // allCheckOutBodies
-
   static const String splash = "/";
   static const String onboarding = "/onboarding";
   static const String login = "/login";
@@ -65,7 +29,6 @@ class AppRoutes {
   static const String forgetPassword = "/forgetPassword";
   static const String passwordRecovery = "/passwordRecovery";
   static const String resetYourPassword = "/resetYourPassword";
-
   static const String home = "/home";
   static const String bestSelling = "/bestSelling";
   static const String search = "/search";
@@ -91,6 +54,7 @@ class AppRoutes {
       ShellRoute(
         builder: (context, state, child) => MainView(child: child),
         routes: [
+          
           GoRoute(
             path: home,
             builder: (context, state) => HomeBody(),

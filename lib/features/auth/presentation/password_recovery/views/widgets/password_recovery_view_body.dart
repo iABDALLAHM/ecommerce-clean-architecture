@@ -1,4 +1,5 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
@@ -21,7 +22,7 @@ class PasswordRecoveryViewBody extends StatelessWidget {
           Text(
             "أدخل الرمز الذي أرسلناه إلى عنوان بريد التالي Maxxx@email.com",
             style: AppStyles.textStyle16SemiBold.copyWith(
-              color: Color(0xff616A6B),
+              color: AppColors.forgetPasswordTextColor,
             ),
           ),
           const SizedBox(height: 29),
@@ -43,7 +44,7 @@ class PasswordRecoveryViewBody extends StatelessWidget {
             child: CustomButton(
               text: "تحقق من الرمز",
               onPressed: () {
-                context.go(AppRoutes.resetYourPassword);
+                context.push(AppRoutes.resetYourPassword);
               },
             ),
           ),

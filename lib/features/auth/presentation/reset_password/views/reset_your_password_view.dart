@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/features/auth/presentation/core/functions/build_auth_app_bar.dart';
+import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/reset_password/views/widgets/reset_your_password_view_body.dart';
 import 'package:flutter/material.dart';
 

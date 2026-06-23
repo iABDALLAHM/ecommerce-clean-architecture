@@ -59,7 +59,7 @@ class FirestoreService implements DatabaseService {
           .collection(path)
           .doc(documentId)
           .collection(subCollection)
-          .doc(data["code"])
+          .doc(data["productCode"])
           .set(data);
     } catch (e) {
       throw CustomException(
@@ -133,6 +133,25 @@ class FirestoreService implements DatabaseService {
       throw CustomException(
         exceptionMeassge: "حدث خطأ أثناء البحث عن البيانات",
       );
+    }
+  }
+
+  @override
+  Future<void> removeNestedData({
+    required String path,
+    required String subCollection,
+    required String documentId,
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      await firestore
+          .collection(path)
+          .doc(documentId)
+          .collection(subCollection)
+          .doc(data["productCode"])
+          .delete();
+    } catch (e) {
+      throw CustomException(exceptionMeassge: "تعذر حذف البيانات");
     }
   }
 }

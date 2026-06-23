@@ -34,18 +34,16 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   }
 
   @override
-  Future<Either<Failure, void>> addFavoriteProducts({
+  Future<Either<Failure, void>> addFavoriteProduct({
     required ProductEntity product,
   }) async {
     try {
-      await databaseService
-          .addNestedData(
-            path: BackendEndPoints.addUserData,
-            subCollection: BackendEndPoints.addFavoriteProducts,
-            data: ProductModel.fromEntity(productEntity: product).toMap(),
-            documentId: getUserData().uId,
-          )
-          .timeout(const Duration(seconds: 3));
+      await databaseService.addNestedData(
+        path: BackendEndPoints.addUserData,
+        subCollection: BackendEndPoints.addFavoriteProducts,
+        data: ProductModel.fromEntity(productEntity: product).toMap(),
+        documentId: getUserData().uId,
+      );
       return Right(null);
     } on CustomException catch (e) {
       log(
@@ -58,13 +56,11 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   @override
   Future<Either<Failure, List<ProductEntity>>> getFavoriteProducts() async {
     try {
-      var result = await databaseService
-          .getNestedData(
-            path: BackendEndPoints.addUserData,
-            subCollection: BackendEndPoints.getFavoriteProducts,
-            documentId: getUserData().uId,
-          )
-          .timeout(const Duration(seconds: 3));
+      var result = await databaseService.getNestedData(
+        path: BackendEndPoints.addUserData,
+        subCollection: BackendEndPoints.getFavoriteProducts,
+        documentId: getUserData().uId,
+      );
       List<ProductEntity> favProducts = (result as List)
           .map((ele) => ProductModel.fromJson(ele).toEntity())
           .toList();
@@ -101,6 +97,26 @@ class ProductsRepositoryImplementation implements ProductsRepository {
     } on CustomException catch (e) {
       log(
         "this error happend in ProductsRepoImplementation in searchProducts method ${e.toString()}",
+      );
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> removeFavoriteProduct({
+    required ProductEntity product,
+  }) async {
+    try {
+      await databaseService.removeNestedData(
+        path: BackendEndPoints.addUserData,
+        subCollection: BackendEndPoints.addFavoriteProducts,
+        data: ProductModel.fromEntity(productEntity: product).toMap(),
+        documentId: getUserData().uId,
+      );
+      return Right(null);
+    } on CustomException catch (e) {
+      log(
+        "this error happend in ProductsRepoImplementation in removeFavoriteProduct method ${e.toString()}",
       );
       return Left(ServerFailure(message: e.exceptionMeassge));
     }

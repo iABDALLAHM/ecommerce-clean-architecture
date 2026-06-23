@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/custom_edit_image_button_sheet.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/custom_edit_image_button_sheet.dart';
 import 'package:flutter/material.dart';
 
 PersistentBottomSheetController showEditImageBottomSheet({

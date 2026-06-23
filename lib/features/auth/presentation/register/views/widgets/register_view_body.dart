@@ -1,13 +1,11 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
-import 'package:ecommerce_clean_architecture/core/widgets/custom_password_field.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_text_form_field.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/register/cubits/register_cubit/register_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/register/cubits/register_cubit/register_states.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/register/cubits/terms_and_conditions_cubit/terms_and_conditions_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/custom_progress_widget.dart';
+import 'package:ecommerce_clean_architecture/core/widgets/custom_progress_widget.dart';
+import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/auth_rich_text.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/custom_password_field.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/register/views/widgets/terms_and_conditions_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -101,6 +99,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     ),
                     const SizedBox(height: 26),
                     AuthRichText(
+                      onTap: () => context.pop(),
                       title: "تمتلك حساب بالفعل؟",
                       subTitle: "تسجيل الدخول",
                     ),

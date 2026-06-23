@@ -1,4 +1,3 @@
-
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/register/views/widgets/custom_terms_and_conditions_button.dart';
@@ -7,7 +6,7 @@ import 'package:flutter/material.dart';
 class TermsAndConditionsSection extends StatelessWidget {
   const TermsAndConditionsSection({super.key, required this.onChange});
   final ValueChanged<bool> onChange;
-  
+
   @override
   Widget build(BuildContext context) {
     return Row(

@@ -1,12 +1,17 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/widgets.dart';
-import 'package:go_router/go_router.dart';
 
 class AuthRichText extends StatelessWidget {
-  const AuthRichText({super.key, required this.title, required this.subTitle});
+  const AuthRichText({
+    super.key,
+    required this.title,
+    required this.subTitle,
+    required this.onTap,
+  });
   final String title;
   final String subTitle;
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,11 +24,9 @@ class AuthRichText extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: () {
-            context.pop();
-          },
+          onTap: onTap,
           child: Text(
-            subTitle,
+            " $subTitle",
             style: AppStyles.textStyle16SemiBold.copyWith(
               color: AppColors.primaryColor,
             ),

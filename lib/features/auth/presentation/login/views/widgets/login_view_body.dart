@@ -3,15 +3,14 @@ import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart'
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
-import 'package:ecommerce_clean_architecture/core/widgets/custom_password_field.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/custom_password_field.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_text_form_field.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/login/cubits/login_cubit/login_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/login/cubits/login_cubit/login_states.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/custom_progress_widget.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/forget_password/views/widgets/forget_password_section.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/or_divider_section.dart';
+import 'package:ecommerce_clean_architecture/core/widgets/custom_progress_widget.dart';
+import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/auth_rich_text.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/or_divider_section.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/social_custom_button.dart';
+import 'package:ecommerce_clean_architecture/features/auth/presentation/forget_password/views/widgets/forget_password_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -78,6 +77,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     ),
                     const SizedBox(height: 33),
                     AuthRichText(
+                      onTap: () => context.push(AppRoutes.register),
                       title: 'لا تمتلك حساب؟',
                       subTitle: 'قم بإنشاء حساب',
                     ),

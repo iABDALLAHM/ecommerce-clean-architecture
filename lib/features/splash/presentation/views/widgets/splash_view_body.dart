@@ -39,13 +39,10 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: [SvgPicture.asset(Assets.imagesOnBoardingGrassLogo)],
+            children: [SvgPicture.asset(Assets.imagesSplashGrassLogo)],
           ),
-          SvgPicture.asset(Assets.imagesOnBoardingLogo),
-          SvgPicture.asset(
-            Assets.imagesOnBoardingFooterLogo,
-            fit: BoxFit.cover,
-          ),
+          SvgPicture.asset(Assets.imagesSplashLogo),
+          SvgPicture.asset(Assets.imagesSplashFooterLogo, fit: BoxFit.cover),
         ],
       ),
     );

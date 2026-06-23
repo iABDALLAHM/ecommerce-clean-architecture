@@ -24,7 +24,7 @@ class OrderModel {
       shippingAddressModel: ShippingAddressModel.fromEntity(
         shippingAddressEntity: orderEntity.shippingAddressEntity,
       ),
-      orderProducts: orderEntity.cartEntity.cartItems
+      orderProducts: orderEntity.cartEntity.items
           .map((order) => OrderProductModel.fromEntity(cartItemEntity: order))
           .toList(),
       paymentMethod: orderEntity.payWithCash.toString(),

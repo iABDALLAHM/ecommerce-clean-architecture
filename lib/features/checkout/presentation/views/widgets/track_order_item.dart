@@ -1,5 +1,5 @@
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/order_details.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/order_item_icon.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/order_details.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/order_item_icon.dart';
 import 'package:flutter/material.dart';
 
 class TrackOrderItem extends StatelessWidget {

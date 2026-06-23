@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/features/auth/data/repositories/auth_repository/auth_repository.dart';
+import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/cubits/sign_out_cubit/sign_out_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

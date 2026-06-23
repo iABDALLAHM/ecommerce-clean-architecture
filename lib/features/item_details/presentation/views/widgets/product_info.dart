@@ -4,9 +4,9 @@ import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
-import 'package:ecommerce_clean_architecture/features/cart/presentation/views/widgets/decrement_button.dart';
-import 'package:ecommerce_clean_architecture/features/cart/presentation/views/widgets/increment_button.dart';
-import 'package:ecommerce_clean_architecture/features/products/presentation/views/widgets/info_details_box.dart';
+import 'package:ecommerce_clean_architecture/features/cart/presentation/widgets/decrement_button.dart';
+import 'package:ecommerce_clean_architecture/features/cart/presentation/widgets/increment_button.dart';
+import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/info_details_box.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

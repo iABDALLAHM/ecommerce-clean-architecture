@@ -19,6 +19,13 @@ abstract class DatabaseService {
     required Map<String, dynamic> data,
   });
 
+  Future<void> removeNestedData({
+    required String path,
+    required String subCollection,
+    required String documentId,
+    required Map<String, dynamic> data,
+  });
+
   Future<dynamic> getSingleData({
     required String path,
     required String documentId,

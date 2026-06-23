@@ -10,7 +10,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final currentRoute = GoRouterState.of(context).uri.toString();
 
     return Container(
@@ -35,7 +34,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          
           BottomNavigationItem(
             onPressed: () => context.go(AppRoutes.home),
             isActive: currentRoute.startsWith(AppRoutes.home) ? true : false,
@@ -90,7 +88,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
         //     ),
         //   );
         // }).toList(),
-
       ),
     );
   }

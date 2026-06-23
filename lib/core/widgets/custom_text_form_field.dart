@@ -21,9 +21,6 @@ class CustomTextFormField extends StatelessWidget {
         if (value == null || value.isEmpty) {
           return "";
         }
-        if (!value.contains("@")) {
-          return "";
-        }
         return null;
       },
       decoration: InputDecoration(

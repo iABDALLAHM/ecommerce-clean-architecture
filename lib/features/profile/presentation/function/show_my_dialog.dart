@@ -4,7 +4,9 @@ import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/views/widgets/custom_dialog_button.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/cubits/sign_out_cubit/sign_out_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/cubits/sign_out_cubit/sign_out_states.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/custom_dialog_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

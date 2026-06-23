@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-Future<void> showResetPasswordDialog(BuildContext context) async {
+Future<void> showResetPasswordDialog({required BuildContext context}) async {
   return showDialog(
     context: context,
     builder: (context) => AlertDialog(
