@@ -3,9 +3,7 @@ import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomHomeProfileImage extends StatelessWidget {
-  const CustomHomeProfileImage({
-    super.key,
-  });
+  const CustomHomeProfileImage({super.key});
 
   @override
   Widget build(BuildContext context) {

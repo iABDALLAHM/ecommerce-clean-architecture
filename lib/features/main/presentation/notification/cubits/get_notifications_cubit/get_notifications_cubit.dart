@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class GetNotificationsCubit extends Cubit<GetNotificationsStates> {
   GetNotificationsCubit({required this.notificationRepo})
     : super(InitialGetNotificationsState());
+
   final NotificationRepository notificationRepo;
 
   Future getNotification() async {

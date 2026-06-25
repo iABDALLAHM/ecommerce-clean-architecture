@@ -1,7 +1,7 @@
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,6 +13,7 @@ class CustomSearchTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -26,7 +27,7 @@ class CustomSearchTextField extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           TextField(
-            onChanged: (value) {
+            onSubmitted: (value) {
               context.read<SearchCubit>().searchProducts(searchName: value);
             },
             decoration: InputDecoration(
@@ -49,31 +50,6 @@ class CustomSearchTextField extends StatelessWidget {
                 fit: BoxFit.scaleDown,
               ),
             ),
-          ),
-          BlocBuilder<SearchCubit, SearchStates>(
-            builder: (context, state) {
-              if (state is EmptySearchState) {
-                return SizedBox(
-                  height: MediaQuery.sizeOf(context).height * .1,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 22, top: 8),
-                      child: Text(
-                        "لاتوجد نتائج بحث",
-                        style: AppStyles.textStyle13Regular.copyWith(
-                          color: Color(0xff949D9E),
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              }
-              return SizedBox();
-            },
           ),
         ],
       ),

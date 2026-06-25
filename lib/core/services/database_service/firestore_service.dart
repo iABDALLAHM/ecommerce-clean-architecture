@@ -127,8 +127,8 @@ class FirestoreService implements DatabaseService {
       for (var condition in query.orders) {
         data = data.orderBy(condition.field, descending: condition.descending);
       }
-      var result = data.get();
-      return result;
+      var result = await data.get();
+      return result.docs.map((doc) => doc.data()).toList();
     } catch (e) {
       throw CustomException(
         exceptionMeassge: "حدث خطأ أثناء البحث عن البيانات",

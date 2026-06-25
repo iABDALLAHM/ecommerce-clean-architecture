@@ -13,7 +13,7 @@ class BestSellingAppBar extends StatelessWidget {
       children: [
         CustomArrowWidget(),
         Text("الأكثر مبيعًا", style: AppStyles.textStyle19Bold),
-        CustomNotificationIcon(notificationLength: 0),
+        CustomNotificationIcon(),
       ],
     );
   }

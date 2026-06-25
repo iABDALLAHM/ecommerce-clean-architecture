@@ -87,8 +87,8 @@ class ProductsRepositoryImplementation implements ProductsRepository {
               ],
               orders: [],
             ),
-          )
-          .timeout(const Duration(seconds: 3));
+          );
+
       List<ProductEntity> productsList = [];
       for (var productModel in data) {
         productsList.add(ProductModel.fromJson(productModel).toEntity());

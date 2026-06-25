@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class FruitItemDetailsView extends StatelessWidget {
   const FruitItemDetailsView({super.key, required this.productEntity});
   final ProductEntity productEntity;
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

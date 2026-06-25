@@ -12,7 +12,7 @@ class ProductsAppBar extends StatelessWidget {
         Spacer(),
         Text("المنتجات", style: AppStyles.textStyle19Bold),
         Spacer(),
-        CustomNotificationIcon(notificationLength: 0,),
+        CustomNotificationIcon(),
       ],
     );
   }

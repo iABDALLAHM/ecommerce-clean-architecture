@@ -13,6 +13,7 @@ class InfoDetailsBox extends StatelessWidget {
   });
   final String icon, title, subTitle;
   final String? titleDetails;
+  
   @override
   Widget build(BuildContext context) {
     return Container(

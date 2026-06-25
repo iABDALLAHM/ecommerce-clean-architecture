@@ -27,7 +27,7 @@ class CustomHomeAppBar extends StatelessWidget {
           ],
         ),
         Spacer(),
-        CustomNotificationIcon(notificationLength: 1),
+        CustomNotificationIcon(),
       ],
     );
   }

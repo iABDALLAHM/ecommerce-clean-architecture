@@ -1,6 +1,5 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
-
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/widgets/fruit_item_details_header.dart';
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/widgets/product_info.dart';
 import 'package:flutter/material.dart';
@@ -8,19 +7,24 @@ import 'package:flutter/material.dart';
 class FruitItemDetailsViewBody extends StatelessWidget {
   const FruitItemDetailsViewBody({super.key, required this.productEntity});
   final ProductEntity productEntity;
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
           child: SizedBox(
             height: height * 0.5,
             width: width,
-            child: FruitItemDetailsHeader(imageUrl: productEntity.productImageUrl),
+            child: FruitItemDetailsHeader(
+              imageUrl: productEntity.productImageUrl,
+            ),
           ),
         ),
+        SliverToBoxAdapter(child: const SizedBox(height: 24)),
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),

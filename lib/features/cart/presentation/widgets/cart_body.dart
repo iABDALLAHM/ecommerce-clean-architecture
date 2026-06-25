@@ -1,3 +1,4 @@
+import 'package:ecommerce_clean_architecture/core/widgets/custom_divider.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/widgets/cart_app_bar.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/widgets/cart_header.dart';
@@ -11,6 +12,9 @@ class CartBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var items = context.watch<CartCubit>().cartEntity.items;
+    var height = MediaQuery.of(context).size.height;
+
     return SafeArea(
       child: CustomScrollView(
         slivers: [
@@ -25,22 +29,31 @@ class CartBody extends StatelessWidget {
               ],
             ),
           ),
+          items.isNotEmpty
+              ? SliverToBoxAdapter(child: CustomDivider())
+              : SliverToBoxAdapter(child: SizedBox()),
 
-          CartItemsListView(
-            cartItems: context.watch<CartCubit>().cartEntity.items,
-          ),
+          CartItemsListView(cartItems: items),
 
-          SliverToBoxAdapter(child: const SizedBox(height: 24)),
+          items.isNotEmpty
+              ? SliverToBoxAdapter(child: CustomDivider())
+              : SliverToBoxAdapter(child: SizedBox()),
 
-          context.watch<CartCubit>().cartEntity.items.isEmpty
+          SliverToBoxAdapter(child: SizedBox(height: height * .3)),
+
+          items.isEmpty
               ? SliverToBoxAdapter(child: SizedBox())
               : SliverToBoxAdapter(
                   child: SizedBox(
                     height: 54,
-                    width: double.infinity,
-                    child: CustomCartButton(),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: CustomCartButton(),
+                    ),
                   ),
                 ),
+
+          SliverToBoxAdapter(child: SizedBox(height: 67)),
         ],
       ),
     );

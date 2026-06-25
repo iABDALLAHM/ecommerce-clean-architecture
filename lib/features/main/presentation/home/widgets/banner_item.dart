@@ -21,7 +21,6 @@ class BannerItem extends StatelessWidget {
         aspectRatio: 310 / 160,
         child: Stack(
           children: [
-
             Container(
               padding: EdgeInsets.only(right: 25),
               width: width * .5,
@@ -49,7 +48,6 @@ class BannerItem extends StatelessWidget {
                 ),
               ),
             ),
-
           ],
         ),
       ),

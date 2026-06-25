@@ -2,8 +2,8 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
-class CustomImageReviewItem extends StatelessWidget {
-  const CustomImageReviewItem({super.key});
+class CustomReviewerImage extends StatelessWidget {
+  const CustomReviewerImage({super.key});
 
   @override
   Widget build(BuildContext context) {

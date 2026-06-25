@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/best_selling/widgets/best_selling_app_bar.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/best_selling/widgets/best_selling_view_header.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/best_selling/widgets/best_selling_header.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/core/widgets/fruit_items_grid_view_bloc_builder.dart';
 import 'package:flutter/material.dart';
 
@@ -21,13 +21,14 @@ class BestSellingBody extends StatelessWidget {
                   const SizedBox(height: 20),
                   BestSellingAppBar(),
                   const SizedBox(height: 24),
-                  BestSellingViewHeader(),
+                  BestSellingHeader(),
                   const SizedBox(height: 8),
                 ],
               ),
             ),
           ),
           FruitItemsGridViewBlocBuilder(),
+          SliverToBoxAdapter(child: const SizedBox(height: 20)),
         ],
       ),
     );

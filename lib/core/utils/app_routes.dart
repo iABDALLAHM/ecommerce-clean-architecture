@@ -54,7 +54,6 @@ class AppRoutes {
       ShellRoute(
         builder: (context, state, child) => MainView(child: child),
         routes: [
-          
           GoRoute(
             path: home,
             builder: (context, state) => HomeBody(),

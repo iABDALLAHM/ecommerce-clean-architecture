@@ -1,13 +1,13 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
+import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/widgets/info_details_box.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
-import 'package:ecommerce_clean_architecture/features/cart/presentation/widgets/decrement_button.dart';
-import 'package:ecommerce_clean_architecture/features/cart/presentation/widgets/increment_button.dart';
-import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/info_details_box.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class ProductInfo extends StatelessWidget {
@@ -21,51 +21,28 @@ class ProductInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 24),
-        Row(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  productEntity.productName,
-                  style: AppStyles.textStyle13SemiBold,
+        Text(productEntity.productName, style: AppStyles.textStyle13SemiBold),
+        const SizedBox(height: 4),
+        Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: "${productEntity.productPrice}جنية",
+                style: AppStyles.textStyle13Bold.copyWith(
+                  color: AppColors.secondryColor,
                 ),
-                const SizedBox(height: 4),
-                Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(
-                        text: "${productEntity.productPrice}جنية",
-                        style: AppStyles.textStyle13Bold.copyWith(
-                          color: AppColors.secondryColor,
-                        ),
-                      ),
-                      TextSpan(
-                        text: " / الكيلو",
-                        style: AppStyles.textStyle13Bold.copyWith(
-                          color: AppColors.lightsecondryColor,
-                        ),
-                      ),
-                    ],
-                  ),
+              ),
+              TextSpan(
+                text: " / الكيلو",
+                style: AppStyles.textStyle13Bold.copyWith(
+                  color: AppColors.lightsecondryColor,
                 ),
-              ],
-            ),
-            Spacer(),
-            Row(
-              children: [
-                IncrementButton(onPressed: () {}),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text("3"),
-                ),
-                DecrementButton(onPressed: () {}),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
-
         const SizedBox(height: 8),
+
         Row(
           children: [
             Icon(Icons.star, color: Colors.amber),
@@ -97,14 +74,19 @@ class ProductInfo extends StatelessWidget {
             ),
           ],
         ),
+
         const SizedBox(height: 8),
+
         Text(
           productEntity.description,
+          maxLines: 3,
           style: AppStyles.textStyle13Regular.copyWith(
             color: Color(0xff979899),
           ),
         ),
+
         const SizedBox(height: 16),
+
         Row(
           children: [
             Expanded(
@@ -126,14 +108,16 @@ class ProductInfo extends StatelessWidget {
             ),
           ],
         ),
+
         const SizedBox(height: 16),
+
         Row(
           children: [
             Expanded(
               child: InfoDetailsBox(
                 icon: Assets.imagesCaloryIcon,
                 title: "${productEntity.numberOfCalories} كالوري",
-                subTitle: "1 كج",
+                subTitle: "100 جرام",
               ),
             ),
             const SizedBox(width: 16),
@@ -153,7 +137,14 @@ class ProductInfo extends StatelessWidget {
         SizedBox(
           height: 54,
           width: double.infinity,
-          child: CustomButton(text: "أضف الي السلة", onPressed: () {}),
+          child: CustomButton(
+            text: "أضف الي السلة",
+            onPressed: () {
+              context.read<CartCubit>().addProduct(
+                productEntity: productEntity,
+              );
+            },
+          ),
         ),
       ],
     );

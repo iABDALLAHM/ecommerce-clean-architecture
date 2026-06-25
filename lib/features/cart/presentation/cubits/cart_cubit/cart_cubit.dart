@@ -42,4 +42,5 @@ class CartCubit extends Cubit<CartStates> {
       emit(ProductDecreaseState(cartItemEntity: cartItemEntity));
     }
   }
+  
 }

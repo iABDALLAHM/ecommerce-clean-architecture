@@ -1,3 +1,4 @@
+import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_state.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/widgets/empty_search_widget.dart';
@@ -6,12 +7,12 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/search/w
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SearchBodyBlocBuilder extends StatelessWidget {
-  const SearchBodyBlocBuilder({super.key, required this.states});
-  final SearchStates states;
+class SearchBodyBlocConsumer extends StatelessWidget {
+  const SearchBodyBlocConsumer({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SearchCubit, SearchStates>(
+    return BlocConsumer<SearchCubit, SearchStates>(
       builder: (context, state) {
         if (state is SuccessSearchState) {
           return SearchSuccessWidget(products: state.productsList);
@@ -19,6 +20,11 @@ class SearchBodyBlocBuilder extends StatelessWidget {
           return EmptySearchWidget();
         } else {
           return RecentSearchWidget();
+        }
+      },
+      listener: (context, state) {
+        if (state is FailureSearchState) {
+          showSnackBar(context, message: state.errMessage);
         }
       },
     );

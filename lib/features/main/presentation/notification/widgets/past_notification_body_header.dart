@@ -7,6 +7,7 @@ class PastNotificationBodyHeader extends StatelessWidget {
     super.key,
     required this.notificationLength,
   });
+
   final int notificationLength;
   @override
   Widget build(BuildContext context) {
