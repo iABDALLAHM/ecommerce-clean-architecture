@@ -17,7 +17,7 @@ import 'package:ecommerce_clean_architecture/features/profile/presentation/widge
 import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/orders_body.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/private_profile_body.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/wallet_body.dart';
-import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/review_and_rating_view.dart';
+import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/review_and_rating_wrapper.dart';
 import 'package:ecommerce_clean_architecture/features/splash/splash.dart';
 import 'package:go_router/go_router.dart';
 
@@ -159,9 +159,8 @@ class AppRoutes {
       GoRoute(
         path: reviewAndRating,
         builder: (context, state) {
-          final productEntity = state.extra as ProductEntity;
-
-          return ReviewAndRatingView(productEntity: productEntity);
+          Map<String, dynamic> data = state.extra as Map<String, dynamic>;
+          return ReviewAndRatingWrapper(data: data);
         },
       ),
     ],

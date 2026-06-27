@@ -7,16 +7,11 @@ ProductEntity dummyProduct() {
     productPrice: 60,
     productCode: "FRU-WM-001",
     description: "بطيخ طازج عالي الجودة، مزروع محليًا وخالي من المواد الحافظة.",
-    isFeaturedProduct: true,
     productImageUrl: kDefaultUserImageUrl,
     isOrganicProduct: true,
     expirationYears: 1,
     numberOfCalories: 30,
     unitAmount: 5,
-    averageRating: 4.6,
-    ratingCount: 124,
-    reviews: [],
-    sellingCount: 842,
   );
 }
 

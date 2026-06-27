@@ -1,11 +1,15 @@
-import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/review_entity/review_entity.dart';
+import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/review_entity/product_review_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/custom_reviewer_image.dart';
 import 'package:flutter/material.dart';
 
 class ReviewItem extends StatelessWidget {
-  const ReviewItem({super.key, required this.reviewEntity});
-  final ReviewEntity reviewEntity;
+  const ReviewItem({
+    super.key,
+    required ProductReviewEntity productReviewEntity,
+  }) : _productReviewEntity = productReviewEntity;
+
+  final ProductReviewEntity _productReviewEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +24,12 @@ class ReviewItem extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(reviewEntity.name, style: AppStyles.textStyle16SemiBold),
                   Text(
-                    reviewEntity.date.split(" ")[0],
+                    _productReviewEntity.reviewerName,
+                    style: AppStyles.textStyle16SemiBold,
+                  ),
+                  Text(
+                    "${_productReviewEntity.reviewDate.day}/${_productReviewEntity.reviewDate.month}/${_productReviewEntity.reviewDate.year}",
                     style: AppStyles.textStyle13Regular.copyWith(
                       color: Color(0xff949D9E),
                     ),
@@ -30,13 +37,17 @@ class ReviewItem extends StatelessWidget {
                 ],
               ),
               const SizedBox(width: 15),
-              CustomReviewerImage(),
+              CustomReviewerImage(
+                reviewerRating: _productReviewEntity.reviewerRating,
+                reviewerImageUrl: _productReviewEntity.reviewerImage,
+              ),
             ],
           ),
           const SizedBox(height: 10),
           Text(
-            reviewEntity.reviewDescription,
+            _productReviewEntity.reviewerMessage,
             maxLines: 3,
+            overflow: TextOverflow.ellipsis,
             style: AppStyles.textStyle13Regular.copyWith(
               color: Color(0xff949D9E),
             ),

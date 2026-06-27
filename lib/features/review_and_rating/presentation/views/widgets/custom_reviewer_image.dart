@@ -1,27 +1,44 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 class CustomReviewerImage extends StatelessWidget {
-  const CustomReviewerImage({super.key});
-
+  const CustomReviewerImage({
+    super.key,
+    required this.reviewerImageUrl,
+    required this.reviewerRating,
+  });
+  final String reviewerImageUrl;
+  final double reviewerRating;
   @override
   Widget build(BuildContext context) {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        Image.asset(width: 50, height: 50, Assets.imagesProfileImage),
+        CircleAvatar(
+          backgroundColor: Colors.transparent,
+          radius: 20,
+          child: CircleAvatar(
+            backgroundColor: Colors.transparent,
+            radius: 15,
+            child: Image.network(
+              reviewerImageUrl,
+              errorBuilder: (context, error, stackTrace) {
+                return Icon(Icons.person);
+              },
+            ),
+          ),
+        ),
         Positioned(
-          bottom: 3,
-          right: -6,
+          bottom: 0,
+          right: -10,
           child: Container(
-            padding: EdgeInsets.all(2),
+            padding: EdgeInsets.all(3),
             decoration: BoxDecoration(
               color: Colors.amber,
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(8),
             ),
             child: Text(
-              "5.0",
+              "${reviewerRating.toDouble()}",
               style: AppStyles.textStyle11SemiBold.copyWith(
                 color: Colors.white,
               ),

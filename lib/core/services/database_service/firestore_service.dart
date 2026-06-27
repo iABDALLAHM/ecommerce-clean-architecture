@@ -154,4 +154,24 @@ class FirestoreService implements DatabaseService {
       throw CustomException(exceptionMeassge: "تعذر حذف البيانات");
     }
   }
+
+  @override
+  Future<void> addSubCollectionData({
+    required String path,
+    required String subCollection,
+    required String documentId,
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      await firestore
+          .collection(path)
+          .doc(documentId)
+          .collection(subCollection)
+          .add(data);
+    } catch (e) {
+      throw CustomException(
+        exceptionMeassge: "حدث خطأ أثناء إضافة البيانات، حاول مرة أخرى",
+      );
+    }
+  }
 }
