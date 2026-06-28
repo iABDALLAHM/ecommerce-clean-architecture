@@ -7,6 +7,7 @@ import 'package:ecommerce_clean_architecture/features/main/domain/entities/produ
 import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/review_entity/product_review_entity.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/cubits/add_review_cubit/add_review_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/cubits/add_review_cubit/add_review_state.dart';
+import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/stars_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -20,6 +21,7 @@ class AddReviewBottomSheet extends StatefulWidget {
 
 class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
   String message = "";
+  int rating = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,17 @@ class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
               ),
 
               const SizedBox(height: 20),
+
+              StarsRating(
+                onRatingChanged: (newRating) {
+                  setState(() {
+                    rating = newRating;
+                  });
+                },
+              ),
+
+              const SizedBox(height: 20),
+
               SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -78,7 +91,7 @@ class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
                             reviewerName: getUserData().name,
                             reviewerImage: getUserData().userImage,
                             reviewerMessage: message,
-                            reviewerRating: 5,
+                            reviewerRating: rating.toDouble(),
                           );
                       context.read<AddReviewCubit>().addReview(
                         productReviewEntity: productReviewEntity,
