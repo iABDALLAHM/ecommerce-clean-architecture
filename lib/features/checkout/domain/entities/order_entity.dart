@@ -4,13 +4,18 @@ import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/s
 class OrderEntity {
   final String uId;
   final CartEntity cartEntity;
-  bool? payWithCash;
+  bool? payWith;
   ShippingAddressEntity shippingAddressEntity;
 
   OrderEntity({
     required this.cartEntity,
-    this.payWithCash,
+    this.payWith,
     required this.shippingAddressEntity,
     required this.uId,
   });
+
+  @override
+  String toString() {
+    return "$uId $cartEntity $payWith ${shippingAddressEntity.name}";
+  }
 }

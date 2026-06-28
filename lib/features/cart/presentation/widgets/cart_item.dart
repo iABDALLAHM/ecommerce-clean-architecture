@@ -61,7 +61,7 @@ class CartItem extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    "${cartItemEntity.calculateTotalWeight()} كم",
+                    "${cartItemEntity.count} كم",
                     style: AppStyles.textStyle13Regular.copyWith(
                       color: AppColors.secondryColor,
                     ),

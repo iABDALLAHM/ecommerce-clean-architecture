@@ -10,8 +10,11 @@ import 'package:ecommerce_clean_architecture/features/checkout/data/repositories
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
 
 class OrderRepositoryImplementation implements OrdersRepository {
+
   final DatabaseService databaseService;
+
   OrderRepositoryImplementation({required this.databaseService});
+
   @override
   Future<Either<Failure, void>> addOrder({
     required OrderEntity orderEntity,

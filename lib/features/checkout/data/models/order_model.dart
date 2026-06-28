@@ -27,7 +27,7 @@ class OrderModel {
       orderProducts: orderEntity.cartEntity.items
           .map((order) => OrderProductModel.fromEntity(cartItemEntity: order))
           .toList(),
-      paymentMethod: orderEntity.payWithCash.toString(),
+      paymentMethod: orderEntity.payWith.toString(),
     );
   }
 

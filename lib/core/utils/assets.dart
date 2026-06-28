@@ -133,4 +133,9 @@ class Assets {
 
   static const String imagesWatermelonForTest =
       "assets/images/watermelonForTest.png";
+
+  static const String imagesApplePay = "assets/images/applePay.png";
+  static const String imagesMasterCard = "assets/images/masterCard.png";
+  static const String imagesPayPal = "assets/images/payPal.png";
+  static const String imagesVisa = "assets/images/visa.png";
 }
