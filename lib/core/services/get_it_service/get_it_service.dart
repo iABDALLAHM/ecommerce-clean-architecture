@@ -41,7 +41,7 @@ void setupGetIt() async {
   );
 
   getIt.registerSingleton<UserRepository>(
-    UserRepoImplementation(
+    UserRepositoryImplementation(
       databaseService: getIt.get<DatabaseService>(),
       localDataSource: getIt.get<UserLocalDataSource>(),
     ),

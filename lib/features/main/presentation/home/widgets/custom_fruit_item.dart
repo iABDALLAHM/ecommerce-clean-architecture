@@ -16,7 +16,11 @@ class CustomFruitItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(AppRoutes.itemDetails, extra: productEntity);
+        Map<String, dynamic> data = {
+          "CartCubit": context.read<CartCubit>(),
+          "ProductEntity": productEntity,
+        };
+        context.push(AppRoutes.itemDetails, extra: data);
       },
       child: Container(
         margin: EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),

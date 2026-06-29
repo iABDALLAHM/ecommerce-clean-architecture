@@ -8,13 +8,14 @@ class ShippingItem extends StatelessWidget {
     required this.isSelected,
     required this.title,
     required this.subTitle,
-    required this.price,
+    this.price = 0,
     required this.onPressed,
   });
+  
   final bool isSelected;
   final String title, subTitle;
-  final int? price;
-  final Function() onPressed;
+  final int price;
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +27,7 @@ class ShippingItem extends StatelessWidget {
         color: const Color.fromARGB(56, 158, 158, 158),
       ),
       child: ListTile(
-        trailing: price == null || price == 0
+        trailing: price == 0
             ? Text(
                 "مجاني",
                 style: AppStyles.textStyle13Bold.copyWith(

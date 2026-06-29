@@ -1,5 +1,4 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/function/change_button_text.dart';
@@ -88,7 +87,6 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
       duration: Duration(milliseconds: 300),
       curve: Curves.easeIn,
     );
-    showSnackBar(context, message: "املا بيانات التوصيل");
   }
 
   void handlePaymentSection(BuildContext context) {

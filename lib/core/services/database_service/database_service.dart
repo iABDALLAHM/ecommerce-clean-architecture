@@ -50,4 +50,10 @@ abstract class DatabaseService {
   });
 
   Future<dynamic> getData({required String path});
+
+  Future<void> updateDate({
+    required Map<String, dynamic> data,
+    required String path,
+    required String documentId,
+  });
 }

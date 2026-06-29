@@ -1,3 +1,4 @@
+import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/data/repositories/notification_repository/notification_repository.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/add_favorite_product_cubit/add_favorite_product_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/data/repositories/products_repository/products_repository.dart';
@@ -23,6 +24,8 @@ class MainViewMultiBlocProvider extends StatelessWidget {
           ),
           child: child,
         ),
+
+        BlocProvider(create: (context) => CartCubit()),
 
         BlocProvider(
           create: (context) =>

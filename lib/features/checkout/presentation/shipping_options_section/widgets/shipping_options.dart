@@ -5,15 +5,8 @@ import 'package:ecommerce_clean_architecture/features/checkout/presentation/ship
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ShippingOptions extends StatefulWidget {
+class ShippingOptions extends StatelessWidget {
   const ShippingOptions({super.key});
-
-  @override
-  State<ShippingOptions> createState() => _ShippingOptionsState();
-}
-
-class _ShippingOptionsState extends State<ShippingOptions> {
-  int isSelected = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -24,19 +17,16 @@ class _ShippingOptionsState extends State<ShippingOptions> {
         .round()
         .toInt();
 
-    var payWith = context.read<OrderEntity>().payWith;
+    var order = context.watch<OrderEntity>();
 
     return Column(
       children: [
         ShippingItem(
           onPressed: () {
-            setState(() {
-              isSelected = 0;
-              payWith = true;
-            });
-            log("The Value of payWith: ${payWith.toString()}");
+            order.payWith = true;
+            log("The Value of payWith: ${order.payWith.toString()}");
           },
-          isSelected: isSelected == 0 ? true : false,
+          isSelected: order.payWith == true ? true : false,
           title: "الدفع عند الاستلام",
           subTitle: "التسليم من المكان",
           price: totalPrice + 40,
@@ -44,16 +34,12 @@ class _ShippingOptionsState extends State<ShippingOptions> {
         const SizedBox(height: 8),
         ShippingItem(
           onPressed: () {
-            setState(() {
-              isSelected = 1;
-              payWith = false;
-            });
-            log("The Value of payWith: ${payWith.toString()}");
+            order.payWith = false;
+            log("The Value of payWith: ${order.payWith.toString()}");
           },
-          isSelected: isSelected == 1 ? true : false,
+          isSelected: order.payWith == false ? true : false,
           title: "اشتري الان وادفع لاحقا",
           subTitle: "يرجي تحديد طريقه الدفع",
-          price: totalPrice,
         ),
       ],
     );

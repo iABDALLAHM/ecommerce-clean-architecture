@@ -3,7 +3,6 @@ import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart'
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/custom_password_field.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';

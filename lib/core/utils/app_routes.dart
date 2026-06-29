@@ -2,21 +2,20 @@ import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_entity/cart_entity.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/widgets/cart_body.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
-import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/fruit_item_details_view.dart';
-import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
+import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/widgets/fruit_item_details_wrapper.dart';
 import 'package:ecommerce_clean_architecture/features/main/main.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/best_selling/widgets/best_selling_body.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/home_body.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/widgets/search_body.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/onboarding.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/products_body.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/profile_body.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/about_us_body.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/add_new_wallet_method_body.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/favorite_body.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/orders_body.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/private_profile_body.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/widgets/wallet_body.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/profile_view.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/user_profile/widgets/user_profile.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/about_us_body/widgets/about_us_body.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/add_new_wallet_method/widgets/add_new_wallet_method_body.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/favorite_products/views/favorite_view.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/widgets/my_orders.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/widgets/wallet_body.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/review_and_rating_wrapper.dart';
 import 'package:ecommerce_clean_architecture/features/splash/splash.dart';
 import 'package:go_router/go_router.dart';
@@ -38,7 +37,7 @@ class AppRoutes {
   static const String cart = "/cart";
   static const String reviewAndRating = "/reviewAndRating";
   static const String profile = "/profile";
-  static const String privateProfile = "/privateProfile";
+  static const String userProfile = "/userProfile";
   static const String myOrders = "/myOrders";
   static const String myPayments = "/myPayments";
   static const String addNewPayment = "/addNewPayment";
@@ -80,16 +79,13 @@ class AppRoutes {
 
           GoRoute(
             path: profile,
-            builder: (context, state) => ProfileBody(),
+            builder: (context, state) => ProfileView(),
             routes: [
               GoRoute(
-                path: privateProfile,
-                builder: (context, state) => PrivateProfileBody(),
+                path: userProfile,
+                builder: (context, state) => UserProfile(),
               ),
-              GoRoute(
-                path: myOrders,
-                builder: (context, state) => OrdersBody(),
-              ),
+              GoRoute(path: myOrders, builder: (context, state) => MyOrders()),
               GoRoute(
                 path: myPayments,
                 builder: (context, state) => WalletBody(),
@@ -103,7 +99,7 @@ class AppRoutes {
 
               GoRoute(
                 path: favorite,
-                builder: (context, state) => FavoriteBody(),
+                builder: (context, state) => FavoriteView(),
               ),
 
               GoRoute(path: about, builder: (context, state) => AboutUsBody()),
@@ -151,8 +147,8 @@ class AppRoutes {
       GoRoute(
         path: itemDetails,
         builder: (context, state) {
-          final productEntity = state.extra as ProductEntity;
-          return FruitItemDetailsView(productEntity: productEntity);
+          Map<String, dynamic> data = state.extra as Map<String, dynamic>;
+          return FruitItemDetailsWrapper(data: data);
         },
       ),
 

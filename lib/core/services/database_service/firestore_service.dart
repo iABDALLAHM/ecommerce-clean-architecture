@@ -174,4 +174,19 @@ class FirestoreService implements DatabaseService {
       );
     }
   }
+
+  @override
+  Future<void> updateDate({
+    required Map<String, dynamic> data,
+    required String path,
+    required String documentId,
+  }) async {
+    try {
+      await firestore.collection(path).doc(documentId).update(data);
+    } catch (e) {
+      throw CustomException(
+        exceptionMeassge: "حدث خطأ ما اثناء تحديث البيانات",
+      );
+    }
+  }
 }

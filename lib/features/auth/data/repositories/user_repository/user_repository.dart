@@ -5,4 +5,7 @@ import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 abstract class UserRepository {
   Future<Either<Failure, void>> addUserData({required UserEntity userEntity});
   Future<Either<Failure, UserEntity>> getUserData({required String uId});
+  Future<Either<Failure, void>> updateUserData({
+    required UserEntity userEntity,
+  });
 }

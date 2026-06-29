@@ -1,8 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
-import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/cubits/get_image_cubit/get_image_cubit.dart';
 import 'package:ecommerce_clean_architecture/firebase_options.dart';
 import 'package:ecommerce_clean_architecture/generated/l10n.dart';
 import 'package:ecommerce_clean_architecture/simple_bloc_observer.dart';
@@ -26,27 +24,21 @@ class ECommerceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => GetImageCubit()),
-        BlocProvider(create: (context) => CartCubit()),
+    return MaterialApp.router(
+      routerConfig: AppRoutes.router,
+      localizationsDelegates: [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
-      child: MaterialApp.router(
-        routerConfig: AppRoutes.router,
-        localizationsDelegates: [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
-        locale: const Locale("ar"),
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          scaffoldBackgroundColor: Color(0xffFFFFFF),
-          appBarTheme: AppBarTheme(backgroundColor: Color(0xffFFFFFF)),
-          fontFamily: kFontFamily,
-        ),
+      supportedLocales: S.delegate.supportedLocales,
+      locale: const Locale("ar"),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Color(0xffFFFFFF),
+        appBarTheme: AppBarTheme(backgroundColor: Color(0xffFFFFFF)),
+        fontFamily: kFontFamily,
       ),
     );
   }

@@ -6,7 +6,6 @@ import 'package:ecommerce_clean_architecture/features/checkout/presentation/core
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/widgets/check_out_view_bloc_provider.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/widgets/check_out_view_body.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class CheckOutView extends StatefulWidget {
   const CheckOutView({super.key, required this.cartEntity});
@@ -17,7 +16,6 @@ class CheckOutView extends StatefulWidget {
 }
 
 class _CheckOutViewState extends State<CheckOutView> {
-
   int currentStep = 0;
   late OrderEntity orderEntity;
 
@@ -36,15 +34,12 @@ class _CheckOutViewState extends State<CheckOutView> {
     return CheckOutViewBlocProvider(
       child: Scaffold(
         appBar: buildCheckOutAppBar(context, currentStep: currentStep),
-        body: Provider.value(
-          value: orderEntity,
-          child: CheckOutViewBody(
-            onChange: (value) {
-              setState(() {
-                currentStep = value;
-              });
-            },
-          ),
+        body: CheckOutViewBody(
+          onChange: (value) {
+            setState(() {
+              currentStep = value;
+            });
+          },
         ),
       ),
     );
