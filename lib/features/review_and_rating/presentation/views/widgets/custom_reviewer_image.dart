@@ -17,10 +17,11 @@ class CustomReviewerImage extends StatelessWidget {
         CircleAvatar(
           backgroundColor: Colors.transparent,
           radius: 20,
-          child: CircleAvatar(
-            backgroundColor: Colors.transparent,
-            radius: 15,
+          child: ClipOval(
             child: Image.network(
+              fit: BoxFit.cover,
+              width: 50,
+              height: 50,
               reviewerImageUrl,
               errorBuilder: (context, error, stackTrace) {
                 return Icon(Icons.person);

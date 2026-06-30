@@ -10,10 +10,11 @@ class CustomHomeProfileImage extends StatelessWidget {
     return CircleAvatar(
       backgroundColor: AppColors.lightPrimaryColor,
       radius: 24,
-      child: CircleAvatar(
-        radius: 17,
-        backgroundColor: Colors.transparent,
+      child: ClipOval(
         child: Image.network(
+          width: 40,
+          height: 40,
+          fit: BoxFit.cover,
           getUserData().userImage,
           errorBuilder: (context, error, stackTrace) {
             return Icon(Icons.person);

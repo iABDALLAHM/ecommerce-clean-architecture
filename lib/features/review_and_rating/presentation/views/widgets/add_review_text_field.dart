@@ -40,10 +40,11 @@ class AddReviewTextField extends StatelessWidget {
           child: CircleAvatar(
             backgroundColor: AppColors.lightsecondryColor,
             radius: 15,
-            child: CircleAvatar(
-              radius: 10,
-              backgroundColor: Colors.transparent,
+            child: ClipOval(
               child: Image.network(
+                width: 30,
+                fit: BoxFit.cover,
+                height: 30,
                 getUserData().userImage,
                 errorBuilder: (context, error, stackTrace) {
                   return Icon(Icons.person);

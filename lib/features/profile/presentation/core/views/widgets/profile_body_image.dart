@@ -12,7 +12,7 @@ class ProfileBodyImage extends StatelessWidget {
       children: [
         CircleAvatar(
           backgroundColor: Colors.white,
-          radius: 30,
+          radius: 35,
           backgroundImage: NetworkImage(getUserData().userImage),
         ),
         Positioned(
