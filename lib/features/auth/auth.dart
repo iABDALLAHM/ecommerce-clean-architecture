@@ -1,5 +1,5 @@
-export 'package:ecommerce_clean_architecture/features/auth/data/repositories/auth_repository/auth_repository.dart';
-export 'package:ecommerce_clean_architecture/features/auth/data/repositories/user_repository/user_repository.dart';
+export 'package:ecommerce_clean_architecture/features/auth/domain/repositories/auth_repository/auth_repository.dart';
+export 'package:ecommerce_clean_architecture/features/auth/domain/repositories/user_repository/user_repository.dart';
 
 export 'package:ecommerce_clean_architecture/features/auth/data/repositories/auth_repository/auth_repository_implementation.dart';
 export 'package:ecommerce_clean_architecture/features/auth/data/repositories/user_repository/user_repository_implementation.dart';

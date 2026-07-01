@@ -6,7 +6,7 @@ import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service/database_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/data/models/order_model.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/data/repositories/order_repository/orders_repository.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/repositories/order_repository/orders_repository.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
 
 class OrderRepositoryImplementation implements OrdersRepository {

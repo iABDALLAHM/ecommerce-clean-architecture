@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/update_user_image_cubit/update_user_image_states.dart';
-import 'package:ecommerce_clean_architecture/features/main/data/repositories/images_repository/images_repository.dart';
+import 'package:ecommerce_clean_architecture/features/main/domain/repositories/images_repository/images_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UpdateUserImageCubit extends Cubit<UpdateUserImageStates> {

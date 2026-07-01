@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
-import 'package:ecommerce_clean_architecture/features/main/data/repositories/images_repository/images_repository.dart';
+import 'package:ecommerce_clean_architecture/features/main/domain/repositories/images_repository/images_repository.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/get_image_cubit/get_image_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/sign_out_cubit/sign_out_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/update_user_image_cubit/update_user_image_cubit.dart';

@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/cubits/get_notifications_cubit/get_notifications_states.dart';
-import 'package:ecommerce_clean_architecture/features/main/data/repositories/notification_repository/notification_repository.dart';
+import 'package:ecommerce_clean_architecture/features/main/domain/repositories/notification_repository/notification_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GetNotificationsCubit extends Cubit<GetNotificationsStates> {

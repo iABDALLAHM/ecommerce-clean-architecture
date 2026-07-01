@@ -11,6 +11,6 @@ export 'package:ecommerce_clean_architecture/features/main/presentation/notifica
 
 export 'package:ecommerce_clean_architecture/features/main/presentation/notification/cubits/get_notifications_cubit/get_notifications_states.dart';
 
-export 'package:ecommerce_clean_architecture/features/main/data/repositories/notification_repository/notification_repository.dart';
+export 'package:ecommerce_clean_architecture/features/main/domain/repositories/notification_repository/notification_repository.dart';
 
 export 'package:ecommerce_clean_architecture/features/main/domain/entities/notification_entity/notification_entity.dart';

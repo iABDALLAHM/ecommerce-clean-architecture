@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/features/main/data/repositories/products_repository/products_repository.dart';
+import 'package:ecommerce_clean_architecture/features/main/domain/repositories/products_repository/products_repository.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

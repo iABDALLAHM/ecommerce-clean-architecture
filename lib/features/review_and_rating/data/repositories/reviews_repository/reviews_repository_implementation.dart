@@ -5,7 +5,7 @@ import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service/database_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/data/models/review_model/product_review_model.dart';
-import 'package:ecommerce_clean_architecture/features/review_and_rating/data/repositories/reviews_repository.dart';
+import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/repositories/reviews_repository/reviews_repository.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/review_entity/product_review_entity.dart';
 
 class ReviewsRepositoryImplementation implements ReviewsRepository {

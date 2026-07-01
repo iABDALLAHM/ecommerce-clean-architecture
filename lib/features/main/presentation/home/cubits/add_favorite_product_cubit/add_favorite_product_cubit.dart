@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/features/main/data/repositories/products_repository/products_repository.dart';
+import 'package:ecommerce_clean_architecture/features/main/domain/repositories/products_repository/products_repository.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/add_favorite_product_cubit/add_favorite_product_states.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

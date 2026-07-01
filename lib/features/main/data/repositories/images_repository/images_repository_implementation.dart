@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
-import 'package:ecommerce_clean_architecture/features/main/data/repositories/images_repository/images_repository.dart';
+import 'package:ecommerce_clean_architecture/features/main/domain/repositories/images_repository/images_repository.dart';
 import 'package:ecommerce_clean_architecture/core/services/storage_service/storage_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
 
