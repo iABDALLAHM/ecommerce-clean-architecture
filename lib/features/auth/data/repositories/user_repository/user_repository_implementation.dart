@@ -9,11 +9,9 @@ import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 
 class UserRepositoryImplementation implements UserRepository {
   final DatabaseService databaseService;
-  final UserLocalDataSource localDataSource;
 
   UserRepositoryImplementation({
     required this.databaseService,
-    required this.localDataSource,
   });
 
   @override
@@ -44,7 +42,6 @@ class UserRepositoryImplementation implements UserRepository {
       );
 
       UserEntity user = UserModel.fromJson(userMap).toEntity();
-      localDataSource.saveUserData(userEntity: user);
       return Right(user);
     } on CustomException catch (e) {
       log(

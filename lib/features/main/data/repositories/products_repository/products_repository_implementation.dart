@@ -43,9 +43,11 @@ class ProductsRepositoryImplementation implements ProductsRepository {
         path: BackendEndPoints.addUserData,
         subCollection: BackendEndPoints.addFavoriteProducts,
         data: ProductModel.fromEntity(productEntity: product).toMap(),
-        documentId: await getIt.get<SecureStorageService>().getData(
-          key: SecureStorageService.keyUserId,
-        ),
+        documentId:
+            await getIt.get<SecureStorageService>().getData(
+              key: SecureStorageService.keyUserId,
+            ) ??
+            "",
       );
       return Right(null);
     } on CustomException catch (e) {
@@ -62,9 +64,11 @@ class ProductsRepositoryImplementation implements ProductsRepository {
       var result = await databaseService.getNestedData(
         path: BackendEndPoints.addUserData,
         subCollection: BackendEndPoints.getFavoriteProducts,
-        documentId: await getIt.get<SecureStorageService>().getData(
-          key: SecureStorageService.keyUserId,
-        ),
+        documentId:
+            await getIt.get<SecureStorageService>().getData(
+              key: SecureStorageService.keyUserId,
+            ) ??
+            "",
       );
       List<ProductEntity> favProducts = (result as List)
           .map((ele) => ProductModel.fromJson(ele).toEntity())
@@ -99,7 +103,6 @@ class ProductsRepositoryImplementation implements ProductsRepository {
       }
 
       return Right(productsList);
-
     } on CustomException catch (e) {
       log(
         "this error happend in ProductsRepoImplementation in searchProducts method ${e.toString()}",
@@ -117,9 +120,11 @@ class ProductsRepositoryImplementation implements ProductsRepository {
         path: BackendEndPoints.addUserData,
         subCollection: BackendEndPoints.addFavoriteProducts,
         data: ProductModel.fromEntity(productEntity: product).toMap(),
-        documentId: await getIt.get<SecureStorageService>().getData(
-          key: SecureStorageService.keyUserId,
-        ),
+        documentId:
+            await getIt.get<SecureStorageService>().getData(
+              key: SecureStorageService.keyUserId,
+            ) ??
+            "",
       );
       return Right(null);
     } on CustomException catch (e) {

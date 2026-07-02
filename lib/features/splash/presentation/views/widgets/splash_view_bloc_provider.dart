@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/local_database_service/shared_prefs_service.dart';
+import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/splash/presentation/cubits/splash_cubit/splash_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,8 +11,10 @@ class SplashViewBlocProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          SplashCubit(sharedPrefsService: getIt.get<SharedPrefService>()),
+      create: (context) => SplashCubit(
+        sharedPrefsService: getIt.get<SharedPrefService>(),
+        authRepository: getIt.get<AuthRepository>(),
+      ),
       child: child,
     );
   }

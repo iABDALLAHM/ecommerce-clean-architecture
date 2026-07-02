@@ -12,20 +12,4 @@ class SharedPrefService {
   bool getBool({required String key}) {
     return sharedPreferences.getBool(key) ?? false;
   }
-
-  Future<void> saveData({required String key, required String value}) async {
-    await sharedPreferences.setString(key, value);
-  }
-
-  String? getData({required String key}) {
-    return sharedPreferences.getString(key);
-  }
-
-  Future<void> removeData({required String key}) async {
-    await sharedPreferences.remove(key);
-  }
-
-  Future<void> removeBool({required String key}) async {
-    await sharedPreferences.remove(key);
-  }
 }

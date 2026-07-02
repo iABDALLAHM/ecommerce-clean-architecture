@@ -8,12 +8,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepositoryImplementation implements AuthRepository {
   final AuthService authService;
-  final UserLocalDataSource userLocalDataSource;
 
-  AuthRepositoryImplementation({
-    required this.authService,
-    required this.userLocalDataSource,
-  });
+  AuthRepositoryImplementation({required this.authService});
 
   @override
   Future<Either<Failure, String>> createNewAccount({
@@ -39,8 +35,7 @@ class AuthRepositoryImplementation implements AuthRepository {
     required String password,
   }) async {
     try {
-      var user =
-          await authService.signIn(email: email, password: password) as User;
+      var user = await authService.signIn(email: email, password: password);
 
       return Right(user.uid);
     } on CustomException catch (e) {
@@ -53,7 +48,6 @@ class AuthRepositoryImplementation implements AuthRepository {
   Future<Either<Failure, void>> signOut() async {
     try {
       await authService.signOut();
-      await userLocalDataSource.removeAllUserData();
       return Right(null);
     } on CustomException catch (e) {
       log(
@@ -89,6 +83,16 @@ class AuthRepositoryImplementation implements AuthRepository {
       log(
         "error happend in AuthRepoImplementation in deleteCurrentUser the error : $e",
       );
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> getCurrentUserId() async {
+    try {
+      var result = await authService.getCurrentUserId();
+      return Right(result);
+    } on CustomException catch (e) {
       return Left(ServerFailure(message: e.exceptionMeassge));
     }
   }

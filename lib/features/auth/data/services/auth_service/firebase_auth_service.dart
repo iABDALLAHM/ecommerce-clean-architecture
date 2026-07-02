@@ -142,4 +142,19 @@ class FirebaseAuthService implements AuthService {
       );
     }
   }
+
+  @override
+  Future<String> getCurrentUserId() async {
+    try {
+      var userId = firebaseAuth.currentUser!.uid;
+      return userId;
+    } catch (e) {
+      log(
+        "error happend in FirebaseAuthService in getCurrentUserId method please check it, the error: $e",
+      );
+      throw CustomException(
+        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+      );
+    }
+  }
 }

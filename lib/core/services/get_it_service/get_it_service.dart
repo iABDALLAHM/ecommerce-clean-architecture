@@ -41,15 +41,8 @@ void setupGetIt() async {
     ),
   );
 
-  getIt.registerSingleton<UserLocalDataSource>(
-    UserLocalDataSourceImplementation(),
-  );
-
   getIt.registerSingleton<UserRepository>(
-    UserRepositoryImplementation(
-      databaseService: getIt.get<DatabaseService>(),
-      localDataSource: getIt.get<UserLocalDataSource>(),
-    ),
+    UserRepositoryImplementation(databaseService: getIt.get<DatabaseService>()),
   );
 
   getIt.registerSingleton<AuthService>(
@@ -77,9 +70,6 @@ void setupGetIt() async {
     ),
   );
   getIt.registerSingleton<AuthRepository>(
-    AuthRepositoryImplementation(
-      authService: getIt.get<AuthService>(),
-      userLocalDataSource: getIt.get<UserLocalDataSource>(),
-    ),
+    AuthRepositoryImplementation(authService: getIt.get<AuthService>()),
   );
 }
