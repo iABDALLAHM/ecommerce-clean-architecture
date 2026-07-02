@@ -7,6 +7,7 @@ class CustomReviewerImage extends StatelessWidget {
     required this.reviewerImageUrl,
     required this.reviewerRating,
   });
+  
   final String reviewerImageUrl;
   final double reviewerRating;
   @override

@@ -41,7 +41,7 @@ class _ReviewAndRatingViewBodyState extends State<ReviewAndRatingViewBody> {
                   builder: (context, state) {
                     if (state is SuccessGetReviewsState) {
                       return Text(
-                        "${state.productReviewsList.length} مراجعة",
+                        "${state.productReviewWithUserEntity.length} مراجعة",
                         style: AppStyles.textStyle13Bold,
                       );
                     } else if (state is LoadingGetReviewsState) {

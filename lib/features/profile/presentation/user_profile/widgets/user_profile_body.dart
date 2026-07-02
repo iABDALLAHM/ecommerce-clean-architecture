@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
+import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
+import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_state.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
@@ -47,9 +48,34 @@ class _UserProfileBodyState extends State<UserProfileBody> {
                       style: AppStyles.textStyle13SemiBold,
                     ),
                     const SizedBox(height: 8),
-                    CustomEditDataTextField(hintText: getUserData().name),
-                    const SizedBox(height: 8),
-                    CustomEditDataTextField(hintText: getUserData().email),
+                    BlocBuilder<GetUserDataCubit, GetUserDataState>(
+                      builder: (context, state) {
+                        if (state is SuccessGetUserDataState) {
+                          return Column(
+                            children: [
+                              CustomEditDataTextField(
+                                hintText: state.userEntity.name,
+                              ),
+                              const SizedBox(height: 8),
+                              CustomEditDataTextField(
+                                hintText: state.userEntity.email,
+                              ),
+                            ],
+                          );
+                        }
+                        return Column(
+                          children: [
+                            CustomEditDataTextField(
+                              hintText: "جاري تحميل البيانات",
+                            ),
+                            const SizedBox(height: 8),
+                            CustomEditDataTextField(
+                              hintText: "جاري تحميل البيانات",
+                            ),
+                          ],
+                        );
+                      },
+                    ),
                     const SizedBox(height: 16),
                     Text(
                       "تغيير كلمة المرور",

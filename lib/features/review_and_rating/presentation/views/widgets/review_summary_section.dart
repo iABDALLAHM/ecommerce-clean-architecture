@@ -32,14 +32,14 @@ class ReviewsSummarySection extends StatelessWidget {
                             Icon(Icons.star, color: Colors.amber),
                             const SizedBox(width: 8),
                             Text(
-                              "${calculateAverageRating(reviews: state.productReviewsList)}",
+                              "${calculateAverageRating(reviews: state.productReviewWithUserEntity)}",
                               style: AppStyles.textStyle13Bold,
                             ),
                           ],
                         ),
                         const SizedBox(height: 22),
                         Text(
-                          "${calculatePercentage(reviews: state.productReviewsList)}%",
+                          "${calculatePercentage(reviews: state.productReviewWithUserEntity)}%",
                           style: AppStyles.textStyle16Regular,
                         ),
                         const SizedBox(height: 22),

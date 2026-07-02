@@ -1,13 +1,13 @@
-import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/review_entity/product_review_entity.dart';
+import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/entities/product_review_with_user/product_review_with_user_entity.dart';
 
 abstract class GetReviewsState {}
 
 final class InitialGetReviewsState extends GetReviewsState {}
 
 final class SuccessGetReviewsState extends GetReviewsState {
-  final List<ProductReviewEntity> productReviewsList;
+  final List<ProductReviewWithUserEntity> productReviewWithUserEntity;
 
-  SuccessGetReviewsState({required this.productReviewsList});
+  SuccessGetReviewsState({required this.productReviewWithUserEntity});
 }
 
 final class EmptyGetReviewsState extends GetReviewsState {}

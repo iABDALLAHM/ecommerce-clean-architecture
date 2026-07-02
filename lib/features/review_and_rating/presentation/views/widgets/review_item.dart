@@ -1,15 +1,15 @@
-import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/review_entity/product_review_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/entities/product_review_with_user/product_review_with_user_entity.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/custom_reviewer_image.dart';
 import 'package:flutter/material.dart';
 
 class ReviewItem extends StatelessWidget {
   const ReviewItem({
     super.key,
-    required ProductReviewEntity productReviewEntity,
-  }) : _productReviewEntity = productReviewEntity;
+    required ProductReviewWithUserEntity productReviewWithUserEntity,
+  }) : _productReviewWithUserEntity = productReviewWithUserEntity;
 
-  final ProductReviewEntity _productReviewEntity;
+  final ProductReviewWithUserEntity _productReviewWithUserEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +25,11 @@ class ReviewItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    _productReviewEntity.reviewerName,
+                    _productReviewWithUserEntity.userEntity.name,
                     style: AppStyles.textStyle16SemiBold,
                   ),
                   Text(
-                    "${_productReviewEntity.reviewDate.day}/${_productReviewEntity.reviewDate.month}/${_productReviewEntity.reviewDate.year}",
+                    "${_productReviewWithUserEntity.productReviewEntity.reviewDate.day}/${_productReviewWithUserEntity.productReviewEntity.reviewDate.month}/${_productReviewWithUserEntity.productReviewEntity.reviewDate.year}",
                     style: AppStyles.textStyle13Regular.copyWith(
                       color: Color(0xff949D9E),
                     ),
@@ -38,14 +38,17 @@ class ReviewItem extends StatelessWidget {
               ),
               const SizedBox(width: 15),
               CustomReviewerImage(
-                reviewerRating: _productReviewEntity.reviewerRating,
-                reviewerImageUrl: _productReviewEntity.reviewerImage,
+                reviewerRating: _productReviewWithUserEntity
+                    .productReviewEntity
+                    .reviewerRating,
+                reviewerImageUrl:
+                    _productReviewWithUserEntity.userEntity.userImage,
               ),
             ],
           ),
           const SizedBox(height: 10),
           Text(
-            _productReviewEntity.reviewerMessage,
+            _productReviewWithUserEntity.productReviewEntity.reviewerMessage,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: AppStyles.textStyle13Regular.copyWith(

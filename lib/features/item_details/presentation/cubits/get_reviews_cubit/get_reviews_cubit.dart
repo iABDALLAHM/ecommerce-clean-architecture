@@ -11,15 +11,15 @@ class GetReviewsCubit extends Cubit<GetReviewsState> {
 
   Future getReviews({required String productCode}) async {
     emit(LoadingGetReviewsState());
-    var result = await _reviewsRepository.getAllReviews(
+    var result = await _reviewsRepository.getAllReviewsForSpecificProduct(
       productCode: productCode,
     );
 
     result.fold(
       (failure) => emit(FailureGetReviewsState(errorMessage: failure.message)),
-      (productReviewsList) {
-        if (productReviewsList.isNotEmpty) {
-          emit(SuccessGetReviewsState(productReviewsList: productReviewsList));
+      (result) {
+        if (result.isNotEmpty) {
+          emit(SuccessGetReviewsState(productReviewWithUserEntity: result));
         } else {
           emit(EmptyGetReviewsState());
         }

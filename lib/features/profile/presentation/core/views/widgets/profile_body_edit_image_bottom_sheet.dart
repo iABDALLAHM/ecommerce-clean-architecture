@@ -1,4 +1,5 @@
-import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
+import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
+import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_state.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_progress_widget.dart';
@@ -33,12 +34,22 @@ class ProfileBodyEditImageBottomSheet extends StatelessWidget {
                       SizedBox(
                         height: 54,
                         width: MediaQuery.sizeOf(context).width * .6,
-                        child: CustomButton(
-                          text: "تعديل الصورة",
-                          onPressed: () {
-                            context
-                                .read<UpdateUserImageCubit>()
-                                .updateUserImage(image: newImage);
+                        child: BlocBuilder<GetUserDataCubit, GetUserDataState>(
+                          builder: (context, state) {
+                            if (state is SuccessGetUserDataState) {
+                              return CustomButton(
+                                text: "تعديل الصورة",
+                                onPressed: () {
+                                  context
+                                      .read<UpdateUserImageCubit>()
+                                      .updateUserImage(
+                                        image: newImage,
+                                        userUpdatedData: state.userEntity,
+                                      );
+                                },
+                              );
+                            }
+                            return SizedBox();
                           },
                         ),
                       ),
@@ -66,10 +77,21 @@ class ProfileBodyEditImageBottomSheet extends StatelessWidget {
                           "الصورة الحالية :",
                           style: AppStyles.textStyle13Bold,
                         ),
-                        Image.network(
-                          getUserData().userImage,
-                          width: 100,
-                          height: 100,
+                        BlocBuilder<GetUserDataCubit, GetUserDataState>(
+                          builder: (context, state) {
+                            if (state is SuccessGetUserDataState) {
+                              return Image.network(
+                                state.userEntity.userImage,
+                                width: 100,
+                                height: 100,
+                              );
+                            }
+                            return SizedBox(
+                              width: 100,
+                              height: 100,
+                              child: Icon(Icons.person),
+                            );
+                          },
                         ),
                       ],
                     ),
@@ -80,12 +102,22 @@ class ProfileBodyEditImageBottomSheet extends StatelessWidget {
                   SizedBox(
                     height: 54,
                     width: MediaQuery.sizeOf(context).width * .6,
-                    child: CustomButton(
-                      text: "تعديل الصورة",
-                      onPressed: () {
-                        context.read<UpdateUserImageCubit>().updateUserImage(
-                          image: newImage,
-                        );
+                    child: BlocBuilder<GetUserDataCubit, GetUserDataState>(
+                      builder: (context, state) {
+                        if (state is SuccessGetUserDataState) {
+                          return CustomButton(
+                            text: "تعديل الصورة",
+                            onPressed: () {
+                              context
+                                  .read<UpdateUserImageCubit>()
+                                  .updateUserImage(
+                                    image: newImage,
+                                    userUpdatedData: state.userEntity,
+                                  );
+                            },
+                          );
+                        }
+                        return SizedBox();
                       },
                     ),
                   ),

@@ -58,15 +58,15 @@ class ProductInfo extends StatelessWidget {
                   const SizedBox(width: 9),
                   Text(
                     calculateAverageRating(
-                      reviews: state.productReviewsList,
+                      reviews: state.productReviewWithUserEntity,
                     ).toString(),
                     style: AppStyles.textStyle13SemiBold,
                   ),
                   const SizedBox(width: 9),
                   Text(
-                    state.productReviewsList.length > 30
+                     state.productReviewWithUserEntity.length > 30
                         ? "(+30)"
-                        : "(${state.productReviewsList.length})",
+                        : "(${ state.productReviewWithUserEntity.length})",
                     style: AppStyles.textStyle13Regular.copyWith(
                       color: Color(0xff9796A1),
                     ),
@@ -183,9 +183,9 @@ class ProductInfo extends StatelessWidget {
                     child: InfoDetailsBox(
                       icon: Assets.imagesStarIcon,
                       title: calculateAverageRating(
-                        reviews: state.productReviewsList,
+                        reviews:  state.productReviewWithUserEntity,
                       ).toString(),
-                      titleDetails: "(${state.productReviewsList.length}) ",
+                      titleDetails: "(${ state.productReviewWithUserEntity.length}) ",
                       subTitle: "Reviews",
                     ),
                   );

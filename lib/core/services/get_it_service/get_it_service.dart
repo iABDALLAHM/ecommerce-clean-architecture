@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/secure_storage_service.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/data/repositories/order_repository/order_repository_implementation.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/repositories/order_repository/orders_repository.dart';
@@ -16,6 +17,7 @@ import 'package:ecommerce_clean_architecture/core/services/storage_service/supab
 import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/repositories/reviews_repository/reviews_repository.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/data/repositories/reviews_repository/reviews_repository_implementation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -24,6 +26,9 @@ GetIt getIt = GetIt.instance;
 void setupGetIt() async {
   getIt.registerSingleton<SharedPrefService>(
     SharedPrefService(sharedPreferences: await SharedPreferences.getInstance()),
+  );
+  getIt.registerSingleton<SecureStorageService>(
+    SecureStorageService(storage: FlutterSecureStorage()),
   );
 
   getIt.registerSingleton<DatabaseService>(

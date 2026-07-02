@@ -2,14 +2,18 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
+import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service/database_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
+import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/data/models/review_model/product_review_model.dart';
+import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/entities/product_review_with_user/product_review_with_user_entity.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/repositories/reviews_repository/reviews_repository.dart';
-import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/review_entity/product_review_entity.dart';
+import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/entities/product_review_entity/product_review_entity.dart';
 
 class ReviewsRepositoryImplementation implements ReviewsRepository {
   final DatabaseService _databaseService;
+
   ReviewsRepositoryImplementation({required DatabaseService databaseService})
     : _databaseService = databaseService;
 
@@ -18,10 +22,8 @@ class ReviewsRepositoryImplementation implements ReviewsRepository {
     required ProductReviewEntity productReviewEntity,
   }) async {
     try {
-      await _databaseService.addSubCollectionData(
-        documentId: productReviewEntity.productCode,
-        path: BackendEndPoints.getProducts,
-        subCollection: BackendEndPoints.addReviews,
+      await _databaseService.addData(
+        path: BackendEndPoints.addReviews,
         data: ProductReviewModel.fromEntity(
           productReviewEntity: productReviewEntity,
         ).toMap(),
@@ -33,23 +35,42 @@ class ReviewsRepositoryImplementation implements ReviewsRepository {
   }
 
   @override
-  Future<Either<Failure, List<ProductReviewEntity>>> getAllReviews({
-    required String productCode,
-  }) async {
+  Future<Either<Failure, List<ProductReviewWithUserEntity>>>
+  getAllReviewsForSpecificProduct({required String productCode}) async {
     try {
-      var result = await _databaseService.getNestedData(
-        path: BackendEndPoints.getProducts,
-        documentId: productCode,
-        subCollection: BackendEndPoints.addReviews,
+      var result = await _databaseService.getQueryData(
+        path: BackendEndPoints.addReviews,
+        query: QueryParams(
+          conditions: [
+            QueryCondition(field: "productCode", isEqualTo: productCode),
+          ],
+          orders: [],
+        ),
       );
 
-      List<ProductReviewEntity> productsList = [];
+      List<ProductReviewWithUserEntity> productsWithUsersList = [];
 
-      for (var product in result) {
-        productsList.add(ProductReviewModel.fromJson(product).toEntity());
+      for (var productReview in result) {
+        ProductReviewEntity productReviewEntity = ProductReviewModel.fromJson(
+          productReview,
+        ).toEntity();
+
+        var userModel = await _databaseService.getSingleData(
+          path: BackendEndPoints.getUserData,
+          documentId: productReviewEntity.reviewerUid,
+        );
+
+        UserEntity user = UserModel.fromJson(userModel).toEntity();
+
+        productsWithUsersList.add(
+          ProductReviewWithUserEntity(
+            productReviewEntity: productReviewEntity,
+            userEntity: user,
+          ),
+        );
       }
 
-      return Right(productsList);
+      return Right(productsWithUsersList);
     } on CustomException catch (e) {
       return Left(ServerFailure(message: e.exceptionMeassge));
     }

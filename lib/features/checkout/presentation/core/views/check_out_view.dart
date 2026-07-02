@@ -1,4 +1,5 @@
-import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
+import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
+import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/secure_storage_service.dart';
 import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_entity/cart_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/shipping_address_entity.dart';
@@ -20,9 +21,11 @@ class _CheckOutViewState extends State<CheckOutView> {
   late OrderEntity orderEntity;
 
   @override
-  void initState() {
+  void initState() async {
     orderEntity = OrderEntity(
-      uId: getUserData().uId,
+      uId: await getIt.get<SecureStorageService>().getData(
+        key: SecureStorageService.keyUserId,
+      ),
       cartEntity: widget.cartEntity,
       shippingAddressEntity: ShippingAddressEntity(),
     );
@@ -45,4 +48,3 @@ class _CheckOutViewState extends State<CheckOutView> {
     );
   }
 }
- 

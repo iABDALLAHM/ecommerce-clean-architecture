@@ -1,31 +1,28 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/review_entity/product_review_entity.dart';
+import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/entities/product_review_entity/product_review_entity.dart';
 
 class ProductReviewModel {
   final String productCode;
+  final String reviewerUid;
   final DateTime reviewDate;
-  final String reviewerName;
-  final String reviewerImage;
   final String reviewerMessage;
   final double reviewerRating;
 
   ProductReviewModel({
     required this.productCode,
     required this.reviewDate,
-    required this.reviewerName,
-    required this.reviewerImage,
     required this.reviewerMessage,
     required this.reviewerRating,
+    required this.reviewerUid,
   });
 
   factory ProductReviewModel.fromJson(Map<String, dynamic> json) {
     return ProductReviewModel(
       productCode: json["productCode"],
       reviewDate: (json["reviewDate"] as Timestamp).toDate(),
-      reviewerName: json["reviewerName"],
-      reviewerImage: json["reviewerImage"],
       reviewerMessage: json["reviewerMessage"],
       reviewerRating: json["reviewerRating"],
+      reviewerUid: json["reviewerUid"],
     );
   }
 
@@ -35,10 +32,9 @@ class ProductReviewModel {
     return ProductReviewModel(
       productCode: productReviewEntity.productCode,
       reviewDate: productReviewEntity.reviewDate,
-      reviewerName: productReviewEntity.reviewerName,
-      reviewerImage: productReviewEntity.reviewerImage,
       reviewerMessage: productReviewEntity.reviewerMessage,
       reviewerRating: productReviewEntity.reviewerRating,
+      reviewerUid: productReviewEntity.reviewerUid,
     );
   }
 
@@ -46,10 +42,9 @@ class ProductReviewModel {
     return {
       "productCode": productCode,
       "reviewDate": reviewDate,
-      "reviewerName": reviewerName,
-      "reviewerImage": reviewerImage,
       "reviewerMessage": reviewerMessage,
       "reviewerRating": reviewerRating,
+      "reviewerUid": reviewerUid,
     };
   }
 
@@ -57,10 +52,9 @@ class ProductReviewModel {
     return ProductReviewEntity(
       productCode: productCode,
       reviewDate: reviewDate,
-      reviewerName: reviewerName,
-      reviewerImage: reviewerImage,
       reviewerMessage: reviewerMessage,
       reviewerRating: reviewerRating,
+      reviewerUid: reviewerUid,
     );
   }
 }

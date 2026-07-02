@@ -1,10 +1,11 @@
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
+import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/secure_storage_service.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
-import 'package:ecommerce_clean_architecture/core/functions/get_user_data.dart';
 import 'package:ecommerce_clean_architecture/features/main/data/models/product_model/product_model.dart';
 import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/repositories/products_repository/products_repository.dart';
@@ -42,7 +43,9 @@ class ProductsRepositoryImplementation implements ProductsRepository {
         path: BackendEndPoints.addUserData,
         subCollection: BackendEndPoints.addFavoriteProducts,
         data: ProductModel.fromEntity(productEntity: product).toMap(),
-        documentId: getUserData().uId,
+        documentId: await getIt.get<SecureStorageService>().getData(
+          key: SecureStorageService.keyUserId,
+        ),
       );
       return Right(null);
     } on CustomException catch (e) {
@@ -59,7 +62,9 @@ class ProductsRepositoryImplementation implements ProductsRepository {
       var result = await databaseService.getNestedData(
         path: BackendEndPoints.addUserData,
         subCollection: BackendEndPoints.getFavoriteProducts,
-        documentId: getUserData().uId,
+        documentId: await getIt.get<SecureStorageService>().getData(
+          key: SecureStorageService.keyUserId,
+        ),
       );
       List<ProductEntity> favProducts = (result as List)
           .map((ele) => ProductModel.fromJson(ele).toEntity())
@@ -78,22 +83,23 @@ class ProductsRepositoryImplementation implements ProductsRepository {
     required String searchName,
   }) async {
     try {
-      var data = await databaseService
-          .getQueryData(
-            path: BackendEndPoints.getProducts,
-            query: QueryParams(
-              conditions: [
-                QueryCondition(field: "productName", isEqualTo: searchName),
-              ],
-              orders: [],
-            ),
-          );
+      var data = await databaseService.getQueryData(
+        path: BackendEndPoints.getProducts,
+        query: QueryParams(
+          conditions: [
+            QueryCondition(field: "productName", isEqualTo: searchName),
+          ],
+          orders: [],
+        ),
+      );
 
       List<ProductEntity> productsList = [];
       for (var productModel in data) {
         productsList.add(ProductModel.fromJson(productModel).toEntity());
       }
+
       return Right(productsList);
+
     } on CustomException catch (e) {
       log(
         "this error happend in ProductsRepoImplementation in searchProducts method ${e.toString()}",
@@ -111,7 +117,9 @@ class ProductsRepositoryImplementation implements ProductsRepository {
         path: BackendEndPoints.addUserData,
         subCollection: BackendEndPoints.addFavoriteProducts,
         data: ProductModel.fromEntity(productEntity: product).toMap(),
-        documentId: getUserData().uId,
+        documentId: await getIt.get<SecureStorageService>().getData(
+          key: SecureStorageService.keyUserId,
+        ),
       );
       return Right(null);
     } on CustomException catch (e) {

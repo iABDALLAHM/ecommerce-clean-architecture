@@ -1,7 +1,7 @@
-import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/review_entity/product_review_entity.dart';
+import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/entities/product_review_with_user/product_review_with_user_entity.dart';
 
 Map<int, double> calculateRatingPercentages({
-  required List<ProductReviewEntity> reviews,
+  required List<ProductReviewWithUserEntity> reviews,
 }) {
   if (reviews.isEmpty) {
     return {1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
@@ -10,7 +10,7 @@ Map<int, double> calculateRatingPercentages({
   final Map<int, int> countMap = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
 
   for (var review in reviews) {
-    int rating = review.reviewerRating.round();
+    int rating = review.productReviewEntity.reviewerRating.round();
     if (rating >= 1 && rating <= 5) {
       countMap[rating] = countMap[rating]! + 1;
     }

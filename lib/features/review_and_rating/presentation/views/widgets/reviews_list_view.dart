@@ -20,12 +20,13 @@ class ReviewsListView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: CustomDivider(),
             ),
-            itemCount: state.productReviewsList.length,
+            itemCount: state.productReviewWithUserEntity.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 10, right: 16, left: 16),
                 child: ReviewItem(
-                  productReviewEntity: state.productReviewsList[index],
+                  productReviewWithUserEntity:
+                      state.productReviewWithUserEntity[index],
                 ),
               );
             },
