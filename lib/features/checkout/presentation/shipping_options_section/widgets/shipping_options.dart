@@ -1,6 +1,4 @@
-import 'dart:developer';
-
-import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/shipping_options_section/widgets/shipping_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,23 +8,25 @@ class ShippingOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var checkOutCubit = context.read<CheckOutCubit>();
+
     var totalPrice = context
-        .read<OrderEntity>()
+        .read<CheckOutCubit>()
+        .orderEntity
         .cartEntity
         .calculateTotalPrice()
         .round()
         .toInt();
 
-    var order = context.watch<OrderEntity>();
+    var orderEntity = context.watch<CheckOutCubit>().orderEntity;
 
     return Column(
       children: [
         ShippingItem(
           onPressed: () {
-            order.payWith = true;
-            log("The Value of payWith: ${order.payWith.toString()}");
+            checkOutCubit.updateShippingOptions(payWith: true);
           },
-          isSelected: order.payWith == true ? true : false,
+          isSelected: orderEntity.payWithCash == true ? true : false,
           title: "الدفع عند الاستلام",
           subTitle: "التسليم من المكان",
           price: totalPrice + 40,
@@ -34,10 +34,9 @@ class ShippingOptions extends StatelessWidget {
         const SizedBox(height: 8),
         ShippingItem(
           onPressed: () {
-            order.payWith = false;
-            log("The Value of payWith: ${order.payWith.toString()}");
+            checkOutCubit.updateShippingOptions(payWith: false);
           },
-          isSelected: order.payWith == false ? true : false,
+          isSelected: orderEntity.payWithCash == false ? true : false,
           title: "اشتري الان وادفع لاحقا",
           subTitle: "يرجي تحديد طريقه الدفع",
         ),

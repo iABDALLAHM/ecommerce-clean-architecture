@@ -12,4 +12,12 @@ class SharedPrefService {
   bool getBool({required String key}) {
     return sharedPreferences.getBool(key) ?? false;
   }
+
+  void saveData({required String key, required String value}) {
+    sharedPreferences.setString(key, value);
+  }
+
+  String getData({required String key}) {
+    return sharedPreferences.getString(key) ?? "";
+  }
 }

@@ -5,6 +5,29 @@ class Assets {
   static const String imagesActiveAccountIcon =
       "assets/images/activeAccountIcon.svg";
 
+  static const String imagesAcceptOrderOff =
+      "assets/images/acceptOrderImage.min.svg";
+  static const String imagesAcceptOrderOn =
+      "assets/images/acceptOrderImage.svg";
+
+  static const String imagesOrderDeliverdOn =
+      "assets/images/orderDelieverdImage.min.svg";
+  static const String imagesOrderDeliverdOff =
+      "assets/images/orderDelieverdImage.svg";
+
+  static const String imagesOutOfDeliveryOn =
+      "assets/images/outOfDeliveryOrderImage.min.svg";
+
+  static const String imagesOpenBoxStatus = "assets/images/openBoxStatus.svg";
+
+  static const String imagesOutOfDeliveryOff =
+      "assets/images/outOfDeliveryOrderImage.svg";
+
+  static const String imagesShippedOrderImagesOff =
+      "assets/images/shippedOrderImage.min.svg";
+  static const String imagesShippedOrderImagesOn =
+      "assets/images/shippedOrderImage.svg";
+
   static const String imagesActiveCartIcon = "assets/images/activeCartIcon.svg";
 
   static const String imagesActiveHomeIcon = "assets/images/activeHomeIcon.svg";

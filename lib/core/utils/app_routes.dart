@@ -10,11 +10,11 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/search/w
 import 'package:ecommerce_clean_architecture/features/onboarding/onboarding.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/products_body.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/profile_view.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/views/my_orders_view.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/user_profile/widgets/user_profile.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/about_us_body/widgets/about_us_body.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/add_new_wallet_method/widgets/add_new_wallet_method_body.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/favorite_products/views/favorite_view.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/widgets/my_orders.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/widgets/wallet_body.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/review_and_rating_wrapper.dart';
 import 'package:ecommerce_clean_architecture/features/splash/splash.dart';
@@ -85,7 +85,7 @@ class AppRoutes {
                 path: userProfile,
                 builder: (context, state) => UserProfile(),
               ),
-              GoRoute(path: myOrders, builder: (context, state) => MyOrders()),
+              GoRoute(path: myOrders, builder: (context, state) => MyOrdersView()),
               GoRoute(
                 path: myPayments,
                 builder: (context, state) => WalletBody(),
@@ -119,11 +119,20 @@ class AppRoutes {
         },
       ),
 
-      GoRoute(path: trackOrder, builder: (context, state) => TrackOrderView()),
+      GoRoute(
+        path: trackOrder,
+        builder: (context, state) {
+          OrderEntity orderEntity = state.extra as OrderEntity;
+          return TrackOrderView(orderEntity: orderEntity);
+        },
+      ),
 
       GoRoute(
         path: reviewOrder,
-        builder: (context, state) => ReviewOrderView(),
+        builder: (context, state) {
+          OrderEntity orderEntity = state.extra as OrderEntity;
+          return ReviewOrderView(orderEntity: orderEntity);
+        },
       ),
 
       GoRoute(path: onboarding, builder: (context, state) => OnboardingView()),

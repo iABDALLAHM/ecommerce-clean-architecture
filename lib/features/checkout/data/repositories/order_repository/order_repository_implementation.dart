@@ -3,14 +3,15 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
+import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service/database_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/data/models/order_model.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/data/models/order_model/order_model.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/repositories/order_repository/orders_repository.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity/order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/profile/domain/my_order_entity/my_order_entity.dart';
 
 class OrderRepositoryImplementation implements OrdersRepository {
-
   final DatabaseService databaseService;
 
   OrderRepositoryImplementation({required this.databaseService});
@@ -20,15 +21,39 @@ class OrderRepositoryImplementation implements OrdersRepository {
     required OrderEntity orderEntity,
   }) async {
     try {
-      await databaseService.addSingleData(
+      await databaseService.addData(
         path: BackendEndPoints.addOrders,
         data: OrderModel.fromEntity(orderEntity: orderEntity).toMap(),
-        documentId: orderEntity.uId,
       );
       return Right(null);
     } on CustomException catch (e) {
       log(
         "This Error in OrderRepoImplementation in add Order method ${e.toString()}",
+      );
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MyOrderEntity>>> getOrders({
+    required String userId,
+  }) async {
+    try {
+      var result = await databaseService.getQueryData(
+        path: BackendEndPoints.addOrders,
+        query: QueryParams(
+          conditions: [QueryCondition(field: "uId", isEqualTo: userId)],
+          orders: [],
+        ),
+      );
+      List<MyOrderEntity> myOrders = [];
+      for (var order in result) {
+        myOrders.add(OrderModel.fromJson(order).toEntity());
+      }
+      return Right(myOrders);
+    } on CustomException catch (e) {
+      log(
+        "This Error in OrderRepoImplementation in get Orders method ${e.toString()}",
       );
       return Left(ServerFailure(message: e.exceptionMeassge));
     }

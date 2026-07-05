@@ -11,6 +11,7 @@ class CheckOutPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
+      physics: const NeverScrollableScrollPhysics(),
       controller: pageController,
       itemCount: getPages().length,
       itemBuilder: (context, index) => getPages()[index],

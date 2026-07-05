@@ -6,4 +6,8 @@ final class SuccessAddOrderState extends AddOrderStates {}
 
 final class LoadingAddOrderState extends AddOrderStates {}
 
-final class FailureAddOrderState extends AddOrderStates {}
+final class FailureAddOrderState extends AddOrderStates {
+  final String errorMessage;
+
+  FailureAddOrderState({required this.errorMessage});
+}

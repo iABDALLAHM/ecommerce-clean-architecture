@@ -17,6 +17,6 @@ class ShippingAddressEntity {
 
   @override
   String toString() {
-    return "$addressDetails $city $address";
+    return "$addressDetails $city $address $name $email $phone";
   }
 }

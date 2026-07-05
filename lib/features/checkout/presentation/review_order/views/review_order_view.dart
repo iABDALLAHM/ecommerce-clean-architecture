@@ -1,10 +1,11 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity/order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/review_order/views/widgets/review_order_view_body.dart';
 import 'package:flutter/material.dart';
 
 class ReviewOrderView extends StatelessWidget {
-  const ReviewOrderView({super.key});
-  
+  const ReviewOrderView({super.key, required this.orderEntity});
+  final OrderEntity orderEntity;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +14,7 @@ class ReviewOrderView extends StatelessWidget {
         title: Text("الدفع", style: AppStyles.textStyle19Bold),
         centerTitle: true,
       ),
-      body: ReviewOrderViewBody(),
+      body: ReviewOrderViewBody(orderEntity: orderEntity),
     );
   }
 }

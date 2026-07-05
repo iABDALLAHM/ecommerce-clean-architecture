@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,6 +8,11 @@ class AddressSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var shippingAddressEntity = context
+        .read<CheckOutCubit>()
+        .orderEntity
+        .shippingAddressEntity;
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 2),
       decoration: BoxDecoration(
@@ -35,10 +40,13 @@ class AddressSummary extends StatelessWidget {
           Row(
             children: [
               Icon(Icons.location_on_outlined),
-              Text(
-                "${context.read<OrderEntity>().shippingAddressEntity}",
-                style: AppStyles.textStyle16Regular.copyWith(
-                  color: Color(0xff4E5556),
+              Expanded(
+                child: Text(
+                  maxLines: 2,
+                  "المدينة: ${shippingAddressEntity.city}, العنوان: ${shippingAddressEntity.address}, رقم الشقة: ${shippingAddressEntity.addressDetails}",
+                  style: AppStyles.textStyle16Regular.copyWith(
+                    color: Color(0xff4E5556),
+                  ),
                 ),
               ),
             ],

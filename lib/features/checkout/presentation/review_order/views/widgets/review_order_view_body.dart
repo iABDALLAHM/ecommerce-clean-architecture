@@ -4,13 +4,14 @@ import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity/order_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 class ReviewOrderViewBody extends StatelessWidget {
-  const ReviewOrderViewBody({super.key});
-
+  const ReviewOrderViewBody({super.key, required this.orderEntity});
+  final OrderEntity orderEntity;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,7 +26,7 @@ class ReviewOrderViewBody extends StatelessWidget {
             Text("تم بنجاح !", style: AppStyles.textStyle16Bold),
             const SizedBox(height: 9),
             Text(
-              "رقم الطلب : 1245789663#",
+              "رقم الطلب : ${orderEntity.orderNumber}",
               style: AppStyles.textStyle13Regular.copyWith(
                 color: Color(0xff4E5556),
               ),
@@ -37,7 +38,7 @@ class ReviewOrderViewBody extends StatelessWidget {
               child: CustomButton(
                 text: "تتبع الطلب",
                 onPressed: () {
-                  context.push(AppRoutes.trackOrder);
+                  context.push(AppRoutes.trackOrder, extra: orderEntity);
                 },
               ),
             ),

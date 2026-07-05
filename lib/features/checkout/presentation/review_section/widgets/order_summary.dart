@@ -1,5 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,6 +8,9 @@ class OrderSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    var payWithCash = context.watch<CheckOutCubit>().orderEntity.payWithCash;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -34,7 +37,7 @@ class OrderSummary extends StatelessWidget {
                     ),
 
                     Text(
-                      "${context.read<OrderEntity>().cartEntity.calculateTotalPrice().round()} جنيه",
+                      "${payWithCash == true ? context.read<CheckOutCubit>().orderEntity.cartEntity.calculateTotalPrice().round() : 0} جنيه",
                       style: AppStyles.textStyle16SemiBold,
                     ),
                   ],
@@ -46,7 +49,7 @@ class OrderSummary extends StatelessWidget {
                 children: [
                   Text("التوصيل  :", style: AppStyles.textStyle13Regular),
                   Text(
-                    "40 جنية",
+                    payWithCash == true ? "40 جنية" : "0 جنية",
                     style: AppStyles.textStyle13SemiBold.copyWith(
                       color: Color(0xff4E5556),
                     ),
@@ -61,7 +64,7 @@ class OrderSummary extends StatelessWidget {
                 children: [
                   Text("الكلي", style: AppStyles.textStyle16Bold),
                   Text(
-                    "${context.read<OrderEntity>().cartEntity.calculateTotalPrice().round() + 40} جنيه",
+                    "${payWithCash == true ? context.read<CheckOutCubit>().orderEntity.cartEntity.calculateTotalPrice().round() + 40 : 0} جنيه",
                     style: AppStyles.textStyle16Bold,
                   ),
                 ],

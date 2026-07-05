@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_entity/cart_item_entity.dart';
+import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_item_entity/cart_item_entity.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 
 class CartEntity {
@@ -38,5 +38,10 @@ class CartEntity {
       }
     }
     return CartItemEntity(productEntity: productEntity, count: 1);
+  }
+
+  @override
+  String toString() {
+    return "$items";
   }
 }

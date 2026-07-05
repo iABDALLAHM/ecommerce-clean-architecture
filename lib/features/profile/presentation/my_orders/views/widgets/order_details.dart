@@ -1,18 +1,25 @@
+import 'package:ecommerce_clean_architecture/core/functions/get_specific_date.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/features/profile/domain/my_order_entity/my_order_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OrderDetails extends StatelessWidget {
   const OrderDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var myOrderEntity = context.read<MyOrderEntity>();
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("طلب رقم: 1234567#", style: AppStyles.textStyle13Bold),
         Text(
-          "تم الطلب :22 مارس ,2024",
+          "طلب رقم: ${myOrderEntity.orderNumber}",
+          style: AppStyles.textStyle13Bold,
+        ),
+        Text(
+          "تم الطلب: ${getSpecificDate(date: myOrderEntity.date)}",
           style: AppStyles.textStyle11Regular.copyWith(
             color: Color(0xff949D9E),
           ),
@@ -24,17 +31,23 @@ class OrderDetails extends StatelessWidget {
               TextSpan(
                 children: [
                   TextSpan(
-                    text: "عدد الطلبات ",
+                    text: "عدد الطلبات",
                     style: AppStyles.textStyle13Regular.copyWith(
                       color: Color(0xff949D9E),
                     ),
                   ),
-                  TextSpan(text: ": 10", style: AppStyles.textStyle13Bold),
+                  TextSpan(
+                    text: ": ${myOrderEntity.products.length} -",
+                    style: AppStyles.textStyle13Bold,
+                  ),
                 ],
               ),
             ),
-            const SizedBox(width: 15),
-            Text("250 جنية", style: AppStyles.textStyle13Bold),
+            const SizedBox(width: 5),
+            Text(
+              "${myOrderEntity.totalPrice.round()} جنية",
+              style: AppStyles.textStyle13Bold,
+            ),
           ],
         ),
       ],

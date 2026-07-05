@@ -1,17 +1,20 @@
+import 'package:ecommerce_clean_architecture/core/functions/get_specific_date.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class OrderStatusItem extends StatelessWidget {
   final String title;
-  final String? date;
+  final DateTime? date;
   final bool isDone;
+  final int stepIndex;
 
   const OrderStatusItem({
     super.key,
     required this.title,
-    this.date,
+    required this.date,
     required this.isDone,
+    required this.stepIndex,
   });
 
   @override
@@ -30,11 +33,15 @@ class OrderStatusItem extends StatelessWidget {
                     ? AppColors.primaryColor
                     : Color(0xffEBEBEB),
               ),
-              Container(
-                width: 2,
-                height: 30,
-                color: isDone ? AppColors.lightPrimaryColor : Color(0xffF4F5F9),
-              ),
+              stepIndex == 5
+                  ? SizedBox(width: 2, height: 30)
+                  : Container(
+                      width: 2,
+                      height: 30,
+                      color: isDone
+                          ? AppColors.lightPrimaryColor
+                          : Color(0xffF4F5F9),
+                    ),
             ],
           ),
           const SizedBox(width: 10),
@@ -48,13 +55,12 @@ class OrderStatusItem extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              if (date != null)
-                Text(
-                  date!,
-                  style: AppStyles.textStyle13SemiBold.copyWith(
-                    color: Color(0xff949D9E),
-                  ),
+              Text(
+                date != null ? getSpecificDate(date: date!) : "قيد الإنتظار",
+                style: AppStyles.textStyle13SemiBold.copyWith(
+                  color: Color(0xff949D9E),
                 ),
+              ),
             ],
           ),
         ],

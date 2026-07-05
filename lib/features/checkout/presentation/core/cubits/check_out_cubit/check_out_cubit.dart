@@ -1,6 +1,36 @@
+import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_entity/cart_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity/order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_status_entity/order_status_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/shipping_address_entity/shipping_address_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_states.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/function/generate_order_number.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CheckOutCubit extends Cubit<CheckOutStates> {
   CheckOutCubit() : super(InitialCheckOutState());
+
+  late OrderEntity orderEntity;
+
+  void initializeOrder({required CartEntity cartEntity, required String uId}) {
+    orderEntity = OrderEntity(
+      uId: uId,
+      cartEntity: cartEntity,
+      shippingAddressEntity: ShippingAddressEntity(),
+      date: DateTime.now(),
+      orderNumber: generateOrderNumber(),
+      orderStatusEntity: OrderStatusEntity(),
+      totalPrice: cartEntity.calculateTotalPrice(),
+    );
+    emit(CheckOutLoadedState(orderEntity: orderEntity));
+  }
+
+  void updateShippingOptions({required bool payWith}) {
+    orderEntity.payWithCash = payWith;
+    emit(CheckOutLoadedState(orderEntity: orderEntity));
+  }
+
+  void updateShippingAddress({required ShippingAddressEntity address}) {
+    orderEntity.shippingAddressEntity = address;
+    emit(CheckOutLoadedState(orderEntity: orderEntity));
+  }
 }
