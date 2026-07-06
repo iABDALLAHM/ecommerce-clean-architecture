@@ -2,7 +2,8 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/features/main/main.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/products_cubit/products_states.dart';
-import 'package:ecommerce_clean_architecture/features/products/presentation/function/show_filter_products_bottom_sheet.dart';
+import 'package:ecommerce_clean_architecture/features/products/presentation/cubits/get_filter_products_cubit/get_filter_products_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -33,7 +34,14 @@ class ProductsHeader extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            showFilterProductsBottomSheet(context);
+            showModalBottomSheet(
+              useRootNavigator: true,
+              context: context,
+              builder: (_) => BlocProvider.value(
+                value: context.read<GetFilterProductsCubit>(),
+                child: FilterBottomSheet(),
+              ),
+            );
           },
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 5, horizontal: 12),

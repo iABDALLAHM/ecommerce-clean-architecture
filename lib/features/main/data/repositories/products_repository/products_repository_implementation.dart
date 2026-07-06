@@ -134,4 +134,64 @@ class ProductsRepositoryImplementation implements ProductsRepository {
       return Left(ServerFailure(message: e.exceptionMeassge));
     }
   }
+
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getHighPriceProducts() async {
+    try {
+      var result = await databaseService.getQueryData(
+        path: BackendEndPoints.getProducts,
+        query: QueryParams(
+          conditions: [],
+          orders: [QueryOrder(field: "productPrice", descending: true)],
+        ),
+      );
+      List<ProductEntity> highProductsPrice = [];
+      for (var product in result) {
+        highProductsPrice.add(ProductModel.fromJson(product).toEntity());
+      }
+      return Right(highProductsPrice);
+    } on CustomException catch (e) {
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getLowPriceProducts() async {
+    try {
+      var result = await databaseService.getQueryData(
+        path: BackendEndPoints.getProducts,
+        query: QueryParams(
+          conditions: [],
+          orders: [QueryOrder(field: "productPrice")],
+        ),
+      );
+      List<ProductEntity> lowProductsPrice = [];
+      for (var product in result) {
+        lowProductsPrice.add(ProductModel.fromJson(product).toEntity());
+      }
+      return Right(lowProductsPrice);
+    } on CustomException catch (e) {
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getSortedProductsByName() async {
+    try {
+      var result = await databaseService.getQueryData(
+        path: BackendEndPoints.getProducts,
+        query: QueryParams(
+          conditions: [],
+          orders: [QueryOrder(field: "productName")],
+        ),
+      );
+      List<ProductEntity> sortedByNameProducts = [];
+      for (var product in result) {
+        sortedByNameProducts.add(ProductModel.fromJson(product).toEntity());
+      }
+      return Right(sortedByNameProducts);
+    } on CustomException catch (e) {
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
 }

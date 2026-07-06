@@ -1,12 +1,11 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/features/products/presentation/enums/radio_enum_choices/radio_enum_choices.dart';
 import 'package:flutter/material.dart';
 
-enum RadioChoicesEnum { fromHighToLow, fromLowToHigh, alphabetical }
-
 class RadioChoices extends StatefulWidget {
-  const RadioChoices({super.key});
-
+  const RadioChoices({super.key, required this.onChange});
+  final ValueChanged<RadioChoicesEnum?> onChange;
   @override
   State<RadioChoices> createState() => _RadioChoicesState();
 }
@@ -19,8 +18,10 @@ class _RadioChoicesState extends State<RadioChoices> {
     return RadioGroup(
       groupValue: choice,
       onChanged: (value) {
-        choice = value;
-        setState(() {});
+        setState(() {
+          choice = value;
+        });
+        widget.onChange(choice);
       },
       child: Column(
         children: [
