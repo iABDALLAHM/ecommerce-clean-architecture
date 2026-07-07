@@ -46,6 +46,7 @@ class ReviewOrderViewBody extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 context.go(AppRoutes.home);
+                orderEntity.cartEntity.items.clear();
               },
               child: Text(
                 "الرئيسية",

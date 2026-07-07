@@ -15,7 +15,6 @@ class AddOrderCubit extends Cubit<AddOrderStates> {
       (failure) => emit(FailureAddOrderState(errorMessage: failure.message)),
       (success) {
         emit(SuccessAddOrderState());
-        orderEntity.cartEntity.items.clear();
       },
     );
   }
