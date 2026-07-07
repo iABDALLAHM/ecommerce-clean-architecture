@@ -35,27 +35,20 @@ class OrderRepositoryImplementation implements OrdersRepository {
   }
 
   @override
-  Future<Either<Failure, List<MyOrderEntity>>> getOrders({
-    required String userId,
-  }) async {
-    try {
-      var result = await databaseService.getQueryData(
-        path: BackendEndPoints.addOrders,
-        query: QueryParams(
-          conditions: [QueryCondition(field: "uId", isEqualTo: userId)],
-          orders: [],
-        ),
-      );
-      List<MyOrderEntity> myOrders = [];
-      for (var order in result) {
-        myOrders.add(OrderModel.fromJson(order).toEntity());
-      }
-      return Right(myOrders);
-    } on CustomException catch (e) {
-      log(
-        "This Error in OrderRepoImplementation in get Orders method ${e.toString()}",
-      );
-      return Left(ServerFailure(message: e.exceptionMeassge));
-    }
+  Stream<List<MyOrderEntity>> getOrders({required String userId}) {
+    return databaseService
+        .getQueryStreamData(
+          path: BackendEndPoints.addOrders,
+          query: QueryParams(
+            condition: QueryCondition(field: "uId", isEqualTo: userId),
+          ),
+        )
+        .map((docsList) {
+          final myOrdersList = (docsList as List)
+              .map((doc) => OrderModel.fromJson(doc).toEntity())
+              .toList();
+
+          return myOrdersList;
+        });
   }
 }

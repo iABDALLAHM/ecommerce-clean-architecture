@@ -1,15 +1,15 @@
 class QueryParams {
-  final List<QueryCondition> conditions;
-  final List<QueryOrder> orders;
+  final QueryCondition? condition;
+  final QueryOrder? order;
 
-  QueryParams({required this.conditions, required this.orders});
+  QueryParams({ this.condition,  this.order});
 }
 
 class QueryCondition {
   final String field;
   final dynamic isEqualTo;
   final dynamic arrayContains;
-  final List<dynamic>? whereIn;
+  final dynamic whereIn;
 
   QueryCondition({
     required this.field,

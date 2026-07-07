@@ -109,28 +109,28 @@ class FirestoreService implements DatabaseService {
     try {
       Query<Map<String, dynamic>> data = firestore.collection(path);
 
-      for (var condition in query.conditions) {
-        if (condition.isEqualTo != null) {
-          data = data.where(condition.field, isEqualTo: condition.isEqualTo);
-        }
-        if (condition.whereIn != null) {
-          data = data.where(condition.field, whereIn: condition.whereIn);
-        }
-        if (condition.arrayContains != null) {
-          data = data.where(
-            condition.field,
-            arrayContains: condition.arrayContains,
-          );
-        }
+      var condition = query.condition;
+      if (condition != null) {
+        data = data.where(condition.field, isEqualTo: condition.isEqualTo);
+      }
+      if (condition != null) {
+        data = data.where(condition.field, whereIn: condition.whereIn);
+      }
+      if (condition != null) {
+        data = data.where(
+          condition.field,
+          arrayContains: condition.arrayContains,
+        );
       }
 
-      for (var condition in query.orders) {
-        data = data.orderBy(condition.field, descending: condition.descending);
+      var order = query.order;
+
+      if (order != null) {
+        data = data.orderBy(order.field, descending: order.descending);
       }
-      
+
       var result = await data.get();
       return result.docs.map((doc) => doc.data()).toList();
-
     } catch (e) {
       throw CustomException(
         exceptionMeassge: "حدث خطأ أثناء البحث عن البيانات",
@@ -189,6 +189,42 @@ class FirestoreService implements DatabaseService {
       throw CustomException(
         exceptionMeassge: "حدث خطأ ما اثناء تحديث البيانات",
       );
+    }
+  }
+
+  @override
+  Stream<dynamic> getQueryStreamData({
+    required String path,
+    required QueryParams query,
+  }) {
+    try {
+      Query<Map<String, dynamic>> data = firestore.collection(path);
+
+      var condition = query.condition;
+      if (condition != null) {
+        data = data.where(condition.field, isEqualTo: condition.isEqualTo);
+      }
+      if (condition != null) {
+        data = data.where(condition.field, whereIn: condition.whereIn);
+      }
+      if (condition != null) {
+        data = data.where(
+          condition.field,
+          arrayContains: condition.arrayContains,
+        );
+      }
+
+      var order = query.order;
+      if (order != null) {
+        data = data.orderBy(order.field, descending: order.descending);
+      }
+
+      var result = data.snapshots();
+      return result.map((snapshot) { // صورة كاملة من البيانات في الوقت ده !
+        return snapshot.docs.map((doc) => doc.data()).toList(); // باخد الصورة والف على البيانات الي فيها
+      });
+    } catch (e) {
+      throw CustomException(exceptionMeassge: "حدث خطأ اثناء جلب البيانات");
     }
   }
 }

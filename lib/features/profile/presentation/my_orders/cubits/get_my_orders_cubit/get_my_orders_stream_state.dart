@@ -17,5 +17,3 @@ final class FailureGetMyOrdersState extends GetMyOrdersState {
 }
 
 final class LoadingGetMyOrdersState extends GetMyOrdersState {}
-
-final class InitialGetMyOrdersState extends GetMyOrdersState {}

@@ -56,4 +56,9 @@ abstract class DatabaseService {
     required String path,
     required String documentId,
   });
+
+  Stream<dynamic> getQueryStreamData({
+    required String path,
+    required QueryParams query,
+  });
 }

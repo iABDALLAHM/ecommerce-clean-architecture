@@ -5,7 +5,7 @@ import 'package:ecommerce_clean_architecture/features/profile/domain/my_order_en
 
 abstract class OrdersRepository {
   Future<Either<Failure, void>> addOrder({required OrderEntity orderEntity});
-  Future<Either<Failure, List<MyOrderEntity>>> getOrders({
+  Stream<List<MyOrderEntity>> getOrders({
     required String userId,
   });
 }

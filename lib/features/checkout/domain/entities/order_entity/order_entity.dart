@@ -28,4 +28,3 @@ class OrderEntity {
     return "$cartEntity $payWithCash $shippingAddressEntity";
   }
 }
-

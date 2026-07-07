@@ -13,7 +13,10 @@ class AddOrderCubit extends Cubit<AddOrderStates> {
     var result = await orderRepo.addOrder(orderEntity: orderEntity);
     result.fold(
       (failure) => emit(FailureAddOrderState(errorMessage: failure.message)),
-      (success) => emit(SuccessAddOrderState()),
+      (success) {
+        emit(SuccessAddOrderState());
+        orderEntity.cartEntity.items.clear();
+      },
     );
   }
 }

@@ -90,10 +90,8 @@ class ProductsRepositoryImplementation implements ProductsRepository {
       var data = await databaseService.getQueryData(
         path: BackendEndPoints.getProducts,
         query: QueryParams(
-          conditions: [
+          condition: 
             QueryCondition(field: "productName", isEqualTo: searchName),
-          ],
-          orders: [],
         ),
       );
 
@@ -141,8 +139,7 @@ class ProductsRepositoryImplementation implements ProductsRepository {
       var result = await databaseService.getQueryData(
         path: BackendEndPoints.getProducts,
         query: QueryParams(
-          conditions: [],
-          orders: [QueryOrder(field: "productPrice", descending: true)],
+          order: QueryOrder(field: "productPrice", descending: true),
         ),
       );
       List<ProductEntity> highProductsPrice = [];
@@ -161,8 +158,7 @@ class ProductsRepositoryImplementation implements ProductsRepository {
       var result = await databaseService.getQueryData(
         path: BackendEndPoints.getProducts,
         query: QueryParams(
-          conditions: [],
-          orders: [QueryOrder(field: "productPrice")],
+          order:QueryOrder(field: "productPrice"),
         ),
       );
       List<ProductEntity> lowProductsPrice = [];
@@ -181,8 +177,7 @@ class ProductsRepositoryImplementation implements ProductsRepository {
       var result = await databaseService.getQueryData(
         path: BackendEndPoints.getProducts,
         query: QueryParams(
-          conditions: [],
-          orders: [QueryOrder(field: "productName")],
+          order:QueryOrder(field: "productName"),
         ),
       );
       List<ProductEntity> sortedByNameProducts = [];
