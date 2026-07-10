@@ -1,15 +1,25 @@
 class NotificationEntity {
-  final String notificationTitle;
   final String notificationBody;
-  final int discountPercentage;
-  final String notificationImageUrl;
-  final DateTime date;
+  final String notificationImage;
+  final DateTime notificationDate;
+  final String id;
+  final List<String> readBy;
 
   NotificationEntity({
-    required this.notificationTitle,
     required this.notificationBody,
-    required this.discountPercentage,
-    required this.notificationImageUrl,
-    required this.date,
+    required this.notificationImage,
+    required this.notificationDate,
+    required this.id,
+    required this.readBy,
   });
+
+  NotificationEntity copyWith({required String? notificationImage}) {
+    return NotificationEntity(
+      notificationBody: notificationBody,
+      notificationImage: notificationImage ?? this.notificationImage,
+      notificationDate: notificationDate,
+      id: id,
+      readBy: readBy,
+    );
+  }
 }

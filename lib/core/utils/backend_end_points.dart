@@ -8,4 +8,5 @@ class BackendEndPoints {
   static const String usersImages = "users_images";
   static const String notification = "notifications";
   static const String addReviews = "reviews";
+  static const String addCards = "cards";
 }

@@ -16,6 +16,7 @@ class _OrderItemState extends State<OrderItem> {
   bool isActive = false;
   @override
   Widget build(BuildContext context) {
+
     var myOrderEntity = context.read<MyOrderEntity>();
 
     return Card(

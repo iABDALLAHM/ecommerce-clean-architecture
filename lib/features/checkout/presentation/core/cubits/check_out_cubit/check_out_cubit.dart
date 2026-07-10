@@ -4,6 +4,7 @@ import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/o
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/shipping_address_entity/shipping_address_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_states.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/function/generate_order_number.dart';
+import 'package:ecommerce_clean_architecture/features/profile/domain/card_entity/card_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CheckOutCubit extends Cubit<CheckOutStates> {
@@ -20,12 +21,18 @@ class CheckOutCubit extends Cubit<CheckOutStates> {
       orderNumber: generateOrderNumber(),
       orderStatusEntity: OrderStatusEntity(),
       totalPrice: cartEntity.calculateTotalPrice(),
+      cardEntity: CardEntity(),
     );
     emit(CheckOutLoadedState(orderEntity: orderEntity));
   }
 
   void updateShippingOptions({required bool payWith}) {
     orderEntity.payWithCash = payWith;
+    emit(CheckOutLoadedState(orderEntity: orderEntity));
+  }
+
+  void updatePaymentCardDetails({required CardEntity cardEntity}) {
+    orderEntity.cardEntity = cardEntity;
     emit(CheckOutLoadedState(orderEntity: orderEntity));
   }
 

@@ -13,10 +13,9 @@ class AddressValidationCubit extends Cubit<AddressValidationState> {
       formKey.currentState!.save();
       emit(AddressValidationDoneState());
       return true;
-    } else {
-      autoValidateMode = AutovalidateMode.always;
-      emit(AddressValidationFailureState());
-      return false;
     }
+    autoValidateMode = AutovalidateMode.always;
+    emit(AddressValidationFailureState());
+    return false;
   }
 }

@@ -14,6 +14,8 @@ import 'package:ecommerce_clean_architecture/core/services/database_service/fire
 import 'package:ecommerce_clean_architecture/core/services/local_database_service/shared_prefs_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/storage_service/storage_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/storage_service/supabase_storage_service.dart';
+import 'package:ecommerce_clean_architecture/features/profile/data/repositories/payment_repository/payment_repository_implementation.dart';
+import 'package:ecommerce_clean_architecture/features/profile/domain/repositories/payment_repository/payment_repository.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/repositories/reviews_repository/reviews_repository.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/data/repositories/reviews_repository/reviews_repository_implementation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -43,6 +45,11 @@ void setupGetIt() async {
 
   getIt.registerSingleton<UserRepository>(
     UserRepositoryImplementation(databaseService: getIt.get<DatabaseService>()),
+  );
+  getIt.registerSingleton<PaymentRepository>(
+    PaymentRepositoryImplementation(
+      databaseService: getIt.get<DatabaseService>(),
+    ),
   );
 
   getIt.registerSingleton<AuthService>(

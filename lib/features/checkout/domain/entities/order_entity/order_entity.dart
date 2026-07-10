@@ -1,6 +1,7 @@
 import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_entity/cart_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_status_entity/order_status_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/shipping_address_entity/shipping_address_entity.dart';
+import 'package:ecommerce_clean_architecture/features/profile/domain/card_entity/card_entity.dart';
 
 class OrderEntity {
   final double totalPrice;
@@ -11,6 +12,7 @@ class OrderEntity {
   final DateTime date;
   final String orderNumber;
   final OrderStatusEntity orderStatusEntity;
+   CardEntity cardEntity;
 
   OrderEntity({
     required this.cartEntity,
@@ -21,10 +23,6 @@ class OrderEntity {
     required this.orderNumber,
     required this.orderStatusEntity,
     required this.totalPrice,
+    required this.cardEntity,
   });
-
-  @override
-  String toString() {
-    return "$cartEntity $payWithCash $shippingAddressEntity";
-  }
 }

@@ -5,7 +5,6 @@ export 'package:ecommerce_clean_architecture/features/main/presentation/home/cub
 export 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_cubit.dart';
 
 export 'package:ecommerce_clean_architecture/features/main/domain/entities/bottom_navigation_bar_entitiy/bottom_navigation_bar_entity.dart';
-export 'package:ecommerce_clean_architecture/features/main/domain/entities/notification_entity/notification_item_entity.dart';
 
 export 'package:ecommerce_clean_architecture/features/main/presentation/notification/widgets/notification_body.dart';
 

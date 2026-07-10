@@ -1,15 +1,11 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/features/profile/domain/card_entity/card_entity.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 
-class WalletItem extends StatelessWidget {
-  const WalletItem({
-    super.key,
-    required this.walletIcon,
-    required this.walletCode,
-  });
-  final String walletIcon;
-  final String walletCode;
+class MyCardItem extends StatelessWidget {
+  const MyCardItem({super.key, required this.cardEntity});
+  final CardEntity cardEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,13 +20,13 @@ class WalletItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(
-            walletCode,
+            cardEntity.cardNumber ?? "",
             style: AppStyles.textStyle16SemiBold.copyWith(
               color: Color(0xff949D9E),
             ),
           ),
           const SizedBox(width: 15),
-          SvgPicture.asset(walletIcon),
+          // SvgPicture.asset(cardEntity.cardImageType),// لازم احط الصورة الاول عشان تشتغل!!!
         ],
       ),
     );

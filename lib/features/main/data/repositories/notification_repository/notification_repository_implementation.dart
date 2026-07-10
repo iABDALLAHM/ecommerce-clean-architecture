@@ -22,7 +22,7 @@ class NotificationRepositoryImplementation implements NotificationRepository {
       List<NotificationEntity> notificationList = [];
       for (var notificationModel in response) {
         notificationList.add(
-          NotificationModel.fromJson(json: notificationModel).toEntity(),
+          NotificationModel.fromJson(notificationModel).toEntity(),
         );
       }
       return Right(notificationList);

@@ -62,7 +62,7 @@ class _AddressSectionState extends State<AddressSection> {
 
   @override
   Widget build(BuildContext context) {
-    var addressValidationCubit = context.read<AddressValidationCubit>();
+    var addressValidationCubit = context.watch<AddressValidationCubit>();
 
     var checkOutCubit = context.read<CheckOutCubit>();
 

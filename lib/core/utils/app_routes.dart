@@ -9,13 +9,13 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/home/wid
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/widgets/search_body.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/onboarding.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/products_body.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/add_new_card/views/add_new_card_view.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/profile_view.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/views/my_orders_view.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/user_profile/widgets/user_profile.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/about_us_body/widgets/about_us_body.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/add_new_wallet_method/widgets/add_new_wallet_method_body.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/favorite_products/views/favorite_view.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/widgets/wallet_body.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/views/my_cards_view.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/review_and_rating_wrapper.dart';
 import 'package:ecommerce_clean_architecture/features/splash/splash.dart';
 import 'package:go_router/go_router.dart';
@@ -85,14 +85,21 @@ class AppRoutes {
                 path: userProfile,
                 builder: (context, state) => UserProfile(),
               ),
-              GoRoute(path: myOrders, builder: (context, state) => MyOrdersView()),
+              GoRoute(
+                path: myOrders,
+                builder: (context, state) => MyOrdersView(),
+              ),
               GoRoute(
                 path: myPayments,
-                builder: (context, state) => WalletBody(),
+                builder: (context, state) => MyCardsView(),
                 routes: [
                   GoRoute(
                     path: addNewPayment,
-                    builder: (context, state) => AddNewWalletMethodBody(),
+                    builder: (context, state) {
+                      Map<String, dynamic> data =
+                          state.extra as Map<String, dynamic>;
+                      return AddNewCardView(data: data);
+                    },
                   ),
                 ],
               ),

@@ -6,8 +6,6 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/notifica
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/widgets/custom_notification_app_bar.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/widgets/newest_notification_body_header.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/widgets/newest_notifications_list_view.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/notification/widgets/past_notification_body_header.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/notification/widgets/past_notifications_list_view.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,15 +42,6 @@ class _NotificationBodyState extends State<NotificationBody> {
                         NewestNotificationsListView(
                           notificationList: state.notificationList,
                         ),
-                        const SizedBox(height: 11),
-                        PastNotificationBodyHeader(
-                          notificationLength: state.notificationList.length,
-                        ),
-                        const SizedBox(height: 16),
-                        PastNotificationsListView(
-                          notificationList: state.notificationList,
-                        ),
-                        const SizedBox(height: 16),
                       ],
                     ),
                   ),
