@@ -6,6 +6,8 @@ import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/c
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_states.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/add_favorite_product_cubit/add_favorite_product_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/add_favorite_product_cubit/add_favorite_product_states.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/get_featured_product_cubit/get_featured_product_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/get_featured_product_cubit/get_featured_product_state.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/products_cubit/products_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/core/widgets/search_bar_trigger.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/home_body_header.dart';
@@ -28,13 +30,15 @@ class _HomeBodyState extends State<HomeBody> {
   void initState() {
     context.read<ProductsCubit>().getProducts();
     context.read<GetNotificationsCubit>().getNotification();
+    context.read<GetFeaturedProductCubit>().getFeaturedProducts();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: HomeBodyMultiBlocListenr(  // ده انا عايز احطه في مكان عالي شوية عشان يبقى اوضح من كدة !!!!!!!!!!!
+      child: HomeBodyMultiBlocListenr(
+        // ده انا عايز احطه في مكان عالي شوية عشان يبقى اوضح من كدة !!!!!!!!!!!
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
@@ -49,7 +53,19 @@ class _HomeBodyState extends State<HomeBody> {
                     const SizedBox(height: 16),
                     SearchBarTrigger(fromRoute: AppRoutes.home),
                     const SizedBox(height: 12),
-                    BannerList(),
+                    BlocBuilder<
+                      GetFeaturedProductCubit,
+                      GetFeaturedProductState
+                    >(
+                      builder: (context, state) {
+                        if (state is SuccessGetFeaturedProductState) {
+                          return BannerList(
+                            featuredProducts: state.featuredProducts,
+                          );
+                        }
+                        return SizedBox();
+                      },
+                    ),
                     const SizedBox(height: 12),
                     HomeBodyHeader(),
                     const SizedBox(height: 8),

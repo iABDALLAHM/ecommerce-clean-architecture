@@ -3,7 +3,7 @@ import 'package:ecommerce_clean_architecture/features/checkout/data/models/order
 import 'package:ecommerce_clean_architecture/features/checkout/data/models/product_item_model/product_item_model.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/data/models/shipping_address_model/shipping_address_model.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity/order_entity.dart';
-import 'package:ecommerce_clean_architecture/features/profile/domain/my_order_entity/my_order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/profile/domain/entities/my_order_entity/my_order_entity.dart';
 
 class OrderModel {
   final double totalPrice;

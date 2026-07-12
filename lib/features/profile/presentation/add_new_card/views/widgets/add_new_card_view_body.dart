@@ -5,7 +5,7 @@ import 'package:ecommerce_clean_architecture/core/widgets/custom_card_number_tex
 import 'package:ecommerce_clean_architecture/core/widgets/custom_card_text_field_holder_name.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_cvv_card_number_text_field.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_expire_date_text_field.dart';
-import 'package:ecommerce_clean_architecture/features/profile/domain/card_entity/card_entity.dart';
+import 'package:ecommerce_clean_architecture/features/profile/domain/entities/card_entity/card_entity.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/add_new_card/cubits/add_new_card_cubit/add_new_card_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/add_new_card/views/widgets/add_new_card_bloc_listener.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/views/widgets/custom_my_cards_button.dart';

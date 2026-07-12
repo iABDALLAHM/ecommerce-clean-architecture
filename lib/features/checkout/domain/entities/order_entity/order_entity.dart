@@ -1,7 +1,7 @@
 import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_entity/cart_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_status_entity/order_status_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/shipping_address_entity/shipping_address_entity.dart';
-import 'package:ecommerce_clean_architecture/features/profile/domain/card_entity/card_entity.dart';
+import 'package:ecommerce_clean_architecture/features/profile/domain/entities/card_entity/card_entity.dart';
 
 class OrderEntity {
   final double totalPrice;

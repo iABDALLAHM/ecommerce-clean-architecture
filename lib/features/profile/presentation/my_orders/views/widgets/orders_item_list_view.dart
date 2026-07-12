@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/features/profile/domain/my_order_entity/my_order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/profile/domain/entities/my_order_entity/my_order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/views/widgets/order_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

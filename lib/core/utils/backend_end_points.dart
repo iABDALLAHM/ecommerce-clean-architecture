@@ -9,4 +9,5 @@ class BackendEndPoints {
   static const String notification = "notifications";
   static const String addReviews = "reviews";
   static const String addCards = "cards";
+  static const String featuredProducts = "featuredProducts";
 }

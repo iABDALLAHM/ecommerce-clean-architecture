@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/views/widgets/order_details.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/order_item_icon.dart';
-import 'package:ecommerce_clean_architecture/features/profile/domain/my_order_entity/my_order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/profile/domain/entities/my_order_entity/my_order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/views/widgets/order_status_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

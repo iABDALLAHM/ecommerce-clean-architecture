@@ -3,6 +3,8 @@ import 'package:ecommerce_clean_architecture/core/services/secure_storage_servic
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/data/repositories/order_repository/order_repository_implementation.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/repositories/order_repository/orders_repository.dart';
+import 'package:ecommerce_clean_architecture/features/main/data/repositories/featured_products_repository/featured_products_repository_implementation.dart';
+import 'package:ecommerce_clean_architecture/features/main/domain/repositories/featured_products_repository/featured_products_repository.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/repositories/images_repository/images_repository.dart';
 import 'package:ecommerce_clean_architecture/features/main/data/repositories/images_repository/images_repository_implementation.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/repositories/notification_repository/notification_repository.dart';
@@ -39,6 +41,12 @@ void setupGetIt() async {
 
   getIt.registerSingleton<ReviewsRepository>(
     ReviewsRepositoryImplementation(
+      databaseService: getIt.get<DatabaseService>(),
+    ),
+  );
+
+  getIt.registerSingleton<FeaturedProductsRepository>(
+    FeaturedProductsRepositoryImplementation(
       databaseService: getIt.get<DatabaseService>(),
     ),
   );

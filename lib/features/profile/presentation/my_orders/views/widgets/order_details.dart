@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/functions/get_specific_date.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/features/profile/domain/my_order_entity/my_order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/profile/domain/entities/my_order_entity/my_order_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

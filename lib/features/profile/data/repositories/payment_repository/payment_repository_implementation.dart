@@ -6,7 +6,7 @@ import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service/database_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
 import 'package:ecommerce_clean_architecture/features/profile/data/models/card_model/card_model.dart';
-import 'package:ecommerce_clean_architecture/features/profile/domain/card_entity/card_entity.dart';
+import 'package:ecommerce_clean_architecture/features/profile/domain/entities/card_entity/card_entity.dart';
 import 'package:ecommerce_clean_architecture/features/profile/domain/repositories/payment_repository/payment_repository.dart';
 
 class PaymentRepositoryImplementation implements PaymentRepository {
