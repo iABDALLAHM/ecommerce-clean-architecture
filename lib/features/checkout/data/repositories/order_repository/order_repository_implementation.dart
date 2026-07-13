@@ -22,7 +22,7 @@ class OrderRepositoryImplementation implements OrdersRepository {
   }) async {
     try {
       await databaseService.addData(
-        path: BackendEndPoints.addOrders,
+        path: BackendEndPoints.ordersCollection,
         data: OrderModel.fromEntity(orderEntity: orderEntity).toMap(),
       );
       return Right(null);
@@ -38,7 +38,7 @@ class OrderRepositoryImplementation implements OrdersRepository {
   Stream<List<MyOrderEntity>> getOrders({required String userId}) {
     return databaseService
         .getQueryStreamData(
-          path: BackendEndPoints.addOrders,
+          path: BackendEndPoints.ordersCollection,
           query: QueryParams(
             condition: QueryCondition(field: "uId", isEqualTo: userId),
           ),

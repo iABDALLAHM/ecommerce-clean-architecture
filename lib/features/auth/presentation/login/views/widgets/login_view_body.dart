@@ -116,6 +116,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
       _triggerLoginCubit();
     } else {
       autovalidateMode = AutovalidateMode.always;
+      setState((){});
     }
   }
 

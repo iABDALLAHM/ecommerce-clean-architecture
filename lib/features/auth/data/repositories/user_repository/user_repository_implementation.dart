@@ -20,7 +20,7 @@ class UserRepositoryImplementation implements UserRepository {
   }) async {
     try {
       await databaseService.addSingleData(
-        path: BackendEndPoints.addUserData,
+        path: BackendEndPoints.usersCollection,
         data: UserModel.fromEntity(userEntity).toMap(),
         documentId: userEntity.uId,
       );
@@ -37,7 +37,7 @@ class UserRepositoryImplementation implements UserRepository {
   Future<Either<Failure, UserEntity>> getUserData({required String uId}) async {
     try {
       var userMap = await databaseService.getSingleData(
-        path: BackendEndPoints.getUserData,
+        path: BackendEndPoints.usersCollection,
         documentId: uId,
       );
 
@@ -58,7 +58,7 @@ class UserRepositoryImplementation implements UserRepository {
     try {
       await databaseService.updateDate(
         data: UserModel.fromEntity(userEntity).toMap(),
-        path: BackendEndPoints.addUserData,
+        path: BackendEndPoints.usersCollection,
         documentId: userEntity.uId,
       );
       

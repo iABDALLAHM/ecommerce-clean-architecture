@@ -23,7 +23,12 @@ class UpdateUserImageCubit extends Cubit<UpdateUserImageStates> {
           emit(FailureUpdateUserImageState(errMessage: failure.message)),
       (imageUrl) async {
         var result = await userRepository.updateUserData(
-          userEntity: userUpdatedData,
+          userEntity: UserEntity(
+            name: userUpdatedData.name,
+            email: userUpdatedData.email,
+            uId: userUpdatedData.uId,
+            userImage: imageUrl,
+          ),
         );
         result.fold(
           (l) => emit(FailureUpdateUserImageState(errMessage: l.message)),

@@ -23,7 +23,7 @@ class ReviewsRepositoryImplementation implements ReviewsRepository {
   }) async {
     try {
       await _databaseService.addData(
-        path: BackendEndPoints.addReviews,
+        path: BackendEndPoints.reviewsCollection,
         data: ProductReviewModel.fromEntity(
           productReviewEntity: productReviewEntity,
         ).toMap(),
@@ -39,7 +39,7 @@ class ReviewsRepositoryImplementation implements ReviewsRepository {
   getAllReviewsForSpecificProduct({required String productCode}) async {
     try {
       var result = await _databaseService.getQueryData(
-        path: BackendEndPoints.addReviews,
+        path: BackendEndPoints.reviewsCollection,
         query: QueryParams(
           condition: QueryCondition(
             field: "productCode",
@@ -56,7 +56,7 @@ class ReviewsRepositoryImplementation implements ReviewsRepository {
         ).toEntity();
 
         var userModel = await _databaseService.getSingleData(
-          path: BackendEndPoints.getUserData,
+          path: BackendEndPoints.usersCollection,
           documentId: productReviewEntity.reviewerUid,
         );
 

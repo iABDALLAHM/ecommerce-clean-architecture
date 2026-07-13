@@ -16,7 +16,7 @@ class ImagesRepositoryImplementation implements ImagesRepository {
     try {
       String imageUrl = await storageService.uploadFile(
         file: file,
-        path: BackendEndPoints.usersImages,
+        path: BackendEndPoints.featuredProductsCollection,
       );
       return Right(imageUrl);
     } on CustomException catch (e) {

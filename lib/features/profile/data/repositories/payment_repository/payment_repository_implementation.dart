@@ -19,7 +19,7 @@ class PaymentRepositoryImplementation implements PaymentRepository {
   Future<Either<Failure, void>> addNewCard({required CardEntity card}) async {
     try {
       await _databaseService.addData(
-        path: BackendEndPoints.addCards,
+        path: BackendEndPoints.cardsCollection,
         data: CardModel.fromEntity(cardEntity: card).toMap(),
       );
       return Right(null);
@@ -34,7 +34,7 @@ class PaymentRepositoryImplementation implements PaymentRepository {
   }) async {
     try {
       var result = await _databaseService.getQueryData(
-        path: BackendEndPoints.addCards,
+        path: BackendEndPoints.cardsCollection,
         query: QueryParams(
           condition: QueryCondition(field: "cardHolderId", isEqualTo: uId),
         ),

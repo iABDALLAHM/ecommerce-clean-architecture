@@ -15,7 +15,6 @@ class ProfileBodyBlocProvider extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => GetImageCubit()),
-        BlocProvider(create: (context) => GetImageCubit()),
         BlocProvider(
           create: (context) => UpdateUserImageCubit(
             imagesRepo: getIt.get<ImagesRepository>(),

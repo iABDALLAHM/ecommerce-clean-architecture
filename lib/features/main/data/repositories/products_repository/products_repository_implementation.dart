@@ -19,7 +19,7 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   Future<Either<Failure, List<ProductEntity>>> getProducts() async {
     try {
       var data = await databaseService.getData(
-        path: BackendEndPoints.getProducts,
+        path: BackendEndPoints.productsCollection,
       );
       List<ProductEntity> productsList = [];
       for (var productEntity in data) {
@@ -40,8 +40,8 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   }) async {
     try {
       await databaseService.addNestedData(
-        path: BackendEndPoints.addUserData,
-        subCollection: BackendEndPoints.addFavoriteProducts,
+        path: BackendEndPoints.usersCollection,
+        subCollection: BackendEndPoints.favoriteProductsCollection,
         data: ProductModel.fromEntity(productEntity: product).toMap(),
         documentId:
             await getIt.get<SecureStorageService>().getData(
@@ -62,8 +62,8 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   Future<Either<Failure, List<ProductEntity>>> getFavoriteProducts() async {
     try {
       var result = await databaseService.getNestedData(
-        path: BackendEndPoints.addUserData,
-        subCollection: BackendEndPoints.getFavoriteProducts,
+        path: BackendEndPoints.usersCollection,
+        subCollection: BackendEndPoints.favoriteProductsCollection,
         documentId:
             await getIt.get<SecureStorageService>().getData(
               key: SecureStorageService.keyUserId,
@@ -88,7 +88,7 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   }) async {
     try {
       var data = await databaseService.getQueryData(
-        path: BackendEndPoints.getProducts,
+        path: BackendEndPoints.productsCollection,
         query: QueryParams(
           condition: 
             QueryCondition(field: "productName", isEqualTo: searchName),
@@ -115,8 +115,8 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   }) async {
     try {
       await databaseService.removeNestedData(
-        path: BackendEndPoints.addUserData,
-        subCollection: BackendEndPoints.addFavoriteProducts,
+        path: BackendEndPoints.usersCollection,
+        subCollection: BackendEndPoints.favoriteProductsCollection,
         data: ProductModel.fromEntity(productEntity: product).toMap(),
         documentId:
             await getIt.get<SecureStorageService>().getData(
@@ -137,7 +137,7 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   Future<Either<Failure, List<ProductEntity>>> getHighPriceProducts() async {
     try {
       var result = await databaseService.getQueryData(
-        path: BackendEndPoints.getProducts,
+        path: BackendEndPoints.productsCollection,
         query: QueryParams(
           order: QueryOrder(field: "productPrice", descending: true),
         ),
@@ -156,7 +156,7 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   Future<Either<Failure, List<ProductEntity>>> getLowPriceProducts() async {
     try {
       var result = await databaseService.getQueryData(
-        path: BackendEndPoints.getProducts,
+        path: BackendEndPoints.productsCollection,
         query: QueryParams(
           order:QueryOrder(field: "productPrice"),
         ),
@@ -175,7 +175,7 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   Future<Either<Failure, List<ProductEntity>>> getSortedProductsByName() async {
     try {
       var result = await databaseService.getQueryData(
-        path: BackendEndPoints.getProducts,
+        path: BackendEndPoints.productsCollection,
         query: QueryParams(
           order:QueryOrder(field: "productName"),
         ),

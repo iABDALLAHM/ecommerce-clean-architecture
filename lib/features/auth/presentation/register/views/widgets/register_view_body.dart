@@ -5,7 +5,6 @@ import 'package:ecommerce_clean_architecture/core/widgets/custom_text_form_field
 import 'package:ecommerce_clean_architecture/core/widgets/custom_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/auth_rich_text.dart';
-import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/custom_password_field.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/register/views/widgets/terms_and_conditions_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,6 +26,10 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    var termsAndConditionsState = context
+        .watch<TermsAndConditionsCubit>()
+        .state
+        .isChecked;
     return BlocConsumer<RegisterCubit, RegisterStates>(
       listener: (context, state) {
         if (state is SuccessRegisterState) {
@@ -81,19 +84,15 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                       child: CustomButton(
                         text: "إنشاء حساب جديد",
                         onPressed: () {
-                          var termsAndConditionsState = context
-                              .watch<TermsAndConditionsCubit>()
-                              .state
-                              .isChecked;
-
-                          if (!termsAndConditionsState) {
+                          if (termsAndConditionsState == true) {
+                            _validateTextField(context);
+                          } else {
                             showSnackBar(
                               context,
                               message: "من فضلك وافق على الشروط والأحكام",
                             );
                             return;
                           }
-                          _validateTextField(context);
                         },
                       ),
                     ),
@@ -119,6 +118,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
       _triggerRegisterCubit(context);
     } else {
       autovalidateMode = AutovalidateMode.always;
+      setState(() {});
     }
   }
 

@@ -21,7 +21,7 @@ class FeaturedProductsRepositoryImplementation
   getFeaturedProducts() async {
     try {
       var result = await _databaseService.getData(
-        path: BackendEndPoints.featuredProducts,
+        path: BackendEndPoints.featuredProductsCollection,
       );
       List<FeaturedProductEntity> productsList = [];
       for (var product in result) {
