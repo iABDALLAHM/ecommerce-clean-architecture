@@ -34,7 +34,7 @@ class BannerItem extends StatelessWidget {
               top: 0,
               bottom: 0,
               child: Container(
-                width: width * .5,
+                width: width * .8,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
                   image: DecorationImage(

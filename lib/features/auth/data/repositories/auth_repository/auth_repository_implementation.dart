@@ -96,4 +96,16 @@ class AuthRepositoryImplementation implements AuthRepository {
       return Left(ServerFailure(message: e.exceptionMeassge));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> sendResetPasswordEmail({
+    required String email,
+  }) async {
+    try {
+      await authService.resetPassword(email: email);
+      return Right(null);
+    } on CustomException catch (e) {
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
 }

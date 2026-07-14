@@ -157,4 +157,18 @@ class FirebaseAuthService implements AuthService {
       );
     }
   }
+
+  @override
+  Future<void> resetPassword({required String email}) async {
+    try {
+      await firebaseAuth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      log(
+        "error happend in FirebaseAuthService in resetPassword method please check it, the error: $e",
+      );
+      throw CustomException(
+        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+      );
+    }
+  }
 }
