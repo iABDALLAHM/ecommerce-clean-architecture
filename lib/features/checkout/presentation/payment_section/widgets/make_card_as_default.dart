@@ -9,7 +9,7 @@ class MakeCardAsDefault extends StatefulWidget {
 }
 
 class _MakeCardAsDefaultState extends State<MakeCardAsDefault> {
-  bool isSelected = true;
+  bool isSelected = false;
 
   @override
   Widget build(BuildContext context) {

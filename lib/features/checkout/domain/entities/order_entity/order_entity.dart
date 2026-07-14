@@ -12,7 +12,7 @@ class OrderEntity {
   final DateTime date;
   final String orderNumber;
   final OrderStatusEntity orderStatusEntity;
-   CardEntity cardEntity;
+  CardEntity cardEntity;
 
   OrderEntity({
     required this.cartEntity,

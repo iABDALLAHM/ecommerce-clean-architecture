@@ -5,7 +5,9 @@ import 'package:flutter_svg/svg.dart';
 
 class MyCardItem extends StatelessWidget {
   const MyCardItem({super.key, required this.cardEntity});
+
   final CardEntity cardEntity;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,13 +22,15 @@ class MyCardItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(
-            cardEntity.cardNumber ?? "",
+            cardEntity.cardNumber != null
+                ? "${cardEntity.cardNumber!.split("")[0]}${cardEntity.cardNumber!.split("")[1]}${cardEntity.cardNumber!.split("")[2]}${cardEntity.cardNumber!.split("")[3]} **** "
+                : "",
             style: AppStyles.textStyle16SemiBold.copyWith(
               color: Color(0xff949D9E),
             ),
           ),
           const SizedBox(width: 15),
-          // SvgPicture.asset(cardEntity.cardImageType),// لازم احط الصورة الاول عشان تشتغل!!!
+          SvgPicture.network(cardEntity.cardImageType ?? ""),
         ],
       ),
     );

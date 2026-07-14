@@ -35,9 +35,10 @@ class CustomCardHolderNameTextField extends StatelessWidget {
     );
   }
 
-  OutlineInputBorder buildOutlineInputBorder({Color color = Colors.grey}) =>
-      OutlineInputBorder(
-        borderRadius: BorderRadius.circular(6),
-        borderSide: BorderSide(color: color),
-      );
+  OutlineInputBorder buildOutlineInputBorder({
+    Color color = const Color(0xffE6E9EA),
+  }) => OutlineInputBorder(
+    borderRadius: BorderRadius.circular(6),
+    borderSide: BorderSide(color: color, width: 1),
+  );
 }

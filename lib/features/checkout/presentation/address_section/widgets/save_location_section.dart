@@ -10,7 +10,7 @@ class SaveLocationSection extends StatefulWidget {
 }
 
 class _SaveLocationSectionState extends State<SaveLocationSection> {
-  bool isActive = true;
+  bool isActive = false;
   @override
   Widget build(BuildContext context) {
     return Row(

@@ -1,12 +1,16 @@
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PaymentMethodSummary extends StatelessWidget {
   const PaymentMethodSummary({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var cardEntity = context.watch<CheckOutCubit>().orderEntity.cardEntity;
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 9),
       decoration: BoxDecoration(
@@ -36,9 +40,18 @@ class PaymentMethodSummary extends StatelessWidget {
           Row(
             children: [
               Spacer(),
-              Text("**** **** **** 6522"),
+              Text(
+                "**** **** **** ${cardEntity.cardNumber!.split("")[0]}${cardEntity.cardNumber!.split("")[1]}${cardEntity.cardNumber!.split("")[2]}${cardEntity.cardNumber!.split("")[3]}",
+              ),
               const SizedBox(width: 30),
-              Image.asset(Assets.imagesVisa, width: 53, height: 34),
+              Image.network(
+                errorBuilder: (context, error, stackTrace) {
+                  return Icon(Icons.wallet);
+                },
+                kMasterCardIcon,
+                width: 53,
+                height: 34,
+              ),
             ],
           ),
         ],

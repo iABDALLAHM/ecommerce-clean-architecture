@@ -3,6 +3,7 @@ import 'package:ecommerce_clean_architecture/features/checkout/data/models/order
 import 'package:ecommerce_clean_architecture/features/checkout/data/models/product_item_model/product_item_model.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/data/models/shipping_address_model/shipping_address_model.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity/order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/profile/data/models/card_model/card_model.dart';
 import 'package:ecommerce_clean_architecture/features/profile/domain/entities/my_order_entity/my_order_entity.dart';
 
 class OrderModel {
@@ -14,6 +15,7 @@ class OrderModel {
   final DateTime date;
   final String orderNumber;
   final OrderStatusModel orderStatusModel;
+  final CardModel cardModel;
 
   OrderModel({
     required this.totalPrice,
@@ -24,10 +26,12 @@ class OrderModel {
     required this.date,
     required this.orderNumber,
     required this.orderStatusModel,
+    required this.cardModel,
   });
 
   factory OrderModel.fromEntity({required OrderEntity orderEntity}) {
     return OrderModel(
+      cardModel: CardModel.fromEntity(cardEntity: orderEntity.cardEntity),
       totalPrice: orderEntity.cartEntity.calculateTotalPrice(),
       uId: orderEntity.uId,
       shippingAddressModel: ShippingAddressModel.fromEntity(
@@ -48,6 +52,9 @@ class OrderModel {
 
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
+      cardModel: CardModel.fromJson(
+        (json["cardModel"] as Map<String, dynamic>),
+      ),
       totalPrice: json["totalPrice"],
       uId: json["uId"],
       shippingAddressModel: ShippingAddressModel.fromJson(
@@ -78,6 +85,7 @@ class OrderModel {
 
   Map<String, dynamic> toMap() {
     return {
+      "cardModel": cardModel.toMap(),
       "orderNumber": orderNumber,
       "date": date,
       "orderStatusModel": orderStatusModel.toMap(),
