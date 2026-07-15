@@ -15,13 +15,10 @@ class SearchSuccessWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 16),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-            child: Text(
-              "نتائج البحث ",
-              style: AppStyles.textStyle13Regular.copyWith(
-                color: Color(0xff949D9E),
-              ),
+          Text(
+            "نتائج البحث ",
+            style: AppStyles.textStyle13Regular.copyWith(
+              color: Color(0xff949D9E),
             ),
           ),
           const SizedBox(height: 16),

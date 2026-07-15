@@ -116,9 +116,17 @@ class FirebaseAuthService implements AuthService {
   }
 
   @override
-  Future<void> updatePassword({required String newPassword}) async {
+  Future<void> updatePassword({
+    required String newPassword,
+    required String oldPassword,
+  }) async {
     try {
       final user = firebaseAuth.currentUser!;
+      final credential = EmailAuthProvider.credential(
+        email: user.email!,
+        password: oldPassword,
+      );
+      await user.reauthenticateWithCredential(credential);
       await user.updatePassword(newPassword);
     } on FirebaseAuthException catch (e) {
       log(
@@ -165,6 +173,30 @@ class FirebaseAuthService implements AuthService {
     } on FirebaseAuthException catch (e) {
       log(
         "error happend in FirebaseAuthService in resetPassword method please check it, the error: $e",
+      );
+      throw CustomException(
+        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+      );
+    }
+  }
+
+  @override
+  Future<void> updateEmail({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final user = firebaseAuth.currentUser!;
+      final credential = EmailAuthProvider.credential(
+        email: user.email!,
+        password: password,
+      );
+      await user.reauthenticateWithCredential(credential);
+      await user.verifyBeforeUpdateEmail(email);
+      // await user.updateEmail(newEmail); // لسه لم تطبق!
+    } on FirebaseAuthException catch (e) {
+      log(
+        "error happend in FirebaseAuthService in updateEmail method please check it, the error: $e",
       );
       throw CustomException(
         exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",

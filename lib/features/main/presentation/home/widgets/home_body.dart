@@ -73,7 +73,10 @@ class _HomeBodyState extends State<HomeBody> {
                 ),
               ),
             ),
-            FruitItemsGridViewBlocBuilder(),
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              sliver: FruitItemsGridViewBlocBuilder(),
+            ),
             SliverToBoxAdapter(child: const SizedBox(height: 32)),
           ],
         ),

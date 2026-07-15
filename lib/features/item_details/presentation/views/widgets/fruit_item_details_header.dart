@@ -9,7 +9,6 @@ class FruitItemDetailsHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     return Stack(
       children: [
         Positioned.fill(
@@ -24,10 +23,9 @@ class FruitItemDetailsHeader extends StatelessWidget {
           top: height * .1,
           left: 0,
           right: 0,
+          bottom: 0,
           child: SizedBox(
-            height: height * .2,
-            width: width * .4,
-            child: Image.network(imageUrl),
+            child: Image.network(imageUrl, alignment: Alignment.center),
           ),
         ),
         Positioned(top: 40, right: 20, child: FruitItemDetailsAppBar()),

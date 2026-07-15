@@ -10,6 +10,8 @@ final class SuccessGetMyCardsState extends GetMyCardsState {
   SuccessGetMyCardsState({required this.cardsList});
 }
 
+final class EmptyCardsState extends GetMyCardsState {}
+
 final class FailureGetMyCardsState extends GetMyCardsState {
   final String errorMessage;
 

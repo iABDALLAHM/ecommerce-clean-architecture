@@ -18,7 +18,11 @@ class GetMyCardsCubit extends Cubit<GetMyCardsState> {
         emit(FailureGetMyCardsState(errorMessage: failure.message));
       },
       (result) {
-        emit(SuccessGetMyCardsState(cardsList: result));
+        if (result.isEmpty) {
+          emit(EmptyCardsState());
+        } else {
+          emit(SuccessGetMyCardsState(cardsList: result));
+        }
       },
     );
   }

@@ -1,7 +1,9 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/local_database_service/shared_prefs_service.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_circular_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/add_new_card/cubits/add_new_card_cubit/add_new_card_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/cubits/get_my_cards_cubit/get_my_cards_cubit.dart';
@@ -50,6 +52,15 @@ class _MyCardsViewBodyState extends State<MyCardsViewBody> {
                 return Expanded(child: CustomCircularProgressWidget());
               } else if (state is FailureGetMyCardsState) {
                 return Expanded(child: Text(state.errorMessage));
+              } else if (state is EmptyCardsState) {
+                return Expanded(
+                  child: Text(
+                    "لا يوجد لديك أي كارت بنكي",
+                    style: AppStyles.textStyle19Bold.copyWith(
+                      color: AppColors.lightPrimaryColor,
+                    ),
+                  ),
+                );
               } else {
                 return Expanded(child: SizedBox());
               }
@@ -70,7 +81,6 @@ class _MyCardsViewBodyState extends State<MyCardsViewBody> {
                   extra: {
                     "AddNewCardCubit": addNewCardCubit,
                     "GetMyCardsCubit": getMyCardsCubit,
-                  
                   },
                 );
               },

@@ -2,14 +2,22 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomEditDataTextField extends StatelessWidget {
-  const CustomEditDataTextField({super.key, required this.hintText});
+  const CustomEditDataTextField({
+    super.key,
+    required this.hintText,
+    required this.onPressed,
+  });
   final String hintText;
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onSubmitted: (value) {},
+      readOnly: true,
       decoration: InputDecoration(
-        suffixIcon: Icon(Icons.edit, color: Color(0xff949D9E)),
+        suffixIcon: IconButton(
+          onPressed: onPressed,
+          icon: Icon(Icons.edit, color: Color(0xff949D9E)),
+        ),
         hintText: hintText,
         hintStyle: AppStyles.textStyle13Bold.copyWith(color: Color(0xff949D9E)),
         fillColor: Color(0xffF9FAFA),

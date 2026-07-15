@@ -32,7 +32,11 @@ class ProductsBody extends StatelessWidget {
               ),
             ),
           ),
-          ProductsGridViewBlocBuilder(),
+          SliverPadding(
+            sliver: ProductsGridViewBlocBuilder(),
+            padding: EdgeInsets.symmetric(horizontal: 16),
+          ),
+          SliverToBoxAdapter(child: const SizedBox(height: 30)),
         ],
       ),
     );

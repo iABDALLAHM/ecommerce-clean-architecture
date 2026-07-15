@@ -1,4 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_circular_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/cubits/get_my_orders_cubit/get_my_orders_stream_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/cubits/get_my_orders_cubit/get_my_orders_stream_state.dart';
@@ -27,7 +29,12 @@ class MyOrdersViewBody extends StatelessWidget {
                       if (state is SuccessGetMyOrdersState) {
                         return OrdersItemListView(myOrders: state.myOrders);
                       } else if (state is EmptyOrdersState) {
-                        return Text("لا يوجد لديك اي أوردارات");
+                        return Text(
+                          "لا يوجد لديك اي أوردارات أطلب الأن",
+                          style: AppStyles.textStyle19Bold.copyWith(
+                            color: AppColors.lightPrimaryColor,
+                          ),
+                        );
                       } else if (state is LoadingGetMyOrdersState) {
                         return CustomCircularProgressWidget();
                       }

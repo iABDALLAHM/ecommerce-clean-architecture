@@ -60,9 +60,13 @@ class AuthRepositoryImplementation implements AuthRepository {
   @override
   Future<Either<Failure, void>> updatePassword({
     required String newPassword,
+    required String oldPassword,
   }) async {
     try {
-      await authService.updatePassword(newPassword: newPassword);
+      await authService.updatePassword(
+        newPassword: newPassword,
+        oldPassword: oldPassword,
+      );
       return Right(null);
     } on CustomException catch (e) {
       log(
@@ -103,6 +107,19 @@ class AuthRepositoryImplementation implements AuthRepository {
   }) async {
     try {
       await authService.resetPassword(email: email);
+      return Right(null);
+    } on CustomException catch (e) {
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> updateEmail({
+    required String password,
+    required String email,
+  }) async {
+    try {
+      await authService.updateEmail(email: email, password: password);
       return Right(null);
     } on CustomException catch (e) {
       return Left(ServerFailure(message: e.exceptionMeassge));

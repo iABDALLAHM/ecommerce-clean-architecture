@@ -16,7 +16,15 @@ abstract class AuthRepository {
 
   Future<Either<Failure, void>> deleteCurrentUser();
 
-  Future<Either<Failure, void>> updatePassword({required String newPassword});
+  Future<Either<Failure, void>> updatePassword({
+    required String newPassword,
+    required String oldPassword,
+  });
+
+  Future<Either<Failure, void>> updateEmail({
+    required String password,
+    required String email,
+  });
 
   Future<Either<Failure, String>> getCurrentUserId();
 

@@ -6,6 +6,7 @@ import 'package:ecommerce_clean_architecture/features/profile/presentation/add_n
 import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/cubits/get_my_cards_cubit/get_my_cards_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class AddNewCardBlocListener extends StatelessWidget {
   const AddNewCardBlocListener({super.key, required this.child});
@@ -19,6 +20,7 @@ class AddNewCardBlocListener extends StatelessWidget {
           context.read<GetMyCardsCubit>().getAllMyCards(
             uId: getIt.get<SharedPrefService>().getData(key: "user-id"),
           );
+          context.pop();
         } else if (state is FailureAddNewCardState) {
           showSnackBar(context, message: state.errorMessage);
         }

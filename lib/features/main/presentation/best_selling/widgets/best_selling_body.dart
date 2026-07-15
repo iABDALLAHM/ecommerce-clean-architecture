@@ -27,7 +27,10 @@ class BestSellingBody extends StatelessWidget {
               ),
             ),
           ),
-          FruitItemsGridViewBlocBuilder(),
+          SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            sliver: FruitItemsGridViewBlocBuilder(),
+          ),
           SliverToBoxAdapter(child: const SizedBox(height: 20)),
         ],
       ),
