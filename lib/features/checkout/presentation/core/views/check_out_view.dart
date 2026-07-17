@@ -12,6 +12,7 @@ class CheckOutView extends StatefulWidget {
   const CheckOutView({super.key, required this.cartEntity});
 
   final CartEntity cartEntity;
+
   @override
   State<CheckOutView> createState() => _CheckOutViewState();
 }

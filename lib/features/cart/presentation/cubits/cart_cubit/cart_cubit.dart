@@ -30,7 +30,7 @@ class CartCubit extends Cubit<CartStates> {
   }
 
   void increaseCartItem({required CartItemEntity cartItemEntity}) {
-    if (cartItemEntity.productEntity.unitAmount > 0) {
+    if (cartItemEntity.quantity < cartItemEntity.productEntity.unitAmount) {
       cartItemEntity.increaseCount();
       emit(ProductIncreaseState(cartItemEntity: cartItemEntity));
     }

@@ -6,7 +6,7 @@ class CartItemEntity extends Equatable {
   final ProductEntity productEntity;
   int quantity;
 
-  CartItemEntity({required this.productEntity, required this.quantity});
+  CartItemEntity({required this.productEntity, this.quantity = 1});
 
   num calculateTotalPrice() {
     return productEntity.productPrice * quantity;

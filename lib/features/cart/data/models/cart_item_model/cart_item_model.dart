@@ -5,13 +5,14 @@ class CartItemModel {
   final ProductModel productModel;
   int quantity;
 
-  CartItemModel({required this.productModel, this.quantity = 0});
+  CartItemModel({required this.productModel, required this.quantity});
 
   factory CartItemModel.fromEntity({required CartItemEntity cartItemEntity}) {
     return CartItemModel(
       productModel: ProductModel.fromEntity(
         productEntity: cartItemEntity.productEntity,
       ),
+      quantity: cartItemEntity.quantity,
     );
   }
 

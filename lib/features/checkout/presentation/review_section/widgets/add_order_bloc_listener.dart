@@ -16,7 +16,7 @@ class AddOrderBlocListener extends StatelessWidget {
       listener: (context, state) {
         if (state is SuccessAddOrderState) {
           showSnackBar(context, message: "تم إضافة الاوردر الخاص بك");
-          context.push(
+          context.go(
             AppRoutes.reviewOrder,
             extra: context.read<CheckOutCubit>().orderEntity,
           );

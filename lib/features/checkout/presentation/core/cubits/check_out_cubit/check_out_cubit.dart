@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_entity/cart_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity/order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_status_entity/order_status_entity.dart';
@@ -13,6 +15,9 @@ class CheckOutCubit extends Cubit<CheckOutStates> {
   late OrderEntity orderEntity;
 
   void initializeOrder({required CartEntity cartEntity, required String uId}) {
+    log(cartEntity.items.first.productEntity.toString());
+    log(cartEntity.items.first.quantity.toString());
+
     orderEntity = OrderEntity(
       uId: uId,
       cartEntity: cartEntity,
