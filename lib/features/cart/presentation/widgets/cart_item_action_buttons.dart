@@ -21,7 +21,7 @@ class CartItemActionButtons extends StatelessWidget {
           },
         ),
         const SizedBox(width: 16),
-        Text("${cartItemEntity.count}", style: AppStyles.textStyle16Bold),
+        Text("${cartItemEntity.quantity}", style: AppStyles.textStyle16Bold),
         const SizedBox(width: 16),
         DecrementButton(
           onPressed: () {

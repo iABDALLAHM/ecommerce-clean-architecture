@@ -1,13 +1,13 @@
+import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/views/widgets/order_details.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/order_item_icon.dart';
-import 'package:ecommerce_clean_architecture/features/profile/domain/entities/my_order_entity/my_order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/views/widgets/order_status_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OrderItem extends StatefulWidget {
   const OrderItem({super.key, required this.myOrderEntity});
-  final MyOrderEntity myOrderEntity;
+  final OrderEntity myOrderEntity;
   @override
   State<OrderItem> createState() => _OrderItemState();
 }
@@ -17,7 +17,7 @@ class _OrderItemState extends State<OrderItem> {
   @override
   Widget build(BuildContext context) {
 
-    var myOrderEntity = context.read<MyOrderEntity>();
+    var myOrderEntity = context.read<OrderEntity>();
 
     return Card(
       elevation: 0,

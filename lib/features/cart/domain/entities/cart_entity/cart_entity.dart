@@ -37,7 +37,7 @@ class CartEntity {
         return cartItem;
       }
     }
-    return CartItemEntity(productEntity: productEntity, count: 1);
+    return CartItemEntity(productEntity: productEntity, quantity: 1);
   }
 
   @override

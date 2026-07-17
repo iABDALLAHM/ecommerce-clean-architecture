@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/functions/get_specific_date.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/features/profile/domain/entities/my_order_entity/my_order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,7 +9,7 @@ class OrderDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var myOrderEntity = context.read<MyOrderEntity>();
+    var myOrderEntity = context.read<OrderEntity>();
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +37,7 @@ class OrderDetails extends StatelessWidget {
                     ),
                   ),
                   TextSpan(
-                    text: ": ${myOrderEntity.products.length} -",
+                    text: ": ${myOrderEntity.cartEntity.items.length} -",
                     style: AppStyles.textStyle13Bold,
                   ),
                 ],

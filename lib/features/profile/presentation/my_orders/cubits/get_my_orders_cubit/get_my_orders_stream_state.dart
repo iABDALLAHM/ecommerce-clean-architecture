@@ -1,9 +1,9 @@
-import 'package:ecommerce_clean_architecture/features/profile/domain/entities/my_order_entity/my_order_entity.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
 
 abstract class GetMyOrdersState {}
 
 final class SuccessGetMyOrdersState extends GetMyOrdersState {
-  final List<MyOrderEntity> myOrders;
+  final List<OrderEntity> myOrders;
 
   SuccessGetMyOrdersState({required this.myOrders});
 }
