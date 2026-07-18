@@ -79,6 +79,7 @@ void setupGetIt() async {
       databaseService: getIt.get<DatabaseService>(),
     ),
   );
+
   getIt.registerSingleton<ProductsRepository>(
     ProductsRepositoryImplementation(
       databaseService: getIt.get<DatabaseService>(),

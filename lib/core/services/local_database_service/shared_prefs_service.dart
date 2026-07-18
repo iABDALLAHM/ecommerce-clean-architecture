@@ -20,4 +20,8 @@ class SharedPrefService {
   String getData({required String key}) {
     return sharedPreferences.getString(key) ?? "";
   }
+
+  Future<bool> clearDate() async {
+    return await sharedPreferences.clear();
+  }
 }

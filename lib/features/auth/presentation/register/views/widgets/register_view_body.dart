@@ -135,7 +135,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
   }
 
   void _handleSuccess(BuildContext context) {
-    showSnackBar(context, message: "تم تسجيل الدخول بنجاح");
+    showSnackBar(context, message: "تم إنشاء حساب جديد");
     context.pop();
   }
 }

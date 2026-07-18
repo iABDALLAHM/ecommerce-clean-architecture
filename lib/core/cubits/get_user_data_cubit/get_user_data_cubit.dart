@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_state.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/local_database_service/shared_prefs_service.dart';
@@ -20,12 +22,12 @@ class GetUserDataCubit extends Cubit<GetUserDataState> {
 
     var result = await _userRepository.getUserData(uId: userId);
 
-    result.fold(
-      (l) => emit(FailureGetUserDataState(errorMessage: l.message)),
-      (s) {
-        getIt.get<SharedPrefService>().saveData(key: "user-id", value: s.uId);
-        emit(SuccessGetUserDataState(userEntity: s));
-      },
-    );
+    result.fold((l) => emit(FailureGetUserDataState(errorMessage: l.message)), (
+      s,
+    ) {
+      getIt.get<SharedPrefService>().saveData(key: "user-id", value: s.uId);
+      log("This is the UID in GetUserDataCubit ${s.uId}");
+      emit(SuccessGetUserDataState(userEntity: s));
+    });
   }
 }
