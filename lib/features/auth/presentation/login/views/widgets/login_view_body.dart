@@ -1,4 +1,5 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
@@ -116,7 +117,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
       _triggerLoginCubit();
     } else {
       autovalidateMode = AutovalidateMode.always;
-      setState((){});
+      setState(() {});
     }
   }
 
@@ -130,6 +131,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
 
   void _handleSuccess(BuildContext context) {
     showSnackBar(context, message: "تم تسجيل الدخول بنجاح");
+    context.read<GetUserDataCubit>().getUserData();
     context.go(AppRoutes.home);
   }
 }

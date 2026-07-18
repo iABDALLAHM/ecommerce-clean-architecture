@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/secure_storage_service.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
@@ -26,6 +25,7 @@ class LoginCubit extends Cubit<LoginStates> {
           key: SecureStorageService.keyUserId,
           value: resultId,
         );
+    
         log("This is the UID in login $resultId");
         emit(SuccessLoginState());
       },
