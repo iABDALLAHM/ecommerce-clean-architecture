@@ -92,7 +92,7 @@ class AuthRepositoryImplementation implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, String>> getCurrentUserId() async {
+  Future<Either<Failure, String?>> getCurrentUserId() async {
     try {
       var result = await authService.getCurrentUserId();
       return Right(result);
@@ -121,6 +121,58 @@ class AuthRepositoryImplementation implements AuthRepository {
     try {
       await authService.updateEmail(email: email, password: password);
       return Right(null);
+    } on CustomException catch (e) {
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> confirmationPassword({
+    required String newPassword,
+    required String code,
+  }) async {
+    try {
+      await authService.confirmPasswordReset(
+        code: code,
+        newPassword: newPassword,
+      );
+      return Right(null);
+    } on CustomException catch (e) {
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    try {
+      var userCredential = await authService.signInWithGoogle();
+
+      UserEntity userEntity = UserModel(
+        name: userCredential.user?.displayName ?? "",
+        email: userCredential.user?.email ?? "",
+        uId: userCredential.user?.uid ?? "",
+        userImage: userCredential.user?.photoURL ?? "",
+      ).toEntity();
+
+      return Right(userEntity);
+    } on CustomException catch (e) {
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+    try {
+      var userCredential = await authService.signInWithFacebook();
+
+      UserEntity userEntity = UserModel(
+        name: userCredential.user?.displayName ?? "",
+        email: userCredential.user?.email ?? "",
+        uId: userCredential.user?.uid ?? "",
+        userImage: userCredential.user?.photoURL ?? "",
+      ).toEntity();
+
+      return Right(userEntity);
     } on CustomException catch (e) {
       return Left(ServerFailure(message: e.exceptionMeassge));
     }

@@ -36,11 +36,23 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           _handleSuccess(context);
         } else if (state is FailureLoginState) {
           _handleFailure(context, message: state.errMessage);
+        } else if (state is SuccessLoginWithGoogleState) {
+          _handleSuccessSignInWithGoogle(context);
+        } else if (state is FailureLoginWithGoogleState) {
+          showSnackBar(context, message: state.errorMessage);
+        } else if (state is SuccessLoginWithFacebookState) {
+          _handleSuccessSignInWithFacebook(context);
+        } else if (state is FailureLoginWithFacebookState) {
+          showSnackBar(context, message: state.errorMessage);
         }
       },
       builder: (context, state) {
         return CustomProgressWidget(
-          state: state is LoadingLoginState ? true : false,
+          state: state is LoadingLoginState
+              ? true
+              : false || state is LoadingLoginWithGoogleState
+              ? true
+              : false,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
             child: SingleChildScrollView(
@@ -85,13 +97,17 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     OrDividerSection(),
                     const SizedBox(height: 16),
                     SocialCustomButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<LoginCubit>().signInWithFacebook();
+                      },
                       text: "تسجيل بواسطة فيسبوك",
                       icon: Assets.imagesFacebookSocialIcon,
                     ),
                     const SizedBox(height: 16),
                     SocialCustomButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<LoginCubit>().signInWithGoogle();
+                      },
                       text: "تسجيل بواسطة جوجل",
                       icon: Assets.imagesGoogleSocialIcon,
                     ),
@@ -131,6 +147,18 @@ class _LoginViewBodyState extends State<LoginViewBody> {
 
   void _handleSuccess(BuildContext context) {
     showSnackBar(context, message: "تم تسجيل الدخول بنجاح");
+    context.read<GetUserDataCubit>().getUserData();
+    context.go(AppRoutes.home);
+  }
+
+  void _handleSuccessSignInWithGoogle(BuildContext context) {
+    showSnackBar(context, message: "تم تسجيل الدخول بنجاح بواسطة جوجل");
+    context.read<GetUserDataCubit>().getUserData();
+    context.go(AppRoutes.home);
+  }
+
+  void _handleSuccessSignInWithFacebook(BuildContext context) {
+    showSnackBar(context, message: "تم تسجيل الدخول بنجاح بواسطة فيس بوك");
     context.read<GetUserDataCubit>().getUserData();
     context.go(AppRoutes.home);
   }

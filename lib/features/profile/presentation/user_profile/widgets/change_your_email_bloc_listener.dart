@@ -14,7 +14,10 @@ class ChangeYourEmailBlocListener extends StatelessWidget {
     return BlocListener<UpdateUserEmailCubit, UpdateUserEmailState>(
       listener: (context, state) {
         if (state is SuccessUpdateUserEmailState) {
-          showSnackBar(context, message: "تم تغير الإيميل الخاص بك بنجاح");
+          showSnackBar(
+            context,
+            message: "برجاء تفقد بريدك الإلكتروني لتاكيد تغير الإيميل",
+          );
           context.read<GetUserDataCubit>().getUserData();
           context.pop();
         } else if (state is FailureUpdateUserEmailState) {

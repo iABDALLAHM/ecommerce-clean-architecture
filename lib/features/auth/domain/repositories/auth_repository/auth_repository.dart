@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
+import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 
 abstract class AuthRepository {
   Future<Either<Failure, String>> createNewAccount({
@@ -26,7 +27,16 @@ abstract class AuthRepository {
     required String email,
   });
 
-  Future<Either<Failure, String>> getCurrentUserId();
+  Future<Either<Failure, String?>> getCurrentUserId();
 
   Future<Either<Failure, void>> sendResetPasswordEmail({required String email});
+
+  Future<Either<Failure, void>> confirmationPassword({
+    required String newPassword,
+    required String code,
+  });
+
+  Future<Either<Failure, UserEntity>> signInWithGoogle();
+  Future<Either<Failure, UserEntity>> signInWithFacebook();
+
 }

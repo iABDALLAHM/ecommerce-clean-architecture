@@ -1,5 +1,7 @@
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
+import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -26,7 +28,15 @@ Future<void> showResetPasswordDialog({required BuildContext context}) async {
             children: [
               SvgPicture.asset(Assets.imagesCheckMarkIcon),
               const SizedBox(height: 29),
-              Text("تم تغيير الباسورد بنجاح", style: AppStyles.textStyle16Bold),
+              Text(
+                "تم تغيير الباسورد بنجاح قم بتسجيل الدخول",
+                style: AppStyles.textStyle16Bold,
+              ),
+              const SizedBox(height: 8),
+              CustomButton(
+                text: "Login",
+                onPressed: () => context.go(AppRoutes.login),
+              ),
             ],
           ),
         ),

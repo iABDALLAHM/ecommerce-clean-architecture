@@ -18,7 +18,12 @@ class ProfileBodyImage extends StatelessWidget {
               return CircleAvatar(
                 backgroundColor: Colors.white,
                 radius: 35,
-                backgroundImage: NetworkImage(state.userEntity.userImage),
+                child: Image.network(
+                  state.userEntity.userImage,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Icon(Icons.person);
+                  },
+                ),
               );
             }
             return CircleAvatar(

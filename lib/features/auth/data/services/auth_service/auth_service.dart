@@ -10,6 +10,12 @@ abstract class AuthService {
     required String oldPassword,
   });
   Future<void> updateEmail({required String email, required String password});
-  Future<String> getCurrentUserId();
+  Future<String>? getCurrentUserId();
   Future<void> resetPassword({required String email});
+  Future<void> confirmPasswordReset({
+    required String code,
+    required String newPassword,
+  });
+  Future<UserCredential> signInWithGoogle();
+  Future<UserCredential> signInWithFacebook();
 }

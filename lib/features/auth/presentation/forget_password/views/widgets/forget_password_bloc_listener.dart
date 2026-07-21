@@ -9,10 +9,13 @@ class ForgetPasswordBlocListener extends StatelessWidget {
   final Widget child;
   @override
   Widget build(BuildContext context) {
-    return BlocListener<SendResetPasswordEmailCubit,SendResetPasswordEmailState>(
+    return BlocListener<
+      SendResetPasswordEmailCubit,
+      SendResetPasswordEmailState
+    >(
       listener: (context, state) {
         if (state is SuccessSendEmailState) {
-          showSnackBar(context, message: "تم إرسال الإيميل الي البريد الإلكتروني");
+          showSnackBar(context, message: "تحقق من البريد الإلكتروني");
         } else if (state is FailureSendEmailState) {
           showSnackBar(context, message: state.errorMessage);
         }

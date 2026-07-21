@@ -145,16 +145,61 @@ class AppRoutes {
       GoRoute(path: onboarding, builder: (context, state) => OnboardingView()),
       GoRoute(path: onboarding, builder: (context, state) => OnboardingView()),
       GoRoute(path: splash, builder: (context, state) => SplashView()),
-      GoRoute(path: login, builder: (context, state) => LoginView()),
+
+      // // handle login
+      // GoRoute(
+      //   path: '/__/auth/links',
+      //   redirect: (context, state) {
+      //     final link = state.uri.queryParameters['link'];
+      //     if (link != null) {
+      //       final innerUri = Uri.parse(link);
+      //       final oobCode = innerUri.queryParameters['oobCode'];
+      //       if (oobCode != null) {
+      //         return '$login?oobCode=$oobCode';
+      //       }
+      //     }
+      //     return login;
+      //   },
+      // ),
+
+      GoRoute(
+        path: login,
+        builder: (context, state) {
+          // String oobCode = state.uri.queryParameters['oobCode'] ?? "";
+          return LoginView();
+        },
+      ),
+
       GoRoute(path: register, builder: (context, state) => RegisterView()),
       GoRoute(
         path: forgetPassword,
         builder: (context, state) => ForgetPasswordView(),
       ),
+
+      // handle resetPassword
       GoRoute(
         path: resetYourPassword,
-        builder: (context, state) => ResetYourPasswordView(),
+        builder: (context, state) {
+          String oobCode = state.uri.queryParameters['oobCode'] ?? "";
+          return ResetYourPasswordView(oobCode: oobCode);
+        },
       ),
+
+      GoRoute(
+        path: '/__/auth/links',
+        redirect: (context, state) {
+          final link = state.uri.queryParameters['link'];
+          if (link != null) {
+            final innerUri = Uri.parse(link);
+            final oobCode = innerUri.queryParameters['oobCode'];
+            if (oobCode != null) {
+              return '$resetYourPassword?oobCode=$oobCode';
+            }
+          }
+          return resetYourPassword;
+        },
+      ),
+
       GoRoute(
         path: passwordRecovery,
         builder: (context, state) => PasswordRecoveryView(),

@@ -1,7 +1,10 @@
 import 'dart:developer';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/features/auth/data/services/auth_service/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthService implements AuthService {
   final FirebaseAuth firebaseAuth;
@@ -152,7 +155,7 @@ class FirebaseAuthService implements AuthService {
   }
 
   @override
-  Future<String> getCurrentUserId() async {
+  Future<String>? getCurrentUserId() async {
     try {
       var userId = firebaseAuth.currentUser;
 
@@ -162,7 +165,7 @@ class FirebaseAuthService implements AuthService {
         );
       }
       return userId.uid;
-    } catch (e) {
+    } on FirebaseAuthException catch (e) {
       log(
         "error happend in FirebaseAuthService in getCurrentUserId method please check it, the error: $e",
       );
@@ -175,7 +178,17 @@ class FirebaseAuthService implements AuthService {
   @override
   Future<void> resetPassword({required String email}) async {
     try {
-      await firebaseAuth.sendPasswordResetEmail(email: email);
+      await firebaseAuth.sendPasswordResetEmail(
+        actionCodeSettings: ActionCodeSettings(
+          url:
+              'https://ecommerce-clean-arch.firebaseapp.com${AppRoutes.resetYourPassword}',
+          handleCodeInApp: true,
+          androidPackageName: 'com.example.ecommerce_clean_architecture',
+          androidInstallApp: true,
+          androidMinimumVersion: '12',
+        ),
+        email: email.trim(),
+      );
     } on FirebaseAuthException catch (e) {
       log(
         "error happend in FirebaseAuthService in resetPassword method please check it, the error: $e",
@@ -198,12 +211,106 @@ class FirebaseAuthService implements AuthService {
         password: password,
       );
       await user.reauthenticateWithCredential(credential);
-      await user.verifyBeforeUpdateEmail(email);
-      // await user.updateEmail(newEmail); // لسه لم تطبق!
+      await user.verifyBeforeUpdateEmail(
+        email,
+        ActionCodeSettings(
+          url: "https://ecommerce-clean-arch.firebaseapp.com${AppRoutes.home}",
+          handleCodeInApp: true,
+          androidPackageName: 'com.example.ecommerce_clean_architecture',
+          androidInstallApp: true,
+          androidMinimumVersion: '12',
+        ),
+      );
     } on FirebaseAuthException catch (e) {
       log(
         "error happend in FirebaseAuthService in updateEmail method please check it, the error: $e",
       );
+      throw CustomException(
+        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+      );
+    }
+  }
+
+  @override
+  Future<void> confirmPasswordReset({
+    required String code,
+    required String newPassword,
+  }) async {
+    try {
+      await firebaseAuth.confirmPasswordReset(
+        code: code,
+        newPassword: newPassword,
+      );
+    } catch (e) {
+      log(
+        "error happend in FirebaseAuthService in confirmPasswordReset method please check it, the error: $e",
+      );
+      throw CustomException(
+        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+      );
+    }
+  }
+
+  @override
+  Future<UserCredential> signInWithGoogle() async {
+    try {
+      final GoogleSignIn googleSignIn = GoogleSignIn.instance;
+
+      await googleSignIn.initialize(
+        serverClientId:
+            '942377143150-98gsaovn7092qtngli0tk2mt6i44auh1.apps.googleusercontent.com',
+      );
+      final GoogleSignInAccount googleUser = await googleSignIn.authenticate();
+
+      final GoogleSignInAuthentication googleAuth = googleUser.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        idToken: googleAuth.idToken,
+      );
+
+      UserCredential userCredential = await firebaseAuth.signInWithCredential(
+        credential,
+      );
+
+      return userCredential;
+    } on GoogleSignInException catch (e) {
+      log(
+        "error happend in FirebaseAuthService in signInWithGoogle method please check it, the error: $e",
+      );
+      throw CustomException(
+        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+      );
+    } catch (e) {
+      throw CustomException(
+        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+      );
+    }
+  }
+
+  @override
+  Future<UserCredential> signInWithFacebook() async {
+    try {
+      final FacebookAuth facebookAuth = FacebookAuth.instance;
+
+      final LoginResult result = await facebookAuth.login(
+        permissions: ['public_profile', 'email'],
+      );
+
+      final OAuthCredential credential = FacebookAuthProvider.credential(
+        result.accessToken!.tokenString,
+      );
+
+      UserCredential userCredential = await firebaseAuth.signInWithCredential(
+        credential,
+      );
+      return userCredential;
+    } on FirebaseAuthException catch (e) {
+      log("Error in FirebaseAuthService signInWithFacebook: $e");
+      throw CustomException(
+        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+      );
+    } catch (e) {
+      log("Error in signInWithFacebook: $e");
       throw CustomException(
         exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
       );
