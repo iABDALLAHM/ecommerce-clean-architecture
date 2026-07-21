@@ -1,3 +1,5 @@
+import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart';
+import 'package:ecommerce_clean_architecture/core/repositories/local_storage_repository/local_storage_repository.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/repositories/images_repository/images_repository.dart';
@@ -23,8 +25,11 @@ class ProfileBodyBlocProvider extends StatelessWidget {
         ),
 
         BlocProvider(
-          create: (context) =>
-              SignOutCubit(authRepo: getIt.get<AuthRepository>()),
+          create: (context) => SignOutCubit(
+            authRepo: getIt.get<AuthRepository>(),
+            secureStorageRepository: getIt.get<SecureStorageRepository>(),
+            localStorageRepository: getIt.get<LocalStorageRepository>(),
+          ),
         ),
       ],
       child: child,

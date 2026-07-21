@@ -1,12 +1,9 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
-import 'package:ecommerce_clean_architecture/core/services/local_database_service/shared_prefs_service.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_card_number_text_field.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_card_text_field_holder_name.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_cvv_card_number_text_field.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_expire_date_text_field.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_progress_widget.dart';
-import 'package:ecommerce_clean_architecture/features/profile/domain/entities/card_entity/card_entity.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/add_new_card/cubits/add_new_card_cubit/add_new_card_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/add_new_card/cubits/add_new_card_cubit/add_new_card_state.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/add_new_card/views/widgets/add_new_card_bloc_listener.dart';
@@ -104,19 +101,12 @@ class _AddNewCardViewBodyState extends State<AddNewCardViewBody> {
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
                               formKey.currentState!.save();
-                              final newCard = CardEntity(
-                                cardHolderName: cardHolderName,
+                              context.read<AddNewCardCubit>().addCard(
+                                holderName: cardHolderName,
                                 cardNumber: cardNumber,
-                                cardCvv: cardCVV,
+                                cardCVV: cardCVV,
                                 cardExpiredDate: cardExpiredDate,
                                 markAsDefault: markAsDefault,
-                                cardImageType: kMasterCardIcon,
-                                cardHolderId: getIt
-                                    .get<SharedPrefService>()
-                                    .getData(key: "user-id"),
-                              );
-                              context.read<AddNewCardCubit>().addCard(
-                                cardEntity: newCard,
                               );
                             } else {
                               autoValidateMode = AutovalidateMode.always;

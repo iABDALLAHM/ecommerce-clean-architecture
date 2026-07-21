@@ -1,27 +1,23 @@
+import 'package:ecommerce_clean_architecture/core/services/local_database_service/local_storage_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedPrefService {
+class SharedPrefService implements LocalStorageService {
   final SharedPreferences sharedPreferences;
 
   SharedPrefService({required this.sharedPreferences});
 
-  Future<void> setBool({required String key, required bool value}) async {
-    await sharedPreferences.setBool(key, value);
+  @override
+  Future<void> clearData() async {
+    await sharedPreferences.clear();
   }
 
-  bool getBool({required String key}) {
+  @override
+  Future<bool> getBoolean({required String key}) async {
     return sharedPreferences.getBool(key) ?? false;
   }
 
-  void saveData({required String key, required String value}) {
-    sharedPreferences.setString(key, value);
-  }
-
-  String getData({required String key}) {
-    return sharedPreferences.getString(key) ?? "";
-  }
-
-  Future<bool> clearDate() async {
-    return await sharedPreferences.clear();
+  @override
+  Future<void> setBoolean({required String key, required bool value}) async {
+    await sharedPreferences.setBool(key, value);
   }
 }

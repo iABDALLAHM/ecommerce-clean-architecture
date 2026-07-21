@@ -1,15 +1,21 @@
 import 'dart:developer';
-import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
-import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/secure_storage_service.dart';
+import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   final AuthRepository authRepo;
   final UserRepository userRepo;
+  final SecureStorageRepository _secureStorageRepository;
 
-  LoginCubit({required this.authRepo, required this.userRepo})
-    : super(InitialLoginState());
+  LoginCubit({
+    required this.authRepo,
+    required this.userRepo,
+    required SecureStorageRepository secureStorageRepository,
+  }) : _secureStorageRepository = secureStorageRepository,
+
+       super(InitialLoginState());
 
   Future signIn({required String email, required String password}) async {
     emit(LoadingLoginState());
@@ -21,11 +27,10 @@ class LoginCubit extends Cubit<LoginStates> {
         emit(FailureLoginState(errMessage: failure.message));
       },
       (resultId) async {
-        await getIt.get<SecureStorageService>().saveData(
-          key: SecureStorageService.keyUserId,
+        await _secureStorageRepository.saveData(
+          key: keyUserId,
           value: resultId,
         );
-
         log("This is the UID in login $resultId");
         emit(SuccessLoginState());
       },
@@ -48,8 +53,8 @@ class LoginCubit extends Cubit<LoginStates> {
             emit(FailureLoginWithGoogleState(errorMessage: failure.message));
           },
           (result) async {
-            await getIt.get<SecureStorageService>().saveData(
-              key: SecureStorageService.keyUserId,
+            await _secureStorageRepository.saveData(
+              key: keyUserId,
               value: userEntity.uId,
             );
             emit(SuccessLoginWithGoogleState());
@@ -75,8 +80,8 @@ class LoginCubit extends Cubit<LoginStates> {
             emit(FailureLoginWithFacebookState(errorMessage: failure.message));
           },
           (result) async {
-            await getIt.get<SecureStorageService>().saveData(
-              key: SecureStorageService.keyUserId,
+            await _secureStorageRepository.saveData(
+              key: keyUserId,
               value: userEntity.uId,
             );
             emit(SuccessLoginWithFacebookState());

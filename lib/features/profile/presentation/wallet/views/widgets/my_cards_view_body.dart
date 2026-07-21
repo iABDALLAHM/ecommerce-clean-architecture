@@ -1,6 +1,4 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
-import 'package:ecommerce_clean_architecture/core/services/local_database_service/shared_prefs_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
@@ -24,9 +22,7 @@ class MyCardsViewBody extends StatefulWidget {
 class _MyCardsViewBodyState extends State<MyCardsViewBody> {
   @override
   void initState() {
-    context.read<GetMyCardsCubit>().getAllMyCards(
-      uId: getIt.get<SharedPrefService>().getData(key: "user-id"),
-    );
+    context.read<GetMyCardsCubit>().getAllMyCards();
     super.initState();
   }
 

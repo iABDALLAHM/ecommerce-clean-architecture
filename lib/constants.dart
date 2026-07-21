@@ -21,3 +21,5 @@ const String kRemoveUserSignIn = "isUserSignIn";
 const String kSaveUserData = "SaveUserData";
 
 const String kRemoveUserData = "SaveUserData";
+
+const String keyUserId = 'user_id';

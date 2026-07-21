@@ -20,6 +20,12 @@ class ChangeYourEmailBottomSheet extends StatefulWidget {
 
 class _ChangeYourEmailBottomSheetState
     extends State<ChangeYourEmailBottomSheet> {
+  @override
+  void initState() {
+    context.read<GetUserDataCubit>().getUserData();
+    super.initState();
+  }
+
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 

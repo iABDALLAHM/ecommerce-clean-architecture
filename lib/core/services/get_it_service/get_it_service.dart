@@ -1,5 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/secure_storage_service.dart';
+import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart';
+import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository_implementation.dart';
+import 'package:ecommerce_clean_architecture/core/repositories/local_storage_repository/local_storage_repository.dart';
+import 'package:ecommerce_clean_architecture/core/repositories/local_storage_repository/local_storage_repository_implementation.dart';
+import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/flutter_secure_service.dart';
+import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/flutter_secure_storage_service.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/data/repositories/order_repository/order_repository_implementation.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/repositories/order_repository/orders_repository.dart';
@@ -31,8 +36,21 @@ void setupGetIt() async {
   getIt.registerSingleton<SharedPrefService>(
     SharedPrefService(sharedPreferences: await SharedPreferences.getInstance()),
   );
-  getIt.registerSingleton<SecureStorageService>(
-    SecureStorageService(storage: FlutterSecureStorage()),
+
+  getIt.registerSingleton<FlutterSecureService>(
+    FlutterSecureStorageService(storage: FlutterSecureStorage()),
+  );
+
+  getIt.registerSingleton<SecureStorageRepository>(
+    SecureStorageRepositoryImplementation(
+      flutterSecureService: getIt.get<FlutterSecureService>(),
+    ),
+  );
+
+  getIt.registerSingleton<LocalStorageRepository>(
+    LocalStorageRepositoryImplementation(
+      localStorageService: getIt.get<SharedPrefService>(),
+    ),
   );
 
   getIt.registerSingleton<DatabaseService>(
@@ -83,6 +101,7 @@ void setupGetIt() async {
   getIt.registerSingleton<ProductsRepository>(
     ProductsRepositoryImplementation(
       databaseService: getIt.get<DatabaseService>(),
+      secureStorageRepository: getIt.get<SecureStorageRepository>(),
     ),
   );
   getIt.registerSingleton<AuthRepository>(

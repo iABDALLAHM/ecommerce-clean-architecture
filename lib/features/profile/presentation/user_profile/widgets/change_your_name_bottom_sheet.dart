@@ -20,6 +20,12 @@ class ChangeYourNameBottomSheet extends StatefulWidget {
 }
 
 class _ChangeYourNameBottomSheetState extends State<ChangeYourNameBottomSheet> {
+  @override
+  void initState() {
+    context.read<GetUserDataCubit>().getUserData();
+    super.initState();
+  }
+
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String newName = "";
@@ -106,4 +112,3 @@ class _ChangeYourNameBottomSheetState extends State<ChangeYourNameBottomSheet> {
     );
   }
 }
-

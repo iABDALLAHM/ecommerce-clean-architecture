@@ -5,8 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ProfileBodyImage extends StatelessWidget {
+class ProfileBodyImage extends StatefulWidget {
   const ProfileBodyImage({super.key});
+
+  @override
+  State<ProfileBodyImage> createState() => _ProfileBodyImageState();
+}
+
+class _ProfileBodyImageState extends State<ProfileBodyImage> {
+  @override
+  void initState() {
+    context.read<GetUserDataCubit>().getUserData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(

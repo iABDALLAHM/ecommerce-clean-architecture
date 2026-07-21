@@ -1,7 +1,5 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
-import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
-import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/secure_storage_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_card_number_text_field.dart';
@@ -24,7 +22,6 @@ class PaymentSection extends StatefulWidget {
 }
 
 class _PaymentSectionState extends State<PaymentSection> {
-  late TextEditingController cardHolderIdController;
   late TextEditingController cardHolderNameController;
   late TextEditingController cardNumberController;
   late TextEditingController cardExpiredDateController;
@@ -39,9 +36,6 @@ class _PaymentSectionState extends State<PaymentSection> {
   void _initializeControllers() async {
     var cardEntity = context.read<CheckOutCubit>().orderEntity.cardEntity;
 
-    cardHolderIdController = TextEditingController(
-      text: cardEntity.cardHolderId,
-    );
     cardHolderNameController = TextEditingController(
       text: cardEntity.cardHolderName,
     );
@@ -51,10 +45,6 @@ class _PaymentSectionState extends State<PaymentSection> {
     );
     cardCVVController = TextEditingController(text: cardEntity.cardCvv);
     cardEntity.cardImageType = kMasterCardIcon;
-
-    cardEntity.cardHolderId = await getIt.get<SecureStorageService>().getData(
-      key: SecureStorageService.keyUserId,
-    );
   }
 
   @override

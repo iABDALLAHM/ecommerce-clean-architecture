@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
-import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
-import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/secure_storage_service.dart';
+import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
@@ -14,7 +14,13 @@ import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart'
 
 class ProductsRepositoryImplementation implements ProductsRepository {
   final DatabaseService databaseService;
-  ProductsRepositoryImplementation({required this.databaseService});
+  final SecureStorageRepository _secureStorageRepository;
+
+  ProductsRepositoryImplementation({
+    required this.databaseService,
+    required SecureStorageRepository secureStorageRepository,
+  }) : _secureStorageRepository = secureStorageRepository;
+
   @override
   Future<Either<Failure, List<ProductEntity>>> getProducts() async {
     try {
@@ -39,15 +45,13 @@ class ProductsRepositoryImplementation implements ProductsRepository {
     required ProductEntity product,
   }) async {
     try {
+      var result = await _secureStorageRepository.getData(key: keyUserId);
+
       await databaseService.addNestedData(
         path: BackendEndPoints.usersCollection,
         subCollection: BackendEndPoints.favoriteProductsCollection,
         data: ProductModel.fromEntity(productEntity: product).toMap(),
-        documentId:
-            await getIt.get<SecureStorageService>().getData(
-              key: SecureStorageService.keyUserId,
-            ) ??
-            "",
+        documentId: result,
       );
       return Right(null);
     } on CustomException catch (e) {
@@ -61,14 +65,12 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   @override
   Future<Either<Failure, List<ProductEntity>>> getFavoriteProducts() async {
     try {
+      var userId = await _secureStorageRepository.getData(key: keyUserId);
+
       var result = await databaseService.getNestedData(
         path: BackendEndPoints.usersCollection,
         subCollection: BackendEndPoints.favoriteProductsCollection,
-        documentId:
-            await getIt.get<SecureStorageService>().getData(
-              key: SecureStorageService.keyUserId,
-            ) ??
-            "",
+        documentId: userId,
       );
       List<ProductEntity> favProducts = (result as List)
           .map((ele) => ProductModel.fromJson(ele).toEntity())
@@ -90,8 +92,10 @@ class ProductsRepositoryImplementation implements ProductsRepository {
       var data = await databaseService.getQueryData(
         path: BackendEndPoints.productsCollection,
         query: QueryParams(
-          condition: 
-            QueryCondition(field: "productName", isEqualTo: searchName),
+          condition: QueryCondition(
+            field: "productName",
+            isEqualTo: searchName,
+          ),
         ),
       );
 
@@ -114,15 +118,13 @@ class ProductsRepositoryImplementation implements ProductsRepository {
     required ProductEntity product,
   }) async {
     try {
+      var userId = await _secureStorageRepository.getData(key: keyUserId);
+
       await databaseService.removeNestedData(
         path: BackendEndPoints.usersCollection,
         subCollection: BackendEndPoints.favoriteProductsCollection,
         data: ProductModel.fromEntity(productEntity: product).toMap(),
-        documentId:
-            await getIt.get<SecureStorageService>().getData(
-              key: SecureStorageService.keyUserId,
-            ) ??
-            "",
+        documentId: userId,
       );
       return Right(null);
     } on CustomException catch (e) {
@@ -157,9 +159,7 @@ class ProductsRepositoryImplementation implements ProductsRepository {
     try {
       var result = await databaseService.getQueryData(
         path: BackendEndPoints.productsCollection,
-        query: QueryParams(
-          order:QueryOrder(field: "productPrice"),
-        ),
+        query: QueryParams(order: QueryOrder(field: "productPrice")),
       );
       List<ProductEntity> lowProductsPrice = [];
       for (var product in result) {
@@ -176,9 +176,7 @@ class ProductsRepositoryImplementation implements ProductsRepository {
     try {
       var result = await databaseService.getQueryData(
         path: BackendEndPoints.productsCollection,
-        query: QueryParams(
-          order:QueryOrder(field: "productName"),
-        ),
+        query: QueryParams(order: QueryOrder(field: "productName")),
       );
       List<ProductEntity> sortedByNameProducts = [];
       for (var product in result) {

@@ -6,8 +6,19 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/notifica
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomHomeAppBar extends StatelessWidget {
+class CustomHomeAppBar extends StatefulWidget {
   const CustomHomeAppBar({super.key});
+
+  @override
+  State<CustomHomeAppBar> createState() => _CustomHomeAppBarState();
+}
+
+class _CustomHomeAppBarState extends State<CustomHomeAppBar> {
+  @override
+  void initState() {
+    context.read<GetUserDataCubit>().getUserData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

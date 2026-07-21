@@ -9,9 +9,20 @@ import 'package:ecommerce_clean_architecture/features/review_and_rating/presenta
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AddReviewTextField extends StatelessWidget {
+class AddReviewTextField extends StatefulWidget {
   const AddReviewTextField({super.key, required this.productEntity});
   final ProductEntity productEntity;
+
+  @override
+  State<AddReviewTextField> createState() => _AddReviewTextFieldState();
+}
+
+class _AddReviewTextFieldState extends State<AddReviewTextField> {
+  @override
+  void initState() {
+    context.read<GetUserDataCubit>().getUserData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +40,7 @@ class AddReviewTextField extends StatelessWidget {
                 BlocProvider.value(value: addReviewsCubit),
                 BlocProvider.value(value: getReviewsCubit),
               ],
-              child: AddReviewBottomSheet(productEntity: productEntity),
+              child: AddReviewBottomSheet(productEntity: widget.productEntity),
             );
           },
         );

@@ -1,10 +1,7 @@
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
-import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
-import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/secure_storage_service.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
-import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/entities/product_review_entity/product_review_entity.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/cubits/add_review_cubit/add_review_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/cubits/add_review_cubit/add_review_state.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/custom_review_text_field.dart';
@@ -98,18 +95,12 @@ class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
   }
 
   Future<void> _triggerAddReviewCubit(BuildContext context) async {
-    final ProductReviewEntity productReviewEntity = ProductReviewEntity(
-      productCode: widget.productEntity.productCode,
-      reviewDate: DateTime.now(),
-      reviewerMessage: message,
-      reviewerRating: rating.toDouble(),
-      reviewerUid: await getIt.get<SecureStorageService>().getData(
-        key: SecureStorageService.keyUserId,
-      ),
-    );
 
     context.read<AddReviewCubit>().addReview(
-      productReviewEntity: productReviewEntity,
+      productCode:widget.productEntity.productCode,
+      date: DateTime.now(),
+      reviewerMessage:  message,
+      reviewerRating: rating.toDouble(),
     );
   }
 }

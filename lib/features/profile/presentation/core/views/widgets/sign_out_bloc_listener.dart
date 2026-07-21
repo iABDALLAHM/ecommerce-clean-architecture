@@ -1,4 +1,3 @@
-import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/sign_out_cubit/sign_out_cubit.dart';
@@ -16,7 +15,6 @@ class SignOutDialogBlocListener extends StatelessWidget {
       listener: (context, state) {
         if (state is SuccessSignOutState) {
           showSnackBar(context, message: "تم تسجيل الخروج من التطبيق");
-          context.read<GetUserDataCubit>().close();
           context.go(AppRoutes.onboarding);
         } else if (state is FailureSignOutState) {
           showSnackBar(context, message: state.errMessage);

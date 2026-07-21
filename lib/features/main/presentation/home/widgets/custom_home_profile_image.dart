@@ -4,8 +4,19 @@ import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomHomeProfileImage extends StatelessWidget {
+class CustomHomeProfileImage extends StatefulWidget {
   const CustomHomeProfileImage({super.key});
+
+  @override
+  State<CustomHomeProfileImage> createState() => _CustomHomeProfileImageState();
+}
+
+class _CustomHomeProfileImageState extends State<CustomHomeProfileImage> {
+  @override
+  void initState() {
+    context.read<GetUserDataCubit>().getUserData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

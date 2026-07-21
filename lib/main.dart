@@ -1,5 +1,6 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
+import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
@@ -27,9 +28,10 @@ class ECommerceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          GetUserDataCubit(userRepository: getIt.get<UserRepository>())
-            ..getUserData(),
+      create: (context) => GetUserDataCubit(
+        userRepository: getIt.get<UserRepository>(),
+        secureStorageRepository: getIt.get<SecureStorageRepository>(),
+      ),
       child: MaterialApp.router(
         routerConfig: AppRoutes.router,
         localizationsDelegates: [

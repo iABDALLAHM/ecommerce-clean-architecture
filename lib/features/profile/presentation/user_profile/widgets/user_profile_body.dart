@@ -25,6 +25,12 @@ class UserProfileBody extends StatefulWidget {
 }
 
 class _UserProfileBodyState extends State<UserProfileBody> {
+  @override
+  void initState() {
+    context.read<GetUserDataCubit>().getUserData();
+    super.initState();
+  }
+
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
