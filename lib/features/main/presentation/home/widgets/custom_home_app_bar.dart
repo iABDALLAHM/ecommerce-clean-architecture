@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_state.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/custom_home_profile_image.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/widgets/custom_notification_icon.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,7 +32,7 @@ class _CustomHomeAppBarState extends State<CustomHomeAppBar> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "صباح الخير !..",
+              "${LocaleKeys.home_goodMorning.tr()} !..",
               style: AppStyles.textStyle16Regular.copyWith(
                 color: Color(0xff949D9E),
               ),

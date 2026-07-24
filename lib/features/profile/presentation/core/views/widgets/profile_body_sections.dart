@@ -1,6 +1,7 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/widgets/change_language_bottom_sheet.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/widgets/profile_body_item.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/widgets/profile_language_body_item.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/widgets/profile_body_switch_item.dart';
@@ -55,7 +56,16 @@ class ProfileBodySections extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         ProfileLanguageBodyItem(
-          onPressed: () {},
+          onPressed: () {
+            showModalBottomSheet(
+              useRootNavigator: true,
+              backgroundColor: Colors.white,
+              context: context,
+              builder: (context) {
+                return ChangeLanguageBottomSheet();
+              },
+            );
+          },
           icon: Assets.imagesLanguageIcon,
           name: "اللغة",
         ),
