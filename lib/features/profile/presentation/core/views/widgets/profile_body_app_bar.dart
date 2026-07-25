@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class ProfileBodyAppBar extends StatelessWidget {
@@ -8,7 +10,12 @@ class ProfileBodyAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [Text("حسابي", style: AppStyles.textStyle19Bold)],
+      children: [
+        Text(
+          LocaleKeys.profile_profilePageAppBar.tr(),
+          style: AppStyles.textStyle19Bold,
+        ),
+      ],
     );
   }
 }

@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/cubits/get_filter_products_cubit/get_filter_products_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/enums/radio_enum_choices/radio_enum_choices.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/radio_choices.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,7 +40,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                 ),
               ),
               const SizedBox(height: 26),
-              Text("ترتيب حسب :", style: AppStyles.textStyle19Bold),
+              Text(LocaleKeys.home_sortBy.tr(), style: AppStyles.textStyle19Bold),
               const SizedBox(height: 11),
               RadioChoices(
                 onChange: (value) {
@@ -50,7 +52,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                 height: 50,
                 width: double.infinity,
                 child: CustomButton(
-                  text: "تصفيه",
+                  text: LocaleKeys.home_sort.tr(),
                   onPressed: () {
                     if (radioChoicesEnumValue ==
                         RadioChoicesEnum.fromLowToHigh) {

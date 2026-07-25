@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
@@ -6,6 +7,7 @@ import 'package:ecommerce_clean_architecture/features/review_and_rating/presenta
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/cubits/add_review_cubit/add_review_state.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/custom_review_text_field.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/stars_rating.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -73,7 +75,7 @@ class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
                       }
                     },
                     child: CustomButton(
-                      text: "اضافة تقيم",
+                      text: LocaleKeys.reviewAndRating_reviewAndRatingAddReviewButton.tr(),
                       onPressed: () async {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();

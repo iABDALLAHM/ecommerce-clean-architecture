@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class CustomCardHolderNameTextField extends StatelessWidget {
@@ -22,7 +24,7 @@ class CustomCardHolderNameTextField extends StatelessWidget {
       onSaved: onSaved,
       decoration: InputDecoration(
         errorStyle: TextStyle(fontSize: 0),
-        hintText: "اسم حامل البطاقه",
+        hintText: LocaleKeys.checkOut_paymentCardHolderNameTextField.tr(),
         hintStyle: AppStyles.textStyle13Bold.copyWith(color: Color(0xff949D9E)),
         filled: true,
         fillColor: Color(0xffF9FAFA),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
@@ -6,6 +7,7 @@ import 'package:ecommerce_clean_architecture/core/widgets/custom_progress_widget
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/auth_rich_text.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/register/views/widgets/terms_and_conditions_section.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -51,14 +53,14 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   children: [
                     const SizedBox(height: 24),
                     CustomTextFormField(
-                      hintText: "الاسم كامل",
+                      hintText: LocaleKeys.auth_signUp_nameTextField.tr(),
                       onSaved: (value) {
                         name = value ?? "";
                       },
                     ),
                     const SizedBox(height: 16),
                     CustomTextFormField(
-                      hintText: "البريد الإلكتروني",
+                      hintText: LocaleKeys.auth_signUp_emailTextField.tr(),
                       onSaved: (value) {
                         email = value ?? "";
                       },
@@ -82,7 +84,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                       height: 54,
                       width: double.infinity,
                       child: CustomButton(
-                        text: "إنشاء حساب جديد",
+                        text: LocaleKeys.auth_signUp_signUpButton.tr(),
                         onPressed: () {
                           if (termsAndConditionsState == true) {
                             _validateTextField(context);
@@ -99,8 +101,8 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     const SizedBox(height: 26),
                     AuthRichText(
                       onTap: () => context.pop(),
-                      title: "تمتلك حساب بالفعل؟",
-                      subTitle: "تسجيل الدخول",
+                      title: LocaleKeys.auth_signUp_haveAnAccount.tr(),
+                      subTitle: LocaleKeys.auth_signUp_signIn.tr(),
                     ),
                   ],
                 ),

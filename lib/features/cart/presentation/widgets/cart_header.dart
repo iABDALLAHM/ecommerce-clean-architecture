@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,13 +18,15 @@ class CartHeader extends StatelessWidget {
       child: Center(
         child: cartItemsLenght == 0
             ? Text(
-                "ليس لديك اي منتجات في السلة",
+                LocaleKeys.home_cartHeaderTagWhenYouDontHaveProducts.tr(),
                 style: AppStyles.textStyle13Regular.copyWith(
                   color: AppColors.primaryColor,
                 ),
               )
+              /// اعمل ايه في دي ؟!
             : Text(
-                "لديك $cartItemsLenght منتجات في سله التسوق",
+                LocaleKeys.home_cartHeaderTagWhenYouHaveProducts.tr() +
+                    "$cartItemsLenght",
                 style: AppStyles.textStyle13Regular.copyWith(
                   color: AppColors.primaryColor,
                 ),

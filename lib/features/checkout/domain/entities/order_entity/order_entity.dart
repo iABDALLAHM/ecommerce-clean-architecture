@@ -25,4 +25,9 @@ class OrderEntity {
     required this.totalPrice,
     required this.cardEntity,
   });
+
+  @override
+  String toString() {
+    return "$uId ";
+  }
 }

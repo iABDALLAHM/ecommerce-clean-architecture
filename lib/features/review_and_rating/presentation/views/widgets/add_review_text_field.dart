@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_state.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
@@ -6,6 +7,7 @@ import 'package:ecommerce_clean_architecture/features/item_details/presentation/
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/cubits/add_review_cubit/add_review_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/add_review_bottom_sheet.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -76,7 +78,7 @@ class _AddReviewTextFieldState extends State<AddReviewTextField> {
             ),
           ),
         ),
-        hintText: "اكتب التعليق..",
+        hintText: LocaleKeys.reviewAndRating_reviewAndRatingTextField.tr(),
         hintStyle: AppStyles.textStyle13Regular,
         focusedBorder: buildOutlineInputBorder(),
         enabledBorder: buildOutlineInputBorder(),

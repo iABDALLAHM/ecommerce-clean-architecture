@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
@@ -8,6 +9,7 @@ import 'package:ecommerce_clean_architecture/features/profile/presentation/walle
 import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/cubits/get_my_cards_cubit/get_my_cards_state.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/views/widgets/custom_my_cards_button.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/views/widgets/my_card_item.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -80,7 +82,7 @@ class _MyCardsViewBodyState extends State<MyCardsViewBody> {
                   },
                 );
               },
-              text: "أضف وسيلة دفع جديده",
+              text: LocaleKeys.profile_myPaymentsPageButton.tr(),
             ),
           ),
           const SizedBox(height: 50),

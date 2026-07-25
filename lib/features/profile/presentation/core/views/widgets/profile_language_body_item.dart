@@ -9,9 +9,11 @@ class ProfileLanguageBodyItem extends StatelessWidget {
     required this.icon,
     required this.name,
     required this.onPressed,
+    required this.currentLang,
   });
   final String icon, name;
   final Function() onPressed;
+  final String currentLang;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,10 @@ class ProfileLanguageBodyItem extends StatelessWidget {
               ),
             ),
             Spacer(),
-            Text("العربية", style: AppStyles.textStyle13Regular),
+            Text(
+              currentLang == "ar" ? "العربية" : "English",
+              style: AppStyles.textStyle13Regular,
+            ),
             const SizedBox(width: 8),
             GestureDetector(
               onTap: onPressed,

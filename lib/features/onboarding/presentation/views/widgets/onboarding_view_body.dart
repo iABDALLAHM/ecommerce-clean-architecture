@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
@@ -5,6 +6,7 @@ import 'package:ecommerce_clean_architecture/features/onboarding/presentation/cu
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/cubits/onboarding_cubit/onboarding_state.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/widgets/custom_indicator.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/widgets/on_boarding_page_view.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -55,7 +57,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                         }
                       },
                       child: CustomButton(
-                        text: "ابدأ الان",
+                        text: LocaleKeys.onBoarding_startNow.tr(),
                         onPressed: () {
                           context
                               .read<OnboardingCubit>()

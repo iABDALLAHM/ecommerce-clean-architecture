@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_circular_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
@@ -12,6 +13,7 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/cubits/add_review_cubit/add_review_cubit.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -33,13 +35,14 @@ class ProductInfo extends StatelessWidget {
           TextSpan(
             children: [
               TextSpan(
-                text: "${productEntity.productPrice}جنية",
+                text:
+                    "${productEntity.productPrice} ${LocaleKeys.itemDetails_itemDetailsItemPound.tr()}",
                 style: AppStyles.textStyle13Bold.copyWith(
                   color: AppColors.secondryColor,
                 ),
               ),
               TextSpan(
-                text: " / الكيلو",
+                text: " / ${LocaleKeys.itemDetails_itemDetailsItemAmount.tr()}",
                 style: AppStyles.textStyle13Bold.copyWith(
                   color: AppColors.lightsecondryColor,
                 ),
@@ -64,9 +67,9 @@ class ProductInfo extends StatelessWidget {
                   ),
                   const SizedBox(width: 9),
                   Text(
-                     state.productReviewWithUserEntity.length > 30
+                    state.productReviewWithUserEntity.length > 30
                         ? "(+30)"
-                        : "(${ state.productReviewWithUserEntity.length})",
+                        : "(${state.productReviewWithUserEntity.length})",
                     style: AppStyles.textStyle13Regular.copyWith(
                       color: Color(0xff9796A1),
                     ),
@@ -82,7 +85,7 @@ class ProductInfo extends StatelessWidget {
                       context.push(AppRoutes.reviewAndRating, extra: data);
                     },
                     child: Text(
-                      "المراجعه",
+                      LocaleKeys.itemDetails_itemDetailsReviewItemButton.tr(),
                       style: AppStyles.textStyle13Bold.copyWith(
                         color: AppColors.primaryColor,
                         decoration: TextDecoration.underline,
@@ -112,7 +115,7 @@ class ProductInfo extends StatelessWidget {
                       context.push(AppRoutes.reviewAndRating, extra: data);
                     },
                     child: Text(
-                      "المراجعه",
+                      LocaleKeys.itemDetails_itemDetailsReviewItemButton.tr(),
                       style: AppStyles.textStyle13Bold.copyWith(
                         color: AppColors.primaryColor,
                         decoration: TextDecoration.underline,
@@ -149,7 +152,7 @@ class ProductInfo extends StatelessWidget {
                 title: handleExpirationYearsText(
                   numOfYears: productEntity.expirationYears,
                 ),
-                subTitle: "الصلاحيه",
+                subTitle: LocaleKeys.itemDetails_itemDetailsExpirationDate.tr(),
               ),
             ),
             const SizedBox(width: 16),
@@ -157,7 +160,7 @@ class ProductInfo extends StatelessWidget {
               child: InfoDetailsBox(
                 icon: Assets.imagesIsOrganicIcon,
                 title: productEntity.isOrganicProduct == false ? "0%" : "100%",
-                subTitle: "اورجانيك",
+                subTitle: LocaleKeys.itemDetails_itemDetailsOrganicItem.tr(),
               ),
             ),
           ],
@@ -170,8 +173,9 @@ class ProductInfo extends StatelessWidget {
             Expanded(
               child: InfoDetailsBox(
                 icon: Assets.imagesCaloryIcon,
-                title: "${productEntity.numberOfCalories} كالوري",
-                subTitle: "100 جرام",
+                title:
+                    "${productEntity.numberOfCalories} ${LocaleKeys.itemDetails_itemDetailsCaloryItem.tr()}",
+                subTitle: LocaleKeys.itemDetails_itemDetailsCaloryBy100GM.tr(),
               ),
             ),
             const SizedBox(width: 16),
@@ -183,10 +187,12 @@ class ProductInfo extends StatelessWidget {
                     child: InfoDetailsBox(
                       icon: Assets.imagesStarIcon,
                       title: calculateAverageRating(
-                        reviews:  state.productReviewWithUserEntity,
+                        reviews: state.productReviewWithUserEntity,
                       ).toString(),
-                      titleDetails: "(${ state.productReviewWithUserEntity.length}) ",
-                      subTitle: "Reviews",
+                      titleDetails:
+                          "(${state.productReviewWithUserEntity.length}) ",
+                      subTitle: LocaleKeys.itemDetails_itemDetailsReviewsItem
+                          .tr(),
                     ),
                   );
                 } else if (state is LoadingGetReviewsState) {
@@ -196,7 +202,8 @@ class ProductInfo extends StatelessWidget {
                     child: InfoDetailsBox(
                       icon: Assets.imagesStarIcon,
                       title: "لا يوجد",
-                      subTitle: "Reviews",
+                      subTitle: LocaleKeys.itemDetails_itemDetailsReviewsItem
+                          .tr(),
                     ),
                   );
                 }
@@ -212,7 +219,7 @@ class ProductInfo extends StatelessWidget {
           height: 54,
           width: double.infinity,
           child: CustomButton(
-            text: "أضف الي السلة",
+            text: LocaleKeys.itemDetails_itemDetailsAddToCartButton.tr(),
             onPressed: () {
               context.read<CartCubit>().addProduct(
                 productEntity: productEntity,

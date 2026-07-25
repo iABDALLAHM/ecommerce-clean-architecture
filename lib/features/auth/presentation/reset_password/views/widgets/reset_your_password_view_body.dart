@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
@@ -7,6 +8,7 @@ import 'package:ecommerce_clean_architecture/features/auth/presentation/core/wid
 import 'package:ecommerce_clean_architecture/features/auth/presentation/reset_password/cubits/confirm_reset_password_cubit/confirm_password_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/reset_password/cubits/confirm_reset_password_cubit/confirm_password_state.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/reset_password/views/widgets/confirm_password_bloc_listener.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,19 +46,25 @@ class _ResetYourPasswordViewBodyState extends State<ResetYourPasswordViewBody> {
                   children: [
                     const SizedBox(height: 24),
                     Text(
-                      "قم بإنشاء كلمة مرور جديدة لتسجيل الدخول",
+                      LocaleKeys
+                          .auth_resetYourPassword_resetYourPasswordCondition
+                          .tr(),
                       style: AppStyles.textStyle16SemiBold,
                     ),
                     const SizedBox(height: 34),
                     CustomPasswordField(
-                      hintText: "كلمة المرور الجديدة",
+                      hintText: LocaleKeys
+                          .auth_resetYourPassword_resetYourPasswordTextFieldNewPass
+                          .tr(),
                       onSaved: (value) {
                         newPassword = value ?? "";
                       },
                     ),
                     const SizedBox(height: 24),
                     CustomPasswordField(
-                      hintText: "تأكيد كلمة المرور",
+                      hintText: LocaleKeys
+                          .auth_resetYourPassword_resetYourPasswordTextFieldConfirmNewPass
+                          .tr(),
                       onSaved: (value) {
                         confirmationNewPassword = value ?? "";
                       },
@@ -66,7 +74,9 @@ class _ResetYourPasswordViewBodyState extends State<ResetYourPasswordViewBody> {
                       height: 54,
                       width: double.infinity,
                       child: CustomButton(
-                        text: "إنشاء كلمة مرور جديدة",
+                        text: LocaleKeys
+                            .auth_resetYourPassword_resetYourPasswordButton
+                            .tr(),
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
                             formKey.currentState!.save();

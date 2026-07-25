@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_state.dart';
@@ -14,6 +15,7 @@ import 'package:ecommerce_clean_architecture/features/profile/presentation/user_
 import 'package:ecommerce_clean_architecture/features/profile/presentation/user_profile/widgets/change_your_name_bottom_sheet.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/user_profile/widgets/custom_edit_data_text_field.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/user_profile/widgets/user_profile_body_bloc_listener.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -60,7 +62,8 @@ class _UserProfileBodyState extends State<UserProfileBody> {
                         children: [
                           const SizedBox(height: 24),
                           Text(
-                            "المعلومات الشخصيه",
+                            LocaleKeys.profile_userProfilePagePersonalInfoHeader
+                                .tr(),
                             style: AppStyles.textStyle13SemiBold,
                           ),
                           const SizedBox(height: 8),
@@ -132,26 +135,34 @@ class _UserProfileBodyState extends State<UserProfileBody> {
                           ),
                           const SizedBox(height: 16),
                           Text(
-                            "تغيير كلمة المرور",
+                            LocaleKeys
+                                .profile_userProfilePageChangePasswordHeader
+                                .tr(),
                             style: AppStyles.textStyle13SemiBold,
                           ),
                           const SizedBox(height: 8),
                           CustomPasswordField(
-                            hintText: "كلمة المرور الحالي",
+                            hintText: LocaleKeys
+                                .profile_userProfilePageCurrentPasswordTextField
+                                .tr(),
                             onSaved: (value) {
                               oldPassword = value ?? "";
                             },
                           ),
                           const SizedBox(height: 8),
                           CustomPasswordField(
-                            hintText: "كلمة المرور الجديده",
+                            hintText: LocaleKeys
+                                .profile_userProfilePageNewPassword
+                                .tr(),
                             onSaved: (value) {
                               newPassword = value ?? "";
                             },
                           ),
                           const SizedBox(height: 8),
                           CustomPasswordField(
-                            hintText: "تأكيد كلمة المرور الجديده",
+                            hintText: LocaleKeys
+                                .profile_userProfilePageConfirmationNewPassword
+                                .tr(),
                             onSaved: (value) {
                               confirmationNewPassord = value ?? "";
                             },
@@ -161,7 +172,8 @@ class _UserProfileBodyState extends State<UserProfileBody> {
                             height: 54,
                             width: double.infinity,
                             child: CustomButton(
-                              text: "حفظ التغييرات",
+                              text: LocaleKeys.profile_userProfilePageButton
+                                  .tr(),
                               onPressed: () {
                                 if (formKey.currentState!.validate()) {
                                   formKey.currentState!.save();

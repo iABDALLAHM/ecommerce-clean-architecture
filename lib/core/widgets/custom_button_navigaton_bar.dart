@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/bottom_navigation_bar_entitiy/bottom_navigation_bar_entity.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/bottom_navigation_item.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -40,7 +42,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
             barEntity: BottomNavigationBarEntity(
               activeIcon: Assets.imagesActiveHomeIcon,
               inActiveIcon: Assets.imagesInActiveHomeIcon,
-              iconName: "الرئيسية",
+              iconName: LocaleKeys.home_homeNavBar.tr(),
             ),
           ),
 
@@ -52,7 +54,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
             barEntity: BottomNavigationBarEntity(
               activeIcon: Assets.imagesActiveProductsIcon,
               inActiveIcon: Assets.imagesInActiveProductsIcon,
-              iconName: "المنتجات",
+              iconName: LocaleKeys.home_productsNavBar.tr(),
             ),
           ),
 
@@ -62,7 +64,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
             barEntity: BottomNavigationBarEntity(
               activeIcon: Assets.imagesActiveCartIcon,
               inActiveIcon: Assets.imagesInActiveCartIcon,
-              iconName: "سلة التسوق",
+              iconName: LocaleKeys.home_cartNavBar.tr(),
             ),
           ),
 
@@ -72,7 +74,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
             barEntity: BottomNavigationBarEntity(
               activeIcon: Assets.imagesActiveAccountIcon,
               inActiveIcon: Assets.imagesInActiveAccountIcon,
-              iconName: "حسابي",
+              iconName: LocaleKeys.profile_profileNavBar.tr(),
             ),
           ),
         ],

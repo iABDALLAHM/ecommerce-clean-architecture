@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -33,7 +35,7 @@ class SearchBarTrigger extends StatelessWidget {
           focusedBorder: buildOutlineInputBorder(),
           enabledBorder: buildOutlineInputBorder(),
           border: buildOutlineInputBorder(),
-          hintText: "ابحث عن.......",
+          hintText: LocaleKeys.home_searchingTextField.tr(),
           hintStyle: AppStyles.textStyle13Regular.copyWith(
             color: Color(0xff949D9E),
           ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_progress_widget.dart';
@@ -7,6 +8,7 @@ import 'package:ecommerce_clean_architecture/features/checkout/presentation/revi
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/review_section/widgets/address_summary.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/review_section/widgets/order_summary.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/review_section/widgets/payment_method_summary.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,7 +33,7 @@ class ReviewOrderSection extends StatelessWidget {
                     const SizedBox(height: 24),
                     OrderSummary(),
                     const SizedBox(height: 16),
-                    Text("يرجي تأكيد  طلبك", style: AppStyles.textStyle13Bold),
+                    Text(LocaleKeys.checkOut_confirmationOrder.tr(), style: AppStyles.textStyle13Bold),
                     const SizedBox(height: 8),
                     PaymentMethodSummary(),
                     const SizedBox(height: 8),

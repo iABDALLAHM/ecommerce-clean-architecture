@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/widgets/on_boarding_page_view_item.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingPageView extends StatefulWidget {
@@ -26,7 +28,7 @@ class _OnBoardingPageViewState extends State<OnBoardingPageView> {
             TextSpan(
               children: [
                 TextSpan(
-                  text: "مرحبًا بك في ",
+                  text: LocaleKeys.onBoarding_hello.tr(),
                   style: AppStyles.textStyle23Bold,
                 ),
                 TextSpan(
@@ -44,16 +46,17 @@ class _OnBoardingPageViewState extends State<OnBoardingPageView> {
               ],
             ),
           ),
-          subTitle:
-              'اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.',
+          subTitle: LocaleKeys.onBoarding_description1.tr(),
         ),
         OnBoardingPageViewItem(
           isSecond: false,
           backgroundImage: Assets.imagesSecondSplashViewBackground,
           onBoardingLogo: Assets.imagesSecondSplashViewLogo,
-          widget: Text("ابحث وتسوق", style: AppStyles.textStyle23Bold),
-          subTitle:
-              'نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية',
+          widget: Text(
+            LocaleKeys.onBoarding_shopping.tr(),
+            style: AppStyles.textStyle23Bold,
+          ),
+          subTitle: LocaleKeys.onBoarding_description2.tr(),
         ),
       ],
     );

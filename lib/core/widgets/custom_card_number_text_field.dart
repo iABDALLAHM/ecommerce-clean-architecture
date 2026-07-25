@@ -1,8 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class CustomCardNumberTextField extends StatelessWidget {
-  const CustomCardNumberTextField({super.key, required this.onSaved, this.controller});
+  const CustomCardNumberTextField({
+    super.key,
+    required this.onSaved,
+    this.controller,
+  });
 
   final Function(String?) onSaved;
   final TextEditingController? controller;
@@ -24,7 +30,7 @@ class CustomCardNumberTextField extends StatelessWidget {
         errorStyle: TextStyle(fontSize: 0),
         filled: true,
         fillColor: Color(0xffF9FAFA),
-        hintText: "رقم البطاقة",
+        hintText: LocaleKeys.checkOut_paymentCardNumberTextField.tr(),
         hintStyle: AppStyles.textStyle13Bold.copyWith(color: Color(0xff949D9E)),
         border: buildOutlineInputBorder(),
         enabledBorder: buildOutlineInputBorder(),

@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,12 +26,15 @@ class AddressSummary extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("عنوان التوصيل", style: AppStyles.textStyle13Bold),
+              Text(
+                LocaleKeys.checkOut_shippingAddress.tr(),
+                style: AppStyles.textStyle13Bold,
+              ),
               Spacer(),
               Icon(Icons.edit_outlined, color: Color(0xff6C7275)),
               const SizedBox(width: 6),
               Text(
-                "تعديل",
+                LocaleKeys.checkOut_shippingAddressEditButton.tr(),
                 style: AppStyles.textStyle13SemiBold.copyWith(
                   color: Color(0xff949D9E),
                 ),

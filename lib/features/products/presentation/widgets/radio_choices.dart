@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/enums/radio_enum_choices/radio_enum_choices.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class RadioChoices extends StatefulWidget {
@@ -36,7 +38,7 @@ class _RadioChoicesState extends State<RadioChoices> {
             }),
             activeColor: AppColors.primaryColor,
             title: Text(
-              "السعر ( الأعلي الي الأقل )",
+              LocaleKeys.home_sortByPriceFromHighToLow.tr(),
               style: AppStyles.textStyle13Bold.copyWith(color: Colors.black),
             ),
             value: RadioChoicesEnum.fromHighToLow,
@@ -53,7 +55,7 @@ class _RadioChoicesState extends State<RadioChoices> {
             }),
             activeColor: AppColors.primaryColor,
             title: Text(
-              'السعر ( الأقل الي الأعلي )',
+              LocaleKeys.home_sortByPriceFromLowToHigh.tr(),
               style: AppStyles.textStyle13Bold.copyWith(color: Colors.black),
             ),
             value: RadioChoicesEnum.fromLowToHigh,
@@ -69,7 +71,7 @@ class _RadioChoicesState extends State<RadioChoices> {
             }),
             activeColor: AppColors.primaryColor,
             title: Text(
-              'الأبجديه',
+              LocaleKeys.home_sortByAlphabetical.tr(),
               style: AppStyles.textStyle13Bold.copyWith(color: Colors.black),
             ),
             value: RadioChoicesEnum.alphabetical,

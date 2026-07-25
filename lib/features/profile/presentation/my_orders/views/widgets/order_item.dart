@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/views/widgets/order_details.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/order_item_icon.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/views/widgets/order_status_item.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +18,6 @@ class _OrderItemState extends State<OrderItem> {
   bool isActive = false;
   @override
   Widget build(BuildContext context) {
-
     var myOrderEntity = context.read<OrderEntity>();
 
     return Card(
@@ -63,30 +64,36 @@ class _OrderItemState extends State<OrderItem> {
                     ),
                     OrderStatusItem(
                       stepIndex: 1,
-                      title: "تتبع الطلب",
+                      title: LocaleKeys.profile_myOrdersPageTrackOrderStatus
+                          .tr(),
                       date: myOrderEntity.date,
                       isDone: true,
                     ),
                     OrderStatusItem(
-                      title: "قبول الطلب",
+                      title: LocaleKeys.profile_myOrdersPageAcceptOrderStatus
+                          .tr(),
                       date: myOrderEntity.orderStatusEntity.acceptedAt,
                       isDone: myOrderEntity.orderStatusEntity.acceptOrder,
                       stepIndex: 2,
                     ),
                     OrderStatusItem(
-                      title: "تم شحن الطلب",
+                      title: LocaleKeys.profile_myOrdersPageOrderShippedStatus
+                          .tr(),
                       date: myOrderEntity.orderStatusEntity.shippedAt,
                       isDone: myOrderEntity.orderStatusEntity.orderShipped,
                       stepIndex: 3,
                     ),
                     OrderStatusItem(
-                      title: "خرج للتوصيل",
+                      title: LocaleKeys
+                          .profile_myOrdersPageOrderOutOfDeliveryStatus
+                          .tr(),
                       date: myOrderEntity.orderStatusEntity.outOfDeliveryAt,
                       isDone: myOrderEntity.orderStatusEntity.outOfDelivery,
                       stepIndex: 4,
                     ),
                     OrderStatusItem(
-                      title: "تم التسليم",
+                      title: LocaleKeys.profile_myOrdersPageOrderDeliverdStatus
+                          .tr(),
                       date: myOrderEntity.orderStatusEntity.deliverdAt,
                       isDone: myOrderEntity.orderStatusEntity.orderDelivered,
                       stepIndex: 5,

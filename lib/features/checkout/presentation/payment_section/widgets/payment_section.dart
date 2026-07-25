@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
@@ -11,6 +12,7 @@ import 'package:ecommerce_clean_architecture/features/checkout/presentation/paym
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/cubits/payment_validation_cubit/payment_validation_state.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/widgets/choose_payment_card_option.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/widgets/make_card_as_default.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -70,18 +72,10 @@ class _PaymentSectionState extends State<PaymentSection> {
               children: [
                 const SizedBox(height: 24),
 
-                Text(
-                  "أختار طريقه الدفع المناسبه :",
+                Text(LocaleKeys.checkOut_paymentOptionMainText.tr(),
                   style: AppStyles.textStyle13Bold,
                 ),
                 const SizedBox(height: 13),
-                Text(
-                  "من فضلك اختر طريقه الدفع المناسبه لك.",
-                  style: AppStyles.textStyle13Regular,
-                ),
-
-                const SizedBox(height: 13),
-
                 Row(
                   children: [
                     ChoosePaymentCardOption(image: Assets.imagesApplePay),

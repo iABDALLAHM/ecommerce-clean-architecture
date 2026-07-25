@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/features/main/main.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/products_cubit/products_states.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/cubits/get_filter_products_cubit/get_filter_products_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/filter_bottom_sheet.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -20,7 +22,7 @@ class ProductsHeader extends StatelessWidget {
           builder: (context, state) {
             if (state is SuccessProductsState) {
               return Text(
-                "${state.products.length} نتائج",
+                "${state.products.length} ${LocaleKeys.home_results.tr()}",
                 style: AppStyles.textStyle16Bold,
               );
             } else if (state is LoadingProductsState) {

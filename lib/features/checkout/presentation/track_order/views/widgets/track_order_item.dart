@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/functions/get_month.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity/order_entity.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -31,11 +33,11 @@ class TrackOrderItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "طلب رقم : ${orderEntity.orderNumber}",
+                "${LocaleKeys.checkOut_trackOrderPageOrderNumber.tr()} ${orderEntity.orderNumber}",
                 style: AppStyles.textStyle13Bold,
               ),
               Text(
-                "تم الطلب : ${orderEntity.date.day} ${getMonth(month: orderEntity.date.month)} ,${orderEntity.date.year}",
+                "${LocaleKeys.checkOut_trackOrderPageOrderedAt.tr()} ${orderEntity.date.day} ${getMonth(month: orderEntity.date.month)} ,${orderEntity.date.year}",
                 style: AppStyles.textStyle11Regular.copyWith(
                   color: Color(0xff949D9E),
                 ),
@@ -47,7 +49,8 @@ class TrackOrderItem extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: "عدد الطلبات ",
+                          text: LocaleKeys.checkOut_trackOrderPageNumberOfItems
+                              .tr(),
                           style: AppStyles.textStyle13Regular.copyWith(
                             color: Color(0xff949D9E),
                           ),
@@ -73,6 +76,4 @@ class TrackOrderItem extends StatelessWidget {
       ),
     );
   }
-
-
 }

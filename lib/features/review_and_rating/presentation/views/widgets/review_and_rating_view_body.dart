@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_divider.dart';
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
@@ -7,6 +8,7 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/add_review_text_field.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/review_summary_section.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/reviews_list_view.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,7 +43,7 @@ class _ReviewAndRatingViewBodyState extends State<ReviewAndRatingViewBody> {
                   builder: (context, state) {
                     if (state is SuccessGetReviewsState) {
                       return Text(
-                        "${state.productReviewWithUserEntity.length} مراجعة",
+                        "${state.productReviewWithUserEntity.length} ${LocaleKeys.reviewAndRating_reviewAndRatingReviewsText.tr()}",
                         style: AppStyles.textStyle13Bold,
                       );
                     } else if (state is LoadingGetReviewsState) {

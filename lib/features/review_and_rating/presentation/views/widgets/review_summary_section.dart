@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/cubits/get_reviews_cubit/get_reviews_state.dart';
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/functions/calculate_average_rating.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/functions/calculate_percentage.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/reviews_indicator.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,7 +16,7 @@ class ReviewsSummarySection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("الملخص", style: AppStyles.textStyle16SemiBold),
+        Text(LocaleKeys.reviewAndRating_reviewAndRatingSummary.tr(), style: AppStyles.textStyle16SemiBold),
         const SizedBox(height: 8),
         IntrinsicHeight(
           child: Row(
@@ -43,7 +45,7 @@ class ReviewsSummarySection extends StatelessWidget {
                           style: AppStyles.textStyle16Regular,
                         ),
                         const SizedBox(height: 22),
-                        Text("موصي بها", style: AppStyles.textStyle13Regular),
+                        Text(LocaleKeys.reviewAndRating_reviewAndRatingRecommendedText.tr(), style: AppStyles.textStyle13Regular),
                       ],
                     );
                   } else if (state is EmptyGetReviewsState) {

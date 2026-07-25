@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/sign_out_cubit/sign_out_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/widgets/sign_out_dialog_widget.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +19,7 @@ class SignOutBadge extends StatelessWidget {
         children: [
           Spacer(flex: 2),
           Text(
-            "تسجيل الخروج",
+            LocaleKeys.profile_signOutSection.tr(),
             style: AppStyles.textStyle13SemiBold.copyWith(
               color: AppColors.primaryColor,
             ),

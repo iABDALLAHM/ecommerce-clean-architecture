@@ -19,7 +19,7 @@ class BannerItem extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              padding: EdgeInsets.only(right: 25),
+              padding: const EdgeInsetsDirectional.only(start: 24),
               width: width * .5,
               height: height,
               decoration: BoxDecoration(
@@ -28,17 +28,16 @@ class BannerItem extends StatelessWidget {
               ),
               child: SaleAndShippingSection(),
             ),
-            Positioned(
-              right: 195,
-              left: 0,
+            PositionedDirectional(
+              end: 0,
               top: 0,
               bottom: 0,
+              width: 140,
               child: Container(
-                width: width * .8,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(15),
                   image: DecorationImage(
-                    fit: BoxFit.scaleDown,
+                    fit: BoxFit.contain,
                     image: NetworkImage(featuredProductEntity.image),
                   ),
                 ),

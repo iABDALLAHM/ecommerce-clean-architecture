@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,13 +10,15 @@ class OrderSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     var payWithCash = context.watch<CheckOutCubit>().orderEntity.payWithCash;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("ملخص الطلب :", style: AppStyles.textStyle13Bold),
+        Text(
+          LocaleKeys.checkOut_orderSummarySection.tr(),
+          style: AppStyles.textStyle13Bold,
+        ),
         const SizedBox(height: 8),
         Container(
           padding: EdgeInsets.symmetric(vertical: 15, horizontal: 2),
@@ -30,7 +34,7 @@ class OrderSummary extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "المجموع الفرعي :",
+                      LocaleKeys.checkOut_orderSummarySectionSubtotal.tr(),
                       style: AppStyles.textStyle13Regular.copyWith(
                         color: Color(0xff4E5556),
                       ),
@@ -47,7 +51,10 @@ class OrderSummary extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("التوصيل  :", style: AppStyles.textStyle13Regular),
+                  Text(
+                    LocaleKeys.checkOut_orderSummarySectionDelivery.tr(),
+                    style: AppStyles.textStyle13Regular,
+                  ),
                   Text(
                     payWithCash == true ? "40 جنية" : "0 جنية",
                     style: AppStyles.textStyle13SemiBold.copyWith(
@@ -62,7 +69,10 @@ class OrderSummary extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("الكلي", style: AppStyles.textStyle16Bold),
+                  Text(
+                    LocaleKeys.checkOut_orderSummarySectionTotal.tr(),
+                    style: AppStyles.textStyle16Bold,
+                  ),
                   Text(
                     "${payWithCash == true ? context.read<CheckOutCubit>().orderEntity.cartEntity.calculateTotalPrice().round() + 40 : 0} جنيه",
                     style: AppStyles.textStyle16Bold,

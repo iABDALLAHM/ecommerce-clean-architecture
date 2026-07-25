@@ -1,14 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class CustomPasswordField extends StatefulWidget {
-  const CustomPasswordField({
-    super.key,
-    this.onSaved,
-    this.hintText = "كلمة المرور",
-  });
+  const CustomPasswordField({super.key, this.onSaved, this.hintText});
   final Function(String?)? onSaved;
-  final String hintText;
+  final String? hintText;
   @override
   State<CustomPasswordField> createState() => _CustomPasswordFieldState();
 }
@@ -39,7 +37,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
               ? Icon(Icons.visibility_off, color: Color(0xffC9CECF))
               : Icon(Icons.remove_red_eye, color: Color(0xffC9CECF)),
         ),
-        hintText: widget.hintText,
+        hintText: LocaleKeys.auth_loginPage_passwordTextField.tr(),
         hintStyle: AppStyles.textStyle13Bold.copyWith(color: Color(0xff949D9E)),
         border: buildOutlineInputBorder(),
         enabledBorder: buildOutlineInputBorder(),

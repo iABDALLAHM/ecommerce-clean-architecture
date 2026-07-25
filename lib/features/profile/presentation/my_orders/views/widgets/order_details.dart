@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/functions/get_specific_date.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,11 +17,11 @@ class OrderDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "طلب رقم: ${myOrderEntity.orderNumber}",
+          "${LocaleKeys.profile_myOrdersPageOrdersNumber.tr()} ${myOrderEntity.orderNumber}",
           style: AppStyles.textStyle13Bold,
         ),
         Text(
-          "تم الطلب: ${getSpecificDate(date: myOrderEntity.date)}",
+          "${LocaleKeys.profile_myOrdersPageOrderdAt.tr()} ${getSpecificDate(date: myOrderEntity.date)}",
           style: AppStyles.textStyle11Regular.copyWith(
             color: Color(0xff949D9E),
           ),
@@ -31,7 +33,7 @@ class OrderDetails extends StatelessWidget {
               TextSpan(
                 children: [
                   TextSpan(
-                    text: "عدد الطلبات",
+                    text: LocaleKeys.checkOut_trackOrderPageNumberOfItems.tr(),
                     style: AppStyles.textStyle13Regular.copyWith(
                       color: Color(0xff949D9E),
                     ),

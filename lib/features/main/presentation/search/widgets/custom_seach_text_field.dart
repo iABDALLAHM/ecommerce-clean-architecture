@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_cubit.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,7 +39,7 @@ class CustomSearchTextField extends StatelessWidget {
               enabledBorder: buildOutlineInputBorder(),
               focusedBorder: buildOutlineInputBorder(),
               border: buildOutlineInputBorder(),
-              hintText: "ابحث عن.......",
+              hintText: LocaleKeys.home_searchingTextField.tr(),
               hintStyle: AppStyles.textStyle13Regular.copyWith(
                 color: Color(0xff949D9E),
               ),

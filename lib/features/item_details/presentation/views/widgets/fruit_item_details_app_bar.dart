@@ -11,9 +11,17 @@ class FruitItemDetailsAppBar extends StatelessWidget {
         context.pop();
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+        padding: EdgeInsetsDirectional.symmetric(horizontal: 16, vertical: 15),
         decoration: ShapeDecoration(shape: OvalBorder(), color: Colors.white),
-        child: Icon(Icons.arrow_back_ios_new),
+        child: Icon(
+          IconData(
+            Icons.arrow_back_ios_new.codePoint,
+            fontFamily: Icons.arrow_back_ios_new.fontFamily,
+            fontPackage: Icons.arrow_back_ios_new.fontPackage,
+            matchTextDirection: true,
+          ),
+          size: 18,
+        ),
       ),
     );
   }

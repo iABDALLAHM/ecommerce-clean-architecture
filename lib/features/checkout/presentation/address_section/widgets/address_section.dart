@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_text_form_field.dart';
@@ -5,6 +6,7 @@ import 'package:ecommerce_clean_architecture/features/checkout/presentation/addr
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/address_section/cubits/address_validation_cubit/address_validation_state.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/address_section/widgets/save_location_section.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -89,7 +91,7 @@ class _AddressSectionState extends State<AddressSection> {
                 const SizedBox(height: 24),
                 CustomTextFormField(
                   controller: nameController,
-                  hintText: "الاسم كامل",
+                  hintText: LocaleKeys.checkOut_addressNameTextField.tr(),
                   onSaved: (value) {
                     shippingAddressEntity.name = value;
                   },
@@ -97,7 +99,7 @@ class _AddressSectionState extends State<AddressSection> {
                 const SizedBox(height: 8),
                 CustomTextFormField(
                   controller: emailController,
-                  hintText: "البريد الإلكتروني",
+                  hintText: LocaleKeys.checkOut_addressEmailTextField.tr(),
                   onSaved: (value) {
                     shippingAddressEntity.email = value;
                   },
@@ -105,7 +107,7 @@ class _AddressSectionState extends State<AddressSection> {
                 const SizedBox(height: 8),
                 CustomTextFormField(
                   controller: addressController,
-                  hintText: "العنوان",
+                  hintText: LocaleKeys.checkOut_addressDetailsTextField.tr(),
                   onSaved: (value) {
                     shippingAddressEntity.address = value;
                   },
@@ -113,7 +115,7 @@ class _AddressSectionState extends State<AddressSection> {
                 const SizedBox(height: 8),
                 CustomTextFormField(
                   controller: cityController,
-                  hintText: "المدينه",
+                  hintText: LocaleKeys.checkOut_addressCity.tr(),
                   onSaved: (value) {
                     shippingAddressEntity.city = value;
                   },
@@ -121,7 +123,7 @@ class _AddressSectionState extends State<AddressSection> {
                 const SizedBox(height: 8),
                 CustomTextFormField(
                   controller: addressDetailsController,
-                  hintText: "رقم الطابق , رقم الشقه ..",
+                  hintText: LocaleKeys.checkOut_addressFloorNum.tr(),
                   textInputType: TextInputType.number,
                   onSaved: (value) {
                     shippingAddressEntity.addressDetails = value;
@@ -130,7 +132,7 @@ class _AddressSectionState extends State<AddressSection> {
                 const SizedBox(height: 8),
                 CustomTextFormField(
                   controller: phoneNumController,
-                  hintText: "رقم الهاتف",
+                  hintText: LocaleKeys.checkOut_yourNumberTextField.tr(),
                   onSaved: (value) {
                     shippingAddressEntity.phone = value;
                     checkOutCubit.updateShippingAddress(

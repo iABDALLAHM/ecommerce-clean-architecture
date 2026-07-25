@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class SaveLocationSection extends StatefulWidget {
@@ -31,7 +33,7 @@ class _SaveLocationSectionState extends State<SaveLocationSection> {
         ),
         const SizedBox(width: 8),
         Text(
-          "حفظ العنوان",
+          LocaleKeys.checkOut_saveAddressSwitch.tr(),
           style: AppStyles.textStyle13SemiBold.copyWith(
             color: Color(0xff949D9E),
           ),

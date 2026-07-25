@@ -18,7 +18,15 @@ class CustomArrowBackAppBar extends StatelessWidget {
         child: CircleAvatar(
           backgroundColor: Colors.white,
           radius: 27,
-          child: Icon(Icons.arrow_back_ios_new, size: 18),
+          child: Icon(
+            IconData(
+              Icons.arrow_back_ios_new.codePoint,
+              fontFamily: Icons.arrow_back_ios_new.fontFamily,
+              fontPackage: Icons.arrow_back_ios_new.fontPackage,
+              matchTextDirection: true,
+            ),
+            size: 18,
+          ),
         ),
       ),
     );

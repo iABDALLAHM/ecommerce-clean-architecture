@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
@@ -11,6 +12,7 @@ import 'package:ecommerce_clean_architecture/features/auth/presentation/core/wid
 import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/or_divider_section.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/social_custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/forget_password/views/widgets/forget_password_section.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -63,7 +65,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   children: [
                     const SizedBox(height: 24),
                     CustomTextFormField(
-                      hintText: "البريد الإلكتروني",
+                      hintText: LocaleKeys.auth_loginPage_emailTextField.tr(),
                       onSaved: (value) {
                         email = value ?? "";
                       },
@@ -81,7 +83,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                       width: double.infinity,
                       height: 54,
                       child: CustomButton(
-                        text: "تسجيل دخول",
+                        text: LocaleKeys.auth_loginPage_loginButton.tr(),
                         onPressed: () {
                           _validateLoginTextFields();
                         },
@@ -90,8 +92,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     const SizedBox(height: 33),
                     AuthRichText(
                       onTap: () => context.push(AppRoutes.register),
-                      title: 'لا تمتلك حساب؟',
-                      subTitle: 'قم بإنشاء حساب',
+                      title: LocaleKeys.auth_loginPage_doNotHaveAnAccount.tr(),
+                      subTitle: LocaleKeys.auth_loginPage_createNewAccount.tr(),
                     ),
                     const SizedBox(height: 33),
                     OrDividerSection(),
@@ -100,7 +102,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                       onPressed: () {
                         context.read<LoginCubit>().signInWithFacebook();
                       },
-                      text: "تسجيل بواسطة فيسبوك",
+                      text: LocaleKeys.auth_loginPage_signInWithFacebookButton
+                          .tr(),
                       icon: Assets.imagesFacebookSocialIcon,
                     ),
                     const SizedBox(height: 16),
@@ -108,13 +111,15 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                       onPressed: () {
                         context.read<LoginCubit>().signInWithGoogle();
                       },
-                      text: "تسجيل بواسطة جوجل",
+                      text: LocaleKeys.auth_loginPage_signInWithGoogleButton
+                          .tr(),
                       icon: Assets.imagesGoogleSocialIcon,
                     ),
                     const SizedBox(height: 16),
                     SocialCustomButton(
                       onPressed: () {},
-                      text: "تسجيل بواسطة أبل",
+                      text: LocaleKeys.auth_loginPage_signInWithAppleButton
+                          .tr(),
                       icon: Assets.imagesAppleSocialIcon,
                     ),
                   ],

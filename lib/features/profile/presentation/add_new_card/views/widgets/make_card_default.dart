@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class MakeCardAsDefault extends StatefulWidget {
@@ -39,7 +41,7 @@ class _MakeCardAsDefaultState extends State<MakeCardAsDefault> {
         ),
         const SizedBox(width: 16),
         Text(
-          "جعل البطاقة افتراضية",
+          LocaleKeys.profile_addNewPaymentMakeCardDefault.tr(),
           style: AppStyles.textStyle13SemiBold.copyWith(
             color: Color(0xff616A6B),
           ),

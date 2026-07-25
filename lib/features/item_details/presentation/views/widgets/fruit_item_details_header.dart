@@ -12,11 +12,10 @@ class FruitItemDetailsHeader extends StatelessWidget {
     return Stack(
       children: [
         Positioned.fill(
-          child: SizedBox(
-            child: SvgPicture.asset(
-              Assets.imagesItemDetailsbackground,
-              fit: BoxFit.fill,
-            ),
+          child: SvgPicture.asset(
+            Assets.imagesItemDetailsbackground,
+            fit: BoxFit.fill,
+            matchTextDirection: true,
           ),
         ),
         Positioned(
@@ -28,7 +27,11 @@ class FruitItemDetailsHeader extends StatelessWidget {
             child: Image.network(imageUrl, alignment: Alignment.center),
           ),
         ),
-        Positioned(top: 40, right: 20, child: FruitItemDetailsAppBar()),
+        const PositionedDirectional(
+          top: 40,
+          start: 20,
+          child: FruitItemDetailsAppBar(),
+        ),
       ],
     );
   }

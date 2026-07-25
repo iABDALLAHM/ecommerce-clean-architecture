@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ChangeLanguageBottomSheet extends StatefulWidget {
-  const ChangeLanguageBottomSheet({super.key});
+  const ChangeLanguageBottomSheet({super.key, required this.onChange});
+  final Function(String) onChange;
   @override
   State<ChangeLanguageBottomSheet> createState() =>
       _ChangeLanguageBottomSheetState();
@@ -31,11 +32,11 @@ class _ChangeLanguageBottomSheetState extends State<ChangeLanguageBottomSheet> {
               onTap: () {
                 setState(() {
                   selectedLanguage = "en";
+                  widget.onChange(selectedLanguage);
+                  if (selectedLanguage != currentLanguage) {
+                    addNewLang(context);
+                  }
                 });
-                if (selectedLanguage != currentLanguage) {
-                  context.setLocale(Locale(selectedLanguage));
-                  context.pop();
-                }
               },
             ),
 
@@ -46,11 +47,11 @@ class _ChangeLanguageBottomSheetState extends State<ChangeLanguageBottomSheet> {
               onTap: () {
                 setState(() {
                   selectedLanguage = "ar";
+                  widget.onChange(selectedLanguage);
+                  if (selectedLanguage != currentLanguage) {
+                    addNewLang(context);
+                  }
                 });
-                if (selectedLanguage != currentLanguage) {
-                  context.setLocale(Locale(selectedLanguage));
-                  context.pop();
-                }
               },
             ),
 
@@ -59,5 +60,10 @@ class _ChangeLanguageBottomSheetState extends State<ChangeLanguageBottomSheet> {
         ),
       ),
     );
+  }
+
+  void addNewLang(BuildContext context) {
+    context.setLocale(Locale(selectedLanguage));
+    context.pop();
   }
 }

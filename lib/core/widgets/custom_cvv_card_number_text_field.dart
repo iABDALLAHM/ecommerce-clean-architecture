@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class CustomCVVCardNumberTextField extends StatelessWidget {
@@ -28,7 +30,7 @@ class CustomCVVCardNumberTextField extends StatelessWidget {
         errorStyle: TextStyle(fontSize: 0),
         filled: true,
         fillColor: Color(0xffF9FAFA),
-        hintText: "CVV",
+        hintText: LocaleKeys.checkOut_paymentCardCVVNumber.tr(),
         hintStyle: AppStyles.textStyle13Bold.copyWith(color: Color(0xff949D9E)),
         border: buildOutlineInputBorder(),
         enabledBorder: buildOutlineInputBorder(),

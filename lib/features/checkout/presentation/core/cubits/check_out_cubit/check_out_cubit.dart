@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart';
 import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_entity/cart_entity.dart';
@@ -19,13 +17,9 @@ class CheckOutCubit extends Cubit<CheckOutStates> {
   late OrderEntity orderEntity;
   final SecureStorageRepository _secureStorageRepository;
 
-  void initializeOrder({required CartEntity cartEntity}) async {
-    var userId = await _secureStorageRepository.getData(key: keyUserId);
-    log(cartEntity.items.first.productEntity.toString());
-    log(cartEntity.items.first.quantity.toString());
-
+  void initializeOrder({required CartEntity cartEntity, required String uId}) {
     orderEntity = OrderEntity(
-      uId: userId,
+      uId: uId,
       cartEntity: cartEntity,
       shippingAddressEntity: ShippingAddressEntity(),
       date: DateTime.now(),
