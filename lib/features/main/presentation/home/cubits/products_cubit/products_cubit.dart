@@ -3,17 +3,69 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/home/cub
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductsCubit extends Cubit<ProductsStates> {
-  ProductsCubit({required this.productsRepo}) : super(InitialProductsState());
+  ProductsCubit({required this.productsRepository})
+    : super(InitialProductsState());
 
-  final ProductsRepository productsRepo;
+  final ProductsRepository productsRepository;
 
   Future<void> getProducts() async {
     emit(LoadingProductsState());
-    var result = await productsRepo.getProducts();
+    var result = await productsRepository.getProducts();
     result.fold(
       (failure) => emit(FailureProductsState(errorMessage: failure.message)),
       (products) {
         return emit(SuccessProductsState(products: products));
+      },
+    );
+  }
+
+  Future getHighPriceProducts() async {
+    emit(LoadingProductsState());
+    var result = await productsRepository.getHighPriceProducts();
+    result.fold(
+      (failure) {
+        emit(FailureProductsState(errorMessage: failure.message));
+      },
+      (result) {
+        if (result.isEmpty) {
+          emit(EmptyProductsState());
+        } else {
+          emit(SuccessProductsState(products: result));
+        }
+      },
+    );
+  }
+
+  Future getLowPriceProducts() async {
+    emit(LoadingProductsState());
+    var result = await productsRepository.getLowPriceProducts();
+    result.fold(
+      (failure) {
+        emit(FailureProductsState(errorMessage: failure.message));
+      },
+      (result) {
+        if (result.isEmpty) {
+          emit(EmptyProductsState());
+        } else {
+          emit(SuccessProductsState(products: result));
+        }
+      },
+    );
+  }
+
+  Future getProductsSortedByName() async {
+    emit(LoadingProductsState());
+    var result = await productsRepository.getSortedProductsByName();
+    result.fold(
+      (failure) {
+        emit(FailureProductsState(errorMessage: failure.message));
+      },
+      (result) {
+        if (result.isEmpty) {
+          emit(EmptyProductsState());
+        } else {
+          emit(SuccessProductsState(products: result));
+        }
       },
     );
   }

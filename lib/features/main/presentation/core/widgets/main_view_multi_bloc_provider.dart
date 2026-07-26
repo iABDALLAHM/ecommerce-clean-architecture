@@ -8,7 +8,6 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/home/cub
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/products_cubit/products_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/cubits/get_notifications_cubit/get_notifications_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/products/presentation/cubits/get_filter_products_cubit/get_filter_products_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,20 +29,15 @@ class MainViewMultiBlocProvider extends StatelessWidget {
         BlocProvider(create: (context) => CartCubit()),
 
         BlocProvider(
-          create: (context) => GetFilterProductsCubit(
-            productsRepository: getIt.get<ProductsRepository>(),
-          ),
-        ),
-
-        BlocProvider(
           create: (context) => GetFeaturedProductCubit(
             featuredProductsRepository: getIt.get<FeaturedProductsRepository>(),
           ),
         ),
 
         BlocProvider(
-          create: (context) =>
-              ProductsCubit(productsRepo: getIt.get<ProductsRepository>()),
+          create: (context) => ProductsCubit(
+            productsRepository: getIt.get<ProductsRepository>(),
+          ),
         ),
 
         BlocProvider(

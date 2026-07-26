@@ -3,7 +3,6 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/features/main/main.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/products_cubit/products_states.dart';
-import 'package:ecommerce_clean_architecture/features/products/presentation/cubits/get_filter_products_cubit/get_filter_products_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +42,7 @@ class ProductsHeader extends StatelessWidget {
               useRootNavigator: true,
               context: context,
               builder: (_) => BlocProvider.value(
-                value: context.read<GetFilterProductsCubit>(),
+                value: context.read<ProductsCubit>(),
                 child: FilterBottomSheet(),
               ),
             );

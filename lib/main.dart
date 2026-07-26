@@ -41,7 +41,6 @@ class ECommerceApp extends StatelessWidget {
         userRepository: getIt.get<UserRepository>(),
         secureStorageRepository: getIt.get<SecureStorageRepository>(),
       ),
-
       child: MaterialApp.router(
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,

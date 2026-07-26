@@ -15,3 +15,5 @@ final class FailureProductsState extends ProductsStates {
   final String errorMessage;
   FailureProductsState({required this.errorMessage});
 }
+
+final class EmptyProductsState extends ProductsStates {}
