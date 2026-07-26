@@ -232,5 +232,9 @@
     },
     "resetPassword": {
         "failureConfirmPasswordState": "تأكيد الباسورد غير صحيح"
+    },
+    "cartCubit": {
+        "cartItemIncremented": "تم زيادة عدد ال",
+        "cartItemDecremented": "تم تقليل عدد ال"
     }
 }

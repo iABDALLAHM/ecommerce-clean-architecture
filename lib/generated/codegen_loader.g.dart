@@ -248,6 +248,10 @@ class CodegenLoader extends AssetLoader{
   },
   "resetPassword": {
     "failureConfirmPasswordState": "تأكيد الباسورد غير صحيح"
+  },
+  "cartCubit": {
+    "cartItemIncremented": "تم زيادة عدد ال",
+    "cartItemDecremented": "تم تقليل عدد ال"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -484,6 +488,10 @@ static const Map<String,dynamic> _en = {
   },
   "resetPassword": {
     "failureConfirmPasswordState": "Password confirmation does not match"
+  },
+  "cartCubit": {
+    "cartItemIncremented": "Increased quantity of ",
+    "cartItemDecremented": "Decreased quantity of "
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

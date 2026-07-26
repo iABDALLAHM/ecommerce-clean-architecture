@@ -232,5 +232,9 @@
     },
     "resetPassword": {
         "failureConfirmPasswordState": "Password confirmation does not match"
+    },
+    "cartCubit": {
+        "cartItemIncremented": "Increased quantity of ",
+        "cartItemDecremented": "Decreased quantity of "
     }
 }

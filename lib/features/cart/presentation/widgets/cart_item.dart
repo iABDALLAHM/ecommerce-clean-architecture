@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_item_entity/cart_item_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
@@ -7,6 +8,7 @@ import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/c
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_states.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/widgets/cart_item_action_buttons.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/widgets/custom_item_image.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,13 +34,13 @@ class CartItem extends StatelessWidget {
           showSnackBar(
             context,
             message:
-                "تم زيادة عدد ال ${cartItemEntity.productEntity.productName}",
+                "${LocaleKeys.cartCubit_cartItemIncremented.tr()} ${cartItemEntity.productEntity.productName}",
           );
         } else if (state is ProductDecreaseState) {
           showSnackBar(
             context,
             message:
-                "تم تقليل عدد ال ${cartItemEntity.productEntity.productName}",
+                "${LocaleKeys.cartCubit_cartItemDecremented.tr()} ${cartItemEntity.productEntity.productName}",
           );
         }
       },

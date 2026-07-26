@@ -218,5 +218,8 @@ abstract class  LocaleKeys {
   static const registerCubit = 'registerCubit';
   static const resetPassword_failureConfirmPasswordState = 'resetPassword.failureConfirmPasswordState';
   static const resetPassword = 'resetPassword';
+  static const cartCubit_cartItemIncremented = 'cartCubit.cartItemIncremented';
+  static const cartCubit_cartItemDecremented = 'cartCubit.cartItemDecremented';
+  static const cartCubit = 'cartCubit';
 
 }
