@@ -91,7 +91,9 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                           } else {
                             showSnackBar(
                               context,
-                              message: "من فضلك وافق على الشروط والأحكام",
+                              message: LocaleKeys
+                                  .termsAndConditions_failureTermsAndConditionsState
+                                  .tr(),
                             );
                             return;
                           }
@@ -137,7 +139,10 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
   }
 
   void _handleSuccess(BuildContext context) {
-    showSnackBar(context, message: "تم إنشاء حساب جديد");
+    showSnackBar(
+      context,
+      message: LocaleKeys.registerCubit_successRegisterState.tr(),
+    );
     context.pop();
   }
 }

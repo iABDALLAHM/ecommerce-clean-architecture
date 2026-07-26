@@ -83,7 +83,9 @@ class _ResetYourPasswordViewBodyState extends State<ResetYourPasswordViewBody> {
                             if (newPassword != confirmationNewPassword) {
                               showSnackBar(
                                 context,
-                                message: "تأكيد الباسورد غير صحيح",
+                                message: LocaleKeys
+                                    .resetPassword_failureConfirmPasswordState
+                                    .tr(),
                               );
                             } else {
                               context

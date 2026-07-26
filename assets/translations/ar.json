@@ -215,5 +215,22 @@
         "userNotFoundError": "هذا المستخدم غير موجود بالفعل",
         "wrongPasswordError": "الايميل او الباسورد غير صحيح برجاء المحاولة مرة اخرى",
         "invalidCreadintialError": "حدث خطأ ما برجاء المحاولة مرة آخرى"
+    },
+    "loginCubit": {
+        "successSignInState": "تم تسجيل الدخول بنجاح",
+        "successSignInWithGoogleState": "تم تسجيل الدخول بنجاح بواسطة جوجل",
+        "successSignInWithFacebookState": "تم تسجيل الدخول بنجاح بواسطة فيس بوك"
+    },
+    "sendResetPasswordEmailCubit": {
+        "successSendEmailState": "تحقق من البريد الإلكتروني"
+    },
+    "termsAndConditions": {
+        "failureTermsAndConditionsState": "من فضلك وافق على الشروط والأحكام"
+    },
+    "registerCubit": {
+        "successRegisterState": "تم إنشاء حساب جديد"
+    },
+    "resetPassword": {
+        "failureConfirmPasswordState": "تأكيد الباسورد غير صحيح"
     }
 }

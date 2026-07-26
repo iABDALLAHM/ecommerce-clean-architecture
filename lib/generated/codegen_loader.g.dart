@@ -231,6 +231,23 @@ class CodegenLoader extends AssetLoader{
     "userNotFoundError": "هذا المستخدم غير موجود بالفعل",
     "wrongPasswordError": "الايميل او الباسورد غير صحيح برجاء المحاولة مرة اخرى",
     "invalidCreadintialError": "حدث خطأ ما برجاء المحاولة مرة آخرى"
+  },
+  "loginCubit": {
+    "successSignInState": "تم تسجيل الدخول بنجاح",
+    "successSignInWithGoogleState": "تم تسجيل الدخول بنجاح بواسطة جوجل",
+    "successSignInWithFacebookState": "تم تسجيل الدخول بنجاح بواسطة فيس بوك"
+  },
+  "sendResetPasswordEmailCubit": {
+    "successSendEmailState": "تحقق من البريد الإلكتروني"
+  },
+  "termsAndConditions": {
+    "failureTermsAndConditionsState": "من فضلك وافق على الشروط والأحكام"
+  },
+  "registerCubit": {
+    "successRegisterState": "تم إنشاء حساب جديد"
+  },
+  "resetPassword": {
+    "failureConfirmPasswordState": "تأكيد الباسورد غير صحيح"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -450,6 +467,23 @@ static const Map<String,dynamic> _en = {
     "userNotFoundError": "User account not found.",
     "wrongPasswordError": "Incorrect email or password, please try again.",
     "invalidCreadintialError": "Something went wrong, please try again."
+  },
+  "loginCubit": {
+    "successSignInState": "Signed in successfully",
+    "successSignInWithGoogleState": "Signed in successfully with Google",
+    "successSignInWithFacebookState": "Signed in successfully with Facebook"
+  },
+  "sendResetPasswordEmailCubit": {
+    "successSendEmailState": "Please check your email"
+  },
+  "termsAndConditions": {
+    "failureTermsAndConditionsState": "Please accept the terms and conditions"
+  },
+  "registerCubit": {
+    "successRegisterState": "Account created successfully"
+  },
+  "resetPassword": {
+    "failureConfirmPasswordState": "Password confirmation does not match"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

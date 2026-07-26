@@ -215,5 +215,22 @@
         "userNotFoundError": "User account not found.",
         "wrongPasswordError": "Incorrect email or password, please try again.",
         "invalidCreadintialError": "Something went wrong, please try again."
+    },
+    "loginCubit": {
+        "successSignInState": "Signed in successfully",
+        "successSignInWithGoogleState": "Signed in successfully with Google",
+        "successSignInWithFacebookState": "Signed in successfully with Facebook"
+    },
+    "sendResetPasswordEmailCubit": {
+        "successSendEmailState": "Please check your email"
+    },
+    "termsAndConditions": {
+        "failureTermsAndConditionsState": "Please accept the terms and conditions"
+    },
+    "registerCubit": {
+        "successRegisterState": "Account created successfully"
+    },
+    "resetPassword": {
+        "failureConfirmPasswordState": "Password confirmation does not match"
     }
 }

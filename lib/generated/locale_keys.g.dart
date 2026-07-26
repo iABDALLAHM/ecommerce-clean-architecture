@@ -206,5 +206,17 @@ abstract class  LocaleKeys {
   static const authErrors_wrongPasswordError = 'authErrors.wrongPasswordError';
   static const authErrors_invalidCreadintialError = 'authErrors.invalidCreadintialError';
   static const authErrors = 'authErrors';
+  static const loginCubit_successSignInState = 'loginCubit.successSignInState';
+  static const loginCubit_successSignInWithGoogleState = 'loginCubit.successSignInWithGoogleState';
+  static const loginCubit_successSignInWithFacebookState = 'loginCubit.successSignInWithFacebookState';
+  static const loginCubit = 'loginCubit';
+  static const sendResetPasswordEmailCubit_successSendEmailState = 'sendResetPasswordEmailCubit.successSendEmailState';
+  static const sendResetPasswordEmailCubit = 'sendResetPasswordEmailCubit';
+  static const termsAndConditions_failureTermsAndConditionsState = 'termsAndConditions.failureTermsAndConditionsState';
+  static const termsAndConditions = 'termsAndConditions';
+  static const registerCubit_successRegisterState = 'registerCubit.successRegisterState';
+  static const registerCubit = 'registerCubit';
+  static const resetPassword_failureConfirmPasswordState = 'resetPassword.failureConfirmPasswordState';
+  static const resetPassword = 'resetPassword';
 
 }

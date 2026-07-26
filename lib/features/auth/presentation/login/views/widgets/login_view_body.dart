@@ -151,19 +151,28 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   }
 
   void _handleSuccess(BuildContext context) {
-    showSnackBar(context, message: "تم تسجيل الدخول بنجاح");
+    showSnackBar(
+      context,
+      message: LocaleKeys.loginCubit_successSignInState.tr(),
+    );
     context.read<GetUserDataCubit>().getUserData();
     context.go(AppRoutes.home);
   }
 
   void _handleSuccessSignInWithGoogle(BuildContext context) {
-    showSnackBar(context, message: "تم تسجيل الدخول بنجاح بواسطة جوجل");
+    showSnackBar(
+      context,
+      message: LocaleKeys.loginCubit_successSignInWithGoogleState.tr(),
+    );
     context.read<GetUserDataCubit>().getUserData();
     context.go(AppRoutes.home);
   }
 
   void _handleSuccessSignInWithFacebook(BuildContext context) {
-    showSnackBar(context, message: "تم تسجيل الدخول بنجاح بواسطة فيس بوك");
+    showSnackBar(
+      context,
+      message: LocaleKeys.loginCubit_successSignInWithFacebookState.tr(),
+    );
     context.read<GetUserDataCubit>().getUserData();
     context.go(AppRoutes.home);
   }
