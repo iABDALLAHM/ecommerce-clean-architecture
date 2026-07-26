@@ -292,6 +292,10 @@ class CodegenLoader extends AssetLoader{
     "noSearchResults": "لا توجد نتائج بحث",
     "search": "البحث",
     "EmptySearchResult": "عفوًا... هذه المعلومات غير متوفرة للحظة"
+  },
+  "products": {
+    "loadingProductsState": "جاري تحميل المنتجات",
+    "nothingProductsState": "لا يوجد منتجات"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -572,6 +576,10 @@ static const Map<String,dynamic> _en = {
     "noSearchResults": "No search results found",
     "search": "Search",
     "EmptySearchResult": "Sorry, this information is not available right now"
+  },
+  "products": {
+    "loadingProductsState": "Loading products...",
+    "nothingProductsState": "No products available"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

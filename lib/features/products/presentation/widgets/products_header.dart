@@ -27,11 +27,14 @@ class ProductsHeader extends StatelessWidget {
               );
             } else if (state is LoadingProductsState) {
               return Text(
-                "جاري تحميل المنتجات",
+                LocaleKeys.products_loadingProductsState.tr(),
                 style: AppStyles.textStyle16Bold,
               );
             }
-            return Text("لا يوجد منتجات", style: AppStyles.textStyle16Bold);
+            return Text(
+              LocaleKeys.products_nothingProductsState.tr(),
+              style: AppStyles.textStyle16Bold,
+            );
           },
         ),
         GestureDetector(

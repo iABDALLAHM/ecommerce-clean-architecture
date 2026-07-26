@@ -276,5 +276,9 @@
         "noSearchResults": "No search results found",
         "search": "Search",
         "EmptySearchResult": "Sorry, this information is not available right now"
+    },
+    "products": {
+        "loadingProductsState": "Loading products...",
+        "nothingProductsState": "No products available"
     }
 }

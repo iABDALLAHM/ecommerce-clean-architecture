@@ -255,5 +255,8 @@ abstract class  LocaleKeys {
   static const search_search = 'search.search';
   static const search_EmptySearchResult = 'search.EmptySearchResult';
   static const search = 'search';
+  static const products_loadingProductsState = 'products.loadingProductsState';
+  static const products_nothingProductsState = 'products.nothingProductsState';
+  static const products = 'products';
 
 }
