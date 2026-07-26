@@ -250,5 +250,10 @@
         "successAddOrderState": "تم إضافة الاوردر الخاص بك",
         "loadingAddYourOrderState": "جاري إضافة الأوردر الخاص بك",
         "pleaseCompleteAddressDetails": "من فضلك اكمل تفاصيل التوصيل"
+    },
+    "itemDetailsStatus": {
+        "loadingReviewsForThisItem": "يتم تحميل التقيمات لهذا المنتج",
+        "beTheFirstOneToAddReview": "كن اول من يضع تعليقا",
+        "nothing": "لا يوجد"
     }
 }

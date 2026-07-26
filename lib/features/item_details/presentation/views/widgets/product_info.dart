@@ -96,12 +96,14 @@ class ProductInfo extends StatelessWidget {
                 ],
               );
             } else if (state is LoadingGetReviewsState) {
-              return Text("يتم تحميل التقيمات لهذا المنتج");
+              return Text(
+                LocaleKeys.itemDetailsStatus_loadingReviewsForThisItem.tr(),
+              );
             } else if (state is EmptyGetReviewsState) {
               return Row(
                 children: [
                   Text(
-                    "كن اول من يضع تعليقا",
+                    LocaleKeys.itemDetailsStatus_beTheFirstOneToAddReview.tr(),
                     style: AppStyles.textStyle13Bold,
                   ),
                   const SizedBox(width: 9),
@@ -201,7 +203,7 @@ class ProductInfo extends StatelessWidget {
                   return Expanded(
                     child: InfoDetailsBox(
                       icon: Assets.imagesStarIcon,
-                      title: "لا يوجد",
+                      title: LocaleKeys.itemDetailsStatus_nothing.tr(),
                       subTitle: LocaleKeys.itemDetails_itemDetailsReviewsItem
                           .tr(),
                     ),

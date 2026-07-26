@@ -250,5 +250,10 @@
         "successAddOrderState": "Your order has been placed successfully",
         "loadingAddYourOrderState": "Placing your order...",
         "pleaseCompleteAddressDetails": "Please complete the delivery details"
+    },
+    "itemDetailsStatus": {
+        "loadingReviewsForThisItem": "Loading reviews for this item...",
+        "beTheFirstOneToAddReview": "Be the first to leave a review",
+        "nothing": "None"
     }
 }

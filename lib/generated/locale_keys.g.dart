@@ -233,5 +233,9 @@ abstract class  LocaleKeys {
   static const checkOutSteps_loadingAddYourOrderState = 'checkOutSteps.loadingAddYourOrderState';
   static const checkOutSteps_pleaseCompleteAddressDetails = 'checkOutSteps.pleaseCompleteAddressDetails';
   static const checkOutSteps = 'checkOutSteps';
+  static const itemDetailsStatus_loadingReviewsForThisItem = 'itemDetailsStatus.loadingReviewsForThisItem';
+  static const itemDetailsStatus_beTheFirstOneToAddReview = 'itemDetailsStatus.beTheFirstOneToAddReview';
+  static const itemDetailsStatus_nothing = 'itemDetailsStatus.nothing';
+  static const itemDetailsStatus = 'itemDetailsStatus';
 
 }

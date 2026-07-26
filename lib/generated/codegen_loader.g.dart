@@ -266,6 +266,11 @@ class CodegenLoader extends AssetLoader{
     "successAddOrderState": "تم إضافة الاوردر الخاص بك",
     "loadingAddYourOrderState": "جاري إضافة الأوردر الخاص بك",
     "pleaseCompleteAddressDetails": "من فضلك اكمل تفاصيل التوصيل"
+  },
+  "itemDetailsStatus": {
+    "loadingReviewsForThisItem": "يتم تحميل التقيمات لهذا المنتج",
+    "beTheFirstOneToAddReview": "كن اول من يضع تعليقا",
+    "nothing": "لا يوجد"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -520,6 +525,11 @@ static const Map<String,dynamic> _en = {
     "successAddOrderState": "Your order has been placed successfully",
     "loadingAddYourOrderState": "Placing your order...",
     "pleaseCompleteAddressDetails": "Please complete the delivery details"
+  },
+  "itemDetailsStatus": {
+    "loadingReviewsForThisItem": "Loading reviews for this item...",
+    "beTheFirstOneToAddReview": "Be the first to leave a review",
+    "nothing": "None"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
