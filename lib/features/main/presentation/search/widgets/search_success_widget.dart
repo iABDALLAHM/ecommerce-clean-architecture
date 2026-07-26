@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/custom_fruit_item.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/widgets.dart';
 
 class SearchSuccessWidget extends StatelessWidget {
@@ -16,7 +18,7 @@ class SearchSuccessWidget extends StatelessWidget {
         children: [
           const SizedBox(height: 16),
           Text(
-            "نتائج البحث ",
+            LocaleKeys.search_searchResults.tr(),
             style: AppStyles.textStyle13Regular.copyWith(
               color: Color(0xff949D9E),
             ),

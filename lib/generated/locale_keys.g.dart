@@ -237,5 +237,23 @@ abstract class  LocaleKeys {
   static const itemDetailsStatus_beTheFirstOneToAddReview = 'itemDetailsStatus.beTheFirstOneToAddReview';
   static const itemDetailsStatus_nothing = 'itemDetailsStatus.nothing';
   static const itemDetailsStatus = 'itemDetailsStatus';
+  static const time_morning = 'time.morning';
+  static const time_night = 'time.night';
+  static const time = 'time';
+  static const homeStatus_loadingYourName = 'homeStatus.loadingYourName';
+  static const homeStatus_addProductToFav = 'homeStatus.addProductToFav';
+  static const homeStatus_removeProductFromFav = 'homeStatus.removeProductFromFav';
+  static const homeStatus_addProductToCart = 'homeStatus.addProductToCart';
+  static const homeStatus_loadingAddProductToCart = 'homeStatus.loadingAddProductToCart';
+  static const homeStatus_productIncrementedInCart = 'homeStatus.productIncrementedInCart';
+  static const homeStatus_productDecrementedFromCart = 'homeStatus.productDecrementedFromCart';
+  static const homeStatus = 'homeStatus';
+  static const search_searchResults = 'search.searchResults';
+  static const search_recentSearchResult = 'search.recentSearchResult';
+  static const search_deleteAll = 'search.deleteAll';
+  static const search_noSearchResults = 'search.noSearchResults';
+  static const search_search = 'search.search';
+  static const search_EmptySearchResult = 'search.EmptySearchResult';
+  static const search = 'search';
 
 }

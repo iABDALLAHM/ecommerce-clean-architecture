@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/widgets.dart';
 
 class RecentSearchWidget extends StatelessWidget {
@@ -16,11 +18,11 @@ class RecentSearchWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "عمليات البحث الأخيرة",
+                LocaleKeys.search_recentSearchResult.tr(),
                 style: AppStyles.textStyle13SemiBold,
               ),
               Text(
-                "حذف الكل",
+                LocaleKeys.search_deleteAll.tr(),
                 style: AppStyles.textStyle13SemiBold.copyWith(
                   color: Color(0xff949D9E),
                 ),

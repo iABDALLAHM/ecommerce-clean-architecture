@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
@@ -15,6 +16,7 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/home/wid
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/custom_home_app_bar.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/core/widgets/fruit_items_grid_view_bloc_builder.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/cubits/get_notifications_cubit/get_notifications_cubit.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -96,9 +98,15 @@ class HomeBodyMultiBlocListenr extends StatelessWidget {
           listener: (context, state) {
             log("message");
             if (state is SuccessAddFavoriteProduct) {
-              showSnackBar(context, message: "تم إضافة المنتج للمفضلة");
+              showSnackBar(
+                context,
+                message: LocaleKeys.homeStatus_addProductToFav.tr(),
+              );
             } else if (state is SuccessRemoveFavoriteProduct) {
-              showSnackBar(context, message: "تم إزالة المنتج من المفضلة");
+              showSnackBar(
+                context,
+                message: LocaleKeys.homeStatus_removeProductFromFav.tr(),
+              );
             } else if (state is FailureAddFavoriteProduct) {
               showSnackBar(context, message: state.errorMessage);
             } else if (state is FailureRemoveFavoriteProduct) {
@@ -110,13 +118,25 @@ class HomeBodyMultiBlocListenr extends StatelessWidget {
         BlocListener<CartCubit, CartStates>(
           listener: (context, state) {
             if (state is ProductAddedState) {
-              showSnackBar(context, message: "تم إضافة المنتج بنجاح");
+              showSnackBar(
+                context,
+                message: LocaleKeys.homeStatus_addProductToCart.tr(),
+              );
             } else if (state is LoadingAddProductState) {
-              showSnackBar(context, message: "جاري اضافة المنتج للعربة");
+              showSnackBar(
+                context,
+                message: LocaleKeys.homeStatus_loadingAddProductToCart.tr(),
+              );
             } else if (state is ProductIncreaseState) {
-              showSnackBar(context, message: "زيادة كمية المنتج بنجاح");
+              showSnackBar(
+                context,
+                message: LocaleKeys.homeStatus_productIncrementedInCart.tr(),
+              );
             } else if (state is ProductDecreaseState) {
-              showSnackBar(context, message: "تم تقليل كمية المنتج");
+              showSnackBar(
+                context,
+                message: LocaleKeys.homeStatus_productDecrementedFromCart.tr(),
+              );
             }
           },
         ),

@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -28,7 +30,7 @@ class EmptySearchWidget extends StatelessWidget {
               ],
             ),
             child: Text(
-              "لا توجد نتائج بحث",
+              LocaleKeys.search_noSearchResults.tr(),
               style: AppStyles.textStyle13Regular.copyWith(
                 color: Color(0xff949D9E),
               ),
@@ -41,11 +43,11 @@ class EmptySearchWidget extends StatelessWidget {
           ),
           const SizedBox(height: 43),
           Text(
-            "البحث",
+            LocaleKeys.search_search.tr(),
             style: AppStyles.textStyle16Bold.copyWith(color: Color(0xff616A6B)),
           ),
           Text(
-            "عفوًا... هذه المعلومات غير متوفرة للحظة",
+            LocaleKeys.search_EmptySearchResult.tr(),
             style: AppStyles.textStyle13Regular.copyWith(
               color: Color(0xff949D9E),
             ),

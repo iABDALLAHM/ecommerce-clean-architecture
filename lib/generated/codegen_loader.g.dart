@@ -271,6 +271,27 @@ class CodegenLoader extends AssetLoader{
     "loadingReviewsForThisItem": "يتم تحميل التقيمات لهذا المنتج",
     "beTheFirstOneToAddReview": "كن اول من يضع تعليقا",
     "nothing": "لا يوجد"
+  },
+  "time": {
+    "morning": "صباحا",
+    "night": "مساءا"
+  },
+  "homeStatus": {
+    "loadingYourName": "جاري تحميل الإسم",
+    "addProductToFav": "تم إضافة المنتج للمفضلة",
+    "removeProductFromFav": "تم إزالة المنتج من المفضلة",
+    "addProductToCart": "تم إضافة المنتج بنجاح",
+    "loadingAddProductToCart": "جاري اضافة المنتج للعربة",
+    "productIncrementedInCart": "زيادة كمية المنتج بنجاح",
+    "productDecrementedFromCart": "تم تقليل كمية المنتج"
+  },
+  "search": {
+    "searchResults": "نتائج البحث ",
+    "recentSearchResult": "عمليات البحث الأخيرة",
+    "deleteAll": "حذف الكل",
+    "noSearchResults": "لا توجد نتائج بحث",
+    "search": "البحث",
+    "EmptySearchResult": "عفوًا... هذه المعلومات غير متوفرة للحظة"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -530,6 +551,27 @@ static const Map<String,dynamic> _en = {
     "loadingReviewsForThisItem": "Loading reviews for this item...",
     "beTheFirstOneToAddReview": "Be the first to leave a review",
     "nothing": "None"
+  },
+  "time": {
+    "morning": "AM",
+    "night": "PM"
+  },
+  "homeStatus": {
+    "loadingYourName": "Loading name...",
+    "addProductToFav": "Added to favorites",
+    "removeProductFromFav": "Removed from favorites",
+    "addProductToCart": "Product added successfully",
+    "loadingAddProductToCart": "Adding product to cart...",
+    "productIncrementedInCart": "Item quantity increased successfully",
+    "productDecrementedFromCart": "Item quantity decreased successfully"
+  },
+  "search": {
+    "searchResults": "Search Results",
+    "recentSearchResult": "Recent Searches",
+    "deleteAll": "Delete All",
+    "noSearchResults": "No search results found",
+    "search": "Search",
+    "EmptySearchResult": "Sorry, this information is not available right now"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

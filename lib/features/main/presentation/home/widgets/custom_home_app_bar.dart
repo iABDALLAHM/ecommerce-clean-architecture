@@ -46,8 +46,7 @@ class _CustomHomeAppBarState extends State<CustomHomeAppBar> {
                     style: AppStyles.textStyle16Bold,
                   );
                 }
-                return Text(
-                  "جاري تحميل الإسم",
+                return Text(LocaleKeys.homeStatus_loadingYourName.tr(),
                   style: AppStyles.textStyle16Bold,
                 );
               },
