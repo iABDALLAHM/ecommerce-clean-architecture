@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
@@ -9,6 +10,7 @@ import 'package:ecommerce_clean_architecture/features/checkout/presentation/core
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/widgets/check_out_steps.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/widgets/check_out_page_view.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/cubits/payment_validation_cubit/payment_validation_cubit.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -86,7 +88,10 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         curve: Curves.easeIn,
       );
     } else {
-      showSnackBar(context, message: "حدد وسيلة الدفع من فضلك");
+      showSnackBar(
+        context,
+        message: LocaleKeys.checkOutSteps_pleaseSpecifyPaymentMethod.tr(),
+      );
     }
   }
 
@@ -120,10 +125,12 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     if (orderEntity.uId.isEmpty ||
         orderEntity.shippingAddressEntity.name == null ||
         orderEntity.payWithCash == null) {
-      showSnackBar(context, message: "اكمل البيانات من فضلك");
+      showSnackBar(
+        context,
+        message: LocaleKeys.checkOutSteps_completeTheInformation.tr(),
+      );
     } else {
       context.read<AddOrderCubit>().addOrder(orderEntity: orderEntity);
     }
   }
 }
-

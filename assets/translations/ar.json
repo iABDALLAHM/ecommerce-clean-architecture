@@ -240,5 +240,15 @@
     "cartCubit": {
         "cartItemIncremented": "تم زيادة عدد ال",
         "cartItemDecremented": "تم تقليل عدد ال"
+    },
+    "checkOutSteps": {
+        "pleaseSpecifyPaymentMethod": "حدد وسيلة الدفع من فضلك",
+        "completeTheInformation": "اكمل البيانات من فضلك",
+        "city": "المدينة : ",
+        "address": "العنوان :",
+        "floorNumber": "رقم الشقة :",
+        "successAddOrderState": "تم إضافة الاوردر الخاص بك",
+        "loadingAddYourOrderState": "جاري إضافة الأوردر الخاص بك",
+        "pleaseCompleteAddressDetails": "من فضلك اكمل تفاصيل التوصيل"
     }
 }

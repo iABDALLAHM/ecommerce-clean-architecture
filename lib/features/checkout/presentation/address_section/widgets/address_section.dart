@@ -76,7 +76,10 @@ class _AddressSectionState extends State<AddressSection> {
     return BlocListener<AddressValidationCubit, AddressValidationState>(
       listener: (context, state) {
         if (state is AddressValidationFailureState) {
-          showSnackBar(context, message: "من فضلك اكمل تفاصيل التوصيل");
+          showSnackBar(
+            context,
+            message: LocaleKeys.checkOutSteps_pleaseCompleteAddressDetails.tr(),
+          );
         }
       },
       child: SingleChildScrollView(

@@ -48,7 +48,7 @@ class AddressSummary extends StatelessWidget {
               Expanded(
                 child: Text(
                   maxLines: 2,
-                  "المدينة: ${shippingAddressEntity.city}, العنوان: ${shippingAddressEntity.address}, رقم الشقة: ${shippingAddressEntity.addressDetails}",
+                  "${LocaleKeys.checkOutSteps_city.tr()} ${shippingAddressEntity.city}, ${LocaleKeys.checkOutSteps_address.tr()} ${shippingAddressEntity.address}, ${LocaleKeys.checkOutSteps_floorNumber.tr()} ${shippingAddressEntity.addressDetails}",
                   style: AppStyles.textStyle16Regular.copyWith(
                     color: Color(0xff4E5556),
                   ),

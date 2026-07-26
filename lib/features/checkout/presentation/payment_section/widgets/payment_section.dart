@@ -58,7 +58,10 @@ class _PaymentSectionState extends State<PaymentSection> {
     return BlocListener<PaymentValidationCubit, PaymentValidationState>(
       listener: (context, state) {
         if (state is PaymentValidationFailureState) {
-          showSnackBar(context, message: "من فضلك اكمل بيانات الدفع");
+          showSnackBar(
+            context,
+            message: LocaleKeys.checkOutSteps_completeTheInformation.tr(),
+          );
         }
       },
       child: Padding(
@@ -72,7 +75,8 @@ class _PaymentSectionState extends State<PaymentSection> {
               children: [
                 const SizedBox(height: 24),
 
-                Text(LocaleKeys.checkOut_paymentOptionMainText.tr(),
+                Text(
+                  LocaleKeys.checkOut_paymentOptionMainText.tr(),
                   style: AppStyles.textStyle13Bold,
                 ),
                 const SizedBox(height: 13),

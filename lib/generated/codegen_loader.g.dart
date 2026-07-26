@@ -256,6 +256,16 @@ class CodegenLoader extends AssetLoader{
   "cartCubit": {
     "cartItemIncremented": "تم زيادة عدد ال",
     "cartItemDecremented": "تم تقليل عدد ال"
+  },
+  "checkOutSteps": {
+    "pleaseSpecifyPaymentMethod": "حدد وسيلة الدفع من فضلك",
+    "completeTheInformation": "اكمل البيانات من فضلك",
+    "city": "المدينة : ",
+    "address": "العنوان :",
+    "floorNumber": "رقم الشقة :",
+    "successAddOrderState": "تم إضافة الاوردر الخاص بك",
+    "loadingAddYourOrderState": "جاري إضافة الأوردر الخاص بك",
+    "pleaseCompleteAddressDetails": "من فضلك اكمل تفاصيل التوصيل"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -500,6 +510,16 @@ static const Map<String,dynamic> _en = {
   "cartCubit": {
     "cartItemIncremented": "Increased quantity of ",
     "cartItemDecremented": "Decreased quantity of "
+  },
+  "checkOutSteps": {
+    "pleaseSpecifyPaymentMethod": "Please select a payment method",
+    "completeTheInformation": "Please complete your information",
+    "city": "City: ",
+    "address": "Address: ",
+    "floorNumber": "Apartment Number: ",
+    "successAddOrderState": "Your order has been placed successfully",
+    "loadingAddYourOrderState": "Placing your order...",
+    "pleaseCompleteAddressDetails": "Please complete the delivery details"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

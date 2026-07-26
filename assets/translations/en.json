@@ -240,5 +240,15 @@
     "cartCubit": {
         "cartItemIncremented": "Increased quantity of ",
         "cartItemDecremented": "Decreased quantity of "
+    },
+    "checkOutSteps": {
+        "pleaseSpecifyPaymentMethod": "Please select a payment method",
+        "completeTheInformation": "Please complete your information",
+        "city": "City: ",
+        "address": "Address: ",
+        "floorNumber": "Apartment Number: ",
+        "successAddOrderState": "Your order has been placed successfully",
+        "loadingAddYourOrderState": "Placing your order...",
+        "pleaseCompleteAddressDetails": "Please complete the delivery details"
     }
 }

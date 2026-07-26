@@ -224,5 +224,14 @@ abstract class  LocaleKeys {
   static const cartCubit_cartItemIncremented = 'cartCubit.cartItemIncremented';
   static const cartCubit_cartItemDecremented = 'cartCubit.cartItemDecremented';
   static const cartCubit = 'cartCubit';
+  static const checkOutSteps_pleaseSpecifyPaymentMethod = 'checkOutSteps.pleaseSpecifyPaymentMethod';
+  static const checkOutSteps_completeTheInformation = 'checkOutSteps.completeTheInformation';
+  static const checkOutSteps_city = 'checkOutSteps.city';
+  static const checkOutSteps_address = 'checkOutSteps.address';
+  static const checkOutSteps_floorNumber = 'checkOutSteps.floorNumber';
+  static const checkOutSteps_successAddOrderState = 'checkOutSteps.successAddOrderState';
+  static const checkOutSteps_loadingAddYourOrderState = 'checkOutSteps.loadingAddYourOrderState';
+  static const checkOutSteps_pleaseCompleteAddressDetails = 'checkOutSteps.pleaseCompleteAddressDetails';
+  static const checkOutSteps = 'checkOutSteps';
 
 }
