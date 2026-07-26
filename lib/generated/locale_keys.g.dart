@@ -206,6 +206,9 @@ abstract class  LocaleKeys {
   static const authErrors_wrongPasswordError = 'authErrors.wrongPasswordError';
   static const authErrors_invalidCreadintialError = 'authErrors.invalidCreadintialError';
   static const authErrors = 'authErrors';
+  static const cart_cartCurrency = 'cart.cartCurrency';
+  static const cart_cartAmount = 'cart.cartAmount';
+  static const cart = 'cart';
   static const loginCubit_successSignInState = 'loginCubit.successSignInState';
   static const loginCubit_successSignInWithGoogleState = 'loginCubit.successSignInWithGoogleState';
   static const loginCubit_successSignInWithFacebookState = 'loginCubit.successSignInWithFacebookState';

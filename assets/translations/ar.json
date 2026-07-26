@@ -216,6 +216,10 @@
         "wrongPasswordError": "الايميل او الباسورد غير صحيح برجاء المحاولة مرة اخرى",
         "invalidCreadintialError": "حدث خطأ ما برجاء المحاولة مرة آخرى"
     },
+    "cart": {
+        "cartCurrency": "جنية",
+        "cartAmount": "كم"
+    },
     "loginCubit": {
         "successSignInState": "تم تسجيل الدخول بنجاح",
         "successSignInWithGoogleState": "تم تسجيل الدخول بنجاح بواسطة جوجل",

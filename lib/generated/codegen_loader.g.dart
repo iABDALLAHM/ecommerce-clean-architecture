@@ -232,6 +232,10 @@ class CodegenLoader extends AssetLoader{
     "wrongPasswordError": "الايميل او الباسورد غير صحيح برجاء المحاولة مرة اخرى",
     "invalidCreadintialError": "حدث خطأ ما برجاء المحاولة مرة آخرى"
   },
+  "cart": {
+    "cartCurrency": "جنية",
+    "cartAmount": "كم"
+  },
   "loginCubit": {
     "successSignInState": "تم تسجيل الدخول بنجاح",
     "successSignInWithGoogleState": "تم تسجيل الدخول بنجاح بواسطة جوجل",
@@ -448,6 +452,10 @@ static const Map<String,dynamic> _en = {
     "reviewAndRatingRecommendedText": "Recommended",
     "reviewAndRatingAddReviewButton": "Add Review",
     "reviewAndRatingAddReviewTextField": "Leave a review..."
+  },
+  "cart": {
+    "cartCurrency": "EGP",
+    "cartAmount": "Kg"
   },
   "databaseErrors": {
     "addDataError": "An error occurred while adding data, please try again.",

@@ -193,6 +193,10 @@
         "reviewAndRatingAddReviewButton": "Add Review",
         "reviewAndRatingAddReviewTextField": "Leave a review..."
     },
+    "cart": {
+        "cartCurrency": "EGP",
+        "cartAmount": "Kg"
+    },
     "databaseErrors": {
         "addDataError": "An error occurred while adding data, please try again.",
         "getDataError": "Failed to load data, please check your internet connection.",

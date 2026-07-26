@@ -63,7 +63,7 @@ class CartItem extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    "${cartItemEntity.quantity} كم",
+                    "${cartItemEntity.quantity} ${LocaleKeys.cart_cartAmount.tr()}",
                     style: AppStyles.textStyle13Regular.copyWith(
                       color: AppColors.secondryColor,
                     ),
@@ -86,7 +86,7 @@ class CartItem extends StatelessWidget {
                     child: Icon(Icons.delete_outline, color: Color(0xff949D9E)),
                   ),
                   Text(
-                    "${cartItemEntity.calculateTotalPrice()} جنيه ",
+                    "${cartItemEntity.calculateTotalPrice()} ${LocaleKeys.cart_cartCurrency.tr()}",
                     style: AppStyles.textStyle16Bold.copyWith(
                       color: AppColors.secondryColor,
                     ),
