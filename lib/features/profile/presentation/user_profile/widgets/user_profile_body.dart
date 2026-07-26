@@ -121,12 +121,16 @@ class _UserProfileBodyState extends State<UserProfileBody> {
                               return Column(
                                 children: [
                                   CustomEditDataTextField(
-                                    hintText: "جاري تحميل البيانات",
+                                    hintText: LocaleKeys
+                                        .profileStatus_loadingData
+                                        .tr(),
                                     onPressed: () {},
                                   ),
                                   const SizedBox(height: 8),
                                   CustomEditDataTextField(
-                                    hintText: "جاري تحميل البيانات",
+                                    hintText: LocaleKeys
+                                        .profileStatus_loadingData
+                                        .tr(),
                                     onPressed: () {},
                                   ),
                                 ],
@@ -180,7 +184,9 @@ class _UserProfileBodyState extends State<UserProfileBody> {
                                   if (newPassword != confirmationNewPassord) {
                                     showSnackBar(
                                       context,
-                                      message: "برجاء تأكيد الباسورد",
+                                      message: LocaleKeys
+                                          .profileStatus_pleaseConfirmYourPassword
+                                          .tr(),
                                     );
                                   } else {
                                     context

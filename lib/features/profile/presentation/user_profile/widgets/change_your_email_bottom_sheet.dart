@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_state.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
@@ -7,6 +8,7 @@ import 'package:ecommerce_clean_architecture/core/widgets/custom_text_form_field
 import 'package:ecommerce_clean_architecture/features/profile/presentation/user_profile/cubits/update_user_email_cubit/update_user_email_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/user_profile/cubits/update_user_email_cubit/update_user_email_state.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/user_profile/widgets/change_your_email_bloc_listener.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,19 +55,20 @@ class _ChangeYourEmailBottomSheetState
                       children: [
                         const SizedBox(height: 50),
                         Text(
-                          "تغير الإيميل الخاص بك",
+                          LocaleKeys.profileStatus_changeYorEmail.tr(),
                           style: AppStyles.textStyle16SemiBold,
                         ),
                         const SizedBox(height: 20),
                         CustomTextFormField(
-                          hintText: "اكتب الإيميل الجديد",
+                          hintText: LocaleKeys.profileStatus_writeNewEmail.tr(),
                           onSaved: (value) {
                             newEmail = value ?? "";
                           },
                         ),
                         const SizedBox(height: 20),
                         CustomTextFormField(
-                          hintText: "اكتب الباسورد الخاص بك",
+                          hintText: LocaleKeys.profileStatus_writeYourPassword
+                              .tr(),
                           onSaved: (value) {
                             password = value ?? "";
                           },
@@ -79,7 +82,9 @@ class _ChangeYourEmailBottomSheetState
                                 builder: (context, state) {
                                   if (state is SuccessGetUserDataState) {
                                     return CustomButton(
-                                      text: "تأكيد تغير الإيميل",
+                                      text: LocaleKeys
+                                          .profileStatus_confirmChangeEmail
+                                          .tr(),
                                       onPressed: () {
                                         if (formKey.currentState!.validate()) {
                                           formKey.currentState!.save();

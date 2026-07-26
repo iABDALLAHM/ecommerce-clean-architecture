@@ -258,5 +258,29 @@ abstract class  LocaleKeys {
   static const products_loadingProductsState = 'products.loadingProductsState';
   static const products_nothingProductsState = 'products.nothingProductsState';
   static const products = 'products';
+  static const profileStatus_successAddNewCardState = 'profileStatus.successAddNewCardState';
+  static const profileStatus_successUpdateUserImageState = 'profileStatus.successUpdateUserImageState';
+  static const profileStatus_editPhotoButton = 'profileStatus.editPhotoButton';
+  static const profileStatus_loadingYourNameState = 'profileStatus.loadingYourNameState';
+  static const profileStatus_loadingYourEmailState = 'profileStatus.loadingYourEmailState';
+  static const profileStatus_successSignOutState = 'profileStatus.successSignOutState';
+  static const profileStatus_loadingSignOutState = 'profileStatus.loadingSignOutState';
+  static const profileStatus_emptyFavProductState = 'profileStatus.emptyFavProductState';
+  static const profileStatus_emptyOrdersState = 'profileStatus.emptyOrdersState';
+  static const profileStatus_checkYourEmailToConfirmChangeEmail = 'profileStatus.checkYourEmailToConfirmChangeEmail';
+  static const profileStatus_changeYorEmail = 'profileStatus.changeYorEmail';
+  static const profileStatus_writeNewEmail = 'profileStatus.writeNewEmail';
+  static const profileStatus_writeYourPassword = 'profileStatus.writeYourPassword';
+  static const profileStatus_confirmChangeEmail = 'profileStatus.confirmChangeEmail';
+  static const profileStatus_successUpdateUserName = 'profileStatus.successUpdateUserName';
+  static const profileStatus_changeYourName = 'profileStatus.changeYourName';
+  static const profileStatus_writeNewName = 'profileStatus.writeNewName';
+  static const profileStatus_confirmationChangeYourName = 'profileStatus.confirmationChangeYourName';
+  static const profileStatus_loadingChangeYourPassword = 'profileStatus.loadingChangeYourPassword';
+  static const profileStatus_successChangeYourPassword = 'profileStatus.successChangeYourPassword';
+  static const profileStatus_loadingData = 'profileStatus.loadingData';
+  static const profileStatus_pleaseConfirmYourPassword = 'profileStatus.pleaseConfirmYourPassword';
+  static const profileStatus_youDoNotHaveAnyCards = 'profileStatus.youDoNotHaveAnyCards';
+  static const profileStatus = 'profileStatus';
 
 }

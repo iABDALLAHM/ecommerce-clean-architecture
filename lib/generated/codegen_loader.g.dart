@@ -296,6 +296,31 @@ class CodegenLoader extends AssetLoader{
   "products": {
     "loadingProductsState": "جاري تحميل المنتجات",
     "nothingProductsState": "لا يوجد منتجات"
+  },
+  "profileStatus": {
+    "successAddNewCardState": "تم اضافة الكارت بنجاح",
+    "successUpdateUserImageState": "تم تغير الصورة بنجاح",
+    "editPhotoButton": "تعديل الصورة",
+    "loadingYourNameState": "جاري تحميل الإسم",
+    "loadingYourEmailState": "جاري تحميل الإيميل",
+    "successSignOutState": "تم تسجيل الخروج من التطبيق",
+    "loadingSignOutState": "يتم تسجيل الخروج",
+    "emptyFavProductState": "لا يوجد منتجات مفضلة لديك",
+    "emptyOrdersState": "لا يوجد لديك اي أوردارات أطلب الأن",
+    "checkYourEmailToConfirmChangeEmail": "برجاء تفقد بريدك الإلكتروني لتاكيد تغير الإيميل",
+    "changeYorEmail": "تغير الإيميل الخاص بك",
+    "writeNewEmail": "اكتب الإيميل الجديد",
+    "writeYourPassword": "اكتب الباسورد الخاص بك",
+    "confirmChangeEmail": "تأكيد تغير الإيميل",
+    "successUpdateUserName": "تم تغير الإسم بنجاح",
+    "changeYourName": "تغير الإسم الخاص بك",
+    "writeNewName": "اكتب الإسم الجديد",
+    "confirmationChangeYourName": "تأكيد تغير الإسم",
+    "loadingChangeYourPassword": "يتم تغير كلمة المرور",
+    "successChangeYourPassword": "تم تغير كلمة المرور بنجاح",
+    "loadingData": "جاري تحميل البيانات",
+    "pleaseConfirmYourPassword": "برجاء تأكيد الباسورد",
+    "youDoNotHaveAnyCards": "لا يوجد لديك أي كارت بنكي"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -580,6 +605,31 @@ static const Map<String,dynamic> _en = {
   "products": {
     "loadingProductsState": "Loading products...",
     "nothingProductsState": "No products available"
+  },
+  "profileStatus": {
+    "successAddNewCardState": "Card added successfully",
+    "successUpdateUserImageState": "Profile picture updated successfully",
+    "editPhotoButton": "Edit Photo",
+    "loadingYourNameState": "Loading name...",
+    "loadingYourEmailState": "Loading email...",
+    "successSignOutState": "Signed out successfully",
+    "loadingSignOutState": "Signing out...",
+    "emptyFavProductState": "You have no favorite products",
+    "emptyOrdersState": "You have no orders yet. Order now!",
+    "checkYourEmailToConfirmChangeEmail": "Please check your email to confirm the change",
+    "changeYorEmail": "Change Your Email",
+    "writeNewEmail": "Enter new email",
+    "writeYourPassword": "Enter your password",
+    "confirmChangeEmail": "Confirm Email Change",
+    "successUpdateUserName": "Name updated successfully",
+    "changeYourName": "Change Your Name",
+    "writeNewName": "Enter new name",
+    "confirmationChangeYourName": "Confirm Name Change",
+    "loadingChangeYourPassword": "Changing password...",
+    "successChangeYourPassword": "Password changed successfully",
+    "loadingData": "Loading data...",
+    "pleaseConfirmYourPassword": "Please confirm your password",
+    "youDoNotHaveAnyCards": "You have no saved payment cards"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

@@ -9,6 +9,11 @@ class FavoriteBodyBlocProvider extends StatelessWidget {
   final Widget child;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context) => GetFavoriteProductsCubit(productsRepo: getIt.get<ProductsRepository>()) ,child: child);
+    return BlocProvider(
+      create: (context) => GetFavoriteProductsCubit(
+        productsRepo: getIt.get<ProductsRepository>(),
+      ),
+      child: child,
+    );
   }
 }

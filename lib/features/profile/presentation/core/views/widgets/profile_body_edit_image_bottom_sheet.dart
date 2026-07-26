@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_state.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
@@ -7,6 +8,7 @@ import 'package:ecommerce_clean_architecture/features/profile/presentation/core/
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/update_user_image_cubit/update_user_image_states.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/widgets/image_field.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/widgets/profile_body_edit_image_bloc_listener.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -49,7 +51,8 @@ class _ProfileBodyEditImageBottomSheetState
                         builder: (context, state) {
                           if (state is SuccessGetUserDataState) {
                             return CustomButton(
-                              text: "تعديل الصورة",
+                              text: LocaleKeys.profileStatus_editPhotoButton
+                                  .tr(),
                               onPressed: () {
                                 context
                                     .read<UpdateUserImageCubit>()

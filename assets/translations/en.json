@@ -280,5 +280,30 @@
     "products": {
         "loadingProductsState": "Loading products...",
         "nothingProductsState": "No products available"
+    },
+    "profileStatus": {
+        "successAddNewCardState": "Card added successfully",
+        "successUpdateUserImageState": "Profile picture updated successfully",
+        "editPhotoButton": "Edit Photo",
+        "loadingYourNameState": "Loading name...",
+        "loadingYourEmailState": "Loading email...",
+        "successSignOutState": "Signed out successfully",
+        "loadingSignOutState": "Signing out...",
+        "emptyFavProductState": "You have no favorite products",
+        "emptyOrdersState": "You have no orders yet. Order now!",
+        "checkYourEmailToConfirmChangeEmail": "Please check your email to confirm the change",
+        "changeYorEmail": "Change Your Email",
+        "writeNewEmail": "Enter new email",
+        "writeYourPassword": "Enter your password",
+        "confirmChangeEmail": "Confirm Email Change",
+        "successUpdateUserName": "Name updated successfully",
+        "changeYourName": "Change Your Name",
+        "writeNewName": "Enter new name",
+        "confirmationChangeYourName": "Confirm Name Change",
+        "loadingChangeYourPassword": "Changing password...",
+        "successChangeYourPassword": "Password changed successfully",
+        "loadingData": "Loading data...",
+        "pleaseConfirmYourPassword": "Please confirm your password",
+        "youDoNotHaveAnyCards": "You have no saved payment cards"
     }
 }

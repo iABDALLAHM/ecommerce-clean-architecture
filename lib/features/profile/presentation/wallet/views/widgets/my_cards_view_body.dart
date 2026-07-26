@@ -52,8 +52,7 @@ class _MyCardsViewBodyState extends State<MyCardsViewBody> {
                 return Expanded(child: Text(state.errorMessage));
               } else if (state is EmptyCardsState) {
                 return Expanded(
-                  child: Text(
-                    "لا يوجد لديك أي كارت بنكي",
+                  child: Text(LocaleKeys.profileStatus_youDoNotHaveAnyCards.tr(),
                     style: AppStyles.textStyle19Bold.copyWith(
                       color: AppColors.lightPrimaryColor,
                     ),

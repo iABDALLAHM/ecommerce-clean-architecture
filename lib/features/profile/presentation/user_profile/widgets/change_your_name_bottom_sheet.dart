@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_state.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
@@ -8,6 +9,7 @@ import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/user_profile/cubits/update_user_name_cubit/update_user_name_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/user_profile/cubits/update_user_name_cubit/update_user_name_state.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/user_profile/widgets/change_your_name_bloc_listener.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -51,12 +53,12 @@ class _ChangeYourNameBottomSheetState extends State<ChangeYourNameBottomSheet> {
                       children: [
                         const SizedBox(height: 50),
                         Text(
-                          "تغير الإسم الخاص بك",
+                          LocaleKeys.profileStatus_changeYourName.tr(),
                           style: AppStyles.textStyle16SemiBold,
                         ),
                         const SizedBox(height: 20),
                         CustomTextFormField(
-                          hintText: "اكتب الإسم الجديد",
+                          hintText: LocaleKeys.profileStatus_writeNewName.tr(),
                           onSaved: (value) {
                             newName = value ?? "";
                           },
@@ -65,39 +67,38 @@ class _ChangeYourNameBottomSheetState extends State<ChangeYourNameBottomSheet> {
                         SizedBox(
                           height: 49,
                           width: double.infinity,
-                          child:
-                              BlocBuilder<GetUserDataCubit, GetUserDataState>(
-                                builder: (context, state) {
-                                  if (state is SuccessGetUserDataState) {
-                                    return CustomButton(
-                                      text: "تأكيد تغير الإسم",
-                                      onPressed: () {
-                                        if (formKey.currentState!.validate()) {
-                                          formKey.currentState!.save();
-                                          final UserEntity userEntity =
-                                              UserEntity(
-                                                name: newName,
-                                                email: state.userEntity.email,
-                                                uId: state.userEntity.uId,
-                                                userImage:
-                                                    state.userEntity.userImage,
-                                              );
-                                          context
-                                              .read<UpdateUserNameCubit>()
-                                              .updateUserName(
-                                                userEntity: userEntity,
-                                              );
-                                        } else {
-                                          autovalidateMode =
-                                              AutovalidateMode.always;
-                                          setState(() {});
-                                        }
-                                      },
-                                    );
-                                  }
-                                  return SizedBox();
-                                },
-                              ),
+                          child: BlocBuilder<GetUserDataCubit, GetUserDataState>(
+                            builder: (context, state) {
+                              if (state is SuccessGetUserDataState) {
+                                return CustomButton(
+                                  text: LocaleKeys
+                                      .profileStatus_confirmationChangeYourName
+                                      .tr(),
+                                  onPressed: () {
+                                    if (formKey.currentState!.validate()) {
+                                      formKey.currentState!.save();
+                                      final UserEntity userEntity = UserEntity(
+                                        name: newName,
+                                        email: state.userEntity.email,
+                                        uId: state.userEntity.uId,
+                                        userImage: state.userEntity.userImage,
+                                      );
+                                      context
+                                          .read<UpdateUserNameCubit>()
+                                          .updateUserName(
+                                            userEntity: userEntity,
+                                          );
+                                    } else {
+                                      autovalidateMode =
+                                          AutovalidateMode.always;
+                                      setState(() {});
+                                    }
+                                  },
+                                );
+                              }
+                              return SizedBox();
+                            },
+                          ),
                         ),
                         const SizedBox(height: 30),
                       ],

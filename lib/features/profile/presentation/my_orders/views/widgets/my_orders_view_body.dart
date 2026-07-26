@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
@@ -5,6 +6,7 @@ import 'package:ecommerce_clean_architecture/core/widgets/custom_circular_progre
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/cubits/get_my_orders_cubit/get_my_orders_stream_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/cubits/get_my_orders_cubit/get_my_orders_stream_state.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/views/widgets/orders_item_list_view.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,7 +32,7 @@ class MyOrdersViewBody extends StatelessWidget {
                         return OrdersItemListView(myOrders: state.myOrders);
                       } else if (state is EmptyOrdersState) {
                         return Text(
-                          "لا يوجد لديك اي أوردارات أطلب الأن",
+                          LocaleKeys.profileStatus_emptyOrdersState.tr(),
                           style: AppStyles.textStyle19Bold.copyWith(
                             color: AppColors.lightPrimaryColor,
                           ),

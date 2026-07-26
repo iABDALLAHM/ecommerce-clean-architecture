@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_circular_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/favorite_products/cubits/get_favorite_products_cubit/get_favorite_products_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/favorite_products/cubits/get_favorite_products_cubit/get_favorite_products_states.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/favorite_products/views/widgets/items_grid_view.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,7 +39,7 @@ class _FavoriteBodyState extends State<FavoriteBody> {
         } else if (state is EmptyFavoriteProductsState) {
           return Center(
             child: Text(
-              "لا يوجد منتجات مفضلة لديك",
+              LocaleKeys.profileStatus_emptyFavProductState.tr(),
               style: AppStyles.textStyle13SemiBold.copyWith(
                 color: AppColors.lightPrimaryColor,
                 fontSize: 20,
