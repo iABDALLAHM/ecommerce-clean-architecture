@@ -311,5 +311,12 @@
         "beTheFirstOnetoReview": "كن اول من يضيف تقييما",
         "yourReviewAddedState": "تم اضافة تقيمك بنجاح",
         "loadingAddReviewState": "جاري إضافة تقيمك"
+    },
+    "notification": {
+        "notificationsPageAppBar": "الاشعارات",
+        "newNotificationsText": "جديد",
+        "allNotificationsSeen": "تحديد الكل مقروء",
+        "doNotHaveNotifications": "لا يوجد لديك إشعارات",
+        "searchingNewNotifications": "جاري البحث على اشعارات جديدة"
     }
 }

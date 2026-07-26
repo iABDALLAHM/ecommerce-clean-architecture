@@ -1,11 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_circular_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_text_message.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/cubits/get_notifications_cubit/get_notifications_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/cubits/get_notifications_cubit/get_notifications_states.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/widgets/custom_notification_app_bar.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/notification/widgets/newest_notification_body_header.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/notification/widgets/newest_notifications_list_view.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/notification/widgets/notification_body_header.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/notification/widgets/notifications_list_view.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,11 +37,11 @@ class _NotificationBodyState extends State<NotificationBody> {
                         const SizedBox(height: 16),
                         CustomNotificationAppBar(),
                         const SizedBox(height: 16),
-                        NewestNotificationBodyHeader(
+                        NotificationBodyHeader(
                           notificationLength: state.notificationList.length,
                         ),
                         const SizedBox(height: 16),
-                        NewestNotificationsListView(
+                        NotificationsListView(
                           notificationList: state.notificationList,
                         ),
                       ],
@@ -51,11 +53,13 @@ class _NotificationBodyState extends State<NotificationBody> {
           } else if (state is FailureGetNotificationsState) {
             return CustomTextMessage(message: state.errMessage);
           } else if (state is EmptyNotificationsState) {
-            return CustomTextMessage(message: "لا يوجد لديك إشعارات");
+            return CustomTextMessage(
+              message: LocaleKeys.notification_doNotHaveNotifications.tr(),
+            );
           } else if (state is LoadingGetNotificationsState) {
             return CustomCircularProgressWidget();
           } else {
-            return Text("جاري البحث على اشعارات جديدة");
+            return Text(LocaleKeys.notification_searchingNewNotifications.tr());
           }
         },
       ),

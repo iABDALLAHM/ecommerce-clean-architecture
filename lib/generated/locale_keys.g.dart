@@ -287,5 +287,11 @@ abstract class  LocaleKeys {
   static const reviewAndRatingStatus_yourReviewAddedState = 'reviewAndRatingStatus.yourReviewAddedState';
   static const reviewAndRatingStatus_loadingAddReviewState = 'reviewAndRatingStatus.loadingAddReviewState';
   static const reviewAndRatingStatus = 'reviewAndRatingStatus';
+  static const notification_notificationsPageAppBar = 'notification.notificationsPageAppBar';
+  static const notification_newNotificationsText = 'notification.newNotificationsText';
+  static const notification_allNotificationsSeen = 'notification.allNotificationsSeen';
+  static const notification_doNotHaveNotifications = 'notification.doNotHaveNotifications';
+  static const notification_searchingNewNotifications = 'notification.searchingNewNotifications';
+  static const notification = 'notification';
 
 }

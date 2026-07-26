@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/notification_entity/notification_entity.dart';
 
 class NotificationModel {
@@ -5,12 +6,14 @@ class NotificationModel {
   final String notificationImageUrl;
   final DateTime notificationDate;
   final String notificationId;
+  final bool notificationSeen;
 
   NotificationModel({
     required this.notificationBody,
     required this.notificationImageUrl,
     required this.notificationDate,
     required this.notificationId,
+    required this.notificationSeen,
   });
 
   factory NotificationModel.fromEntity({
@@ -21,6 +24,7 @@ class NotificationModel {
       notificationBody: notificationEntity.notificationBody,
       notificationDate: notificationEntity.notificationDate,
       notificationId: notificationEntity.notificationId,
+      notificationSeen: notificationEntity.notificationSeen,
     );
   }
 
@@ -28,8 +32,9 @@ class NotificationModel {
     return NotificationModel(
       notificationImageUrl: json["notificationImageUrl"],
       notificationBody: json["notificationBody"],
-      notificationDate: json["notificationDate"],
+      notificationDate: (json["notificationDate"] as Timestamp).toDate(),
       notificationId: json["notificationId"],
+      notificationSeen: json["notificationSeen"],
     );
   }
 
@@ -39,6 +44,7 @@ class NotificationModel {
       notificationImage: notificationImageUrl,
       notificationDate: notificationDate,
       notificationId: notificationId,
+      notificationSeen: notificationSeen,
     );
   }
 }

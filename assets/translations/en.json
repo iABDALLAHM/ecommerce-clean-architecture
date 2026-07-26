@@ -311,5 +311,12 @@
         "beTheFirstOnetoReview": "Be the first to leave a review",
         "yourReviewAddedState": "Your review was added successfully",
         "loadingAddReviewState": "Adding your review..."
+    },
+    "notification": {
+        "notificationsPageAppBar": "Notifications",
+        "newNotificationsText": "New",
+        "allNotificationsSeen": "Mark all as read",
+        "doNotHaveNotifications": "You have no notifications",
+        "searchingNewNotifications": "Checking for new notifications..."
     }
 }

@@ -327,6 +327,13 @@ class CodegenLoader extends AssetLoader{
     "beTheFirstOnetoReview": "كن اول من يضيف تقييما",
     "yourReviewAddedState": "تم اضافة تقيمك بنجاح",
     "loadingAddReviewState": "جاري إضافة تقيمك"
+  },
+  "notification": {
+    "notificationsPageAppBar": "الاشعارات",
+    "newNotificationsText": "جديد",
+    "allNotificationsSeen": "تحديد الكل مقروء",
+    "doNotHaveNotifications": "لا يوجد لديك إشعارات",
+    "searchingNewNotifications": "جاري البحث على اشعارات جديدة"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -642,6 +649,13 @@ static const Map<String,dynamic> _en = {
     "beTheFirstOnetoReview": "Be the first to leave a review",
     "yourReviewAddedState": "Your review was added successfully",
     "loadingAddReviewState": "Adding your review..."
+  },
+  "notification": {
+    "notificationsPageAppBar": "Notifications",
+    "newNotificationsText": "New",
+    "allNotificationsSeen": "Mark all as read",
+    "doNotHaveNotifications": "You have no notifications",
+    "searchingNewNotifications": "Checking for new notifications..."
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
