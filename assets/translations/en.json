@@ -305,5 +305,11 @@
         "loadingData": "Loading data...",
         "pleaseConfirmYourPassword": "Please confirm your password",
         "youDoNotHaveAnyCards": "You have no saved payment cards"
+    },
+    "reviewAndRatingStatus": {
+        "loadingGetReviews": "Loading reviews...",
+        "beTheFirstOnetoReview": "Be the first to leave a review",
+        "yourReviewAddedState": "Your review was added successfully",
+        "loadingAddReviewState": "Adding your review..."
     }
 }

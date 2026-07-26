@@ -63,19 +63,31 @@ class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
                   child: BlocListener<AddReviewCubit, AddReviewState>(
                     listener: (context, state) {
                       if (state is SuccessAddReviewState) {
-                        showSnackBar(context, message: "تم اضافة تقيمك بنجاح");
+                        showSnackBar(
+                          context,
+                          message: LocaleKeys
+                              .reviewAndRatingStatus_yourReviewAddedState
+                              .tr(),
+                        );
                         context.pop();
                         context.read<GetReviewsCubit>().getReviews(
                           productCode: widget.productEntity.productCode,
                         );
                       } else if (state is LoadingAddReviewState) {
-                        showSnackBar(context, message: "جاري إضافة تقيمك");
+                        showSnackBar(
+                          context,
+                          message: LocaleKeys
+                              .reviewAndRatingStatus_loadingAddReviewState
+                              .tr(),
+                        );
                       } else if (state is FailureAddReviewState) {
                         showSnackBar(context, message: state.errorMessage);
                       }
                     },
                     child: CustomButton(
-                      text: LocaleKeys.reviewAndRating_reviewAndRatingAddReviewButton.tr(),
+                      text: LocaleKeys
+                          .reviewAndRating_reviewAndRatingAddReviewButton
+                          .tr(),
                       onPressed: () async {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
@@ -97,11 +109,10 @@ class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
   }
 
   Future<void> _triggerAddReviewCubit(BuildContext context) async {
-
     context.read<AddReviewCubit>().addReview(
-      productCode:widget.productEntity.productCode,
+      productCode: widget.productEntity.productCode,
       date: DateTime.now(),
-      reviewerMessage:  message,
+      reviewerMessage: message,
       reviewerRating: rating.toDouble(),
     );
   }

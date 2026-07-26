@@ -321,6 +321,12 @@ class CodegenLoader extends AssetLoader{
     "loadingData": "جاري تحميل البيانات",
     "pleaseConfirmYourPassword": "برجاء تأكيد الباسورد",
     "youDoNotHaveAnyCards": "لا يوجد لديك أي كارت بنكي"
+  },
+  "reviewAndRatingStatus": {
+    "loadingGetReviews": "جاري تحميل المراجعات",
+    "beTheFirstOnetoReview": "كن اول من يضيف تقييما",
+    "yourReviewAddedState": "تم اضافة تقيمك بنجاح",
+    "loadingAddReviewState": "جاري إضافة تقيمك"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -630,6 +636,12 @@ static const Map<String,dynamic> _en = {
     "loadingData": "Loading data...",
     "pleaseConfirmYourPassword": "Please confirm your password",
     "youDoNotHaveAnyCards": "You have no saved payment cards"
+  },
+  "reviewAndRatingStatus": {
+    "loadingGetReviews": "Loading reviews...",
+    "beTheFirstOnetoReview": "Be the first to leave a review",
+    "yourReviewAddedState": "Your review was added successfully",
+    "loadingAddReviewState": "Adding your review..."
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

@@ -282,5 +282,10 @@ abstract class  LocaleKeys {
   static const profileStatus_pleaseConfirmYourPassword = 'profileStatus.pleaseConfirmYourPassword';
   static const profileStatus_youDoNotHaveAnyCards = 'profileStatus.youDoNotHaveAnyCards';
   static const profileStatus = 'profileStatus';
+  static const reviewAndRatingStatus_loadingGetReviews = 'reviewAndRatingStatus.loadingGetReviews';
+  static const reviewAndRatingStatus_beTheFirstOnetoReview = 'reviewAndRatingStatus.beTheFirstOnetoReview';
+  static const reviewAndRatingStatus_yourReviewAddedState = 'reviewAndRatingStatus.yourReviewAddedState';
+  static const reviewAndRatingStatus_loadingAddReviewState = 'reviewAndRatingStatus.loadingAddReviewState';
+  static const reviewAndRatingStatus = 'reviewAndRatingStatus';
 
 }

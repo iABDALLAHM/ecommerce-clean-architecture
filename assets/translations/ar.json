@@ -305,5 +305,11 @@
         "loadingData": "جاري تحميل البيانات",
         "pleaseConfirmYourPassword": "برجاء تأكيد الباسورد",
         "youDoNotHaveAnyCards": "لا يوجد لديك أي كارت بنكي"
+    },
+    "reviewAndRatingStatus": {
+        "loadingGetReviews": "جاري تحميل المراجعات",
+        "beTheFirstOnetoReview": "كن اول من يضيف تقييما",
+        "yourReviewAddedState": "تم اضافة تقيمك بنجاح",
+        "loadingAddReviewState": "جاري إضافة تقيمك"
     }
 }

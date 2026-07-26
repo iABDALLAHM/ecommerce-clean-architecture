@@ -48,7 +48,7 @@ class _ReviewAndRatingViewBodyState extends State<ReviewAndRatingViewBody> {
                       );
                     } else if (state is LoadingGetReviewsState) {
                       return Text(
-                        "جاري تحميل المراجعات",
+                        LocaleKeys.reviewAndRatingStatus_loadingGetReviews.tr(),
                         style: AppStyles.textStyle13Bold,
                       );
                     } else if (state is FailureGetReviewsState) {
@@ -58,7 +58,8 @@ class _ReviewAndRatingViewBodyState extends State<ReviewAndRatingViewBody> {
                       );
                     } else if (state is EmptyGetReviewsState) {
                       return Text(
-                        "كن اول من يضيف تقييما",
+                        LocaleKeys.reviewAndRatingStatus_beTheFirstOnetoReview
+                            .tr(),
                         style: AppStyles.textStyle13Bold,
                       );
                     } else {
