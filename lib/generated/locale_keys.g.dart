@@ -186,5 +186,25 @@ abstract class  LocaleKeys {
   static const reviewAndRating_reviewAndRatingAddReviewButton = 'reviewAndRating.reviewAndRatingAddReviewButton';
   static const reviewAndRating_reviewAndRatingAddReviewTextField = 'reviewAndRating.reviewAndRatingAddReviewTextField';
   static const reviewAndRating = 'reviewAndRating';
+  static const databaseErrors_addDataError = 'databaseErrors.addDataError';
+  static const databaseErrors_getDataError = 'databaseErrors.getDataError';
+  static const databaseErrors_getSingleDataError = 'databaseErrors.getSingleDataError';
+  static const databaseErrors_getNestedDataError = 'databaseErrors.getNestedDataError';
+  static const databaseErrors_getQueryDataError = 'databaseErrors.getQueryDataError';
+  static const databaseErrors_removeDataError = 'databaseErrors.removeDataError';
+  static const databaseErrors_updateDataError = 'databaseErrors.updateDataError';
+  static const databaseErrors_getStreamData = 'databaseErrors.getStreamData';
+  static const databaseErrors = 'databaseErrors';
+  static const storageErrors_addFileError = 'storageErrors.addFileError';
+  static const storageErrors = 'storageErrors';
+  static const authErrors_generalError = 'authErrors.generalError';
+  static const authErrors_weakPasswordError = 'authErrors.weakPasswordError';
+  static const authErrors_emailAlreadyInUseError = 'authErrors.emailAlreadyInUseError';
+  static const authErrors_invalidEmailError = 'authErrors.invalidEmailError';
+  static const authErrors_networkError = 'authErrors.networkError';
+  static const authErrors_userNotFoundError = 'authErrors.userNotFoundError';
+  static const authErrors_wrongPasswordError = 'authErrors.wrongPasswordError';
+  static const authErrors_invalidCreadintialError = 'authErrors.invalidCreadintialError';
+  static const authErrors = 'authErrors';
 
 }

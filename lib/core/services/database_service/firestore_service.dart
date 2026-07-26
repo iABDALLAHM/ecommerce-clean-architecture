@@ -1,11 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service/database_service.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 
 class FirestoreService implements DatabaseService {
   final FirebaseFirestore firestore;
+
   FirestoreService({required this.firestore});
+
   @override
   Future<void> addData({
     required String path,
@@ -15,7 +19,7 @@ class FirestoreService implements DatabaseService {
       await firestore.collection(path).add(data);
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "حدث خطأ أثناء إضافة البيانات، حاول مرة أخرى",
+        exceptionMeassge: LocaleKeys.databaseErrors_addDataError.tr(),
       );
     }
   }
@@ -27,7 +31,7 @@ class FirestoreService implements DatabaseService {
       return data.docs.map((doc) => doc.data()).toList();
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "تعذر تحميل البيانات، تحقق من الاتصال بالإنترنت",
+        exceptionMeassge: LocaleKeys.databaseErrors_getDataError.tr(),
       );
     }
   }
@@ -42,7 +46,7 @@ class FirestoreService implements DatabaseService {
       await firestore.collection(path).doc(documentId).set(data);
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "حدث خطأ أثناء إضافة البيانات، حاول مرة أخرى",
+        exceptionMeassge: LocaleKeys.databaseErrors_addDataError.tr(),
       );
     }
   }
@@ -63,7 +67,7 @@ class FirestoreService implements DatabaseService {
           .set(data);
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "حدث خطأ أثناء إضافة البيانات، حاول مرة أخرى",
+        exceptionMeassge: LocaleKeys.databaseErrors_addDataError.tr(),
       );
     }
   }
@@ -78,7 +82,7 @@ class FirestoreService implements DatabaseService {
       return data.data();
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "تعذر العثور على البيانات المطلوبة",
+        exceptionMeassge: LocaleKeys.databaseErrors_getSingleDataError.tr(),
       );
     }
   }
@@ -97,7 +101,9 @@ class FirestoreService implements DatabaseService {
           .get();
       return data.docs.map((doc) => doc.data()).toList();
     } catch (e) {
-      throw CustomException(exceptionMeassge: "تعذر تحميل البيانات المرتبطة");
+      throw CustomException(
+        exceptionMeassge: LocaleKeys.databaseErrors_getNestedDataError.tr(),
+      );
     }
   }
 
@@ -133,7 +139,7 @@ class FirestoreService implements DatabaseService {
       return result.docs.map((doc) => doc.data()).toList();
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "حدث خطأ أثناء البحث عن البيانات",
+        exceptionMeassge: LocaleKeys.databaseErrors_getQueryDataError.tr(),
       );
     }
   }
@@ -153,7 +159,9 @@ class FirestoreService implements DatabaseService {
           .doc(data["productCode"])
           .delete();
     } catch (e) {
-      throw CustomException(exceptionMeassge: "تعذر حذف البيانات");
+      throw CustomException(
+        exceptionMeassge: LocaleKeys.databaseErrors_removeDataError.tr(),
+      );
     }
   }
 
@@ -172,7 +180,7 @@ class FirestoreService implements DatabaseService {
           .add(data);
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "حدث خطأ أثناء إضافة البيانات، حاول مرة أخرى",
+        exceptionMeassge: LocaleKeys.databaseErrors_addDataError.tr(),
       );
     }
   }
@@ -187,7 +195,7 @@ class FirestoreService implements DatabaseService {
       await firestore.collection(path).doc(documentId).update(data);
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "حدث خطأ ما اثناء تحديث البيانات",
+        exceptionMeassge: LocaleKeys.databaseErrors_updateDataError.tr(),
       );
     }
   }
@@ -220,11 +228,16 @@ class FirestoreService implements DatabaseService {
       }
 
       var result = data.snapshots();
-      return result.map((snapshot) { // صورة كاملة من البيانات في الوقت ده !
-        return snapshot.docs.map((doc) => doc.data()).toList(); // باخد الصورة والف على البيانات الي فيها
+      return result.map((snapshot) {
+        // صورة كاملة من البيانات في الوقت ده !
+        return snapshot.docs
+            .map((doc) => doc.data())
+            .toList(); // باخد الصورة والف على البيانات الي فيها
       });
     } catch (e) {
-      throw CustomException(exceptionMeassge: "حدث خطأ اثناء جلب البيانات");
+      throw CustomException(
+        exceptionMeassge: LocaleKeys.databaseErrors_getStreamData.tr(),
+      );
     }
   }
 }

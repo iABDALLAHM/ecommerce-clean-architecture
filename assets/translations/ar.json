@@ -192,5 +192,28 @@
         "reviewAndRatingRecommendedText": "موصى به",
         "reviewAndRatingAddReviewButton": "اضافة تقيم",
         "reviewAndRatingAddReviewTextField": "اترك تقيما..."
+    },
+    "databaseErrors": {
+        "addDataError": "حدث خطأ أثناء إضافة البيانات، حاول مرة أخرى",
+        "getDataError": "تعذر تحميل البيانات، تحقق من الاتصال بالإنترنت",
+        "getSingleDataError": "تعذر العثور على البيانات المطلوبة",
+        "getNestedDataError": "تعذر تحميل البيانات المرتبطة",
+        "getQueryDataError": "حدث خطأ أثناء البحث عن البيانات",
+        "removeDataError": "تعذر حذف البيانات",
+        "updateDataError": "حدث خطأ ما اثناء تحديث البيانات",
+        "getStreamData": "حدث خطأ اثناء جلب البيانات"
+    },
+    "storageErrors": {
+        "addFileError": "فشل تحميل الصورة إلي قاعدة البيانات"
+    },
+    "authErrors": {
+        "generalError": "حدث خطأ ما برجاء المحاولة مرة آخرى",
+        "weakPasswordError": "هذا الباسورد ضعيف",
+        "emailAlreadyInUseError": "هذا الإيميل مستخدم بالفعل",
+        "invalidEmailError": "الايميل او الباسورد غير صحيح برجاء المحاولة مرة آخرى",
+        "networkError": "لا يوجد اتصال بالإنترنت",
+        "userNotFoundError": "هذا المستخدم غير موجود بالفعل",
+        "wrongPasswordError": "الايميل او الباسورد غير صحيح برجاء المحاولة مرة اخرى",
+        "invalidCreadintialError": "حدث خطأ ما برجاء المحاولة مرة آخرى"
     }
 }

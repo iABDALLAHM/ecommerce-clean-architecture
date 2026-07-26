@@ -1,7 +1,9 @@
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/services/storage_service/storage_service.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:path/path.dart' as b;
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -20,7 +22,9 @@ class SupabaseStorageService implements StorageService {
           .getPublicUrl("$path/$fileName");
       return imageUrl;
     } catch (e) {
-      throw CustomException(exceptionMeassge: "فشل تحميل الصورة إلي قاعدة البيانات");
+      throw CustomException(
+        exceptionMeassge: LocaleKeys.storageErrors_addFileError.tr(),
+      );
     }
   }
 }

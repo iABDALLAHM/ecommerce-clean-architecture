@@ -1,7 +1,9 @@
 import 'dart:developer';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/features/auth/data/services/auth_service/auth_service.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -27,19 +29,24 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in Register method please check it, the error: $e",
       );
       if (e.code == 'weak-password') {
-        throw CustomException(exceptionMeassge: "هذا الباسورد ضعيف");
+        throw CustomException(
+          exceptionMeassge: LocaleKeys.authErrors_weakPasswordError.tr(),
+        );
       } else if (e.code == 'email-already-in-use') {
-        throw CustomException(exceptionMeassge: "هذا الإيميل مستخدم بالفعل");
+        throw CustomException(
+          exceptionMeassge: LocaleKeys.authErrors_emailAlreadyInUseError.tr(),
+        );
       } else if (e.code == 'invalid-email') {
         throw CustomException(
-          exceptionMeassge:
-              "الايميل او الباسورد غير صحيح برجاء المحاولة مرة آخرى",
+          exceptionMeassge: LocaleKeys.authErrors_invalidEmailError.tr(),
         );
       } else if (e.code == "network-request-failed") {
-        throw CustomException(exceptionMeassge: "لا يوجد اتصال بالإنترنت");
+        throw CustomException(
+          exceptionMeassge: LocaleKeys.authErrors_networkError.tr(),
+        );
       } else {
         throw CustomException(
-          exceptionMeassge: "حدث خطأ ما برجاء المحاولة مرة آخرى",
+          exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
         );
       }
     } catch (e) {
@@ -47,7 +54,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in Register method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: "حدث خطأ ما برجاء المحاولة مرة آخرى",
+        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
       );
     }
   }
@@ -66,18 +73,19 @@ class FirebaseAuthService implements AuthService {
       );
       if (e.code == 'user-not-found') {
         throw CustomException(
-          exceptionMeassge: "هذا المستخدم غير موجود بالفعل",
+          exceptionMeassge: LocaleKeys.authErrors_userNotFoundError.tr(),
         );
       } else if (e.code == 'wrong-password') {
         throw CustomException(
-          exceptionMeassge:
-              "الايميل او الباسورد غير صحيح برجاء المحاولة مرة اخرى",
+          exceptionMeassge: LocaleKeys.authErrors_wrongPasswordError.tr(),
         );
       } else if (e.code == "network-request-failed") {
-        throw CustomException(exceptionMeassge: "لا يوجد اتصال بالإنترنت");
+        throw CustomException(
+          exceptionMeassge: LocaleKeys.authErrors_networkError.tr(),
+        );
       } else {
         throw CustomException(
-          exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+          exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
         );
       }
     } catch (e) {
@@ -85,7 +93,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in signIn method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
       );
     }
   }
@@ -99,7 +107,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in delete method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
       );
     }
   }
@@ -113,7 +121,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in signOut method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
       );
     }
   }
@@ -137,11 +145,11 @@ class FirebaseAuthService implements AuthService {
       );
       if (e.code == "invalid-credential") {
         throw CustomException(
-          exceptionMeassge: "حدث خطأ ما برجاء المحاولة مرة آخرى",
+          exceptionMeassge: LocaleKeys.authErrors_invalidCreadintialError.tr(),
         );
       } else {
         throw CustomException(
-          exceptionMeassge: "حدث خطأ ما برجاء المحاولة مرة آخرى",
+          exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
         );
       }
     } catch (e) {
@@ -149,7 +157,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in updatePassword method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
       );
     }
   }
@@ -161,7 +169,7 @@ class FirebaseAuthService implements AuthService {
 
       if (userId == null) {
         throw CustomException(
-          exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+          exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
         );
       }
       return userId.uid;
@@ -170,7 +178,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in getCurrentUserId method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
       );
     }
   }
@@ -189,12 +197,12 @@ class FirebaseAuthService implements AuthService {
         ),
         email: email.trim(),
       );
-    } on FirebaseAuthException catch (e) {
+    } catch (e) {
       log(
         "error happend in FirebaseAuthService in resetPassword method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
       );
     }
   }
@@ -226,7 +234,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in updateEmail method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
       );
     }
   }
@@ -246,7 +254,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in confirmPasswordReset method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
       );
     }
   }
@@ -278,11 +286,11 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in signInWithGoogle method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
       );
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
       );
     }
   }
@@ -307,12 +315,12 @@ class FirebaseAuthService implements AuthService {
     } on FirebaseAuthException catch (e) {
       log("Error in FirebaseAuthService signInWithFacebook: $e");
       throw CustomException(
-        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
       );
     } catch (e) {
       log("Error in signInWithFacebook: $e");
       throw CustomException(
-        exceptionMeassge: "لقد حدث خطأ ما برجاء المحاولة مرة اخرى",
+        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
       );
     }
   }

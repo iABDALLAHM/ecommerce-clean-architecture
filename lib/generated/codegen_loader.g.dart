@@ -208,6 +208,29 @@ class CodegenLoader extends AssetLoader{
     "reviewAndRatingRecommendedText": "موصى به",
     "reviewAndRatingAddReviewButton": "اضافة تقيم",
     "reviewAndRatingAddReviewTextField": "اترك تقيما..."
+  },
+  "databaseErrors": {
+    "addDataError": "حدث خطأ أثناء إضافة البيانات، حاول مرة أخرى",
+    "getDataError": "تعذر تحميل البيانات، تحقق من الاتصال بالإنترنت",
+    "getSingleDataError": "تعذر العثور على البيانات المطلوبة",
+    "getNestedDataError": "تعذر تحميل البيانات المرتبطة",
+    "getQueryDataError": "حدث خطأ أثناء البحث عن البيانات",
+    "removeDataError": "تعذر حذف البيانات",
+    "updateDataError": "حدث خطأ ما اثناء تحديث البيانات",
+    "getStreamData": "حدث خطأ اثناء جلب البيانات"
+  },
+  "storageErrors": {
+    "addFileError": "فشل تحميل الصورة إلي قاعدة البيانات"
+  },
+  "authErrors": {
+    "generalError": "حدث خطأ ما برجاء المحاولة مرة آخرى",
+    "weakPasswordError": "هذا الباسورد ضعيف",
+    "emailAlreadyInUseError": "هذا الإيميل مستخدم بالفعل",
+    "invalidEmailError": "الايميل او الباسورد غير صحيح برجاء المحاولة مرة آخرى",
+    "networkError": "لا يوجد اتصال بالإنترنت",
+    "userNotFoundError": "هذا المستخدم غير موجود بالفعل",
+    "wrongPasswordError": "الايميل او الباسورد غير صحيح برجاء المحاولة مرة اخرى",
+    "invalidCreadintialError": "حدث خطأ ما برجاء المحاولة مرة آخرى"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -404,6 +427,29 @@ static const Map<String,dynamic> _en = {
     "reviewAndRatingRecommendedText": "Recommended",
     "reviewAndRatingAddReviewButton": "Add Review",
     "reviewAndRatingAddReviewTextField": "Leave a review..."
+  },
+  "databaseErrors": {
+    "addDataError": "An error occurred while adding data, please try again.",
+    "getDataError": "Failed to load data, please check your internet connection.",
+    "getSingleDataError": "Failed to find the requested data.",
+    "getNestedDataError": "Failed to load related data.",
+    "getQueryDataError": "An error occurred while searching for data.",
+    "removeDataError": "Failed to delete data.",
+    "updateDataError": "An error occurred while updating data.",
+    "getStreamData": "An error occurred while fetching data."
+  },
+  "storageErrors": {
+    "addFileError": "Failed to upload image to database."
+  },
+  "authErrors": {
+    "generalError": "Something went wrong, please try again.",
+    "weakPasswordError": "The password provided is too weak.",
+    "emailAlreadyInUseError": "This email address is already in use.",
+    "invalidEmailError": "Incorrect email or password, please try again.",
+    "networkError": "No internet connection.",
+    "userNotFoundError": "User account not found.",
+    "wrongPasswordError": "Incorrect email or password, please try again.",
+    "invalidCreadintialError": "Something went wrong, please try again."
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
