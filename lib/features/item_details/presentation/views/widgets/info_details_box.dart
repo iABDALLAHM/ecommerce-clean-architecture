@@ -1,4 +1,3 @@
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,14 +12,16 @@ class InfoDetailsBox extends StatelessWidget {
   });
   final String icon, title, subTitle;
   final String? titleDetails;
-  
+
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 12, horizontal: 30),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Color(0xffF1F1F5), width: 1),
+        border: Border.all(color: colorScheme.surface, width: 1),
       ),
       child: Row(
         children: [
@@ -33,13 +34,13 @@ class InfoDetailsBox extends StatelessWidget {
                     TextSpan(
                       text: titleDetails,
                       style: AppStyles.textStyle16Bold.copyWith(
-                        color: Color(0xff979899),
+                        color: colorScheme.surfaceBright,
                       ),
                     ),
                     TextSpan(
                       text: title,
                       style: AppStyles.textStyle16Bold.copyWith(
-                        color: AppColors.lightPrimaryColor,
+                        color: colorScheme.primaryFixed,
                       ),
                     ),
                   ],
@@ -49,7 +50,7 @@ class InfoDetailsBox extends StatelessWidget {
               Text(
                 subTitle,
                 style: AppStyles.textStyle13SemiBold.copyWith(
-                  color: Color(0xff979899),
+                  color: colorScheme.surfaceBright,
                 ),
               ),
               const SizedBox(width: 18),

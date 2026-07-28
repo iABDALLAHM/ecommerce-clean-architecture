@@ -11,6 +11,8 @@ class OrderDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     var myOrderEntity = context.read<OrderEntity>();
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -23,7 +25,7 @@ class OrderDetails extends StatelessWidget {
         Text(
           "${LocaleKeys.profile_myOrdersPageOrderdAt.tr()} ${getSpecificDate(date: myOrderEntity.date)}",
           style: AppStyles.textStyle11Regular.copyWith(
-            color: Color(0xff949D9E),
+            color: colorScheme.tertiaryContainer,
           ),
         ),
         const SizedBox(height: 6),
@@ -35,7 +37,7 @@ class OrderDetails extends StatelessWidget {
                   TextSpan(
                     text: LocaleKeys.checkOut_trackOrderPageNumberOfItems.tr(),
                     style: AppStyles.textStyle13Regular.copyWith(
-                      color: Color(0xff949D9E),
+                      color: colorScheme.tertiaryContainer,
                     ),
                   ),
                   TextSpan(

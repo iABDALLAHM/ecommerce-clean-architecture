@@ -14,16 +14,17 @@ class TrackOrderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var orderEntity = context.read<OrderEntity>();
+    var colorScheme = Theme.of(context).colorScheme;
     return Container(
-      padding: EdgeInsets.only(top: 19, bottom: 19, left: 32),
-      decoration: BoxDecoration(color: Color(0xffF9F9F9)),
+      padding: EdgeInsets.only(top: 19, bottom: 19, left: 15),
+      decoration: BoxDecoration(color: colorScheme.tertiaryFixedDim),
       child: Row(
         children: [
           Container(
             padding: EdgeInsets.all(18),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Color(0xffEBF9F1),
+              color: colorScheme.primaryContainer,
             ),
             child: SvgPicture.asset(Assets.imagesBoxIcon),
           ),
@@ -39,7 +40,7 @@ class TrackOrderItem extends StatelessWidget {
               Text(
                 "${LocaleKeys.checkOut_trackOrderPageOrderedAt.tr()} ${orderEntity.date.day} ${getMonth(month: orderEntity.date.month)} ,${orderEntity.date.year}",
                 style: AppStyles.textStyle11Regular.copyWith(
-                  color: Color(0xff949D9E),
+                  color: colorScheme.tertiaryContainer,
                 ),
               ),
               const SizedBox(height: 6),
@@ -52,7 +53,7 @@ class TrackOrderItem extends StatelessWidget {
                           text: LocaleKeys.checkOut_trackOrderPageNumberOfItems
                               .tr(),
                           style: AppStyles.textStyle13Regular.copyWith(
-                            color: Color(0xff949D9E),
+                            color: colorScheme.tertiaryContainer,
                           ),
                         ),
                         TextSpan(

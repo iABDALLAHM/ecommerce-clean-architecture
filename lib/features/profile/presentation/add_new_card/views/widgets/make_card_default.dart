@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +14,7 @@ class _MakeCardAsDefaultState extends State<MakeCardAsDefault> {
   bool isSelected = false;
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Row(
       children: [
         GestureDetector(
@@ -25,16 +25,16 @@ class _MakeCardAsDefaultState extends State<MakeCardAsDefault> {
           },
           child: Container(
             decoration: BoxDecoration(
-              color: isSelected ? AppColors.primaryColor : Colors.white,
+              color: isSelected ? colorScheme.primary : colorScheme.surface,
               borderRadius: BorderRadius.circular(8),
               border: isSelected
                   ? Border.all(color: Colors.transparent, width: 2)
-                  : Border.all(color: Color(0xffDDDFDF), width: 2),
+                  : Border.all(width: 2, color: colorScheme.tertiary),
             ),
             child: Padding(
               padding: const EdgeInsets.all(2),
               child: isSelected
-                  ? Icon(Icons.check, size: 20, color: Colors.white)
+                  ? Icon(Icons.check, size: 20, color: colorScheme.surface)
                   : const SizedBox(height: 20, width: 20),
             ),
           ),
@@ -43,7 +43,7 @@ class _MakeCardAsDefaultState extends State<MakeCardAsDefault> {
         Text(
           LocaleKeys.profile_addNewPaymentMakeCardDefault.tr(),
           style: AppStyles.textStyle13SemiBold.copyWith(
-            color: Color(0xff616A6B),
+            color: colorScheme.tertiary,
           ),
         ),
       ],

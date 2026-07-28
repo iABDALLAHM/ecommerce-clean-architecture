@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_clean_architecture/core/cubits/change_theme_cubit/change_theme_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
@@ -8,6 +9,7 @@ import 'package:ecommerce_clean_architecture/features/profile/presentation/core/
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/widgets/profile_body_switch_item.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class ProfileBodySections extends StatefulWidget {
@@ -21,6 +23,10 @@ class _ProfileBodySectionsState extends State<ProfileBodySections> {
   String currentLang = "";
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+    bool isLight =
+        context.watch<ChangeThemeCubit>().state.currentTheme == ThemeMode.dark;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -61,9 +67,8 @@ class _ProfileBodySectionsState extends State<ProfileBodySections> {
         ProfileBodySwitchItem(
           icon: Assets.imagesNotificationIcon,
           name: LocaleKeys.profile_myNotificationsSection.tr(),
-          onChange: (value) {
-            // context.read<SwitchButtonCubit>().changeState(value: !isActive);
-          },
+          value: false,
+          onChange: (bool value) {},
         ),
         const SizedBox(height: 4),
         ProfileLanguageBodyItem(
@@ -71,7 +76,7 @@ class _ProfileBodySectionsState extends State<ProfileBodySections> {
           onPressed: () {
             showModalBottomSheet(
               useRootNavigator: true,
-              backgroundColor: Colors.white,
+              backgroundColor: colorScheme.surface,
               context: context,
               builder: (context) {
                 return ChangeLanguageBottomSheet(
@@ -90,8 +95,9 @@ class _ProfileBodySectionsState extends State<ProfileBodySections> {
         ProfileBodySwitchItem(
           icon: Assets.imagesModeIcon,
           name: LocaleKeys.profile_currentSection.tr(),
-          onChange: (value) {
-            // context.read<SwitchButtonCubit>().changeState(value: !isActive);
+          value: isLight,
+          onChange: (bool value) {
+            context.read<ChangeThemeCubit>().toggleTheme();
           },
         ),
 

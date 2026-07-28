@@ -1,4 +1,3 @@
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/widgets/custom_dot.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +6,8 @@ class CustomIndicator extends StatelessWidget {
   final int currentPage;
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -15,8 +16,8 @@ class CustomIndicator extends StatelessWidget {
           padding: const EdgeInsets.only(left: 10),
           child: CustomDot(
             color: currentPage == 1
-                ? AppColors.primaryColor
-                : AppColors.lightPrimaryColor,
+                ? colorScheme.primary
+                : colorScheme.primaryFixed,
           ),
         ),
       ],

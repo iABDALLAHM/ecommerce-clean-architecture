@@ -1,4 +1,3 @@
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
@@ -12,10 +11,9 @@ class CustomProgressWidget extends StatelessWidget {
   final bool state;
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return ModalProgressHUD(
-      progressIndicator: CircularProgressIndicator(
-        color: AppColors.primaryColor,
-      ),
+      progressIndicator: CircularProgressIndicator(color: colorScheme.primary),
       blur: 50,
       color: Colors.transparent,
       inAsyncCall: state,

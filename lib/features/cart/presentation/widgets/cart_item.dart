@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_item_entity/cart_item_entity.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_states.dart';
@@ -19,6 +18,8 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return BlocListener<CartCubit, CartStates>(
       listenWhen: (previous, current) {
         if (current is ProductIncreaseState) {
@@ -65,7 +66,7 @@ class CartItem extends StatelessWidget {
                   Text(
                     "${cartItemEntity.quantity} ${LocaleKeys.cart_cartAmount.tr()}",
                     style: AppStyles.textStyle13Regular.copyWith(
-                      color: AppColors.secondryColor,
+                      color: colorScheme.secondaryContainer,
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -83,12 +84,15 @@ class CartItem extends StatelessWidget {
                         cartItemEntity: cartItemEntity,
                       );
                     },
-                    child: Icon(Icons.delete_outline, color: Color(0xff949D9E)),
+                    child: Icon(
+                      Icons.delete_outline,
+                      color: colorScheme.tertiaryContainer,
+                    ),
                   ),
                   Text(
                     "${cartItemEntity.calculateTotalPrice()} ${LocaleKeys.cart_cartCurrency.tr()}",
                     style: AppStyles.textStyle16Bold.copyWith(
-                      color: AppColors.secondryColor,
+                      color: colorScheme.secondary,
                     ),
                   ),
                 ],

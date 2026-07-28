@@ -26,7 +26,6 @@ class AppRoutes {
   static const String login = "/login";
   static const String register = "/register";
   static const String forgetPassword = "/forgetPassword";
-  static const String passwordRecovery = "/passwordRecovery";
   static const String resetYourPassword = "/resetYourPassword";
   static const String home = "/home";
   static const String bestSelling = "/bestSelling";
@@ -161,7 +160,6 @@ class AppRoutes {
       //     return login;
       //   },
       // ),
-
       GoRoute(
         path: login,
         builder: (context, state) {
@@ -198,11 +196,6 @@ class AppRoutes {
           }
           return resetYourPassword;
         },
-      ),
-
-      GoRoute(
-        path: passwordRecovery,
-        builder: (context, state) => PasswordRecoveryView(),
       ),
 
       GoRoute(

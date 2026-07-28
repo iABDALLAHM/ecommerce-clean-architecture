@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/register/views/widgets/custom_terms_and_conditions_button.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
@@ -11,6 +10,7 @@ class TermsAndConditionsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Row(
       children: [
         Padding(
@@ -28,13 +28,13 @@ class TermsAndConditionsSection extends StatelessWidget {
                 TextSpan(
                   text: LocaleKeys.auth_signUp_termsAndConditions1.tr() + " ",
                   style: AppStyles.textStyle13SemiBold.copyWith(
-                    color: Color(0xff949D9E),
+                    color: colorScheme.tertiaryContainer,
                   ),
                 ),
                 TextSpan(
                   text: LocaleKeys.auth_signUp_termsAndConditions2.tr(),
                   style: AppStyles.textStyle13SemiBold.copyWith(
-                    color: AppColors.lightPrimaryColor,
+                    color: colorScheme.primaryFixed,
                   ),
                 ),
               ],

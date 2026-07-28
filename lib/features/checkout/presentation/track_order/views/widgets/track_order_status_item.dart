@@ -22,11 +22,14 @@ class TrackOrderStatusItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Column(
       children: [
         Row(
           children: [
             Container(
+        
               child: stepStatus == true
                   ? SvgPicture.asset(stepImageOn)
                   : SvgPicture.asset(stepImageOff),
@@ -40,7 +43,7 @@ class TrackOrderStatusItem extends StatelessWidget {
                     ? Text(
                         "قيد الإنتظار",
                         style: AppStyles.textStyle13SemiBold.copyWith(
-                          color: Color(0xff949D9E),
+                          color: colorScheme.tertiaryContainer,
                         ),
                       )
                     : Text(
@@ -48,7 +51,7 @@ class TrackOrderStatusItem extends StatelessWidget {
                             ? getSpecificDate(date: stepDate!)
                             : "قيد الإنتظار",
                         style: AppStyles.textStyle13SemiBold.copyWith(
-                          color: Color(0xff949D9E),
+                          color: colorScheme.tertiaryContainer,
                         ),
                       ),
               ],
@@ -60,14 +63,18 @@ class TrackOrderStatusItem extends StatelessWidget {
             SizedBox(width: 30),
             stepNum == 5
                 ? SizedBox()
-                : Container(width: 2, height: 30, color: Colors.grey.shade300),
+                : Container(
+                    width: 2,
+                    height: 30,
+                    color: colorScheme.tertiaryFixed,
+                  ),
             stepNum == 5
                 ? SizedBox()
                 : Expanded(
                     child: Divider(
                       endIndent: 30,
                       indent: 30,
-                      color: Colors.grey.shade300,
+                      color: colorScheme.tertiaryFixed,
                     ),
                   ),
           ],
@@ -75,6 +82,4 @@ class TrackOrderStatusItem extends StatelessWidget {
       ],
     );
   }
-
-
 }

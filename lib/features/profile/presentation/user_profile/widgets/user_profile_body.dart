@@ -42,6 +42,8 @@ class _UserProfileBodyState extends State<UserProfileBody> {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return UserProfileBodyBlocListener(
       child: BlocBuilder<UpdateUserPasswordCubit, UpdateUserPasswordStates>(
         builder: (context, state) {
@@ -76,7 +78,7 @@ class _UserProfileBodyState extends State<UserProfileBody> {
                                       onPressed: () {
                                         showModalBottomSheet(
                                           isScrollControlled: true,
-                                          backgroundColor: Colors.white,
+                                          backgroundColor: colorScheme.surface,
                                           useRootNavigator: true,
                                           context: context,
                                           builder: (_) {
@@ -98,7 +100,7 @@ class _UserProfileBodyState extends State<UserProfileBody> {
                                       onPressed: () {
                                         showModalBottomSheet(
                                           isScrollControlled: true,
-                                          backgroundColor: Colors.white,
+                                          backgroundColor: colorScheme.surface,
                                           useRootNavigator: true,
                                           context: context,
                                           builder: (_) {

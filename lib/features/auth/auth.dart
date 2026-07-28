@@ -17,7 +17,6 @@ export 'package:ecommerce_clean_architecture/features/auth/data/models/user_mode
 export 'package:ecommerce_clean_architecture/features/auth/domain/entities/user_entities/user_entity.dart';
 
 export 'package:ecommerce_clean_architecture/features/auth/presentation/forget_password/views/forget_password_view.dart';
-export 'package:ecommerce_clean_architecture/features/auth/presentation/password_recovery/views/password_recovery_view.dart';
 export 'package:ecommerce_clean_architecture/features/auth/presentation/register/views/register_view.dart';
 export 'package:ecommerce_clean_architecture/features/auth/presentation/login/views/login_view.dart';
 export 'package:ecommerce_clean_architecture/features/auth/presentation/reset_password/views/reset_your_password_view.dart';

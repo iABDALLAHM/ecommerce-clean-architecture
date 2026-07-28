@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_circular_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/favorite_products/cubits/get_favorite_products_cubit/get_favorite_products_cubit.dart';
@@ -25,6 +24,8 @@ class _FavoriteBodyState extends State<FavoriteBody> {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return BlocBuilder<GetFavoriteProductsCubit, GetFavoriteProductsStates>(
       builder: (context, state) {
         if (state is SuccessGetFavoriteProductsState) {
@@ -41,7 +42,7 @@ class _FavoriteBodyState extends State<FavoriteBody> {
             child: Text(
               LocaleKeys.profileStatus_emptyFavProductState.tr(),
               style: AppStyles.textStyle13SemiBold.copyWith(
-                color: AppColors.lightPrimaryColor,
+                color: colorScheme.onPrimary,
                 fontSize: 20,
               ),
             ),

@@ -8,7 +8,6 @@ import 'package:ecommerce_clean_architecture/features/item_details/presentation/
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/functions/handle_expiration_years_text.dart';
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/widgets/info_details_box.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
@@ -25,6 +24,7 @@ class ProductInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -38,13 +38,13 @@ class ProductInfo extends StatelessWidget {
                 text:
                     "${productEntity.productPrice} ${LocaleKeys.itemDetails_itemDetailsItemPound.tr()}",
                 style: AppStyles.textStyle13Bold.copyWith(
-                  color: AppColors.secondryColor,
+                  color: colorScheme.secondary,
                 ),
               ),
               TextSpan(
                 text: " / ${LocaleKeys.itemDetails_itemDetailsItemAmount.tr()}",
                 style: AppStyles.textStyle13Bold.copyWith(
-                  color: AppColors.lightsecondryColor,
+                  color: colorScheme.secondaryContainer,
                 ),
               ),
             ],
@@ -57,7 +57,7 @@ class ProductInfo extends StatelessWidget {
             if (state is SuccessGetReviewsState) {
               return Row(
                 children: [
-                  Icon(Icons.star, color: Colors.amber),
+                  Icon(Icons.star, color: colorScheme.secondary),
                   const SizedBox(width: 9),
                   Text(
                     calculateAverageRating(
@@ -71,7 +71,7 @@ class ProductInfo extends StatelessWidget {
                         ? "(+30)"
                         : "(${state.productReviewWithUserEntity.length})",
                     style: AppStyles.textStyle13Regular.copyWith(
-                      color: Color(0xff9796A1),
+                      color: colorScheme.surfaceBright,
                     ),
                   ),
                   const SizedBox(width: 9),
@@ -87,7 +87,7 @@ class ProductInfo extends StatelessWidget {
                     child: Text(
                       LocaleKeys.itemDetails_itemDetailsReviewItemButton.tr(),
                       style: AppStyles.textStyle13Bold.copyWith(
-                        color: AppColors.primaryColor,
+                        color: colorScheme.primary,
                         decoration: TextDecoration.underline,
                         decorationThickness: 2,
                       ),
@@ -119,7 +119,7 @@ class ProductInfo extends StatelessWidget {
                     child: Text(
                       LocaleKeys.itemDetails_itemDetailsReviewItemButton.tr(),
                       style: AppStyles.textStyle13Bold.copyWith(
-                        color: AppColors.primaryColor,
+                        color: colorScheme.primary,
                         decoration: TextDecoration.underline,
                         decorationThickness: 2,
                       ),
@@ -140,7 +140,7 @@ class ProductInfo extends StatelessWidget {
           maxLines: 3,
           overflow: TextOverflow.ellipsis,
           style: AppStyles.textStyle13Regular.copyWith(
-            color: Color(0xff979899),
+            color: colorScheme.surfaceBright,
           ),
         ),
 

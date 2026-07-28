@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/enums/radio_enum_choices/radio_enum_choices.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
@@ -17,6 +16,7 @@ class _RadioChoicesState extends State<RadioChoices> {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return RadioGroup(
       groupValue: choice,
       onChanged: (value) {
@@ -32,14 +32,16 @@ class _RadioChoicesState extends State<RadioChoices> {
 
             fillColor: WidgetStateProperty.resolveWith((states) {
               if (states.contains(WidgetState.selected)) {
-                return AppColors.primaryColor;
+                return colorScheme.primary;
               }
-              return Color(0xff949D9E);
+              return colorScheme.tertiaryContainer;
             }),
-            activeColor: AppColors.primaryColor,
+            activeColor: colorScheme.primary,
             title: Text(
               LocaleKeys.home_sortByPriceFromHighToLow.tr(),
-              style: AppStyles.textStyle13Bold.copyWith(color: Colors.black),
+              style: AppStyles.textStyle13Bold.copyWith(
+                color: colorScheme.onSurface,
+              ),
             ),
             value: RadioChoicesEnum.fromHighToLow,
           ),
@@ -49,14 +51,16 @@ class _RadioChoicesState extends State<RadioChoices> {
 
             fillColor: WidgetStateProperty.resolveWith((states) {
               if (states.contains(WidgetState.selected)) {
-                return AppColors.primaryColor;
+                return colorScheme.primary;
               }
-              return Color(0xff949D9E);
+              return colorScheme.tertiaryContainer;
             }),
-            activeColor: AppColors.primaryColor,
+            activeColor: colorScheme.primary,
             title: Text(
               LocaleKeys.home_sortByPriceFromLowToHigh.tr(),
-              style: AppStyles.textStyle13Bold.copyWith(color: Colors.black),
+              style: AppStyles.textStyle13Bold.copyWith(
+                color: colorScheme.onSurface,
+              ),
             ),
             value: RadioChoicesEnum.fromLowToHigh,
           ),
@@ -65,14 +69,16 @@ class _RadioChoicesState extends State<RadioChoices> {
             contentPadding: EdgeInsets.zero,
             fillColor: WidgetStateProperty.resolveWith((states) {
               if (states.contains(WidgetState.selected)) {
-                return AppColors.primaryColor;
+                return colorScheme.primary;
               }
-              return Color(0xff949D9E);
+              return colorScheme.tertiaryContainer;
             }),
-            activeColor: AppColors.primaryColor,
+            activeColor: colorScheme.primary,
             title: Text(
               LocaleKeys.home_sortByAlphabetical.tr(),
-              style: AppStyles.textStyle13Bold.copyWith(color: Colors.black),
+              style: AppStyles.textStyle13Bold.copyWith(
+                color: colorScheme.onSurface,
+              ),
             ),
             value: RadioChoicesEnum.alphabetical,
           ),

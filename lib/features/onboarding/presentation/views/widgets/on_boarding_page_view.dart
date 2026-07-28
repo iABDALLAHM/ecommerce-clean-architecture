@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/views/widgets/on_boarding_page_view_item.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
@@ -17,6 +16,8 @@ class OnBoardingPageView extends StatefulWidget {
 class _OnBoardingPageViewState extends State<OnBoardingPageView> {
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return PageView(
       controller: widget.pageController,
       children: [
@@ -34,13 +35,13 @@ class _OnBoardingPageViewState extends State<OnBoardingPageView> {
                 TextSpan(
                   text: "Fruit",
                   style: AppStyles.textStyle23Bold.copyWith(
-                    color: AppColors.primaryColor,
+                    color: colorScheme.primary,
                   ),
                 ),
                 TextSpan(
                   text: "HUB",
                   style: AppStyles.textStyle23Bold.copyWith(
-                    color: AppColors.secondryColor,
+                    color: colorScheme.secondary,
                   ),
                 ),
               ],

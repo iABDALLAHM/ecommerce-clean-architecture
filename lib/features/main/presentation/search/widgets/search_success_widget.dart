@@ -4,13 +4,14 @@ import 'package:ecommerce_clean_architecture/features/main/domain/entities/produ
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/custom_fruit_item.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class SearchSuccessWidget extends StatelessWidget {
   const SearchSuccessWidget({super.key, required this.products});
   final List<ProductEntity> products;
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       child: Column(
@@ -20,7 +21,7 @@ class SearchSuccessWidget extends StatelessWidget {
           Text(
             LocaleKeys.search_searchResults.tr(),
             style: AppStyles.textStyle13Regular.copyWith(
-              color: Color(0xff949D9E),
+              color: colorScheme.tertiaryContainer,
             ),
           ),
           const SizedBox(height: 16),

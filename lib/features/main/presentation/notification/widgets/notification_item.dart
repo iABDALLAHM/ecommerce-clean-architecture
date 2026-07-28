@@ -14,21 +14,22 @@ class NotificationItem extends StatefulWidget {
 class _NotificationItemState extends State<NotificationItem> {
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Stack(
       clipBehavior: Clip.none,
       children: [
         Container(
-          color: Colors.white,
+          color: colorScheme.surface,
           child: ListTile(
             contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             trailing: Text(
               handleDateTime(date: widget.notificationEntity.notificationDate),
               style: AppStyles.textStyle13Regular.copyWith(
-                color: Color(0xff949D9E),
+                color: colorScheme.tertiaryContainer,
               ),
             ),
             leading: CircleAvatar(
-              backgroundColor: Colors.white,
+              backgroundColor: colorScheme.surface,
               radius: 30,
               backgroundImage: NetworkImage(
                 widget.notificationEntity.notificationImage,

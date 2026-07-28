@@ -1,4 +1,3 @@
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -9,11 +8,6 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        backgroundColor: AppColors.primaryColor,
-        foregroundColor: Colors.white,
-      ),
       onPressed: onPressed,
       child: Text(text, style: AppStyles.textStyle16Bold),
     );

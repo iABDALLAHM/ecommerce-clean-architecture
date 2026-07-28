@@ -6,6 +6,9 @@ class CustomArrowBackAppBar extends StatelessWidget {
   final bool isBack;
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final backgroundColor = Theme.of(context).scaffoldBackgroundColor;
+
     return GestureDetector(
       onTap: () {
         if (isBack) {
@@ -13,10 +16,10 @@ class CustomArrowBackAppBar extends StatelessWidget {
         }
       },
       child: CircleAvatar(
+        backgroundColor: colorScheme.outlineVariant,
         radius: 20,
-        backgroundColor: Color(0xffF1F1F5),
         child: CircleAvatar(
-          backgroundColor: Colors.white,
+          backgroundColor: backgroundColor,
           radius: 27,
           child: Icon(
             IconData(
@@ -26,6 +29,7 @@ class CustomArrowBackAppBar extends StatelessWidget {
               matchTextDirection: true,
             ),
             size: 18,
+            color: colorScheme.onSurface,
           ),
         ),
       ),

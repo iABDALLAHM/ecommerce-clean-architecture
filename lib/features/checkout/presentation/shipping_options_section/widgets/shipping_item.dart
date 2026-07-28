@@ -1,4 +1,3 @@
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -11,40 +10,42 @@ class ShippingItem extends StatelessWidget {
     this.price = 0,
     required this.onPressed,
   });
-  
+
   final bool isSelected;
   final String title, subTitle;
   final int price;
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       decoration: BoxDecoration(
         border: isSelected
-            ? Border.all(width: 1.2, color: AppColors.primaryColor)
+            ? Border.all(width: 1.2, color: colorScheme.primary)
             : null,
         borderRadius: BorderRadius.circular(4),
-        color: const Color.fromARGB(56, 158, 158, 158),
+        color: colorScheme.tertiaryFixedDim,
       ),
       child: ListTile(
         trailing: price == 0
             ? Text(
                 "مجاني",
                 style: AppStyles.textStyle13Bold.copyWith(
-                  color: AppColors.lightPrimaryColor,
+                  color: colorScheme.primaryFixed,
                 ),
               )
             : Text(
                 "$price جنيه",
                 style: AppStyles.textStyle13Bold.copyWith(
-                  color: AppColors.lightPrimaryColor,
+                  color: colorScheme.primaryFixed,
                 ),
               ),
         title: Text(title, style: AppStyles.textStyle13SemiBold),
         subtitle: Text(
           subTitle,
           style: AppStyles.textStyle13Regular.copyWith(
-            color: const Color.fromARGB(99, 0, 0, 0),
+            color: colorScheme.tertiaryContainer,
           ),
         ),
         leading: IconButton(
@@ -53,16 +54,20 @@ class ShippingItem extends StatelessWidget {
               ? Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.white,
+                    color: colorScheme.surface,
                   ),
                   padding: EdgeInsets.all(3),
                   child: Icon(
                     Icons.circle,
-                    color: AppColors.primaryColor,
+                    color: colorScheme.primary,
                     size: 20,
                   ),
                 )
-              : Icon(Icons.circle_outlined, color: Color(0xff949D9E), size: 20),
+              : Icon(
+                  Icons.circle_outlined,
+                  color: colorScheme.tertiaryContainer,
+                  size: 20,
+                ),
         ),
       ),
     );

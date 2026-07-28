@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/get_image_cubit/get_image_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +9,8 @@ class ImageField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     bool isLoading = context.watch<GetImageCubit>().state.isLoading;
     String imageFile = context.watch<GetImageCubit>().state.image;
 
@@ -17,7 +18,7 @@ class ImageField extends StatelessWidget {
     var width = MediaQuery.sizeOf(context).width;
 
     return Skeletonizer(
-      containersColor: AppColors.primaryColor,
+      containersColor: colorScheme.primary,
       enabled: isLoading,
       child: GestureDetector(
         onTap: () {
@@ -29,7 +30,7 @@ class ImageField extends StatelessWidget {
               width: width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: Colors.black),
+                border: Border.all(color: colorScheme.onSurface),
               ),
               child: imageFile.isNotEmpty
                   ? SizedBox(
@@ -42,7 +43,7 @@ class ImageField extends StatelessWidget {
                   : Icon(
                       Icons.image_outlined,
                       size: 180,
-                      color: AppColors.primaryColor,
+                      color: colorScheme.primary,
                     ),
             ),
             Padding(
@@ -53,7 +54,7 @@ class ImageField extends StatelessWidget {
                       padding: EdgeInsets.zero,
                       icon: Icon(
                         Icons.delete_outline,
-                        color: AppColors.primaryColor,
+                        color: colorScheme.primary,
                       ),
                       onPressed: () {
                         context.read<GetImageCubit>().removeImage();

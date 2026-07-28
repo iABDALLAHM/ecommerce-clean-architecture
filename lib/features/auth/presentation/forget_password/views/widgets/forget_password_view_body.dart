@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_progress_widget.dart';
@@ -27,6 +26,7 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return ForgetPasswordBlocListener(
       child:
           BlocBuilder<SendResetPasswordEmailCubit, SendResetPasswordEmailState>(
@@ -47,7 +47,7 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
                           LocaleKeys.auth_forgetPassword_forgetPasswordCondition
                               .tr(),
                           style: AppStyles.textStyle16SemiBold.copyWith(
-                            color: AppColors.forgetPasswordTextColor,
+                            color: colorScheme.tertiary,
                           ),
                         ),
                         const SizedBox(height: 30),

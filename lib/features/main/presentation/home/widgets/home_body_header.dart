@@ -10,6 +10,7 @@ class HomeBodyHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -24,7 +25,7 @@ class HomeBodyHeader extends StatelessWidget {
           child: Text(
             LocaleKeys.home_more.tr(),
             style: AppStyles.textStyle13Regular.copyWith(
-              color: Color(0xff949D9E),
+              color: colorScheme.tertiaryContainer,
             ),
           ),
         ),

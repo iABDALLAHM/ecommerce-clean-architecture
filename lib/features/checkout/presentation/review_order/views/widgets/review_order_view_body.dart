@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
@@ -16,6 +15,8 @@ class ReviewOrderViewBody extends StatelessWidget {
   final OrderEntity orderEntity;
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       child: SingleChildScrollView(
@@ -33,7 +34,7 @@ class ReviewOrderViewBody extends StatelessWidget {
             Text(
               "${LocaleKeys.checkOut_reviewOrderNumber.tr()}: ${orderEntity.orderNumber}",
               style: AppStyles.textStyle13Regular.copyWith(
-                color: Color(0xff4E5556),
+                color: colorScheme.tertiary,
               ),
             ),
             SizedBox(height: MediaQuery.sizeOf(context).height * .35),
@@ -57,7 +58,7 @@ class ReviewOrderViewBody extends StatelessWidget {
                 LocaleKeys.checkOut_reviewGoToMainButton.tr(),
                 style: AppStyles.textStyle16Bold.copyWith(
                   decoration: TextDecoration.underline,
-                  color: AppColors.primaryColor,
+                  color: colorScheme.primary,
                 ),
               ),
             ),

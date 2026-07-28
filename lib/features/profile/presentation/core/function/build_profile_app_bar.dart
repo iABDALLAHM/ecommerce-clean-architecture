@@ -1,4 +1,3 @@
-import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,11 +6,15 @@ AppBar buildProfileAppBar(
   required String title,
   bool isMain = false,
 }) {
+  var colorScheme = Theme.of(context).colorScheme;
+  var appBarTheme = Theme.of(context).appBarTheme;
+
   return AppBar(
-    title: Text(title, style: AppStyles.textStyle19Bold),
+    title: Text(title),
     centerTitle: true,
+
     leading: CircleAvatar(
-      backgroundColor: Colors.white,
+      backgroundColor: appBarTheme.backgroundColor,
       radius: 21,
       child: GestureDetector(
         onTap: () {
@@ -19,7 +22,11 @@ AppBar buildProfileAppBar(
             context.pop();
           }
         },
-        child: Icon(Icons.arrow_back_ios_new, size: 20),
+        child: Icon(
+          Icons.arrow_back_ios_new,
+          size: 20,
+          color: colorScheme.onSurface,
+        ),
       ),
     ),
   );

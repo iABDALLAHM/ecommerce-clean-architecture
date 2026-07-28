@@ -7,11 +7,13 @@ class CustomReviewerImage extends StatelessWidget {
     required this.reviewerImageUrl,
     required this.reviewerRating,
   });
-  
+
   final String reviewerImageUrl;
   final double reviewerRating;
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -36,13 +38,13 @@ class CustomReviewerImage extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(3),
             decoration: BoxDecoration(
-              color: Colors.amber,
+              color: colorScheme.secondary,
               borderRadius: BorderRadius.circular(8),
             ),
             child: Text(
               "${reviewerRating.toDouble()}",
               style: AppStyles.textStyle11SemiBold.copyWith(
-                color: Colors.white,
+                color: colorScheme.surface,
               ),
             ),
           ),

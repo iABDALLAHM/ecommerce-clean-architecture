@@ -21,6 +21,9 @@ class _ProfileBodyImageState extends State<ProfileBodyImage> {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+    var scaffoldBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
+
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -28,7 +31,7 @@ class _ProfileBodyImageState extends State<ProfileBodyImage> {
           builder: (context, state) {
             if (state is SuccessGetUserDataState) {
               return CircleAvatar(
-                backgroundColor: Colors.white,
+                backgroundColor: scaffoldBackgroundColor,
                 radius: 35,
                 child: Image.network(
                   state.userEntity.userImage,
@@ -39,7 +42,7 @@ class _ProfileBodyImageState extends State<ProfileBodyImage> {
               );
             }
             return CircleAvatar(
-              backgroundColor: Colors.white,
+              backgroundColor: scaffoldBackgroundColor,
               radius: 35,
               child: Icon(Icons.person),
             );
@@ -52,13 +55,13 @@ class _ProfileBodyImageState extends State<ProfileBodyImage> {
           child: Container(
             padding: EdgeInsets.all(4),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: scaffoldBackgroundColor,
               shape: BoxShape.circle,
             ),
             child: Container(
               padding: EdgeInsets.all(4),
               decoration: BoxDecoration(
-                color: Color(0xffF9F9F9),
+                color: colorScheme.surface,
                 shape: BoxShape.circle,
               ),
               child: SvgPicture.asset(Assets.imagesCameraIcon),

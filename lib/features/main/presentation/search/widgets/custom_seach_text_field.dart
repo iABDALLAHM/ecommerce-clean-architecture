@@ -14,15 +14,12 @@ class CustomSearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       decoration: BoxDecoration(
         boxShadow: [
-          BoxShadow(
-            color: const Color.fromARGB(20, 0, 0, 0),
-            spreadRadius: 4,
-            blurRadius: 10,
-          ),
+          BoxShadow(color: colorScheme.shadow, spreadRadius: 4, blurRadius: 10),
         ],
       ),
       child: Column(
@@ -33,15 +30,19 @@ class CustomSearchTextField extends StatelessWidget {
               context.read<SearchCubit>().searchProducts(searchName: value);
             },
             decoration: InputDecoration(
-              fillColor: Colors.white,
+              fillColor: colorScheme.surface,
               filled: true,
               contentPadding: EdgeInsets.zero,
-              enabledBorder: buildOutlineInputBorder(),
-              focusedBorder: buildOutlineInputBorder(),
-              border: buildOutlineInputBorder(),
+              enabledBorder: buildOutlineInputBorder(
+                color: colorScheme.surface,
+              ),
+              focusedBorder: buildOutlineInputBorder(
+                color: colorScheme.surface,
+              ),
+              border: buildOutlineInputBorder(color: colorScheme.surface),
               hintText: LocaleKeys.home_searchingTextField.tr(),
               hintStyle: AppStyles.textStyle13Regular.copyWith(
-                color: Color(0xff949D9E),
+                color: colorScheme.surfaceBright,
               ),
               prefixIcon: SvgPicture.asset(
                 fit: BoxFit.scaleDown,
@@ -58,8 +59,9 @@ class CustomSearchTextField extends StatelessWidget {
     );
   }
 
-  OutlineInputBorder buildOutlineInputBorder() => OutlineInputBorder(
-    borderRadius: BorderRadius.circular(4),
-    borderSide: BorderSide(color: Colors.white),
-  );
+  OutlineInputBorder buildOutlineInputBorder({required Color color}) =>
+      OutlineInputBorder(
+        borderRadius: BorderRadius.circular(4),
+        borderSide: BorderSide(color: color),
+      );
 }

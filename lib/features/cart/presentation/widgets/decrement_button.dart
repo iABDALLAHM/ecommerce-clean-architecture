@@ -5,15 +5,17 @@ class DecrementButton extends StatelessWidget {
   final Function() onPressed;
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return GestureDetector(
       onTap: onPressed,
       child: Container(
         padding: EdgeInsets.all(6),
         decoration: ShapeDecoration(
-          color: Color(0xffF1F1F5),
+          color: colorScheme.outlineVariant,
           shape: OvalBorder(),
         ),
-        child: Icon(Icons.remove, color: Color(0xff979899)),
+        child: Icon(Icons.remove, color: colorScheme.tertiary),
       ),
     );
   }

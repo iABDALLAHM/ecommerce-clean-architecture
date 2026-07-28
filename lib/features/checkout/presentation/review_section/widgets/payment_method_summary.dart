@@ -12,6 +12,7 @@ class PaymentMethodSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cardEntity = context.watch<CheckOutCubit>().orderEntity.cardEntity;
+    var colorScheme = Theme.of(context).colorScheme;
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 9),
@@ -29,12 +30,12 @@ class PaymentMethodSummary extends StatelessWidget {
                 style: AppStyles.textStyle13Bold,
               ),
               Spacer(),
-              Icon(Icons.edit_outlined, color: Color(0xff6C7275)),
+              Icon(Icons.edit_outlined, color: colorScheme.surfaceBright),
               const SizedBox(width: 6),
               Text(
                 LocaleKeys.checkOut_paymentMethodEditButton.tr(),
                 style: AppStyles.textStyle13SemiBold.copyWith(
-                  color: Color(0xff949D9E),
+                  color: colorScheme.surfaceBright,
                 ),
               ),
             ],

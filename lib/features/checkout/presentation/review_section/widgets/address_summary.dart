@@ -14,12 +14,13 @@ class AddressSummary extends StatelessWidget {
         .read<CheckOutCubit>()
         .orderEntity
         .shippingAddressEntity;
+    var colorScheme = Theme.of(context).colorScheme;
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 2),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
-        color: const Color.fromARGB(56, 158, 158, 158),
+        color: colorScheme.tertiaryFixedDim,
       ),
       child: Column(
         children: [
@@ -31,12 +32,12 @@ class AddressSummary extends StatelessWidget {
                 style: AppStyles.textStyle13Bold,
               ),
               Spacer(),
-              Icon(Icons.edit_outlined, color: Color(0xff6C7275)),
+              Icon(Icons.edit_outlined, color: colorScheme.tertiaryContainer),
               const SizedBox(width: 6),
               Text(
                 LocaleKeys.checkOut_shippingAddressEditButton.tr(),
                 style: AppStyles.textStyle13SemiBold.copyWith(
-                  color: Color(0xff949D9E),
+                  color: colorScheme.tertiaryContainer,
                 ),
               ),
             ],
@@ -50,7 +51,7 @@ class AddressSummary extends StatelessWidget {
                   maxLines: 2,
                   "${LocaleKeys.checkOutSteps_city.tr()} ${shippingAddressEntity.city}, ${LocaleKeys.checkOutSteps_address.tr()} ${shippingAddressEntity.address}, ${LocaleKeys.checkOutSteps_floorNumber.tr()} ${shippingAddressEntity.addressDetails}",
                   style: AppStyles.textStyle16Regular.copyWith(
-                    color: Color(0xff4E5556),
+                    color: colorScheme.tertiary,
                   ),
                 ),
               ),

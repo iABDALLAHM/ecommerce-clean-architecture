@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +14,8 @@ class _MakeCardAsDefaultState extends State<MakeCardAsDefault> {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Row(
       children: [
         GestureDetector(
@@ -29,13 +30,13 @@ class _MakeCardAsDefaultState extends State<MakeCardAsDefault> {
             decoration: BoxDecoration(
               border: isSelected
                   ? Border.all(color: Colors.transparent)
-                  : Border.all(color: Colors.grey),
+                  : Border.all(color: colorScheme.tertiaryFixed),
               borderRadius: BorderRadius.circular(8),
-              color: isSelected ? AppColors.primaryColor : Colors.white,
+              color: isSelected ? colorScheme.primary : colorScheme.onPrimary,
             ),
             child: isSelected
-                ? Icon(Icons.check, size: 20, color: Colors.white)
-                : Icon(null, size: 20, color: Colors.white),
+                ? Icon(Icons.check, size: 20, color: colorScheme.onPrimary)
+                : Icon(null, size: 20, color: colorScheme.surface),
           ),
         ),
         const SizedBox(width: 16),

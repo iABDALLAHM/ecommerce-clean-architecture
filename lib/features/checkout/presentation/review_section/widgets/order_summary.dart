@@ -11,6 +11,7 @@ class OrderSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var payWithCash = context.watch<CheckOutCubit>().orderEntity.payWithCash;
+    var colorScheme = Theme.of(context).colorScheme;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +25,7 @@ class OrderSummary extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 15, horizontal: 2),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
-            color: const Color.fromARGB(56, 158, 158, 158),
+            color: colorScheme.tertiaryFixedDim,
           ),
           child: Column(
             children: [
@@ -36,7 +37,7 @@ class OrderSummary extends StatelessWidget {
                     Text(
                       LocaleKeys.checkOut_orderSummarySectionSubtotal.tr(),
                       style: AppStyles.textStyle13Regular.copyWith(
-                        color: Color(0xff4E5556),
+                        color: colorScheme.tertiary,
                       ),
                     ),
 
@@ -58,7 +59,7 @@ class OrderSummary extends StatelessWidget {
                   Text(
                     payWithCash == true ? "40 جنية" : "0 جنية",
                     style: AppStyles.textStyle13SemiBold.copyWith(
-                      color: Color(0xff4E5556),
+                      color: colorScheme.tertiary,
                     ),
                   ),
                 ],

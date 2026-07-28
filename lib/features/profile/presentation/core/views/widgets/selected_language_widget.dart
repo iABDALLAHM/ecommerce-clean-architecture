@@ -1,4 +1,3 @@
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +15,8 @@ class SelectedLanguageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
@@ -27,8 +28,8 @@ class SelectedLanguageWidget extends StatelessWidget {
             border: Border.all(
               width: 3,
               color: isSelected == true
-                  ? AppColors.lightPrimaryColor
-                  : Colors.grey,
+                  ? colorScheme.primary
+                  : colorScheme.tertiaryFixed,
             ),
           ),
           child: Center(

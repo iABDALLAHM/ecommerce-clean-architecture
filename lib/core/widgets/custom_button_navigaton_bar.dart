@@ -13,6 +13,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentRoute = GoRouterState.of(context).uri.toString();
+    var colorScheme = Theme.of(context);
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 27),
@@ -25,7 +26,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
             spreadRadius: 5,
           ),
         ],
-        color: Colors.white,
+        color: colorScheme.scaffoldBackgroundColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),

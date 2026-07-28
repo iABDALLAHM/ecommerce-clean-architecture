@@ -1,4 +1,3 @@
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/add_favorite_product_cubit/add_favorite_product_cubit.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +9,7 @@ class MarkAsFavoriteProductWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     bool isFavorited = context.watch<AddFavoriteProductCubit>().isFavorited(
       product: productEntity,
     );
@@ -19,7 +19,7 @@ class MarkAsFavoriteProductWidget extends StatelessWidget {
         product: productEntity,
       ),
       child: isFavorited
-          ? Icon(Icons.favorite, color: AppColors.primaryColor)
+          ? Icon(Icons.favorite, color: colorScheme.primary)
           : Icon(Icons.favorite_outline),
     );
   }

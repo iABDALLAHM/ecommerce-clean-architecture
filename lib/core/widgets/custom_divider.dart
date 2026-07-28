@@ -1,4 +1,3 @@
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomDivider extends StatelessWidget {
@@ -6,6 +5,7 @@ class CustomDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Divider(color: AppColors.dividerColor);
+    var colorScheme = Theme.of(context).colorScheme;
+    return Divider(color: colorScheme.tertiaryFixed);
   }
 }

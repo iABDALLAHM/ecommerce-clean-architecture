@@ -19,6 +19,7 @@ class _OrderItemState extends State<OrderItem> {
   @override
   Widget build(BuildContext context) {
     var myOrderEntity = context.read<OrderEntity>();
+    var colorScheme = Theme.of(context).colorScheme;
 
     return Card(
       elevation: 0,
@@ -26,8 +27,8 @@ class _OrderItemState extends State<OrderItem> {
         children: [
           IntrinsicHeight(
             child: Container(
-              padding: EdgeInsets.only(top: 19, bottom: 19, left: 32),
-              decoration: BoxDecoration(color: Color(0xffF9F9F9)),
+              padding: EdgeInsets.only(top: 19, bottom: 19, left: 15),
+              decoration: BoxDecoration(color: colorScheme.tertiaryFixedDim),
               child: Row(
                 children: [
                   OrderItemIcon(),
@@ -51,6 +52,7 @@ class _OrderItemState extends State<OrderItem> {
                       ),
                     ],
                   ),
+                  const SizedBox(width: 10),
                 ],
               ),
             ),
@@ -59,8 +61,8 @@ class _OrderItemState extends State<OrderItem> {
               ? Column(
                   children: [
                     Container(
-                      color: Color(0xffF9F9F9),
-                      child: Divider(color: Color(0xffEBEBEB)),
+                      color: colorScheme.tertiaryFixedDim,
+                      child: Divider(color: colorScheme.surface),
                     ),
                     OrderStatusItem(
                       stepIndex: 1,
@@ -100,7 +102,7 @@ class _OrderItemState extends State<OrderItem> {
                     ),
                   ],
                 )
-              : Container(color: Colors.white),
+              : Container(color: colorScheme.surface),
         ],
       ),
     );

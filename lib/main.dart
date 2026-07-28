@@ -1,9 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/cubits/change_theme_cubit/change_theme_cubit.dart';
+import 'package:ecommerce_clean_architecture/core/cubits/change_theme_cubit/change_theme_state.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_themes.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/firebase_options.dart';
 import 'package:ecommerce_clean_architecture/generated/codegen_loader.g.dart';
@@ -36,22 +39,34 @@ class ECommerceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => GetUserDataCubit(
-        userRepository: getIt.get<UserRepository>(),
-        secureStorageRepository: getIt.get<SecureStorageRepository>(),
-      ),
-      child: MaterialApp.router(
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        routerConfig: AppRoutes.router,
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          scaffoldBackgroundColor: Color(0xffFFFFFF),
-          appBarTheme: AppBarTheme(backgroundColor: Color(0xffFFFFFF)),
-          fontFamily: kFontFamily,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => GetUserDataCubit(
+            userRepository: getIt.get<UserRepository>(),
+            secureStorageRepository: getIt.get<SecureStorageRepository>(),
+          ),
         ),
+
+        BlocProvider(create: (context) => ChangeThemeCubit()),
+      ],
+      child: Builder(
+        builder: (context) {
+          return BlocBuilder<ChangeThemeCubit, ChangeThemeState>(
+            builder: (_, state) {
+              return MaterialApp.router(
+                localizationsDelegates: context.localizationDelegates,
+                supportedLocales: context.supportedLocales,
+                locale: context.locale,
+                routerConfig: AppRoutes.router,
+                debugShowCheckedModeBanner: false,
+                theme: AppTheme.lightTheme,
+                darkTheme: AppTheme.darkTheme,
+                themeMode: state.currentTheme,
+              );
+            },
+          );
+        },
       ),
     );
   }

@@ -27,6 +27,7 @@ class _ProfileInformationSectionState extends State<ProfileInformationSection> {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Row(
       children: [
         GestureDetector(
@@ -59,7 +60,7 @@ class _ProfileInformationSectionState extends State<ProfileInformationSection> {
                   Text(
                     state.userEntity.email,
                     style: AppStyles.textStyle13Bold.copyWith(
-                      color: Color(0xff888FA0),
+                      color: colorScheme.tertiaryContainer,
                     ),
                   ),
                 ],
@@ -76,7 +77,7 @@ class _ProfileInformationSectionState extends State<ProfileInformationSection> {
                 Text(
                   LocaleKeys.profileStatus_loadingYourEmailState.tr(),
                   style: AppStyles.textStyle13Bold.copyWith(
-                    color: Color(0xff888FA0),
+                    color: colorScheme.surfaceBright,
                   ),
                 ),
               ],

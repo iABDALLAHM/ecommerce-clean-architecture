@@ -17,10 +17,10 @@ class _ChangeLanguageBottomSheetState extends State<ChangeLanguageBottomSheet> {
   @override
   Widget build(BuildContext context) {
     var currentLanguage = context.locale.languageCode;
-
+    var colorScheme = Theme.of(context).colorScheme;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16),
-      decoration: BoxDecoration(),
+      decoration: BoxDecoration(color: colorScheme.tertiaryFixedDim),
       child: SingleChildScrollView(
         child: Column(
           children: [

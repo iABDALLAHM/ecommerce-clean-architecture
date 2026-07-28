@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/profile/domain/entities/card_entity/card_entity.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class MyCardItem extends StatelessWidget {
@@ -10,12 +10,14 @@ class MyCardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
-        border: Border.all(color: const Color.fromARGB(99, 158, 158, 158)),
-        color: Color(0xffF8F8FA),
+        border: Border.all(color: colorScheme.onSurfaceVariant),
+        color: colorScheme.tertiaryFixedDim,
       ),
       width: double.infinity,
       child: Row(
@@ -26,7 +28,7 @@ class MyCardItem extends StatelessWidget {
                 ? "${cardEntity.cardNumber!.split("")[0]}${cardEntity.cardNumber!.split("")[1]}${cardEntity.cardNumber!.split("")[2]}${cardEntity.cardNumber!.split("")[3]} **** "
                 : "",
             style: AppStyles.textStyle16SemiBold.copyWith(
-              color: Color(0xff949D9E),
+              color: colorScheme.tertiaryContainer,
             ),
           ),
           const SizedBox(width: 15),

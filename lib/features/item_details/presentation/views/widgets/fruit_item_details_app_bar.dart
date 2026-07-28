@@ -6,13 +6,18 @@ class FruitItemDetailsAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return GestureDetector(
       onTap: () {
         context.pop();
       },
       child: Container(
         padding: EdgeInsetsDirectional.symmetric(horizontal: 16, vertical: 15),
-        decoration: ShapeDecoration(shape: OvalBorder(), color: Colors.white),
+        decoration: ShapeDecoration(
+          shape: OvalBorder(),
+          color: colorScheme.surface,
+        ),
         child: Icon(
           IconData(
             Icons.arrow_back_ios_new.codePoint,

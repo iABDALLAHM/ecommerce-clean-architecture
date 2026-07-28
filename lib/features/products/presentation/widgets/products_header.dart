@@ -14,6 +14,7 @@ class ProductsHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -53,7 +54,7 @@ class ProductsHeader extends StatelessWidget {
               borderRadius: BorderRadius.circular(4),
               border: Border.all(
                 width: 1,
-                color: const Color.fromARGB(115, 158, 158, 158),
+                color: colorScheme.tertiaryContainer,
               ),
             ),
             child: SvgPicture.asset(Assets.imagesArrowSwapHorizontal),

@@ -27,9 +27,11 @@ class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       margin: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-      decoration: BoxDecoration(color: Colors.white),
+      decoration: BoxDecoration(color: colorScheme.surface),
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),

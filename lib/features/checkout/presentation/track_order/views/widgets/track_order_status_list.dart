@@ -12,9 +12,11 @@ class TrackOrderStatusList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var orderEntity = context.read<OrderEntity>();
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-      color: Color(0xffF9F9F9),
+      color: colorScheme.tertiaryFixedDim,
       child: Column(
         children: [
           TrackOrderStatusItem(

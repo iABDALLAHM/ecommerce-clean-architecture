@@ -24,6 +24,7 @@ class OnBoardingPageViewItem extends StatelessWidget {
   final bool isSecond;
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     var height = MediaQuery.sizeOf(context).height;
     return Column(
       children: [
@@ -61,7 +62,9 @@ class OnBoardingPageViewItem extends StatelessWidget {
                         },
                         child: Text(
                           LocaleKeys.onBoarding_skipNow.tr(),
-                          style: AppStyles.textStyle13Regular,
+                          style: AppStyles.textStyle13Regular.copyWith(
+                            color: colorScheme.tertiaryContainer,
+                          ),
                         ),
                       ),
                     ),

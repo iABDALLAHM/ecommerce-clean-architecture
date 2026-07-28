@@ -1,4 +1,3 @@
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/featured_product_entity/featured_product_entity.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/sale_and_shipping_section.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +9,15 @@ class BannerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var width = MediaQuery.sizeOf(context).width;
     var height = MediaQuery.sizeOf(context).height;
+    var colorScheme = Theme.of(context).colorScheme;
+    var scaffoldBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
+
 
     return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
+      decoration: BoxDecoration(
+        color: scaffoldBackgroundColor,
+        borderRadius: BorderRadius.circular(15),
+      ),
       width: width * .911,
       child: AspectRatio(
         aspectRatio: 310 / 160,
@@ -24,7 +29,7 @@ class BannerItem extends StatelessWidget {
               height: height,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: AppColors.lightPrimaryColor,
+                color: colorScheme.primaryFixed,
               ),
               child: SaleAndShippingSection(),
             ),

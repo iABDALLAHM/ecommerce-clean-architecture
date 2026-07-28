@@ -15,16 +15,7 @@ class SocialCustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 56,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          elevation: 0,
-          side: BorderSide(color: Color(0xffDDDFDF)),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
-        ),
+      child: OutlinedButton(
         onPressed: onPressed,
         child: Row(
           children: [

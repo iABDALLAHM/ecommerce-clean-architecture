@@ -14,9 +14,14 @@ class ReviewsSummarySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Column(
       children: [
-        Text(LocaleKeys.reviewAndRating_reviewAndRatingSummary.tr(), style: AppStyles.textStyle16SemiBold),
+        Text(
+          LocaleKeys.reviewAndRating_reviewAndRatingSummary.tr(),
+          style: AppStyles.textStyle16SemiBold,
+        ),
         const SizedBox(height: 8),
         IntrinsicHeight(
           child: Row(
@@ -31,7 +36,7 @@ class ReviewsSummarySection extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Icon(Icons.star, color: Colors.amber),
+                            Icon(Icons.star, color: colorScheme.secondary),
                             const SizedBox(width: 8),
                             Text(
                               "${calculateAverageRating(reviews: state.productReviewWithUserEntity)}",
@@ -45,7 +50,12 @@ class ReviewsSummarySection extends StatelessWidget {
                           style: AppStyles.textStyle16Regular,
                         ),
                         const SizedBox(height: 22),
-                        Text(LocaleKeys.reviewAndRating_reviewAndRatingRecommendedText.tr(), style: AppStyles.textStyle13Regular),
+                        Text(
+                          LocaleKeys
+                              .reviewAndRating_reviewAndRatingRecommendedText
+                              .tr(),
+                          style: AppStyles.textStyle13Regular,
+                        ),
                       ],
                     );
                   } else if (state is EmptyGetReviewsState) {
@@ -56,7 +66,7 @@ class ReviewsSummarySection extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Icon(Icons.star, color: Colors.amber),
+                            Icon(Icons.star, color: colorScheme.secondary),
                             const SizedBox(width: 8),
                             Text("0", style: AppStyles.textStyle13Bold),
                           ],

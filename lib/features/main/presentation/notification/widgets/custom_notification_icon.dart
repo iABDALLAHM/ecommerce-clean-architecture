@@ -1,4 +1,3 @@
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/features/main/main.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +9,7 @@ class CustomNotificationIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return GestureDetector(
       onTap: () {
         context.go("${AppRoutes.home}${AppRoutes.notifications}");
@@ -19,12 +19,12 @@ class CustomNotificationIcon extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(9),
             decoration: ShapeDecoration(
-              color: Color(0xffEEF8ED),
+              color: colorScheme.primaryContainer,
               shape: OvalBorder(),
             ),
             child: Icon(
               Icons.notifications_outlined,
-              color: AppColors.primaryColor,
+              color: colorScheme.primary,
             ),
           ),
           BlocBuilder<GetNotificationsCubit, GetNotificationsStates>(
@@ -33,7 +33,7 @@ class CustomNotificationIcon extends StatelessWidget {
                 return Positioned(
                   top: 5,
                   right: 16,
-                  child: Icon(Icons.circle, size: 10, color: Colors.red),
+                  child: Icon(Icons.circle, size: 10, color: colorScheme.error),
                 );
               }
               return Container();

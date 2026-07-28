@@ -14,6 +14,8 @@ class SignOutDialogWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return SignOutDialogBlocListener(
       child: AlertDialog(
         contentPadding: EdgeInsets.symmetric(
@@ -21,14 +23,14 @@ class SignOutDialogWidget extends StatelessWidget {
           vertical: 16,
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-        backgroundColor: Colors.white,
+        backgroundColor: colorScheme.surface,
         icon: GestureDetector(
           onTap: () {
             context.pop();
           },
           child: Align(
             alignment: Alignment.centerRight,
-            child: Icon(Icons.close, size: 30, color: Colors.black),
+            child: Icon(Icons.close, size: 30, color: colorScheme.onSurface),
           ),
         ),
         content: SingleChildScrollView(

@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
@@ -11,6 +10,7 @@ class ForgetPasswordSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -21,7 +21,7 @@ class ForgetPasswordSection extends StatelessWidget {
           child: Text(
             LocaleKeys.auth_loginPage_forgetPassword.tr(),
             style: AppStyles.textStyle13SemiBold.copyWith(
-              color: AppColors.lightPrimaryColor,
+              color: colorScheme.primaryFixed,
             ),
           ),
         ),

@@ -9,6 +9,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 Future<void> showResetPasswordDialog({required BuildContext context}) async {
+  var colorScheme = Theme.of(context).colorScheme;
   return showDialog(
     context: context,
     builder: (context) => AlertDialog(
@@ -18,10 +19,10 @@ Future<void> showResetPasswordDialog({required BuildContext context}) async {
           onTap: () {
             context.pop();
           },
-          child: Icon(Icons.close, color: Colors.black, size: 30),
+          child: Icon(Icons.close, color: colorScheme.onSurface, size: 30),
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: colorScheme.surface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       content: SingleChildScrollView(
         child: Padding(

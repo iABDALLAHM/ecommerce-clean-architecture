@@ -14,6 +14,8 @@ class _StarsRatingState extends State<StarsRating> {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: List.generate(5, (index) {
@@ -27,7 +29,9 @@ class _StarsRatingState extends State<StarsRating> {
           },
           child: Icon(
             starValue <= rating ? Icons.star : Icons.star_outline,
-            color: starValue <= rating ? Colors.amber : Colors.grey,
+            color: starValue <= rating
+                ? colorScheme.secondary
+                : colorScheme.surfaceBright,
             size: 35,
           ),
         );

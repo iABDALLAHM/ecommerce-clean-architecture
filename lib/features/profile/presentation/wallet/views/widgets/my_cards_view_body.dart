@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_circular_progress_widget.dart';
@@ -10,7 +9,7 @@ import 'package:ecommerce_clean_architecture/features/profile/presentation/walle
 import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/views/widgets/custom_my_cards_button.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/views/widgets/my_card_item.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -30,6 +29,8 @@ class _MyCardsViewBodyState extends State<MyCardsViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       child: Column(
@@ -54,7 +55,7 @@ class _MyCardsViewBodyState extends State<MyCardsViewBody> {
                 return Expanded(
                   child: Text(LocaleKeys.profileStatus_youDoNotHaveAnyCards.tr(),
                     style: AppStyles.textStyle19Bold.copyWith(
-                      color: AppColors.lightPrimaryColor,
+                      color: colorScheme.onPrimary,
                     ),
                   ),
                 );

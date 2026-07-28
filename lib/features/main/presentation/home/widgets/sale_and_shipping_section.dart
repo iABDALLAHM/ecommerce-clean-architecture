@@ -9,17 +9,22 @@ class SaleAndShippingSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 25),
-        Text(LocaleKeys.home_eidOffers.tr(),
-          style: AppStyles.textStyle13Regular.copyWith(color: Colors.white),
+        Text(
+          LocaleKeys.home_eidOffers.tr(),
+          style: AppStyles.textStyle13Regular.copyWith(
+            color: colorScheme.surface,
+          ),
         ),
         const SizedBox(height: 8),
         const Spacer(),
-        Text(LocaleKeys.home_discountPercentage.tr(),
-          style: AppStyles.textStyle19Bold.copyWith(color: Colors.white),
+        Text(
+          LocaleKeys.home_discountPercentage.tr(),
+          style: AppStyles.textStyle19Bold.copyWith(color: colorScheme.surface),
         ),
         const SizedBox(height: 25),
         BannerButton(),

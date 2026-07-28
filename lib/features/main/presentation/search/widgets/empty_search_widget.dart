@@ -10,6 +10,7 @@ class EmptySearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -19,10 +20,10 @@ class EmptySearchWidget extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 90, right: 20, top: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
+              color: colorScheme.surface,
               boxShadow: [
                 BoxShadow(
-                  color: const Color.fromARGB(20, 0, 0, 0),
+                  color: colorScheme.shadow,
                   offset: Offset(0, 3),
                   spreadRadius: 0,
                   blurRadius: 5,
@@ -32,7 +33,7 @@ class EmptySearchWidget extends StatelessWidget {
             child: Text(
               LocaleKeys.search_noSearchResults.tr(),
               style: AppStyles.textStyle13Regular.copyWith(
-                color: Color(0xff949D9E),
+                color: colorScheme.tertiaryContainer,
               ),
             ),
           ),
@@ -44,12 +45,14 @@ class EmptySearchWidget extends StatelessWidget {
           const SizedBox(height: 43),
           Text(
             LocaleKeys.search_search.tr(),
-            style: AppStyles.textStyle16Bold.copyWith(color: Color(0xff616A6B)),
+            style: AppStyles.textStyle16Bold.copyWith(
+              color: colorScheme.tertiary,
+            ),
           ),
           Text(
             LocaleKeys.search_EmptySearchResult.tr(),
             style: AppStyles.textStyle13Regular.copyWith(
-              color: Color(0xff949D9E),
+              color: colorScheme.tertiaryContainer,
             ),
           ),
         ],

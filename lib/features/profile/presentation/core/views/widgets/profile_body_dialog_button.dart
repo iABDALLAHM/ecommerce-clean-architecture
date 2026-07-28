@@ -1,7 +1,5 @@
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
-
 
 class ProfileBodyDialogButton extends StatelessWidget {
   const ProfileBodyDialogButton({
@@ -16,12 +14,16 @@ class ProfileBodyDialogButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         elevation: 0,
-        backgroundColor: isPrimary ? AppColors.primaryColor : Colors.white,
+        backgroundColor: isPrimary
+            ? colorScheme.primary
+            : colorScheme.onPrimary,
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: AppColors.primaryColor, width: 2),
+          side: BorderSide(color: colorScheme.primary, width: 2),
           borderRadius: BorderRadius.circular(16),
         ),
       ),
@@ -29,7 +31,7 @@ class ProfileBodyDialogButton extends StatelessWidget {
       child: Text(
         hintText,
         style: AppStyles.textStyle16Bold.copyWith(
-          color: isPrimary ? Colors.white : AppColors.primaryColor,
+          color: isPrimary ? colorScheme.surface : colorScheme.primary,
         ),
       ),
     );

@@ -1,6 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_state.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,8 +19,9 @@ class _CustomHomeProfileImageState extends State<CustomHomeProfileImage> {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return CircleAvatar(
-      backgroundColor: AppColors.lightPrimaryColor,
+      backgroundColor: colorScheme.primaryFixed,
       radius: 24,
       child: ClipOval(
         child: BlocBuilder<GetUserDataCubit, GetUserDataState>(

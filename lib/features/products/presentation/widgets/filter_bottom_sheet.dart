@@ -21,9 +21,11 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return GetFilterProductsBlocListener(
       child: Container(
-        decoration: BoxDecoration(color: Colors.white),
+        decoration: BoxDecoration(color: colorScheme.surface),
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -36,7 +38,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                     width: 60,
                     height: 4,
                     decoration: BoxDecoration(
-                      color: Colors.black,
+                      color: colorScheme.onSurface,
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),

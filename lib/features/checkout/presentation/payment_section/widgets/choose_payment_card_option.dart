@@ -5,10 +5,11 @@ class ChoosePaymentCardOption extends StatelessWidget {
   final String image;
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
-        border: Border.all(color: Color(0xffD6DCE5)),
+        border: Border.all(color: colorScheme.tertiary),
       ),
       child: Image.asset(image, width: 67, height: 43),
     );

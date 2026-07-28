@@ -1,8 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_state.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/cubits/add_review_cubit/add_review_cubit.dart';
@@ -28,6 +26,8 @@ class _AddReviewTextFieldState extends State<AddReviewTextField> {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return TextField(
       readOnly: true,
       onTap: () {
@@ -48,11 +48,11 @@ class _AddReviewTextFieldState extends State<AddReviewTextField> {
         );
       },
       decoration: InputDecoration(
-        fillColor: Colors.white,
+        fillColor: colorScheme.surface,
         prefixIcon: Padding(
           padding: const EdgeInsets.only(right: 10),
           child: CircleAvatar(
-            backgroundColor: AppColors.lightsecondryColor,
+            backgroundColor: colorScheme.secondary,
             radius: 15,
             child: ClipOval(
               child: BlocBuilder<GetUserDataCubit, GetUserDataState>(
@@ -79,16 +79,20 @@ class _AddReviewTextFieldState extends State<AddReviewTextField> {
           ),
         ),
         hintText: LocaleKeys.reviewAndRating_reviewAndRatingTextField.tr(),
-        hintStyle: AppStyles.textStyle13Regular,
-        focusedBorder: buildOutlineInputBorder(),
-        enabledBorder: buildOutlineInputBorder(),
-        border: buildOutlineInputBorder(),
+        focusedBorder: buildOutlineInputBorder(
+          color: colorScheme.tertiaryFixed,
+        ),
+        enabledBorder: buildOutlineInputBorder(
+          color: colorScheme.tertiaryFixed,
+        ),
+        border: buildOutlineInputBorder(color: colorScheme.tertiaryFixed),
       ),
     );
   }
 
-  OutlineInputBorder buildOutlineInputBorder() => OutlineInputBorder(
-    borderRadius: BorderRadius.circular(10),
-    borderSide: BorderSide(color: Color(0xffEEEEEE)),
-  );
+  OutlineInputBorder buildOutlineInputBorder({required Color color}) =>
+      OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(color: color),
+      );
 }

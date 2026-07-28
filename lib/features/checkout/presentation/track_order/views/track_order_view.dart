@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_arrow_back_app_bar.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity/order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/track_order/views/widgets/track_order_view_body.dart';
@@ -23,11 +22,7 @@ class TrackOrderView extends StatelessWidget {
   AppBar buildTrackOrderAppBar() {
     return AppBar(
       leading: CustomArrowBackAppBar(),
-      centerTitle: true,
-      title: Text(
-        LocaleKeys.checkOut_trackOrderPageAppBar.tr(),
-        style: AppStyles.textStyle19Bold,
-      ),
+      title: Text(LocaleKeys.checkOut_trackOrderPageAppBar.tr()),
     );
   }
 }

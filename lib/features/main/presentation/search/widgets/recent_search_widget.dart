@@ -2,13 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class RecentSearchWidget extends StatelessWidget {
   const RecentSearchWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       child: Column(
@@ -24,7 +25,7 @@ class RecentSearchWidget extends StatelessWidget {
               Text(
                 LocaleKeys.search_deleteAll.tr(),
                 style: AppStyles.textStyle13SemiBold.copyWith(
-                  color: Color(0xff949D9E),
+                  color: colorScheme.tertiaryContainer,
                 ),
               ),
             ],

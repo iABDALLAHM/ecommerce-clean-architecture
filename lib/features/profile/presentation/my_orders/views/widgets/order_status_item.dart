@@ -1,5 +1,4 @@
 import 'package:ecommerce_clean_architecture/core/functions/get_specific_date.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -19,9 +18,11 @@ class OrderStatusItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Container(
-      padding: EdgeInsets.only(right: 9),
-      color: Color(0xffF9F9F9),
+      padding: EdgeInsetsDirectional.only(start: 9, end: 9),
+      color: colorScheme.tertiaryFixedDim,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -30,8 +31,8 @@ class OrderStatusItem extends StatelessWidget {
               CircleAvatar(
                 radius: 6,
                 backgroundColor: isDone
-                    ? AppColors.primaryColor
-                    : Color(0xffEBEBEB),
+                    ? colorScheme.primary
+                    : colorScheme.tertiaryFixed,
               ),
               stepIndex == 5
                   ? SizedBox(width: 2, height: 30)
@@ -39,8 +40,8 @@ class OrderStatusItem extends StatelessWidget {
                       width: 2,
                       height: 30,
                       color: isDone
-                          ? AppColors.lightPrimaryColor
-                          : Color(0xffF4F5F9),
+                          ? colorScheme.primaryFixed
+                          : colorScheme.tertiaryFixed,
                     ),
             ],
           ),
@@ -48,7 +49,9 @@ class OrderStatusItem extends StatelessWidget {
           Text(
             title,
             style: AppStyles.textStyle13SemiBold.copyWith(
-              color: isDone ? Colors.black : Color(0xff949D9E),
+              color: isDone
+                  ? colorScheme.onSurface
+                  : colorScheme.tertiaryContainer,
             ),
           ),
           Spacer(),
@@ -58,7 +61,7 @@ class OrderStatusItem extends StatelessWidget {
               Text(
                 date != null ? getSpecificDate(date: date!) : "قيد الإنتظار",
                 style: AppStyles.textStyle13SemiBold.copyWith(
-                  color: Color(0xff949D9E),
+                  color: colorScheme.tertiaryContainer,
                 ),
               ),
             ],

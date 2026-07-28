@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_circular_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/cubits/get_my_orders_cubit/get_my_orders_stream_cubit.dart';
@@ -15,6 +14,8 @@ class MyOrdersViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return SafeArea(
       child: CustomScrollView(
         slivers: [
@@ -34,7 +35,7 @@ class MyOrdersViewBody extends StatelessWidget {
                         return Text(
                           LocaleKeys.profileStatus_emptyOrdersState.tr(),
                           style: AppStyles.textStyle19Bold.copyWith(
-                            color: AppColors.lightPrimaryColor,
+                            color: colorScheme.onPrimary,
                           ),
                         );
                       } else if (state is LoadingGetMyOrdersState) {

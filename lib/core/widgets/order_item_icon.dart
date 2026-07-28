@@ -7,11 +7,12 @@ class OrderItemIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Container(
       padding: EdgeInsets.all(18),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Color(0xffEBF9F1),
+        color: colorScheme.primaryContainer,
       ),
       child: SvgPicture.asset(Assets.imagesBoxIcon),
     );

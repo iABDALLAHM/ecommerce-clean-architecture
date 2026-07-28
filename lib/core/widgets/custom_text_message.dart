@@ -1,4 +1,3 @@
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -7,12 +6,11 @@ class CustomTextMessage extends StatelessWidget {
   final String message;
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Center(
       child: Text(
         message,
-        style: AppStyles.textStyle19Bold.copyWith(
-          color: AppColors.lightPrimaryColor,
-        ),
+        style: AppStyles.textStyle19Bold.copyWith(color: colorScheme.onPrimary),
       ),
     );
   }

@@ -1,5 +1,3 @@
-
-import 'package:ecommerce_clean_architecture/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class IncrementButton extends StatelessWidget {
@@ -7,18 +5,18 @@ class IncrementButton extends StatelessWidget {
   final Function() onPressed;
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return GestureDetector(
       onTap: onPressed,
       child: Container(
         padding: EdgeInsets.all(6),
         decoration: ShapeDecoration(
-          color: AppColors.primaryColor,
+          color: colorScheme.primary,
           shape: OvalBorder(),
         ),
-        child: Icon(Icons.add, color: Colors.white),
+        child: Icon(Icons.add, color: colorScheme.onPrimary),
       ),
     );
   }
 }
-
-

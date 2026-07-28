@@ -17,6 +17,8 @@ class ProfileLanguageBodyItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Column(
       children: [
         Row(
@@ -26,7 +28,7 @@ class ProfileLanguageBodyItem extends StatelessWidget {
             Text(
               name,
               style: AppStyles.textStyle13SemiBold.copyWith(
-                color: Color(0xff949D9E),
+                color: colorScheme.tertiaryContainer,
               ),
             ),
             Spacer(),

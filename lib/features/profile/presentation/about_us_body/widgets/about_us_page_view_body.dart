@@ -7,6 +7,8 @@ class AboutUsPageViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
@@ -16,14 +18,14 @@ class AboutUsPageViewBody extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 18, vertical: 18),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
-                color: Colors.white,
+                color: colorScheme.surface,
               ),
               child: Column(
                 children: [
                   Text(
                     textAlign: TextAlign.start,
                     style: AppStyles.textStyle13Regular.copyWith(
-                      color: Color(0xff949D9E),
+                      color: colorScheme.surfaceBright,
                     ),
                     "هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً أن ليس هناك أي كلمات أو عبارات محرجة أو غير لائقة مخبأة في هذا النص",
                   ),
@@ -31,7 +33,7 @@ class AboutUsPageViewBody extends StatelessWidget {
                   Text(
                     textAlign: TextAlign.start,
                     style: AppStyles.textStyle13Regular.copyWith(
-                      color: Color(0xff4E5556),
+                      color: colorScheme.tertiary,
                     ),
                     "هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً أن ليس هناك أي كلمات أو عبارات محرجة أو غير لائقة مخبأة في هذا النص",
                   ),
@@ -39,7 +41,7 @@ class AboutUsPageViewBody extends StatelessWidget {
                   Text(
                     textAlign: TextAlign.start,
                     style: AppStyles.textStyle13Regular.copyWith(
-                      color: Color(0xff949D9E),
+                      color: colorScheme.surfaceBright,
                     ),
                     "هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص. ",
                   ),
@@ -47,7 +49,7 @@ class AboutUsPageViewBody extends StatelessWidget {
                   Text(
                     textAlign: TextAlign.start,
                     style: AppStyles.textStyle13Regular.copyWith(
-                      color: Color(0xff4E5556),
+                      color: colorScheme.tertiary,
                     ),
                     "هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً أن ليس هناك أي كلمات أو عبارات محرجة أو غير لائقة مخبأة في هذا النص",
                   ),
@@ -55,7 +57,7 @@ class AboutUsPageViewBody extends StatelessWidget {
                   Text(
                     textAlign: TextAlign.start,
                     style: AppStyles.textStyle13Regular.copyWith(
-                      color: Color(0xff4E5556),
+                      color: colorScheme.tertiary,
                     ),
                     "هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً أن ليس هناك أي كلمات أو عبارات محرجة أو غير لائقة مخبأة في هذا النص",
                   ),

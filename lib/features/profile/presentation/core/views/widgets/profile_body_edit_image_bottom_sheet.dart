@@ -30,7 +30,10 @@ class _ProfileBodyEditImageBottomSheetState
 
   @override
   Widget build(BuildContext context) {
+    
+    var colorScheme = Theme.of(context).colorScheme;
     var newImage = context.watch<GetImageCubit>().state.image;
+
     return ProfileBodyEditImageBlocListener(
       child: BlocBuilder<UpdateUserImageCubit, UpdateUserImageStates>(
         builder: (context, state) {
@@ -38,7 +41,7 @@ class _ProfileBodyEditImageBottomSheetState
             state: state is LoadingUpdateUserImageState,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-              decoration: BoxDecoration(color: Colors.white),
+              decoration: BoxDecoration(color: colorScheme.surface),
               child: SingleChildScrollView(
                 child: Column(
                   children: [

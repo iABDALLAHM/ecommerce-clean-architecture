@@ -5,9 +5,11 @@ class CustomItemImage extends StatelessWidget {
   final String imageUrl;
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 26, horizontal: 10),
-      decoration: BoxDecoration(color: Color(0xffF3F5F7)),
+      decoration: BoxDecoration(color: colorScheme.surface),
       child: Center(child: Image.network(imageUrl, width: 53, height: 40)),
     );
   }

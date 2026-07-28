@@ -24,6 +24,7 @@ class _CustomHomeAppBarState extends State<CustomHomeAppBar> {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Row(
       children: [
         CustomHomeProfileImage(),
@@ -34,7 +35,7 @@ class _CustomHomeAppBarState extends State<CustomHomeAppBar> {
             Text(
               "${LocaleKeys.home_goodMorning.tr()} !..",
               style: AppStyles.textStyle16Regular.copyWith(
-                color: Color(0xff949D9E),
+                color: colorScheme.tertiaryContainer,
               ),
             ),
             const SizedBox(height: 2),
@@ -46,7 +47,8 @@ class _CustomHomeAppBarState extends State<CustomHomeAppBar> {
                     style: AppStyles.textStyle16Bold,
                   );
                 }
-                return Text(LocaleKeys.homeStatus_loadingYourName.tr(),
+                return Text(
+                  LocaleKeys.homeStatus_loadingYourName.tr(),
                   style: AppStyles.textStyle16Bold,
                 );
               },

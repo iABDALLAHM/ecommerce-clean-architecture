@@ -13,6 +13,8 @@ class ReviewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       color: Colors.transparent,
       child: Column(
@@ -31,7 +33,7 @@ class ReviewItem extends StatelessWidget {
                   Text(
                     "${_productReviewWithUserEntity.productReviewEntity.reviewDate.day}/${_productReviewWithUserEntity.productReviewEntity.reviewDate.month}/${_productReviewWithUserEntity.productReviewEntity.reviewDate.year}",
                     style: AppStyles.textStyle13Regular.copyWith(
-                      color: Color(0xff949D9E),
+                      color: colorScheme.tertiaryContainer,
                     ),
                   ),
                 ],
@@ -52,7 +54,7 @@ class ReviewItem extends StatelessWidget {
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: AppStyles.textStyle13Regular.copyWith(
-              color: Color(0xff949D9E),
+              color: colorScheme.tertiaryContainer,
             ),
           ),
         ],
