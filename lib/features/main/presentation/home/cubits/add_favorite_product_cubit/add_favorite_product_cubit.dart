@@ -2,7 +2,9 @@ import 'package:ecommerce_clean_architecture/features/main/domain/repositories/p
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/add_favorite_product_cubit/add_favorite_product_states.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class AddFavoriteProductCubit extends Cubit<FavoriteProductStates> {
   AddFavoriteProductCubit({required this.productsRepository})
     : super(InitialFavoriteProductState());

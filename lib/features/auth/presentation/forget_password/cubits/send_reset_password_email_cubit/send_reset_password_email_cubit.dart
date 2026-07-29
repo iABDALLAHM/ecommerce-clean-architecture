@@ -1,7 +1,9 @@
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/forget_password/cubits/send_reset_password_email_cubit/send_reset_password_email_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class SendResetPasswordEmailCubit extends Cubit<SendResetPasswordEmailState> {
   SendResetPasswordEmailCubit({required AuthRepository authRepository})
     : _authRepository = authRepository,

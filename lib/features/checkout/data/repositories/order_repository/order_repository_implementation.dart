@@ -9,7 +9,9 @@ import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart'
 import 'package:ecommerce_clean_architecture/features/checkout/data/models/order_model/order_model.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/repositories/order_repository/orders_repository.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity/order_entity.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: OrdersRepository)
 class OrderRepositoryImplementation implements OrdersRepository {
   final DatabaseService databaseService;
 

@@ -1,7 +1,9 @@
 import 'package:ecommerce_clean_architecture/features/main/domain/repositories/products_repository/products_repository.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class SearchCubit extends Cubit<SearchStates> {
   SearchCubit({required this.productsRepo}) : super(InitialSearchState());
   final ProductsRepository productsRepo;

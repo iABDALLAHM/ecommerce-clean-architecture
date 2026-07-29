@@ -4,7 +4,9 @@ import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get
 import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class GetUserDataCubit extends Cubit<GetUserDataState> {
   GetUserDataCubit({
     required UserRepository userRepository,
@@ -28,7 +30,6 @@ class GetUserDataCubit extends Cubit<GetUserDataState> {
         emit(FailureGetUserDataState(errorMessage: failure.message));
       },
       (result) {
-
         log("This is the UID in GetUserDataCubit ${result.uId}");
 
         emit(SuccessGetUserDataState(userEntity: result));

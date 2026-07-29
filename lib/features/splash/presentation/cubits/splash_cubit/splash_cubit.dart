@@ -4,7 +4,9 @@ import 'package:ecommerce_clean_architecture/core/repositories/local_storage_rep
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/splash/presentation/cubits/splash_cubit/splash_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class SplashCubit extends Cubit<SplashState> {
   SplashCubit({
     required AuthRepository authRepository,

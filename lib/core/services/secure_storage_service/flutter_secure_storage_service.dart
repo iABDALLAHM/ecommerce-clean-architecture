@@ -1,14 +1,14 @@
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/flutter_secure_service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: FlutterSecureService)
 class FlutterSecureStorageService implements FlutterSecureService {
   final FlutterSecureStorage _storage;
 
   FlutterSecureStorageService({required FlutterSecureStorage storage})
     : _storage = storage;
-
-  
 
   @override
   Future<void> clearAll() async {

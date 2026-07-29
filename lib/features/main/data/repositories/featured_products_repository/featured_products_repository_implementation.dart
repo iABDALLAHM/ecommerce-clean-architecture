@@ -7,7 +7,9 @@ import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart'
 import 'package:ecommerce_clean_architecture/features/main/data/models/featured_product_model/featured_product_model.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/featured_product_entity/featured_product_entity.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/repositories/featured_products_repository/featured_products_repository.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: FeaturedProductsRepository)
 class FeaturedProductsRepositoryImplementation
     implements FeaturedProductsRepository {
   FeaturedProductsRepositoryImplementation({

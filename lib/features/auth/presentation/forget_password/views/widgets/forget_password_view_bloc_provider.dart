@@ -1,5 +1,4 @@
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
-import 'package:ecommerce_clean_architecture/features/auth/domain/repositories/auth_repository/auth_repository.dart';
 import 'package:ecommerce_clean_architecture/features/auth/presentation/forget_password/cubits/send_reset_password_email_cubit/send_reset_password_email_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,9 +9,7 @@ class ForgetPasswordViewBlocProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SendResetPasswordEmailCubit(
-        authRepository: getIt.get<AuthRepository>(),
-      ),
+      create: (context) => getIt<SendResetPasswordEmailCubit>(),
       child: child,
     );
   }

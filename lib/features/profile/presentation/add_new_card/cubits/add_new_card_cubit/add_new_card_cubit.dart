@@ -4,7 +4,9 @@ import 'package:ecommerce_clean_architecture/features/profile/domain/entities/ca
 import 'package:ecommerce_clean_architecture/features/profile/domain/repositories/payment_repository/payment_repository.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/add_new_card/cubits/add_new_card_cubit/add_new_card_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class AddNewCardCubit extends Cubit<AddNewCardState> {
   AddNewCardCubit({
     required PaymentRepository paymentRepository,

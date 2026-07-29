@@ -1,6 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_state.dart';
-import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_entity/cart_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
@@ -29,14 +28,11 @@ class _CheckOutViewState extends State<CheckOutView> {
         if (state is SuccessGetUserDataState) {
           return CheckOutViewBlocProvider(
             child: BlocProvider(
-              create: (context) =>
-                  CheckOutCubit(
-                    secureStorageRepository: getIt
-                        .get<SecureStorageRepository>(),
-                  )..initializeOrder(
-                    cartEntity: widget.cartEntity,
-                    uId: state.userEntity.uId,
-                  ),
+              create: (context) => getIt<CheckOutCubit>()
+                ..initializeOrder(
+                  cartEntity: widget.cartEntity,
+                  uId: state.userEntity.uId,
+                ),
               child: Scaffold(
                 appBar: buildCheckOutAppBar(context, currentStep: currentStep),
                 body: CheckOutViewBody(

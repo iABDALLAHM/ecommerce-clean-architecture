@@ -10,12 +10,7 @@ class RegisterViewBlocProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => RegisterCubit(
-            authRepo: getIt.get<AuthRepository>(),
-            userRepo: getIt.get<UserRepository>(),
-          ),
-        ),
+        BlocProvider(create: (context) => getIt<RegisterCubit>()),
         BlocProvider(create: (context) => TermsAndConditionsCubit()),
       ],
       child: child,

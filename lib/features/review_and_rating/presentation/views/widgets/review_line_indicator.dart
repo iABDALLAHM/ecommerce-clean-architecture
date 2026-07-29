@@ -5,7 +5,6 @@ class ReviewLineIndicator extends StatelessWidget {
   final double percentage;
   @override
   Widget build(BuildContext context) {
-
     var width = MediaQuery.sizeOf(context).width;
     var colorScheme = Theme.of(context).colorScheme;
 
@@ -17,7 +16,7 @@ class ReviewLineIndicator extends StatelessWidget {
           height: 8,
           width: width,
           decoration: BoxDecoration(
-            color: colorScheme.surfaceBright,
+            color: colorScheme.tertiaryFixed,
             borderRadius: BorderRadius.circular(2),
           ),
         ),

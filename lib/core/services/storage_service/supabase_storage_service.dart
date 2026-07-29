@@ -4,11 +4,14 @@ import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/services/storage_service/storage_service.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
+import 'package:injectable/injectable.dart';
 import 'package:path/path.dart' as b;
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+@LazySingleton(as: StorageService)
 class SupabaseStorageService implements StorageService {
-  Supabase supabase = Supabase.instance;
+  final Supabase supabase;
+  SupabaseStorageService({required this.supabase});
   @override
   Future<String> uploadFile({required File file, required String path}) async {
     try {

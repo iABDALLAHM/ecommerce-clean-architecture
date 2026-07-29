@@ -2,7 +2,9 @@ import 'dart:developer';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart';
 import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/flutter_secure_service.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: SecureStorageRepository)
 class SecureStorageRepositoryImplementation implements SecureStorageRepository {
   final FlutterSecureService _flutterSecureService;
 

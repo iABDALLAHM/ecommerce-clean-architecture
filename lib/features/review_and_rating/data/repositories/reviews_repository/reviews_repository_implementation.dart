@@ -10,7 +10,9 @@ import 'package:ecommerce_clean_architecture/features/review_and_rating/data/mod
 import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/entities/product_review_with_user/product_review_with_user_entity.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/repositories/reviews_repository/reviews_repository.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/domain/entities/entities/product_review_entity/product_review_entity.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: ReviewsRepository)
 class ReviewsRepositoryImplementation implements ReviewsRepository {
   final DatabaseService _databaseService;
 

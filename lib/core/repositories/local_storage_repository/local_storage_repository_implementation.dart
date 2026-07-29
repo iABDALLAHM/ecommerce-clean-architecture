@@ -1,6 +1,8 @@
 import 'package:ecommerce_clean_architecture/core/repositories/local_storage_repository/local_storage_repository.dart';
 import 'package:ecommerce_clean_architecture/core/services/local_database_service/local_storage_service.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: LocalStorageRepository)
 class LocalStorageRepositoryImplementation implements LocalStorageRepository {
   final LocalStorageService _localStorageService;
 

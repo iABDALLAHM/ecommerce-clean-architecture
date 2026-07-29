@@ -1,7 +1,9 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class RegisterCubit extends Cubit<RegisterStates> {
   RegisterCubit({required this.authRepo, required this.userRepo})
     : super(InitialRegisterState());

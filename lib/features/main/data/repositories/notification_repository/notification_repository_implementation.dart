@@ -9,7 +9,9 @@ import 'package:ecommerce_clean_architecture/features/main/data/models/notificat
 import 'package:ecommerce_clean_architecture/features/main/domain/repositories/notification_repository/notification_repository.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service/database_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: NotificationRepository)
 class NotificationRepositoryImplementation implements NotificationRepository {
   final DatabaseService databaseService;
   NotificationRepositoryImplementation({required this.databaseService});

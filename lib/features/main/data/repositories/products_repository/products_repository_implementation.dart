@@ -11,7 +11,9 @@ import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/repositories/products_repository/products_repository.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service/database_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: ProductsRepository)
 class ProductsRepositoryImplementation implements ProductsRepository {
   final DatabaseService databaseService;
   final SecureStorageRepository _secureStorageRepository;

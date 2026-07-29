@@ -1,7 +1,9 @@
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/user_profile/cubits/update_user_password_cubit/update_user_password_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class UpdateUserPasswordCubit extends Cubit<UpdateUserPasswordStates> {
   UpdateUserPasswordCubit({required this.authRepo})
     : super(InitialUpdateUserPasswordState());

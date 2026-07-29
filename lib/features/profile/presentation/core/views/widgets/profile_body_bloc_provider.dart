@@ -1,8 +1,4 @@
-import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart';
-import 'package:ecommerce_clean_architecture/core/repositories/local_storage_repository/local_storage_repository.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
-import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
-import 'package:ecommerce_clean_architecture/features/main/domain/repositories/images_repository/images_repository.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/get_image_cubit/get_image_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/sign_out_cubit/sign_out_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/update_user_image_cubit/update_user_image_cubit.dart';
@@ -17,20 +13,8 @@ class ProfileBodyBlocProvider extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => GetImageCubit()),
-        BlocProvider(
-          create: (context) => UpdateUserImageCubit(
-            imagesRepo: getIt.get<ImagesRepository>(),
-            userRepository: getIt.get<UserRepository>(),
-          ),
-        ),
-
-        BlocProvider(
-          create: (context) => SignOutCubit(
-            authRepo: getIt.get<AuthRepository>(),
-            secureStorageRepository: getIt.get<SecureStorageRepository>(),
-            localStorageRepository: getIt.get<LocalStorageRepository>(),
-          ),
-        ),
+        BlocProvider(create: (context) => getIt<UpdateUserImageCubit>()),
+        BlocProvider(create: (context) => getIt<SignOutCubit>()),
       ],
       child: child,
     );

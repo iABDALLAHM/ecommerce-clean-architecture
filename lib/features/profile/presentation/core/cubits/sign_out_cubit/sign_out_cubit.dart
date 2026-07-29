@@ -3,7 +3,9 @@ import 'package:ecommerce_clean_architecture/core/repositories/local_storage_rep
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/sign_out_cubit/sign_out_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class SignOutCubit extends Cubit<SignOutStates> {
   SignOutCubit({
     required this.authRepo,

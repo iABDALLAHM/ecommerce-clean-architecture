@@ -1,4 +1,3 @@
-import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:flutter/material.dart';
@@ -9,13 +8,6 @@ class LoginViewBlocProvider extends StatelessWidget {
   final Widget child;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LoginCubit(
-        secureStorageRepository: getIt.get<SecureStorageRepository>(),
-        authRepo: getIt.get<AuthRepository>(),
-        userRepo: getIt.get<UserRepository>(),
-      ),
-      child: child,
-    );
+    return BlocProvider(create: (context) => getIt<LoginCubit>(), child: child);
   }
 }

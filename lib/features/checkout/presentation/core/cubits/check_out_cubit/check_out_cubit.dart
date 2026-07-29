@@ -8,7 +8,9 @@ import 'package:ecommerce_clean_architecture/features/checkout/presentation/core
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/function/generate_order_number.dart';
 import 'package:ecommerce_clean_architecture/features/profile/domain/entities/card_entity/card_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class CheckOutCubit extends Cubit<CheckOutStates> {
   CheckOutCubit({required SecureStorageRepository secureStorageRepository})
     : _secureStorageRepository = secureStorageRepository,

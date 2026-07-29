@@ -40,5 +40,6 @@ abstract class AppStyles {
   static TextStyle textStyle19Bold = TextStyle(
     fontSize: 19,
     fontWeight: FontWeight.w700,
+    color: Color(0xff0C0D0D),
   );
 }

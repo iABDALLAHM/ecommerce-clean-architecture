@@ -1,7 +1,9 @@
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/user_profile/cubits/update_user_email_cubit/update_user_email_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class UpdateUserEmailCubit extends Cubit<UpdateUserEmailState> {
   UpdateUserEmailCubit({
     required AuthRepository authRepository,
@@ -29,7 +31,6 @@ class UpdateUserEmailCubit extends Cubit<UpdateUserEmailState> {
         emit(FailureUpdateUserEmailState(errorMessage: failure.message));
       },
       (success) async {
-        
         final UserEntity updatedUserEntityDate = UserEntity(
           name: userEntity.name,
           email: newEmail,

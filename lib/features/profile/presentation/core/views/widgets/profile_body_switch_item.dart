@@ -33,7 +33,10 @@ class ProfileBodySwitchItem extends StatelessWidget {
               ),
             ),
             Spacer(),
-            Switch(value: value, onChanged: onChange),
+            SizedBox(
+              height: 10,
+              child: Switch(value: value, onChanged: onChange),
+            ),
           ],
         ),
         const SizedBox(height: 8),

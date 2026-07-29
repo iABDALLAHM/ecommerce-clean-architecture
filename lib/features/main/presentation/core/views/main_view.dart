@@ -10,7 +10,7 @@ class MainView extends StatelessWidget {
     var colorScheme = Theme.of(context).colorScheme;
     return MainViewMultiBlocProvider(
       child: Scaffold(
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.onPrimary,
         bottomNavigationBar: CustomBottomNavigationBar(),
         body: child,
       ),

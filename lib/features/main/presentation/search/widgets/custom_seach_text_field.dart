@@ -30,7 +30,7 @@ class CustomSearchTextField extends StatelessWidget {
               context.read<SearchCubit>().searchProducts(searchName: value);
             },
             decoration: InputDecoration(
-              fillColor: colorScheme.surface,
+              fillColor: colorScheme.onPrimary,
               filled: true,
               contentPadding: EdgeInsets.zero,
               enabledBorder: buildOutlineInputBorder(

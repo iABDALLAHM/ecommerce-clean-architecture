@@ -4,7 +4,9 @@ import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service/database_service.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: DatabaseService)
 class FirestoreService implements DatabaseService {
   final FirebaseFirestore firestore;
 

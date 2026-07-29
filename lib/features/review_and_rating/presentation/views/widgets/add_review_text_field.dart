@@ -48,7 +48,7 @@ class _AddReviewTextFieldState extends State<AddReviewTextField> {
         );
       },
       decoration: InputDecoration(
-        fillColor: colorScheme.surface,
+        fillColor: colorScheme.onPrimary,
         prefixIcon: Padding(
           padding: const EdgeInsets.only(right: 10),
           child: CircleAvatar(
