@@ -5,8 +5,8 @@ import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/address_section/cubits/address_validation_cubit/address_validation_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/save_address_cubit/save_address_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/save_payment_details_cubit/save_payment_details_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/address_cubit/address_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/payment_details_cubit/payment_details_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/function/change_button_text.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/widgets/check_out_steps.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/widgets/check_out_page_view.dart';
@@ -112,10 +112,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
       );
     }
     if (addressEntity.saveLocation) {
-      // save address in database if that is a checked true!
-      context.read<SaveAddressCubit>().saveAddress(
-        addressEntity: addressEntity,
-      );
+      context.read<AddressCubit>().saveAddress(addressEntity: addressEntity);
     }
   }
 
@@ -136,7 +133,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
       );
     }
     if (cardEntity.markAsDefault) {
-      context.read<SavePaymentDetailsCubit>().savePaymentDetails(
+      context.read<PaymentDetailsCubit>().savePaymentDetails(
         cardEntity: cardEntity,
       );
     }
@@ -156,4 +153,3 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     }
   }
 }
-
