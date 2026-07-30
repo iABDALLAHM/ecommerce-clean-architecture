@@ -18,6 +18,7 @@ class AddressSection extends StatefulWidget {
 }
 
 class _AddressSectionState extends State<AddressSection> {
+  bool saveAddress = false;
   late TextEditingController nameController;
   late TextEditingController emailController;
   late TextEditingController addressController;
@@ -145,7 +146,14 @@ class _AddressSectionState extends State<AddressSection> {
                   textInputType: TextInputType.number,
                 ),
                 const SizedBox(height: 8),
-                SaveLocationSection(isSaveLocation: (bool value) {}),
+                SaveLocationSection(
+                  isSaveLocation: (bool value) {
+                    shippingAddressEntity.saveLocation = value;
+                    checkOutCubit.updateShippingAddress(
+                      address: shippingAddressEntity,
+                    );
+                  },
+                ),
               ],
             ),
           ),

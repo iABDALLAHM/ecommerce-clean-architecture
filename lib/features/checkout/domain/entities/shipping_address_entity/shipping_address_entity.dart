@@ -5,6 +5,7 @@ class ShippingAddressEntity {
   String? address;
   String? addressDetails;
   String? city;
+  bool saveLocation;
 
   ShippingAddressEntity({
     this.name,
@@ -13,10 +14,11 @@ class ShippingAddressEntity {
     this.address,
     this.addressDetails,
     this.city,
+    this.saveLocation = false,
   });
 
   @override
   String toString() {
-    return "$addressDetails $city $address $name $email $phone";
+    return "$addressDetails $city $address $name $email $phone $saveLocation";
   }
 }

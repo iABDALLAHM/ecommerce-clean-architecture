@@ -63,6 +63,10 @@ import 'package:ecommerce_clean_architecture/features/checkout/presentation/core
     as _i450;
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart'
     as _i196;
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/save_address_cubit/save_address_cubit.dart'
+    as _i1001;
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/save_payment_details_cubit/save_payment_details_cubit.dart'
+    as _i884;
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart'
     as _i506;
 import 'package:ecommerce_clean_architecture/features/main/data/repositories/featured_products_repository/featured_products_repository_implementation.dart'
@@ -219,6 +223,16 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i956.OnboardingCubit>(
       () => _i956.OnboardingCubit(
         localStorageRepository: gh<_i993.LocalStorageRepository>(),
+      ),
+    );
+    gh.factory<_i1001.SaveAddressCubit>(
+      () => _i1001.SaveAddressCubit(
+        ordersRepository: gh<_i652.OrdersRepository>(),
+      ),
+    );
+    gh.factory<_i884.SavePaymentDetailsCubit>(
+      () => _i884.SavePaymentDetailsCubit(
+        ordersRepository: gh<_i652.OrdersRepository>(),
       ),
     );
     gh.lazySingleton<_i425.NotificationRepository>(

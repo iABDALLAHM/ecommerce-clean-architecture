@@ -7,6 +7,7 @@ class ShippingAddressModel {
   String? address;
   String? addressDetails;
   String? city;
+  bool saveLocation;
 
   ShippingAddressModel({
     this.name,
@@ -15,6 +16,7 @@ class ShippingAddressModel {
     this.address,
     this.addressDetails,
     this.city,
+    required this.saveLocation,
   });
 
   factory ShippingAddressModel.fromEntity({
@@ -27,12 +29,14 @@ class ShippingAddressModel {
       address: shippingAddressEntity.address,
       addressDetails: shippingAddressEntity.addressDetails,
       city: shippingAddressEntity.city,
+      saveLocation: shippingAddressEntity.saveLocation,
     );
   }
 
   factory ShippingAddressModel.fromJson(Map<String, dynamic> json) {
     return ShippingAddressModel(
       name: json["name"],
+      saveLocation: json["saveLocation"],
       email: json["email"],
       phone: json["phone"],
       address: json["address"],
@@ -44,6 +48,7 @@ class ShippingAddressModel {
   ShippingAddressEntity toEntity() {
     return ShippingAddressEntity(
       name: name,
+      saveLocation: saveLocation,
       email: email,
       phone: phone,
       address: address,
@@ -55,6 +60,7 @@ class ShippingAddressModel {
   Map<String, dynamic> toMap() {
     return {
       "name": name,
+      "saveLocation": saveLocation,
       "email": email,
       "phone": phone,
       "address": address,

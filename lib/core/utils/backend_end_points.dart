@@ -15,4 +15,5 @@ abstract class BackendEndPoints {
   static const String productsImagesCollection = "products_images";
   static const String featuredProductsImagesCollection =
       "featured_products_images";
+  static const String addressCollection = "address";
 }

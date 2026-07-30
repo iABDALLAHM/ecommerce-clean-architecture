@@ -86,25 +86,19 @@ class _PaymentSectionState extends State<PaymentSection> {
                     const SizedBox(width: 16),
                     ChoosePaymentCardOption(image: Assets.imagesPayPal),
                     const SizedBox(width: 16),
-
                     ChoosePaymentCardOption(image: Assets.imagesMasterCard),
                     const SizedBox(width: 16),
-
                     ChoosePaymentCardOption(image: Assets.imagesVisa),
                   ],
                 ),
-
                 const SizedBox(height: 16),
-
                 CustomCardHolderNameTextField(
                   controller: cardHolderNameController,
                   onSaved: (value) {
                     cardEntity.cardHolderName = value;
                   },
                 ),
-
                 const SizedBox(height: 8),
-
                 CustomCardNumberTextField(
                   controller: cardNumberController,
                   onSaved: (value) {
@@ -112,7 +106,6 @@ class _PaymentSectionState extends State<PaymentSection> {
                   },
                 ),
                 const SizedBox(height: 15),
-
                 Row(
                   children: [
                     Expanded(
@@ -137,7 +130,6 @@ class _PaymentSectionState extends State<PaymentSection> {
                     ),
                   ],
                 ),
-
                 const SizedBox(height: 16),
                 MakeCardAsDefault(
                   isSelected: (value) {
