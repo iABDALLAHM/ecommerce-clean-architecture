@@ -38,5 +38,5 @@ abstract class AuthRepository {
 
   Future<Either<Failure, UserEntity>> signInWithGoogle();
   Future<Either<Failure, UserEntity>> signInWithFacebook();
-
+  Future<Either<Failure, void>> confirmChangeEmail({required String code});
 }

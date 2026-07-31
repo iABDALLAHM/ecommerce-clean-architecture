@@ -179,4 +179,16 @@ class AuthRepositoryImplementation implements AuthRepository {
       return Left(ServerFailure(message: e.exceptionMeassge));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> confirmChangeEmail({
+    required String code,
+  }) async {
+    try {
+      await authService.confirmChangeEmail(code: code);
+      return Right(null);
+    } on CustomException catch (e) {
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
 }

@@ -61,12 +61,12 @@ import 'package:ecommerce_clean_architecture/features/checkout/domain/repositori
     as _i652;
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/add_order_cubit/add_order_cubit.dart'
     as _i450;
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/address_cubit/address_cubit.dart'
+    as _i223;
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart'
     as _i196;
-import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/address_cubit/address_cubit.dart'
-    as _i1001;
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/payment_details_cubit/payment_details_cubit.dart'
-    as _i884;
+    as _i552;
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart'
     as _i506;
 import 'package:ecommerce_clean_architecture/features/main/data/repositories/featured_products_repository/featured_products_repository_implementation.dart'
@@ -91,6 +91,8 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/home/cub
     as _i197;
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/products_cubit/products_cubit.dart'
     as _i1035;
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/verify_change_email_cubit/verify_change_email_cubit.dart'
+    as _i213;
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/cubits/get_notifications_cubit/get_notifications_cubit.dart'
     as _i677;
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_cubit.dart'
@@ -204,6 +206,11 @@ extension GetItInjectableX on _i174.GetIt {
         authRepository: gh<_i285.AuthRepository>(),
       ),
     );
+    gh.factory<_i761.UpdateUserEmailCubit>(
+      () => _i761.UpdateUserEmailCubit(
+        authRepository: gh<_i285.AuthRepository>(),
+      ),
+    );
     gh.lazySingleton<_i652.OrdersRepository>(
       () => _i43.OrderRepositoryImplementation(
         databaseService: gh<_i15.DatabaseService>(),
@@ -225,11 +232,11 @@ extension GetItInjectableX on _i174.GetIt {
         localStorageRepository: gh<_i993.LocalStorageRepository>(),
       ),
     );
-    gh.factory<_i1001.AddressCubit>(
-      () => _i1001.AddressCubit(ordersRepository: gh<_i652.OrdersRepository>()),
+    gh.factory<_i223.AddressCubit>(
+      () => _i223.AddressCubit(ordersRepository: gh<_i652.OrdersRepository>()),
     );
-    gh.factory<_i884.PaymentDetailsCubit>(
-      () => _i884.PaymentDetailsCubit(
+    gh.factory<_i552.PaymentDetailsCubit>(
+      () => _i552.PaymentDetailsCubit(
         ordersRepository: gh<_i652.OrdersRepository>(),
       ),
     );
@@ -361,8 +368,8 @@ extension GetItInjectableX on _i174.GetIt {
       () =>
           _i821.UpdateUserNameCubit(userRepository: gh<_i285.UserRepository>()),
     );
-    gh.factory<_i761.UpdateUserEmailCubit>(
-      () => _i761.UpdateUserEmailCubit(
+    gh.factory<_i213.VerifyChangeEmailCubit>(
+      () => _i213.VerifyChangeEmailCubit(
         authRepository: gh<_i285.AuthRepository>(),
         userRepository: gh<_i285.UserRepository>(),
       ),

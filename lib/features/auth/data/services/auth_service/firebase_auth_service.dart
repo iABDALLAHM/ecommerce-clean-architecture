@@ -326,4 +326,14 @@ class FirebaseAuthService implements AuthService {
       );
     }
   }
+
+  @override
+  Future<void> confirmChangeEmail({required String code}) async {
+    try {
+      await firebaseAuth.applyActionCode(code);
+    } catch (e) {
+      log("Error in confirmChangeEmail: $e");
+      throw CustomException(exceptionMeassge: "لم يتم تأكيد الايميل");
+    }
+  }
 }

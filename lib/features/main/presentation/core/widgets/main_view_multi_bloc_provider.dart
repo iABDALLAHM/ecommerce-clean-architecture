@@ -3,6 +3,7 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/home/cub
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/get_featured_product_cubit/get_featured_product_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/products_cubit/products_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/verify_change_email_cubit/verify_change_email_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/cubits/get_notifications_cubit/get_notifications_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,8 @@ class MainViewMultiBlocProvider extends StatelessWidget {
         BlocProvider(create: (context) => getIt<SearchCubit>()),
 
         BlocProvider(create: (context) => getIt<AddFavoriteProductCubit>()),
+
+        BlocProvider(create: (context) => getIt<VerifyChangeEmailCubit>()),
       ],
       child: child,
     );

@@ -18,4 +18,5 @@ abstract class AuthService {
   });
   Future<UserCredential> signInWithGoogle();
   Future<UserCredential> signInWithFacebook();
+  Future<void> confirmChangeEmail({required String code});
 }

@@ -5,20 +5,16 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class UpdateUserEmailCubit extends Cubit<UpdateUserEmailState> {
-  UpdateUserEmailCubit({
-    required AuthRepository authRepository,
-    required UserRepository userRepository,
-  }) : _authRepository = authRepository,
-       _userRepository = userRepository,
-       super(InitialUpdateUserEmailState());
+  UpdateUserEmailCubit({required AuthRepository authRepository})
+    : _authRepository = authRepository,
+
+      super(InitialUpdateUserEmailState());
 
   final AuthRepository _authRepository;
-  final UserRepository _userRepository;
 
   Future updateEmail({
     required String newEmail,
     required String password,
-    required UserEntity userEntity,
   }) async {
     emit(LoadingUpdateUserEmailState());
     var result = await _authRepository.updateEmail(
@@ -31,24 +27,7 @@ class UpdateUserEmailCubit extends Cubit<UpdateUserEmailState> {
         emit(FailureUpdateUserEmailState(errorMessage: failure.message));
       },
       (success) async {
-        final UserEntity updatedUserEntityDate = UserEntity(
-          name: userEntity.name,
-          email: newEmail,
-          uId: userEntity.uId,
-          userImage: userEntity.userImage,
-        );
-
-        var result = await _userRepository.updateUserData(
-          userEntity: updatedUserEntityDate,
-        );
-        result.fold(
-          (failure) {
-            emit(FailureUpdateUserEmailState(errorMessage: failure.message));
-          },
-          (success) {
-            emit(SuccessUpdateUserEmailState());
-          },
-        );
+        emit(SuccessUpdateUserEmailState());
       },
     );
   }

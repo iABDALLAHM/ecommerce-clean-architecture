@@ -49,12 +49,33 @@ class AppRoutes {
   static GoRouter router = GoRouter(
     initialLocation: splash,
     routes: [
+      GoRoute(
+        path: '/__/auth/links',
+        redirect: (context, state) {
+          final link = state.uri.queryParameters['link'];
+          if (link == null) return AppRoutes.login;
+          final innerUri = Uri.parse(link);
+          final oobCode = innerUri.queryParameters['oobCode'];
+          final mode = innerUri.queryParameters['mode'];
+          if (oobCode == null || mode == null) return AppRoutes.login;
+          if (mode == 'verifyAndChangeEmail') {
+            return '$home?oobCode=$oobCode&mode=$mode';
+          }
+          if (mode == 'resetPassword') {
+            return '$resetYourPassword?oobCode=$oobCode';
+          }
+          return AppRoutes.login;
+        },
+      ),
       ShellRoute(
         builder: (context, state, child) => MainView(child: child),
         routes: [
           GoRoute(
             path: home,
-            builder: (context, state) => HomeBody(),
+            builder: (context, state) {
+              String oobCode = state.uri.queryParameters['oobCode'] ?? "";
+              return HomeBody(oobCode: oobCode);
+            },
             routes: [
               GoRoute(
                 path: bestSelling,
@@ -145,56 +166,26 @@ class AppRoutes {
       GoRoute(path: onboarding, builder: (context, state) => OnboardingView()),
       GoRoute(path: splash, builder: (context, state) => SplashView()),
 
-      // // handle login
-      // GoRoute(
-      //   path: '/__/auth/links',
-      //   redirect: (context, state) {
-      //     final link = state.uri.queryParameters['link'];
-      //     if (link != null) {
-      //       final innerUri = Uri.parse(link);
-      //       final oobCode = innerUri.queryParameters['oobCode'];
-      //       if (oobCode != null) {
-      //         return '$login?oobCode=$oobCode';
-      //       }
-      //     }
-      //     return login;
-      //   },
-      // ),
       GoRoute(
         path: login,
         builder: (context, state) {
-          // String oobCode = state.uri.queryParameters['oobCode'] ?? "";
           return LoginView();
         },
       ),
 
       GoRoute(path: register, builder: (context, state) => RegisterView()),
+
       GoRoute(
         path: forgetPassword,
         builder: (context, state) => ForgetPasswordView(),
       ),
 
-      // handle resetPassword
+
       GoRoute(
         path: resetYourPassword,
         builder: (context, state) {
           String oobCode = state.uri.queryParameters['oobCode'] ?? "";
           return ResetYourPasswordView(oobCode: oobCode);
-        },
-      ),
-
-      GoRoute(
-        path: '/__/auth/links',
-        redirect: (context, state) {
-          final link = state.uri.queryParameters['link'];
-          if (link != null) {
-            final innerUri = Uri.parse(link);
-            final oobCode = innerUri.queryParameters['oobCode'];
-            if (oobCode != null) {
-              return '$resetYourPassword?oobCode=$oobCode';
-            }
-          }
-          return resetYourPassword;
         },
       ),
 

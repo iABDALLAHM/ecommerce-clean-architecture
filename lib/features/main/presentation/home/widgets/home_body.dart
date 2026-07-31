@@ -11,18 +11,20 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/home/cub
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/get_featured_product_cubit/get_featured_product_state.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/products_cubit/products_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/core/widgets/search_bar_trigger.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/verify_change_email_cubit/verify_change_email_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/home_body_header.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/banner_list.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/custom_home_app_bar.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/core/widgets/fruit_items_grid_view_bloc_builder.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/verify_change_email_dialog.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/cubits/get_notifications_cubit/get_notifications_cubit.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeBody extends StatefulWidget {
-  const HomeBody({super.key});
-
+  const HomeBody({super.key, required this.oobCode});
+  final String oobCode;
   @override
   State<HomeBody> createState() => _HomeBodyState();
 }
@@ -33,6 +35,14 @@ class _HomeBodyState extends State<HomeBody> {
     context.read<ProductsCubit>().getProducts();
     context.read<GetNotificationsCubit>().getNotification();
     context.read<GetFeaturedProductCubit>().getFeaturedProducts();
+    log("the oob code is in Home Body ${widget.oobCode}");
+    if (widget.oobCode.isNotEmpty) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Future.delayed(const Duration(milliseconds: 300), () {
+          if (mounted) _showVerifyEmailDialog();
+        });
+      });
+    }
     super.initState();
   }
 
@@ -83,6 +93,19 @@ class _HomeBodyState extends State<HomeBody> {
           ],
         ),
       ),
+    );
+  }
+
+  void _showVerifyEmailDialog() {
+    showDialog(
+      context: context,
+      builder: (_) {
+        final verifyChangeEmailCubit = context.read<VerifyChangeEmailCubit>();
+        return BlocProvider.value(
+          value: verifyChangeEmailCubit,
+          child: VerifyChangeEmailDialog(code: widget.oobCode),
+        );
+      },
     );
   }
 }

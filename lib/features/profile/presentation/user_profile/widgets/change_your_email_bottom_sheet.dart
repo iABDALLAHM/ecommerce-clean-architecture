@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
-import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_state.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_progress_widget.dart';
@@ -77,35 +76,24 @@ class _ChangeYourEmailBottomSheetState
                         SizedBox(
                           height: 49,
                           width: double.infinity,
-                          child:
-                              BlocBuilder<GetUserDataCubit, GetUserDataState>(
-                                builder: (context, state) {
-                                  if (state is SuccessGetUserDataState) {
-                                    return CustomButton(
-                                      text: LocaleKeys
-                                          .profileStatus_confirmChangeEmail
-                                          .tr(),
-                                      onPressed: () {
-                                        if (formKey.currentState!.validate()) {
-                                          formKey.currentState!.save();
-                                          context
-                                              .read<UpdateUserEmailCubit>()
-                                              .updateEmail(
-                                                userEntity: state.userEntity,
-                                                newEmail: newEmail,
-                                                password: password,
-                                              );
-                                        } else {
-                                          autovalidateMode =
-                                              AutovalidateMode.always;
-                                          setState(() {});
-                                        }
-                                      },
+                          child: CustomButton(
+                            text: LocaleKeys.profileStatus_confirmChangeEmail
+                                .tr(),
+                            onPressed: () {
+                              if (formKey.currentState!.validate()) {
+                                formKey.currentState!.save();
+                                context
+                                    .read<UpdateUserEmailCubit>()
+                                    .updateEmail(
+                                      newEmail: newEmail,
+                                      password: password,
                                     );
-                                  }
-                                  return SizedBox();
-                                },
-                              ),
+                              } else {
+                                autovalidateMode = AutovalidateMode.always;
+                                setState(() {});
+                              }
+                            },
+                          ),
                         ),
                         const SizedBox(height: 30),
                       ],
