@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/verify_change_email_cubit/verify_change_email_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/verify_change_email_cubit/verify_change_email_state.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -27,7 +29,7 @@ class VerifyChangeEmailDialog extends StatelessWidget {
                 width: double.infinity,
                 height: 59,
                 child: CustomButton(
-                  text: "تأكيد تغير الايميل وتسجيل الدخول بالإيميل الجديد",
+                  text: LocaleKeys.ConfirmChangeUserEmailButton.tr(),
                   onPressed: () {
                     context.read<VerifyChangeEmailCubit>().confirmChangeEmail(
                       code: code,

@@ -318,5 +318,6 @@
         "allNotificationsSeen": "تحديد الكل مقروء",
         "doNotHaveNotifications": "لا يوجد لديك إشعارات",
         "searchingNewNotifications": "جاري البحث على اشعارات جديدة"
-    }
+    },
+    "ConfirmChangeUserEmailButton": "تأكيد تغير الايميل "
 }

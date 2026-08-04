@@ -318,5 +318,6 @@
         "allNotificationsSeen": "Mark all as read",
         "doNotHaveNotifications": "You have no notifications",
         "searchingNewNotifications": "Checking for new notifications..."
-    }
+    },
+    "ConfirmChangeUserEmailButton": "Confirm Change Email"
 }

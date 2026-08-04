@@ -334,7 +334,8 @@ class CodegenLoader extends AssetLoader{
     "allNotificationsSeen": "تحديد الكل مقروء",
     "doNotHaveNotifications": "لا يوجد لديك إشعارات",
     "searchingNewNotifications": "جاري البحث على اشعارات جديدة"
-  }
+  },
+  "ConfirmChangeUserEmailButton": "تأكيد تغير الايميل "
 };
 static const Map<String,dynamic> _en = {
   "home": {
@@ -656,7 +657,8 @@ static const Map<String,dynamic> _en = {
     "allNotificationsSeen": "Mark all as read",
     "doNotHaveNotifications": "You have no notifications",
     "searchingNewNotifications": "Checking for new notifications..."
-  }
+  },
+  "ConfirmChangeUserEmailButton": "Confirm Change Email"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }

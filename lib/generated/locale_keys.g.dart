@@ -293,5 +293,6 @@ abstract class  LocaleKeys {
   static const notification_doNotHaveNotifications = 'notification.doNotHaveNotifications';
   static const notification_searchingNewNotifications = 'notification.searchingNewNotifications';
   static const notification = 'notification';
+  static const ConfirmChangeUserEmailButton = 'ConfirmChangeUserEmailButton';
 
 }
