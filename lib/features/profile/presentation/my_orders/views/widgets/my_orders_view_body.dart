@@ -19,34 +19,32 @@ class MyOrdersViewBody extends StatelessWidget {
     return SafeArea(
       child: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: kHorizontalPadding,
-              ),
-              child: Column(
-                children: [
-                  const SizedBox(height: 16),
-                  BlocBuilder<GetMyOrdersStreamCubit, GetMyOrdersState>(
-                    builder: (context, state) {
-                      if (state is SuccessGetMyOrdersState) {
-                        return OrdersItemListView(myOrders: state.myOrders);
-                      } else if (state is EmptyOrdersState) {
-                        return Text(
-                          LocaleKeys.profileStatus_emptyOrdersState.tr(),
-                          style: AppStyles.textStyle19Bold.copyWith(
-                            color: colorScheme.onPrimary,
-                          ),
-                        );
-                      } else if (state is LoadingGetMyOrdersState) {
-                        return CustomCircularProgressWidget();
-                      }
-                      return SizedBox();
-                    },
+          SliverToBoxAdapter(child: const SizedBox(height: 16)),
+          BlocBuilder<GetMyOrdersStreamCubit, GetMyOrdersState>(
+            builder: (context, state) {
+              if (state is SuccessGetMyOrdersState) {
+                return SliverPadding(
+                  padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                  sliver: SliverToBoxAdapter(child: OrdersItemListView(myOrders: state.myOrders)),
+                );
+              } else if (state is EmptyOrdersState) {
+                return SliverToBoxAdapter(
+                  child: Center(
+                    child: Text(
+                      LocaleKeys.profileStatus_emptyOrdersState.tr(),
+                      style: AppStyles.textStyle19Bold.copyWith(
+                        color: colorScheme.onSurface,
+                      ),
+                    ),
                   ),
-                ],
-              ),
-            ),
+                );
+              } else if (state is LoadingGetMyOrdersState) {
+                return SliverToBoxAdapter(
+                  child: CustomCircularProgressWidget(),
+                );
+              }
+              return SliverToBoxAdapter(child: SizedBox());
+            },
           ),
         ],
       ),

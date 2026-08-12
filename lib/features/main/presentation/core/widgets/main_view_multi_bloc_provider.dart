@@ -19,17 +19,11 @@ class MainViewMultiBlocProvider extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt<GetNotificationsCubit>()),
-
         BlocProvider(create: (context) => CartCubit()),
-
         BlocProvider(create: (context) => getIt<GetFeaturedProductCubit>()),
-
         BlocProvider(create: (context) => getIt<ProductsCubit>()),
-
         BlocProvider(create: (context) => getIt<SearchCubit>()),
-
         BlocProvider(create: (context) => getIt<AddFavoriteProductCubit>()),
-
         BlocProvider(create: (context) => getIt<VerifyChangeEmailCubit>()),
       ],
       child: child,
