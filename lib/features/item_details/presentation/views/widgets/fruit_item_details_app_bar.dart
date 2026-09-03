@@ -16,8 +16,7 @@ class FruitItemDetailsAppBar extends StatelessWidget {
         padding: EdgeInsetsDirectional.symmetric(horizontal: 16, vertical: 15),
         decoration: ShapeDecoration(
           shape: OvalBorder(),
-        color: colorScheme.onPrimary,
-   
+          color: colorScheme.onPrimary,
         ),
         child: Icon(
           IconData(
