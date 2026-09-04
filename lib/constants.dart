@@ -24,5 +24,7 @@ const String kRemoveUserData = "SaveUserData";
 
 const String keyUserId = 'user_id';
 
-const String kPublishableKey = "pk_test_51TYSTBFtj5mILhHkD4ZZs8ECI0cwFimVhIm4jWVstKWb2JPQZ7QxlfMVyZOqfjxOZjTdC3NbigkNggoGuyDfh7gk001Fmv4ewC";
+const String kPublishableKey =
+    "pk_test_51TYSTBFtj5mILhHkD4ZZs8ECI0cwFimVhIm4jWVstKWb2JPQZ7QxlfMVyZOqfjxOZjTdC3NbigkNggoGuyDfh7gk001Fmv4ewC";
+    
 const String kSecretKey = "";
