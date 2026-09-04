@@ -30,6 +30,10 @@ import 'package:ecommerce_clean_architecture/core/services/local_database_servic
     as _i679;
 import 'package:ecommerce_clean_architecture/core/services/local_database_service/shared_prefs_service.dart'
     as _i342;
+import 'package:ecommerce_clean_architecture/core/services/payment_service/payment_service.dart'
+    as _i459;
+import 'package:ecommerce_clean_architecture/core/services/payment_service/stripe_service.dart'
+    as _i299;
 import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/flutter_secure_service.dart'
     as _i527;
 import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/flutter_secure_storage_service.dart'
@@ -131,6 +135,7 @@ import 'package:ecommerce_clean_architecture/features/splash/presentation/cubits
     as _i397;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
+import 'package:flutter_stripe/flutter_stripe.dart' as _i64;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
@@ -179,6 +184,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i241.AuthRepositoryImplementation(
         authService: gh<_i285.AuthService>(),
       ),
+    );
+    gh.lazySingleton<_i459.PaymentService>(
+      () => _i299.StripeService(stripe: gh<_i64.Stripe>()),
     );
     gh.lazySingleton<_i15.DatabaseService>(
       () => _i457.FirestoreService(firestore: gh<_i974.FirebaseFirestore>()),
