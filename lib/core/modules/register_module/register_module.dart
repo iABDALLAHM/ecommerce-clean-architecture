@@ -11,6 +11,7 @@ abstract class RegisterModule {
   @preResolve
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
+
   @singleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
 
