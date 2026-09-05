@@ -25,7 +25,7 @@ class StripeService implements PaymentService {
       final response = await http.post(
         Uri.parse("https://api.stripe.com/v1/payment_intents"),
         headers: {
-          "Authorization": "Bearer $kSecretKey",
+          "Authorization": "Bearer sk_test_51TYSTBFtj5mILhHkSk6mEgJoYekKNOluCu1YCXBEVie7kQcCXuCcfYQ7vXKYqZ7rqGFHX2JGw9ZIwWKpPWEftWhm00ZMvWjPVg",
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: {"amount": amount.toString(), "currency": currency},
