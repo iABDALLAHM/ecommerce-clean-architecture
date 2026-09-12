@@ -6,12 +6,11 @@ import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/address_section/cubits/address_validation_cubit/address_validation_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/address_cubit/address_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/payment_details_cubit/payment_details_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/checkout_payment_cubit/checkout_payment_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/checkout_payment_cubit/checkout_payment_state.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/function/change_button_text.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/widgets/check_out_steps.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/widgets/check_out_page_view.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/cubits/payment_validation_cubit/payment_validation_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/profile/domain/entities/card_entity/card_entity.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,24 +60,43 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
           child: SizedBox(
             width: double.infinity,
             height: 54,
-            child: CustomButton(
-              text: changeButtonText(currentPage: currentPage),
-              onPressed: () {
-                if (currentPage == 0) {
-                  _handleShippingSectionValidation(context: context);
-                } else if (currentPage == 1) {
-                  _handleAddressSection(context);
-                } else if (currentPage == 2) {
-                  _handlePaymentSection(context);
-                } else if (currentPage == 3) {
+            child: BlocListener<CheckoutPaymentCubit, CheckoutPaymentState>(
+              listener: (context, state) {
+                if (state is SuccessCheckoutPaymentState) {
                   _triggerAddOrderCubit(context);
+                } else if (state is FailureCheckoutPaymentState) {
+                  showSnackBar(context, message: "payment faild");
                 }
               },
+              child: CustomButton(
+                text: changeButtonText(currentPage: currentPage),
+                onPressed: () {
+                  if (currentPage == 0) {
+                    _handleShippingSectionValidation(context: context);
+                  } else if (currentPage == 1) {
+                    _handleAddressSection(context);
+                  } else if (currentPage == 2) {
+                    _handlePaymentSection(context);
+                  } else if (currentPage == 3) {
+                    _triggerCheckOutPayment(context);
+                  }
+                },
+              ),
             ),
           ),
         ),
         const SizedBox(height: 100),
       ],
+    );
+  }
+
+  void _triggerCheckOutPayment(BuildContext context) {
+    String paymentMethod =
+        context.read<CheckOutCubit>().orderEntity.paymentMethod ?? "";
+    var amount = context.read<CheckOutCubit>().orderEntity.totalPrice;
+    context.read<CheckoutPaymentCubit>().pay(
+      paymentMethod: paymentMethod,
+      amount: (amount).toDouble() * 100,
     );
   }
 
@@ -116,26 +134,39 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     }
   }
 
+  // void _handlePaymentSection(BuildContext context) {
+  //   var paymentValidationCubit = context
+  //       .read<PaymentValidationCubit>()
+  //       .validate();
+
+  //   CardEntity cardEntity = context
+  //       .read<CheckOutCubit>()
+  //       .orderEntity
+  //       .cardEntity;
+
+  //   if (paymentValidationCubit) {
+  //     pageController.nextPage(
+  //       duration: Duration(milliseconds: 300),
+  //       curve: Curves.easeIn,
+  //     );
+  //   }
+  //   if (cardEntity.markAsDefault) {
+  //     context.read<PaymentDetailsCubit>().savePaymentDetails(
+  //       cardEntity: cardEntity,
+  //     );
+  //   }
+  // }
+
   void _handlePaymentSection(BuildContext context) {
-    var paymentValidationCubit = context
-        .read<PaymentValidationCubit>()
-        .validate();
-
-    CardEntity cardEntity = context
-        .read<CheckOutCubit>()
-        .orderEntity
-        .cardEntity;
-
-    if (paymentValidationCubit) {
+    String? paymentMethod =
+        context.read<CheckOutCubit>().orderEntity.paymentMethod ?? "";
+    if (paymentMethod.isNotEmpty) {
       pageController.nextPage(
         duration: Duration(milliseconds: 300),
         curve: Curves.easeIn,
       );
-    }
-    if (cardEntity.markAsDefault) {
-      context.read<PaymentDetailsCubit>().savePaymentDetails(
-        cardEntity: cardEntity,
-      );
+    } else {
+      showSnackBar(context, message: "Please Choose Payment Method");
     }
   }
 

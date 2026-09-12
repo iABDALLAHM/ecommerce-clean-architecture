@@ -30,8 +30,6 @@ import 'package:ecommerce_clean_architecture/core/services/local_database_servic
     as _i679;
 import 'package:ecommerce_clean_architecture/core/services/local_database_service/shared_prefs_service.dart'
     as _i342;
-import 'package:ecommerce_clean_architecture/core/services/payment_service/payment_service.dart'
-    as _i459;
 import 'package:ecommerce_clean_architecture/core/services/payment_service/stripe_service.dart'
     as _i299;
 import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/flutter_secure_service.dart'
@@ -59,8 +57,12 @@ import 'package:ecommerce_clean_architecture/features/auth/presentation/register
     as _i447;
 import 'package:ecommerce_clean_architecture/features/auth/presentation/reset_password/cubits/confirm_reset_password_cubit/confirm_password_cubit.dart'
     as _i931;
+import 'package:ecommerce_clean_architecture/features/checkout/data/repositories/checkout_payment_repository/checkout_payment_repository_implementation.dart'
+    as _i1018;
 import 'package:ecommerce_clean_architecture/features/checkout/data/repositories/order_repository/order_repository_implementation.dart'
     as _i43;
+import 'package:ecommerce_clean_architecture/features/checkout/domain/repositories/checkout_payment_repository/checkout_payment_repository.dart'
+    as _i508;
 import 'package:ecommerce_clean_architecture/features/checkout/domain/repositories/order_repository/orders_repository.dart'
     as _i652;
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/add_order_cubit/add_order_cubit.dart'
@@ -69,6 +71,8 @@ import 'package:ecommerce_clean_architecture/features/checkout/presentation/core
     as _i223;
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart'
     as _i196;
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/checkout_payment_cubit/checkout_payment_cubit.dart'
+    as _i551;
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/payment_details_cubit/payment_details_cubit.dart'
     as _i552;
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart'
@@ -155,6 +159,7 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.singleton<_i59.FirebaseAuth>(() => registerModule.firebaseAuth);
     gh.singleton<_i974.FirebaseFirestore>(() => registerModule.firestore);
+    gh.singleton<_i64.Stripe>(() => registerModule.stripe);
     gh.singleton<_i558.FlutterSecureStorage>(
       () => registerModule.secureStorage,
     );
@@ -175,6 +180,9 @@ extension GetItInjectableX on _i174.GetIt {
         sharedPreferences: gh<_i460.SharedPreferences>(),
       ),
     );
+    gh.lazySingleton<_i299.StripeService>(
+      () => _i299.StripeService(stripe: gh<_i64.Stripe>()),
+    );
     gh.lazySingleton<_i993.LocalStorageRepository>(
       () => _i32.LocalStorageRepositoryImplementation(
         localStorageService: gh<_i679.LocalStorageService>(),
@@ -184,9 +192,6 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i241.AuthRepositoryImplementation(
         authService: gh<_i285.AuthService>(),
       ),
-    );
-    gh.lazySingleton<_i459.PaymentService>(
-      () => _i299.StripeService(stripe: gh<_i64.Stripe>()),
     );
     gh.lazySingleton<_i15.DatabaseService>(
       () => _i457.FirestoreService(firestore: gh<_i974.FirebaseFirestore>()),
@@ -278,6 +283,11 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i526.GetUserDataCubit(
         userRepository: gh<_i285.UserRepository>(),
         secureStorageRepository: gh<_i562.SecureStorageRepository>(),
+      ),
+    );
+    gh.lazySingleton<_i508.CheckoutPaymentRepository>(
+      () => _i1018.CheckoutPaymentRepositoryImplementation(
+        stripeService: gh<_i299.StripeService>(),
       ),
     );
     gh.lazySingleton<_i120.ProductsRepository>(
@@ -375,6 +385,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i821.UpdateUserNameCubit>(
       () =>
           _i821.UpdateUserNameCubit(userRepository: gh<_i285.UserRepository>()),
+    );
+    gh.factory<_i551.CheckoutPaymentCubit>(
+      () => _i551.CheckoutPaymentCubit(
+        checkoutPaymentRepository: gh<_i508.CheckoutPaymentRepository>(),
+      ),
     );
     gh.factory<_i213.VerifyChangeEmailCubit>(
       () => _i213.VerifyChangeEmailCubit(

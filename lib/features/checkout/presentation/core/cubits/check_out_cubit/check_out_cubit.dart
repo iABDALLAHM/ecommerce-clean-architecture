@@ -38,6 +38,11 @@ class CheckOutCubit extends Cubit<CheckOutStates> {
     emit(CheckOutLoadedState(orderEntity: orderEntity));
   }
 
+  void updatePaymentOption({required String method}) {
+    orderEntity.paymentMethod = method;
+    emit(CheckOutLoadedState(orderEntity: orderEntity));
+  }
+
   void updatePaymentCardDetails({required CardEntity cardEntity}) async {
     var userHolderId = await _secureStorageRepository.getData(key: keyUserId);
     orderEntity.cardEntity = cardEntity;

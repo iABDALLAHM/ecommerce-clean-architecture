@@ -13,6 +13,7 @@ class OrderEntity {
   final String orderNumber;
   final OrderStatusEntity orderStatusEntity;
   CardEntity cardEntity;
+  String? paymentMethod;
 
   OrderEntity({
     required this.cartEntity,
@@ -24,6 +25,7 @@ class OrderEntity {
     required this.orderStatusEntity,
     required this.totalPrice,
     required this.cardEntity,
+    this.paymentMethod,
   });
 
   @override

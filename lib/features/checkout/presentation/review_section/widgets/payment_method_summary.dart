@@ -12,13 +12,17 @@ class PaymentMethodSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cardEntity = context.watch<CheckOutCubit>().orderEntity.cardEntity;
+    var paymentMethod = context
+        .watch<CheckOutCubit>()
+        .orderEntity
+        .paymentMethod;
     var colorScheme = Theme.of(context).colorScheme;
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 9),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
-        color: const Color.fromARGB(56, 158, 158, 158),
+        color: colorScheme.tertiaryFixedDim,
       ),
       child: Column(
         children: [
@@ -43,11 +47,29 @@ class PaymentMethodSummary extends StatelessWidget {
 
           const SizedBox(height: 13),
 
+          // Row(
+          //   children: [
+          //     Spacer(),
+          //     Text(
+          //       "**** **** **** ${cardEntity.cardNumber!.split("")[0]}${cardEntity.cardNumber!.split("")[1]}${cardEntity.cardNumber!.split("")[2]}${cardEntity.cardNumber!.split("")[3]}",
+          //     ),
+          //     const SizedBox(width: 30),
+          //     Image.network(
+          //       errorBuilder: (context, error, stackTrace) {
+          //         return Icon(Icons.wallet);
+          //       },
+          //       kMasterCardIcon,
+          //       width: 53,
+          //       height: 34,
+          //     ),
+          //   ],
+          // ),
           Row(
             children: [
               Spacer(),
               Text(
-                "**** **** **** ${cardEntity.cardNumber!.split("")[0]}${cardEntity.cardNumber!.split("")[1]}${cardEntity.cardNumber!.split("")[2]}${cardEntity.cardNumber!.split("")[3]}",
+                "PayedWith: $paymentMethod",
+                style: AppStyles.textStyle16Regular,
               ),
               const SizedBox(width: 30),
               Image.network(

@@ -1,17 +1,16 @@
 import 'dart:convert';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
-import 'package:ecommerce_clean_architecture/core/services/payment_service/payment_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
-@LazySingleton(as: PaymentService)
-class StripeService implements PaymentService {
+@LazySingleton()
+class StripeService {
   StripeService({required Stripe stripe}) : _stripe = stripe;
   final Stripe _stripe;
-  @override
+
   Future<void> init() async {
     Stripe.publishableKey = kPublishableKey;
     await _stripe.applySettings();
@@ -25,7 +24,8 @@ class StripeService implements PaymentService {
       final response = await http.post(
         Uri.parse("https://api.stripe.com/v1/payment_intents"),
         headers: {
-          "Authorization": "Bearer sk_test_51TYSTBFtj5mILhHkSk6mEgJoYekKNOluCu1YCXBEVie7kQcCXuCcfYQ7vXKYqZ7rqGFHX2JGw9ZIwWKpPWEftWhm00ZMvWjPVg",
+          "Authorization":
+              "Bearer sk_test_51TYSTBFtj5mILhHkSk6mEgJoYekKNOluCu1YCXBEVie7kQcCXuCcfYQ7vXKYqZ7rqGFHX2JGw9ZIwWKpPWEftWhm00ZMvWjPVg",
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: {"amount": amount.toString(), "currency": currency},
@@ -42,14 +42,15 @@ class StripeService implements PaymentService {
     }
   }
 
-  @override
-  Future<void> pay({required int amount, required String currency}) async {
+  Future<void> pay({required double amount, required String currency}) async {
     try {
       await init();
-      final clientSecret = await createPaymentIntent(
-        amount: amount,
-        currency: currency,
-      );
+      String clientSecret =
+          await createPaymentIntent(
+            amount: amount.toInt(),
+            currency: currency,
+          ) ??
+          "";
       await _stripe.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
           paymentIntentClientSecret: clientSecret,
@@ -58,10 +59,16 @@ class StripeService implements PaymentService {
         ),
       );
       await _stripe.presentPaymentSheet();
+
+      final paymentIntent = await _stripe.retrievePaymentIntent(clientSecret);
+
+      if (paymentIntent.status != PaymentIntentsStatus.Succeeded) {
+        throw CustomException(exceptionMeassge: "الدفع لم يكتمل");
+      }
     } on StripeException catch (e) {
-      throw CustomException(
-        exceptionMeassge: "Stripe SDK Error: ${e.error.localizedMessage}",
-      );
+      if (e.error.code == FailureCode.Canceled) {
+        throw CustomException(exceptionMeassge: "canceled");
+      }
     } catch (e) {
       throw CustomException(exceptionMeassge: "Payment Error: $e");
     }
