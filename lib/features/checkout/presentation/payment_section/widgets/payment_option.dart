@@ -1,14 +1,13 @@
-import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class PaymentOption extends StatelessWidget {
   const PaymentOption({
     super.key,
-    required this.title,
+    required this.paymentMethodImage,
     required this.isSelected,
     required this.onTap,
   });
-  final String title;
+  final String paymentMethodImage;
   final bool isSelected;
   final Function() onTap;
   @override
@@ -28,7 +27,7 @@ class PaymentOption extends StatelessWidget {
         ),
         width: 70,
         height: 50,
-        child: Center(child: Text(title, style: AppStyles.textStyle16SemiBold)),
+        child: Center(child: Image.asset(paymentMethodImage)),
       ),
     );
   }

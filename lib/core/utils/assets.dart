@@ -56,6 +56,9 @@ class Assets {
   static const String imagesEmptySearchIcon =
       "assets/images/emptySearchIcon.svg";
 
+  static const String stripePaymentMethod =
+      "assets/images/stripePaymentMethod.png";
+
   static const String imagesFacebookSocialIcon =
       "assets/images/facebookSocialIcon.svg";
 

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
@@ -67,10 +68,15 @@ class PaymentMethodSummary extends StatelessWidget {
           Row(
             children: [
               Spacer(),
-              Text(
-                "PayedWith: $paymentMethod",
-                style: AppStyles.textStyle16Regular,
+              Image(
+                image: AssetImage(generateImage(paymentMethod)),
+                width: 50,
+                height: 50,
               ),
+              // Text(
+              //   "PayedWith: $paymentMethod",
+              //   style: AppStyles.textStyle16Regular,
+              // ),
               const SizedBox(width: 30),
               Image.network(
                 errorBuilder: (context, error, stackTrace) {
@@ -85,5 +91,12 @@ class PaymentMethodSummary extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String generateImage(String? paymentMethod) {
+    if (paymentMethod == "Stripe") {
+      return Assets.stripePaymentMethod;
+    }
+    return "";
   }
 }

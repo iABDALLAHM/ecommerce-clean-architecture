@@ -180,7 +180,7 @@ class _PaymentSectionState extends State<PaymentSection> {
               children: [
                 const SizedBox(width: 16),
                 PaymentOption(
-                  title: "Stripe",
+                  paymentMethodImage: Assets.stripePaymentMethod,
                   isSelected: currentIndex == 2,
                   onTap: () {
                     currentIndex = 2;
