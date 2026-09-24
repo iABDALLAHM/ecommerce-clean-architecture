@@ -67,6 +67,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     ),
                     const SizedBox(height: 16),
                     CustomPasswordField(
+                      hintText:  LocaleKeys.auth_signUp_passwordTextField.tr(),
                       onSaved: (value) {
                         password = value ?? "";
                       },

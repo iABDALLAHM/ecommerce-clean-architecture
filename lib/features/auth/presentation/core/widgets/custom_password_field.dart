@@ -1,5 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class CustomPasswordField extends StatefulWidget {
@@ -33,7 +31,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
               ? Icon(Icons.visibility_off)
               : Icon(Icons.remove_red_eye),
         ),
-        hintText: LocaleKeys.auth_loginPage_passwordTextField.tr(),
+        hintText: widget.hintText,
       ),
     );
   }

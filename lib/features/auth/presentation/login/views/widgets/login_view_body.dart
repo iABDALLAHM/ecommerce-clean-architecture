@@ -72,6 +72,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     ),
                     const SizedBox(height: 16),
                     CustomPasswordField(
+                      hintText:  LocaleKeys.auth_loginPage_passwordTextField.tr(),
                       onSaved: (value) {
                         password = value ?? "";
                       },
