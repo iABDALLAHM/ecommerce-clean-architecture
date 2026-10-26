@@ -20,11 +20,8 @@ class CheckoutPaymentRepositoryImplementation
     required String currency,
   }) async {
     try {
-      if (paymentMethod == "Stripe") {
-        await stripeService.pay(amount: amount, currency: currency);
-        return Right(null);
-      }
-      return Left(ServerFailure(message: "وسيلة الدفع غير مدعومة"));
+      await stripeService.pay(amount: amount, currency: currency);
+      return Right(null);
     } on CustomException catch (e) {
       return Left(ServerFailure(message: e.exceptionMeassge));
     }

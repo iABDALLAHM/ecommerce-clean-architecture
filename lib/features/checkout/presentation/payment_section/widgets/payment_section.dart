@@ -174,16 +174,18 @@ class _PaymentSectionState extends State<PaymentSection> {
               LocaleKeys.checkOut_paymentOptionMainText.tr(),
               style: AppStyles.textStyle13Bold,
             ),
+
             const SizedBox(height: 13),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(width: 16),
                 PaymentOption(
                   paymentMethodImage: Assets.stripePaymentMethod,
-                  isSelected: currentIndex == 2,
+                  isSelected: currentIndex == 1,
                   onTap: () {
-                    currentIndex = 2;
+                    currentIndex = 1;
                     checkOutCubit.updatePaymentOption(method: "Stripe");
                     setState(() {});
                   },
@@ -191,6 +193,7 @@ class _PaymentSectionState extends State<PaymentSection> {
                 const SizedBox(width: 16),
               ],
             ),
+
           ],
         ),
       ),

@@ -76,7 +76,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
                   } else if (currentPage == 1) {
                     _handleAddressSection(context);
                   } else if (currentPage == 2) {
-                    _handlePaymentSection(context);
+                    _handlePaymentOptionsSection(context);
                   } else if (currentPage == 3) {
                     _triggerCheckOutPayment(context);
                   }
@@ -157,7 +157,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   //   }
   // }
 
-  void _handlePaymentSection(BuildContext context) {
+  void _handlePaymentOptionsSection(BuildContext context) {
     String? paymentMethod =
         context.read<CheckOutCubit>().orderEntity.paymentMethod ?? "";
     if (paymentMethod.isNotEmpty) {
@@ -184,3 +184,6 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     }
   }
 }
+
+
+

@@ -13,9 +13,10 @@ class PaymentValidationCubit extends Cubit<PaymentValidationState> {
       formKey.currentState!.save();
       emit(PaymentValidationDoneState());
       return true;
-    }
+    } else {
     autovalidateMode = AutovalidateMode.always;
     emit(PaymentValidationFailureState());
     return false;
+  }
   }
 }
