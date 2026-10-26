@@ -20,9 +20,9 @@ class ProfileBodySections extends StatefulWidget {
 }
 
 class _ProfileBodySectionsState extends State<ProfileBodySections> {
-  String currentLang = "";
   @override
   Widget build(BuildContext context) {
+    final currentLang = context.locale.languageCode;
     var colorScheme = Theme.of(context).colorScheme;
     bool isLight =
         context.watch<ChangeThemeCubit>().state.currentTheme == ThemeMode.dark;
@@ -79,12 +79,7 @@ class _ProfileBodySectionsState extends State<ProfileBodySections> {
               backgroundColor: colorScheme.surface,
               context: context,
               builder: (context) {
-                return ChangeLanguageBottomSheet(
-                  onChange: (String p1) {
-                    currentLang = p1;
-                    setState(() {});
-                  },
-                );
+                return ChangeLanguageBottomSheet();
               },
             );
           },

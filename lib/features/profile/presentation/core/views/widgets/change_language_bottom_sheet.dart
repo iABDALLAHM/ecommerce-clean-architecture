@@ -3,20 +3,12 @@ import 'package:ecommerce_clean_architecture/features/profile/presentation/core/
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class ChangeLanguageBottomSheet extends StatefulWidget {
-  const ChangeLanguageBottomSheet({super.key, required this.onChange});
-  final Function(String) onChange;
-  @override
-  State<ChangeLanguageBottomSheet> createState() =>
-      _ChangeLanguageBottomSheetState();
-}
-
-class _ChangeLanguageBottomSheetState extends State<ChangeLanguageBottomSheet> {
-  String selectedLanguage = "";
-
+class ChangeLanguageBottomSheet extends StatelessWidget {
+  const ChangeLanguageBottomSheet({super.key});
   @override
   Widget build(BuildContext context) {
     var currentLanguage = context.locale.languageCode;
+
     var colorScheme = Theme.of(context).colorScheme;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16),
@@ -27,32 +19,24 @@ class _ChangeLanguageBottomSheetState extends State<ChangeLanguageBottomSheet> {
             const SizedBox(height: 30),
 
             SelectedLanguageWidget(
-              language: "English ",
+              language: "English",
               isSelected: currentLanguage == "en",
-              onTap: () {
-                setState(() {
-                  selectedLanguage = "en";
-                  widget.onChange(selectedLanguage);
-                  if (selectedLanguage != currentLanguage) {
-                    addNewLang(context);
-                  }
-                });
-              },
+              onTap: () => _handleChangeLang(
+                context: context,
+                newLang: "en",
+                currentLang: currentLanguage,
+              ),
             ),
 
             const SizedBox(height: 10),
             SelectedLanguageWidget(
-              language: "Arabic ",
+              language: "Arabic",
               isSelected: currentLanguage == "ar",
-              onTap: () {
-                setState(() {
-                  selectedLanguage = "ar";
-                  widget.onChange(selectedLanguage);
-                  if (selectedLanguage != currentLanguage) {
-                    addNewLang(context);
-                  }
-                });
-              },
+              onTap: () => _handleChangeLang(
+                context: context,
+                newLang: "ar",
+                currentLang: currentLanguage,
+              ),
             ),
 
             const SizedBox(height: 50),
@@ -62,8 +46,14 @@ class _ChangeLanguageBottomSheetState extends State<ChangeLanguageBottomSheet> {
     );
   }
 
-  void addNewLang(BuildContext context) {
-    context.setLocale(Locale(selectedLanguage));
+  void _handleChangeLang({
+    required String newLang,
+    required BuildContext context,
+    required String currentLang,
+  }) {
+    if (newLang != currentLang) {
+      context.setLocale(Locale(newLang));
+    }
     context.pop();
   }
 }

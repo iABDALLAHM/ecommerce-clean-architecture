@@ -12,7 +12,7 @@ class ProfileBodyAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          LocaleKeys.profile_profilePageAppBar.tr(),
+          LocaleKeys.profile_profilePageAppBar.tr(context: context),
           style: AppStyles.textStyle19Bold,
         ),
       ],
