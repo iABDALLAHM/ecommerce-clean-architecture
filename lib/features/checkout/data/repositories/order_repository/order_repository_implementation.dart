@@ -42,7 +42,7 @@ class OrderRepositoryImplementation implements OrdersRepository {
         .getQueryStreamData(
           path: BackendEndPoints.ordersCollection,
           query: QueryParams(
-            condition: QueryCondition(field: "uId", isEqualTo: userId),
+            conditions: [QueryCondition(field: "uId", isEqualTo: userId)],
           ),
         )
         .map((docsList) {

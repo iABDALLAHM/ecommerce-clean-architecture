@@ -94,10 +94,9 @@ class ProductsRepositoryImplementation implements ProductsRepository {
       var data = await databaseService.getQueryData(
         path: BackendEndPoints.productsCollection,
         query: QueryParams(
-          condition: QueryCondition(
-            field: "productName",
-            isEqualTo: searchName,
-          ),
+          conditions: [
+            QueryCondition(field: "productName", isEqualTo: searchName),
+          ],
         ),
       );
 
@@ -185,6 +184,28 @@ class ProductsRepositoryImplementation implements ProductsRepository {
         sortedByNameProducts.add(ProductModel.fromJson(product).toEntity());
       }
       return Right(sortedByNameProducts);
+    } on CustomException catch (e) {
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getFilterdProducts({
+    required List<QueryCondition> conditions,
+  }) async {
+    try {
+      var result = await databaseService.getQueryData(
+        path: BackendEndPoints.productsCollection,
+        query: QueryParams(conditions: conditions),
+      );
+
+      List<ProductEntity> sortedByNameProducts = [];
+      for (var product in result) {
+        sortedByNameProducts.add(ProductModel.fromJson(product).toEntity());
+      }
+
+      return Right(sortedByNameProducts);
+
     } on CustomException catch (e) {
       return Left(ServerFailure(message: e.exceptionMeassge));
     }

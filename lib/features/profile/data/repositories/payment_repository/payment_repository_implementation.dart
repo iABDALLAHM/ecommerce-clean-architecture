@@ -38,7 +38,7 @@ class PaymentRepositoryImplementation implements PaymentRepository {
       var result = await _databaseService.getQueryData(
         path: BackendEndPoints.cardsCollection,
         query: QueryParams(
-          condition: QueryCondition(field: "cardHolderId", isEqualTo: uId),
+          conditions: [QueryCondition(field: "cardHolderId", isEqualTo: uId)],
         ),
       );
 

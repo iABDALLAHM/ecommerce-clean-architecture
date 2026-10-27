@@ -116,19 +116,39 @@ class FirestoreService implements DatabaseService {
   }) async {
     try {
       Query<Map<String, dynamic>> data = firestore.collection(path);
+      if (query.conditions != null) {
+        for (var condition in query.conditions!) {
 
-      var condition = query.condition;
-      if (condition != null) {
-        data = data.where(condition.field, isEqualTo: condition.isEqualTo);
-      }
-      if (condition != null) {
-        data = data.where(condition.field, whereIn: condition.whereIn);
-      }
-      if (condition != null) {
-        data = data.where(
-          condition.field,
-          arrayContains: condition.arrayContains,
-        );
+          if (condition.isEqualTo != null) {
+            data = data.where(condition.field, isEqualTo: condition.isEqualTo);
+          }
+
+          if (condition.isLessThan != null) {
+            data = data.where(
+              condition.field,
+              isLessThan: condition.isLessThan,
+            );
+          }
+
+          if (condition.isGreaterThan != null) {
+            data = data.where(
+              condition.field,
+              isGreaterThan: condition.isGreaterThan,
+            );
+          }
+
+          if (condition.whereIn != null) {
+            data = data.where(condition.field, whereIn: condition.whereIn);
+          }
+
+          if (condition.arrayContains != null) {
+            data = data.where(
+              condition.field,
+              arrayContains: condition.arrayContains,
+            );
+          }
+
+        }
       }
 
       var order = query.order;
@@ -210,18 +230,23 @@ class FirestoreService implements DatabaseService {
     try {
       Query<Map<String, dynamic>> data = firestore.collection(path);
 
-      var condition = query.condition;
-      if (condition != null) {
-        data = data.where(condition.field, isEqualTo: condition.isEqualTo);
-      }
-      if (condition != null) {
-        data = data.where(condition.field, whereIn: condition.whereIn);
-      }
-      if (condition != null) {
-        data = data.where(
-          condition.field,
-          arrayContains: condition.arrayContains,
-        );
+      if (query.conditions != null) {
+        for (var condition in query.conditions!) {
+          if (condition.isEqualTo != null) {
+            data = data.where(condition.field, isEqualTo: condition.isEqualTo);
+          }
+
+          if (condition.whereIn != null) {
+            data = data.where(condition.field, whereIn: condition.whereIn);
+          }
+
+          if (condition.arrayContains != null) {
+            data = data.where(
+              condition.field,
+              arrayContains: condition.arrayContains,
+            );
+          }
+        }
       }
 
       var order = query.order;

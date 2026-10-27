@@ -1,13 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/products_cubit/products_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/products/presentation/enums/radio_enum_choices/radio_enum_choices.dart';
-import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/get_filter_products_bloc_listener.dart';
-import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/radio_choices.dart';
-import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
+import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/filter_by_widget.dart';
+import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/sort_by_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FilterBottomSheet extends StatefulWidget {
   const FilterBottomSheet({super.key});
@@ -17,67 +10,56 @@ class FilterBottomSheet extends StatefulWidget {
 }
 
 class _FilterBottomSheetState extends State<FilterBottomSheet> {
-  RadioChoicesEnum? radioChoicesEnumValue = RadioChoicesEnum.alphabetical;
+  int currentWidget = -1;
 
   @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
-
-    return GetFilterProductsBlocListener(
+    return SingleChildScrollView(
       child: Container(
-        decoration: BoxDecoration(color: colorScheme.surface),
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 25),
-                Center(
-                  child: Container(
-                    width: 60,
-                    height: 4,
-                    decoration: BoxDecoration(
-                      color: colorScheme.onSurface,
-                      borderRadius: BorderRadius.circular(10),
+        width: double.infinity,
+        padding: EdgeInsets.only(left: 10),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: currentWidget == 1
+                          ? colorScheme.secondary
+                          : colorScheme.primary,
                     ),
-                  ),
-                ),
-                const SizedBox(height: 26),
-                Text(
-                  LocaleKeys.home_sortBy.tr(),
-                  style: AppStyles.textStyle19Bold,
-                ),
-                const SizedBox(height: 11),
-                RadioChoices(
-                  onChange: (value) {
-                    radioChoicesEnumValue = value;
-                    setState(() {});
-                  },
-                ),
-                SizedBox(
-                  height: 50,
-                  width: double.infinity,
-                  child: CustomButton(
-                    text: LocaleKeys.home_sort.tr(),
+                    child: Text("Sort By:"),
                     onPressed: () {
-                      if (radioChoicesEnumValue ==
-                          RadioChoicesEnum.fromLowToHigh) {
-                        context.read<ProductsCubit>().getLowPriceProducts();
-                      } else if (radioChoicesEnumValue ==
-                          RadioChoicesEnum.fromHighToLow) {
-                        context.read<ProductsCubit>().getHighPriceProducts();
-                      } else if (radioChoicesEnumValue ==
-                          RadioChoicesEnum.alphabetical) {
-                        context.read<ProductsCubit>().getProductsSortedByName();
-                      }
+                      currentWidget = 1;
+                      setState(() {});
                     },
                   ),
-                ),
-                const SizedBox(height: 52),
-              ],
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: currentWidget == 2
+                          ? colorScheme.secondary
+                          : colorScheme.primary,
+                    ),
+
+                    child: Text("Filter By:"),
+                    onPressed: () {
+                      currentWidget = 2;
+                      setState(() {});
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                ],
+              ),
             ),
-          ),
+            if (currentWidget == 1) Expanded(flex: 2, child: SortByWidget()),
+
+            if (currentWidget == 2) Expanded(flex: 2, child: FilterByWidget()),
+          ],
         ),
       ),
     );
