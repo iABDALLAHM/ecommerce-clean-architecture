@@ -29,6 +29,8 @@ class SearchSuccessWidget extends StatelessWidget {
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               childAspectRatio: 170 / 230,
               crossAxisCount: 2,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
             ),
             itemCount: products.length,
             shrinkWrap: true,
