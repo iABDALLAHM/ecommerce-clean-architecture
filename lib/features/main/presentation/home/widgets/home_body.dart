@@ -35,7 +35,6 @@ class _HomeBodyState extends State<HomeBody> {
     context.read<ProductsCubit>().getProducts();
     context.read<GetNotificationsCubit>().getNotification();
     context.read<GetFeaturedProductCubit>().getFeaturedProducts();
-    log("the oob code is in Home Body ${widget.oobCode}");
     if (widget.oobCode.isNotEmpty) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Future.delayed(const Duration(milliseconds: 300), () {
@@ -50,7 +49,7 @@ class _HomeBodyState extends State<HomeBody> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: HomeBodyMultiBlocListenr(
-        // ده انا عايز احطه في مكان عالي شوية عشان يبقى اوضح من كدة !!!!!!!!!!!
+        // ده انا عايز احطه في مكان عالي شوية عشان يبقى اوضح من كدة !
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(

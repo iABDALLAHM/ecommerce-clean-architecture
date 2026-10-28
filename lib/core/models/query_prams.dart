@@ -2,13 +2,15 @@ class QueryParams {
   final List<QueryCondition>? conditions;
   final QueryOrder? order;
 
-  QueryParams({ this.conditions,  this.order});
+  QueryParams({this.conditions, this.order});
 }
 
 class QueryCondition {
   final String field;
   final dynamic isEqualTo;
   final dynamic arrayContains;
+  final dynamic isGreaterThanOrEqualTo;
+  final dynamic isLessThanOrEqualTo;
   final dynamic isLessThan;
   final dynamic isGreaterThan;
   final dynamic whereIn;
@@ -18,7 +20,10 @@ class QueryCondition {
     this.isEqualTo,
     this.arrayContains,
     this.whereIn,
-    this.isLessThan, this.isGreaterThan,
+    this.isLessThan,
+    this.isGreaterThan,
+    this.isGreaterThanOrEqualTo,
+    this.isLessThanOrEqualTo,
   });
 }
 

@@ -117,7 +117,20 @@ class FirestoreService implements DatabaseService {
     try {
       Query<Map<String, dynamic>> data = firestore.collection(path);
       if (query.conditions != null) {
+
         for (var condition in query.conditions!) {
+          if (condition.isGreaterThanOrEqualTo != null &&
+              condition.isLessThanOrEqualTo != null) {
+            data = data
+                .where(
+                  condition.field,
+                  isGreaterThanOrEqualTo: condition.isGreaterThanOrEqualTo,
+                )
+                .where(
+                  condition.field,
+                  isLessThanOrEqualTo: condition.isLessThanOrEqualTo,
+                );
+          }
 
           if (condition.isEqualTo != null) {
             data = data.where(condition.field, isEqualTo: condition.isEqualTo);
@@ -147,7 +160,6 @@ class FirestoreService implements DatabaseService {
               arrayContains: condition.arrayContains,
             );
           }
-
         }
       }
 

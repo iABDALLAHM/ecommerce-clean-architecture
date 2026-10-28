@@ -95,7 +95,11 @@ class ProductsRepositoryImplementation implements ProductsRepository {
         path: BackendEndPoints.productsCollection,
         query: QueryParams(
           conditions: [
-            QueryCondition(field: "productName", isEqualTo: searchName),
+            QueryCondition(
+              field: "productName",
+              isGreaterThanOrEqualTo: searchName,
+              isLessThanOrEqualTo: '$searchName\uf8ff',
+            ),
           ],
         ),
       );
@@ -205,7 +209,6 @@ class ProductsRepositoryImplementation implements ProductsRepository {
       }
 
       return Right(sortedByNameProducts);
-
     } on CustomException catch (e) {
       return Left(ServerFailure(message: e.exceptionMeassge));
     }

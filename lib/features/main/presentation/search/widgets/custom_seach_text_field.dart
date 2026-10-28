@@ -6,7 +6,6 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/search/c
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter_svg/svg.dart';
 
 class CustomSearchTextField extends StatelessWidget {
