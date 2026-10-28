@@ -29,56 +29,41 @@ class _SortByWidgetState extends State<SortByWidget> {
           bottom: MediaQuery.of(context).viewInsets.bottom,
         ),
         decoration: BoxDecoration(color: colorScheme.surface),
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 25),
-                Container(
-                  width: 60,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: colorScheme.onSurface,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                const SizedBox(height: 26),
-                Text(
-                  LocaleKeys.home_sortBy.tr(),
-                  style: AppStyles.textStyle19Bold,
-                ),
-                const SizedBox(height: 11),
-                RadioChoices(
-                  onChange: (value) {
-                    radioChoicesEnumValue = value;
-                    setState(() {});
-                  },
-                ),
-                SizedBox(
-                  height: 50,
-                  width: double.infinity,
-                  child: CustomButton(
-                    text: LocaleKeys.home_sort.tr(),
-                    onPressed: () {
-                      if (radioChoicesEnumValue ==
-                          RadioChoicesEnum.fromLowToHigh) {
-                        context.read<ProductsCubit>().getLowPriceProducts();
-                      } else if (radioChoicesEnumValue ==
-                          RadioChoicesEnum.fromHighToLow) {
-                        context.read<ProductsCubit>().getHighPriceProducts();
-                      } else if (radioChoicesEnumValue ==
-                          RadioChoicesEnum.alphabetical) {
-                        context.read<ProductsCubit>().getProductsSortedByName();
-                      }
-                    },
-                  ),
-                ),
-                const SizedBox(height: 52),
-              ],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 26),
+            Text(LocaleKeys.home_sortBy.tr(), style: AppStyles.textStyle19Bold),
+            const SizedBox(height: 11),
+            RadioChoices(
+              onChange: (value) {
+                radioChoicesEnumValue = value;
+                setState(() {});
+              },
             ),
-          ),
+            const SizedBox(height: 20),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              height: 50,
+              width: double.infinity,
+              child: CustomButton(
+                text: LocaleKeys.home_sort.tr(),
+                onPressed: () {
+                  if (radioChoicesEnumValue == RadioChoicesEnum.fromLowToHigh) {
+                    context.read<ProductsCubit>().getLowPriceProducts();
+                  } else if (radioChoicesEnumValue ==
+                      RadioChoicesEnum.fromHighToLow) {
+                    context.read<ProductsCubit>().getHighPriceProducts();
+                  } else if (radioChoicesEnumValue ==
+                      RadioChoicesEnum.alphabetical) {
+                    context.read<ProductsCubit>().getProductsSortedByName();
+                  }
+                },
+              ),
+            ),
+            const SizedBox(height: 52),
+          ],
         ),
       ),
     );
