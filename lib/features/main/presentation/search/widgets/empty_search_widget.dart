@@ -20,7 +20,7 @@ class EmptySearchWidget extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 90, right: 20, top: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: colorScheme.surface,
+              color: colorScheme.onPrimary,
               boxShadow: [
                 BoxShadow(
                   color: colorScheme.shadow,

@@ -18,9 +18,8 @@ class SearchBodyBlocConsumer extends StatelessWidget {
           return SearchSuccessWidget(products: state.productsList);
         } else if (state is EmptySearchState) {
           return EmptySearchWidget();
-        } else {
-          return RecentSearchWidget();
         }
+        return RecentSearchWidget();
       },
       listener: (context, state) {
         if (state is FailureSearchState) {

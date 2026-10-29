@@ -103,6 +103,8 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/home/cub
     as _i213;
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/cubits/get_notifications_cubit/get_notifications_cubit.dart'
     as _i677;
+import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/save_recent_search_cubit/save_recent_search_sugestions_cubit.dart'
+    as _i547;
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_cubit.dart'
     as _i683;
 import 'package:ecommerce_clean_architecture/features/onboarding/presentation/cubits/onboarding_cubit/onboarding_cubit.dart'
@@ -238,6 +240,11 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i149.GetMyOrdersStreamCubit(
         ordersRepository: gh<_i652.OrdersRepository>(),
         secureStorageRepository: gh<_i562.SecureStorageRepository>(),
+      ),
+    );
+    gh.factory<_i547.SaveRecentSearchSugestionsCubit>(
+      () => _i547.SaveRecentSearchSugestionsCubit(
+        localStorageRepository: gh<_i993.LocalStorageRepository>(),
       ),
     );
     gh.factory<_i956.OnboardingCubit>(

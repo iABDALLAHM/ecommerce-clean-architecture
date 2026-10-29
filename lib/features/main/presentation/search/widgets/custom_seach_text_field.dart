@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/save_recent_search_cubit/save_recent_search_sugestions_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_cubit.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,9 @@ class CustomSearchTextField extends StatelessWidget {
           TextField(
             onSubmitted: (value) {
               context.read<SearchCubit>().searchProducts(searchName: value);
+              context
+                  .read<SaveRecentSearchSugestionsCubit>()
+                  .saveRecentSugestions(recentSugestion: value);
             },
             decoration: InputDecoration(
               fillColor: colorScheme.onPrimary,

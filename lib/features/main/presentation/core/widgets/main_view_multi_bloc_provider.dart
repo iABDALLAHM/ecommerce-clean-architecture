@@ -5,6 +5,7 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/home/cub
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/products_cubit/products_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/verify_change_email_cubit/verify_change_email_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/cubits/get_notifications_cubit/get_notifications_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/save_recent_search_cubit/save_recent_search_sugestions_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,6 +24,9 @@ class MainViewMultiBlocProvider extends StatelessWidget {
         BlocProvider(create: (context) => getIt<GetFeaturedProductCubit>()),
         BlocProvider(create: (context) => getIt<ProductsCubit>()),
         BlocProvider(create: (context) => getIt<SearchCubit>()),
+        BlocProvider(
+          create: (context) => getIt<SaveRecentSearchSugestionsCubit>(),
+        ),
         BlocProvider(create: (context) => getIt<AddFavoriteProductCubit>()),
         BlocProvider(create: (context) => getIt<VerifyChangeEmailCubit>()),
       ],

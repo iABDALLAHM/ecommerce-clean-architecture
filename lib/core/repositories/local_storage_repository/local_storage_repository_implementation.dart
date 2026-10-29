@@ -24,4 +24,18 @@ class LocalStorageRepositoryImplementation implements LocalStorageRepository {
   Future<void> setBoolean({required String key, required bool value}) async {
     await _localStorageService.setBoolean(key: key, value: value);
   }
+
+  @override
+  Future<List<String>> getStringList({required String key}) async {
+    var result = await _localStorageService.getStringList(key: key);
+    return result ?? [];
+  }
+
+  @override
+  Future<void> setStringList({
+    required String key,
+    required List<String> data,
+  }) async {
+    await _localStorageService.setStringList(key: key, data: data);
+  }
 }

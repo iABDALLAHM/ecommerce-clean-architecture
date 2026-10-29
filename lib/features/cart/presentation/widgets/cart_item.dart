@@ -22,22 +22,22 @@ class CartItem extends StatelessWidget {
 
     return BlocListener<CartCubit, CartStates>(
       listenWhen: (previous, current) {
-        if (current is ProductIncreaseState) {
+        if (current is CartUpdatedState) {
           return current.cartItemEntity == cartItemEntity;
-        } else if (current is ProductDecreaseState) {
+        } else if (current is CartUpdatedState) {
           return current.cartItemEntity == cartItemEntity;
         }
         return false;
       },
       listener: (context, state) {
         log("widget build");
-        if (state is ProductIncreaseState) {
+        if (state is CartUpdatedState) {
           showSnackBar(
             context,
             message:
                 "${LocaleKeys.cartCubit_cartItemIncremented.tr()} ${cartItemEntity.productEntity.productName}",
           );
-        } else if (state is ProductDecreaseState) {
+        } else if (state is CartUpdatedState) {
           showSnackBar(
             context,
             message:

@@ -53,6 +53,8 @@ class Assets {
 
   static const String imagesCheckMarkIcon = "assets/images/checkMarkIcon.svg";
 
+  static const String imagesClockTime = "assets/images/clock.svg";
+
   static const String imagesEmptySearchIcon =
       "assets/images/emptySearchIcon.svg";
 

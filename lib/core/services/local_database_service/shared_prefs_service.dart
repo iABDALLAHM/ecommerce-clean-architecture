@@ -22,4 +22,17 @@ class SharedPrefService implements LocalStorageService {
   Future<void> setBoolean({required String key, required bool value}) async {
     await sharedPreferences.setBool(key, value);
   }
+
+  @override
+  Future<List<String>?> getStringList({required String key}) async {
+    return sharedPreferences.getStringList(key);
+  }
+
+  @override
+  Future<void> setStringList({
+    required String key,
+    required List<String> data,
+  }) async {
+    await sharedPreferences.setStringList(key, data);
+  }
 }

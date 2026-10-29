@@ -139,22 +139,22 @@ class HomeBodyMultiBlocListenr extends StatelessWidget {
 
         BlocListener<CartCubit, CartStates>(
           listener: (context, state) {
-            if (state is ProductAddedState) {
+            if (state is CartUpdatedState) {
               showSnackBar(
                 context,
                 message: LocaleKeys.homeStatus_addProductToCart.tr(),
               );
-            } else if (state is LoadingAddProductState) {
+            } else if (state is CartUpdatedState) {
               showSnackBar(
                 context,
                 message: LocaleKeys.homeStatus_loadingAddProductToCart.tr(),
               );
-            } else if (state is ProductIncreaseState) {
+            } else if (state is CartUpdatedState) {
               showSnackBar(
                 context,
                 message: LocaleKeys.homeStatus_productIncrementedInCart.tr(),
               );
-            } else if (state is ProductDecreaseState) {
+            } else if (state is CartUpdatedState) {
               showSnackBar(
                 context,
                 message: LocaleKeys.homeStatus_productDecrementedFromCart.tr(),
