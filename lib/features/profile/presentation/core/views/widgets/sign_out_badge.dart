@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/sign_out_cubit/sign_out_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/widgets/sign_out_dialog_widget.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
@@ -29,11 +30,16 @@ class SignOutBadge extends StatelessWidget {
           GestureDetector(
             onTap: () {
               final signOutCubit = context.read<SignOutCubit>();
+              final cartCubit = context.read<CartCubit>();
+
               showDialog(
                 context: context,
                 builder: (_) {
-                  return BlocProvider.value(
-                    value: signOutCubit,
+                  return MultiBlocProvider(
+                    providers: [
+                      BlocProvider.value(value: signOutCubit),
+                      BlocProvider.value(value: cartCubit),
+                    ],
                     child: SignOutDialogWidget(),
                   );
                 },

@@ -67,4 +67,10 @@ class CartCubit extends HydratedCubit<CartStates> {
     }
     return null;
   }
+
+  Future<void> removeCartItems() async {
+    cartEntity.items.clear();
+    CartUpdatedState(cartEntity: cartEntity);
+    await clear();
+  }
 }
