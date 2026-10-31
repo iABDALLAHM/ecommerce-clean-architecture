@@ -19,6 +19,7 @@ class ProfileInformationSection extends StatefulWidget {
 }
 
 class _ProfileInformationSectionState extends State<ProfileInformationSection> {
+
   @override
   void initState() {
     context.read<GetUserDataCubit>().getUserData();

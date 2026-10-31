@@ -31,14 +31,8 @@ class _ProfileBodyImageState extends State<ProfileBodyImage> {
           builder: (context, state) {
             if (state is SuccessGetUserDataState) {
               return CircleAvatar(
-                backgroundColor: scaffoldBackgroundColor,
-                radius: 35,
-                child: Image.network(
-                  state.userEntity.userImage,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Icon(Icons.person);
-                  },
-                ),
+                radius: 30,
+                backgroundImage: NetworkImage(state.userEntity.userImage),
               );
             }
             return CircleAvatar(
