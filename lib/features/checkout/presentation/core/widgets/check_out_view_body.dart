@@ -184,6 +184,3 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     }
   }
 }
-
-
-

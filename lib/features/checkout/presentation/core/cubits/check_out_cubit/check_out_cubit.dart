@@ -1,5 +1,7 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart';
+import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
+import 'package:ecommerce_clean_architecture/core/services/notification_service/push_notification_service.dart';
 import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_entity/cart_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_entity/order_entity.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/order_status_entity/order_status_entity.dart';
@@ -19,7 +21,10 @@ class CheckOutCubit extends Cubit<CheckOutStates> {
   late OrderEntity orderEntity;
   final SecureStorageRepository _secureStorageRepository;
 
-  void initializeOrder({required CartEntity cartEntity, required String uId}) {
+  void initializeOrder({
+    required CartEntity cartEntity,
+    required String uId,
+  }) async {
     orderEntity = OrderEntity(
       uId: uId,
       cartEntity: cartEntity,
@@ -29,12 +34,16 @@ class CheckOutCubit extends Cubit<CheckOutStates> {
       orderStatusEntity: OrderStatusEntity(),
       totalPrice: cartEntity.calculateTotalPrice(),
       cardEntity: CardEntity(),
+      fcmToken: "",
     );
     emit(CheckOutLoadedState(orderEntity: orderEntity));
   }
 
-  void updateShippingOptions({required bool payWith}) {
+  void updateShippingOptions({required bool payWith}) async {
     orderEntity.payWithCash = payWith;
+    orderEntity.fcmToken = await getIt
+        .get<PushNotificationService>()
+        .getDeviceToken();
     emit(CheckOutLoadedState(orderEntity: orderEntity));
   }
 

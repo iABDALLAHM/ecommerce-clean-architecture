@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:injectable/injectable.dart';
@@ -11,9 +12,10 @@ abstract class RegisterModule {
   @preResolve
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
-
   @singleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
+  @singleton
+  FirebaseMessaging get firebaseMessaging => FirebaseMessaging.instance;
 
   @singleton
   FirebaseFirestore get firestore => FirebaseFirestore.instance;

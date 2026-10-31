@@ -15,6 +15,7 @@ class OrderModel {
   final String orderNumber;
   final OrderStatusModel orderStatusModel;
   final CardModel cardModel;
+  final String fcmToken;
 
   OrderModel({
     required this.totalPrice,
@@ -26,6 +27,7 @@ class OrderModel {
     required this.orderStatusModel,
     required this.cardModel,
     required this.cartModel,
+    required this.fcmToken,
   });
 
   factory OrderModel.fromEntity({required OrderEntity orderEntity}) {
@@ -43,6 +45,7 @@ class OrderModel {
         orderStatusEntity: orderEntity.orderStatusEntity,
       ),
       cartModel: CartModel.fromEntity(cartEntity: orderEntity.cartEntity),
+      fcmToken: orderEntity.fcmToken ?? "",
     );
   }
 
@@ -61,6 +64,7 @@ class OrderModel {
       orderNumber: json["orderNumber"],
       orderStatusModel: OrderStatusModel.fromJson(json["orderStatusModel"]),
       cartModel: CartModel.fromJson(json["cartModel"]),
+      fcmToken: json["fcmToken"],
     );
   }
 
@@ -74,6 +78,7 @@ class OrderModel {
       orderStatusEntity: orderStatusModel.toEntity(),
       totalPrice: totalPrice,
       cardEntity: cardModel.toEntity(),
+      fcmToken: fcmToken,
     );
   }
 
@@ -88,6 +93,7 @@ class OrderModel {
       "uId": uId,
       "shippingAddressModel": shippingAddressModel.toMap(),
       "payWithCash": payWithCash,
+      "fcmToken": fcmToken,
     };
   }
 }

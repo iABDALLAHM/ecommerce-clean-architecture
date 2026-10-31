@@ -30,6 +30,10 @@ import 'package:ecommerce_clean_architecture/core/services/local_database_servic
     as _i679;
 import 'package:ecommerce_clean_architecture/core/services/local_database_service/shared_prefs_service.dart'
     as _i342;
+import 'package:ecommerce_clean_architecture/core/services/notification_service/firebase_push_notification_service.dart'
+    as _i473;
+import 'package:ecommerce_clean_architecture/core/services/notification_service/push_notification_service.dart'
+    as _i278;
 import 'package:ecommerce_clean_architecture/core/services/payment_service/stripe_service.dart'
     as _i299;
 import 'package:ecommerce_clean_architecture/core/services/secure_storage_service/flutter_secure_service.dart'
@@ -140,6 +144,7 @@ import 'package:ecommerce_clean_architecture/features/review_and_rating/presenta
 import 'package:ecommerce_clean_architecture/features/splash/presentation/cubits/splash_cubit/splash_cubit.dart'
     as _i397;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
+import 'package:firebase_messaging/firebase_messaging.dart' as _i892;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:flutter_stripe/flutter_stripe.dart' as _i64;
 import 'package:get_it/get_it.dart' as _i174;
@@ -160,12 +165,20 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.singleton<_i59.FirebaseAuth>(() => registerModule.firebaseAuth);
+    gh.singleton<_i892.FirebaseMessaging>(
+      () => registerModule.firebaseMessaging,
+    );
     gh.singleton<_i974.FirebaseFirestore>(() => registerModule.firestore);
     gh.singleton<_i64.Stripe>(() => registerModule.stripe);
     gh.singleton<_i558.FlutterSecureStorage>(
       () => registerModule.secureStorage,
     );
     gh.singleton<_i454.Supabase>(() => registerModule.supabaseStorage);
+    gh.lazySingleton<_i278.PushNotificationService>(
+      () => _i473.FirebasePushNotificationService(
+        firebaseMessaging: gh<_i892.FirebaseMessaging>(),
+      ),
+    );
     gh.lazySingleton<_i936.AuthService>(
       () => _i996.FirebaseAuthService(firebaseAuth: gh<_i59.FirebaseAuth>()),
     );

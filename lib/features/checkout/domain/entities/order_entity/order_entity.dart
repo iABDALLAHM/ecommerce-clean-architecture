@@ -14,6 +14,7 @@ class OrderEntity {
   final OrderStatusEntity orderStatusEntity;
   CardEntity cardEntity;
   String? paymentMethod;
+  String? fcmToken;
 
   OrderEntity({
     required this.cartEntity,
@@ -26,6 +27,7 @@ class OrderEntity {
     required this.totalPrice,
     required this.cardEntity,
     this.paymentMethod,
+    required this.fcmToken,
   });
 
   @override
