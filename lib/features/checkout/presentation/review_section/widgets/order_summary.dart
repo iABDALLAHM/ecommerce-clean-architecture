@@ -42,7 +42,7 @@ class OrderSummary extends StatelessWidget {
                     ),
 
                     Text(
-                      "${payWithCash == true ? context.read<CheckOutCubit>().orderEntity.cartEntity.calculateTotalPrice().round() : 0} جنيه",
+                      "${context.read<CheckOutCubit>().orderEntity.cartEntity.calculateTotalPrice().round()} جنيه",
                       style: AppStyles.textStyle16SemiBold,
                     ),
                   ],
@@ -75,7 +75,7 @@ class OrderSummary extends StatelessWidget {
                     style: AppStyles.textStyle16Bold,
                   ),
                   Text(
-                    "${payWithCash == true ? context.read<CheckOutCubit>().orderEntity.cartEntity.calculateTotalPrice().round() + 40 : 0} جنيه",
+                    "${payWithCash == true ? context.read<CheckOutCubit>().orderEntity.cartEntity.calculateTotalPrice().round() + 40 : context.read<CheckOutCubit>().orderEntity.cartEntity.calculateTotalPrice().round()} جنيه",
                     style: AppStyles.textStyle16Bold,
                   ),
                 ],
