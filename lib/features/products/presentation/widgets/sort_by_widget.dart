@@ -57,7 +57,7 @@ class _SortByWidgetState extends State<SortByWidget> {
                     context.read<ProductsCubit>().getHighPriceProducts();
                   } else if (radioChoicesEnumValue ==
                       RadioChoicesEnum.alphabetical) {
-                    context.read<ProductsCubit>().getProductsSortedByName();
+                    context.read<ProductsCubit>().getProductsSortedByName(languageCode: context.locale.languageCode);
                   }
                 },
               ),

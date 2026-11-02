@@ -89,6 +89,7 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   @override
   Future<Either<Failure, List<ProductEntity>>> searchProducts({
     required String searchName,
+    required String languageCode,
   }) async {
     try {
       var data = await databaseService.getQueryData(
@@ -96,7 +97,7 @@ class ProductsRepositoryImplementation implements ProductsRepository {
         query: QueryParams(
           conditions: [
             QueryCondition(
-              field: "productName",
+              field: "productName.productName_$languageCode",
               isGreaterThanOrEqualTo: searchName,
               isLessThanOrEqualTo: '$searchName\uf8ff',
             ),
@@ -177,11 +178,15 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   }
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> getSortedProductsByName() async {
+  Future<Either<Failure, List<ProductEntity>>> getSortedProductsByName({
+    required String languageCode,
+  }) async {
     try {
       var result = await databaseService.getQueryData(
         path: BackendEndPoints.productsCollection,
-        query: QueryParams(order: QueryOrder(field: "productName")),
+        query: QueryParams(
+          order: QueryOrder(field: "productName.productName_$languageCode"),
+        ),
       );
       List<ProductEntity> sortedByNameProducts = [];
       for (var product in result) {

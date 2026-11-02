@@ -17,6 +17,7 @@ abstract class ProductsRepository {
   Future<Either<Failure, List<ProductEntity>>> getFavoriteProducts();
 
   Future<Either<Failure, List<ProductEntity>>> searchProducts({
+    required String languageCode,
     required String searchName,
   });
 
@@ -24,7 +25,9 @@ abstract class ProductsRepository {
 
   Future<Either<Failure, List<ProductEntity>>> getLowPriceProducts();
 
-  Future<Either<Failure, List<ProductEntity>>> getSortedProductsByName();
+  Future<Either<Failure, List<ProductEntity>>> getSortedProductsByName({
+    required String languageCode,
+  });
 
   Future<Either<Failure, List<ProductEntity>>> getFilterdProducts({
     required List<QueryCondition> conditions,

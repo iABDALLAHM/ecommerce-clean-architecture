@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/functions/is_english_letters.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/save_recent_search_cubit/save_recent_search_sugestions_cubit.dart';
@@ -27,7 +28,12 @@ class CustomSearchTextField extends StatelessWidget {
         children: [
           TextField(
             onSubmitted: (value) {
-              context.read<SearchCubit>().searchProducts(searchName: value);
+              context.read<SearchCubit>().searchProducts(
+                searchName: value,
+                languageCode: isEnglishLetters(text: value)
+                    ? englishLanguageCode
+                    : arabicLanguageCode,
+              );
               context
                   .read<SaveRecentSearchSugestionsCubit>()
                   .saveRecentSugestions(recentSugestion: value);

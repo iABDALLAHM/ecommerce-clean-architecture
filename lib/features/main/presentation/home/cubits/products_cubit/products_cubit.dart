@@ -57,9 +57,11 @@ class ProductsCubit extends Cubit<ProductsStates> {
     );
   }
 
-  Future getProductsSortedByName() async {
+  Future getProductsSortedByName({required String languageCode}) async {
     emit(LoadingProductsState());
-    var result = await productsRepository.getSortedProductsByName();
+    var result = await productsRepository.getSortedProductsByName(
+      languageCode: languageCode,
+    );
     result.fold(
       (failure) {
         emit(FailureProductsState(errorMessage: failure.message));
