@@ -30,9 +30,12 @@ void main() async {
   await setupGetIt();
   runApp(
     EasyLocalization(
-      supportedLocales: [Locale("en"), Locale("ar")],
+      supportedLocales: [
+        Locale(englishLanguageCode),
+        Locale(arabicLanguageCode),
+      ],
       path: 'assets/translations',
-      fallbackLocale: Locale("ar"),
+      fallbackLocale: Locale(arabicLanguageCode),
       assetLoader: CodegenLoader(),
       child: const ECommerceApp(),
     ),

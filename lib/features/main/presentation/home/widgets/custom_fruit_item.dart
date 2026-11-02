@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
@@ -16,6 +17,11 @@ class CustomFruitItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
+    var currentLanguage = context.locale.languageCode;
+
+    String? productName = currentLanguage == arabicLanguageCode
+        ? productEntity.productName[productArabicName]
+        : productEntity.productName[productEnglishName] ?? "";
 
     return GestureDetector(
       onTap: () {
@@ -58,7 +64,7 @@ class CustomFruitItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          productEntity.productName,
+                          productName ?? "",
                           style: AppStyles.textStyle13SemiBold,
                         ),
                         const SizedBox(height: 4),

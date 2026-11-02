@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_circular_progress_widget.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
@@ -25,11 +26,16 @@ class ProductInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
+    var currentLanguage = context.locale.languageCode;
+    String? productName = currentLanguage == arabicLanguageCode
+        ? productEntity.productName[productArabicName]
+        : productEntity.productName[productEnglishName] ?? "";
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 24),
-        Text(productEntity.productName, style: AppStyles.textStyle13SemiBold),
+        Text(productName ?? "", style: AppStyles.textStyle13SemiBold),
         const SizedBox(height: 4),
         Text.rich(
           TextSpan(

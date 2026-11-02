@@ -3,7 +3,7 @@ import 'package:ecommerce_clean_architecture/features/main/domain/entities/produ
 
 ProductEntity dummyProduct() {
   return ProductEntity(
-    productName: "بطيخ",
+    productName: {"productName_ar": "بطيخ"},
     productPrice: 60,
     productCode: "FRU-WM-001",
     description: "بطيخ طازج عالي الجودة، مزروع محليًا وخالي من المواد الحافظة.",

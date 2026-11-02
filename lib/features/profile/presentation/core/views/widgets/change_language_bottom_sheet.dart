@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/widgets/selected_language_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -20,10 +21,10 @@ class ChangeLanguageBottomSheet extends StatelessWidget {
 
             SelectedLanguageWidget(
               language: "English",
-              isSelected: currentLanguage == "en",
+              isSelected: currentLanguage == englishLanguageCode,
               onTap: () => _handleChangeLang(
                 context: context,
-                newLang: "en",
+                newLang: englishLanguageCode,
                 currentLang: currentLanguage,
               ),
             ),
@@ -31,10 +32,10 @@ class ChangeLanguageBottomSheet extends StatelessWidget {
             const SizedBox(height: 10),
             SelectedLanguageWidget(
               language: "Arabic",
-              isSelected: currentLanguage == "ar",
+              isSelected: currentLanguage == arabicLanguageCode,
               onTap: () => _handleChangeLang(
                 context: context,
-                newLang: "ar",
+                newLang: arabicLanguageCode,
                 currentLang: currentLanguage,
               ),
             ),

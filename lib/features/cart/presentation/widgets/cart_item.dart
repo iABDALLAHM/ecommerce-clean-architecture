@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_item_entity/cart_item_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
@@ -19,6 +20,11 @@ class CartItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
+    var currentLanguage = context.locale.languageCode;
+
+    String? productName = currentLanguage == arabicLanguageCode
+        ? cartItemEntity.productEntity.productName[productArabicName]
+        : cartItemEntity.productEntity.productName[productEnglishName] ?? "";
 
     return BlocListener<CartCubit, CartStates>(
       listenWhen: (previous, current) {
@@ -58,10 +64,7 @@ class CartItem extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    cartItemEntity.productEntity.productName,
-                    style: AppStyles.textStyle13Bold,
-                  ),
+                  Text(productName ?? "", style: AppStyles.textStyle13Bold),
                   const SizedBox(height: 4),
                   Text(
                     "${cartItemEntity.quantity} ${LocaleKeys.cart_cartAmount.tr()}",

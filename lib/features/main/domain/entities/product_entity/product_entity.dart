@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class ProductEntity extends Equatable {
-  final String productName;
+  final Map<String, String> productName;
   final num productPrice;
   final String productCode;
   final String description;
@@ -22,7 +22,7 @@ class ProductEntity extends Equatable {
     required this.numberOfCalories,
     required this.unitAmount,
   });
-  
+
   @override
   List<Object?> get props => [productCode];
 }

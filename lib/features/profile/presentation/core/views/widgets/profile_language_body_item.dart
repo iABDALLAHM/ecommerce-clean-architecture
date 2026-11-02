@@ -1,3 +1,4 @@
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_divider.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class ProfileLanguageBodyItem extends StatelessWidget {
             ),
             Spacer(),
             Text(
-              currentLang == "ar" ? "العربية" : "English",
+              currentLang == arabicLanguageCode ? "العربية" : "English",
               style: AppStyles.textStyle13Regular,
             ),
             const SizedBox(width: 8),
