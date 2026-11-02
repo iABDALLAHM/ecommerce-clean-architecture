@@ -1,5 +1,4 @@
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
-import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_entity/cart_entity.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/widgets/cart_body.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/widgets/fruit_item_details_wrapper.dart';
@@ -140,9 +139,12 @@ class AppRoutes {
       GoRoute(
         path: checkOut,
         builder: (context, state) {
-          final cartEntity = state.extra as CartEntity;
+          final data = state.extra as Map<String, dynamic>;
 
-          return CheckOutView(cartEntity: cartEntity);
+          return CheckOutView(
+            cartEntity: data["cartEntity"],
+            cartCubit: data["cartCubit"],
+          );
         },
       ),
 
@@ -179,7 +181,6 @@ class AppRoutes {
         path: forgetPassword,
         builder: (context, state) => ForgetPasswordView(),
       ),
-
 
       GoRoute(
         path: resetYourPassword,

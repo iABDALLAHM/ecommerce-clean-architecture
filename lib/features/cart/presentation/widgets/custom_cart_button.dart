@@ -21,9 +21,12 @@ class CustomCartButton extends StatelessWidget {
 
   void handleIfCartIsNotEmpty(BuildContext context) {
     if (context.read<CartCubit>().cartEntity.items.isNotEmpty) {
+      final cartCubit = context.read<CartCubit>();
+      final cartEntity = context.read<CartCubit>().cartEntity;
+
       context.push(
         AppRoutes.checkOut,
-        extra: context.read<CartCubit>().cartEntity,
+        extra: {"cartCubit": cartCubit, "cartEntity": cartEntity},
       );
     }
   }

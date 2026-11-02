@@ -24,10 +24,8 @@ class CartHeader extends StatelessWidget {
                   color: colorScheme.primary,
                 ),
               )
-            /// اعمل ايه في دي ؟!
             : Text(
-                LocaleKeys.home_cartHeaderTagWhenYouHaveProducts.tr() +
-                    "$cartItemsLenght",
+                "${LocaleKeys.home_cartHeaderTagWhenYouHaveProducts.tr()} : $cartItemsLenght",
                 style: AppStyles.textStyle13Regular.copyWith(
                   color: colorScheme.primary,
                 ),

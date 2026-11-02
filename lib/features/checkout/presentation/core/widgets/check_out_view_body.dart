@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
+import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/address_section/cubits/address_validation_cubit/address_validation_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
@@ -64,6 +65,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
               listener: (context, state) {
                 if (state is SuccessCheckoutPaymentState) {
                   _triggerAddOrderCubit(context);
+                  context.read<CartCubit>().removeCartItems();
                 } else if (state is FailureCheckoutPaymentState) {
                   showSnackBar(context, message: "payment faild");
                 }
