@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class CustomFilterOption extends StatelessWidget {
@@ -6,13 +5,14 @@ class CustomFilterOption extends StatelessWidget {
     super.key,
     required this.isSelected,
     required this.title,
-    required this.icon, required this.onTap,
+    required this.icon,
+    required this.onTap,
   });
   final bool isSelected;
   final String title;
   final IconData icon;
   final VoidCallback onTap;
-  
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -40,7 +40,7 @@ class CustomFilterOption extends StatelessWidget {
                   Text(
                     title,
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 10,
                       fontWeight: FontWeight.w400,
                       color: isSelected ? Color(0xff14532D) : Color(0xff475569),
                     ),
@@ -55,7 +55,11 @@ class CustomFilterOption extends StatelessWidget {
                     color: Color(0xff14532D),
                     size: 20,
                   )
-                : Icon(Icons.circle_outlined, color: Color(0xffE2E8F0), size: 20),
+                : Icon(
+                    Icons.circle_outlined,
+                    color: Color(0xffE2E8F0),
+                    size: 20,
+                  ),
           ],
         ),
       ),

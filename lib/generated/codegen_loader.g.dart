@@ -15,6 +15,29 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> _ar = {
+  "filters": {
+    "PREFERENCES": "التفضيلات",
+    "sortBy": "ترتيب حسب",
+    "filterBy": "تصفية حسب",
+    "lowToHighPrice": "من الأقل إلى الأعلى",
+    "budgetAndBestValue": "الميزانية وأفضل قيمة أولاً",
+    "highToLowPrice": "من السعر الأعلى إلى السعر الأدنى",
+    "alphabetical": "حسب الترتيب الأبجدي",
+    "applySortingButton": "تطبيق الفرز",
+    "resetButton": "إعادة ضبط",
+    "REFINE_SEARCH": "تعديل البحث",
+    "filterProducts": "تصفية المنتجات",
+    "productHighlights": "أبرز مزايا المنتج",
+    "selectedItems": "العناصر المحددة",
+    "organicProducts": "منتجات عضوية",
+    "lowerThan100Products": "اقل من 100 جنية",
+    "LowCaloriesProducts": "قليل السعرات ",
+    "highCaloriesProducts": "عالي السعرات",
+    "applyFilters": "تطبيق عوامل التصفية",
+    "items": "منتجات",
+    "premiumAndbulkPackFirst": "العبوات المميزة والعبوات الكبيرة أولاً",
+    "orderAlphabetically": "رتب أبجديًا من الألف إلى الياء"
+  },
   "home": {
     "goodMorning": "صباح الخير",
     "searchingTextField": "ابحث عن.......",
@@ -338,6 +361,29 @@ class CodegenLoader extends AssetLoader{
   "ConfirmChangeUserEmailButton": "تأكيد تغير الايميل "
 };
 static const Map<String,dynamic> _en = {
+  "filters": {
+    "PREFERENCES": "Preferences",
+    "sortBy": "Sort By",
+    "filterBy": "Filter By",
+    "lowToHighPrice": "Price: Low to High",
+    "budgetAndBestValue": "Budget & Best Value First",
+    "highToLowPrice": "Price: High to Low",
+    "alphabetical": "Alphabetical",
+    "applySortingButton": "Apply Sorting",
+    "resetButton": "Reset",
+    "REFINE_SEARCH": "Refine Search",
+    "filterProducts": "Filter Products",
+    "productHighlights": "Product Highlights",
+    "selectedItems": "Selected Items",
+    "organicProducts": "Organic Products",
+    "lowerThan100Products": "Under 100 EGP",
+    "LowCaloriesProducts": "Low Calories",
+    "highCaloriesProducts": "High Calories",
+    "applyFilters": "Apply Filters",
+    "items": "Items",
+    "premiumAndbulkPackFirst": "Premium & Bulk Packs First",
+    "orderAlphabetically": "Order Alphabetically (A to Z)"
+  },
   "home": {
     "goodMorning": "Good morning",
     "searchingTextField": "Search for.......",

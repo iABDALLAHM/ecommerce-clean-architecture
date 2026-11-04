@@ -5,6 +5,7 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/home/cub
 import 'package:ecommerce_clean_architecture/features/products/presentation/enums/radio_enum_choices/radio_enum_choices.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/custom_sort_option.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/get_filter_products_bloc_listener.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,8 +25,8 @@ class _CustomSortByWidgetState extends State<CustomSortByWidget> {
       child: Column(
         children: [
           CustomSortOption(
-            title: "Price (Low to High)",
-            subTitle: "Budget & best value first",
+            title: LocaleKeys.filters_lowToHighPrice.tr(),
+            subTitle: LocaleKeys.filters_budgetAndBestValue.tr(),
             isSelected: radioChoicesEnumValue == RadioChoicesEnum.fromLowToHigh
                 ? true
                 : false,
@@ -39,8 +40,8 @@ class _CustomSortByWidgetState extends State<CustomSortByWidget> {
 
           CustomSortOption(
             icon: Icons.trending_down,
-            title: "Price (High to Low)",
-            subTitle: "Premium & bulk packs first",
+            title: LocaleKeys.filters_highToLowPrice.tr(),
+            subTitle: LocaleKeys.filters_premiumAndbulkPackFirst.tr(),
             isSelected: radioChoicesEnumValue == RadioChoicesEnum.fromHighToLow
                 ? true
                 : false,
@@ -53,9 +54,8 @@ class _CustomSortByWidgetState extends State<CustomSortByWidget> {
 
           CustomSortOption(
             icon: Icons.sort_by_alpha,
-
-            title: "Alphabetical",
-            subTitle: "Order alphabetically A to Z",
+            title: LocaleKeys.filters_alphabetical.tr(),
+            subTitle: LocaleKeys.filters_orderAlphabetically.tr(),
             isSelected: radioChoicesEnumValue == RadioChoicesEnum.alphabetical
                 ? true
                 : false,
@@ -84,7 +84,10 @@ class _CustomSortByWidgetState extends State<CustomSortByWidget> {
                     radioChoicesEnumValue = null;
                     setState(() {});
                   },
-                  child: Text("Reset ", style: AppStyles.textStyle13SemiBold),
+                  child: Text(
+                    LocaleKeys.filters_resetButton.tr(),
+                    style: AppStyles.textStyle13SemiBold,
+                  ),
                 ),
               ),
               const SizedBox(width: 10),
@@ -95,7 +98,7 @@ class _CustomSortByWidgetState extends State<CustomSortByWidget> {
                   height: 50,
                   width: double.infinity,
                   child: CustomButton(
-                    text: "Apply Sorting",
+                    text: LocaleKeys.filters_applySortingButton.tr(),
                     onPressed: () {
                       if (radioChoicesEnumValue ==
                           RadioChoicesEnum.fromLowToHigh) {

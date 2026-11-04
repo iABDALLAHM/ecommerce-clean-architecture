@@ -3,6 +3,28 @@
 // ignore_for_file: constant_identifier_names
 
 abstract class  LocaleKeys {
+  static const filters_PREFERENCES = 'filters.PREFERENCES';
+  static const filters_sortBy = 'filters.sortBy';
+  static const filters_filterBy = 'filters.filterBy';
+  static const filters_lowToHighPrice = 'filters.lowToHighPrice';
+  static const filters_budgetAndBestValue = 'filters.budgetAndBestValue';
+  static const filters_highToLowPrice = 'filters.highToLowPrice';
+  static const filters_alphabetical = 'filters.alphabetical';
+  static const filters_applySortingButton = 'filters.applySortingButton';
+  static const filters_resetButton = 'filters.resetButton';
+  static const filters_REFINE_SEARCH = 'filters.REFINE_SEARCH';
+  static const filters_filterProducts = 'filters.filterProducts';
+  static const filters_productHighlights = 'filters.productHighlights';
+  static const filters_selectedItems = 'filters.selectedItems';
+  static const filters_organicProducts = 'filters.organicProducts';
+  static const filters_lowerThan100Products = 'filters.lowerThan100Products';
+  static const filters_LowCaloriesProducts = 'filters.LowCaloriesProducts';
+  static const filters_highCaloriesProducts = 'filters.highCaloriesProducts';
+  static const filters_applyFilters = 'filters.applyFilters';
+  static const filters_items = 'filters.items';
+  static const filters_premiumAndbulkPackFirst = 'filters.premiumAndbulkPackFirst';
+  static const filters_orderAlphabetically = 'filters.orderAlphabetically';
+  static const filters = 'filters';
   static const home_goodMorning = 'home.goodMorning';
   static const home_searchingTextField = 'home.searchingTextField';
   static const home_bestSellerHomeHeader = 'home.bestSellerHomeHeader';

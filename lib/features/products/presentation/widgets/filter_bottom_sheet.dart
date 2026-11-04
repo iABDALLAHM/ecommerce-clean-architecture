@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/custom_filter_products_widget.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/custom_sort_by_widget.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -47,7 +49,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                   children: [
                     selectedSection == 0
                         ? Text(
-                            "PREFERENCES",
+                            LocaleKeys.filters_PREFERENCES.tr(),
                             style: TextStyle(
                               fontSize: 11,
                               color: Color(0xff14532D),
@@ -55,7 +57,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                             ),
                           )
                         : Text(
-                            "REFINE SEARCH",
+                            LocaleKeys.filters_REFINE_SEARCH.tr(),
                             style: TextStyle(
                               fontSize: 11,
                               color: Color(0xff14532D),
@@ -66,7 +68,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                     const SizedBox(height: 5),
                     selectedSection == 0
                         ? Text(
-                            "Sort By",
+                            LocaleKeys.filters_sortBy.tr(),
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black,
@@ -74,7 +76,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                             ),
                           )
                         : Text(
-                            "Filter Products",
+                            LocaleKeys.filters_filterProducts.tr(),
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black,
@@ -138,7 +140,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                               ),
                               SizedBox(width: 8),
                               Text(
-                                'Sort By',
+                                LocaleKeys.filters_sortBy.tr(),
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600,
@@ -181,7 +183,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                               ),
                               SizedBox(width: 8),
                               Text(
-                                'Filter By',
+                                LocaleKeys.filters_filterBy.tr(),
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600,

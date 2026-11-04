@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/products_cubit/products_cubit.dart';
@@ -5,6 +6,7 @@ import 'package:ecommerce_clean_architecture/features/products/domain/entities/f
 import 'package:ecommerce_clean_architecture/features/products/presentation/enums/product_filters/products_filters_enum.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/custom_filter_option.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/get_filter_products_bloc_listener.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,6 +24,29 @@ class _CustomFilterProductsWidgetState
 
   @override
   Widget build(BuildContext context) {
+    List<FilterItemEntity> listOfFilters = [
+  FilterItemEntity(
+    title: LocaleKeys.filters_organicProducts.tr(context: context),
+    icon: Icons.eco_outlined,
+    filter: ProductFilters.organic,
+  ),
+  FilterItemEntity(
+    title: LocaleKeys.filters_LowCaloriesProducts.tr(context: context),
+    icon: Icons.fitness_center,
+    filter: ProductFilters.lowCalories,
+  ),
+  FilterItemEntity(
+    title: LocaleKeys.filters_lowerThan100Products.tr(context: context),
+    icon: Icons.payments,
+    filter: ProductFilters.lowerThan100EGP,
+  ),
+  FilterItemEntity(
+    title: LocaleKeys.filters_highCaloriesProducts.tr(context: context),
+    icon: Icons.electric_bolt_outlined,
+    filter: ProductFilters.highCalories,
+  ),
+];
+
     return GetFilterProductsBlocListener(
       child: Column(
         children: [
@@ -29,13 +54,13 @@ class _CustomFilterProductsWidgetState
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Product Highlights",
+                LocaleKeys.filters_productHighlights.tr(),
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               ),
               selectedFilters.isEmpty
                   ? Text("")
                   : Text(
-                      "${selectedFilters.length} selected",
+                      "${selectedFilters.length} ${LocaleKeys.filters_selectedItems.tr()}",
                       style: TextStyle(color: Color(0xff14532D)),
                     ),
             ],
@@ -77,6 +102,7 @@ class _CustomFilterProductsWidgetState
               Expanded(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(24),
                       side: BorderSide(width: 1, color: Color(0xffE2E8F0)),
@@ -89,7 +115,7 @@ class _CustomFilterProductsWidgetState
                     setState(() {});
                   },
                   child: Text(
-                    "Reset ${selectedFilters.isEmpty ? "" : "(${(selectedFilters.length)})"}",
+                    "${LocaleKeys.filters_resetButton.tr()}${selectedFilters.isEmpty?"":"(${(selectedFilters.length)})"}",
                     style: AppStyles.textStyle13SemiBold,
                   ),
                 ),
@@ -103,7 +129,7 @@ class _CustomFilterProductsWidgetState
                   width: double.infinity,
                   child: CustomButton(
                     text:
-                        "Apply Filters ${(selectedFilters.isEmpty ? "" : "(${selectedFilters.length} Items)")}",
+                        "${LocaleKeys.filters_applyFilters.tr()} ${(selectedFilters.isEmpty ? "" : "(${selectedFilters.length} ${LocaleKeys.filters_items.tr()})")}",
                     onPressed: () {
                       context.read<ProductsCubit>().getFilterdProducts(
                         filters: selectedFilters,

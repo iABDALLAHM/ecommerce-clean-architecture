@@ -12,26 +12,3 @@ class FilterItemEntity {
     required this.filter,
   });
 }
-
-List<FilterItemEntity> listOfFilters = [
-  FilterItemEntity(
-    title: 'Organic',
-    icon: Icons.eco_outlined,
-    filter: ProductFilters.organic,
-  ),
-  FilterItemEntity(
-    title: 'Low Calories',
-    icon: Icons.fitness_center,
-    filter: ProductFilters.lowCalories,
-  ),
-  FilterItemEntity(
-    title: '< 100 EGP',
-    icon: Icons.payments,
-    filter: ProductFilters.lowerThan100EGP,
-  ),
-  FilterItemEntity(
-    title: 'High Energy',
-    icon: Icons.electric_bolt_outlined,
-    filter: ProductFilters.highCalories,
-  ),
-];

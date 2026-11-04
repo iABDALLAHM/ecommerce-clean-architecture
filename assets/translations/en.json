@@ -1,4 +1,27 @@
 {
+    "filters": {
+        "PREFERENCES": "Preferences",
+        "sortBy": "Sort By",
+        "filterBy": "Filter By",
+        "lowToHighPrice": "Price: Low to High",
+        "budgetAndBestValue": "Budget & Best Value First",
+        "highToLowPrice": "Price: High to Low",
+        "alphabetical": "Alphabetical",
+        "applySortingButton": "Apply Sorting",
+        "resetButton": "Reset",
+        "REFINE_SEARCH": "Refine Search",
+        "filterProducts": "Filter Products",
+        "productHighlights": "Product Highlights",
+        "selectedItems": "Selected Items",
+        "organicProducts": "Organic Products",
+        "lowerThan100Products": "Under 100 EGP",
+        "LowCaloriesProducts": "Low Calories",
+        "highCaloriesProducts": "High Calories",
+        "applyFilters": "Apply Filters",
+        "items": "Items",
+        "premiumAndbulkPackFirst": "Premium & Bulk Packs First",
+        "orderAlphabetically": "Order Alphabetically (A to Z)"
+    },
     "home": {
         "goodMorning": "Good morning",
         "searchingTextField": "Search for.......",
