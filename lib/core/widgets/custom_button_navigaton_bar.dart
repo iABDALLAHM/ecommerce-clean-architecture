@@ -1,9 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
-import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/bottom_navigation_bar_entitiy/bottom_navigation_bar_entity.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/bottom_navigation_item.dart';
-import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -36,61 +32,19 @@ class CustomBottomNavigationBar extends StatelessWidget {
       width: double.infinity,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          BottomNavigationItem(
-            onPressed: () => context.go(AppRoutes.home),
-            isActive: currentRoute.startsWith(AppRoutes.home) ? true : false,
+        children: List.generate(bottomNavigationList.length, (index) {
+          var item = bottomNavigationList[index];
+          return BottomNavigationItem(
+            onPressed: () => context.go(item.route),
+            isActive: currentRoute == item.route ? true : false,
             barEntity: BottomNavigationBarEntity(
-              activeIcon: Assets.imagesActiveHomeIcon,
-              inActiveIcon: Assets.imagesInActiveHomeIcon,
-              iconName: LocaleKeys.home_homeNavBar.tr(),
+              activeIcon: item.activeIcon,
+              inActiveIcon: item.inActiveIcon,
+              iconName: item.iconName,
+              route: item.route,
             ),
-          ),
-
-          BottomNavigationItem(
-            onPressed: () => context.go(AppRoutes.products),
-            isActive: currentRoute.startsWith(AppRoutes.products)
-                ? true
-                : false,
-            barEntity: BottomNavigationBarEntity(
-              activeIcon: Assets.imagesActiveProductsIcon,
-              inActiveIcon: Assets.imagesInActiveProductsIcon,
-              iconName: LocaleKeys.home_productsNavBar.tr(),
-            ),
-          ),
-
-          BottomNavigationItem(
-            onPressed: () => context.go(AppRoutes.cart),
-            isActive: currentRoute.startsWith(AppRoutes.cart) ? true : false,
-            barEntity: BottomNavigationBarEntity(
-              activeIcon: Assets.imagesActiveCartIcon,
-              inActiveIcon: Assets.imagesInActiveCartIcon,
-              iconName: LocaleKeys.home_cartNavBar.tr(),
-            ),
-          ),
-
-          BottomNavigationItem(
-            onPressed: () => context.go(AppRoutes.profile),
-            isActive: currentRoute.startsWith(AppRoutes.profile) ? true : false,
-            barEntity: BottomNavigationBarEntity(
-              activeIcon: Assets.imagesActiveAccountIcon,
-              inActiveIcon: Assets.imagesInActiveAccountIcon,
-              iconName: LocaleKeys.profile_profileNavBar.tr(),
-            ),
-          ),
-        ],
-
-        // bottomNavigationList.asMap().entries.map((map) {
-        //   var key = map.key;
-        //   var value = map.value;
-        //   return GestureDetector(
-        //     onTap: () => context.go(value.route),
-        //     child: BottomNavigationItem(
-        //       isActive: currentRoute == value.route ? true : false,
-        //       barEntity: value,
-        //     ),
-        //   );
-        // }).toList(),
+          );
+        }),
       ),
     );
   }

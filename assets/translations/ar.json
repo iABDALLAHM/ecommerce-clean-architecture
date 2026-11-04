@@ -1,4 +1,7 @@
 {
+    "filters": {
+        
+    },
     "home": {
         "goodMorning": "صباح الخير",
         "searchingTextField": "ابحث عن.......",
