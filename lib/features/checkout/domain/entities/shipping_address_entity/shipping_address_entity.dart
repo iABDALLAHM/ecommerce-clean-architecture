@@ -1,4 +1,5 @@
 class ShippingAddressEntity {
+  final String userId;
   String? name;
   String? email;
   String? phone;
@@ -14,7 +15,7 @@ class ShippingAddressEntity {
     this.address,
     this.addressDetails,
     this.city,
-    this.saveLocation = false,
+    this.saveLocation = false, required this.userId,
   });
 
   @override

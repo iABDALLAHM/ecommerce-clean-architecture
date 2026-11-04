@@ -1,6 +1,7 @@
 import 'package:ecommerce_clean_architecture/features/checkout/domain/entities/shipping_address_entity/shipping_address_entity.dart';
 
 class ShippingAddressModel {
+  final String userId;
   String? name;
   String? email;
   String? phone;
@@ -17,6 +18,7 @@ class ShippingAddressModel {
     this.addressDetails,
     this.city,
     required this.saveLocation,
+    required this.userId,
   });
 
   factory ShippingAddressModel.fromEntity({
@@ -30,6 +32,7 @@ class ShippingAddressModel {
       addressDetails: shippingAddressEntity.addressDetails,
       city: shippingAddressEntity.city,
       saveLocation: shippingAddressEntity.saveLocation,
+      userId: shippingAddressEntity.userId,
     );
   }
 
@@ -42,6 +45,7 @@ class ShippingAddressModel {
       address: json["address"],
       addressDetails: json["addressDetails"],
       city: json["city"],
+      userId: json["userId"],
     );
   }
 
@@ -54,11 +58,13 @@ class ShippingAddressModel {
       address: address,
       addressDetails: addressDetails,
       city: city,
+      userId: userId,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
+      "userId": userId,
       "name": name,
       "saveLocation": saveLocation,
       "email": email,

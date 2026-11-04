@@ -28,7 +28,7 @@ class CheckOutCubit extends Cubit<CheckOutStates> {
     orderEntity = OrderEntity(
       uId: uId,
       cartEntity: cartEntity,
-      shippingAddressEntity: ShippingAddressEntity(),
+      shippingAddressEntity: ShippingAddressEntity(userId: uId),
       date: DateTime.now(),
       orderNumber: generateOrderNumber(),
       orderStatusEntity: OrderStatusEntity(),
