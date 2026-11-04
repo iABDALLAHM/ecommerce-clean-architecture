@@ -1,5 +1,5 @@
-import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/filter_by_widget.dart';
-import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/sort_by_widget.dart';
+import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/custom_filter_products_widget.dart';
+import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/custom_sort_by_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,80 +12,199 @@ class FilterBottomSheet extends StatefulWidget {
 
 class _FilterBottomSheetState extends State<FilterBottomSheet> {
   int currentWidget = 1;
+  int selectedSection = 0;
 
   @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
-    var height = MediaQuery.sizeOf(context).height;
     return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+      ),
       width: double.infinity,
-      padding: EdgeInsets.only(left: 10),
-      child: Column(
-        children: [
-          const SizedBox(height: 50),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              IconButton(
-                onPressed: () {
-                  context.pop();
-                },
-                icon: Icon(Icons.close, color: colorScheme.onSecondary),
+      padding: EdgeInsets.symmetric(horizontal: 24),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 20),
+            Container(
+              width: 50,
+              height: 6,
+              decoration: BoxDecoration(
+                color: Color(0xffCBD5E1),
+                borderRadius: BorderRadius.circular(10),
               ),
-            ],
-          ),
-
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.center,
+            ),
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 20),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                        backgroundColor: currentWidget == 1
-                            ? colorScheme.secondary
-                            : colorScheme.primaryFixed,
-                      ),
-                      child: Text("Sort By:"),
-                      onPressed: () {
-                        currentWidget = 1;
-                        setState(() {});
-                      },
-                    ),
-                    const SizedBox(height: 20),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                        backgroundColor: currentWidget == 2
-                            ? colorScheme.secondary
-                            : colorScheme.primaryFixed,
-                      ),
-                      child: Text("Filter By:"),
-                      onPressed: () {
-                        currentWidget = 2;
-                        setState(() {});
-                      },
-                    ),
-                    const SizedBox(height: 20),
+                    selectedSection == 0
+                        ? Text(
+                            "PREFERENCES",
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: Color(0xff14532D),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          )
+                        : Text(
+                            "REFINE SEARCH",
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: Color(0xff14532D),
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+
+                    const SizedBox(height: 5),
+                    selectedSection == 0
+                        ? Text(
+                            "Sort By",
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        : Text(
+                            "Filter Products",
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                   ],
                 ),
+                Spacer(),
+                GestureDetector(
+                  onTap: () {
+                    context.pop();
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(right: 10),
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: Color(0xffF1F5F9),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Icon(Icons.close, color: colorScheme.onSecondary),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 17),
+            Divider(endIndent: 7, indent: 7, color: Color(0xffE2E8F0)),
+            const SizedBox(height: 16),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 2, horizontal: 4),
+              decoration: BoxDecoration(
+                color: Color(0xffF1F5F9),
+                borderRadius: BorderRadius.circular(24),
               ),
-              SizedBox(
-                height: height * .5,
-                child: VerticalDivider(color: colorScheme.primary),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        selectedSection = 0;
+                        setState(() {});
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 8),
+                        decoration: BoxDecoration(
+                          color: selectedSection == 0
+                              ? Colors.white
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(17),
+                        ),
+                        child: Center(
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.swap_vert_rounded,
+                                color: selectedSection == 0
+                                    ? Color(0xFF14532D)
+                                    : Color(0xff475569),
+                                size: 22,
+                              ),
+                              SizedBox(width: 8),
+                              Text(
+                                'Sort By',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color: selectedSection == 0
+                                      ? Color(0xFF14532D)
+                                      : Color(0xff475569),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        selectedSection = 1;
+                        setState(() {});
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 8),
+                        decoration: BoxDecoration(
+                          color: selectedSection == 1
+                              ? Colors.white
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(17),
+                        ),
+                        child: Center(
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.tune_rounded,
+                                color: selectedSection == 1
+                                    ? Color(0xFF14532D)
+                                    : Color(0xff475569),
+                                size: 22,
+                              ),
+                              SizedBox(width: 8),
+                              Text(
+                                'Filter By',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color: selectedSection == 1
+                                      ? Color(0xFF14532D)
+                                      : Color(0xff475569),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
+            ),
+            const SizedBox(height: 30),
 
-              if (currentWidget == 1) Expanded(flex: 4, child: SortByWidget()),
-
-              if (currentWidget == 2)
-                Expanded(flex: 4, child: FilterByWidget()),
-            ],
-          ),
-        ],
+            if (selectedSection == 0) CustomSortByWidget(),
+            if (selectedSection == 1) CustomFilterProductsWidget(),
+          ],
+        ),
       ),
     );
   }
