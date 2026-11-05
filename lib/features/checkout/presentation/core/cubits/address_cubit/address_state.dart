@@ -21,6 +21,10 @@ class GetAddressesSuccessState extends AddressState {
   GetAddressesSuccessState({required this.addresses});
 }
 
+class GetAddressesEmptyState extends AddressState {
+  
+}
+
 class GetAddressesFailureState extends AddressState {
   final String errorMessage;
   GetAddressesFailureState({required this.errorMessage});

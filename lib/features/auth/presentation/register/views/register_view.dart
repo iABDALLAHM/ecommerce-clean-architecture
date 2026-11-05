@@ -12,6 +12,7 @@ class RegisterView extends StatelessWidget {
     return RegisterViewBlocProvider(
       child: Scaffold(
         appBar: buildAuthAppBar(
+          isBack: false,
           title: LocaleKeys.auth_signUp_signUpPageAppBar.tr(),
         ),
         body: RegisterViewBody(),

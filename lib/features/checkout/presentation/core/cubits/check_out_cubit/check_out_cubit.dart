@@ -41,9 +41,8 @@ class CheckOutCubit extends Cubit<CheckOutStates> {
 
   void updateShippingOptions({required bool payWith}) async {
     orderEntity.payWithCash = payWith;
-    orderEntity.fcmToken = await getIt
-        .get<PushNotificationService>()
-        .getDeviceToken();
+    var token = await getIt.get<PushNotificationService>().getDeviceToken();
+    orderEntity.fcmToken = token;
     emit(CheckOutLoadedState(orderEntity: orderEntity));
   }
 

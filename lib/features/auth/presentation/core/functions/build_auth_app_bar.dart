@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 AppBar buildAuthAppBar({required String title, bool isBack = true}) {
   return AppBar(
-    leading: CustomArrowBackAppBar(isBack: isBack),
+    leading: isBack ? CustomArrowBackAppBar(isBack: isBack) : null,
     title: Text(title),
   );
 }

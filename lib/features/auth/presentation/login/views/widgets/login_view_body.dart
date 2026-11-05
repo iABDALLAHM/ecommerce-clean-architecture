@@ -72,7 +72,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     ),
                     const SizedBox(height: 16),
                     CustomPasswordField(
-                      hintText:  LocaleKeys.auth_loginPage_passwordTextField.tr(),
+                      hintText: LocaleKeys.auth_loginPage_passwordTextField
+                          .tr(),
                       onSaved: (value) {
                         password = value ?? "";
                       },
@@ -92,7 +93,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     ),
                     const SizedBox(height: 33),
                     AuthRichText(
-                      onTap: () => context.push(AppRoutes.register),
+                      onTap: () {
+                        context.go(AppRoutes.register);
+                      },
                       title: LocaleKeys.auth_loginPage_doNotHaveAnAccount.tr(),
                       subTitle: LocaleKeys.auth_loginPage_createNewAccount.tr(),
                     ),

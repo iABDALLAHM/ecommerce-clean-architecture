@@ -32,7 +32,7 @@ class _ProfileBodyImageState extends State<ProfileBodyImage> {
             if (state is SuccessGetUserDataState) {
               return CircleAvatar(
                 radius: 30,
-                backgroundImage: NetworkImage(state.userEntity.userImage),
+                backgroundImage: NetworkImage(state.userEntity.userImage,),
               );
             }
             return CircleAvatar(

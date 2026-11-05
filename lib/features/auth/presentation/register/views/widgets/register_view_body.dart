@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_progress_widget.dart';
@@ -67,7 +68,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     ),
                     const SizedBox(height: 16),
                     CustomPasswordField(
-                      hintText:  LocaleKeys.auth_signUp_passwordTextField.tr(),
+                      hintText: LocaleKeys.auth_signUp_passwordTextField.tr(),
                       onSaved: (value) {
                         password = value ?? "";
                       },
@@ -103,7 +104,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     ),
                     const SizedBox(height: 26),
                     AuthRichText(
-                      onTap: () => context.pop(),
+                      onTap: () => context.go(AppRoutes.login),
                       title: LocaleKeys.auth_signUp_haveAnAccount.tr(),
                       subTitle: LocaleKeys.auth_signUp_signIn.tr(),
                     ),

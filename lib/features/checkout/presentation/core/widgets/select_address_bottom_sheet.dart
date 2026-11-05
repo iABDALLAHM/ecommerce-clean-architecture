@@ -195,7 +195,7 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
                 } else if (state is GetAddressesLoadingState) {
                   return Center(child: CircularProgressIndicator());
                 }
-                return Text("لايوجد عنواين لديك اضف عنوان جديد");
+                return Center(child: Text("لايوجد عنواين لديك اضف عنوان جديد"));
               },
             ),
           ),

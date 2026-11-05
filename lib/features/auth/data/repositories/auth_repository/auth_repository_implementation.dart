@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
@@ -153,7 +154,7 @@ class AuthRepositoryImplementation implements AuthRepository {
         name: userCredential.user?.displayName ?? "",
         email: userCredential.user?.email ?? "",
         uId: userCredential.user?.uid ?? "",
-        userImage: userCredential.user?.photoURL ?? "",
+        userImage: kDefaultUserImageUrl,
       ).toEntity();
 
       return Right(userEntity);

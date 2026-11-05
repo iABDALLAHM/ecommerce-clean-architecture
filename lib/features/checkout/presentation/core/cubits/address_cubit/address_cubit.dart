@@ -39,7 +39,11 @@ class AddressCubit extends Cubit<AddressState> {
         emit(GetAddressesFailureState(errorMessage: failureState.message));
       },
       (successState) {
-        emit(GetAddressesSuccessState(addresses: successState));
+        if (successState.isEmpty) {
+          emit(GetAddressesEmptyState());
+        } else {
+          emit(GetAddressesSuccessState(addresses: successState));
+        }
       },
     );
   }
