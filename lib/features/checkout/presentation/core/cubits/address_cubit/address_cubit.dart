@@ -15,20 +15,32 @@ class AddressCubit extends Cubit<AddressState> {
   Future<void> saveAddress({
     required ShippingAddressEntity addressEntity,
   }) async {
-    emit(LoadingAddressState());
+    emit(LoadingSaveAddressState());
     var result = await _ordersRepository.saveAddress(
       addressEntity: addressEntity,
     );
 
     result.fold(
       (failure) {
-        emit(FailureAddressState(errorMessage: failure.message));
+        emit(FailureSaveAddressState(errorMessage: failure.message));
       },
       (success) {
-        emit(SuccessAddressState());
+        emit(SuccessSaveAddressState());
       },
     );
   }
 
-  Future<void> getAddress() async {}
+  Future<void> getAddressForCurrentUser({required String userId}) async {
+    emit(GetAddressesLoadingState());
+    var result = await _ordersRepository.getAddress(userId: userId);
+
+    result.fold(
+      (failureState) {
+        emit(GetAddressesFailureState(errorMessage: failureState.message));
+      },
+      (successState) {
+        emit(GetAddressesSuccessState(addresses: successState));
+      },
+    );
+  }
 }

@@ -85,4 +85,25 @@ class OrderRepositoryImplementation implements OrdersRepository {
       return Left(ServerFailure(message: e.exceptionMeassge));
     }
   }
+
+  @override
+  Future<Either<Failure, List<ShippingAddressEntity>>> getAddress({
+    required String userId,
+  }) async {
+    try {
+      var data = await databaseService.getQueryData(
+        path: "address",
+        query: QueryParams(
+          conditions: [QueryCondition(field: "userId", isEqualTo: userId)],
+        ),
+      );
+      List<ShippingAddressEntity> listOfAddress = [];
+      for (var address in data) {
+        listOfAddress.add(ShippingAddressModel.fromJson(address).toEntity());
+      }
+      return Right(listOfAddress);
+    } on CustomException catch (e) {
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
 }

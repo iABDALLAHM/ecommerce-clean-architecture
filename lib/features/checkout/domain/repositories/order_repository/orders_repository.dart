@@ -13,4 +13,5 @@ abstract class OrdersRepository {
   Future<Either<Failure, void>> saveCardDetails({
     required CardEntity cardEntity,
   });
+  Future<Either<Failure, List<ShippingAddressEntity>>> getAddress({required String userId});
 }

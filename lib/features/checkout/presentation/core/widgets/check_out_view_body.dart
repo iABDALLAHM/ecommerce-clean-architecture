@@ -12,6 +12,7 @@ import 'package:ecommerce_clean_architecture/features/checkout/presentation/core
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/function/change_button_text.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/widgets/check_out_steps.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/widgets/check_out_page_view.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/widgets/select_address_bottom_sheet.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -104,10 +105,24 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
 
   void _handleShippingSectionValidation({required BuildContext context}) {
     var payWithValue = context.read<CheckOutCubit>().orderEntity.payWithCash;
+    var addressCubit = context.read<AddressCubit>();
+    var checkOutCubit = context.read<CheckOutCubit>();
+
     if (payWithValue != null) {
-      pageController.nextPage(
-        duration: Duration(milliseconds: 300),
-        curve: Curves.easeIn,
+      context.read<AddressCubit>().getAddressForCurrentUser(
+        userId: context.read<CheckOutCubit>().orderEntity.uId,
+      );
+      showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: addressCubit),
+              BlocProvider.value(value: checkOutCubit),
+            ],
+            child: SelectAddressBottomSheet(controller: pageController),
+          );
+        },
       );
     } else {
       showSnackBar(
