@@ -1,4 +1,15 @@
 {
+    "payCartButton": "Pay",
+    "selectAddressBottomSheet": {
+        "address": "Address: ",
+        "homeDetails": "House / Apt Number: ",
+        "savedAddresses": "Saved Addresses",
+        "deliveryDestination": "Delivery Destination",
+        "selectAddress": "Select Address",
+        "addNew": "Add New",
+        "ConfirmAndDeliverHere": "Confirm & Deliver Here"
+    },
+
     "filters": {
         "PREFERENCES": "Preferences",
         "sortBy": "Sort By",

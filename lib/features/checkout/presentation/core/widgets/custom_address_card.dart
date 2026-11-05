@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class CustomAddressCard extends StatelessWidget {
@@ -58,7 +60,7 @@ class CustomAddressCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 3),
                   Text(
-                    shippingAddressEntity.address ?? "",
+                    "${LocaleKeys.selectAddressBottomSheet_address.tr()} ${shippingAddressEntity.address ?? ""}",
                     style: const TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -66,7 +68,7 @@ class CustomAddressCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    shippingAddressEntity.addressDetails ?? "",
+                    " ${LocaleKeys.selectAddressBottomSheet_homeDetails.tr()}${shippingAddressEntity.addressDetails ?? ""}",
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,

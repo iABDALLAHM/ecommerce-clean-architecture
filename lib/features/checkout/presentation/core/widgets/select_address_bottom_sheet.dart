@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/address_cubit/address_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/address_cubit/address_state.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/widgets/custom_address_card.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -10,6 +12,7 @@ import 'package:go_router/go_router.dart';
 class SelectAddressBottomSheet extends StatefulWidget {
   const SelectAddressBottomSheet({super.key, required this.controller});
   final PageController controller;
+
   @override
   State<SelectAddressBottomSheet> createState() =>
       _SelectAddressBottomSheetState();
@@ -67,7 +70,8 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'DELIVERY DESTINATION',
+                        LocaleKeys.selectAddressBottomSheet_deliveryDestination
+                            .tr(),
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w700,
@@ -77,7 +81,7 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
                       ),
                       SizedBox(height: 2),
                       Text(
-                        'Select Address',
+                        LocaleKeys.selectAddressBottomSheet_selectAddress.tr(),
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w800,
@@ -109,8 +113,8 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               children: [
-                const Text(
-                  'SAVED ADDRESSES',
+                Text(
+                  LocaleKeys.selectAddressBottomSheet_selectAddress.tr(),
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
@@ -142,7 +146,8 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
                         Icon(Icons.add, size: 14, color: colorScheme.primary),
                         SizedBox(width: 4),
                         Text(
-                          'Add New',
+                          LocaleKeys.selectAddressBottomSheet_savedAddresses
+                              .tr(),
                           style: TextStyle(
                             fontSize: 11.5,
                             fontWeight: FontWeight.w700,
@@ -222,8 +227,9 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
                   color: Colors.white,
                   size: 20,
                 ),
-                label: const Text(
-                  'Confirm & Deliver Here',
+                label: Text(
+                  LocaleKeys.selectAddressBottomSheet_ConfirmAndDeliverHere
+                      .tr(),
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w700,

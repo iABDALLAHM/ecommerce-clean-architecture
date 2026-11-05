@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +19,7 @@ class ShippingItem extends StatelessWidget {
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
+    var langCode = context.locale.languageCode;
     var colorScheme = Theme.of(context).colorScheme;
 
     return Container(
@@ -30,13 +33,13 @@ class ShippingItem extends StatelessWidget {
       child: ListTile(
         trailing: price == 0
             ? Text(
-                "مجاني",
+                langCode == arabicLanguageCode ? "مجاني" : "Free",
                 style: AppStyles.textStyle13Bold.copyWith(
                   color: colorScheme.primaryFixed,
                 ),
               )
             : Text(
-                "$price جنيه",
+                "$price ${langCode == arabicLanguageCode ? "جنيه" : "EGP"}",
                 style: AppStyles.textStyle13Bold.copyWith(
                   color: colorScheme.primaryFixed,
                 ),

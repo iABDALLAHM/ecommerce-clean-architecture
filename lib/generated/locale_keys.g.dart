@@ -3,6 +3,15 @@
 // ignore_for_file: constant_identifier_names
 
 abstract class  LocaleKeys {
+  static const payCartButton = 'payCartButton';
+  static const selectAddressBottomSheet_address = 'selectAddressBottomSheet.address';
+  static const selectAddressBottomSheet_homeDetails = 'selectAddressBottomSheet.homeDetails';
+  static const selectAddressBottomSheet_savedAddresses = 'selectAddressBottomSheet.savedAddresses';
+  static const selectAddressBottomSheet_deliveryDestination = 'selectAddressBottomSheet.deliveryDestination';
+  static const selectAddressBottomSheet_selectAddress = 'selectAddressBottomSheet.selectAddress';
+  static const selectAddressBottomSheet_addNew = 'selectAddressBottomSheet.addNew';
+  static const selectAddressBottomSheet_ConfirmAndDeliverHere = 'selectAddressBottomSheet.ConfirmAndDeliverHere';
+  static const selectAddressBottomSheet = 'selectAddressBottomSheet';
   static const filters_PREFERENCES = 'filters.PREFERENCES';
   static const filters_sortBy = 'filters.sortBy';
   static const filters_filterBy = 'filters.filterBy';

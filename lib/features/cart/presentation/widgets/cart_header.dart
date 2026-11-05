@@ -25,7 +25,7 @@ class CartHeader extends StatelessWidget {
                 ),
               )
             : Text(
-                "${LocaleKeys.home_cartHeaderTagWhenYouHaveProducts.tr()} : $cartItemsLenght",
+                LocaleKeys.home_cartHeaderTagWhenYouHaveProducts.tr(),
                 style: AppStyles.textStyle13Regular.copyWith(
                   color: colorScheme.primary,
                 ),

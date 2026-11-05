@@ -15,6 +15,16 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> _ar = {
+  "payCartButton": "دفع",
+  "selectAddressBottomSheet": {
+    "address": "العنوان: ",
+    "homeDetails": "رقم المنزل: ",
+    "savedAddresses": "العنواين المحفوظة",
+    "deliveryDestination": "وجهة التسليم",
+    "selectAddress": "اختيار العنوان",
+    "addNew": "اضافة عنوان جديد",
+    "ConfirmAndDeliverHere": "أكّد وسلّم هنا"
+  },
   "filters": {
     "PREFERENCES": "التفضيلات",
     "sortBy": "ترتيب حسب",
@@ -361,6 +371,16 @@ class CodegenLoader extends AssetLoader{
   "ConfirmChangeUserEmailButton": "تأكيد تغير الايميل "
 };
 static const Map<String,dynamic> _en = {
+  "payCartButton": "Pay",
+  "selectAddressBottomSheet": {
+    "address": "Address: ",
+    "homeDetails": "House / Apt Number: ",
+    "savedAddresses": "Saved Addresses",
+    "deliveryDestination": "Delivery Destination",
+    "selectAddress": "Select Address",
+    "addNew": "Add New",
+    "ConfirmAndDeliverHere": "Confirm & Deliver Here"
+  },
   "filters": {
     "PREFERENCES": "Preferences",
     "sortBy": "Sort By",

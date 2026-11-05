@@ -1,4 +1,14 @@
 {
+    "payCartButton": "دفع",
+    "selectAddressBottomSheet": {
+        "address": "العنوان: ",
+        "homeDetails": "رقم المنزل: ",
+        "savedAddresses": "العنواين المحفوظة",
+        "deliveryDestination": "وجهة التسليم",
+        "selectAddress": "اختيار العنوان",
+        "addNew": "اضافة عنوان جديد",
+        "ConfirmAndDeliverHere": "أكّد وسلّم هنا"
+    },
     "filters": {
         "PREFERENCES": "التفضيلات",
         "sortBy": "ترتيب حسب",

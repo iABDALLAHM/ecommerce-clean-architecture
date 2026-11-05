@@ -1,3 +1,4 @@
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/repositories/local_storage_repository/local_storage_repository.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/save_recent_search_cubit/save_recent_search_sugestions_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,8 +15,6 @@ class SaveRecentSearchSugestionsCubit
   final LocalStorageRepository _localStorageRepository;
 
   List<String> listOfSugestions = [];
-
-  static const String storageKey = "recent-sugestions";
 
   Future<void> saveRecentSugestions({required String recentSugestion}) async {
     listOfSugestions.remove(recentSugestion);
@@ -41,9 +40,11 @@ class SaveRecentSearchSugestionsCubit
     }
   }
 
-  Future<void> deleteCurrentSuggestion({required String currentSuggestion}) async {
+  Future<void> deleteCurrentSuggestion({
+    required String currentSuggestion,
+  }) async {
     listOfSugestions.remove(currentSuggestion);
-      await _localStorageRepository.setStringList(
+    await _localStorageRepository.setStringList(
       key: storageKey,
       data: listOfSugestions,
     );

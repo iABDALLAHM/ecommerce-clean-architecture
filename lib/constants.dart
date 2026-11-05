@@ -34,3 +34,5 @@ const String productEnglishName = "productName_en";
 
 const String arabicLanguageCode = "ar";
 const String englishLanguageCode = "en";
+
+const String storageKey = "recent-sugestions";
