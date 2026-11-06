@@ -156,149 +156,142 @@ abstract class AppTheme {
   static ThemeData darkTheme = ThemeData(
     fontFamily: kFontFamily,
     brightness: Brightness.dark,
-    // 🌙 خلفية الشاشة الأساسية في الـ Dark Mode
-    scaffoldBackgroundColor: AppColors.surfaceDark,
+    scaffoldBackgroundColor: const Color(
+      0xFF0F172A,
+    ), // Slate 900 كخلفية أساسية مريحة للعين
 
-    dividerTheme: DividerThemeData(
-      color: AppColors.dividerColor.withOpacity(0.2),
+    dividerTheme: const DividerThemeData(
+      color: Color(0xFF334155), // Slate 700 للفواصل والحدود الناعمة
+      thickness: 1,
     ),
 
     colorScheme: ColorScheme.dark(
-      // اللون الأساسي بيظل الأخضر
-      primary: AppColors.primaryColor,
+      // اللون الأساسي للبراند في الوضع الليلي (أخضر زمردي ناصع ومتوهج)
+      primary: const Color(0xFF22C55E), // Emerald 500
+      // لون النص أو الأيقونة فوق الـ primary
       onPrimary: Colors.white,
-      // خلفيات الأيقونات/الدرجات الناعمة بتتحول لداكنة
-      primaryContainer: AppColors.primaryColor.withOpacity(0.2),
+      // درجة أغمق للأسطح المعتمدة على اللون الأساسي
+      primaryContainer: const Color(0xFF14532D), // Emerald 900
+      // لون أساسي ثابت لا يتغير بين الـ Light والـ Dark Mode
       primaryFixed: AppColors.primaryFixed,
 
       // #############################################################################################
-      secondary: AppColors.secondryColor,
-      secondaryContainer: AppColors.secondaryContainer.withOpacity(0.2),
+      // لون البراند الثاني (برتقالي دافئ)
+      secondary: const Color(0xFFF97316),
+      // خلفية مشتقة من الثانوي في الوضع الليلي
+      secondaryContainer: const Color(0xFF7C2D12),
 
       // #############################################################################################
       shadow: Colors.black.withOpacity(0.4),
 
       // #############################################################################################
-      // الحدود والفاصل بتتحول لرمادي داكن
-      outline: AppColors.textFieldBorderColor.withOpacity(0.3),
-      outlineVariant: AppColors.iconArrowBorder.withOpacity(0.3),
+      outline: const Color(0xFF334155), // حدود الأيقونات والأسطح
+      outlineVariant: const Color(0xFF1E293B), // حدود ثانوية خافتة
+      // #############################################################################################
+      // أسطح البطاقات والحاويات المرتفعة
+      surface: const Color(0xFF1E293B), // Slate 800
+      onSurface: const Color(0xFFF8FAFC), // نص أساسي ناصع وقابل للقراءة
+      onSurfaceVariant: const Color(0xFF94A3B8), // نص ثانوي رمادي هادئ
+      surfaceBright: const Color(
+        0xFF334155,
+      ), // سطح الحقول المحددة أو بطاقات التفاصيل
+      // #############################################################################################
+      tertiary: const Color(0xFF34D399), // روابط الإجراءات مثل نسيت كلمة المرور
+      tertiaryContainer: const Color(
+        0xFF64748B,
+      ), // Slate 500 للتلميحات المساعدة
+      tertiaryFixed: const Color(
+        0xFF1E293B,
+      ), // أزرار العداد أو البطاقات المصغرة
+      tertiaryFixedDim: const Color(0xFF0F172A),
 
       // #############################################################################################
-      // 🌙 خلفيات الأسطح والكروت
-      surface: AppColors.surfaceDark,
-      onSurface: AppColors.whitebackground, // النص الرئيسي بيتحول لأبيض
-      onSurfaceVariant: AppColors.hintTextFieldColor, // النص الثانوي رمادي فاتح
-      surfaceBright: const Color(0xFF242728), // خلفية كروت المعلومات الداكنة
-      // #############################################################################################
-      tertiary: AppColors.forgetPasswordTextColor,
-      tertiaryContainer: AppColors.hintTextFieldColor.withOpacity(0.2),
-      tertiaryFixed: const Color(0xFF2C2C2C),
-      tertiaryFixedDim: const Color(0xFF1E1E1E),
-
-      // #############################################################################################
-      error: AppColors.textFieldErrorBorderColor,
+      error: const Color(0xFFEF4444), // أحمر التحذيرات والأخطاء
     ),
 
     appBarTheme: AppBarTheme(
       centerTitle: true,
       elevation: 0,
       titleTextStyle: AppStyles.textStyle19Bold.copyWith(
-        color: AppColors.whitebackground,
+        color: const Color(0xFFF8FAFC),
       ),
-      backgroundColor: AppColors.surfaceDark,
+      backgroundColor: const Color(0xFF0F172A),
+      iconTheme: const IconThemeData(color: Color(0xFFF8FAFC)),
     ),
 
     switchTheme: SwitchThemeData(
+      padding: EdgeInsets.zero,
       thumbColor: WidgetStateProperty.resolveWith<Color>((states) {
-        return AppColors.whitebackground;
+        if (states.contains(WidgetState.selected)) {
+          return Colors.white;
+        }
+        return const Color(0xFF94A3B8);
       }),
-      trackOutlineColor: WidgetStateProperty.resolveWith<Color>((states) {
-        return Colors.transparent;
-      }),
+      trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
       trackColor: WidgetStateProperty.resolveWith<Color>((states) {
         if (states.contains(WidgetState.selected)) {
-          return AppColors.primaryColor;
+          return const Color(0xFF22C55E);
         }
-        return AppColors.surfaceDark;
+        return const Color(0xFF334155);
       }),
     ),
 
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.zero,
         elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        backgroundColor: AppColors.primaryColor,
-        foregroundColor: AppColors.whitebackground,
+        backgroundColor: const Color(0xFF16A34A), // Emerald 600
+        foregroundColor: Colors.white,
       ),
     ),
 
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         elevation: 0,
-        backgroundColor: AppColors.surfaceDark,
-        foregroundColor: AppColors.whitebackground,
-        side: BorderSide(color: AppColors.bottonColorBorder.withOpacity(0.4)),
+        backgroundColor: const Color(0xFF1E293B),
+        foregroundColor: const Color(0xFFF8FAFC),
+        side: const BorderSide(color: Color(0xFF334155)),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
     ),
 
     inputDecorationTheme: InputDecorationTheme(
       counterStyle: AppStyles.textStyle13Regular.copyWith(
-        color: AppColors.hintTextFieldColor,
+        color: const Color(0xFF64748B),
       ),
       filled: true,
-      fillColor: const Color(0xFF1E2223), // 🌙 خلفية داكنة للـ TextFields
-      suffixIconColor: AppColors.hintTextFieldColor,
-      prefixIconColor: AppColors.hintTextFieldColor,
+      fillColor: const Color(0xFF1E293B), // خلفية الحقل الداكنة
+      suffixIconColor: const Color(0xFF94A3B8),
+      prefixIconColor: const Color(0xFF94A3B8),
 
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4),
-        borderSide: BorderSide(
-          color: AppColors.textFieldBorderColor.withOpacity(0.2),
-          width: 1,
-        ),
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: Color(0xFF334155), width: 1),
       ),
-
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4),
-        borderSide: BorderSide(
-          color: AppColors.textFieldBorderColor.withOpacity(0.2),
-          width: 1,
-        ),
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: Color(0xFF334155), width: 1),
       ),
-
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4),
-        borderSide: const BorderSide(color: AppColors.primaryColor, width: 1),
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: Color(0xFF22C55E), width: 1.5),
       ),
-
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4),
-        borderSide: BorderSide(
-          color: AppColors.textFieldErrorBorderColor,
-          width: 1,
-        ),
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: Color(0xFFEF4444), width: 1.5),
       ),
-
       disabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4),
-        borderSide: BorderSide(
-          color: AppColors.textFieldBorderColor.withOpacity(0.2),
-          width: 1,
-        ),
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: Color(0xFF1E293B), width: 1),
       ),
-
       errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4),
-        borderSide: BorderSide(
-          color: AppColors.textFieldErrorBorderColor,
-          width: 1,
-        ),
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: Color(0xFFEF4444), width: 1),
       ),
-
       errorStyle: const TextStyle(fontSize: 0),
       hintStyle: AppStyles.textStyle13Bold.copyWith(
-        color: AppColors.hintTextFieldColor,
+        color: const Color(0xFF64748B),
       ),
     ),
   );

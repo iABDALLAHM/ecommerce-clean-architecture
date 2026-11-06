@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
@@ -24,7 +25,8 @@ class SupabaseStorageService implements StorageService {
           .from(kBucketName)
           .getPublicUrl("$path/$fileName");
       return imageUrl;
-    } catch (e) {
+    } catch (e, stackTrace) {
+      log('Supabase Upload Error: $e', stackTrace: stackTrace);
       throw CustomException(
         exceptionMeassge: LocaleKeys.storageErrors_addFileError.tr(),
       );

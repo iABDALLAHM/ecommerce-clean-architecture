@@ -21,7 +21,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
     var colorScheme = Theme.of(context).colorScheme;
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: colorScheme.onPrimary,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
