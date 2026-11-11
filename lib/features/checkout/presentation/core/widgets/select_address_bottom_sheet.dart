@@ -19,7 +19,7 @@ class SelectAddressBottomSheet extends StatefulWidget {
 }
 
 class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
-  int currentIndex = -1;
+  int currentIndex = 0;
   ShippingAddressEntity? shippingAddressEntity;
 
   @override
