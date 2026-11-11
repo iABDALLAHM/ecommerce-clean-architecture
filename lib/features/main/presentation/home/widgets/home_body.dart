@@ -49,7 +49,6 @@ class _HomeBodyState extends State<HomeBody> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: HomeBodyMultiBlocListenr(
-        // ده انا عايز احطه في مكان عالي شوية عشان يبقى اوضح من كدة !
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
