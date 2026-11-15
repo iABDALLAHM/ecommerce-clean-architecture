@@ -13,9 +13,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ReviewAndRatingViewBody extends StatefulWidget {
-  const ReviewAndRatingViewBody({super.key, required this.productEntity});
+  const ReviewAndRatingViewBody({
+    super.key,
+    required this.productEntity,
+    required this.canReview,
+  });
 
   final ProductEntity productEntity;
+  final bool canReview;
 
   @override
   State<ReviewAndRatingViewBody> createState() =>
@@ -23,6 +28,14 @@ class ReviewAndRatingViewBody extends StatefulWidget {
 }
 
 class _ReviewAndRatingViewBodyState extends State<ReviewAndRatingViewBody> {
+  @override
+  void initState() {
+    context.read<GetReviewsCubit>().getReviews(
+      productCode: widget.productEntity.productCode,
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -34,9 +47,9 @@ class _ReviewAndRatingViewBodyState extends State<ReviewAndRatingViewBody> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 16),
-
-                AddReviewTextField(productEntity: widget.productEntity),
-
+                widget.canReview == true
+                    ? AddReviewTextField(productEntity: widget.productEntity)
+                    : SizedBox(),
                 const SizedBox(height: 16),
 
                 BlocBuilder<GetReviewsCubit, GetReviewsState>(

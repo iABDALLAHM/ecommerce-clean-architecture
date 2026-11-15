@@ -6,13 +6,21 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ReviewAndRatingView extends StatelessWidget {
-  const ReviewAndRatingView({super.key, required this.productEntity});
+  const ReviewAndRatingView({
+    super.key,
+    required this.productEntity,
+    required this.canReview,
+  });
   final ProductEntity productEntity;
+  final bool canReview;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildReviewAndRatingAppBar(context),
-      body: ReviewAndRatingViewBody(productEntity: productEntity),
+      body: ReviewAndRatingViewBody(
+        productEntity: productEntity,
+        canReview: canReview,
+      ),
     );
   }
 

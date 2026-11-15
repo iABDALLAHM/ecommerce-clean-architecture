@@ -87,6 +87,7 @@ class ProductInfo extends StatelessWidget {
                         'productEntity': productEntity,
                         'AddReviewsCubit': context.read<AddReviewCubit>(),
                         'GetReviewsCubit': context.read<GetReviewsCubit>(),
+                        "canReview": false,
                       };
                       context.push(AppRoutes.reviewAndRating, extra: data);
                     },
@@ -119,6 +120,7 @@ class ProductInfo extends StatelessWidget {
                         'productEntity': productEntity,
                         'AddReviewsCubit': context.read<AddReviewCubit>(),
                         'GetReviewsCubit': context.read<GetReviewsCubit>(),
+                        "canReview": false,
                       };
                       context.push(AppRoutes.reviewAndRating, extra: data);
                     },

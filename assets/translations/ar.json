@@ -1,4 +1,6 @@
 {
+    "LeaveAReview" : "اترك تعليقا!",
+    "PurchasedItems":"العناصر المشتراة: ",
     "payCartButton": "دفع",
     "selectAddressBottomSheet": {
         "address": "العنوان: ",

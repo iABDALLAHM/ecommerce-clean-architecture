@@ -16,7 +16,10 @@ class ReviewAndRatingWrapper extends StatelessWidget {
         BlocProvider.value(value: data["GetReviewsCubit"] as GetReviewsCubit),
         BlocProvider.value(value: data["AddReviewsCubit"] as AddReviewCubit),
       ],
-      child: ReviewAndRatingView(productEntity: data["productEntity"]),
+      child: ReviewAndRatingView(
+        productEntity: data["productEntity"],
+        canReview: (data["canReview"] as bool),
+      ),
     );
   }
 }

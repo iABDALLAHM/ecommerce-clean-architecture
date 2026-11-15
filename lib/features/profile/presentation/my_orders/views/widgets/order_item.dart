@@ -1,11 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_clean_architecture/constants.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
+import 'package:ecommerce_clean_architecture/features/item_details/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/views/widgets/order_details.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/order_item_icon.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/views/widgets/order_status_item.dart';
+import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/cubits/add_review_cubit/add_review_cubit.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class OrderItem extends StatefulWidget {
   const OrderItem({super.key, required this.myOrderEntity});
@@ -20,6 +26,7 @@ class _OrderItemState extends State<OrderItem> {
   Widget build(BuildContext context) {
     var myOrderEntity = context.read<OrderEntity>();
     var colorScheme = Theme.of(context).colorScheme;
+    var languageCode = context.locale.languageCode;
 
     return Card(
       elevation: 0,
@@ -57,6 +64,7 @@ class _OrderItemState extends State<OrderItem> {
               ),
             ),
           ),
+
           isActive
               ? Column(
                   children: [
@@ -103,6 +111,107 @@ class _OrderItemState extends State<OrderItem> {
                   ],
                 )
               : Container(color: colorScheme.surface),
+
+          isActive
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 20),
+                    Text(
+                      LocaleKeys.PurchasedItems.tr(),
+                      style: AppStyles.textStyle16Regular,
+                    ),
+                    const SizedBox(height: 10),
+                    Column(
+                      children: List.generate(
+                        widget.myOrderEntity.cartEntity.items.length,
+                        (index) {
+                          var productEntity = widget
+                              .myOrderEntity
+                              .cartEntity
+                              .items[index]
+                              .productEntity;
+
+                          return Row(
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: Row(
+                                  children: [
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      style: AppStyles.textStyle13Bold.copyWith(
+                                        color: colorScheme.primary,
+                                      ),
+                                      languageCode == arabicLanguageCode
+                                          ? productEntity
+                                                    .productName[productArabicName] ??
+                                                ""
+                                          : productEntity
+                                                    .productName[productEnglishName] ??
+                                                "",
+                                    ),
+                                    const SizedBox(width: 20),
+                                    CircleAvatar(
+                                      radius: 20,
+                                      child: Image.network(
+                                        productEntity.productImageUrl,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              myOrderEntity.orderStatusEntity.orderDelivered ==
+                                      true
+                                  ? Expanded(
+                                      child: TextButton(
+                                        style: TextButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                              5,
+                                            ),
+                                          ),
+
+                                          backgroundColor:
+                                              colorScheme.secondaryContainer,
+                                        ),
+                                        onPressed: () {
+                                          Map<String, dynamic> data = {
+                                            'productEntity': productEntity,
+                                            'AddReviewsCubit': context
+                                                .read<AddReviewCubit>(),
+                                            'GetReviewsCubit': context
+                                                .read<GetReviewsCubit>(),
+                                            "canReview": true,
+                                          };
+                                          context.push(
+                                            AppRoutes.reviewAndRating,
+                                            extra: data,
+                                          );
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.edit_note_rounded),
+                                            const SizedBox(width: 20),
+                                            Text(
+                                              LocaleKeys.LeaveAReview.tr(),
+                                              style: AppStyles.textStyle13Bold
+                                                  .copyWith(),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                  : SizedBox(),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                )
+              : SizedBox(),
         ],
       ),
     );

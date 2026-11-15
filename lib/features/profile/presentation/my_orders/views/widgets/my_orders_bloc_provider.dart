@@ -1,5 +1,7 @@
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
+import 'package:ecommerce_clean_architecture/features/item_details/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/my_orders/cubits/get_my_orders_cubit/get_my_orders_stream_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/cubits/add_review_cubit/add_review_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,8 +10,12 @@ class MyOrdersBlocProvider extends StatelessWidget {
   final Widget child;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<GetMyOrdersStreamCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => getIt<GetMyOrdersStreamCubit>()),
+        BlocProvider(create: (context) => getIt<AddReviewCubit>()),
+        BlocProvider(create: (context) => getIt<GetReviewsCubit>()),
+      ],
       child: child,
     );
   }

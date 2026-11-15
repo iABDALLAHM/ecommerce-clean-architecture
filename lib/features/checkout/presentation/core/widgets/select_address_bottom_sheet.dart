@@ -178,7 +178,8 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: 12),
                     itemBuilder: (context, index) {
-                      final address = state.addresses[index];
+                      final address = state.addresses[0];
+                      shippingAddressEntity = address;
                       final isSelected = (currentIndex == index);
 
                       return CustomAddressCard(

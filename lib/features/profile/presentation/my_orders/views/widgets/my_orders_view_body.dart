@@ -24,8 +24,13 @@ class MyOrdersViewBody extends StatelessWidget {
             builder: (context, state) {
               if (state is SuccessGetMyOrdersState) {
                 return SliverPadding(
-                  padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-                  sliver: SliverToBoxAdapter(child: OrdersItemListView(myOrders: state.myOrders)),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: kHorizontalPadding,
+                    vertical: 20,
+                  ),
+                  sliver: SliverToBoxAdapter(
+                    child: OrdersItemListView(myOrders: state.myOrders),
+                  ),
                 );
               } else if (state is EmptyOrdersState) {
                 return SliverToBoxAdapter(

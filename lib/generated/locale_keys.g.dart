@@ -3,6 +3,8 @@
 // ignore_for_file: constant_identifier_names
 
 abstract class  LocaleKeys {
+  static const LeaveAReview = 'LeaveAReview';
+  static const PurchasedItems = 'PurchasedItems';
   static const payCartButton = 'payCartButton';
   static const selectAddressBottomSheet_address = 'selectAddressBottomSheet.address';
   static const selectAddressBottomSheet_homeDetails = 'selectAddressBottomSheet.homeDetails';

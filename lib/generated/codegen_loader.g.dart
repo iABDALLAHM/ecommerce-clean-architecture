@@ -15,6 +15,8 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> _ar = {
+  "LeaveAReview": "اترك تعليقا!",
+  "PurchasedItems": "العناصر المشتراة: ",
   "payCartButton": "دفع",
   "selectAddressBottomSheet": {
     "address": "العنوان: ",
@@ -371,6 +373,8 @@ class CodegenLoader extends AssetLoader{
   "ConfirmChangeUserEmailButton": "تأكيد تغير الايميل "
 };
 static const Map<String,dynamic> _en = {
+  "PurchasedItems": "Purchased Items : ",
+  "LeaveAReview": "Leave A Review",
   "payCartButton": "Pay",
   "selectAddressBottomSheet": {
     "address": "Address: ",
