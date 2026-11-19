@@ -3,7 +3,6 @@ import 'package:ecommerce_clean_architecture/features/main/domain/entities/produ
 import 'package:ecommerce_clean_architecture/features/main/domain/repositories/products_repository/products_repository.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/products_cubit/products_states.dart';
 import 'package:ecommerce_clean_architecture/features/products/domain/product_filters/products_filters_enum.dart';
-import 'package:ecommerce_clean_architecture/features/products/domain/product_filters/products_filters_enum.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,7 +14,7 @@ class ProductsCubit extends Cubit<ProductsStates> {
   final ProductsRepository productsRepository;
 
   final List<ProductEntity> allProducts = [];
-  String lastProductCode = "";
+  String? lastProductCode;
   bool hasMore = true;
   bool isLoadingMore = false;
 

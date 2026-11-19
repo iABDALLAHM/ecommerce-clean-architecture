@@ -24,7 +24,7 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   }) : _secureStorageRepository = secureStorageRepository;
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> getProducts({required String lastProduct}) async {
+  Future<Either<Failure, List<ProductEntity>>> getProducts({required String? lastProduct}) async {
     try {
 
       var data = await databaseService.getPaginatedData(
