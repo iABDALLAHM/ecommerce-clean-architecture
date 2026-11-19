@@ -13,11 +13,19 @@ class SearchBody extends StatefulWidget {
 }
 
 class _SearchBodyState extends State<SearchBody> {
+  late TextEditingController searchController;
 
   @override
   void initState() {
+    searchController = TextEditingController();
     context.read<SearchCubit>().resetSearch();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
   }
 
   @override
@@ -29,8 +37,8 @@ class _SearchBodyState extends State<SearchBody> {
             const SizedBox(height: 16),
             SearchBodyAppBar(),
             const SizedBox(height: 16),
-            CustomSearchTextField(),
-            SearchBodyBlocConsumer(),
+            CustomSearchTextField(searchController: searchController),
+            SearchBodyBlocConsumer(searchController: searchController),
           ],
         ),
       ),

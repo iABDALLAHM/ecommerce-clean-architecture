@@ -8,8 +8,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchBodyBlocConsumer extends StatelessWidget {
-  const SearchBodyBlocConsumer({super.key});
-
+  const SearchBodyBlocConsumer({super.key, required this.searchController});
+  final TextEditingController searchController;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SearchCubit, SearchStates>(
@@ -19,7 +19,7 @@ class SearchBodyBlocConsumer extends StatelessWidget {
         } else if (state is EmptySearchState) {
           return EmptySearchWidget();
         }
-        return RecentSearchWidget();
+        return RecentSearchWidget(searchController: searchController);
       },
       listener: (context, state) {
         if (state is FailureSearchState) {

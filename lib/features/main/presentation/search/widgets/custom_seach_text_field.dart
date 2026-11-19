@@ -12,27 +12,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class CustomSearchTextField extends StatefulWidget {
-  const CustomSearchTextField({super.key});
-
+  const CustomSearchTextField({super.key, required this.searchController});
+  final TextEditingController searchController;
   @override
   State<CustomSearchTextField> createState() => _CustomSearchTextFieldState();
 }
 
 class _CustomSearchTextFieldState extends State<CustomSearchTextField> {
-  late TextEditingController _textEditingController;
-
-  @override
-  void initState() {
-    _textEditingController = TextEditingController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _textEditingController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
@@ -47,7 +33,7 @@ class _CustomSearchTextFieldState extends State<CustomSearchTextField> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           TextField(
-            controller: _textEditingController,
+            controller: widget.searchController,
             onSubmitted: (value) {
               context.read<SearchCubit>().searchProducts(
                 searchName: value,
@@ -58,7 +44,7 @@ class _CustomSearchTextFieldState extends State<CustomSearchTextField> {
               context
                   .read<SaveRecentSearchSugestionsCubit>()
                   .saveRecentSugestions(recentSugestion: value);
-              _textEditingController.clear();
+              widget.searchController.text = value;
             },
             decoration: InputDecoration(
               fillColor: colorScheme.onPrimary,

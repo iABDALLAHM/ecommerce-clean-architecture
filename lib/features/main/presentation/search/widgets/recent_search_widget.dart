@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RecentSearchWidget extends StatefulWidget {
-  const RecentSearchWidget({super.key});
-
+  const RecentSearchWidget({super.key, required this.searchController});
+  final TextEditingController searchController;
   @override
   State<RecentSearchWidget> createState() => _RecentSearchWidgetState();
 }
@@ -63,7 +63,10 @@ class _RecentSearchWidgetState extends State<RecentSearchWidget> {
               if (state is SuccessGetRecentSugestionsState) {
                 return Column(
                   children: state.listOfSugestions.map((e) {
-                    return RecentSearchSuggestWidget(lastSearch: e);
+                    return RecentSearchSuggestWidget(
+                      lastSearch: e,
+                      searchController: widget.searchController,
+                    );
                   }).toList(),
                 );
               }
