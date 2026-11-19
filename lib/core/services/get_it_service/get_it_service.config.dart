@@ -81,6 +81,8 @@ import 'package:ecommerce_clean_architecture/features/checkout/presentation/core
     as _i552;
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart'
     as _i506;
+import 'package:ecommerce_clean_architecture/features/last_orders/presentation/cubits/get_my_orders_cubit/get_my_orders_cubit.dart'
+    as _i776;
 import 'package:ecommerce_clean_architecture/features/main/data/repositories/featured_products_repository/featured_products_repository_implementation.dart'
     as _i915;
 import 'package:ecommerce_clean_architecture/features/main/data/repositories/images_repository/images_repository_implementation.dart'
@@ -247,6 +249,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i557.PaymentRepository>(
       () => _i28.PaymentRepositoryImplementation(
         databaseService: gh<_i15.DatabaseService>(),
+      ),
+    );
+    gh.factory<_i776.GetMyOrdersCubit>(
+      () => _i776.GetMyOrdersCubit(
+        ordersRepository: gh<_i652.OrdersRepository>(),
+        secureStorageRepository: gh<_i562.SecureStorageRepository>(),
       ),
     );
     gh.factory<_i149.GetMyOrdersStreamCubit>(

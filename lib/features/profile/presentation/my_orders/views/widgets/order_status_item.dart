@@ -59,7 +59,9 @@ class OrderStatusItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                date != null ? getSpecificDate(date: date!) : "قيد الإنتظار",
+                date != null
+                    ? getSpecificDate(date: date!, context: context)
+                    : "قيد الإنتظار",
                 style: AppStyles.textStyle13SemiBold.copyWith(
                   color: colorScheme.tertiaryContainer,
                 ),

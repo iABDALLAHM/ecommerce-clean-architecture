@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/get_month.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
@@ -14,6 +15,7 @@ class TrackOrderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var orderEntity = context.read<OrderEntity>();
+    var languageCode = context.locale.languageCode;
     var colorScheme = Theme.of(context).colorScheme;
     return Container(
       padding: EdgeInsets.only(top: 19, bottom: 19, left: 15),
@@ -38,7 +40,7 @@ class TrackOrderItem extends StatelessWidget {
                 style: AppStyles.textStyle13Bold,
               ),
               Text(
-                "${LocaleKeys.checkOut_trackOrderPageOrderedAt.tr()} ${orderEntity.date.day} ${getMonth(month: orderEntity.date.month)} ,${orderEntity.date.year}",
+                "${LocaleKeys.checkOut_trackOrderPageOrderedAt.tr()} ${orderEntity.date.day} ${languageCode == arabicLanguageCode ? getMonthInArabic(month: orderEntity.date.month) : getMonthInEnglish(month: orderEntity.date.month)} ,${orderEntity.date.year}",
                 style: AppStyles.textStyle11Regular.copyWith(
                   color: colorScheme.tertiaryContainer,
                 ),

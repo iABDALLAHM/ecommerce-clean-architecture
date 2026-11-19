@@ -20,9 +20,9 @@ class MyOrdersViewBody extends StatelessWidget {
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(child: const SizedBox(height: 16)),
-          BlocBuilder<GetMyOrdersStreamCubit, GetMyOrdersState>(
+          BlocBuilder<GetMyOrdersStreamCubit, GetMyOrdersStreamState>(
             builder: (context, state) {
-              if (state is SuccessGetMyOrdersState) {
+              if (state is SuccessGetMyOrdersStreamState) {
                 return SliverPadding(
                   padding: EdgeInsets.symmetric(
                     horizontal: kHorizontalPadding,
@@ -43,7 +43,7 @@ class MyOrdersViewBody extends StatelessWidget {
                     ),
                   ),
                 );
-              } else if (state is LoadingGetMyOrdersState) {
+              } else if (state is LoadingGetMyOrdersStreamState) {
                 return SliverToBoxAdapter(
                   child: CustomCircularProgressWidget(),
                 );

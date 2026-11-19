@@ -28,7 +28,7 @@ class ShippingOptions extends StatelessWidget {
           onPressed: () {
             checkOutCubit.updateShippingOptions(payWith: true);
           },
-          isSelected: orderEntity.payWithCash == true ? true : false,
+          isSelected: orderEntity.payWithCash == true,
           title: LocaleKeys.checkOut_cashOnDelivery.tr(),
           subTitle: LocaleKeys.checkOut_DeliveryFromLocation.tr(),
           price: totalPrice + 40,
@@ -38,7 +38,7 @@ class ShippingOptions extends StatelessWidget {
           onPressed: () {
             checkOutCubit.updateShippingOptions(payWith: false);
           },
-          isSelected: orderEntity.payWithCash == false ? true : false,
+          isSelected: orderEntity.payWithCash == false,
           title: LocaleKeys.checkOut_buyNowPayLater.tr(),
           subTitle: LocaleKeys.checkOut_yourPaymentMethod.tr(),
         ),

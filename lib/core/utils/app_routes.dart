@@ -2,6 +2,7 @@ import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/widgets/cart_body.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
 import 'package:ecommerce_clean_architecture/features/item_details/presentation/views/widgets/fruit_item_details_wrapper.dart';
+import 'package:ecommerce_clean_architecture/features/last_orders/presentation/views/last_orders_view.dart';
 import 'package:ecommerce_clean_architecture/features/main/main.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/best_selling/widgets/best_selling_body.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/home_body.dart';
@@ -44,10 +45,18 @@ class AppRoutes {
   static const String checkOut = "/checkout";
   static const String reviewOrder = "/reviewOrder";
   static const String trackOrder = "/trackOrder";
+  static const String yourLastOrders = "/yourLastOrders";
 
   static GoRouter router = GoRouter(
     initialLocation: splash,
     routes: [
+      GoRoute(
+        path: yourLastOrders,
+        builder: (context, state) {
+          var data = state.extra as Map<String, dynamic>;
+          return LastOrdersView(data: data);
+        },
+      ),
       GoRoute(
         path: '/__/auth/links',
         redirect: (context, state) {
@@ -143,6 +152,7 @@ class AppRoutes {
 
           return CheckOutView(
             cartEntity: data["cartEntity"],
+            orderEntity: data["orderEntity"],
             cartCubit: data["cartCubit"],
           );
         },

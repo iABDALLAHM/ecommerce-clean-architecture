@@ -6,12 +6,18 @@ import 'package:ecommerce_clean_architecture/features/profile/domain/entities/ca
 
 abstract class OrdersRepository {
   Future<Either<Failure, void>> addOrder({required OrderEntity orderEntity});
-  Stream<List<OrderEntity>> getOrders({required String userId});
+  Stream<List<OrderEntity>> getStreamOrders({required String userId});
+  Future<Either<Failure, List<OrderEntity>>> getOrders({
+    required String userId,
+  });
+
   Future<Either<Failure, void>> saveAddress({
     required ShippingAddressEntity addressEntity,
   });
   Future<Either<Failure, void>> saveCardDetails({
     required CardEntity cardEntity,
   });
-  Future<Either<Failure, List<ShippingAddressEntity>>> getAddress({required String userId});
+  Future<Either<Failure, List<ShippingAddressEntity>>> getAddress({
+    required String userId,
+  });
 }

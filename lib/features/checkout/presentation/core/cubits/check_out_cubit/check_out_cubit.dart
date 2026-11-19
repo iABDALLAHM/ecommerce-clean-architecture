@@ -22,21 +22,38 @@ class CheckOutCubit extends Cubit<CheckOutStates> {
   final SecureStorageRepository _secureStorageRepository;
 
   void initializeOrder({
-    required CartEntity cartEntity,
+    CartEntity? cartEntity,
+    OrderEntity? existingOrder,
     required String uId,
   }) async {
-    orderEntity = OrderEntity(
-      uId: uId,
-      cartEntity: cartEntity,
-      shippingAddressEntity: ShippingAddressEntity(userId: uId),
-      date: DateTime.now(),
-      orderNumber: generateOrderNumber(),
-      orderStatusEntity: OrderStatusEntity(),
-      totalPrice: cartEntity.calculateTotalPrice(),
-      cardEntity: CardEntity(),
-      fcmToken: "",
-    );
-    emit(CheckOutLoadedState(orderEntity: orderEntity));
+    if (existingOrder != null) {
+      orderEntity = OrderEntity(
+        uId: existingOrder.uId,
+        cartEntity: existingOrder.cartEntity,
+        shippingAddressEntity: existingOrder.shippingAddressEntity,
+        date: DateTime.now(),
+        payWithCash: existingOrder.payWithCash,
+        orderNumber: generateOrderNumber(),
+        orderStatusEntity: OrderStatusEntity(),
+        totalPrice: existingOrder.totalPrice,
+        cardEntity: existingOrder.cardEntity,
+        fcmToken: existingOrder.fcmToken,
+      );
+      emit(CheckOutLoadedState(orderEntity: orderEntity));
+    } else {
+      orderEntity = OrderEntity(
+        uId: uId,
+        cartEntity: cartEntity!,
+        shippingAddressEntity: ShippingAddressEntity(userId: uId),
+        date: DateTime.now(),
+        orderNumber: generateOrderNumber(),
+        orderStatusEntity: OrderStatusEntity(),
+        totalPrice: cartEntity.calculateTotalPrice(),
+        cardEntity: CardEntity(),
+        fcmToken: "",
+      );
+      emit(CheckOutLoadedState(orderEntity: orderEntity));
+    }
   }
 
   void updateShippingOptions({required bool payWith}) async {

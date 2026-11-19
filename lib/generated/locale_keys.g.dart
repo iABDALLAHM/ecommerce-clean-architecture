@@ -3,6 +3,11 @@
 // ignore_for_file: constant_identifier_names
 
 abstract class  LocaleKeys {
+  static const lastOrdersView_lastOrderViewAppBar = 'lastOrdersView.lastOrderViewAppBar';
+  static const lastOrdersView_reOrder = 'lastOrdersView.reOrder';
+  static const lastOrdersView_yourPreviousOrderTag = 'lastOrdersView.yourPreviousOrderTag';
+  static const lastOrdersView_viewAll = 'lastOrdersView.viewAll';
+  static const lastOrdersView = 'lastOrdersView';
   static const LeaveAReview = 'LeaveAReview';
   static const PurchasedItems = 'PurchasedItems';
   static const payCartButton = 'payCartButton';

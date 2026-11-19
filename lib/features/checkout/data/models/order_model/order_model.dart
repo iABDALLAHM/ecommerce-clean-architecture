@@ -70,6 +70,7 @@ class OrderModel {
 
   OrderEntity toEntity() {
     return OrderEntity(
+      payWithCash: payWithCash,
       cartEntity: cartModel.toEntity(),
       shippingAddressEntity: shippingAddressModel.toEntity(),
       uId: uId,

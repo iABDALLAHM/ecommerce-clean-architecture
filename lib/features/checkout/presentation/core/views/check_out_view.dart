@@ -3,6 +3,7 @@ import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/features/cart/domain/entities/cart_entity/cart_entity.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/function/build_checkout_app_bar.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/widgets/check_out_view_bloc_provider.dart';
@@ -11,9 +12,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CheckOutView extends StatefulWidget {
-  const CheckOutView({super.key, required this.cartEntity, this.cartCubit});
+  const CheckOutView({
+    super.key,
+    this.cartEntity,
+    this.cartCubit,
+    this.orderEntity,
+  });
 
-  final CartEntity cartEntity;
+  final CartEntity? cartEntity;
+  final OrderEntity? orderEntity;
   final dynamic cartCubit;
 
   @override
@@ -22,6 +29,18 @@ class CheckOutView extends StatefulWidget {
 
 class _CheckOutViewState extends State<CheckOutView> {
   int currentStep = 0;
+  late bool isOldOrder;
+
+  @override
+  void initState() {
+    if (widget.orderEntity != null) {
+      isOldOrder = true;
+      currentStep = 2;
+    } else {
+      isOldOrder = false;
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +53,7 @@ class _CheckOutViewState extends State<CheckOutView> {
               child: BlocProvider(
                 create: (context) => getIt<CheckOutCubit>()
                   ..initializeOrder(
+                    existingOrder: widget.orderEntity,
                     cartEntity: widget.cartEntity,
                     uId: state.userEntity.uId,
                   ),
@@ -43,6 +63,7 @@ class _CheckOutViewState extends State<CheckOutView> {
                     currentStep: currentStep,
                   ),
                   body: CheckOutViewBody(
+                    isOldOrder: isOldOrder,
                     onChange: (value) {
                       setState(() {
                         currentStep = value;

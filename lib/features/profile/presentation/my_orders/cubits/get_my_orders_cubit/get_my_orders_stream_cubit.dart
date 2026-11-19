@@ -8,31 +8,31 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class GetMyOrdersStreamCubit extends Cubit<GetMyOrdersState> {
+class GetMyOrdersStreamCubit extends Cubit<GetMyOrdersStreamState> {
   GetMyOrdersStreamCubit({
     required this.ordersRepository,
     required SecureStorageRepository secureStorageRepository,
   }) : _secureStorageRepository = secureStorageRepository,
-       super(LoadingGetMyOrdersState()) {
+       super(LoadingGetMyOrdersStreamState()) {
     listeningLoadOrders();
   }
 
   void listeningLoadOrders() async {
     var userId = await _secureStorageRepository.getData(key: keyUserId);
-    _streamSubscription = ordersRepository.getOrders(userId: userId).listen((
+    _streamSubscription = ordersRepository.getStreamOrders(userId: userId).listen((
       ordersList,
     ) {
       _monitorMyOrders(ordersList: ordersList);
     });
   }
 
-  final SecureStorageRepository _secureStorageRepository;
   late StreamSubscription _streamSubscription;
+  final SecureStorageRepository _secureStorageRepository;
   final OrdersRepository ordersRepository;
 
   void _monitorMyOrders({required List<OrderEntity> ordersList}) {
     if (ordersList.isNotEmpty) {
-      emit(SuccessGetMyOrdersState(myOrders: ordersList));
+      emit(SuccessGetMyOrdersStreamState(myOrders: ordersList));
     } else {
       emit(EmptyOrdersState());
     }

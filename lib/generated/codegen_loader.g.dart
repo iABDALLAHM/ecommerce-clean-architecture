@@ -15,6 +15,12 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> _ar = {
+  "lastOrdersView": {
+    "lastOrderViewAppBar": "طلباتك السابقة",
+    "reOrder": "اطلب مجددا",
+    "yourPreviousOrderTag": "طلبك السابق",
+    "viewAll": "عرض الكل"
+  },
   "LeaveAReview": "اترك تعليقا!",
   "PurchasedItems": "العناصر المشتراة: ",
   "payCartButton": "دفع",
@@ -373,6 +379,12 @@ class CodegenLoader extends AssetLoader{
   "ConfirmChangeUserEmailButton": "تأكيد تغير الايميل "
 };
 static const Map<String,dynamic> _en = {
+  "lastOrdersView": {
+    "lastOrderViewAppBar": "LastOrders",
+    "reOrder": "Re-Order",
+    "yourPreviousOrderTag": "Your Previous Order",
+    "viewAll": "View All"
+  },
   "PurchasedItems": "Purchased Items : ",
   "LeaveAReview": "Leave A Review",
   "payCartButton": "Pay",

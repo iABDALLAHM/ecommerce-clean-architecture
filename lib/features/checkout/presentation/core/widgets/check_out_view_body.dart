@@ -18,8 +18,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CheckOutViewBody extends StatefulWidget {
-  const CheckOutViewBody({super.key, required this.onChange});
+  const CheckOutViewBody({
+    super.key,
+    required this.onChange,
+    required this.isOldOrder,
+  });
   final ValueChanged<int> onChange;
+  final bool isOldOrder;
 
   @override
   State<CheckOutViewBody> createState() => _CheckOutViewBodyState();
@@ -27,11 +32,12 @@ class CheckOutViewBody extends StatefulWidget {
 
 class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   late PageController pageController;
-  int currentPage = 0;
+  late int currentPage;
 
   @override
   void initState() {
-    pageController = PageController();
+    currentPage = widget.isOldOrder == true ? 2 : 0;
+    pageController = PageController(initialPage: currentPage);
     pageController.addListener(() {
       setState(() {
         currentPage = pageController.page!.round();
@@ -188,7 +194,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   }
 
   void _triggerAddOrderCubit(BuildContext context) {
-    OrderEntity orderEntity = context.read<CheckOutCubit>().orderEntity;
+    var orderEntity = context.read<CheckOutCubit>().orderEntity;
     if (orderEntity.uId.isEmpty ||
         orderEntity.shippingAddressEntity.name == null ||
         orderEntity.payWithCash == null) {

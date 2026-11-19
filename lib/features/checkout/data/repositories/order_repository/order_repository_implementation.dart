@@ -37,7 +37,7 @@ class OrderRepositoryImplementation implements OrdersRepository {
   }
 
   @override
-  Stream<List<OrderEntity>> getOrders({required String userId}) {
+  Stream<List<OrderEntity>> getStreamOrders({required String userId}) {
     return databaseService
         .getQueryStreamData(
           path: BackendEndPoints.ordersCollection,
@@ -102,6 +102,29 @@ class OrderRepositoryImplementation implements OrdersRepository {
         listOfAddress.add(ShippingAddressModel.fromJson(address).toEntity());
       }
       return Right(listOfAddress);
+    } on CustomException catch (e) {
+      return Left(ServerFailure(message: e.exceptionMeassge));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<OrderEntity>>> getOrders({
+    required String userId,
+  }) async {
+    try {
+      var data = await databaseService.getQueryData(
+        path: BackendEndPoints.ordersCollection,
+        query: QueryParams(
+          conditions: [QueryCondition(field: "uId", isEqualTo: userId)],
+        ),
+      );
+
+      List<OrderEntity> listOfOrders = [];
+
+      for (var order in data) {
+        listOfOrders.add(OrderModel.fromJson(order).toEntity());
+      }
+      return Right(listOfOrders);
     } on CustomException catch (e) {
       return Left(ServerFailure(message: e.exceptionMeassge));
     }

@@ -5,6 +5,8 @@ import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart'
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_states.dart';
+import 'package:ecommerce_clean_architecture/features/last_orders/presentation/cubits/get_my_orders_cubit/get_my_orders_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/last_orders/presentation/cubits/get_my_orders_cubit/get_my_orders_state.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/add_favorite_product_cubit/add_favorite_product_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/add_favorite_product_cubit/add_favorite_product_states.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/get_featured_product_cubit/get_featured_product_cubit.dart';
@@ -16,6 +18,7 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/home/wid
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/banner_list.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/custom_home_app_bar.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/core/widgets/fruit_items_grid_view_bloc_builder.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/last_orders_banner.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/widgets/verify_change_email_dialog.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/cubits/get_notifications_cubit/get_notifications_cubit.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
@@ -33,6 +36,7 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   void initState() {
     context.read<ProductsCubit>().getProducts();
+    context.read<GetMyOrdersCubit>().getMyOrders();
     context.read<GetNotificationsCubit>().getNotification();
     context.read<GetFeaturedProductCubit>().getFeaturedProducts();
     if (widget.oobCode.isNotEmpty) {
@@ -57,6 +61,7 @@ class _HomeBodyState extends State<HomeBody> {
                   horizontal: kHorizontalPadding,
                 ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 16),
                     CustomHomeAppBar(),
@@ -72,6 +77,22 @@ class _HomeBodyState extends State<HomeBody> {
                           return BannerList(
                             featuredProducts: state.featuredProducts,
                           );
+                        }
+                        return SizedBox();
+                      },
+                    ),
+                    const SizedBox(height: 12),
+                    BlocBuilder<GetMyOrdersCubit, GetMyOrdersState>(
+                      builder: (context, state) {
+                        if (state is GetMyOrdersSuccessState) {
+                          var listOfOrders = state.listOfOrders;
+                          for (var item in listOfOrders) {
+                            if (item.orderStatusEntity.orderDelivered == true) {
+                              return LastOrdersBanner(orderEntity: item);
+                            }
+                          }
+                        } else if (state is GetMyOrdersLoadingState) {
+                          Center(child: CircularProgressIndicator());
                         }
                         return SizedBox();
                       },

@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/get_specific_date.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
@@ -12,6 +13,7 @@ class OrderDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
+    var languageCode = context.locale.languageCode;
 
     var myOrderEntity = context.read<OrderEntity>();
     return Column(
@@ -23,7 +25,7 @@ class OrderDetails extends StatelessWidget {
           style: AppStyles.textStyle13Bold,
         ),
         Text(
-          "${LocaleKeys.profile_myOrdersPageOrderdAt.tr()} ${getSpecificDate(date: myOrderEntity.date)}",
+          "${LocaleKeys.profile_myOrdersPageOrderdAt.tr()} ${getSpecificDate(date: myOrderEntity.date,context: context)}",
           style: AppStyles.textStyle11Regular.copyWith(
             color: colorScheme.tertiaryContainer,
           ),
@@ -49,7 +51,7 @@ class OrderDetails extends StatelessWidget {
             ),
             const SizedBox(width: 5),
             Text(
-              "${myOrderEntity.totalPrice.round()} جنية",
+              "${myOrderEntity.totalPrice.round()} ${languageCode == arabicLanguageCode ? "جنية" : "EGP"}",
               style: AppStyles.textStyle13Bold,
             ),
           ],

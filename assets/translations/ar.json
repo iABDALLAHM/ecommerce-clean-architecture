@@ -1,6 +1,12 @@
 {
-    "LeaveAReview" : "اترك تعليقا!",
-    "PurchasedItems":"العناصر المشتراة: ",
+    "lastOrdersView": {
+        "lastOrderViewAppBar": "طلباتك السابقة",
+        "reOrder": "اطلب مجددا",
+        "yourPreviousOrderTag": "طلبك السابق",
+        "viewAll": "عرض الكل"
+    },
+    "LeaveAReview": "اترك تعليقا!",
+    "PurchasedItems": "العناصر المشتراة: ",
     "payCartButton": "دفع",
     "selectAddressBottomSheet": {
         "address": "العنوان: ",

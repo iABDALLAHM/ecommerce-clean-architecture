@@ -1,19 +1,19 @@
 import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
 
-abstract class GetMyOrdersState {}
+abstract class GetMyOrdersStreamState {}
 
-final class SuccessGetMyOrdersState extends GetMyOrdersState {
+final class SuccessGetMyOrdersStreamState extends GetMyOrdersStreamState {
   final List<OrderEntity> myOrders;
 
-  SuccessGetMyOrdersState({required this.myOrders});
+  SuccessGetMyOrdersStreamState({required this.myOrders});
 }
 
-final class EmptyOrdersState extends GetMyOrdersState {}
+final class EmptyOrdersState extends GetMyOrdersStreamState {}
 
-final class FailureGetMyOrdersState extends GetMyOrdersState {
+final class FailureGetMyOrdersStreamState extends GetMyOrdersStreamState {
   final String errorMessage;
 
-  FailureGetMyOrdersState({required this.errorMessage});
+  FailureGetMyOrdersStreamState({required this.errorMessage});
 }
 
-final class LoadingGetMyOrdersState extends GetMyOrdersState {}
+final class LoadingGetMyOrdersStreamState extends GetMyOrdersStreamState {}

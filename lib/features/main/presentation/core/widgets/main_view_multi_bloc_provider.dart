@@ -1,4 +1,5 @@
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/last_orders/presentation/cubits/get_my_orders_cubit/get_my_orders_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/add_favorite_product_cubit/add_favorite_product_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/get_featured_product_cubit/get_featured_product_cubit.dart';
@@ -20,6 +21,7 @@ class MainViewMultiBlocProvider extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt<GetNotificationsCubit>()),
+        BlocProvider(create: (context) => getIt<GetMyOrdersCubit>()),
         BlocProvider(create: (context) => CartCubit()),
         BlocProvider(create: (context) => getIt<GetFeaturedProductCubit>()),
         BlocProvider(create: (context) => getIt<ProductsCubit>()),

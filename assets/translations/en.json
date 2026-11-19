@@ -1,4 +1,10 @@
 {
+    "lastOrdersView": {
+        "lastOrderViewAppBar": "LastOrders",
+        "reOrder": "Re-Order",
+        "yourPreviousOrderTag": "Your Previous Order",
+        "viewAll": "View All"
+    },
     "PurchasedItems": "Purchased Items : ",
     "LeaveAReview": "Leave A Review",
     "payCartButton": "Pay",
