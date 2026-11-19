@@ -3,7 +3,7 @@ import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/products_cubit/products_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/products/domain/entities/filter_item_entity.dart';
-import 'package:ecommerce_clean_architecture/features/products/presentation/enums/product_filters/products_filters_enum.dart';
+import 'package:ecommerce_clean_architecture/features/products/domain/product_filters/products_filters_enum.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/custom_filter_option.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/widgets/get_filter_products_bloc_listener.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';

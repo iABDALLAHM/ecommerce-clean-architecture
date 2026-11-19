@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/features/products/presentation/enums/product_filters/products_filters_enum.dart';
+import 'package:ecommerce_clean_architecture/features/products/domain/product_filters/products_filters_enum.dart';
 import 'package:flutter/material.dart';
 
 class FilterItemEntity {
