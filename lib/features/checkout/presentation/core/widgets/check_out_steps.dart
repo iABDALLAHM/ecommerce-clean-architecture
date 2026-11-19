@@ -4,9 +4,10 @@ import 'package:ecommerce_clean_architecture/features/checkout/presentation/core
 import 'package:flutter/material.dart';
 
 class CheckOutSteps extends StatelessWidget {
-  const CheckOutSteps({super.key, required this.currentPage});
+  const CheckOutSteps({super.key, required this.currentPage, required this.tappedStep});
 
   final int currentPage;
+  final Function(int) tappedStep;
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +16,15 @@ class CheckOutSteps extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: List.generate(getHeaderTextStepsPageView().length, (index) {
-          return CheckOutStep(
-            stepIndex: index + 1,
-            isSelected: currentPage == index || currentPage > index
-                ? true
-                : false,
-            text: getHeaderTextStepsPageView()[index],
+          return GestureDetector(
+            onTap: () => tappedStep(index),
+            child: CheckOutStep(
+              stepIndex: index + 1,
+              isSelected: currentPage == index || currentPage > index
+                  ? true
+                  : false,
+              text: getHeaderTextStepsPageView()[index],
+            ),
           );
         }),
       ),

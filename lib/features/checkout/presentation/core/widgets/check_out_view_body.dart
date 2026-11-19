@@ -59,7 +59,18 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
       children: [
         const SizedBox(height: 16),
 
-        CheckOutSteps(currentPage: currentPage),
+        CheckOutSteps(
+          currentPage: currentPage,
+          tappedStep: (index) {
+            if (index < currentPage) {
+              pageController.animateToPage(
+                index,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            }
+          },
+        ),
 
         Expanded(child: CheckOutPageView(pageController: pageController)),
 
