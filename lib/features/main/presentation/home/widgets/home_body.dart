@@ -33,8 +33,17 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
+  late ScrollController scrollController;
+
   @override
   void initState() {
+    scrollController = ScrollController();
+    scrollController.addListener(() {
+      if (scrollController.position.pixels >=
+          scrollController.position.maxScrollExtent) {
+        context.read<ProductsCubit>().getProducts(isLoadMore: true);
+      }
+    });
     context.read<ProductsCubit>().getProducts();
     context.read<GetMyOrdersCubit>().getMyOrders();
     context.read<GetNotificationsCubit>().getNotification();
@@ -50,10 +59,17 @@ class _HomeBodyState extends State<HomeBody> {
   }
 
   @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: HomeBodyMultiBlocListenr(
         child: CustomScrollView(
+          controller: scrollController,
           slivers: [
             SliverToBoxAdapter(
               child: Padding(

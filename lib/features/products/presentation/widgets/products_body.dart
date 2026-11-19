@@ -15,6 +15,7 @@ class ProductsBody extends StatelessWidget {
     return SafeArea(
       child: HomeBodyMultiBlocListenr(
         child: CustomScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
           slivers: [
             SliverToBoxAdapter(
               child: Padding(

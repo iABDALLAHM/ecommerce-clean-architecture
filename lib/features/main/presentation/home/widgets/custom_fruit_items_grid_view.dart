@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class CustomFruitItemsGridView extends StatelessWidget {
   const CustomFruitItemsGridView({super.key, required this.products});
   final List<ProductEntity> products;
+
   @override
   Widget build(BuildContext context) {
     return SliverGrid.builder(

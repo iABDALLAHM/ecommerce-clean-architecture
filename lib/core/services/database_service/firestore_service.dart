@@ -117,7 +117,6 @@ class FirestoreService implements DatabaseService {
     try {
       Query<Map<String, dynamic>> data = firestore.collection(path);
       if (query.conditions != null) {
-
         for (var condition in query.conditions!) {
           if (condition.isGreaterThanOrEqualTo != null &&
               condition.isLessThanOrEqualTo != null) {
@@ -276,6 +275,33 @@ class FirestoreService implements DatabaseService {
     } catch (e) {
       throw CustomException(
         exceptionMeassge: LocaleKeys.databaseErrors_getStreamData.tr(),
+      );
+    }
+  }
+
+  @override
+  Future<List<dynamic>> getPaginatedData({
+    required String path,
+    required String orderByField,
+    int limit = 4,
+    String? lastDocument,
+  }) async {
+    try {
+      var query = firestore
+          .collection(path)
+          .orderBy(orderByField, descending: false)
+          .limit(limit);
+
+      if (lastDocument != null) {
+        query = query.startAfter([lastDocument]);
+      }
+
+      var data = await query.get();
+
+      return data.docs.map((doc) => doc.data()).toList();
+    } catch (e) {
+      throw CustomException(
+        exceptionMeassge: LocaleKeys.databaseErrors_getDataError.tr(),
       );
     }
   }

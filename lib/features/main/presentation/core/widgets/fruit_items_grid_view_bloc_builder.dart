@@ -16,6 +16,15 @@ class FruitItemsGridViewBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         if (state is SuccessProductsState) {
           return CustomFruitItemsGridView(products: state.products);
+        } else if (state is LoadingMoreProductsState) {
+          return SliverMainAxisGroup(
+            slivers: [
+              CustomFruitItemsGridView(products: state.products),
+              const SliverToBoxAdapter(
+                child: Center(child: CircularProgressIndicator()),
+              ),
+            ],
+          );
         } else if (state is FailureProductsState) {
           return SliverToBoxAdapter(child: Text(state.errorMessage));
         } else if (state is LoadingProductsState) {

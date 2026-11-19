@@ -1,6 +1,13 @@
 import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
 
 abstract class DatabaseService {
+  Future<List> getPaginatedData({
+    required String path,
+    required String orderByField,
+    int limit = 4,
+    String? lastDocument,
+  });
+
   Future<void> addData({
     required String path,
     required Map<String, dynamic> data,

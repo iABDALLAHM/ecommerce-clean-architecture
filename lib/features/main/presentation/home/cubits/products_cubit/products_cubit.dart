@@ -1,4 +1,5 @@
 import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
+import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/repositories/products_repository/products_repository.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/home/cubits/products_cubit/products_states.dart';
 import 'package:ecommerce_clean_architecture/features/products/presentation/enums/product_filters/products_filters_enum.dart';
@@ -12,13 +13,40 @@ class ProductsCubit extends Cubit<ProductsStates> {
 
   final ProductsRepository productsRepository;
 
-  Future<void> getProducts() async {
-    emit(LoadingProductsState());
-    var result = await productsRepository.getProducts();
+  final List<ProductEntity> allProducts = [];
+  String lastProductCode = "";
+  bool hasMore = true;
+  bool isLoadingMore = false;
+
+  Future<void> getProducts({bool isLoadMore = false}) async {
+    if (isLoadMore) {
+      if (!hasMore || isLoadingMore) return;
+      isLoadingMore = true;
+      emit(LoadingMoreProductsState(products: allProducts));
+    } else {
+      allProducts.clear();
+      lastProductCode = "";
+      hasMore = true;
+      emit(LoadingProductsState());
+    }
+    var result = await productsRepository.getProducts(
+      lastProduct: lastProductCode,
+    );
     result.fold(
-      (failure) => emit(FailureProductsState(errorMessage: failure.message)),
+      (failure) {
+        isLoadingMore = false;
+        emit(FailureProductsState(errorMessage: failure.message));
+      },
       (products) {
-        return emit(SuccessProductsState(products: products));
+        isLoadingMore = false;
+        if (products.length < 4) {
+          hasMore = false;
+        }
+        if (products.isNotEmpty) {
+          allProducts.addAll(products);
+          lastProductCode = products.last.productCode;
+        }
+        emit(SuccessProductsState(products: allProducts));
       },
     );
   }

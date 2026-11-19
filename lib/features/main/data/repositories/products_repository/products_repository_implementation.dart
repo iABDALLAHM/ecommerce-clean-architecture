@@ -24,16 +24,22 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   }) : _secureStorageRepository = secureStorageRepository;
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> getProducts() async {
+  Future<Either<Failure, List<ProductEntity>>> getProducts({required String lastProduct}) async {
     try {
-      var data = await databaseService.getData(
+
+      var data = await databaseService.getPaginatedData(
         path: BackendEndPoints.productsCollection,
+        lastDocument: lastProduct,
+        orderByField: "productCode",
       );
+
       List<ProductEntity> productsList = [];
       for (var productEntity in data) {
         productsList.add(ProductModel.fromJson(productEntity).toEntity());
       }
+
       return Right(productsList);
+
     } on CustomException catch (e) {
       log(
         "this error happend in ProductsRepoImplementation in getProducts method ${e.toString()}",
