@@ -170,6 +170,7 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
             child: BlocBuilder<AddressCubit, AddressState>(
               builder: (context, state) {
                 if (state is GetAddressesSuccessState) {
+                  shippingAddressEntity ??= state.addresses[0];
                   return ListView.separated(
                     shrinkWrap: true,
                     padding: const EdgeInsets.symmetric(
@@ -180,10 +181,8 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: 12),
                     itemBuilder: (context, index) {
-                      final address = state.addresses[0];
-                      shippingAddressEntity = address;
+                      final address = state.addresses[index];
                       final isSelected = (currentIndex == index);
-
                       return CustomAddressCard(
                         isSelected: isSelected,
                         shippingAddressEntity: address,
@@ -217,9 +216,10 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
               height: 50,
               child: ElevatedButton.icon(
                 onPressed: () {
-                  var address = shippingAddressEntity;
-                  if (address != null) {
-                    checkOutCubit.updateShippingAddress(address: address);
+                  if (shippingAddressEntity != null) {
+                    checkOutCubit.updateShippingAddress(
+                      address: shippingAddressEntity!,
+                    );
                     widget.controller.jumpToPage(2);
                     context.pop();
                   }

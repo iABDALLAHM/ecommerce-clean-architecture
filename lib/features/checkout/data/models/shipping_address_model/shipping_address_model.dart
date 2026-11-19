@@ -64,6 +64,7 @@ class ShippingAddressModel {
 
   Map<String, dynamic> toMap() {
     return {
+      "saveLocation": saveLocation,
       "userId": userId,
       "name": name,
       "email": email,
