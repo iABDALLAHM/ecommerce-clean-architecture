@@ -15,7 +15,8 @@ class ShippingAddressEntity {
     this.address,
     this.addressDetails,
     this.city,
-    this.saveLocation = false, required this.userId,
+    this.saveLocation = false,
+    required this.userId,
   });
 
   @override

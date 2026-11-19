@@ -66,7 +66,6 @@ class ShippingAddressModel {
     return {
       "userId": userId,
       "name": name,
-      "saveLocation": saveLocation,
       "email": email,
       "phone": phone,
       "address": address,

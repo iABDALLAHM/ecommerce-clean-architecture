@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/address_cubit/address_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/address_cubit/address_state.dart';
@@ -25,6 +26,7 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
   @override
   Widget build(BuildContext context) {
     var checkOutCubit = context.read<CheckOutCubit>();
+    var languageCode = context.locale.languageCode;
     var colorScheme = Theme.of(context).colorScheme;
 
     return Container(
@@ -196,7 +198,13 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
                 } else if (state is GetAddressesLoadingState) {
                   return Center(child: CircularProgressIndicator());
                 }
-                return Center(child: Text("لايوجد عنواين لديك اضف عنوان جديد"));
+                return Center(
+                  child: Text(
+                    languageCode == arabicLanguageCode
+                        ? "لايوجد عنواين لديك اضف عنوان جديد"
+                        : "You don't have any locations before, add New One",
+                  ),
+                );
               },
             ),
           ),

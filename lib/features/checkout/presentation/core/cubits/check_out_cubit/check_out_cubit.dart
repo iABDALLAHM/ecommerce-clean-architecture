@@ -27,10 +27,19 @@ class CheckOutCubit extends Cubit<CheckOutStates> {
     required String uId,
   }) async {
     if (existingOrder != null) {
+      ShippingAddressEntity shippingAddressEntity = ShippingAddressEntity(
+        userId: existingOrder.shippingAddressEntity.userId,
+        email: existingOrder.shippingAddressEntity.email,
+        phone: existingOrder.shippingAddressEntity.phone,
+        name: existingOrder.shippingAddressEntity.name,
+        address: existingOrder.shippingAddressEntity.address,
+        addressDetails: existingOrder.shippingAddressEntity.addressDetails,
+        city: existingOrder.shippingAddressEntity.city,
+      );
       orderEntity = OrderEntity(
         uId: existingOrder.uId,
         cartEntity: existingOrder.cartEntity,
-        shippingAddressEntity: existingOrder.shippingAddressEntity,
+        shippingAddressEntity: shippingAddressEntity,
         date: DateTime.now(),
         payWithCash: existingOrder.payWithCash,
         orderNumber: generateOrderNumber(),

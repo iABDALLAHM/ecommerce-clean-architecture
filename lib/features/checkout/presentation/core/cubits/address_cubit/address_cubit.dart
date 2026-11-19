@@ -16,9 +16,16 @@ class AddressCubit extends Cubit<AddressState> {
     required ShippingAddressEntity addressEntity,
   }) async {
     emit(LoadingSaveAddressState());
-    var result = await _ordersRepository.saveAddress(
-      addressEntity: addressEntity,
+    ShippingAddressEntity address = ShippingAddressEntity(
+      userId: addressEntity.userId,
+      phone: addressEntity.phone,
+      email: addressEntity.email,
+      name: addressEntity.name,
+      address: addressEntity.address,
+      city: addressEntity.city,
+      addressDetails: addressEntity.addressDetails,
     );
+    var result = await _ordersRepository.saveAddress(addressEntity: address);
 
     result.fold(
       (failure) {
