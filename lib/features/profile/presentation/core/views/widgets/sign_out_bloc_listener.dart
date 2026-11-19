@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
+import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/sign_out_cubit/sign_out_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/sign_out_cubit/sign_out_states.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
@@ -16,6 +17,7 @@ class SignOutDialogBlocListener extends StatelessWidget {
     return BlocListener<SignOutCubit, SignOutStates>(
       listener: (context, state) {
         if (state is SuccessSignOutState) {
+          context.read<CartCubit>().removeCartItems();
           showSnackBar(
             context,
             message: LocaleKeys.profileStatus_successSignOutState.tr(),
