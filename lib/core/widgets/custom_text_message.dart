@@ -10,7 +10,7 @@ class CustomTextMessage extends StatelessWidget {
     return Center(
       child: Text(
         message,
-        style: AppStyles.textStyle19Bold.copyWith(color: colorScheme.onPrimary),
+        style: AppStyles.textStyle19Bold.copyWith(color: colorScheme.onSurface),
       ),
     );
   }
