@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 AppBar buildCheckOutAppBar(BuildContext context, {required int currentStep}) {
+  var colorScheme = Theme.of(context).colorScheme;
   return AppBar(
     centerTitle: true,
     leading: IconButton(
@@ -14,7 +15,7 @@ AppBar buildCheckOutAppBar(BuildContext context, {required int currentStep}) {
     ),
     title: Text(
       changeTextStepsAppBar(step: currentStep),
-      style: AppStyles.textStyle19Bold,
+      style: AppStyles.textStyle19Bold.copyWith(color: colorScheme.onSurface),
     ),
   );
 }

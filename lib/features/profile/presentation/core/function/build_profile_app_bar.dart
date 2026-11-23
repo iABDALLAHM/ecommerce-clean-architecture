@@ -10,7 +10,7 @@ AppBar buildProfileAppBar(
   var appBarTheme = Theme.of(context).appBarTheme;
 
   return AppBar(
-    title: Text(title),
+    title: Text(title, style: TextStyle(color: colorScheme.onSurface)),
     centerTitle: true,
 
     leading: CircleAvatar(

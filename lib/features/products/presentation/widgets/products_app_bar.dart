@@ -9,12 +9,15 @@ class ProductsAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Row(
       children: [
         Spacer(),
         Text(
           LocaleKeys.home_productsPageAppBar.tr(),
-          style: AppStyles.textStyle19Bold,
+          style: AppStyles.textStyle19Bold.copyWith(
+            color: colorScheme.onSurface,
+          ),
         ),
         Spacer(),
         CustomNotificationIcon(),

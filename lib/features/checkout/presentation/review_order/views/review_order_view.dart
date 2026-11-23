@@ -10,12 +10,15 @@ class ReviewOrderView extends StatelessWidget {
   final OrderEntity orderEntity;
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
         leading: SizedBox(),
         title: Text(
           LocaleKeys.checkOut_reviewPageAppBar.tr(),
-          style: AppStyles.textStyle19Bold,
+          style: AppStyles.textStyle19Bold.copyWith(
+            color: colorScheme.onSurface,
+          ),
         ),
         centerTitle: true,
       ),

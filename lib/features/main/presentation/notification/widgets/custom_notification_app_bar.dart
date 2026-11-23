@@ -9,6 +9,8 @@ class CustomNotificationAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -16,7 +18,9 @@ class CustomNotificationAppBar extends StatelessWidget {
         Spacer(),
         Text(
           LocaleKeys.notification_notificationsPageAppBar.tr(),
-          style: AppStyles.textStyle19Bold,
+          style: AppStyles.textStyle19Bold.copyWith(
+            color: colorScheme.onSurface,
+          ),
         ),
         Spacer(flex: 2),
       ],

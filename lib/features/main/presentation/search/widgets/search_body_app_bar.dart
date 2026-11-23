@@ -11,6 +11,7 @@ class SearchBodyAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       child: Row(
@@ -19,7 +20,9 @@ class SearchBodyAppBar extends StatelessWidget {
           CustomArrowWidget(),
           Text(
             LocaleKeys.home_searchPageAppBar.tr(),
-            style: AppStyles.textStyle19Bold,
+            style: AppStyles.textStyle19Bold.copyWith(
+              color: colorScheme.onSurface,
+            ),
           ),
           CustomNotificationIcon(),
         ],

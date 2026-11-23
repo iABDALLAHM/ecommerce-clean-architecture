@@ -25,6 +25,7 @@ class ReviewAndRatingView extends StatelessWidget {
   }
 
   AppBar buildReviewAndRatingAppBar(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return AppBar(
       leading: GestureDetector(
         onTap: () {
@@ -32,7 +33,10 @@ class ReviewAndRatingView extends StatelessWidget {
         },
         child: Icon(Icons.arrow_back_ios_new),
       ),
-      title: Text(LocaleKeys.reviewAndRating_reviewAndRatingPageAppBar.tr()),
+      title: Text(
+        LocaleKeys.reviewAndRating_reviewAndRatingPageAppBar.tr(),
+        style: TextStyle(color: colorScheme.onSurface),
+      ),
     );
   }
 }

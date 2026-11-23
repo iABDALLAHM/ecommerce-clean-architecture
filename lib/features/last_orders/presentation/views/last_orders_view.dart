@@ -21,16 +21,17 @@ class LastOrdersView extends StatelessWidget {
         BlocProvider.value(value: data["cartCubit"] as CartCubit),
       ],
       child: Scaffold(
-        appBar: _buildLastOrdersAppBar(),
+        appBar: _buildLastOrdersAppBar(context: context),
         body: LastOrdersViewBody(),
       ),
     );
   }
 
-  AppBar _buildLastOrdersAppBar() {
+  AppBar _buildLastOrdersAppBar({required BuildContext context}) {
+    var colorScheme = Theme.of(context).colorScheme;
     return AppBar(
       leading: CustomArrowBackAppBar(),
-      title: Text(LocaleKeys.lastOrdersView_lastOrderViewAppBar.tr()),
+      title: Text(LocaleKeys.lastOrdersView_lastOrderViewAppBar.tr(),style: TextStyle(color: colorScheme.onSurface),),
     );
   }
 }

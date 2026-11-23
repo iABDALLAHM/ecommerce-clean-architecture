@@ -8,12 +8,13 @@ class ProfileBodyAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           LocaleKeys.profile_profilePageAppBar.tr(context: context),
-          style: AppStyles.textStyle19Bold,
+          style: AppStyles.textStyle19Bold.copyWith(color: colorScheme.onSurface),
         ),
       ],
     );

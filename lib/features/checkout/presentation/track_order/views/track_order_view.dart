@@ -14,15 +14,20 @@ class TrackOrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildTrackOrderAppBar(),
+      appBar: buildTrackOrderAppBar(context: context),
       body: Provider.value(value: orderEntity, child: TrackOrderViewBody()),
     );
   }
 
-  AppBar buildTrackOrderAppBar() {
+  AppBar buildTrackOrderAppBar({required BuildContext context}) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return AppBar(
       leading: CustomArrowBackAppBar(),
-      title: Text(LocaleKeys.checkOut_trackOrderPageAppBar.tr()),
+      title: Text(
+        LocaleKeys.checkOut_trackOrderPageAppBar.tr(),
+        style: TextStyle(color: colorScheme.onSurface),
+      ),
     );
   }
 }

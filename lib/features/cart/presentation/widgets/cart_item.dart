@@ -41,13 +41,13 @@ class CartItem extends StatelessWidget {
           showSnackBar(
             context,
             message:
-                "${LocaleKeys.cartCubit_cartItemIncremented.tr()} ${cartItemEntity.productEntity.productName}",
+                "${LocaleKeys.cartCubit_cartItemIncremented.tr()} $productName",
           );
         } else if (state is CartUpdatedState) {
           showSnackBar(
             context,
             message:
-                "${LocaleKeys.cartCubit_cartItemDecremented.tr()} ${cartItemEntity.productEntity.productName}",
+                "${LocaleKeys.cartCubit_cartItemDecremented.tr()} $productName",
           );
         }
       },

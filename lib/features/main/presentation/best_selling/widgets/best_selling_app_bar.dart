@@ -10,13 +10,14 @@ class BestSellingAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         CustomArrowWidget(),
         Text(
           LocaleKeys.home_bestSellerHomeAppBar.tr(),
-          style: AppStyles.textStyle19Bold,
+          style: AppStyles.textStyle19Bold.copyWith(color: colorScheme.onSurface),
         ),
         CustomNotificationIcon(),
       ],
