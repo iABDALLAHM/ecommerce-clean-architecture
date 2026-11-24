@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
-import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/checkout.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/address_section/cubits/address_validation_cubit/address_validation_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
@@ -83,7 +82,6 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
               listener: (context, state) {
                 if (state is SuccessCheckoutPaymentState) {
                   _triggerAddOrderCubit(context);
-                  context.read<CartCubit>().removeCartItems();
                 } else if (state is FailureCheckoutPaymentState) {
                   showSnackBar(context, message: "payment faild");
                 }
@@ -91,6 +89,11 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
               child: CustomButton(
                 text: changeButtonText(currentPage: currentPage),
                 onPressed: () {
+                  var payWithValue = context
+                      .read<CheckOutCubit>()
+                      .orderEntity
+                      .payWithCash;
+
                   if (currentPage == 0) {
                     _handleShippingSectionValidation(context: context);
                   } else if (currentPage == 1) {
@@ -98,7 +101,11 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
                   } else if (currentPage == 2) {
                     _handlePaymentOptionsSection(context);
                   } else if (currentPage == 3) {
-                    _triggerCheckOutPayment(context);
+                    if (payWithValue == true) {
+                      _triggerAddOrderCubit(context);
+                    } else {
+                      _triggerCheckOutPayment(context);
+                    }
                   }
                 },
               ),
@@ -124,23 +131,34 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     var payWithValue = context.read<CheckOutCubit>().orderEntity.payWithCash;
     var addressCubit = context.read<AddressCubit>();
     var checkOutCubit = context.read<CheckOutCubit>();
+    var address = context
+        .read<CheckOutCubit>()
+        .orderEntity
+        .shippingAddressEntity;
 
     if (payWithValue != null) {
-      context.read<AddressCubit>().getAddressForCurrentUser(
-        userId: context.read<CheckOutCubit>().orderEntity.uId,
-      );
-      showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return MultiBlocProvider(
-            providers: [
-              BlocProvider.value(value: addressCubit),
-              BlocProvider.value(value: checkOutCubit),
-            ],
-            child: SelectAddressBottomSheet(controller: pageController),
-          );
-        },
-      );
+      if (address.address != null) {
+        pageController.nextPage(
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeIn,
+        );
+      } else {
+        context.read<AddressCubit>().getAddressForCurrentUser(
+          userId: context.read<CheckOutCubit>().orderEntity.uId,
+        );
+        showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider.value(value: addressCubit),
+                BlocProvider.value(value: checkOutCubit),
+              ],
+              child: SelectAddressBottomSheet(controller: pageController),
+            );
+          },
+        );
+      }
     } else {
       showSnackBar(
         context,
@@ -150,6 +168,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   }
 
   void _handleAddressSection(BuildContext context) {
+    var payWithValue = context.read<CheckOutCubit>().orderEntity.payWithCash;
     var addressValidationCubit = context
         .read<AddressValidationCubit>()
         .vaildate();
@@ -158,13 +177,22 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         .orderEntity
         .shippingAddressEntity;
     if (addressValidationCubit) {
-      pageController.nextPage(
-        duration: Duration(milliseconds: 300),
-        curve: Curves.easeIn,
-      );
-    }
-    if (addressEntity.saveLocation) {
-      context.read<AddressCubit>().saveAddress(addressEntity: addressEntity);
+      if (payWithValue == true) {
+        pageController.animateToPage(
+          3,
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeIn,
+        );
+      } else {
+        pageController.animateToPage(
+          2,
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeIn,
+        );
+      }
+      if (addressEntity.saveLocation) {
+        context.read<AddressCubit>().saveAddress(addressEntity: addressEntity);
+      }
     }
   }
 
@@ -194,13 +222,22 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   void _handlePaymentOptionsSection(BuildContext context) {
     String? paymentMethod =
         context.read<CheckOutCubit>().orderEntity.paymentMethod ?? "";
-    if (paymentMethod.isNotEmpty) {
+    var payWithValue = context.read<CheckOutCubit>().orderEntity.payWithCash;
+
+    if (payWithValue == true) {
       pageController.nextPage(
         duration: Duration(milliseconds: 300),
         curve: Curves.easeIn,
       );
     } else {
-      showSnackBar(context, message: "Please Choose Payment Method");
+      if (paymentMethod.isNotEmpty) {
+        pageController.nextPage(
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeIn,
+        );
+      } else {
+        showSnackBar(context, message: "Please Choose Payment Method");
+      }
     }
   }
 

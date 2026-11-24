@@ -17,6 +17,7 @@ class LastOrdersBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var languageCode = context.locale.languageCode;
+    var colorScheme = Theme.of(context).colorScheme;
 
     return Container(
       padding: EdgeInsets.all(15),
@@ -80,7 +81,7 @@ class LastOrdersBanner extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            "(${getSpecificDate(date: orderEntity.date,context: context)})",
+            "(${getSpecificDate(date: orderEntity.date, context: context)})",
             style: AppStyles.textStyle16Bold,
           ),
           const SizedBox(height: 10),

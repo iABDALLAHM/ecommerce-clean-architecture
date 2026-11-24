@@ -17,7 +17,9 @@ class PaymentMethodSummary extends StatelessWidget {
         .watch<CheckOutCubit>()
         .orderEntity
         .paymentMethod;
+    var payWithCash = context.watch<CheckOutCubit>().orderEntity.payWithCash;
     var colorScheme = Theme.of(context).colorScheme;
+    var languageCode = context.locale.languageCode;
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 9),
@@ -68,11 +70,15 @@ class PaymentMethodSummary extends StatelessWidget {
           Row(
             children: [
               Spacer(),
-              Image(
-                image: AssetImage(generateImage(paymentMethod)),
-                width: 50,
-                height: 50,
-              ),
+              payWithCash == true
+                  ? Text(
+                      languageCode == arabicLanguageCode ? "الدفع كاش" : "Cash",
+                    )
+                  : Image.asset(
+                      Assets.stripePaymentMethod,
+                      width: 50,
+                      height: 50,
+                    ),
               // Text(
               //   "PayedWith: $paymentMethod",
               //   style: AppStyles.textStyle16Regular,

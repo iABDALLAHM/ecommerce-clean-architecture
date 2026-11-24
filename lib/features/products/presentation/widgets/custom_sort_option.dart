@@ -57,13 +57,9 @@ class CustomSortOption extends StatelessWidget {
               ],
             ),
             Spacer(),
-            Container(
-              child: Icon(
-                isSelected ? Icons.circle : Icons.circle_outlined,
-                color: isSelected == true
-                    ? Color(0xff14532D)
-                    : Color(0xffCBD5E1),
-              ),
+            Icon(
+              isSelected ? Icons.circle : Icons.circle_outlined,
+              color: isSelected == true ? Color(0xff14532D) : Color(0xffCBD5E1),
             ),
           ],
         ),

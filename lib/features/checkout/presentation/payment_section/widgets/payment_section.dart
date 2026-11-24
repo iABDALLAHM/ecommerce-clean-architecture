@@ -1,17 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
-import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
-import 'package:ecommerce_clean_architecture/core/widgets/custom_card_number_text_field.dart';
-import 'package:ecommerce_clean_architecture/core/widgets/custom_card_text_field_holder_name.dart';
-import 'package:ecommerce_clean_architecture/core/widgets/custom_cvv_card_number_text_field.dart';
-import 'package:ecommerce_clean_architecture/core/widgets/custom_expire_date_text_field.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/cubits/payment_validation_cubit/payment_validation_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/cubits/payment_validation_cubit/payment_validation_state.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/widgets/choose_payment_card_option.dart';
-import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/widgets/make_card_as_default.dart';
+// import 'package:ecommerce_clean_architecture/core/widgets/custom_card_number_text_field.dart';
+// import 'package:ecommerce_clean_architecture/core/widgets/custom_expire_date_text_field.dart';
+// import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
+// import 'package:ecommerce_clean_architecture/core/widgets/custom_card_text_field_holder_name.dart';
+// import 'package:ecommerce_clean_architecture/core/widgets/custom_cvv_card_number_text_field.dart';
+// import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/cubits/payment_validation_cubit/payment_validation_cubit.dart';
+// import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/cubits/payment_validation_cubit/payment_validation_state.dart';
+// import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/widgets/choose_payment_card_option.dart';
+// import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/widgets/make_card_as_default.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/widgets/payment_option.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
@@ -161,6 +161,9 @@ class _PaymentSectionState extends State<PaymentSection> {
   bool isSelected = false;
   @override
   Widget build(BuildContext context) {
+    var paymentMethod = context.read<CheckOutCubit>().orderEntity.paymentMethod;
+    var payWithCash = context.read<CheckOutCubit>().orderEntity.payWithCash;
+    var languageCode = context.locale.languageCode;
     var checkOutCubit = context.read<CheckOutCubit>();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
@@ -177,23 +180,30 @@ class _PaymentSectionState extends State<PaymentSection> {
 
             const SizedBox(height: 13),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(width: 16),
-                PaymentOption(
-                  paymentMethodImage: Assets.stripePaymentMethod,
-                  isSelected: currentIndex == 1,
-                  onTap: () {
-                    currentIndex = 1;
-                    checkOutCubit.updatePaymentOption(method: "Stripe");
-                    setState(() {});
-                  },
-                ),
-                const SizedBox(width: 16),
-              ],
-            ),
-
+            payWithCash == false
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(width: 16),
+                      PaymentOption(
+                        paymentMethodImage: Assets.stripePaymentMethod,
+                        isSelected: paymentMethod == "Stripe",
+                        onTap: () {
+                          currentIndex = 1;
+                          checkOutCubit.updatePaymentOption(method: "Stripe");
+                          setState(() {});
+                        },
+                      ),
+                      const SizedBox(width: 16),
+                    ],
+                  )
+                : SizedBox(
+                    child: Text(
+                      languageCode == arabicLanguageCode
+                          ? "وسيلة الدفع كاش"
+                          : "Your Payment Method Is Cash",
+                    ),
+                  ),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
+import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/add_order_cubit/add_order_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/add_order_cubit/add_order_states.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/presentation/core/cubits/check_out_cubit/check_out_cubit.dart';
@@ -21,6 +22,7 @@ class AddOrderBlocListener extends StatelessWidget {
             context,
             message: LocaleKeys.checkOutSteps_successAddOrderState.tr(),
           );
+          context.read<CartCubit>().removeCartItems();
           context.go(
             AppRoutes.reviewOrder,
             extra: context.read<CheckOutCubit>().orderEntity,

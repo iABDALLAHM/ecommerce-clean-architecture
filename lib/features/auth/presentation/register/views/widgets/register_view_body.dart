@@ -145,6 +145,6 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
       context,
       message: LocaleKeys.registerCubit_successRegisterState.tr(),
     );
-    context.pop();
+    context.go(AppRoutes.login);
   }
 }
