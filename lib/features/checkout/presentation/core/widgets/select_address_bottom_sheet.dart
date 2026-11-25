@@ -171,85 +171,89 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
               builder: (context, state) {
                 if (state is GetAddressesSuccessState) {
                   shippingAddressEntity ??= state.addresses[0];
-                  return Column(
-                    children: [
-                      ListView.separated(
-                        shrinkWrap: true,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 6,
+                  return SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        ListView.separated(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 6,
+                          ),
+                          itemCount: state.addresses.length,
+                          separatorBuilder: (context, index) =>
+                              const SizedBox(height: 12),
+                          itemBuilder: (context, index) {
+                            final address = state.addresses[index];
+                            final isSelected = (currentIndex == index);
+                            return CustomAddressCard(
+                              isSelected: isSelected,
+                              shippingAddressEntity: address,
+                              onTap: () {
+                                currentIndex = index;
+                                shippingAddressEntity = address;
+                                setState(() {});
+                              },
+                            );
+                          },
                         ),
-                        itemCount: state.addresses.length,
-                        separatorBuilder: (context, index) =>
-                            const SizedBox(height: 12),
-                        itemBuilder: (context, index) {
-                          final address = state.addresses[index];
-                          final isSelected = (currentIndex == index);
-                          return CustomAddressCard(
-                            isSelected: isSelected,
-                            shippingAddressEntity: address,
-                            onTap: () {
-                              currentIndex = index;
-                              shippingAddressEntity = address;
-                              setState(() {});
-                            },
-                          );
-                        },
-                      ),
 
-                      const SizedBox(height: 10),
-                      Spacer(),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: 50,
-                          child: ElevatedButton.icon(
-                            onPressed: () {
-                              var payWithValue = context
-                                  .read<CheckOutCubit>()
-                                  .orderEntity
-                                  .payWithCash;
+                        const SizedBox(height: 10),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
+                          child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                var payWithValue = context
+                                    .read<CheckOutCubit>()
+                                    .orderEntity
+                                    .payWithCash;
 
-                              if (shippingAddressEntity != null) {
-                                checkOutCubit.updateShippingAddress(
-                                  address: shippingAddressEntity!,
-                                );
-                                if (payWithValue == true) {
-                                  widget.controller.jumpToPage(3);
-                                  context.pop();
-                                } else {
-                                  widget.controller.jumpToPage(2);
-                                  context.pop();
+                                if (shippingAddressEntity != null) {
+                                  checkOutCubit.updateShippingAddress(
+                                    address: shippingAddressEntity!,
+                                  );
+                                  if (payWithValue == true) {
+                                    widget.controller.jumpToPage(3);
+                                    context.pop();
+                                  } else {
+                                    widget.controller.jumpToPage(2);
+                                    context.pop();
+                                  }
                                 }
-                              }
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: colorScheme.primary,
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(26),
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: colorScheme.primary,
+                                elevation: 0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(26),
+                                ),
                               ),
-                            ),
-                            icon: const Icon(
-                              Icons.check_circle_outline_rounded,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                            label: Text(
-                              LocaleKeys
-                                  .selectAddressBottomSheet_ConfirmAndDeliverHere
-                                  .tr(),
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
+                              icon: const Icon(
+                                Icons.check_circle_outline_rounded,
                                 color: Colors.white,
+                                size: 20,
+                              ),
+                              label: Text(
+                                LocaleKeys
+                                    .selectAddressBottomSheet_ConfirmAndDeliverHere
+                                    .tr(),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+
+                        const SizedBox(height: 30),
+                      ],
+                    ),
                   );
                 } else if (state is GetAddressesLoadingState) {
                   return Center(child: CircularProgressIndicator());
