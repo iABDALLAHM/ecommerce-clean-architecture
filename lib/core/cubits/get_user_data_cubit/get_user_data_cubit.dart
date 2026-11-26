@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_state.dart';
 import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart';
@@ -30,8 +29,6 @@ class GetUserDataCubit extends Cubit<GetUserDataState> {
         emit(FailureGetUserDataState(errorMessage: failure.message));
       },
       (result) {
-        log("This is the UID in GetUserDataCubit ${result.uId}");
-
         emit(SuccessGetUserDataState(userEntity: result));
       },
     );

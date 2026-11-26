@@ -14,6 +14,7 @@ abstract class RegisterModule {
 
   @singleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
+
   @singleton
   FirebaseMessaging get firebaseMessaging => FirebaseMessaging.instance;
 

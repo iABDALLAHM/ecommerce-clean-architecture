@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/repositories/flutter_secure_storage_repository/secure_storage_repository.dart';
 import 'package:ecommerce_clean_architecture/features/auth/auth.dart';
@@ -33,7 +32,6 @@ class LoginCubit extends Cubit<LoginStates> {
           key: keyUserId,
           value: resultId,
         );
-        log("This is the UID in login $resultId");
         emit(SuccessLoginState());
       },
     );
