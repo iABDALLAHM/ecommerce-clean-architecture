@@ -11,7 +11,7 @@ class AboutUsBody extends StatelessWidget {
     return Scaffold(
       appBar: buildProfileAppBar(
         context,
-        title: LocaleKeys.profile_whoArePageAppBar.tr(),
+        title: LocaleKeys.profile_whoArePageAppBar.tr(context: context),
       ),
       body: AboutUsPageViewBody(),
     );

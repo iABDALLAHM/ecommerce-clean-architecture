@@ -21,7 +21,9 @@ class TrackOrderStatusList extends StatelessWidget {
         children: [
           TrackOrderStatusItem(
             stepNum: 1,
-            stepTitle: LocaleKeys.checkOut_trackOrderPageTrackOrderStatus.tr(),
+            stepTitle: LocaleKeys.checkout_trackOrderPageTrackOrderStatus.tr(
+              context: context,
+            ),
             stepImageOn: Assets.imagesOpenBoxStatus,
             stepStatus: true,
             stepDate: orderEntity.date,
@@ -29,7 +31,7 @@ class TrackOrderStatusList extends StatelessWidget {
           ),
           TrackOrderStatusItem(
             stepNum: 2,
-            stepTitle: LocaleKeys.checkOut_trackOrderPageAcceptOrderStatus.tr(),
+            stepTitle: LocaleKeys.orderStatus_accepted.tr(context: context),
             stepImageOff: Assets.imagesAcceptOrderOff,
             stepStatus: orderEntity.orderStatusEntity.acceptOrder,
             stepDate: orderEntity.orderStatusEntity.acceptedAt,
@@ -37,8 +39,7 @@ class TrackOrderStatusList extends StatelessWidget {
           ),
           TrackOrderStatusItem(
             stepNum: 3,
-            stepTitle: LocaleKeys.checkOut_trackOrderPageShippedOrderStatus
-                .tr(),
+            stepTitle: LocaleKeys.orderStatus_shipped.tr(context: context),
             stepImageOff: Assets.imagesShippedOrderImagesOff,
             stepStatus: orderEntity.orderStatusEntity.orderShipped,
             stepDate: orderEntity.orderStatusEntity.shippedAt,
@@ -46,9 +47,9 @@ class TrackOrderStatusList extends StatelessWidget {
           ),
           TrackOrderStatusItem(
             stepNum: 4,
-            stepTitle: LocaleKeys
-                .checkOut_trackOrderPageOutOfDeliveryOrderStatus
-                .tr(),
+            stepTitle: LocaleKeys.orderStatus_outForDelivery.tr(
+              context: context,
+            ),
             stepImageOff: Assets.imagesOutOfDeliveryOff,
             stepStatus: orderEntity.orderStatusEntity.outOfDelivery,
             stepDate: orderEntity.orderStatusEntity.outOfDeliveryAt,
@@ -56,8 +57,7 @@ class TrackOrderStatusList extends StatelessWidget {
           ),
           TrackOrderStatusItem(
             stepNum: 5,
-            stepTitle: LocaleKeys.checkOut_trackOrderPageDeliverdOrderStatus
-                .tr(),
+            stepTitle: LocaleKeys.orderStatus_delivered.tr(context: context),
             stepImageOff: Assets.imagesOrderDeliverdOff,
             stepStatus: orderEntity.orderStatusEntity.orderDelivered,
             stepDate: orderEntity.orderStatusEntity.deliverdAt,

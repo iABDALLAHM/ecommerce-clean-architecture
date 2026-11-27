@@ -31,7 +31,7 @@ class EmptySearchWidget extends StatelessWidget {
               ],
             ),
             child: Text(
-              LocaleKeys.search_noSearchResults.tr(),
+              LocaleKeys.search_noSearchResults.tr(context: context),
               style: AppStyles.textStyle13Regular.copyWith(
                 color: colorScheme.tertiaryContainer,
               ),
@@ -44,13 +44,13 @@ class EmptySearchWidget extends StatelessWidget {
           ),
           const SizedBox(height: 43),
           Text(
-            LocaleKeys.search_search.tr(),
+            LocaleKeys.search_search.tr(context: context),
             style: AppStyles.textStyle16Bold.copyWith(
               color: colorScheme.tertiary,
             ),
           ),
           Text(
-            LocaleKeys.search_EmptySearchResult.tr(),
+            LocaleKeys.search_emptySearchResult.tr(context: context),
             style: AppStyles.textStyle13Regular.copyWith(
               color: colorScheme.tertiaryContainer,
             ),

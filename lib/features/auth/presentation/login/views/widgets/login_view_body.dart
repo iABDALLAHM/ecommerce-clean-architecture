@@ -65,15 +65,18 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   children: [
                     const SizedBox(height: 24),
                     CustomTextFormField(
-                      hintText: LocaleKeys.auth_loginPage_emailTextField.tr(),
+                      hintText: LocaleKeys.auth_loginPage_emailTextField.tr(
+                        context: context,
+                      ),
                       onSaved: (value) {
                         email = value ?? "";
                       },
                     ),
                     const SizedBox(height: 16),
                     CustomPasswordField(
-                      hintText: LocaleKeys.auth_loginPage_passwordTextField
-                          .tr(),
+                      hintText: LocaleKeys.auth_loginPage_passwordTextField.tr(
+                        context: context,
+                      ),
                       onSaved: (value) {
                         password = value ?? "";
                       },
@@ -85,7 +88,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                       width: double.infinity,
                       height: 54,
                       child: CustomButton(
-                        text: LocaleKeys.auth_loginPage_loginButton.tr(),
+                        text: LocaleKeys.auth_loginPage_loginButton.tr(
+                          context: context,
+                        ),
                         onPressed: () {
                           _validateLoginTextFields();
                         },
@@ -96,8 +101,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                       onTap: () {
                         context.go(AppRoutes.register);
                       },
-                      title: LocaleKeys.auth_loginPage_doNotHaveAnAccount.tr(),
-                      subTitle: LocaleKeys.auth_loginPage_createNewAccount.tr(),
+                      title: LocaleKeys.auth_loginPage_doNotHaveAnAccount.tr(
+                        context: context,
+                      ),
+                      subTitle: LocaleKeys.auth_loginPage_createNewAccount.tr(
+                        context: context,
+                      ),
                     ),
                     const SizedBox(height: 33),
                     OrDividerSection(),
@@ -107,7 +116,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                         context.read<LoginCubit>().signInWithFacebook();
                       },
                       text: LocaleKeys.auth_loginPage_signInWithFacebookButton
-                          .tr(),
+                          .tr(context: context),
                       icon: Assets.imagesFacebookSocialIcon,
                     ),
                     const SizedBox(height: 16),
@@ -115,15 +124,17 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                       onPressed: () {
                         context.read<LoginCubit>().signInWithGoogle();
                       },
-                      text: LocaleKeys.auth_loginPage_signInWithGoogleButton
-                          .tr(),
+                      text: LocaleKeys.auth_loginPage_signInWithGoogleButton.tr(
+                        context: context,
+                      ),
                       icon: Assets.imagesGoogleSocialIcon,
                     ),
                     const SizedBox(height: 16),
                     SocialCustomButton(
                       onPressed: () {},
-                      text: LocaleKeys.auth_loginPage_signInWithAppleButton
-                          .tr(),
+                      text: LocaleKeys.auth_loginPage_signInWithAppleButton.tr(
+                        context: context,
+                      ),
                       icon: Assets.imagesAppleSocialIcon,
                     ),
                   ],
@@ -157,7 +168,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   void _handleSuccess(BuildContext context) {
     showSnackBar(
       context,
-      message: LocaleKeys.loginCubit_successSignInState.tr(),
+      message: LocaleKeys.auth_messages_successSignIn.tr(context: context),
     );
     context.read<GetUserDataCubit>().getUserData();
     context.go(AppRoutes.home);
@@ -166,7 +177,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   void _handleSuccessSignInWithGoogle(BuildContext context) {
     showSnackBar(
       context,
-      message: LocaleKeys.loginCubit_successSignInWithGoogleState.tr(),
+      message: LocaleKeys.auth_messages_successSignInWithGoogle.tr(
+        context: context,
+      ),
     );
     context.read<GetUserDataCubit>().getUserData();
     context.go(AppRoutes.home);
@@ -175,7 +188,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   void _handleSuccessSignInWithFacebook(BuildContext context) {
     showSnackBar(
       context,
-      message: LocaleKeys.loginCubit_successSignInWithFacebookState.tr(),
+      message: LocaleKeys.auth_messages_successSignInWithFacebook.tr(
+        context: context,
+      ),
     );
     context.read<GetUserDataCubit>().getUserData();
     context.go(AppRoutes.home);

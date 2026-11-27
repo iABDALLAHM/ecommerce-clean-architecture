@@ -32,23 +32,23 @@ class FirebaseAuthService implements AuthService {
       );
       if (e.code == 'weak-password') {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.authErrors_weakPasswordError.tr(),
+          exceptionMeassge: LocaleKeys.errors_auth_weakPasswordError.tr(),
         );
       } else if (e.code == 'email-already-in-use') {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.authErrors_emailAlreadyInUseError.tr(),
+          exceptionMeassge: LocaleKeys.errors_auth_emailAlreadyInUseError.tr(),
         );
       } else if (e.code == 'invalid-email') {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.authErrors_invalidEmailError.tr(),
+          exceptionMeassge: LocaleKeys.errors_auth_invalidEmailError.tr(),
         );
       } else if (e.code == "network-request-failed") {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.authErrors_networkError.tr(),
+          exceptionMeassge: LocaleKeys.errors_auth_networkError.tr(),
         );
       } else {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+          exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
         );
       }
     } catch (e) {
@@ -56,7 +56,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in Register method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+        exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
       );
     }
   }
@@ -75,19 +75,19 @@ class FirebaseAuthService implements AuthService {
       );
       if (e.code == 'user-not-found') {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.authErrors_userNotFoundError.tr(),
+          exceptionMeassge: LocaleKeys.errors_auth_userNotFoundError.tr(),
         );
       } else if (e.code == 'wrong-password') {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.authErrors_wrongPasswordError.tr(),
+          exceptionMeassge: LocaleKeys.errors_auth_wrongPasswordError.tr(),
         );
       } else if (e.code == "network-request-failed") {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.authErrors_networkError.tr(),
+          exceptionMeassge: LocaleKeys.errors_auth_networkError.tr(),
         );
       } else {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+          exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
         );
       }
     } catch (e) {
@@ -95,7 +95,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in signIn method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+        exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
       );
     }
   }
@@ -109,7 +109,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in delete method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+        exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
       );
     }
   }
@@ -123,7 +123,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in signOut method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+        exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
       );
     }
   }
@@ -147,11 +147,11 @@ class FirebaseAuthService implements AuthService {
       );
       if (e.code == "invalid-credential") {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.authErrors_invalidCreadintialError.tr(),
+          exceptionMeassge: LocaleKeys.errors_auth_invalidCredentialError.tr(),
         );
       } else {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+          exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
         );
       }
     } catch (e) {
@@ -159,7 +159,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in updatePassword method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+        exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
       );
     }
   }
@@ -171,7 +171,7 @@ class FirebaseAuthService implements AuthService {
 
       if (userId == null) {
         throw CustomException(
-          exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+          exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
         );
       }
       return userId.uid;
@@ -180,7 +180,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in getCurrentUserId method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+        exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
       );
     }
   }
@@ -204,7 +204,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in resetPassword method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+        exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
       );
     }
   }
@@ -236,7 +236,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in updateEmail method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+        exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
       );
     }
   }
@@ -256,7 +256,7 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in confirmPasswordReset method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+        exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
       );
     }
   }
@@ -288,11 +288,11 @@ class FirebaseAuthService implements AuthService {
         "error happend in FirebaseAuthService in signInWithGoogle method please check it, the error: $e",
       );
       throw CustomException(
-        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+        exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
       );
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+        exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
       );
     }
   }
@@ -317,12 +317,12 @@ class FirebaseAuthService implements AuthService {
     } on FirebaseAuthException catch (e) {
       log("Error in FirebaseAuthService signInWithFacebook: $e");
       throw CustomException(
-        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+        exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
       );
     } catch (e) {
       log("Error in signInWithFacebook: $e");
       throw CustomException(
-        exceptionMeassge: LocaleKeys.authErrors_generalError.tr(),
+        exceptionMeassge: LocaleKeys.errors_auth_generalError.tr(),
       );
     }
   }

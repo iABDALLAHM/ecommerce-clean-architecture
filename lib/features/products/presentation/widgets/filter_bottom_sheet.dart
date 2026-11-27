@@ -49,7 +49,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                   children: [
                     selectedSection == 0
                         ? Text(
-                            LocaleKeys.filters_PREFERENCES.tr(),
+                            LocaleKeys.filters_preferences.tr(context: context),
                             style: TextStyle(
                               fontSize: 11,
                               color: Color(0xff14532D),
@@ -57,7 +57,9 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                             ),
                           )
                         : Text(
-                            LocaleKeys.filters_REFINE_SEARCH.tr(),
+                            LocaleKeys.filters_refineSearch.tr(
+                              context: context,
+                            ),
                             style: TextStyle(
                               fontSize: 11,
                               color: Color(0xff14532D),
@@ -68,7 +70,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                     const SizedBox(height: 5),
                     selectedSection == 0
                         ? Text(
-                            LocaleKeys.filters_sortBy.tr(),
+                            LocaleKeys.filters_sortBy.tr(context: context),
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black,
@@ -76,7 +78,9 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                             ),
                           )
                         : Text(
-                            LocaleKeys.filters_filterProducts.tr(),
+                            LocaleKeys.filters_filterProducts.tr(
+                              context: context,
+                            ),
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black,
@@ -140,7 +144,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                               ),
                               SizedBox(width: 8),
                               Text(
-                                LocaleKeys.filters_sortBy.tr(),
+                                LocaleKeys.filters_sortBy.tr(context: context),
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600,
@@ -183,7 +187,9 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                               ),
                               SizedBox(width: 8),
                               Text(
-                                LocaleKeys.filters_filterBy.tr(),
+                                LocaleKeys.filters_filterBy.tr(
+                                  context: context,
+                                ),
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600,

@@ -43,10 +43,9 @@ class ReviewsRepositoryImplementation implements ReviewsRepository {
       var result = await _databaseService.getQueryData(
         path: BackendEndPoints.reviewsCollection,
         query: QueryParams(
-          conditions: [QueryCondition(
-            field: "productCode",
-            isEqualTo: productCode,
-          )],
+          conditions: [
+            QueryCondition(field: "productCode", isEqualTo: productCode),
+          ],
         ),
       );
 

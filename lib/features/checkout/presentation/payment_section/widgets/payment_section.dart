@@ -61,7 +61,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 //         if (state is PaymentValidationFailureState) {
 //           showSnackBar(
 //             context,
-//             message: LocaleKeys.checkOutSteps_completeTheInformation.tr(),
+//             message: LocaleKeys.checkout_messages_completeTheInformation.tr(context: context),
 //           );
 //         }
 //       },
@@ -77,7 +77,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 //                 const SizedBox(height: 24),
 
 //                 Text(
-//                   LocaleKeys.checkOut_paymentOptionMainText.tr(),
+//                   LocaleKeys.checkout_paymentOptionMainText.tr(context: context),
 //                   style: AppStyles.textStyle13Bold,
 //                 ),
 //                 const SizedBox(height: 13),
@@ -174,7 +174,7 @@ class _PaymentSectionState extends State<PaymentSection> {
             const SizedBox(height: 24),
 
             Text(
-              LocaleKeys.checkOut_paymentOptionMainText.tr(),
+              LocaleKeys.checkout_paymentOptionMainText.tr(context: context),
               style: AppStyles.textStyle13Bold,
             ),
 

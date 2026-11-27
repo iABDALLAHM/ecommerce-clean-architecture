@@ -15,7 +15,7 @@ class SaleAndShippingSection extends StatelessWidget {
       children: [
         const SizedBox(height: 25),
         Text(
-          LocaleKeys.home_eidOffers.tr(),
+          LocaleKeys.home_eidOffers.tr(context: context),
           style: AppStyles.textStyle13Regular.copyWith(
             color: colorScheme.surface,
           ),
@@ -23,7 +23,7 @@ class SaleAndShippingSection extends StatelessWidget {
         const SizedBox(height: 8),
         const Spacer(),
         Text(
-          LocaleKeys.home_discountPercentage.tr(),
+          LocaleKeys.home_discountPercentage.tr(context: context),
           style: AppStyles.textStyle19Bold.copyWith(color: colorScheme.surface),
         ),
         const SizedBox(height: 25),

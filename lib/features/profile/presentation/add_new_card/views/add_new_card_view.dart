@@ -15,7 +15,7 @@ class AddNewCardView extends StatelessWidget {
     return Scaffold(
       appBar: buildProfileAppBar(
         context,
-        title: LocaleKeys.profile_addNewPaymentPageAppBar.tr(),
+        title: LocaleKeys.profile_addNewPaymentPageAppBar.tr(context: context),
       ),
       body: MultiBlocProvider(
         providers: [

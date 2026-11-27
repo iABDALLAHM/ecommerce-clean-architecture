@@ -23,9 +23,7 @@ class ImagesRepositoryImplementation implements ImagesRepository {
       return Right(imageUrl);
     } on CustomException catch (e) {
       log("error happend in ImagesRepoImplementation in uploadImage $e");
-      return Left(
-        ServerFailure(message: e.exceptionMeassge),
-      );
+      return Left(ServerFailure(message: e.exceptionMeassge));
     }
   }
 }

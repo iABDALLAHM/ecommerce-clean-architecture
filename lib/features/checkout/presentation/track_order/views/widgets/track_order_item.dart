@@ -36,11 +36,11 @@ class TrackOrderItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "${LocaleKeys.checkOut_trackOrderPageOrderNumber.tr()} ${orderEntity.orderNumber}",
+                "${LocaleKeys.checkout_trackOrderPageOrderNumber.tr(context: context)} ${orderEntity.orderNumber}",
                 style: AppStyles.textStyle13Bold,
               ),
               Text(
-                "${LocaleKeys.checkOut_trackOrderPageOrderedAt.tr()} ${orderEntity.date.day} ${languageCode == arabicLanguageCode ? getMonthInArabic(month: orderEntity.date.month) : getMonthInEnglish(month: orderEntity.date.month)} ,${orderEntity.date.year}",
+                "${LocaleKeys.checkout_trackOrderPageOrderedAt.tr(context: context)} ${orderEntity.date.day} ${languageCode == arabicLanguageCode ? getMonthInArabic(month: orderEntity.date.month) : getMonthInEnglish(month: orderEntity.date.month)} ,${orderEntity.date.year}",
                 style: AppStyles.textStyle11Regular.copyWith(
                   color: colorScheme.tertiaryContainer,
                 ),
@@ -52,8 +52,8 @@ class TrackOrderItem extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: LocaleKeys.checkOut_trackOrderPageNumberOfItems
-                              .tr(),
+                          text: LocaleKeys.checkout_trackOrderPageNumberOfItems
+                              .tr(context: context),
                           style: AppStyles.textStyle13Regular.copyWith(
                             color: colorScheme.tertiaryContainer,
                           ),

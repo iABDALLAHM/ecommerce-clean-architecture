@@ -13,7 +13,9 @@ class ForgetPasswordView extends StatelessWidget {
     return ForgetPasswordViewBlocProvider(
       child: Scaffold(
         appBar: buildAuthAppBar(
-          title: LocaleKeys.auth_forgetPassword_forgetPasswordPageAppBar.tr(),
+          title: LocaleKeys.auth_forgetPassword_forgetPasswordPageAppBar.tr(
+            context: context,
+          ),
         ),
         body: SafeArea(child: ForgetPasswordViewBody()),
       ),

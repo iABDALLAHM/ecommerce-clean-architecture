@@ -16,7 +16,7 @@ class NotificationBodyHeader extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 6),
           child: Text(
-            LocaleKeys.notification_newNotificationsText.tr(),
+            LocaleKeys.notifications_newNotificationsText.tr(context: context),
             style: AppStyles.textStyle16Bold,
           ),
         ),
@@ -37,7 +37,7 @@ class NotificationBodyHeader extends StatelessWidget {
         TextButton(
           onPressed: () {},
           child: Text(
-            LocaleKeys.notification_allNotificationsSeen.tr(),
+            LocaleKeys.notifications_allNotificationsSeen.tr(context: context),
             style: AppStyles.textStyle13Regular.copyWith(
               color: colorScheme.tertiaryContainer,
             ),

@@ -68,8 +68,8 @@ class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
                         showSnackBar(
                           context,
                           message: LocaleKeys
-                              .reviewAndRatingStatus_yourReviewAddedState
-                              .tr(),
+                              .reviews_messages_yourReviewAddedState
+                              .tr(context: context),
                         );
                         context.pop();
                         context.read<GetReviewsCubit>().getReviews(
@@ -79,17 +79,16 @@ class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
                         showSnackBar(
                           context,
                           message: LocaleKeys
-                              .reviewAndRatingStatus_loadingAddReviewState
-                              .tr(),
+                              .reviews_messages_loadingAddReviewState
+                              .tr(context: context),
                         );
                       } else if (state is FailureAddReviewState) {
                         showSnackBar(context, message: state.errorMessage);
                       }
                     },
                     child: CustomButton(
-                      text: LocaleKeys
-                          .reviewAndRating_reviewAndRatingAddReviewButton
-                          .tr(),
+                      text: LocaleKeys.reviews_reviewAndRatingAddReviewButton
+                          .tr(context: context),
                       onPressed: () async {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();

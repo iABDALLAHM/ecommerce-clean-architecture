@@ -29,7 +29,7 @@ class _OnBoardingPageViewState extends State<OnBoardingPageView> {
             TextSpan(
               children: [
                 TextSpan(
-                  text: LocaleKeys.onBoarding_hello.tr(),
+                  text: LocaleKeys.onboarding_hello.tr(context: context),
                   style: AppStyles.textStyle23Bold,
                 ),
                 TextSpan(
@@ -47,17 +47,17 @@ class _OnBoardingPageViewState extends State<OnBoardingPageView> {
               ],
             ),
           ),
-          subTitle: LocaleKeys.onBoarding_description1.tr(),
+          subTitle: LocaleKeys.onboarding_description1.tr(context: context),
         ),
         OnBoardingPageViewItem(
           isSecond: false,
           backgroundImage: Assets.imagesSecondSplashViewBackground,
           onBoardingLogo: Assets.imagesSecondSplashViewLogo,
           widget: Text(
-            LocaleKeys.onBoarding_shopping.tr(),
+            LocaleKeys.onboarding_shopping.tr(context: context),
             style: AppStyles.textStyle23Bold,
           ),
-          subTitle: LocaleKeys.onBoarding_description2.tr(),
+          subTitle: LocaleKeys.onboarding_description2.tr(context: context),
         ),
       ],
     );

@@ -27,12 +27,14 @@ class ReviewOrderViewBody extends StatelessWidget {
             SvgPicture.asset(Assets.imagesCheckMarkIcon),
             const SizedBox(height: 33),
             Text(
-              LocaleKeys.checkOut_trackOrderConfirmationText.tr(),
+              LocaleKeys.checkout_trackOrderConfirmationText.tr(
+                context: context,
+              ),
               style: AppStyles.textStyle16Bold,
             ),
             const SizedBox(height: 9),
             Text(
-              "${LocaleKeys.checkOut_reviewOrderNumber.tr()}: ${orderEntity.orderNumber}",
+              "${LocaleKeys.checkout_reviewOrderNumber.tr(context: context)}: ${orderEntity.orderNumber}",
               style: AppStyles.textStyle13Regular.copyWith(
                 color: colorScheme.tertiary,
               ),
@@ -42,7 +44,7 @@ class ReviewOrderViewBody extends StatelessWidget {
               height: 54,
               width: double.infinity,
               child: CustomButton(
-                text: LocaleKeys.checkOut_trackOrederButton.tr(),
+                text: LocaleKeys.checkout_trackOrderButton.tr(context: context),
                 onPressed: () {
                   context.push(AppRoutes.trackOrder, extra: orderEntity);
                 },
@@ -55,7 +57,7 @@ class ReviewOrderViewBody extends StatelessWidget {
                 orderEntity.cartEntity.items.clear();
               },
               child: Text(
-                LocaleKeys.checkOut_reviewGoToMainButton.tr(),
+                LocaleKeys.checkout_reviewGoToMainButton.tr(context: context),
                 style: AppStyles.textStyle16Bold.copyWith(
                   decoration: TextDecoration.underline,
                   color: colorScheme.primary,

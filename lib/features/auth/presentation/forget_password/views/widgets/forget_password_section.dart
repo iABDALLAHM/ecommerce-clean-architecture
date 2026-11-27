@@ -19,7 +19,7 @@ class ForgetPasswordSection extends StatelessWidget {
             context.push(AppRoutes.forgetPassword);
           },
           child: Text(
-            LocaleKeys.auth_loginPage_forgetPassword.tr(),
+            LocaleKeys.auth_loginPage_forgetPassword.tr(context: context),
             style: AppStyles.textStyle13SemiBold.copyWith(
               color: colorScheme.primaryFixed,
             ),

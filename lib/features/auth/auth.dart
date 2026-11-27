@@ -21,14 +21,9 @@ export 'package:ecommerce_clean_architecture/features/auth/presentation/register
 export 'package:ecommerce_clean_architecture/features/auth/presentation/login/views/login_view.dart';
 export 'package:ecommerce_clean_architecture/features/auth/presentation/reset_password/views/reset_your_password_view.dart';
 
-
 export 'package:ecommerce_clean_architecture/features/auth/presentation/core/functions/build_auth_app_bar.dart';
 
 export 'package:ecommerce_clean_architecture/features/auth/data/services/auth_service/auth_service.dart';
 export 'package:ecommerce_clean_architecture/features/auth/data/services/auth_service/firebase_auth_service.dart';
-
-
-
-
 
 export 'package:ecommerce_clean_architecture/features/auth/presentation/core/widgets/custom_password_field.dart';

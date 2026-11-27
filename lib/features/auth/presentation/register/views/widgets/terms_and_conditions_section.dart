@@ -26,13 +26,19 @@ class TermsAndConditionsSection extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                  text: LocaleKeys.auth_signUp_termsAndConditions1.tr() + " ",
+                  text:
+                      LocaleKeys.auth_signUp_termsAndConditions1.tr(
+                        context: context,
+                      ) +
+                      " ",
                   style: AppStyles.textStyle13SemiBold.copyWith(
                     color: colorScheme.tertiaryContainer,
                   ),
                 ),
                 TextSpan(
-                  text: LocaleKeys.auth_signUp_termsAndConditions2.tr(),
+                  text: LocaleKeys.auth_signUp_termsAndConditions2.tr(
+                    context: context,
+                  ),
                   style: AppStyles.textStyle13SemiBold.copyWith(
                     color: colorScheme.primaryFixed,
                   ),

@@ -16,8 +16,10 @@ class BestSellingAppBar extends StatelessWidget {
       children: [
         CustomArrowWidget(),
         Text(
-          LocaleKeys.home_bestSellerHomeAppBar.tr(),
-          style: AppStyles.textStyle19Bold.copyWith(color: colorScheme.onSurface),
+          LocaleKeys.home_bestSellerHomeAppBar.tr(context: context),
+          style: AppStyles.textStyle19Bold.copyWith(
+            color: colorScheme.onSurface,
+          ),
         ),
         CustomNotificationIcon(),
       ],

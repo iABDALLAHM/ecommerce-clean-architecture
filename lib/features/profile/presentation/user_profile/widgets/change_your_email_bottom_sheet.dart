@@ -54,20 +54,24 @@ class _ChangeYourEmailBottomSheetState
                       children: [
                         const SizedBox(height: 50),
                         Text(
-                          LocaleKeys.profileStatus_changeYorEmail.tr(),
+                          LocaleKeys.profile_messages_changeYorEmail.tr(
+                            context: context,
+                          ),
                           style: AppStyles.textStyle16SemiBold,
                         ),
                         const SizedBox(height: 20),
                         CustomTextFormField(
-                          hintText: LocaleKeys.profileStatus_writeNewEmail.tr(),
+                          hintText: LocaleKeys.profile_messages_writeNewEmail
+                              .tr(context: context),
                           onSaved: (value) {
                             newEmail = value ?? "";
                           },
                         ),
                         const SizedBox(height: 20),
                         CustomTextFormField(
-                          hintText: LocaleKeys.profileStatus_writeYourPassword
-                              .tr(),
+                          hintText: LocaleKeys
+                              .profile_messages_writeYourPassword
+                              .tr(context: context),
                           onSaved: (value) {
                             password = value ?? "";
                           },
@@ -77,8 +81,8 @@ class _ChangeYourEmailBottomSheetState
                           height: 49,
                           width: double.infinity,
                           child: CustomButton(
-                            text: LocaleKeys.profileStatus_confirmChangeEmail
-                                .tr(),
+                            text: LocaleKeys.profile_messages_confirmChangeEmail
+                                .tr(context: context),
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();

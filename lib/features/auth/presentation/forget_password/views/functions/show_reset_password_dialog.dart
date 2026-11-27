@@ -32,12 +32,16 @@ Future<void> showResetPasswordDialog({required BuildContext context}) async {
               SvgPicture.asset(Assets.imagesCheckMarkIcon),
               const SizedBox(height: 29),
               Text(
-                LocaleKeys.auth_resetYourPassword_resetYourPasswordDialog.tr(),
+                LocaleKeys.auth_resetYourPassword_resetYourPasswordDialog.tr(
+                  context: context,
+                ),
                 style: AppStyles.textStyle16Bold,
               ),
               const SizedBox(height: 8),
               CustomButton(
-                text: LocaleKeys.auth_loginPage_loginPageAppBar.tr(),
+                text: LocaleKeys.auth_loginPage_loginPageAppBar.tr(
+                  context: context,
+                ),
                 onPressed: () => context.go(AppRoutes.login),
               ),
             ],

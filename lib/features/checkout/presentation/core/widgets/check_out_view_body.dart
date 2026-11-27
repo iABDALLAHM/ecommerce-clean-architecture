@@ -83,11 +83,19 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
                 if (state is SuccessCheckoutPaymentState) {
                   _triggerAddOrderCubit(context);
                 } else if (state is FailureCheckoutPaymentState) {
-                  showSnackBar(context, message: "payment faild");
+                  showSnackBar(
+                    context,
+                    message: LocaleKeys.common_paymentFailed.tr(
+                      context: context,
+                    ),
+                  );
                 }
               },
               child: CustomButton(
-                text: changeButtonText(currentPage: currentPage),
+                text: changeButtonText(
+                  context: context,
+                  currentPage: currentPage,
+                ),
                 onPressed: () {
                   var payWithValue = context
                       .read<CheckOutCubit>()
@@ -162,7 +170,9 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     } else {
       showSnackBar(
         context,
-        message: LocaleKeys.checkOutSteps_pleaseSpecifyPaymentMethod.tr(),
+        message: LocaleKeys.checkout_messages_pleaseSpecifyPaymentMethod.tr(
+          context: context,
+        ),
       );
     }
   }
@@ -236,7 +246,10 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
           curve: Curves.easeIn,
         );
       } else {
-        showSnackBar(context, message: "Please Choose Payment Method");
+        showSnackBar(
+          context,
+          message: LocaleKeys.common_choosePaymentMethod.tr(context: context),
+        );
       }
     }
   }
@@ -248,7 +261,9 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         orderEntity.payWithCash == null) {
       showSnackBar(
         context,
-        message: LocaleKeys.checkOutSteps_completeTheInformation.tr(),
+        message: LocaleKeys.checkout_messages_completeTheInformation.tr(
+          context: context,
+        ),
       );
     } else {
       context.read<AddOrderCubit>().addOrder(orderEntity: orderEntity);

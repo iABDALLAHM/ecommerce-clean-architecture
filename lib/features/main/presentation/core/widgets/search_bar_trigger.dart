@@ -45,7 +45,7 @@ class SearchBarTrigger extends StatelessWidget {
             color: colorScheme.colorScheme.surface,
           ),
 
-          hintText: LocaleKeys.home_searchingTextField.tr(),
+          hintText: LocaleKeys.home_searchingTextField.tr(context: context),
           hintStyle: AppStyles.textStyle13Regular.copyWith(
             color: colorScheme.colorScheme.tertiaryContainer,
           ),
@@ -59,7 +59,6 @@ class SearchBarTrigger extends StatelessWidget {
             Assets.imagesFilterSearchIcon,
             fit: BoxFit.scaleDown,
           ),
-
         ),
       ),
     );

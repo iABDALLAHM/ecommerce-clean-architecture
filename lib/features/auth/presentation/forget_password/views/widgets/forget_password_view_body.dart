@@ -45,7 +45,7 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
                         const SizedBox(height: 24),
                         Text(
                           LocaleKeys.auth_forgetPassword_forgetPasswordCondition
-                              .tr(),
+                              .tr(context: context),
                           style: AppStyles.textStyle16SemiBold.copyWith(
                             color: colorScheme.tertiary,
                           ),
@@ -54,7 +54,7 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
                         CustomTextFormField(
                           hintText: LocaleKeys
                               .auth_forgetPassword_emailTextField
-                              .tr(),
+                              .tr(context: context),
                           onSaved: (value) {
                             email = value ?? "";
                           },
@@ -66,7 +66,7 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
                           child: CustomButton(
                             text: LocaleKeys
                                 .auth_forgetPassword_forgetPasswordButton
-                                .tr(),
+                                .tr(context: context),
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();

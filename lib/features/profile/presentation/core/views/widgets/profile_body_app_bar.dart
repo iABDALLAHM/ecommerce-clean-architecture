@@ -14,7 +14,9 @@ class ProfileBodyAppBar extends StatelessWidget {
       children: [
         Text(
           LocaleKeys.profile_profilePageAppBar.tr(context: context),
-          style: AppStyles.textStyle19Bold.copyWith(color: colorScheme.onSurface),
+          style: AppStyles.textStyle19Bold.copyWith(
+            color: colorScheme.onSurface,
+          ),
         ),
       ],
     );

@@ -60,7 +60,7 @@ class CustomAddressCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 3),
                   Text(
-                    "${LocaleKeys.selectAddressBottomSheet_address.tr()} ${shippingAddressEntity.address ?? ""}",
+                    "${LocaleKeys.checkout_addressSelection_address.tr(context: context)} ${shippingAddressEntity.address ?? ""}",
                     style: const TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -68,7 +68,7 @@ class CustomAddressCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    " ${LocaleKeys.selectAddressBottomSheet_homeDetails.tr()}${shippingAddressEntity.addressDetails ?? ""}",
+                    " ${LocaleKeys.checkout_addressSelection_homeDetails.tr(context: context)}${shippingAddressEntity.addressDetails ?? ""}",
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,

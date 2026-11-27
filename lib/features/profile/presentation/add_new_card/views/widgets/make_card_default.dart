@@ -41,7 +41,7 @@ class _MakeCardAsDefaultState extends State<MakeCardAsDefault> {
         ),
         const SizedBox(width: 16),
         Text(
-          LocaleKeys.profile_addNewPaymentMakeCardDefault.tr(),
+          LocaleKeys.profile_addNewPaymentMakeCardDefault.tr(context: context),
           style: AppStyles.textStyle13SemiBold.copyWith(
             color: colorScheme.tertiary,
           ),

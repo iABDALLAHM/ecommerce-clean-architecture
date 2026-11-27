@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/functions/get_specific_date.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
+import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -29,7 +31,6 @@ class TrackOrderStatusItem extends StatelessWidget {
         Row(
           children: [
             Container(
-        
               child: stepStatus == true
                   ? SvgPicture.asset(stepImageOn)
                   : SvgPicture.asset(stepImageOff),
@@ -41,14 +42,14 @@ class TrackOrderStatusItem extends StatelessWidget {
                 Text(stepTitle, style: AppStyles.textStyle13Bold),
                 stepStatus == false
                     ? Text(
-                        "قيد الإنتظار",
+                        LocaleKeys.orderStatus_pending.tr(context: context),
                         style: AppStyles.textStyle13SemiBold.copyWith(
                           color: colorScheme.tertiaryContainer,
                         ),
                       )
                     : Text(
                         stepDate != null
-                            ? getSpecificDate(date: stepDate!,context: context)
+                            ? getSpecificDate(date: stepDate!, context: context)
                             : "قيد الإنتظار",
                         style: AppStyles.textStyle13SemiBold.copyWith(
                           color: colorScheme.tertiaryContainer,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
- class ChangeThemeState {
+class ChangeThemeState {
   final ThemeMode currentTheme;
 
   ChangeThemeState({required this.currentTheme});

@@ -72,8 +72,8 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        LocaleKeys.selectAddressBottomSheet_deliveryDestination
-                            .tr(),
+                        LocaleKeys.checkout_addressSelection_deliveryDestination
+                            .tr(context: context),
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w700,
@@ -83,7 +83,9 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
                       ),
                       SizedBox(height: 2),
                       Text(
-                        LocaleKeys.selectAddressBottomSheet_selectAddress.tr(),
+                        LocaleKeys.checkout_addressSelection_selectAddress.tr(
+                          context: context,
+                        ),
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w800,
@@ -116,7 +118,9 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
             child: Row(
               children: [
                 Text(
-                  LocaleKeys.selectAddressBottomSheet_selectAddress.tr(),
+                  LocaleKeys.checkout_addressSelection_selectAddress.tr(
+                    context: context,
+                  ),
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
@@ -148,8 +152,8 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
                         Icon(Icons.add, size: 14, color: colorScheme.primary),
                         SizedBox(width: 4),
                         Text(
-                          LocaleKeys.selectAddressBottomSheet_savedAddresses
-                              .tr(),
+                          LocaleKeys.checkout_addressSelection_savedAddresses
+                              .tr(context: context),
                           style: TextStyle(
                             fontSize: 11.5,
                             fontWeight: FontWeight.w700,
@@ -239,8 +243,8 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
                               ),
                               label: Text(
                                 LocaleKeys
-                                    .selectAddressBottomSheet_ConfirmAndDeliverHere
-                                    .tr(),
+                                    .checkout_addressSelection_confirmAndDeliverHere
+                                    .tr(context: context),
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.w700,

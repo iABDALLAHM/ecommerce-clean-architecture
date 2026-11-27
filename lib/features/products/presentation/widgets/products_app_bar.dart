@@ -14,7 +14,7 @@ class ProductsAppBar extends StatelessWidget {
       children: [
         Spacer(),
         Text(
-          LocaleKeys.home_productsPageAppBar.tr(),
+          LocaleKeys.home_productsPageAppBar.tr(context: context),
           style: AppStyles.textStyle19Bold.copyWith(
             color: colorScheme.onSurface,
           ),

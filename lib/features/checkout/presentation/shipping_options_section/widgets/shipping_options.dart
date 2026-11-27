@@ -29,8 +29,10 @@ class ShippingOptions extends StatelessWidget {
             checkOutCubit.updateShippingOptions(payWith: true);
           },
           isSelected: orderEntity.payWithCash == true,
-          title: LocaleKeys.checkOut_cashOnDelivery.tr(),
-          subTitle: LocaleKeys.checkOut_DeliveryFromLocation.tr(),
+          title: LocaleKeys.checkout_cashOnDelivery.tr(context: context),
+          subTitle: LocaleKeys.checkout_deliveryFromLocation.tr(
+            context: context,
+          ),
           price: totalPrice + 40,
         ),
         const SizedBox(height: 8),
@@ -39,8 +41,8 @@ class ShippingOptions extends StatelessWidget {
             checkOutCubit.updateShippingOptions(payWith: false);
           },
           isSelected: orderEntity.payWithCash == false,
-          title: LocaleKeys.checkOut_buyNowPayLater.tr(),
-          subTitle: LocaleKeys.checkOut_yourPaymentMethod.tr(),
+          title: LocaleKeys.checkout_buyNowPayLater.tr(context: context),
+          subTitle: LocaleKeys.checkout_yourPaymentMethod.tr(context: context),
         ),
       ],
     );

@@ -18,7 +18,9 @@ class ChangeYourNameBlocListener extends StatelessWidget {
         if (state is SuccessUpdateUserNameState) {
           showSnackBar(
             context,
-            message: LocaleKeys.profileStatus_successUpdateUserName.tr(),
+            message: LocaleKeys.profile_messages_successUpdateUserName.tr(
+              context: context,
+            ),
           );
           context.read<GetUserDataCubit>().getUserData();
           context.pop();

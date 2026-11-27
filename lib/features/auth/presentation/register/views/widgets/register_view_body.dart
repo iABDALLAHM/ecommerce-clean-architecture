@@ -54,21 +54,27 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   children: [
                     const SizedBox(height: 24),
                     CustomTextFormField(
-                      hintText: LocaleKeys.auth_signUp_nameTextField.tr(),
+                      hintText: LocaleKeys.auth_signUp_nameTextField.tr(
+                        context: context,
+                      ),
                       onSaved: (value) {
                         name = value ?? "";
                       },
                     ),
                     const SizedBox(height: 16),
                     CustomTextFormField(
-                      hintText: LocaleKeys.auth_signUp_emailTextField.tr(),
+                      hintText: LocaleKeys.auth_signUp_emailTextField.tr(
+                        context: context,
+                      ),
                       onSaved: (value) {
                         email = value ?? "";
                       },
                     ),
                     const SizedBox(height: 16),
                     CustomPasswordField(
-                      hintText: LocaleKeys.auth_signUp_passwordTextField.tr(),
+                      hintText: LocaleKeys.auth_signUp_passwordTextField.tr(
+                        context: context,
+                      ),
                       onSaved: (value) {
                         password = value ?? "";
                       },
@@ -86,16 +92,17 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                       height: 54,
                       width: double.infinity,
                       child: CustomButton(
-                        text: LocaleKeys.auth_signUp_signUpButton.tr(),
+                        text: LocaleKeys.auth_signUp_signUpButton.tr(
+                          context: context,
+                        ),
                         onPressed: () {
                           if (termsAndConditionsState == true) {
                             _validateTextField(context);
                           } else {
                             showSnackBar(
                               context,
-                              message: LocaleKeys
-                                  .termsAndConditions_failureTermsAndConditionsState
-                                  .tr(),
+                              message: LocaleKeys.auth_messages_termsRequired
+                                  .tr(context: context),
                             );
                             return;
                           }
@@ -105,8 +112,12 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     const SizedBox(height: 26),
                     AuthRichText(
                       onTap: () => context.go(AppRoutes.login),
-                      title: LocaleKeys.auth_signUp_haveAnAccount.tr(),
-                      subTitle: LocaleKeys.auth_signUp_signIn.tr(),
+                      title: LocaleKeys.auth_signUp_haveAnAccount.tr(
+                        context: context,
+                      ),
+                      subTitle: LocaleKeys.auth_signUp_signIn.tr(
+                        context: context,
+                      ),
                     ),
                   ],
                 ),
@@ -143,7 +154,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
   void _handleSuccess(BuildContext context) {
     showSnackBar(
       context,
-      message: LocaleKeys.registerCubit_successRegisterState.tr(),
+      message: LocaleKeys.auth_messages_successRegister.tr(context: context),
     );
     context.go(AppRoutes.login);
   }

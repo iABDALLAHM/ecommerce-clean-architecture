@@ -56,12 +56,14 @@ class _ReviewAndRatingViewBodyState extends State<ReviewAndRatingViewBody> {
                   builder: (context, state) {
                     if (state is SuccessGetReviewsState) {
                       return Text(
-                        "${state.productReviewWithUserEntity.length} ${LocaleKeys.reviewAndRating_reviewAndRatingReviewsText.tr()}",
+                        "${state.productReviewWithUserEntity.length} ${LocaleKeys.reviews_reviewAndRatingReviewsText.tr(context: context)}",
                         style: AppStyles.textStyle13Bold,
                       );
                     } else if (state is LoadingGetReviewsState) {
                       return Text(
-                        LocaleKeys.reviewAndRatingStatus_loadingGetReviews.tr(),
+                        LocaleKeys.reviews_messages_loadingGetReviews.tr(
+                          context: context,
+                        ),
                         style: AppStyles.textStyle13Bold,
                       );
                     } else if (state is FailureGetReviewsState) {
@@ -71,8 +73,9 @@ class _ReviewAndRatingViewBodyState extends State<ReviewAndRatingViewBody> {
                       );
                     } else if (state is EmptyGetReviewsState) {
                       return Text(
-                        LocaleKeys.reviewAndRatingStatus_beTheFirstOnetoReview
-                            .tr(),
+                        LocaleKeys.reviews_messages_beTheFirstOnetoReview.tr(
+                          context: context,
+                        ),
                         style: AppStyles.textStyle13Bold,
                       );
                     } else {

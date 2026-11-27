@@ -12,7 +12,7 @@ final class SuccessProductsState extends ProductsStates {
 }
 
 final class LoadingMoreProductsState extends ProductsStates {
-    final List<ProductEntity> products;
+  final List<ProductEntity> products;
   LoadingMoreProductsState({required this.products});
 }
 

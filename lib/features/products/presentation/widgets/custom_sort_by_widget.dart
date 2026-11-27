@@ -25,8 +25,10 @@ class _CustomSortByWidgetState extends State<CustomSortByWidget> {
       child: Column(
         children: [
           CustomSortOption(
-            title: LocaleKeys.filters_lowToHighPrice.tr(),
-            subTitle: LocaleKeys.filters_budgetAndBestValue.tr(),
+            title: LocaleKeys.filters_lowToHighPrice.tr(context: context),
+            subTitle: LocaleKeys.filters_budgetAndBestValue.tr(
+              context: context,
+            ),
             isSelected: radioChoicesEnumValue == RadioChoicesEnum.fromLowToHigh
                 ? true
                 : false,
@@ -40,8 +42,10 @@ class _CustomSortByWidgetState extends State<CustomSortByWidget> {
 
           CustomSortOption(
             icon: Icons.trending_down,
-            title: LocaleKeys.filters_highToLowPrice.tr(),
-            subTitle: LocaleKeys.filters_premiumAndbulkPackFirst.tr(),
+            title: LocaleKeys.filters_highToLowPrice.tr(context: context),
+            subTitle: LocaleKeys.filters_premiumAndbulkPackFirst.tr(
+              context: context,
+            ),
             isSelected: radioChoicesEnumValue == RadioChoicesEnum.fromHighToLow
                 ? true
                 : false,
@@ -54,8 +58,10 @@ class _CustomSortByWidgetState extends State<CustomSortByWidget> {
 
           CustomSortOption(
             icon: Icons.sort_by_alpha,
-            title: LocaleKeys.filters_alphabetical.tr(),
-            subTitle: LocaleKeys.filters_orderAlphabetically.tr(),
+            title: LocaleKeys.filters_alphabetical.tr(context: context),
+            subTitle: LocaleKeys.filters_orderAlphabetically.tr(
+              context: context,
+            ),
             isSelected: radioChoicesEnumValue == RadioChoicesEnum.alphabetical
                 ? true
                 : false,
@@ -85,7 +91,7 @@ class _CustomSortByWidgetState extends State<CustomSortByWidget> {
                     setState(() {});
                   },
                   child: Text(
-                    LocaleKeys.filters_resetButton.tr(),
+                    LocaleKeys.filters_resetButton.tr(context: context),
                     style: AppStyles.textStyle13SemiBold,
                   ),
                 ),
@@ -98,7 +104,9 @@ class _CustomSortByWidgetState extends State<CustomSortByWidget> {
                   height: 50,
                   width: double.infinity,
                   child: CustomButton(
-                    text: LocaleKeys.filters_applySortingButton.tr(),
+                    text: LocaleKeys.filters_applySortingButton.tr(
+                      context: context,
+                    ),
                     onPressed: () {
                       if (radioChoicesEnumValue ==
                           RadioChoicesEnum.fromLowToHigh) {

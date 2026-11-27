@@ -36,7 +36,9 @@ class MyOrdersViewBody extends StatelessWidget {
                 return SliverToBoxAdapter(
                   child: Center(
                     child: Text(
-                      LocaleKeys.profileStatus_emptyOrdersState.tr(),
+                      LocaleKeys.profile_messages_emptyOrdersState.tr(
+                        context: context,
+                      ),
                       style: AppStyles.textStyle19Bold.copyWith(
                         color: colorScheme.onSurface,
                       ),

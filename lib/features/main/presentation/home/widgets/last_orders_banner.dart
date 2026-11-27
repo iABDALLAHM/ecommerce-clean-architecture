@@ -38,7 +38,7 @@ class LastOrdersBanner extends StatelessWidget {
                   Icon(Icons.replay, color: Color(0xff16A34A)),
                   const SizedBox(width: 5),
                   Text(
-                    "${LocaleKeys.lastOrdersView_yourPreviousOrderTag.tr()} ",
+                    "${LocaleKeys.orders_yourPreviousOrderTag.tr(context: context)} ",
                     style: AppStyles.textStyle16Bold,
                   ),
                 ],
@@ -59,7 +59,7 @@ class LastOrdersBanner extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      "${LocaleKeys.lastOrdersView_viewAll.tr()} ",
+                      "${LocaleKeys.orders_viewAll.tr(context: context)} ",
                       style: AppStyles.textStyle13Bold,
                     ),
                     RotatedBox(
@@ -182,7 +182,7 @@ class LastOrdersBanner extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(Icons.replay),
-                      Text(LocaleKeys.lastOrdersView_reOrder.tr()),
+                      Text(LocaleKeys.orders_reOrder.tr(context: context)),
                     ],
                   ),
                 ),

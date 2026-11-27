@@ -28,7 +28,7 @@ class SupabaseStorageService implements StorageService {
     } catch (e, stackTrace) {
       log('Supabase Upload Error: $e', stackTrace: stackTrace);
       throw CustomException(
-        exceptionMeassge: LocaleKeys.storageErrors_addFileError.tr(),
+        exceptionMeassge: LocaleKeys.errors_storage_addFileError.tr(),
       );
     }
   }

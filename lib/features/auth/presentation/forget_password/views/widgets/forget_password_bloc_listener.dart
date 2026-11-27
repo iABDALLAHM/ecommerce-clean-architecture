@@ -19,9 +19,9 @@ class ForgetPasswordBlocListener extends StatelessWidget {
         if (state is SuccessSendEmailState) {
           showSnackBar(
             context,
-            message: LocaleKeys
-                .sendResetPasswordEmailCubit_successSendEmailState
-                .tr(),
+            message: LocaleKeys.auth_messages_successSendEmail.tr(
+              context: context,
+            ),
           );
         } else if (state is FailureSendEmailState) {
           showSnackBar(context, message: state.errorMessage);

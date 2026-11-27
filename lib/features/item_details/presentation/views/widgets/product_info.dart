@@ -42,13 +42,14 @@ class ProductInfo extends StatelessWidget {
             children: [
               TextSpan(
                 text:
-                    "${productEntity.productPrice} ${LocaleKeys.itemDetails_itemDetailsItemPound.tr()}",
+                    "${productEntity.productPrice} ${LocaleKeys.itemDetails_itemDetailsItemPound.tr(context: context)}",
                 style: AppStyles.textStyle13Bold.copyWith(
                   color: colorScheme.secondary,
                 ),
               ),
               TextSpan(
-                text: " / ${LocaleKeys.itemDetails_itemDetailsItemAmount.tr()}",
+                text:
+                    " / ${LocaleKeys.itemDetails_itemDetailsItemAmount.tr(context: context)}",
                 style: AppStyles.textStyle13Bold.copyWith(
                   color: colorScheme.secondaryContainer,
                 ),
@@ -92,7 +93,9 @@ class ProductInfo extends StatelessWidget {
                       context.push(AppRoutes.reviewAndRating, extra: data);
                     },
                     child: Text(
-                      LocaleKeys.itemDetails_itemDetailsReviewItemButton.tr(),
+                      LocaleKeys.itemDetails_itemDetailsReviewItemButton.tr(
+                        context: context,
+                      ),
                       style: AppStyles.textStyle13Bold.copyWith(
                         color: colorScheme.primary,
                         decoration: TextDecoration.underline,
@@ -104,13 +107,17 @@ class ProductInfo extends StatelessWidget {
               );
             } else if (state is LoadingGetReviewsState) {
               return Text(
-                LocaleKeys.itemDetailsStatus_loadingReviewsForThisItem.tr(),
+                LocaleKeys.itemDetails_messages_loadingReviewsForThisItem.tr(
+                  context: context,
+                ),
               );
             } else if (state is EmptyGetReviewsState) {
               return Row(
                 children: [
                   Text(
-                    LocaleKeys.itemDetailsStatus_beTheFirstOneToAddReview.tr(),
+                    LocaleKeys.itemDetails_messages_beTheFirstOneToAddReview.tr(
+                      context: context,
+                    ),
                     style: AppStyles.textStyle13Bold,
                   ),
                   const SizedBox(width: 9),
@@ -125,7 +132,9 @@ class ProductInfo extends StatelessWidget {
                       context.push(AppRoutes.reviewAndRating, extra: data);
                     },
                     child: Text(
-                      LocaleKeys.itemDetails_itemDetailsReviewItemButton.tr(),
+                      LocaleKeys.itemDetails_itemDetailsReviewItemButton.tr(
+                        context: context,
+                      ),
                       style: AppStyles.textStyle13Bold.copyWith(
                         color: colorScheme.primary,
                         decoration: TextDecoration.underline,
@@ -160,9 +169,12 @@ class ProductInfo extends StatelessWidget {
               child: InfoDetailsBox(
                 icon: Assets.imagesCalenderIcon,
                 title: handleExpirationYearsText(
+                  context: context,
                   numOfYears: productEntity.expirationYears,
                 ),
-                subTitle: LocaleKeys.itemDetails_itemDetailsExpirationDate.tr(),
+                subTitle: LocaleKeys.itemDetails_itemDetailsExpirationDate.tr(
+                  context: context,
+                ),
               ),
             ),
             const SizedBox(width: 16),
@@ -170,7 +182,9 @@ class ProductInfo extends StatelessWidget {
               child: InfoDetailsBox(
                 icon: Assets.imagesIsOrganicIcon,
                 title: productEntity.isOrganicProduct == false ? "0%" : "100%",
-                subTitle: LocaleKeys.itemDetails_itemDetailsOrganicItem.tr(),
+                subTitle: LocaleKeys.itemDetails_itemDetailsOrganicItem.tr(
+                  context: context,
+                ),
               ),
             ),
           ],
@@ -184,8 +198,10 @@ class ProductInfo extends StatelessWidget {
               child: InfoDetailsBox(
                 icon: Assets.imagesCaloryIcon,
                 title:
-                    "${productEntity.numberOfCalories} ${LocaleKeys.itemDetails_itemDetailsCaloryItem.tr()}",
-                subTitle: LocaleKeys.itemDetails_itemDetailsCaloryBy100GM.tr(),
+                    "${productEntity.numberOfCalories} ${LocaleKeys.itemDetails_itemDetailsCaloryItem.tr(context: context)}",
+                subTitle: LocaleKeys.itemDetails_itemDetailsCaloryBy100GM.tr(
+                  context: context,
+                ),
               ),
             ),
             const SizedBox(width: 16),
@@ -202,7 +218,7 @@ class ProductInfo extends StatelessWidget {
                       titleDetails:
                           "(${state.productReviewWithUserEntity.length}) ",
                       subTitle: LocaleKeys.itemDetails_itemDetailsReviewsItem
-                          .tr(),
+                          .tr(context: context),
                     ),
                   );
                 } else if (state is LoadingGetReviewsState) {
@@ -211,9 +227,11 @@ class ProductInfo extends StatelessWidget {
                   return Expanded(
                     child: InfoDetailsBox(
                       icon: Assets.imagesStarIcon,
-                      title: LocaleKeys.itemDetailsStatus_nothing.tr(),
+                      title: LocaleKeys.itemDetails_messages_nothing.tr(
+                        context: context,
+                      ),
                       subTitle: LocaleKeys.itemDetails_itemDetailsReviewsItem
-                          .tr(),
+                          .tr(context: context),
                     ),
                   );
                 }
@@ -229,7 +247,9 @@ class ProductInfo extends StatelessWidget {
           height: 54,
           width: double.infinity,
           child: CustomButton(
-            text: LocaleKeys.itemDetails_itemDetailsAddToCartButton.tr(),
+            text: LocaleKeys.itemDetails_itemDetailsAddToCartButton.tr(
+              context: context,
+            ),
             onPressed: () {
               context.read<CartCubit>().addProduct(
                 productEntity: productEntity,

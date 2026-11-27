@@ -19,7 +19,6 @@ class ProfileInformationSection extends StatefulWidget {
 }
 
 class _ProfileInformationSectionState extends State<ProfileInformationSection> {
-
   @override
   void initState() {
     context.read<GetUserDataCubit>().getUserData();
@@ -71,12 +70,16 @@ class _ProfileInformationSectionState extends State<ProfileInformationSection> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  LocaleKeys.profileStatus_loadingYourNameState.tr(),
+                  LocaleKeys.profile_messages_loadingYourNameState.tr(
+                    context: context,
+                  ),
                   style: AppStyles.textStyle13Bold,
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  LocaleKeys.profileStatus_loadingYourEmailState.tr(),
+                  LocaleKeys.profile_messages_loadingYourEmailState.tr(
+                    context: context,
+                  ),
                   style: AppStyles.textStyle13Bold.copyWith(
                     color: colorScheme.surfaceBright,
                   ),

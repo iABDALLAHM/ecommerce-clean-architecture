@@ -36,7 +36,7 @@ class _RecentSearchWidgetState extends State<RecentSearchWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                LocaleKeys.search_recentSearchResult.tr(),
+                LocaleKeys.search_recentSearchResult.tr(context: context),
                 style: AppStyles.textStyle13SemiBold,
               ),
               TextButton(
@@ -46,7 +46,7 @@ class _RecentSearchWidgetState extends State<RecentSearchWidget> {
                       .clearAllSuggestions();
                 },
                 child: Text(
-                  LocaleKeys.search_deleteAll.tr(),
+                  LocaleKeys.search_deleteAll.tr(context: context),
                   style: AppStyles.textStyle13SemiBold.copyWith(
                     color: colorScheme.tertiaryContainer,
                   ),

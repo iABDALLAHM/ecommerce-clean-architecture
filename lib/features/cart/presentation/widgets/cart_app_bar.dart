@@ -13,7 +13,7 @@ class CartAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          LocaleKeys.home_cartPageAppBar.tr(),
+          LocaleKeys.home_cartPageAppBar.tr(context: context),
           style: AppStyles.textStyle19Bold.copyWith(
             color: colorScheme.onSurface,
           ),

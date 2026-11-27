@@ -53,12 +53,16 @@ class _ChangeYourNameBottomSheetState extends State<ChangeYourNameBottomSheet> {
                       children: [
                         const SizedBox(height: 50),
                         Text(
-                          LocaleKeys.profileStatus_changeYourName.tr(),
+                          LocaleKeys.profile_messages_changeYourName.tr(
+                            context: context,
+                          ),
                           style: AppStyles.textStyle16SemiBold,
                         ),
                         const SizedBox(height: 20),
                         CustomTextFormField(
-                          hintText: LocaleKeys.profileStatus_writeNewName.tr(),
+                          hintText: LocaleKeys.profile_messages_writeNewName.tr(
+                            context: context,
+                          ),
                           onSaved: (value) {
                             newName = value ?? "";
                           },
@@ -72,8 +76,8 @@ class _ChangeYourNameBottomSheetState extends State<ChangeYourNameBottomSheet> {
                               if (state is SuccessGetUserDataState) {
                                 return CustomButton(
                                   text: LocaleKeys
-                                      .profileStatus_confirmationChangeYourName
-                                      .tr(),
+                                      .profile_messages_confirmationChangeYourName
+                                      .tr(context: context),
                                   onPressed: () {
                                     if (formKey.currentState!.validate()) {
                                       formKey.currentState!.save();

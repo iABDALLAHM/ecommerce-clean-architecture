@@ -19,7 +19,7 @@ class SearchBodyAppBar extends StatelessWidget {
         children: [
           CustomArrowWidget(),
           Text(
-            LocaleKeys.home_searchPageAppBar.tr(),
+            LocaleKeys.home_searchPageAppBar.tr(context: context),
             style: AppStyles.textStyle19Bold.copyWith(
               color: colorScheme.onSurface,
             ),

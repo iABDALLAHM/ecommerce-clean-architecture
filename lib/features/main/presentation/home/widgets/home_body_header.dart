@@ -15,7 +15,7 @@ class HomeBodyHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          LocaleKeys.home_bestSellerHomeHeader.tr(),
+          LocaleKeys.home_bestSellerHomeHeader.tr(context: context),
           style: AppStyles.textStyle16Bold,
         ),
         GestureDetector(
@@ -23,7 +23,7 @@ class HomeBodyHeader extends StatelessWidget {
             context.go("${AppRoutes.home}${AppRoutes.bestSelling}");
           },
           child: Text(
-            LocaleKeys.home_more.tr(),
+            LocaleKeys.home_more.tr(context: context),
             style: AppStyles.textStyle13Regular.copyWith(
               color: colorScheme.tertiaryContainer,
             ),

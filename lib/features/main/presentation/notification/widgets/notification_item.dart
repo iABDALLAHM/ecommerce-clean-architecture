@@ -23,7 +23,10 @@ class _NotificationItemState extends State<NotificationItem> {
           child: ListTile(
             contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             trailing: Text(
-              handleDateTime(date: widget.notificationEntity.notificationDate),
+              handleDateTime(
+                context: context,
+                date: widget.notificationEntity.notificationDate,
+              ),
               style: AppStyles.textStyle13Regular.copyWith(
                 color: colorScheme.tertiaryContainer,
               ),

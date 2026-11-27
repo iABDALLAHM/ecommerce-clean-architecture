@@ -28,7 +28,7 @@ class _SaveLocationSectionState extends State<SaveLocationSection> {
         ),
         const SizedBox(width: 8),
         Text(
-          LocaleKeys.checkOut_saveAddressSwitch.tr(),
+          LocaleKeys.checkout_saveAddressSwitch.tr(context: context),
           style: AppStyles.textStyle13SemiBold.copyWith(
             color: colorScheme.surfaceBright,
           ),

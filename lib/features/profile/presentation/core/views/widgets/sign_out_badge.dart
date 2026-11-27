@@ -21,7 +21,7 @@ class SignOutBadge extends StatelessWidget {
         children: [
           Spacer(flex: 2),
           Text(
-            LocaleKeys.profile_signOutSection.tr(),
+            LocaleKeys.profile_signOutSection.tr(context: context),
             style: AppStyles.textStyle13SemiBold.copyWith(
               color: colorScheme.primary,
             ),

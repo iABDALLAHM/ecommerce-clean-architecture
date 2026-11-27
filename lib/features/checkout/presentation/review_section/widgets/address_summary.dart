@@ -28,14 +28,16 @@ class AddressSummary extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                LocaleKeys.checkOut_shippingAddress.tr(),
+                LocaleKeys.checkout_shippingAddress.tr(context: context),
                 style: AppStyles.textStyle13Bold,
               ),
               Spacer(),
               Icon(Icons.edit_outlined, color: colorScheme.tertiaryContainer),
               const SizedBox(width: 6),
               Text(
-                LocaleKeys.checkOut_shippingAddressEditButton.tr(),
+                LocaleKeys.checkout_shippingAddressEditButton.tr(
+                  context: context,
+                ),
                 style: AppStyles.textStyle13SemiBold.copyWith(
                   color: colorScheme.tertiaryContainer,
                 ),
@@ -49,7 +51,7 @@ class AddressSummary extends StatelessWidget {
               Expanded(
                 child: Text(
                   maxLines: 2,
-                  "${LocaleKeys.checkOutSteps_city.tr()} ${shippingAddressEntity.city}, ${LocaleKeys.checkOutSteps_address.tr()} ${shippingAddressEntity.address}, ${LocaleKeys.checkOutSteps_floorNumber.tr()} ${shippingAddressEntity.addressDetails}",
+                  "${LocaleKeys.checkout_messages_city.tr(context: context)} ${shippingAddressEntity.city}, ${LocaleKeys.checkout_messages_address.tr(context: context)} ${shippingAddressEntity.address}, ${LocaleKeys.checkout_messages_floorNumber.tr(context: context)} ${shippingAddressEntity.addressDetails}",
                   style: AppStyles.textStyle16Regular.copyWith(
                     color: colorScheme.tertiary,
                   ),

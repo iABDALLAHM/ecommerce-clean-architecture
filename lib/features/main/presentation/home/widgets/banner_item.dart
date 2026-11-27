@@ -12,7 +12,6 @@ class BannerItem extends StatelessWidget {
     var colorScheme = Theme.of(context).colorScheme;
     var scaffoldBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
 
-
     return Container(
       decoration: BoxDecoration(
         color: scaffoldBackgroundColor,

@@ -40,14 +40,18 @@ class CartItem extends StatelessWidget {
         if (state is CartUpdatedState) {
           showSnackBar(
             context,
-            message:
-                "${LocaleKeys.cartCubit_cartItemIncremented.tr()} $productName",
+            message: LocaleKeys.cart_messages_cartItemIncremented.tr(
+              namedArgs: {'itemName': productName ?? ''},
+              context: context,
+            ),
           );
         } else if (state is CartUpdatedState) {
           showSnackBar(
             context,
-            message:
-                "${LocaleKeys.cartCubit_cartItemDecremented.tr()} $productName",
+            message: LocaleKeys.cart_messages_cartItemDecremented.tr(
+              namedArgs: {'itemName': productName ?? ''},
+              context: context,
+            ),
           );
         }
       },
@@ -67,7 +71,7 @@ class CartItem extends StatelessWidget {
                   Text(productName ?? "", style: AppStyles.textStyle13Bold),
                   const SizedBox(height: 4),
                   Text(
-                    "${cartItemEntity.quantity} ${LocaleKeys.cart_cartAmount.tr()}",
+                    "${cartItemEntity.quantity} ${LocaleKeys.cart_cartAmount.tr(context: context)}",
                     style: AppStyles.textStyle13Regular.copyWith(
                       color: colorScheme.secondaryContainer,
                     ),
@@ -93,7 +97,7 @@ class CartItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "${cartItemEntity.calculateTotalPrice()} ${LocaleKeys.cart_cartCurrency.tr()}",
+                    "${cartItemEntity.calculateTotalPrice()} ${LocaleKeys.cart_cartCurrency.tr(context: context)}",
                     style: AppStyles.textStyle16Bold.copyWith(
                       color: colorScheme.secondary,
                     ),

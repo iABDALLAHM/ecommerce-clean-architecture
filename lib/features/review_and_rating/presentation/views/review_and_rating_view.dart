@@ -34,7 +34,7 @@ class ReviewAndRatingView extends StatelessWidget {
         child: Icon(Icons.arrow_back_ios_new),
       ),
       title: Text(
-        LocaleKeys.reviewAndRating_reviewAndRatingPageAppBar.tr(),
+        LocaleKeys.reviews_reviewAndRatingPageAppBar.tr(context: context),
         style: TextStyle(color: colorScheme.onSurface),
       ),
     );

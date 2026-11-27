@@ -12,7 +12,7 @@ class BestSellingHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
-          LocaleKeys.home_bestSellerHomeHeader.tr(),
+          LocaleKeys.home_bestSellerHomeHeader.tr(context: context),
           style: AppStyles.textStyle16Bold,
         ),
       ],

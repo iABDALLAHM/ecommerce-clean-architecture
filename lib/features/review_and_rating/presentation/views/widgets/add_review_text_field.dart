@@ -78,7 +78,9 @@ class _AddReviewTextFieldState extends State<AddReviewTextField> {
             ),
           ),
         ),
-        hintText: LocaleKeys.reviewAndRating_reviewAndRatingTextField.tr(),
+        hintText: LocaleKeys.reviews_reviewAndRatingTextField.tr(
+          context: context,
+        ),
         focusedBorder: buildOutlineInputBorder(
           color: colorScheme.tertiaryFixed,
         ),

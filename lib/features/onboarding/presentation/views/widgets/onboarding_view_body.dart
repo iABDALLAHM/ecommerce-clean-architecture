@@ -57,7 +57,9 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                         }
                       },
                       child: CustomButton(
-                        text: LocaleKeys.onBoarding_startNow.tr(),
+                        text: LocaleKeys.onboarding_startNow.tr(
+                          context: context,
+                        ),
                         onPressed: () {
                           context
                               .read<OnboardingCubit>()

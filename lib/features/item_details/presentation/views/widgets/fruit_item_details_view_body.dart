@@ -16,7 +16,6 @@ class FruitItemDetailsViewBody extends StatefulWidget {
 }
 
 class _FruitItemDetailsViewBodyState extends State<FruitItemDetailsViewBody> {
-
   @override
   void initState() {
     context.read<GetReviewsCubit>().getReviews(

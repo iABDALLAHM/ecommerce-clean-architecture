@@ -65,7 +65,7 @@ class _UserProfileBodyState extends State<UserProfileBody> {
                           const SizedBox(height: 24),
                           Text(
                             LocaleKeys.profile_userProfilePagePersonalInfoHeader
-                                .tr(),
+                                .tr(context: context),
                             style: AppStyles.textStyle13SemiBold,
                           ),
                           const SizedBox(height: 8),
@@ -124,15 +124,15 @@ class _UserProfileBodyState extends State<UserProfileBody> {
                                 children: [
                                   CustomEditDataTextField(
                                     hintText: LocaleKeys
-                                        .profileStatus_loadingData
-                                        .tr(),
+                                        .profile_messages_loadingData
+                                        .tr(context: context),
                                     onPressed: () {},
                                   ),
                                   const SizedBox(height: 8),
                                   CustomEditDataTextField(
                                     hintText: LocaleKeys
-                                        .profileStatus_loadingData
-                                        .tr(),
+                                        .profile_messages_loadingData
+                                        .tr(context: context),
                                     onPressed: () {},
                                   ),
                                 ],
@@ -143,14 +143,14 @@ class _UserProfileBodyState extends State<UserProfileBody> {
                           Text(
                             LocaleKeys
                                 .profile_userProfilePageChangePasswordHeader
-                                .tr(),
+                                .tr(context: context),
                             style: AppStyles.textStyle13SemiBold,
                           ),
                           const SizedBox(height: 8),
                           CustomPasswordField(
                             hintText: LocaleKeys
                                 .profile_userProfilePageCurrentPasswordTextField
-                                .tr(),
+                                .tr(context: context),
                             onSaved: (value) {
                               oldPassword = value ?? "";
                             },
@@ -159,7 +159,7 @@ class _UserProfileBodyState extends State<UserProfileBody> {
                           CustomPasswordField(
                             hintText: LocaleKeys
                                 .profile_userProfilePageNewPassword
-                                .tr(),
+                                .tr(context: context),
                             onSaved: (value) {
                               newPassword = value ?? "";
                             },
@@ -168,7 +168,7 @@ class _UserProfileBodyState extends State<UserProfileBody> {
                           CustomPasswordField(
                             hintText: LocaleKeys
                                 .profile_userProfilePageConfirmationNewPassword
-                                .tr(),
+                                .tr(context: context),
                             onSaved: (value) {
                               confirmationNewPassord = value ?? "";
                             },
@@ -178,8 +178,9 @@ class _UserProfileBodyState extends State<UserProfileBody> {
                             height: 54,
                             width: double.infinity,
                             child: CustomButton(
-                              text: LocaleKeys.profile_userProfilePageButton
-                                  .tr(),
+                              text: LocaleKeys.profile_userProfilePageButton.tr(
+                                context: context,
+                              ),
                               onPressed: () {
                                 if (formKey.currentState!.validate()) {
                                   formKey.currentState!.save();
@@ -187,8 +188,8 @@ class _UserProfileBodyState extends State<UserProfileBody> {
                                     showSnackBar(
                                       context,
                                       message: LocaleKeys
-                                          .profileStatus_pleaseConfirmYourPassword
-                                          .tr(),
+                                          .profile_messages_pleaseConfirmYourPassword
+                                          .tr(context: context),
                                     );
                                   } else {
                                     context

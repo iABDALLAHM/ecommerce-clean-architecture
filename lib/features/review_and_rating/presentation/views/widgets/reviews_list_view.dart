@@ -43,7 +43,9 @@ class ReviewsListView extends StatelessWidget {
           return SliverToBoxAdapter(
             child: Center(
               child: Text(
-                LocaleKeys.reviewAndRatingStatus_beTheFirstOnetoReview.tr(),
+                LocaleKeys.reviews_messages_beTheFirstOnetoReview.tr(
+                  context: context,
+                ),
                 style: AppStyles.textStyle13Bold,
               ),
             ),

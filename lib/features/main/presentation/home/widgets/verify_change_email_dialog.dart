@@ -29,7 +29,9 @@ class VerifyChangeEmailDialog extends StatelessWidget {
                 width: double.infinity,
                 height: 59,
                 child: CustomButton(
-                  text: LocaleKeys.ConfirmChangeUserEmailButton.tr(),
+                  text: LocaleKeys.profile_messages_confirmChangeEmailButton.tr(
+                    context: context,
+                  ),
                   onPressed: () {
                     context.read<VerifyChangeEmailCubit>().confirmChangeEmail(
                       code: code,
@@ -56,7 +58,7 @@ class VerifyChangeEmailBlocListener extends StatelessWidget {
           context.pop();
           showSnackBar(
             context,
-            message: "تم تغير الإيميل بنجاح برجاء تسجيل الدخول مجددا",
+            message: LocaleKeys.common_emailChangedSuccess.tr(context: context),
           );
           context.go(AppRoutes.login);
         } else if (state is FailureVerifyChangeEmailState) {

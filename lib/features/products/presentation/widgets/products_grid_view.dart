@@ -15,7 +15,8 @@ class ProductsGridView extends StatelessWidget {
         crossAxisSpacing: 16,
         childAspectRatio: 163 / 214,
       ),
-      itemBuilder: (context, index) => CustomFruitItem(productEntity: products[index]),
+      itemBuilder: (context, index) =>
+          CustomFruitItem(productEntity: products[index]),
     );
   }
 }

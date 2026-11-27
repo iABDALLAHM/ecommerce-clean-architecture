@@ -4,13 +4,16 @@ import 'package:flutter/material.dart';
 
 class BannerList extends StatelessWidget {
   const BannerList({super.key, required this.featuredProducts});
- final List<FeaturedProductEntity> featuredProducts;
+  final List<FeaturedProductEntity> featuredProducts;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: List.generate(featuredProducts.length, (index) => BannerItem(featuredProductEntity: featuredProducts[index])),
+        children: List.generate(
+          featuredProducts.length,
+          (index) => BannerItem(featuredProductEntity: featuredProducts[index]),
+        ),
       ),
     );
   }

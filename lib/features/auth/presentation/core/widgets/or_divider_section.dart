@@ -15,7 +15,7 @@ class OrDividerSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Text(
-            LocaleKeys.auth_loginPage_orLoginDivider.tr(),
+            LocaleKeys.auth_loginPage_orLoginDivider.tr(context: context),
             style: AppStyles.textStyle16SemiBold,
           ),
         ),

@@ -21,7 +21,7 @@ class FirestoreService implements DatabaseService {
       await firestore.collection(path).add(data);
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.databaseErrors_addDataError.tr(),
+        exceptionMeassge: LocaleKeys.errors_database_addDataError.tr(),
       );
     }
   }
@@ -33,7 +33,7 @@ class FirestoreService implements DatabaseService {
       return data.docs.map((doc) => doc.data()).toList();
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.databaseErrors_getDataError.tr(),
+        exceptionMeassge: LocaleKeys.errors_database_getDataError.tr(),
       );
     }
   }
@@ -48,7 +48,7 @@ class FirestoreService implements DatabaseService {
       await firestore.collection(path).doc(documentId).set(data);
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.databaseErrors_addDataError.tr(),
+        exceptionMeassge: LocaleKeys.errors_database_addDataError.tr(),
       );
     }
   }
@@ -69,7 +69,7 @@ class FirestoreService implements DatabaseService {
           .set(data);
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.databaseErrors_addDataError.tr(),
+        exceptionMeassge: LocaleKeys.errors_database_addDataError.tr(),
       );
     }
   }
@@ -84,7 +84,7 @@ class FirestoreService implements DatabaseService {
       return data.data();
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.databaseErrors_getSingleDataError.tr(),
+        exceptionMeassge: LocaleKeys.errors_database_getSingleDataError.tr(),
       );
     }
   }
@@ -104,7 +104,7 @@ class FirestoreService implements DatabaseService {
       return data.docs.map((doc) => doc.data()).toList();
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.databaseErrors_getNestedDataError.tr(),
+        exceptionMeassge: LocaleKeys.errors_database_getNestedDataError.tr(),
       );
     }
   }
@@ -172,7 +172,7 @@ class FirestoreService implements DatabaseService {
       return result.docs.map((doc) => doc.data()).toList();
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.databaseErrors_getQueryDataError.tr(),
+        exceptionMeassge: LocaleKeys.errors_database_getQueryDataError.tr(),
       );
     }
   }
@@ -193,7 +193,7 @@ class FirestoreService implements DatabaseService {
           .delete();
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.databaseErrors_removeDataError.tr(),
+        exceptionMeassge: LocaleKeys.errors_database_removeDataError.tr(),
       );
     }
   }
@@ -213,7 +213,7 @@ class FirestoreService implements DatabaseService {
           .add(data);
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.databaseErrors_addDataError.tr(),
+        exceptionMeassge: LocaleKeys.errors_database_addDataError.tr(),
       );
     }
   }
@@ -228,7 +228,7 @@ class FirestoreService implements DatabaseService {
       await firestore.collection(path).doc(documentId).update(data);
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.databaseErrors_updateDataError.tr(),
+        exceptionMeassge: LocaleKeys.errors_database_updateDataError.tr(),
       );
     }
   }
@@ -274,7 +274,7 @@ class FirestoreService implements DatabaseService {
       });
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.databaseErrors_getStreamData.tr(),
+        exceptionMeassge: LocaleKeys.errors_database_getStreamData.tr(),
       );
     }
   }
@@ -301,7 +301,7 @@ class FirestoreService implements DatabaseService {
       return data.docs.map((doc) => doc.data()).toList();
     } catch (e) {
       throw CustomException(
-        exceptionMeassge: LocaleKeys.databaseErrors_getDataError.tr(),
+        exceptionMeassge: LocaleKeys.errors_database_getDataError.tr(),
       );
     }
   }

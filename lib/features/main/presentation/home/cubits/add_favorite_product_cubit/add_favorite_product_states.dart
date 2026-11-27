@@ -8,7 +8,6 @@ class SuccessAddFavoriteProduct extends FavoriteProductStates {
   final ProductEntity productEntity;
 
   SuccessAddFavoriteProduct({required this.productEntity});
-
 }
 
 class SuccessRemoveFavoriteProduct extends FavoriteProductStates {

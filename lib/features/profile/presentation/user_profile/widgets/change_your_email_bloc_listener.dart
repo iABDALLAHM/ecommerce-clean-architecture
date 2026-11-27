@@ -18,8 +18,9 @@ class ChangeYourEmailBlocListener extends StatelessWidget {
         if (state is SuccessUpdateUserEmailState) {
           showSnackBar(
             context,
-            message: LocaleKeys.profileStatus_checkYourEmailToConfirmChangeEmail
-                .tr(),
+            message: LocaleKeys
+                .profile_messages_checkYourEmailToConfirmChangeEmail
+                .tr(context: context),
           );
           context.read<GetUserDataCubit>().getUserData();
           context.pop();

@@ -37,7 +37,7 @@ class SignOutDialogWidget extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                LocaleKeys.profile_wantToLogOut.tr(),
+                LocaleKeys.profile_wantToLogOut.tr(context: context),
                 style: AppStyles.textStyle16Bold,
               ),
               const SizedBox(height: 29),
@@ -45,7 +45,9 @@ class SignOutDialogWidget extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ProfileBodyDialogButton(
-                      hintText: LocaleKeys.profile_okLogOut.tr(),
+                      hintText: LocaleKeys.profile_okLogOut.tr(
+                        context: context,
+                      ),
                       onPressed: () {
                         context.read<SignOutCubit>().signout();
                       },
@@ -55,7 +57,7 @@ class SignOutDialogWidget extends StatelessWidget {
                   const SizedBox(width: 8),
                   Expanded(
                     child: ProfileBodyDialogButton(
-                      hintText: LocaleKeys.profile_idonot.tr(),
+                      hintText: LocaleKeys.profile_idonot.tr(context: context),
                       onPressed: () {
                         context.pop();
                       },

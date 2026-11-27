@@ -14,7 +14,7 @@ AppBar buildCheckOutAppBar(BuildContext context, {required int currentStep}) {
       icon: Icon(Icons.arrow_back_ios_new),
     ),
     title: Text(
-      changeTextStepsAppBar(step: currentStep),
+      changeTextStepsAppBar(context: context, step: currentStep),
       style: AppStyles.textStyle19Bold.copyWith(color: colorScheme.onSurface),
     ),
   );

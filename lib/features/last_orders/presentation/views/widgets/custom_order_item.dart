@@ -47,7 +47,7 @@ class CustomOrderItem extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 5),
-          Text(getSpecificDate(date: orderEntity.date,context: context)),
+          Text(getSpecificDate(date: orderEntity.date, context: context)),
           Divider(color: Color(0xffF1F5F9)),
           const SizedBox(height: 5),
           Column(
@@ -95,7 +95,7 @@ class CustomOrderItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.replay),
-                Text(LocaleKeys.lastOrdersView_reOrder.tr()),
+                Text(LocaleKeys.orders_reOrder.tr(context: context)),
               ],
             ),
           ),

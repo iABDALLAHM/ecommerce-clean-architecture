@@ -1,6 +1,6 @@
 class CustomException implements Exception {
   final String exceptionMeassge;
-  
+
   CustomException({required this.exceptionMeassge});
 
   @override

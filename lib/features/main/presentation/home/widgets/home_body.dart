@@ -158,12 +158,16 @@ class HomeBodyMultiBlocListenr extends StatelessWidget {
             if (state is SuccessAddFavoriteProduct) {
               showSnackBar(
                 context,
-                message: LocaleKeys.homeStatus_addProductToFav.tr(),
+                message: LocaleKeys.home_messages_addProductToFav.tr(
+                  context: context,
+                ),
               );
             } else if (state is SuccessRemoveFavoriteProduct) {
               showSnackBar(
                 context,
-                message: LocaleKeys.homeStatus_removeProductFromFav.tr(),
+                message: LocaleKeys.home_messages_removeProductFromFav.tr(
+                  context: context,
+                ),
               );
             } else if (state is FailureAddFavoriteProduct) {
               showSnackBar(context, message: state.errorMessage);
@@ -178,22 +182,30 @@ class HomeBodyMultiBlocListenr extends StatelessWidget {
             if (state is CartUpdatedState) {
               showSnackBar(
                 context,
-                message: LocaleKeys.homeStatus_addProductToCart.tr(),
+                message: LocaleKeys.home_messages_addProductToCart.tr(
+                  context: context,
+                ),
               );
             } else if (state is CartUpdatedState) {
               showSnackBar(
                 context,
-                message: LocaleKeys.homeStatus_loadingAddProductToCart.tr(),
+                message: LocaleKeys.home_messages_loadingAddProductToCart.tr(
+                  context: context,
+                ),
               );
             } else if (state is CartUpdatedState) {
               showSnackBar(
                 context,
-                message: LocaleKeys.homeStatus_productIncrementedInCart.tr(),
+                message: LocaleKeys.home_messages_productIncrementedInCart.tr(
+                  context: context,
+                ),
               );
             } else if (state is CartUpdatedState) {
               showSnackBar(
                 context,
-                message: LocaleKeys.homeStatus_productDecrementedFromCart.tr(),
+                message: LocaleKeys.home_messages_productDecrementedFromCart.tr(
+                  context: context,
+                ),
               );
             }
           },

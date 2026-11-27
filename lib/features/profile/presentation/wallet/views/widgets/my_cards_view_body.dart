@@ -53,7 +53,10 @@ class _MyCardsViewBodyState extends State<MyCardsViewBody> {
                 return Expanded(child: Text(state.errorMessage));
               } else if (state is EmptyCardsState) {
                 return Expanded(
-                  child: Text(LocaleKeys.profileStatus_youDoNotHaveAnyCards.tr(),
+                  child: Text(
+                    LocaleKeys.profile_messages_youDoNotHaveAnyCards.tr(
+                      context: context,
+                    ),
                     style: AppStyles.textStyle19Bold.copyWith(
                       color: colorScheme.onPrimary,
                     ),
@@ -82,7 +85,9 @@ class _MyCardsViewBodyState extends State<MyCardsViewBody> {
                   },
                 );
               },
-              text: LocaleKeys.profile_myPaymentsPageButton.tr(),
+              text: LocaleKeys.profile_myPaymentsPageButton.tr(
+                context: context,
+              ),
             ),
           ),
           const SizedBox(height: 50),

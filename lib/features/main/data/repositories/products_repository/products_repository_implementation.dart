@@ -24,9 +24,10 @@ class ProductsRepositoryImplementation implements ProductsRepository {
   }) : _secureStorageRepository = secureStorageRepository;
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> getProducts({required String? lastProduct}) async {
+  Future<Either<Failure, List<ProductEntity>>> getProducts({
+    required String? lastProduct,
+  }) async {
     try {
-
       var data = await databaseService.getPaginatedData(
         path: BackendEndPoints.productsCollection,
         lastDocument: lastProduct,
@@ -39,7 +40,6 @@ class ProductsRepositoryImplementation implements ProductsRepository {
       }
 
       return Right(productsList);
-
     } on CustomException catch (e) {
       log(
         "this error happend in ProductsRepoImplementation in getProducts method ${e.toString()}",

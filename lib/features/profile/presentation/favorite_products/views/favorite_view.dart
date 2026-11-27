@@ -14,7 +14,7 @@ class FavoriteView extends StatelessWidget {
       child: Scaffold(
         appBar: buildProfileAppBar(
           context,
-          title: LocaleKeys.profile_myFavoritePageAppBar.tr(),
+          title: LocaleKeys.profile_myFavoritePageAppBar.tr(context: context),
         ),
         body: FavoriteBody(),
       ),

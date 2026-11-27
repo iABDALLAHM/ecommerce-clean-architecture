@@ -22,17 +22,17 @@ class ProductsHeader extends StatelessWidget {
           builder: (context, state) {
             if (state is SuccessProductsState) {
               return Text(
-                "${state.products.length} ${LocaleKeys.home_results.tr()}",
+                "${state.products.length} ${LocaleKeys.home_results.tr(context: context)}",
                 style: AppStyles.textStyle16Bold,
               );
             } else if (state is LoadingProductsState) {
               return Text(
-                LocaleKeys.products_loadingProductsState.tr(),
+                LocaleKeys.products_loadingProductsState.tr(context: context),
                 style: AppStyles.textStyle16Bold,
               );
             }
             return Text(
-              LocaleKeys.products_nothingProductsState.tr(),
+              LocaleKeys.products_nothingProductsState.tr(context: context),
               style: AppStyles.textStyle16Bold,
             );
           },

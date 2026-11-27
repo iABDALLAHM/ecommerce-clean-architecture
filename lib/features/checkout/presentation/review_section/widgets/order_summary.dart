@@ -17,7 +17,7 @@ class OrderSummary extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          LocaleKeys.checkOut_orderSummarySection.tr(),
+          LocaleKeys.checkout_orderSummarySection.tr(context: context),
           style: AppStyles.textStyle13Bold,
         ),
         const SizedBox(height: 8),
@@ -35,7 +35,9 @@ class OrderSummary extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      LocaleKeys.checkOut_orderSummarySectionSubtotal.tr(),
+                      LocaleKeys.checkout_orderSummarySectionSubtotal.tr(
+                        context: context,
+                      ),
                       style: AppStyles.textStyle13Regular.copyWith(
                         color: colorScheme.tertiary,
                       ),
@@ -53,7 +55,9 @@ class OrderSummary extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    LocaleKeys.checkOut_orderSummarySectionDelivery.tr(),
+                    LocaleKeys.checkout_orderSummarySectionDelivery.tr(
+                      context: context,
+                    ),
                     style: AppStyles.textStyle13Regular,
                   ),
                   Text(
@@ -71,7 +75,9 @@ class OrderSummary extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    LocaleKeys.checkOut_orderSummarySectionTotal.tr(),
+                    LocaleKeys.checkout_orderSummarySectionTotal.tr(
+                      context: context,
+                    ),
                     style: AppStyles.textStyle16Bold,
                   ),
                   Text(

@@ -20,12 +20,16 @@ class UserProfileBodyBlocListener extends StatelessWidget {
         if (state is LoadingUpdateUserPasswordState) {
           showSnackBar(
             context,
-            message: LocaleKeys.profileStatus_loadingChangeYourPassword.tr(),
+            message: LocaleKeys.profile_messages_loadingChangeYourPassword.tr(
+              context: context,
+            ),
           );
         } else if (state is SuccessUpdateUserPasswordState) {
           showSnackBar(
             context,
-            message: LocaleKeys.profileStatus_successChangeYourPassword.tr(),
+            message: LocaleKeys.profile_messages_successChangeYourPassword.tr(
+              context: context,
+            ),
           );
           context.go(AppRoutes.login);
         } else if (state is FailureUpdateUserPasswordState) {

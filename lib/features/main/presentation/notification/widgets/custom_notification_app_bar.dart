@@ -17,7 +17,7 @@ class CustomNotificationAppBar extends StatelessWidget {
         CustomArrowWidget(),
         Spacer(),
         Text(
-          LocaleKeys.notification_notificationsPageAppBar.tr(),
+          LocaleKeys.notifications_notificationsPageAppBar.tr(context: context),
           style: AppStyles.textStyle19Bold.copyWith(
             color: colorScheme.onSurface,
           ),

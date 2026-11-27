@@ -18,7 +18,9 @@ class AddNewCardBlocListener extends StatelessWidget {
         if (state is SuccessAddNewCardState) {
           showSnackBar(
             context,
-            message: LocaleKeys.profileStatus_successAddNewCardState.tr(),
+            message: LocaleKeys.profile_messages_successAddNewCardState.tr(
+              context: context,
+            ),
           );
           context.read<GetMyCardsCubit>().getAllMyCards();
           context.pop();

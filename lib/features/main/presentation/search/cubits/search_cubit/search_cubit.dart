@@ -9,7 +9,10 @@ class SearchCubit extends Cubit<SearchStates> {
   SearchCubit({required this.productsRepo}) : super(InitialSearchState());
   final ProductsRepository productsRepo;
 
-  Future searchProducts({required String searchName,required String languageCode}) async {
+  Future searchProducts({
+    required String searchName,
+    required String languageCode,
+  }) async {
     emit(LoadingSearchState());
     var result = await productsRepo.searchProducts(
       languageCode: languageCode,

@@ -23,7 +23,7 @@ class BannerButton extends StatelessWidget {
           ),
         ),
         child: Text(
-          LocaleKeys.home_bannerButtom.tr(),
+          LocaleKeys.home_bannerButtom.tr(context: context),
           style: AppStyles.textStyle13Bold,
         ),
       ),

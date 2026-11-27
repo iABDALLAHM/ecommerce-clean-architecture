@@ -20,7 +20,9 @@ class SignOutDialogBlocListener extends StatelessWidget {
           context.read<CartCubit>().removeCartItems();
           showSnackBar(
             context,
-            message: LocaleKeys.profileStatus_successSignOutState.tr(),
+            message: LocaleKeys.profile_messages_successSignOutState.tr(
+              context: context,
+            ),
           );
           context.go(AppRoutes.onboarding);
         } else if (state is FailureSignOutState) {
@@ -28,7 +30,9 @@ class SignOutDialogBlocListener extends StatelessWidget {
         } else if (state is LoadingSignOutState) {
           showSnackBar(
             context,
-            message: LocaleKeys.profileStatus_loadingSignOutState.tr(),
+            message: LocaleKeys.profile_messages_loadingSignOutState.tr(
+              context: context,
+            ),
           );
         }
       },

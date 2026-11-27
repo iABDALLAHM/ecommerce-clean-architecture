@@ -12,9 +12,7 @@ import 'package:injectable/injectable.dart';
 class UserRepositoryImplementation implements UserRepository {
   final DatabaseService databaseService;
 
-  UserRepositoryImplementation({
-    required this.databaseService,
-  });
+  UserRepositoryImplementation({required this.databaseService});
 
   @override
   Future<Either<Failure, void>> addUserData({
@@ -63,7 +61,7 @@ class UserRepositoryImplementation implements UserRepository {
         path: BackendEndPoints.usersCollection,
         documentId: userEntity.uId,
       );
-      
+
       return Right(null);
     } on CustomException catch (e) {
       log(

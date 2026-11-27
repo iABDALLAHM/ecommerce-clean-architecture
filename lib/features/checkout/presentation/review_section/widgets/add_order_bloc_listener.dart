@@ -20,7 +20,9 @@ class AddOrderBlocListener extends StatelessWidget {
         if (state is SuccessAddOrderState) {
           showSnackBar(
             context,
-            message: LocaleKeys.checkOutSteps_successAddOrderState.tr(),
+            message: LocaleKeys.checkout_messages_successAddOrderState.tr(
+              context: context,
+            ),
           );
           context.read<CartCubit>().removeCartItems();
           context.go(
@@ -32,7 +34,9 @@ class AddOrderBlocListener extends StatelessWidget {
         } else if (state is LoadingAddOrderState) {
           showSnackBar(
             context,
-            message: LocaleKeys.checkOutSteps_loadingAddYourOrderState.tr(),
+            message: LocaleKeys.checkout_messages_loadingAddYourOrderState.tr(
+              context: context,
+            ),
           );
         }
       },

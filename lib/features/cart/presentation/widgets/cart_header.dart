@@ -19,13 +19,17 @@ class CartHeader extends StatelessWidget {
       child: Center(
         child: cartItemsLenght == 0
             ? Text(
-                LocaleKeys.home_cartHeaderTagWhenYouDontHaveProducts.tr(),
+                LocaleKeys.home_cartHeaderTagWhenYouDontHaveProducts.tr(
+                  context: context,
+                ),
                 style: AppStyles.textStyle13Regular.copyWith(
                   color: colorScheme.primary,
                 ),
               )
             : Text(
-                LocaleKeys.home_cartHeaderTagWhenYouHaveProducts.tr(),
+                LocaleKeys.home_cartHeaderTagWhenYouHaveProducts.tr(
+                  context: context,
+                ),
                 style: AppStyles.textStyle13Regular.copyWith(
                   color: colorScheme.primary,
                 ),

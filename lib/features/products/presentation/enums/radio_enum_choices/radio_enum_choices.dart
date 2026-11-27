@@ -1,1 +1,6 @@
-enum RadioChoicesEnum { fromHighToLow, fromLowToHigh, alphabetical , byNumberOfCalory }
+enum RadioChoicesEnum {
+  fromHighToLow,
+  fromLowToHigh,
+  alphabetical,
+  byNumberOfCalory,
+}

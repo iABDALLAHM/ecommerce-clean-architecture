@@ -19,11 +19,11 @@ class GetMyOrdersStreamCubit extends Cubit<GetMyOrdersStreamState> {
 
   void listeningLoadOrders() async {
     var userId = await _secureStorageRepository.getData(key: keyUserId);
-    _streamSubscription = ordersRepository.getStreamOrders(userId: userId).listen((
-      ordersList,
-    ) {
-      _monitorMyOrders(ordersList: ordersList);
-    });
+    _streamSubscription = ordersRepository
+        .getStreamOrders(userId: userId)
+        .listen((ordersList) {
+          _monitorMyOrders(ordersList: ordersList);
+        });
   }
 
   late StreamSubscription _streamSubscription;

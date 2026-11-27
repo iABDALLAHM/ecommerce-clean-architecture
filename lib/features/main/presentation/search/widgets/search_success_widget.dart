@@ -19,7 +19,7 @@ class SearchSuccessWidget extends StatelessWidget {
         children: [
           const SizedBox(height: 16),
           Text(
-            LocaleKeys.search_searchResults.tr(),
+            LocaleKeys.search_searchResults.tr(context: context),
             style: AppStyles.textStyle13Regular.copyWith(
               color: colorScheme.tertiaryContainer,
             ),

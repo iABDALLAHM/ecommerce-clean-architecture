@@ -16,7 +16,7 @@ class ResetYourPasswordView extends StatelessWidget {
       child: Scaffold(
         appBar: buildAuthAppBar(
           title: LocaleKeys.auth_resetYourPassword_resetYourPasswordPageAppBar
-              .tr(),
+              .tr(context: context),
         ),
         body: ResetYourPasswordViewBody(oobCode: oobCode),
       ),

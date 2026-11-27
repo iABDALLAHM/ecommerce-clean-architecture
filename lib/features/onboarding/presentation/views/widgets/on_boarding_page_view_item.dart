@@ -61,7 +61,7 @@ class OnBoardingPageViewItem extends StatelessWidget {
                               .handleSkipOnboarding();
                         },
                         child: Text(
-                          LocaleKeys.onBoarding_skipNow.tr(),
+                          LocaleKeys.onboarding_skipNow.tr(context: context),
                           style: AppStyles.textStyle13Regular.copyWith(
                             color: colorScheme.tertiaryContainer,
                           ),

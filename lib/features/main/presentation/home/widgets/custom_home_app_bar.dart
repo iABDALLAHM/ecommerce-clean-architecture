@@ -33,7 +33,7 @@ class _CustomHomeAppBarState extends State<CustomHomeAppBar> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "${LocaleKeys.home_goodMorning.tr()} !..",
+              "${LocaleKeys.home_goodMorning.tr(context: context)} !..",
               style: AppStyles.textStyle16Regular.copyWith(
                 color: colorScheme.tertiaryContainer,
               ),
@@ -48,7 +48,7 @@ class _CustomHomeAppBarState extends State<CustomHomeAppBar> {
                   );
                 }
                 return Text(
-                  LocaleKeys.homeStatus_loadingYourName.tr(),
+                  LocaleKeys.home_messages_loadingYourName.tr(context: context),
                   style: AppStyles.textStyle16Bold,
                 );
               },

@@ -40,7 +40,9 @@ class _FavoriteBodyState extends State<FavoriteBody> {
         } else if (state is EmptyFavoriteProductsState) {
           return Center(
             child: Text(
-              LocaleKeys.profileStatus_emptyFavProductState.tr(),
+              LocaleKeys.profile_messages_emptyFavProductState.tr(
+                context: context,
+              ),
               style: AppStyles.textStyle13SemiBold.copyWith(
                 color: colorScheme.onPrimary,
                 fontSize: 20,

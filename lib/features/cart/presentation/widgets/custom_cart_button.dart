@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
 import 'package:ecommerce_clean_architecture/core/widgets/custom_button.dart';
 import 'package:ecommerce_clean_architecture/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
@@ -15,7 +14,7 @@ class CustomCartButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomButton(
       text:
-          "${LocaleKeys.payCartButton.tr()} ${context.watch<CartCubit>().cartEntity.calculateTotalPrice().round()} ${context.locale.languageCode == arabicLanguageCode ? "جنية مصري" : "EGP"}",
+          "${LocaleKeys.cart_payButton.tr(context: context)} ${LocaleKeys.common_priceWithCurrency.tr(namedArgs: {'price': context.watch<CartCubit>().cartEntity.calculateTotalPrice().round().toString()}, context: context)}",
       onPressed: () {
         handleIfCartIsNotEmpty(context);
       },

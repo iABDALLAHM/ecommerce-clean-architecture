@@ -115,7 +115,9 @@ class _AddNewCardViewBodyState extends State<AddNewCardViewBody> {
                               setState(() {});
                             }
                           },
-                          text: LocaleKeys.profile_myPaymentsPageButton.tr(),
+                          text: LocaleKeys.profile_myPaymentsPageButton.tr(
+                            context: context,
+                          ),
                         ),
                       ),
                     ],

@@ -4,7 +4,9 @@ import 'package:ecommerce_clean_architecture/features/main/domain/entities/produ
 import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
 
 abstract class ProductsRepository {
-  Future<Either<Failure, List<ProductEntity>>> getProducts({required String? lastProduct});
+  Future<Either<Failure, List<ProductEntity>>> getProducts({
+    required String? lastProduct,
+  });
 
   Future<Either<Failure, void>> addFavoriteProduct({
     required ProductEntity product,

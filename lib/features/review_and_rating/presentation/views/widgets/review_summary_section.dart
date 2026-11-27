@@ -19,7 +19,7 @@ class ReviewsSummarySection extends StatelessWidget {
     return Column(
       children: [
         Text(
-          LocaleKeys.reviewAndRating_reviewAndRatingSummary.tr(),
+          LocaleKeys.reviews_reviewAndRatingSummary.tr(context: context),
           style: AppStyles.textStyle16SemiBold,
         ),
         const SizedBox(height: 8),
@@ -51,9 +51,9 @@ class ReviewsSummarySection extends StatelessWidget {
                         ),
                         const SizedBox(height: 22),
                         Text(
-                          LocaleKeys
-                              .reviewAndRating_reviewAndRatingRecommendedText
-                              .tr(),
+                          LocaleKeys.reviews_reviewAndRatingRecommendedText.tr(
+                            context: context,
+                          ),
                           style: AppStyles.textStyle13Regular,
                         ),
                       ],

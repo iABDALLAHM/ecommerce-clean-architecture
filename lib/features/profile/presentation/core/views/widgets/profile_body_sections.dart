@@ -32,7 +32,7 @@ class _ProfileBodySectionsState extends State<ProfileBodySections> {
       children: [
         const SizedBox(height: 16),
         Text(
-          LocaleKeys.profile_profilePageHeader.tr(),
+          LocaleKeys.profile_profilePageHeader.tr(context: context),
           style: AppStyles.textStyle13SemiBold,
         ),
         const SizedBox(height: 16),
@@ -40,12 +40,12 @@ class _ProfileBodySectionsState extends State<ProfileBodySections> {
           onPressed: () =>
               context.go("${AppRoutes.profile}${AppRoutes.userProfile}"),
           icon: Assets.imagesPresonIcon,
-          name: LocaleKeys.profile_profileSection.tr(),
+          name: LocaleKeys.profile_profileSection.tr(context: context),
         ),
         const SizedBox(height: 4),
         ProfileBodyItem(
           icon: Assets.imagesOrdersIcon,
-          name: LocaleKeys.profile_myOrdersSection.tr(),
+          name: LocaleKeys.profile_myOrdersSection.tr(context: context),
           onPressed: () =>
               context.go("${AppRoutes.profile}${AppRoutes.myOrders}"),
         ),
@@ -54,19 +54,19 @@ class _ProfileBodySectionsState extends State<ProfileBodySections> {
           onPressed: () =>
               context.go("${AppRoutes.profile}${AppRoutes.myPayments}"),
           icon: Assets.imagesWalletIcon,
-          name: LocaleKeys.profile_myPaymentsSection.tr(),
+          name: LocaleKeys.profile_myPaymentsSection.tr(context: context),
         ),
         const SizedBox(height: 4),
         ProfileBodyItem(
           onPressed: () =>
               context.go("${AppRoutes.profile}${AppRoutes.favorite}"),
           icon: Assets.imagesFavoriteIcon,
-          name: LocaleKeys.profile_myFavoriteSection.tr(),
+          name: LocaleKeys.profile_myFavoriteSection.tr(context: context),
         ),
         const SizedBox(height: 4),
         ProfileBodySwitchItem(
           icon: Assets.imagesNotificationIcon,
-          name: LocaleKeys.profile_myNotificationsSection.tr(),
+          name: LocaleKeys.profile_myNotificationsSection.tr(context: context),
           value: false,
           onChange: (bool value) {},
         ),
@@ -84,12 +84,12 @@ class _ProfileBodySectionsState extends State<ProfileBodySections> {
             );
           },
           icon: Assets.imagesLanguageIcon,
-          name: LocaleKeys.profile_myLanguageSection.tr(),
+          name: LocaleKeys.profile_myLanguageSection.tr(context: context),
         ),
         const SizedBox(height: 4),
         ProfileBodySwitchItem(
           icon: Assets.imagesModeIcon,
-          name: LocaleKeys.profile_currentSection.tr(),
+          name: LocaleKeys.profile_currentSection.tr(context: context),
           value: isLight,
           onChange: (bool value) {
             context.read<ChangeThemeCubit>().toggleTheme();
@@ -98,13 +98,13 @@ class _ProfileBodySectionsState extends State<ProfileBodySections> {
 
         const SizedBox(height: 22),
         Text(
-          LocaleKeys.profile_profileFooterText.tr(),
+          LocaleKeys.profile_profileFooterText.tr(context: context),
           style: AppStyles.textStyle13SemiBold,
         ),
         const SizedBox(height: 16),
         ProfileBodyItem(
           icon: Assets.imagesHelpIcon,
-          name: LocaleKeys.profile_whoAreSection.tr(),
+          name: LocaleKeys.profile_whoAreSection.tr(context: context),
           onPressed: () => context.go("${AppRoutes.profile}${AppRoutes.about}"),
         ),
       ],

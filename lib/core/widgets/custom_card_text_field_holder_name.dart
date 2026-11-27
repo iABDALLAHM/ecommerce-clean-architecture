@@ -22,7 +22,9 @@ class CustomCardHolderNameTextField extends StatelessWidget {
       },
       onSaved: onSaved,
       decoration: InputDecoration(
-        hintText: LocaleKeys.checkOut_paymentCardHolderNameTextField.tr(),
+        hintText: LocaleKeys.checkout_paymentCardHolderNameTextField.tr(
+          context: context,
+        ),
       ),
     );
   }

@@ -28,7 +28,9 @@ class CustomExpireDateTextField extends StatelessWidget {
         return null;
       },
       decoration: InputDecoration(
-        hintText: LocaleKeys.checkOut_paymentCardExpirationDate.tr(),
+        hintText: LocaleKeys.checkout_paymentCardExpirationDate.tr(
+          context: context,
+        ),
       ),
     );
   }

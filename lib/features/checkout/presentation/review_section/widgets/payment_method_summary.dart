@@ -33,14 +33,16 @@ class PaymentMethodSummary extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                LocaleKeys.checkOut_paymentMethod.tr(),
+                LocaleKeys.checkout_paymentMethod.tr(context: context),
                 style: AppStyles.textStyle13Bold,
               ),
               Spacer(),
               Icon(Icons.edit_outlined, color: colorScheme.surfaceBright),
               const SizedBox(width: 6),
               Text(
-                LocaleKeys.checkOut_paymentMethodEditButton.tr(),
+                LocaleKeys.checkout_paymentMethodEditButton.tr(
+                  context: context,
+                ),
                 style: AppStyles.textStyle13SemiBold.copyWith(
                   color: colorScheme.surfaceBright,
                 ),

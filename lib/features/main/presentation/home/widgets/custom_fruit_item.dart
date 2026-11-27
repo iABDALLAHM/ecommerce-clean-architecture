@@ -73,13 +73,14 @@ class CustomFruitItem extends StatelessWidget {
                             children: [
                               TextSpan(
                                 text:
-                                    "${productEntity.productPrice} ${LocaleKeys.home_egypyPound.tr()}",
+                                    "${productEntity.productPrice} ${LocaleKeys.home_egyptianPound.tr(context: context)}",
                                 style: AppStyles.textStyle13Bold.copyWith(
                                   color: colorScheme.secondary,
                                 ),
                               ),
                               TextSpan(
-                                text: " / ${LocaleKeys.home_amount.tr()}",
+                                text:
+                                    " / ${LocaleKeys.home_amount.tr(context: context)}",
                                 style: AppStyles.textStyle13Bold.copyWith(
                                   color: colorScheme.secondaryContainer,
                                 ),

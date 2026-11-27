@@ -13,7 +13,7 @@ class LoginView extends StatelessWidget {
     return LoginViewBlocProvider(
       child: Scaffold(
         appBar: buildAuthAppBar(
-          title: LocaleKeys.auth_loginPage_loginPageAppBar.tr(),
+          title: LocaleKeys.auth_loginPage_loginPageAppBar.tr(context: context),
           isBack: false,
         ),
         body: LoginViewBody(),

@@ -16,9 +16,8 @@ class ReviewsIndicator extends StatelessWidget {
     return BlocBuilder<GetReviewsCubit, GetReviewsState>(
       builder: (context, state) {
         if (state is SuccessGetReviewsState) {
-
           final Map<int, double> percentages = calculateRatingPercentages(
-            reviews:state.productReviewWithUserEntity,
+            reviews: state.productReviewWithUserEntity,
           );
 
           log(percentages.toString());

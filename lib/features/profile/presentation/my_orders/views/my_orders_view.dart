@@ -14,7 +14,7 @@ class MyOrdersView extends StatelessWidget {
       child: Scaffold(
         appBar: buildProfileAppBar(
           context,
-          title: LocaleKeys.profile_myOrdersPageAppBar.tr(),
+          title: LocaleKeys.profile_myOrdersPageAppBar.tr(context: context),
         ),
         body: MyOrdersViewBody(),
       ),

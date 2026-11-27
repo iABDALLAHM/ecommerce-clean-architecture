@@ -26,7 +26,9 @@ class CustomCardNumberTextField extends StatelessWidget {
         return null;
       },
       decoration: InputDecoration(
-        hintText: LocaleKeys.checkOut_paymentCardNumberTextField.tr(),
+        hintText: LocaleKeys.checkout_paymentCardNumberTextField.tr(
+          context: context,
+        ),
       ),
     );
   }

@@ -33,7 +33,12 @@ class ReviewOrderSection extends StatelessWidget {
                     const SizedBox(height: 24),
                     OrderSummary(),
                     const SizedBox(height: 16),
-                    Text(LocaleKeys.checkOut_confirmationOrder.tr(), style: AppStyles.textStyle13Bold),
+                    Text(
+                      LocaleKeys.checkout_confirmationOrder.tr(
+                        context: context,
+                      ),
+                      style: AppStyles.textStyle13Bold,
+                    ),
                     const SizedBox(height: 8),
                     PaymentMethodSummary(),
                     const SizedBox(height: 8),

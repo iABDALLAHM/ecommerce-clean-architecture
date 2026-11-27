@@ -21,8 +21,6 @@ final class FailureLoginWithGoogleState extends LoginStates {
   FailureLoginWithGoogleState({required this.errorMessage});
 }
 
-
-
 final class LoadingLoginWithFacebookState extends LoginStates {}
 
 final class SuccessLoginWithFacebookState extends LoginStates {}

@@ -48,14 +48,14 @@ class _ResetYourPasswordViewBodyState extends State<ResetYourPasswordViewBody> {
                     Text(
                       LocaleKeys
                           .auth_resetYourPassword_resetYourPasswordCondition
-                          .tr(),
+                          .tr(context: context),
                       style: AppStyles.textStyle16SemiBold,
                     ),
                     const SizedBox(height: 34),
                     CustomPasswordField(
                       hintText: LocaleKeys
                           .auth_resetYourPassword_resetYourPasswordTextFieldNewPass
-                          .tr(),
+                          .tr(context: context),
                       onSaved: (value) {
                         newPassword = value ?? "";
                       },
@@ -64,7 +64,7 @@ class _ResetYourPasswordViewBodyState extends State<ResetYourPasswordViewBody> {
                     CustomPasswordField(
                       hintText: LocaleKeys
                           .auth_resetYourPassword_resetYourPasswordTextFieldConfirmNewPass
-                          .tr(),
+                          .tr(context: context),
                       onSaved: (value) {
                         confirmationNewPassword = value ?? "";
                       },
@@ -76,7 +76,7 @@ class _ResetYourPasswordViewBodyState extends State<ResetYourPasswordViewBody> {
                       child: CustomButton(
                         text: LocaleKeys
                             .auth_resetYourPassword_resetYourPasswordButton
-                            .tr(),
+                            .tr(context: context),
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
                             formKey.currentState!.save();
@@ -84,8 +84,8 @@ class _ResetYourPasswordViewBodyState extends State<ResetYourPasswordViewBody> {
                               showSnackBar(
                                 context,
                                 message: LocaleKeys
-                                    .resetPassword_failureConfirmPasswordState
-                                    .tr(),
+                                    .auth_messages_passwordConfirmationMismatch
+                                    .tr(context: context),
                               );
                             } else {
                               context

@@ -25,27 +25,27 @@ class _CustomFilterProductsWidgetState
   @override
   Widget build(BuildContext context) {
     List<FilterItemEntity> listOfFilters = [
-  FilterItemEntity(
-    title: LocaleKeys.filters_organicProducts.tr(context: context),
-    icon: Icons.eco_outlined,
-    filter: ProductFilters.organic,
-  ),
-  FilterItemEntity(
-    title: LocaleKeys.filters_LowCaloriesProducts.tr(context: context),
-    icon: Icons.fitness_center,
-    filter: ProductFilters.lowCalories,
-  ),
-  FilterItemEntity(
-    title: LocaleKeys.filters_lowerThan100Products.tr(context: context),
-    icon: Icons.payments,
-    filter: ProductFilters.lowerThan100EGP,
-  ),
-  FilterItemEntity(
-    title: LocaleKeys.filters_highCaloriesProducts.tr(context: context),
-    icon: Icons.electric_bolt_outlined,
-    filter: ProductFilters.highCalories,
-  ),
-];
+      FilterItemEntity(
+        title: LocaleKeys.filters_organicProducts.tr(context: context),
+        icon: Icons.eco_outlined,
+        filter: ProductFilters.organic,
+      ),
+      FilterItemEntity(
+        title: LocaleKeys.filters_lowCaloriesProducts.tr(context: context),
+        icon: Icons.fitness_center,
+        filter: ProductFilters.lowCalories,
+      ),
+      FilterItemEntity(
+        title: LocaleKeys.filters_lowerThan100Products.tr(context: context),
+        icon: Icons.payments,
+        filter: ProductFilters.lowerThan100EGP,
+      ),
+      FilterItemEntity(
+        title: LocaleKeys.filters_highCaloriesProducts.tr(context: context),
+        icon: Icons.electric_bolt_outlined,
+        filter: ProductFilters.highCalories,
+      ),
+    ];
 
     return GetFilterProductsBlocListener(
       child: Column(
@@ -54,13 +54,13 @@ class _CustomFilterProductsWidgetState
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                LocaleKeys.filters_productHighlights.tr(),
+                LocaleKeys.filters_productHighlights.tr(context: context),
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               ),
               selectedFilters.isEmpty
                   ? Text("")
                   : Text(
-                      "${selectedFilters.length} ${LocaleKeys.filters_selectedItems.tr()}",
+                      "${selectedFilters.length} ${LocaleKeys.filters_selectedItems.tr(context: context)}",
                       style: TextStyle(color: Color(0xff14532D)),
                     ),
             ],
@@ -115,7 +115,7 @@ class _CustomFilterProductsWidgetState
                     setState(() {});
                   },
                   child: Text(
-                    "${LocaleKeys.filters_resetButton.tr()}${selectedFilters.isEmpty?"":"(${(selectedFilters.length)})"}",
+                    "${LocaleKeys.filters_resetButton.tr(context: context)}${selectedFilters.isEmpty ? "" : "(${(selectedFilters.length)})"}",
                     style: AppStyles.textStyle13SemiBold,
                   ),
                 ),
@@ -129,7 +129,7 @@ class _CustomFilterProductsWidgetState
                   width: double.infinity,
                   child: CustomButton(
                     text:
-                        "${LocaleKeys.filters_applyFilters.tr()} ${(selectedFilters.isEmpty ? "" : "(${selectedFilters.length} ${LocaleKeys.filters_items.tr()})")}",
+                        "${LocaleKeys.filters_applyFilters.tr(context: context)} ${(selectedFilters.isEmpty ? "" : "(${selectedFilters.length} ${LocaleKeys.filters_items.tr(context: context)})")}",
                     onPressed: () {
                       context.read<ProductsCubit>().getFilterdProducts(
                         filters: selectedFilters,

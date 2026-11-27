@@ -18,7 +18,9 @@ class ProfileBodyEditImageBlocListener extends StatelessWidget {
         if (state is SuccessUpdateUserImageState) {
           showSnackBar(
             context,
-            message: LocaleKeys.profileStatus_successUpdateUserImageState.tr(),
+            message: LocaleKeys.profile_messages_successUpdateUserImageState.tr(
+              context: context,
+            ),
           );
           context.read<GetUserDataCubit>().getUserData();
           context.pop();

@@ -15,7 +15,7 @@ class ReviewOrderView extends StatelessWidget {
       appBar: AppBar(
         leading: SizedBox(),
         title: Text(
-          LocaleKeys.checkOut_reviewPageAppBar.tr(),
+          LocaleKeys.checkout_reviewPageAppBar.tr(context: context),
           style: AppStyles.textStyle19Bold.copyWith(
             color: colorScheme.onSurface,
           ),

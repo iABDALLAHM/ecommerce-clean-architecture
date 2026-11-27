@@ -30,7 +30,6 @@ class _ProfileBodyEditImageBottomSheetState
 
   @override
   Widget build(BuildContext context) {
-    
     var colorScheme = Theme.of(context).colorScheme;
     var newImage = context.watch<GetImageCubit>().state.image;
 
@@ -54,8 +53,8 @@ class _ProfileBodyEditImageBottomSheetState
                         builder: (context, state) {
                           if (state is SuccessGetUserDataState) {
                             return CustomButton(
-                              text: LocaleKeys.profileStatus_editPhotoButton
-                                  .tr(),
+                              text: LocaleKeys.profile_messages_editPhotoButton
+                                  .tr(context: context),
                               onPressed: () {
                                 context
                                     .read<UpdateUserImageCubit>()

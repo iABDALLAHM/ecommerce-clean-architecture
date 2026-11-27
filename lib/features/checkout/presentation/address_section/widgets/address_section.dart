@@ -80,7 +80,8 @@ class _AddressSectionState extends State<AddressSection> {
         if (state is AddressValidationFailureState) {
           showSnackBar(
             context,
-            message: LocaleKeys.checkOutSteps_pleaseCompleteAddressDetails.tr(),
+            message: LocaleKeys.checkout_messages_pleaseCompleteAddressDetails
+                .tr(context: context),
           );
         }
       },
@@ -96,7 +97,9 @@ class _AddressSectionState extends State<AddressSection> {
                 const SizedBox(height: 24),
                 CustomTextFormField(
                   controller: nameController,
-                  hintText: LocaleKeys.checkOut_addressNameTextField.tr(),
+                  hintText: LocaleKeys.checkout_addressNameTextField.tr(
+                    context: context,
+                  ),
                   onSaved: (value) {
                     shippingAddressEntity.name = value;
                   },
@@ -104,7 +107,9 @@ class _AddressSectionState extends State<AddressSection> {
                 const SizedBox(height: 8),
                 CustomTextFormField(
                   controller: emailController,
-                  hintText: LocaleKeys.checkOut_addressEmailTextField.tr(),
+                  hintText: LocaleKeys.checkout_addressEmailTextField.tr(
+                    context: context,
+                  ),
                   onSaved: (value) {
                     shippingAddressEntity.email = value;
                   },
@@ -112,7 +117,9 @@ class _AddressSectionState extends State<AddressSection> {
                 const SizedBox(height: 8),
                 CustomTextFormField(
                   controller: addressController,
-                  hintText: LocaleKeys.checkOut_addressDetailsTextField.tr(),
+                  hintText: LocaleKeys.checkout_addressDetailsTextField.tr(
+                    context: context,
+                  ),
                   onSaved: (value) {
                     shippingAddressEntity.address = value;
                   },
@@ -120,7 +127,9 @@ class _AddressSectionState extends State<AddressSection> {
                 const SizedBox(height: 8),
                 CustomTextFormField(
                   controller: cityController,
-                  hintText: LocaleKeys.checkOut_addressCity.tr(),
+                  hintText: LocaleKeys.checkout_addressCity.tr(
+                    context: context,
+                  ),
                   onSaved: (value) {
                     shippingAddressEntity.city = value;
                   },
@@ -128,7 +137,9 @@ class _AddressSectionState extends State<AddressSection> {
                 const SizedBox(height: 8),
                 CustomTextFormField(
                   controller: addressDetailsController,
-                  hintText: LocaleKeys.checkOut_addressFloorNum.tr(),
+                  hintText: LocaleKeys.checkout_addressFloorNum.tr(
+                    context: context,
+                  ),
                   textInputType: TextInputType.number,
                   onSaved: (value) {
                     shippingAddressEntity.addressDetails = value;
@@ -137,7 +148,9 @@ class _AddressSectionState extends State<AddressSection> {
                 const SizedBox(height: 8),
                 CustomTextFormField(
                   controller: phoneNumController,
-                  hintText: LocaleKeys.checkOut_yourNumberTextField.tr(),
+                  hintText: LocaleKeys.checkout_yourNumberTextField.tr(
+                    context: context,
+                  ),
                   onSaved: (value) {
                     shippingAddressEntity.phone = value;
                     checkOutCubit.updateShippingAddress(

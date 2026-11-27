@@ -26,7 +26,7 @@ class CustomCVVCardNumberTextField extends StatelessWidget {
         return null;
       },
       decoration: InputDecoration(
-        hintText: LocaleKeys.checkOut_paymentCardCVVNumber.tr(),
+        hintText: LocaleKeys.checkout_paymentCardCVVNumber.tr(context: context),
       ),
     );
   }

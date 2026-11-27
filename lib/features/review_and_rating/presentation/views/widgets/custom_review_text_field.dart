@@ -17,8 +17,9 @@ class CustomReviewTextField extends StatelessWidget {
         }
       },
       decoration: InputDecoration(
-        hintText: LocaleKeys.reviewAndRating_reviewAndRatingAddReviewTextField
-            .tr(),
+        hintText: LocaleKeys.reviews_reviewAndRatingAddReviewTextField.tr(
+          context: context,
+        ),
       ),
     );
   }

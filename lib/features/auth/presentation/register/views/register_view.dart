@@ -13,7 +13,7 @@ class RegisterView extends StatelessWidget {
       child: Scaffold(
         appBar: buildAuthAppBar(
           isBack: false,
-          title: LocaleKeys.auth_signUp_signUpPageAppBar.tr(),
+          title: LocaleKeys.auth_signUp_signUpPageAppBar.tr(context: context),
         ),
         body: RegisterViewBody(),
       ),

@@ -40,7 +40,7 @@ class _MakeCardAsDefaultState extends State<MakeCardAsDefault> {
           ),
         ),
         const SizedBox(width: 16),
-        Text(LocaleKeys.checkOut_paymentSaveSwitch.tr()),
+        Text(LocaleKeys.checkout_paymentSaveSwitch.tr(context: context)),
       ],
     );
   }

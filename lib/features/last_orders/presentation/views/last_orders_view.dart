@@ -31,7 +31,10 @@ class LastOrdersView extends StatelessWidget {
     var colorScheme = Theme.of(context).colorScheme;
     return AppBar(
       leading: CustomArrowBackAppBar(),
-      title: Text(LocaleKeys.lastOrdersView_lastOrderViewAppBar.tr(),style: TextStyle(color: colorScheme.onSurface),),
+      title: Text(
+        LocaleKeys.orders_lastOrderViewAppBar.tr(context: context),
+        style: TextStyle(color: colorScheme.onSurface),
+      ),
     );
   }
 }

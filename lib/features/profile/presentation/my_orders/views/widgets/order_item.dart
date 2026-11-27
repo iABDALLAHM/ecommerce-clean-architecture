@@ -74,21 +74,24 @@ class _OrderItemState extends State<OrderItem> {
                     ),
                     OrderStatusItem(
                       stepIndex: 1,
-                      title: LocaleKeys.profile_myOrdersPageTrackOrderStatus
-                          .tr(),
+                      title: LocaleKeys.profile_myOrdersPageTrackOrderStatus.tr(
+                        context: context,
+                      ),
                       date: myOrderEntity.date,
                       isDone: true,
                     ),
                     OrderStatusItem(
-                      title: LocaleKeys.profile_myOrdersPageAcceptOrderStatus
-                          .tr(),
+                      title: LocaleKeys.orderStatus_accepted.tr(
+                        context: context,
+                      ),
                       date: myOrderEntity.orderStatusEntity.acceptedAt,
                       isDone: myOrderEntity.orderStatusEntity.acceptOrder,
                       stepIndex: 2,
                     ),
                     OrderStatusItem(
-                      title: LocaleKeys.profile_myOrdersPageOrderShippedStatus
-                          .tr(),
+                      title: LocaleKeys.orderStatus_shipped.tr(
+                        context: context,
+                      ),
                       date: myOrderEntity.orderStatusEntity.shippedAt,
                       isDone: myOrderEntity.orderStatusEntity.orderShipped,
                       stepIndex: 3,
@@ -96,14 +99,15 @@ class _OrderItemState extends State<OrderItem> {
                     OrderStatusItem(
                       title: LocaleKeys
                           .profile_myOrdersPageOrderOutOfDeliveryStatus
-                          .tr(),
+                          .tr(context: context),
                       date: myOrderEntity.orderStatusEntity.outOfDeliveryAt,
                       isDone: myOrderEntity.orderStatusEntity.outOfDelivery,
                       stepIndex: 4,
                     ),
                     OrderStatusItem(
-                      title: LocaleKeys.profile_myOrdersPageOrderDeliverdStatus
-                          .tr(),
+                      title: LocaleKeys.orderStatus_delivered.tr(
+                        context: context,
+                      ),
                       date: myOrderEntity.orderStatusEntity.deliverdAt,
                       isDone: myOrderEntity.orderStatusEntity.orderDelivered,
                       stepIndex: 5,
@@ -119,7 +123,7 @@ class _OrderItemState extends State<OrderItem> {
                   children: [
                     const SizedBox(height: 20),
                     Text(
-                      LocaleKeys.PurchasedItems.tr(),
+                      LocaleKeys.orders_purchasedItems.tr(context: context),
                       style: AppStyles.textStyle16Regular,
                     ),
                     const SizedBox(height: 10),
@@ -195,7 +199,9 @@ class _OrderItemState extends State<OrderItem> {
                                             Icon(Icons.edit_note_rounded),
                                             const SizedBox(width: 20),
                                             Text(
-                                              LocaleKeys.LeaveAReview.tr(),
+                                              LocaleKeys.orders_leaveAReview.tr(
+                                                context: context,
+                                              ),
                                               style: AppStyles.textStyle13Bold
                                                   .copyWith(),
                                             ),

@@ -21,11 +21,11 @@ class OrderDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "${LocaleKeys.profile_myOrdersPageOrdersNumber.tr()} ${myOrderEntity.orderNumber}",
+          "${LocaleKeys.profile_myOrdersPageOrdersNumber.tr(context: context)} ${myOrderEntity.orderNumber}",
           style: AppStyles.textStyle13Bold,
         ),
         Text(
-          "${LocaleKeys.profile_myOrdersPageOrderdAt.tr()} ${getSpecificDate(date: myOrderEntity.date,context: context)}",
+          "${LocaleKeys.profile_myOrdersPageOrderdAt.tr(context: context)} ${getSpecificDate(date: myOrderEntity.date, context: context)}",
           style: AppStyles.textStyle11Regular.copyWith(
             color: colorScheme.tertiaryContainer,
           ),
@@ -37,7 +37,9 @@ class OrderDetails extends StatelessWidget {
               TextSpan(
                 children: [
                   TextSpan(
-                    text: LocaleKeys.checkOut_trackOrderPageNumberOfItems.tr(),
+                    text: LocaleKeys.checkout_trackOrderPageNumberOfItems.tr(
+                      context: context,
+                    ),
                     style: AppStyles.textStyle13Regular.copyWith(
                       color: colorScheme.tertiaryContainer,
                     ),

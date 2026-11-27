@@ -13,7 +13,9 @@ class UserProfile extends StatelessWidget {
       child: Scaffold(
         appBar: buildProfileAppBar(
           context,
-          title: LocaleKeys.profile_userProfileSectionPageAppBar.tr(),
+          title: LocaleKeys.profile_userProfileSectionPageAppBar.tr(
+            context: context,
+          ),
         ),
         body: SafeArea(child: UserProfileBody()),
       ),

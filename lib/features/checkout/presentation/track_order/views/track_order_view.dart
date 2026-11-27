@@ -25,7 +25,7 @@ class TrackOrderView extends StatelessWidget {
     return AppBar(
       leading: CustomArrowBackAppBar(),
       title: Text(
-        LocaleKeys.checkOut_trackOrderPageAppBar.tr(),
+        LocaleKeys.checkout_trackOrderPageAppBar.tr(context: context),
         style: TextStyle(color: colorScheme.onSurface),
       ),
     );

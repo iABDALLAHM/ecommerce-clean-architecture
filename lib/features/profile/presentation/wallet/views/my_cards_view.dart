@@ -13,7 +13,7 @@ class MyCardsView extends StatelessWidget {
       child: Scaffold(
         appBar: buildProfileAppBar(
           context,
-          title: LocaleKeys.profile_myPaymentsPageAppBar.tr(),
+          title: LocaleKeys.profile_myPaymentsPageAppBar.tr(context: context),
         ),
         body: MyCardsViewBody(),
       ),

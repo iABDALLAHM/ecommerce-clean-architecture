@@ -54,12 +54,18 @@ class _NotificationBodyState extends State<NotificationBody> {
             return CustomTextMessage(message: state.errMessage);
           } else if (state is EmptyNotificationsState) {
             return CustomTextMessage(
-              message: LocaleKeys.notification_doNotHaveNotifications.tr(),
+              message: LocaleKeys.notifications_doNotHaveNotifications.tr(
+                context: context,
+              ),
             );
           } else if (state is LoadingGetNotificationsState) {
             return CustomCircularProgressWidget();
           } else {
-            return Text(LocaleKeys.notification_searchingNewNotifications.tr());
+            return Text(
+              LocaleKeys.notifications_searchingNewNotifications.tr(
+                context: context,
+              ),
+            );
           }
         },
       ),
