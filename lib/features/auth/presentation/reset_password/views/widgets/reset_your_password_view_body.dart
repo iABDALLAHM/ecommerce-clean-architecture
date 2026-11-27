@@ -33,7 +33,7 @@ class _ResetYourPasswordViewBodyState extends State<ResetYourPasswordViewBody> {
       child: BlocBuilder<ConfirmPasswordCubit, ConfirmPasswordState>(
         builder: (context, state) {
           return CustomProgressWidget(
-            state: state is LoadingConfirmPasswordSate,
+            state: state is LoadingConfirmPasswordState,
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: kHorizontalPadding,

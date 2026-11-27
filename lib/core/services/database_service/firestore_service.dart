@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
-import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
+import 'package:ecommerce_clean_architecture/core/models/query_params.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service/database_service.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:injectable/injectable.dart';

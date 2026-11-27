@@ -1,16 +1,16 @@
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/repositories/local_storage_repository/local_storage_repository.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/save_recent_search_cubit/save_recent_search_sugestions_state.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/save_recent_search_cubit/save_recent_search_suggestions_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class SaveRecentSearchSugestionsCubit
-    extends Cubit<SaveRecentSearchSugestionsState> {
-  SaveRecentSearchSugestionsCubit({
+class SaveRecentSearchSuggestionsCubit
+    extends Cubit<SaveRecentSearchSuggestionsState> {
+  SaveRecentSearchSuggestionsCubit({
     required LocalStorageRepository localStorageRepository,
   }) : _localStorageRepository = localStorageRepository,
-       super(InitialRecentSugestionsState());
+       super(InitialRecentSuggestionsState());
 
   final LocalStorageRepository _localStorageRepository;
 
@@ -27,7 +27,7 @@ class SaveRecentSearchSugestionsCubit
       key: storageKey,
       data: listOfSugestions,
     );
-    emit(SuccessGetRecentSugestionsState(listOfSugestions: listOfSugestions));
+    emit(SuccessGetRecentSuggestionsState(listOfSugestions: listOfSugestions));
   }
 
   Future<void> getSugestions() async {
@@ -36,7 +36,7 @@ class SaveRecentSearchSugestionsCubit
     if (result.isEmpty) {
       emit(RecentSuggestionsEmpty());
     } else {
-      emit(SuccessGetRecentSugestionsState(listOfSugestions: result));
+      emit(SuccessGetRecentSuggestionsState(listOfSugestions: result));
     }
   }
 
@@ -48,7 +48,7 @@ class SaveRecentSearchSugestionsCubit
       key: storageKey,
       data: listOfSugestions,
     );
-    emit(SuccessGetRecentSugestionsState(listOfSugestions: listOfSugestions));
+    emit(SuccessGetRecentSuggestionsState(listOfSugestions: listOfSugestions));
   }
 
   Future<void> clearAllSuggestions() async {

@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_state.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_states.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/widgets/empty_search_widget.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/widgets/recent_search_widget.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/widgets/search_success_widget.dart';

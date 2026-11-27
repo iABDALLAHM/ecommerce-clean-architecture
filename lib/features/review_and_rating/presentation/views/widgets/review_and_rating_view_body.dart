@@ -6,7 +6,7 @@ import 'package:ecommerce_clean_architecture/features/item_details/presentation/
 import 'package:ecommerce_clean_architecture/features/main/domain/entities/product_entity/product_entity.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/add_review_text_field.dart';
-import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/review_summary_section.dart';
+import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/reviews_summary_section.dart';
 import 'package:ecommerce_clean_architecture/features/review_and_rating/presentation/views/widgets/reviews_list_view.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';

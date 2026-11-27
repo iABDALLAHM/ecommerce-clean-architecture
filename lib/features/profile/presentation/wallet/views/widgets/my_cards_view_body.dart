@@ -6,7 +6,7 @@ import 'package:ecommerce_clean_architecture/core/widgets/custom_circular_progre
 import 'package:ecommerce_clean_architecture/features/profile/presentation/add_new_card/cubits/add_new_card_cubit/add_new_card_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/cubits/get_my_cards_cubit/get_my_cards_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/cubits/get_my_cards_cubit/get_my_cards_state.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/views/widgets/custom_my_cards_button.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/views/widgets/custom_wallet_button.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/wallet/views/widgets/my_card_item.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';

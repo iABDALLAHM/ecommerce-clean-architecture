@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
-import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
+import 'package:ecommerce_clean_architecture/core/errors/failure.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
 import 'package:ecommerce_clean_architecture/core/services/database_service/database_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/backend_end_points.dart';

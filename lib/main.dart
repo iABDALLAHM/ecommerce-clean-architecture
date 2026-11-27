@@ -5,7 +5,7 @@ import 'package:ecommerce_clean_architecture/core/cubits/change_theme_cubit/chan
 import 'package:ecommerce_clean_architecture/core/cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import 'package:ecommerce_clean_architecture/core/services/get_it_service/get_it_service.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_routes.dart';
-import 'package:ecommerce_clean_architecture/core/utils/app_themes.dart';
+import 'package:ecommerce_clean_architecture/core/utils/app_theme.dart';
 import 'package:ecommerce_clean_architecture/firebase_options.dart';
 import 'package:ecommerce_clean_architecture/generated/codegen_loader.g.dart';
 import 'package:ecommerce_clean_architecture/simple_bloc_observer.dart';

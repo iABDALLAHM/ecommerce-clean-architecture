@@ -12,9 +12,9 @@ class ConfirmPasswordBlocListener extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<ConfirmPasswordCubit, ConfirmPasswordState>(
       listener: (context, state) {
-        if (state is SuccessConfirmPasswordSate) {
+        if (state is SuccessConfirmPasswordState) {
           showResetPasswordDialog(context: context);
-        } else if (state is FailureConfirmPasswordSate) {
+        } else if (state is FailureConfirmPasswordState) {
           showSnackBar(context, message: state.errorMessage);
         }
       },

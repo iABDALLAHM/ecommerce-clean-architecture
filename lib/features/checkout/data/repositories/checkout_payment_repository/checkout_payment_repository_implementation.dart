@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_clean_architecture/core/errors/custom_exception.dart';
-import 'package:ecommerce_clean_architecture/core/errors/failures.dart';
+import 'package:ecommerce_clean_architecture/core/errors/failure.dart';
 import 'package:ecommerce_clean_architecture/core/errors/server_failure.dart';
 import 'package:ecommerce_clean_architecture/core/services/payment_service/stripe_service.dart';
 import 'package:ecommerce_clean_architecture/features/checkout/domain/repositories/checkout_payment_repository/checkout_payment_repository.dart';

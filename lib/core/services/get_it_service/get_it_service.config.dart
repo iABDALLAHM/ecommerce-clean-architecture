@@ -28,7 +28,7 @@ import 'package:ecommerce_clean_architecture/core/services/database_service/fire
     as _i457;
 import 'package:ecommerce_clean_architecture/core/services/local_database_service/local_storage_service.dart'
     as _i679;
-import 'package:ecommerce_clean_architecture/core/services/local_database_service/shared_prefs_service.dart'
+import 'package:ecommerce_clean_architecture/core/services/local_database_service/shared_pref_service.dart'
     as _i342;
 import 'package:ecommerce_clean_architecture/core/services/notification_service/firebase_push_notification_service.dart'
     as _i473;
@@ -109,7 +109,7 @@ import 'package:ecommerce_clean_architecture/features/main/presentation/home/cub
     as _i213;
 import 'package:ecommerce_clean_architecture/features/main/presentation/notification/cubits/get_notifications_cubit/get_notifications_cubit.dart'
     as _i677;
-import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/save_recent_search_cubit/save_recent_search_sugestions_cubit.dart'
+import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/save_recent_search_cubit/save_recent_search_suggestions_cubit.dart'
     as _i547;
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_cubit.dart'
     as _i683;
@@ -263,8 +263,8 @@ extension GetItInjectableX on _i174.GetIt {
         secureStorageRepository: gh<_i562.SecureStorageRepository>(),
       ),
     );
-    gh.factory<_i547.SaveRecentSearchSugestionsCubit>(
-      () => _i547.SaveRecentSearchSugestionsCubit(
+    gh.factory<_i547.SaveRecentSearchSuggestionsCubit>(
+      () => _i547.SaveRecentSearchSuggestionsCubit(
         localStorageRepository: gh<_i993.LocalStorageRepository>(),
       ),
     );

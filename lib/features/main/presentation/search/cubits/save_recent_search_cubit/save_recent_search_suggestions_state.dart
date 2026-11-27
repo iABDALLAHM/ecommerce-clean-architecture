@@ -1,13 +1,13 @@
-abstract class SaveRecentSearchSugestionsState {}
+abstract class SaveRecentSearchSuggestionsState {}
 
-final class InitialRecentSugestionsState
-    extends SaveRecentSearchSugestionsState {}
+final class InitialRecentSuggestionsState
+    extends SaveRecentSearchSuggestionsState {}
 
-final class SuccessGetRecentSugestionsState
-    extends SaveRecentSearchSugestionsState {
+final class SuccessGetRecentSuggestionsState
+    extends SaveRecentSearchSuggestionsState {
   final List<String> listOfSugestions;
 
-  SuccessGetRecentSugestionsState({required this.listOfSugestions});
+  SuccessGetRecentSuggestionsState({required this.listOfSugestions});
 }
 
-final class RecentSuggestionsEmpty extends SaveRecentSearchSugestionsState {}
+final class RecentSuggestionsEmpty extends SaveRecentSearchSuggestionsState {}

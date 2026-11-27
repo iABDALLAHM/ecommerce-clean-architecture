@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/core/models/query_prams.dart';
+import 'package:ecommerce_clean_architecture/core/models/query_params.dart';
 
 abstract class DatabaseService {
   Future<List> getPaginatedData({

@@ -3,7 +3,7 @@ import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/cubits/sign_out_cubit/sign_out_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/widgets/profile_body_dialog_button.dart';
-import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/widgets/sign_out_bloc_listener.dart';
+import 'package:ecommerce_clean_architecture/features/profile/presentation/core/views/widgets/sign_out_dialog_bloc_listener.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

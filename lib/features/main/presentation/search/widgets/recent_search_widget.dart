@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/save_recent_search_cubit/save_recent_search_sugestions_cubit.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/save_recent_search_cubit/save_recent_search_sugestions_state.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/search/widgets/recent_search_sugest_widget.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/save_recent_search_cubit/save_recent_search_suggestions_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/save_recent_search_cubit/save_recent_search_suggestions_state.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/search/widgets/recent_search_suggest_widget.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +18,7 @@ class RecentSearchWidget extends StatefulWidget {
 class _RecentSearchWidgetState extends State<RecentSearchWidget> {
   @override
   void initState() {
-    context.read<SaveRecentSearchSugestionsCubit>().getSugestions();
+    context.read<SaveRecentSearchSuggestionsCubit>().getSugestions();
     super.initState();
   }
 
@@ -42,7 +42,7 @@ class _RecentSearchWidgetState extends State<RecentSearchWidget> {
               TextButton(
                 onPressed: () {
                   context
-                      .read<SaveRecentSearchSugestionsCubit>()
+                      .read<SaveRecentSearchSuggestionsCubit>()
                       .clearAllSuggestions();
                 },
                 child: Text(
@@ -56,11 +56,11 @@ class _RecentSearchWidgetState extends State<RecentSearchWidget> {
           ),
 
           BlocBuilder<
-            SaveRecentSearchSugestionsCubit,
-            SaveRecentSearchSugestionsState
+            SaveRecentSearchSuggestionsCubit,
+            SaveRecentSearchSuggestionsState
           >(
             builder: (context, state) {
-              if (state is SuccessGetRecentSugestionsState) {
+              if (state is SuccessGetRecentSuggestionsState) {
                 return Column(
                   children: state.listOfSugestions.map((e) {
                     return RecentSearchSuggestWidget(

@@ -3,7 +3,7 @@ import 'package:ecommerce_clean_architecture/constants.dart';
 import 'package:ecommerce_clean_architecture/core/functions/is_english_letters.dart';
 import 'package:ecommerce_clean_architecture/core/utils/app_styles.dart';
 import 'package:ecommerce_clean_architecture/core/utils/assets.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/save_recent_search_cubit/save_recent_search_sugestions_cubit.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/save_recent_search_cubit/save_recent_search_suggestions_cubit.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_cubit.dart';
 import 'package:ecommerce_clean_architecture/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +42,7 @@ class _CustomSearchTextFieldState extends State<CustomSearchTextField> {
                     : arabicLanguageCode,
               );
               context
-                  .read<SaveRecentSearchSugestionsCubit>()
+                  .read<SaveRecentSearchSuggestionsCubit>()
                   .saveRecentSugestions(recentSugestion: value);
               widget.searchController.text = value;
             },

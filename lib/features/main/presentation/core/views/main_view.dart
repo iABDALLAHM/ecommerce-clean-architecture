@@ -1,4 +1,4 @@
-import 'package:ecommerce_clean_architecture/core/widgets/custom_button_navigaton_bar.dart';
+import 'package:ecommerce_clean_architecture/core/widgets/custom_bottom_navigation_bar.dart';
 import 'package:ecommerce_clean_architecture/features/main/presentation/core/widgets/main_view_multi_bloc_provider.dart';
 import 'package:flutter/material.dart';
 

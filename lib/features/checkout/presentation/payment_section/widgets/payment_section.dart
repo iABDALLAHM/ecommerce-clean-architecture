@@ -6,7 +6,7 @@ import 'package:ecommerce_clean_architecture/features/checkout/presentation/core
 // import 'package:ecommerce_clean_architecture/core/widgets/custom_card_number_text_field.dart';
 // import 'package:ecommerce_clean_architecture/core/widgets/custom_expire_date_text_field.dart';
 // import 'package:ecommerce_clean_architecture/core/functions/show_snack_bar.dart';
-// import 'package:ecommerce_clean_architecture/core/widgets/custom_card_text_field_holder_name.dart';
+// import 'package:ecommerce_clean_architecture/core/widgets/custom_card_holder_name_text_field.dart';
 // import 'package:ecommerce_clean_architecture/core/widgets/custom_cvv_card_number_text_field.dart';
 // import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/cubits/payment_validation_cubit/payment_validation_cubit.dart';
 // import 'package:ecommerce_clean_architecture/features/checkout/presentation/payment_section/cubits/payment_validation_cubit/payment_validation_state.dart';

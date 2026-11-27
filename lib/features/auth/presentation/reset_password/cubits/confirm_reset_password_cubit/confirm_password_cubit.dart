@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 class ConfirmPasswordCubit extends Cubit<ConfirmPasswordState> {
   ConfirmPasswordCubit({required AuthRepository authRepository})
     : _authRepository = authRepository,
-      super(InitialConfirmPasswordSate());
+      super(InitialConfirmPasswordState());
 
   final AuthRepository _authRepository;
 
@@ -15,7 +15,7 @@ class ConfirmPasswordCubit extends Cubit<ConfirmPasswordState> {
     required String newPassword,
     required String code,
   }) async {
-    emit(LoadingConfirmPasswordSate());
+    emit(LoadingConfirmPasswordState());
     var result = await _authRepository.confirmationPassword(
       newPassword: newPassword,
       code: code,
@@ -23,10 +23,10 @@ class ConfirmPasswordCubit extends Cubit<ConfirmPasswordState> {
 
     result.fold(
       (failure) {
-        emit(FailureConfirmPasswordSate(errorMessage: failure.message));
+        emit(FailureConfirmPasswordState(errorMessage: failure.message));
       },
       (success) {
-        emit(SuccessConfirmPasswordSate());
+        emit(SuccessConfirmPasswordState());
       },
     );
   }

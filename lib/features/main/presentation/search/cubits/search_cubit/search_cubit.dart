@@ -1,6 +1,6 @@
 import 'package:ecommerce_clean_architecture/core/functions/normalize_search_text.dart';
 import 'package:ecommerce_clean_architecture/features/main/domain/repositories/products_repository/products_repository.dart';
-import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_state.dart';
+import 'package:ecommerce_clean_architecture/features/main/presentation/search/cubits/search_cubit/search_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
